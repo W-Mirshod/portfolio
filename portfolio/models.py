@@ -51,9 +51,9 @@ class Projects(BaseModel):
     is_active = models.BooleanField(default=True)
     index = models.IntegerField(unique=True)
 
-    def save(self, *args, **kwargs):
-        self.index = self.id
-        super().save(*args, **kwargs)
+    # def save(self, *args, **kwargs):
+    #     self.index = self.id
+    #     super().save(*args, **kwargs)
 
     class Meta:
         verbose_name_plural = "Projects"

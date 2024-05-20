@@ -47,7 +47,7 @@ class SkillsAdmin(ImportExportModelAdmin, admin.ModelAdmin):
 
 
 @admin.register(Projects)
-class ProjectsAdmin(admin.ModelAdmin):
+class ProjectsAdmin(ImportExportModelAdmin, admin.ModelAdmin):
     resource_class = ProjectsResource
 
     list_display = ['title', 'description', 'is_active', 'created_at', 'updated_at']
