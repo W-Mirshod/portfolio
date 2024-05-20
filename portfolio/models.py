@@ -42,9 +42,6 @@ class Skills(BaseModel):
     class Meta:
         verbose_name_plural = "Skills"
 
-    def __str__(self):
-        return self.title
-
 
 class Projects(BaseModel):
     title = models.CharField(max_length=30)
@@ -53,6 +50,10 @@ class Projects(BaseModel):
     picture = models.ImageField(upload_to="projects/")
     is_active = models.BooleanField(default=True)
     index = models.IntegerField(unique=True)
+
+    def save(self, *args, **kwargs):
+        self.index = self.id
+        super().save(*args, **kwargs)
 
     class Meta:
         verbose_name_plural = "Projects"
