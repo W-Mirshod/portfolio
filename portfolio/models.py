@@ -48,6 +48,7 @@ class Skills(BaseModel):
 class Projects(BaseModel):
     title = models.CharField(max_length=30)
     description = models.CharField(max_length=225)
+    project_link = models.URLField()
     picture_link = models.URLField()
 
     class Meta:
