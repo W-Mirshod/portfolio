@@ -3,13 +3,19 @@ from datetime import datetime
 from django.shortcuts import render
 from user_agents import parse
 
-from portfolio.models import RequestsLog
+from portfolio.models import RequestsLog, Skills, Projects
 
 
 def home(request):
+    skills = Skills.objects.all()
+    projects = Projects.objects.all()
+
     if request.method == 'GET':
         send_sms(request, 'Home Page')
-        return render(request, 'index.html')
+
+        context = {'skills': skills, 'projects': projects}
+
+        return render(request, 'index.html', context)
 
 
 def send_sms(entered_request, in_url):
