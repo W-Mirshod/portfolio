@@ -52,6 +52,7 @@ class Projects(BaseModel):
     project_link = models.URLField()
     picture = models.ImageField(upload_to="projects/")
     is_active = models.BooleanField(default=True)
+    index = models.IntegerField(unique=True)
 
     class Meta:
         verbose_name_plural = "Projects"

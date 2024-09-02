@@ -12,7 +12,7 @@ from root.settings import DEFAULT_FROM_EMAIL
 
 def home(request):
     skills = Skills.objects.all()
-    projects = Projects.objects.filter(is_active=True).order_by('-id')
+    projects = Projects.objects.filter(is_active=True).order_by('-index')
     form = ContactForm()
 
     if request.method == 'POST':
