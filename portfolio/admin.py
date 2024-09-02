@@ -50,6 +50,6 @@ class SkillsAdmin(ImportExportModelAdmin, admin.ModelAdmin):
 class ProjectsAdmin(admin.ModelAdmin):
     resource_class = ProjectsResource
 
-    list_display = ['title', 'description', 'picture_link', 'created_at', 'updated_at']
+    list_display = ['title', 'description', 'created_at', 'updated_at']
     list_filter = ['title', 'created_at', 'updated_at']
     search_fields = ['title']

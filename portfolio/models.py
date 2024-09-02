@@ -49,10 +49,22 @@ class Projects(BaseModel):
     title = models.CharField(max_length=30)
     description = models.CharField(max_length=225)
     project_link = models.URLField()
-    picture_link = models.URLField()
+    picture = models.FileField(upload_to="projects/")
 
     class Meta:
         verbose_name_plural = "Projects"
 
     def __str__(self):
         return self.title
+
+
+class Contacts(BaseModel):
+    name = models.TextField()
+    email = models.EmailField()
+    message = models.TextField()
+
+    class Meta:
+        verbose_name_plural = "Contacts"
+
+    def __str__(self):
+        return self.name

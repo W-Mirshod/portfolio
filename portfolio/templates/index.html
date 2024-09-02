@@ -120,7 +120,8 @@
             <div class="contact-form">
 
                 <div id="form-messages"></div>
-                <form id="ajax-contact" method="post" role="form" action="contact.php" data-toggle="validator">
+                <form id="ajax-contact" method="post" role="form" action="{% url 'home' %}" data-toggle="validator">
+                    {% csrf_token %}
                     <div class="form-group has-feedback wow fadeInLeft" data-wow-delay="0.6s">
                         <input type="text" class="form-control" id="name" name="name" placeholder="NAME"
                                data-error="Field can't be blank!" required>
@@ -182,7 +183,7 @@
 <script src='https://cdnjs.cloudflare.com/ajax/libs/wow/1.1.2/wow.min.js'></script>
 <script src='https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.5.2/js/bootstrap.min.js'></script>
 <script src='https://cdnjs.cloudflare.com/ajax/libs/fullPage.js/2.7.4/jquery.fullPage.min.js'></script>
-<script src="{% static 'scriptS.js' %}"></script>
+<script src="{% static 'scripts.js' %}"></script>
 
 </body>
 </html>

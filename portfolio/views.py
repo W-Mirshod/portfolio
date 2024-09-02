@@ -1,21 +1,33 @@
 from datetime import datetime
 
+from django.core.mail import send_mail
+from django.http import JsonResponse
 from django.shortcuts import render
 from user_agents import parse
 
+from portfolio.forms import ContactForm
 from portfolio.models import RequestsLog, Skills, Projects
+from root.settings import DEFAULT_FROM_EMAIL
 
 
 def home(request):
     skills = Skills.objects.all()
     projects = Projects.objects.all()
+    form = ContactForm()
 
-    if request.method == 'GET':
-        send_sms(request, 'Home Page')
+    if request.method == 'POST':
+        form = ContactForm(request.POST)
+        if form.is_valid():
+            form.save()
+            sending_email(request.POST['name'], request.POST['message'], request.POST['email'])
+            return JsonResponse({'success': True, 'message': 'Your message was sent successfully!'})
+        else:
+            return JsonResponse({'success': False, 'errors': form.errors}, status=400)
 
-        context = {'skills': skills, 'projects': projects}
+    send_sms(request, 'Home Page')
 
-        return render(request, 'index.html', context)
+    context = {'skills': skills, 'projects': projects, 'form': form}
+    return render(request, 'index.html', context)
 
 
 def send_sms(entered_request, in_url):
@@ -41,3 +53,12 @@ def send_sms(entered_request, in_url):
         is_pc=user_agent.is_pc,
         referred_to=in_url,
         request_time=current_time)
+
+
+def sending_email(name, message, gmail):
+    subject = f"Contacting from {name} in W-Mirshod"
+    message = message
+    from_email = gmail
+    recipient_list = [DEFAULT_FROM_EMAIL]
+
+    send_mail(subject, message, from_email, recipient_list)
