@@ -49,7 +49,7 @@ class Projects(BaseModel):
     title = models.CharField(max_length=30)
     description = models.CharField(max_length=225)
     project_link = models.URLField()
-    picture = models.FileField(upload_to="projects/")
+    picture = models.ImageField(upload_to="projects/")
     is_active = models.BooleanField(default=True)
 
     class Meta:
