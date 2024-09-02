@@ -25,6 +25,7 @@ class RequestsLog(BaseModel):
 
     class Meta:
         verbose_name_plural = "Requests Logs"
+        ordering = ['-created_at']
 
 
 class Skills(BaseModel):
@@ -54,6 +55,7 @@ class Projects(BaseModel):
 
     class Meta:
         verbose_name_plural = "Projects"
+        ordering = ['created_at']
 
     def __str__(self):
         return self.title
