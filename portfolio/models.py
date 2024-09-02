@@ -50,6 +50,7 @@ class Projects(BaseModel):
     description = models.CharField(max_length=225)
     project_link = models.URLField()
     picture = models.FileField(upload_to="projects/")
+    is_active = models.BooleanField(default=True)
 
     class Meta:
         verbose_name_plural = "Projects"
