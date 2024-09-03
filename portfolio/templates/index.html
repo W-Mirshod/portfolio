@@ -36,6 +36,26 @@
 <body>
 <!-- partial:index.partial.html -->
 <body>
+
+<audio id="background-music" src="{% static 'Audio_7029225733_94.mp3' %}" preload="auto"></audio>
+
+<script>
+    document.addEventListener('DOMContentLoaded', (event) => {
+        const audio = document.getElementById('background-music');
+
+        // Attempt to play the audio when the page is loaded
+        audio.play().catch(error => {
+            // Play the audio when the user interacts with the page
+            document.addEventListener('click', () => {
+                audio.play().catch(error => {
+                    console.error('Failed to play audio:', error);
+                });
+            });
+        });
+    });
+</script>
+
+
 <!-- navbar header -->
 <div class="nav-header">
     <div class="nav-brand">
