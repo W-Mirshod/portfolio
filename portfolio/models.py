@@ -33,10 +33,12 @@ class Skills(BaseModel):
     percent = models.PositiveIntegerField(default=100)
     title_color = models.CharField(max_length=100)
     background_color = models.CharField(max_length=100)
+    index = models.IntegerField(unique=True)
 
     def save(self, *args, **kwargs):
         self.title_color = self.title_color.lower()
         self.background_color = self.background_color.lower()
+        self.index = self.id
         super().save(*args, **kwargs)
 
     class Meta:
@@ -49,11 +51,11 @@ class Projects(BaseModel):
     project_link = models.URLField()
     picture = models.ImageField(upload_to="projects/")
     is_active = models.BooleanField(default=True)
-    # index = models.IntegerField(unique=True)
+    index = models.IntegerField(unique=True)
 
-    # def save(self, *args, **kwargs):
-    #     self.index = self.id
-    #     super().save(*args, **kwargs)
+    def save(self, *args, **kwargs):
+        self.index = self.id
+        super().save(*args, **kwargs)
 
     class Meta:
         verbose_name_plural = "Projects"
