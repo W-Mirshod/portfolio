@@ -125,10 +125,11 @@ MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
+# email configuration
 EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
-EMAIL_HOST = 'smtp.gmail.com'
+EMAIL_HOST = 'smtp.zoho.eu'
 EMAIL_PORT = 587
 EMAIL_USE_TLS = True
-EMAIL_HOST_USER = 'python3526@gmail.com'
-EMAIL_HOST_PASSWORD = 'vizr qhlf eazo kzxw'
-DEFAULT_FROM_EMAIL = 'python3526@gmail.com'
+EMAIL_HOST_USER = 'portfolio@w-mirshod.com'
+EMAIL_HOST_PASSWORD = 'zDZd CU7k vDyr'
+DEFAULT_FROM_EMAIL = EMAIL_HOST_USER

@@ -3,10 +3,12 @@ from django.contrib.auth.models import User, Group
 from import_export import resources
 from import_export.admin import ImportExportModelAdmin
 
-from portfolio.models import RequestsLog, Skills, Projects
+from portfolio.models import RequestsLog, Skills, Projects, Contacts
 
 admin.site.unregister(User)
 admin.site.unregister(Group)
+
+admin.site.register(Contacts)
 
 
 class RequestsResource(resources.ModelResource):

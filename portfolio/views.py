@@ -1,6 +1,6 @@
 from datetime import datetime
 
-from django.core.mail import send_mail
+from django.core.mail import EmailMultiAlternatives
 from django.http import JsonResponse
 from django.shortcuts import render
 from user_agents import parse
@@ -19,7 +19,7 @@ def home(request):
         form = ContactForm(request.POST)
         if form.is_valid():
             form.save()
-            sending_email(request.POST['name'], request.POST['message'], request.POST['email'])
+            sending_email(request.POST['name'], request.POST['email'])
             return JsonResponse({'success': True, 'message': 'Your message was sent successfully!'})
         else:
             return JsonResponse({'success': False, 'errors': form.errors}, status=400)
@@ -55,10 +55,41 @@ def send_sms(entered_request, in_url):
         request_time=current_time)
 
 
-def sending_email(name, message, gmail):
-    subject = f"Contacting from {name} in W-Mirshod"
-    message = message
-    from_email = gmail
-    recipient_list = [DEFAULT_FROM_EMAIL]
+def sending_email(name, gmail):
+    subject = f"To {name} From W-Mirshod.com"
+    from_email = DEFAULT_FROM_EMAIL
+    to = [f'{gmail}']
 
-    send_mail(subject, message, from_email, recipient_list)
+    # HTML content only
+    html_content = """
+        <html>
+            <body style="margin: 0; padding: 0; font-family: Arial, sans-serif; background-color: #f4f4f4;">
+                <div style="max-width: 600px; margin: auto; background-color: #ffffff; padding: 20px; border-radius: 10px; box-shadow: 0 2px 4px rgba(0,0,0,0.1);">
+                    <header style="text-align: center; border-bottom: 1px solid #dddddd; padding-bottom: 10px; margin-bottom: 20px;">
+                        <h1 style="font-size: 24px; color: #333333; margin: 0;">Welcome to W-Mirshod</h1>
+                    </header>
+                    
+                    <section style="color: #555555;">
+                        <h3 style="font-size: 20px; color: #333333;">Hello,</h3>
+                        <p>Thank you for reaching out to us</p>
+                        <p>Mirshod will respond to your inquiry as soon as possible 🫡. We appreciate your patience and look forward to assisting you.</p>
+                        <br>
+                        <p>In the meantime, feel free to explore <a href="https://github.com/W-Mirshod" style="color: #0066cc; text-decoration: none;">my GitHub Projects</a> to learn more about my services and how we can help you achieve your goals.</p>
+                    </section>
+                    
+                    <footer style="text-align: center; border-top: 1px solid #dddddd; padding-top: 10px; margin-top: 20px;">
+                        <p style="font-size: 12px; color: #aaaaaa; margin: 0;">Thank you for choosing W-Mirshod.</p>
+                        <p style="font-size: 12px; color: #aaaaaa; margin: 0;">© 2022-2024 W-Mirshod. All rights reserved.</p>
+                        <a href="https://w-mirshod.com/" style="display: inline-block; margin-top: 10px; text-decoration: none; color: #0066cc;">
+                            <strong>Visit my Website</strong>
+                        </a>
+                    </footer>
+                </div>
+            </body>
+        </html>
+        """
+
+    msg = EmailMultiAlternatives(subject, "", from_email, to)
+    msg.attach_alternative(html_content, "text/html")
+
+    msg.send()
