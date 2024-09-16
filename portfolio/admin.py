@@ -8,25 +8,29 @@ from portfolio.models import RequestsLog, Skills, Projects, Contacts
 admin.site.unregister(User)
 admin.site.unregister(Group)
 
-admin.site.register(Contacts)
-
 
 class RequestsResource(resources.ModelResource):
     class Meta:
         model = RequestsLog
-        exclude = ()
+        fields = '__all__'
 
 
 class SkillsResource(resources.ModelResource):
     class Meta:
         model = Skills
-        exclude = ()
+        fields = '__all__'
 
 
 class ProjectsResource(resources.ModelResource):
     class Meta:
         model = Projects
-        exclude = ()
+        fields = '__all__'
+
+
+class ContactsResource(resources.ModelResource):
+    class Meta:
+        model = Contacts
+        fields = '__all__'
 
 
 @admin.register(RequestsLog)
@@ -56,3 +60,12 @@ class ProjectsAdmin(ImportExportModelAdmin, admin.ModelAdmin):
     list_display = ['title', 'description', 'is_active', 'created_at', 'updated_at']
     list_filter = ['title', 'created_at', 'updated_at']
     search_fields = ['title']
+
+
+@admin.register(Contacts)
+class ContactsAdmin(ImportExportModelAdmin, admin.ModelAdmin):
+    resource_class = ContactsResource
+
+    list_display = ['name', 'email', 'message', 'created_at', 'updated_at']
+    list_filter = ['name', 'email', 'message', 'created_at', 'updated_at']
+    search_fields = ['name', 'email']
