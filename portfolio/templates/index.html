@@ -45,7 +45,7 @@
         const audio = document.getElementById('background-music');
 
         // Set the volume to 50%
-        audio.volume = 0.5; // Volume ranges from 0.0 to 1.0
+        audio.volume = 0.4; // Volume ranges from 0.0 to 1.0
 
         // Attempt to play the audio when the page is loaded
         audio.play().catch(error => {
@@ -234,6 +234,8 @@
 <script>
     document.getElementById('ajax-contact').addEventListener('submit', function (event) {
         event.preventDefault(); // Prevent default form submission
+
+        audio.volume = 0.4; // Volume ranges from 0.0 to 1.0
 
         const recaptchaResponse = grecaptcha.getResponse();
         const messagesDiv = document.getElementById('form-messages');
