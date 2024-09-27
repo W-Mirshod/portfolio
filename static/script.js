@@ -164,53 +164,53 @@ $(document).ready(function () {
         });
     });
 
-    // // ajax form
-    // $(function () {
-    //     // Get the form and the messages div.
-    //     var form = $("#ajax-contact");
-    //     var formMessages = $("#form-messages");
-    //
-    //     // Set up an event listener for the contact form.
-    //     $(form).submit(function (e) {
-    //         // Stop the browser from submitting the form.
-    //         e.preventDefault();
-    //
-    //         // Serialize the form data.
-    //         var formData = $(form).serialize();
-    //
-    //         // Submit the form using AJAX.
-    //         $.ajax({
-    //             type: "POST",
-    //             url: $(form).attr("action"),
-    //             data: formData
-    //         })
-    //             .done(function () {
-    //                 // Set success message and class.
-    //                 $(formMessages).removeClass("error").addClass("success")
-    //                     .text("Your message has been successfully sent!");
-    //
-    //                 // Clear the form fields.
-    //                 $("#name").val("");
-    //                 $("#email").val("");
-    //                 $("#message").val("");
-    //
-    //                 // Remove the message after 5 seconds.
-    //                 setTimeout(function () {
-    //                     $(formMessages).text("").removeClass("success");
-    //                 }, 5000);
-    //             })
-    //             .fail(function (data) {
-    //                 // Set error message and class.
-    //                 $(formMessages).removeClass("success").addClass("error");
-    //
-    //                 // Set a static error message.
-    //                 $(formMessages).text("Oops! An error occurred, and your message could not be sent.");
-    //
-    //                 // Remove the message after 5 seconds.
-    //                 setTimeout(function () {
-    //                     $(formMessages).text("").removeClass("error");
-    //                 }, 5000);
-    //             });
-    //     });
-    // });
+    // ajax form
+    $(function () {
+        // Get the form and the messages div.
+        var form = $("#ajax-contact");
+        var formMessages = $("#form-messages");
+
+        // Set up an event listener for the contact form.
+        $(form).submit(function (e) {
+            // Stop the browser from submitting the form.
+            e.preventDefault();
+
+            // Serialize the form data.
+            var formData = $(form).serialize();
+
+            // Submit the form using AJAX.
+            $.ajax({
+                type: "POST",
+                url: $(form).attr("action"),
+                data: formData
+            })
+                .done(function () {
+                    // Set success message and class.
+                    $(formMessages).removeClass("error").addClass("success")
+                        .text("Your message has been successfully sent!");
+
+                    // Clear the form fields.
+                    $("#name").val("");
+                    $("#email").val("");
+                    $("#message").val("");
+
+                    // Remove the message after 5 seconds.
+                    setTimeout(function () {
+                        $(formMessages).text("").removeClass("success");
+                    }, 5000);
+                })
+                .fail(function (data) {
+                    // Set error message and class.
+                    $(formMessages).removeClass("success").addClass("error");
+
+                    // Set a static error message.
+                    $(formMessages).text("Oops! An error occurred, and your message could not be sent.");
+
+                    // Remove the message after 5 seconds.
+                    setTimeout(function () {
+                        $(formMessages).text("").removeClass("error");
+                    }, 5000);
+                });
+        });
+    });
 });
