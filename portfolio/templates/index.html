@@ -28,6 +28,7 @@
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css">
     <link rel='stylesheet' href='https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.7/css/bootstrap.min.css'>
     <link rel='stylesheet' href='https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.5.2/animate.min.css'>
+    <script src="https://www.google.com/recaptcha/api.js" async defer></script>
     <link rel="icon" type="image/x-icon"
           href="https://th.bing.com/th/id/OIP.We5lMptWy0rwOIBwfyEP9gHaHM?rs=1&pid=ImgDetMain">
     <link rel="stylesheet" href="{% static 'style.css' %}">
@@ -180,6 +181,10 @@
                     <div class="hidden">
                         <input type="text" class="form-control" id="human" name="human" placeholder="">
                     </div>
+
+                    <div class="g-recaptcha wow fadeInUp" data-wow-delay="1.2s"
+                         data-sitekey="6Ld5slAqAAAAAOQ7IN70HQVoUKL7x6uGKrN5i7aZ"></div>
+
                     <div class="wow fadeInUp" data-wow-delay="1s">
                         <button type="submit" id="submit" name="submit" class="btn btn-lg">SEND MESSAGE</button>
                     </div>
@@ -217,6 +222,17 @@
 <script src='https://cdnjs.cloudflare.com/ajax/libs/wow/1.1.2/wow.min.js'></script>
 <script src='https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.5.2/js/bootstrap.min.js'></script>
 <script src='https://cdnjs.cloudflare.com/ajax/libs/fullPage.js/2.7.4/jquery.fullPage.min.js'></script>
+<script src="https://www.google.com/recaptcha/api.js?render=6Ld5slAqAAAAAOQ7IN70HQVoUKL7x6uGKrN5i7aZ"></script>
+<script>
+    grecaptcha.ready(function () {
+        grecaptcha.execute('6Ld5slAqAAAAAOQ7IN70HQVoUKL7x6uGKrN5i7aZ', {action: 'submit'}).then(function (token) {
+            // Add token to the form
+            var recaptchaResponse = document.getElementById('g-recaptcha-response');
+            recaptchaResponse.value = token;
+        });
+    });
+</script>
+<input type="hidden" id="g-recaptcha-response" name="g-recaptcha-response">
 <script src="{% static 'script.js' %}"></script>
 
 </body>
