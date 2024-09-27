@@ -109,6 +109,7 @@ venv.bak/
 media/
 portfolio/migrations/
 
+
 # Spyder project settings
 .spyderproject
 .spyproject
