@@ -35,36 +35,38 @@ def validate_recaptcha(recaptcha_response):
 
 from django.http import JsonResponse
 
+from django.http import JsonResponse
+from django.core.exceptions import ValidationError
+
 
 def home(request):
-    skills = Skills.objects.all()
-    projects = Projects.objects.filter(is_active=True)
-    form = ContactForm()
-
     if request.method == 'POST':
-        form = ContactForm(request.POST)
+        try:
+            form = ContactForm(request.POST)
+            recaptcha_response = request.POST.get('g-recaptcha-response')
 
-        recaptcha_response = request.POST.get('g-recaptcha-response')
+            if not validate_recaptcha(recaptcha_response):
+                return JsonResponse({'success': False}, status=400)
 
-        if not validate_recaptcha(recaptcha_response):
-            return JsonResponse({'success': False}, status=400)
+            if form.is_valid():
+                form.save()
+                name = form.cleaned_data['name']
+                email = form.cleaned_data['email']
+                sending_email(name, email)
+                return JsonResponse({'success': True})
 
-        if form.is_valid():
-            form.save()
-            name = form.cleaned_data['name']
-            email = form.cleaned_data['email']
+            else:
+                return JsonResponse({'success': False}, status=400)
 
-            sending_email(name, email)
+        except (ValidationError, Exception) as e:
+            print(f"An error occurred: {e}")
+            return JsonResponse({'success': False}, status=500)
 
-            return JsonResponse({'success': True})
-        else:
-            return JsonResponse({'success': False}, status=400)
-
-    send_sms(request, 'Home Page')
-
-    context = {'skills': skills,
-               'projects': projects,
-               'form': form}
+    context = {
+        'skills': Skills.objects.all(),
+        'projects': Projects.objects.filter(is_active=True),
+        'form': ContactForm()
+    }
 
     return render(request, 'index.html', context)
 
