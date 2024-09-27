@@ -235,6 +235,8 @@
     document.getElementById('ajax-contact').addEventListener('submit', function (event) {
         event.preventDefault(); // Prevent default form submission
 
+        // Set audio volume
+        const audio = document.getElementById('background-music');
         audio.volume = 0.4; // Volume ranges from 0.0 to 1.0
 
         const recaptchaResponse = grecaptcha.getResponse();
@@ -255,7 +257,7 @@
         }
 
         // Simulate form submission (Replace this with your actual AJAX submission code)
-        const formSubmittedSuccessfully = true; // Set to false to simulate an error
+        const formSubmittedSuccessfully = true; // Simulate success; change to false to simulate error
 
         if (formSubmittedSuccessfully) {
             messagesDiv.textContent = "Your message has been sent successfully!";
@@ -272,7 +274,7 @@
     function hideMessageAfterDelay(element) {
         setTimeout(function () {
             element.style.display = 'none';
-        }, 3000); // Hide message after 5 seconds
+        }, 5000); // Hide message after 5 seconds
     }
 </script>
 <input type="hidden" id="g-recaptcha-response" name="g-recaptcha-response">
