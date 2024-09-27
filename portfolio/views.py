@@ -56,7 +56,7 @@ def home(request):
             return JsonResponse({'success': True,
                                  'message': 'Your message was sent successfully!'})
         else:
-            return JsonResponse({'success': False, 'errors': form.errors}, status=400)
+            return JsonResponse({'success': False}, status=400)
 
     send_sms(request, 'Home Page')
 
