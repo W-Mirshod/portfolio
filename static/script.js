@@ -199,7 +199,7 @@ $(document).ready(function () {
                         $(formMessages).text("").removeClass("success");
                     }, 5000);
                 })
-                .fail(function (data) {
+                .fail(function () {
                     // Set error message and class.
                     $(formMessages).text("Oops! An error occurred, and your message could not be sent.");
 
