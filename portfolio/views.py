@@ -1,5 +1,7 @@
 from datetime import datetime
 
+import requests
+from django.conf import settings
 from django.core.mail import EmailMultiAlternatives
 from django.http import JsonResponse
 from django.shortcuts import render
@@ -9,6 +11,27 @@ from portfolio.forms import ContactForm
 from portfolio.models import RequestsLog, Skills, Projects
 from root.settings import DEFAULT_FROM_EMAIL
 
+import requests
+from django.conf import settings
+from django.http import JsonResponse
+from django.shortcuts import render
+from .models import Skills, Projects
+from .forms import ContactForm
+
+
+def validate_recaptcha(recaptcha_response):
+    """
+    Validate reCAPTCHA response with Google's API.
+    """
+    data = {
+        'secret': settings.RECAPTCHA_SECRET_KEY,
+        'response': recaptcha_response
+    }
+    url = 'https://www.google.com/recaptcha/api/siteverify'
+    r = requests.post(url, data=data)
+    result = r.json()
+    return result.get('success', False)
+
 
 def home(request):
     skills = Skills.objects.all()
@@ -17,16 +40,31 @@ def home(request):
 
     if request.method == 'POST':
         form = ContactForm(request.POST)
+
+        recaptcha_response = request.POST.get('g-recaptcha-response')
+
+        if not validate_recaptcha(recaptcha_response):
+            return JsonResponse({'success': False,
+                                 'errors': {'captcha': ['Invalid reCAPTCHA. Please try again.']}}, status=400)
+
         if form.is_valid():
             form.save()
-            sending_email(request.POST['name'], request.POST['email'])
-            return JsonResponse({'success': True, 'message': 'Your message was sent successfully!'})
+            name = form.cleaned_data['name']
+            email = form.cleaned_data['email']
+
+            sending_email(name, email)
+
+            return JsonResponse({'success': True,
+                                 'message': 'Your message was sent successfully!'})
         else:
             return JsonResponse({'success': False, 'errors': form.errors}, status=400)
 
     send_sms(request, 'Home Page')
 
-    context = {'skills': skills, 'projects': projects, 'form': form}
+    context = {'skills': skills,
+               'projects': projects,
+               'form': form}
+
     return render(request, 'index.html', context)
 
 
@@ -93,3 +131,13 @@ def sending_email(name, gmail):
     msg.attach_alternative(html_content, "text/html")
 
     msg.send()
+
+
+def validate_recaptcha(recaptcha_response):
+    data = {
+        'secret': settings.RECAPTCHA_PRIVATE_KEY,
+        'response': recaptcha_response
+    }
+    r = requests.post('https://www.google.com/recaptcha/api/siteverify', data=data)
+    result = r.json()
+    return result.get('success', False)
