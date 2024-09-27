@@ -33,6 +33,9 @@ def validate_recaptcha(recaptcha_response):
     return result.get('success', False)
 
 
+from django.http import JsonResponse
+
+
 def home(request):
     skills = Skills.objects.all()
     projects = Projects.objects.filter(is_active=True)
@@ -44,7 +47,7 @@ def home(request):
         recaptcha_response = request.POST.get('g-recaptcha-response')
 
         if not validate_recaptcha(recaptcha_response):
-            return JsonResponse("reCAPTCHA should be completed", safe=False, status=400)
+            return JsonResponse({'success': False}, status=400)
 
         if form.is_valid():
             form.save()
@@ -53,8 +56,7 @@ def home(request):
 
             sending_email(name, email)
 
-            return JsonResponse({'success': True,
-                                 'message': 'Your message was sent successfully!'})
+            return JsonResponse({'success': True})
         else:
             return JsonResponse({'success': False}, status=400)
 
