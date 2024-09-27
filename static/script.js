@@ -221,7 +221,7 @@ $(document).ready(function () {
                     setTimeout(function () {
                         $(formMessages).text("");
                         $(formMessages).removeClass("error");
-                    }, 5000);
+                    }, 3000);
                 });
         });
     });

@@ -44,8 +44,7 @@ def home(request):
         recaptcha_response = request.POST.get('g-recaptcha-response')
 
         if not validate_recaptcha(recaptcha_response):
-            return JsonResponse({'success': False,
-                                 'errors': {'captcha': ['Invalid reCAPTCHA. Please try again.']}}, status=400)
+            return JsonResponse("reCAPTCHA should be completed", safe=False, status=400)
 
         if form.is_valid():
             form.save()
