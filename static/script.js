@@ -164,13 +164,11 @@ $(document).ready(function () {
         });
     });
 
-    //ajax form
+    // ajax form
     $(function () {
-        // Get the form.
+        // Get the form and the messages div.
         var form = $("#ajax-contact");
-
-        // // Get the messages div.
-        // var formMessages = $("#form-messages");
+        var formMessages = $("#form-messages");
 
         // Set up an event listener for the contact form.
         $(form).submit(function (e) {
@@ -186,42 +184,32 @@ $(document).ready(function () {
                 url: $(form).attr("action"),
                 data: formData
             })
-                .done(function (response) {
-                    // Make sure that the formMessages div has the 'success' class.
-                    $(formMessages).removeClass("error");
-                    $(formMessages).addClass("success");
+                .done(function () {
+                    // Set success message and class.
+                    $(formMessages).removeClass("error").addClass("success")
+                        .text("Your message has been successfully sent!");
 
-                    // Set a custom success message.
-                    $(formMessages).text("Your message has been successfully sent!");
-
-                    // Clear the form.
+                    // Clear the form fields.
                     $("#name").val("");
                     $("#email").val("");
                     $("#message").val("");
 
-                    // Remove the message after 5 seconds (5000 milliseconds).
+                    // Remove the message after 5 seconds.
                     setTimeout(function () {
-                        $(formMessages).text("");
-                        $(formMessages).removeClass("success");
+                        $(formMessages).text("").removeClass("success");
                     }, 5000);
                 })
                 .fail(function (data) {
-                    // Make sure that the formMessages div has the 'error' class.
-                    $(formMessages).removeClass("success");
-                    $(formMessages).addClass("error");
+                    // Set error message and class.
+                    $(formMessages).removeClass("success").addClass("error");
 
-                    // Set a custom error message.
-                    if (data.responseText !== "") {
-                        $(formMessages).text(data.responseText);
-                    } else {
-                        $(formMessages).text("Oops! An error occurred, and your message could not be sent.");
-                    }
+                    // Set a static error message.
+                    $(formMessages).text("Oops! An error occurred, and your message could not be sent.");
 
-                    // Remove the message after 5 seconds (5000 milliseconds).
+                    // Remove the message after 5 seconds.
                     setTimeout(function () {
-                        $(formMessages).text("");
-                        $(formMessages).removeClass("error");
-                    }, 3000);
+                        $(formMessages).text("").removeClass("error");
+                    }, 5000);
                 });
         });
     });
