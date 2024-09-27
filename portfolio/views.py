@@ -1,14 +1,10 @@
 from datetime import datetime
+from multiprocessing.util import get_logger
 
-import requests
-from django.conf import settings
 from django.core.mail import EmailMultiAlternatives
-from django.http import JsonResponse
-from django.shortcuts import render
 from user_agents import parse
 
-from portfolio.forms import ContactForm
-from portfolio.models import RequestsLog, Skills, Projects
+from portfolio.models import RequestsLog
 from root.settings import DEFAULT_FROM_EMAIL
 
 import requests
@@ -18,6 +14,7 @@ from django.shortcuts import render
 from .models import Skills, Projects
 from .forms import ContactForm
 
+logger = get_logger()
 
 def validate_recaptcha(recaptcha_response):
     """
@@ -33,41 +30,38 @@ def validate_recaptcha(recaptcha_response):
     return result.get('success', False)
 
 
-from django.http import JsonResponse
-
-from django.http import JsonResponse
-from django.core.exceptions import ValidationError
-
-
 def home(request):
     if request.method == 'POST':
-        try:
-            form = ContactForm(request.POST)
-            recaptcha_response = request.POST.get('g-recaptcha-response')
+        form = ContactForm(request.POST)
+        recaptcha_response = request.POST.get('g-recaptcha-response')
 
-            if not validate_recaptcha(recaptcha_response):
-                return JsonResponse({'success': False}, status=400)
+        # Validate reCAPTCHA
+        if not validate_recaptcha(recaptcha_response):
+            return JsonResponse({'success': False}, status=400)
 
-            if form.is_valid():
+        # Validate form
+        if form.is_valid():
+            try:
                 form.save()
                 name = form.cleaned_data['name']
                 email = form.cleaned_data['email']
                 sending_email(name, email)
                 return JsonResponse({'success': True})
+            except Exception as e:
+                logger.error(f"Error saving form or sending email: {e}")
+                return JsonResponse({'success': False, 'message': 'An error occurred while processing your request.'},
+                                    status=500)
+        else:
+            # Return form errors if not valid
+            errors = form.errors.as_json()
+            return JsonResponse({'success': False, 'errors': errors}, status=400)
 
-            else:
-                return JsonResponse({'success': False}, status=400)
-
-        except (ValidationError, Exception) as e:
-            print(f"An error occurred: {e}")
-            return JsonResponse({'success': False}, status=500)
-
+    # Normal GET request processing
     context = {
         'skills': Skills.objects.all(),
         'projects': Projects.objects.filter(is_active=True),
         'form': ContactForm()
     }
-
     return render(request, 'index.html', context)
 
 
