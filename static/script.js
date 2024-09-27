@@ -201,9 +201,6 @@ $(document).ready(function () {
                 })
                 .fail(function (data) {
                     // Set error message and class.
-                    $(formMessages).removeClass("success").addClass("error");
-
-                    // Set a static error message.
                     $(formMessages).text("Oops! An error occurred, and your message could not be sent.");
 
                     // Remove the message after 5 seconds.
