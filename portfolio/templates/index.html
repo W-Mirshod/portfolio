@@ -256,19 +256,40 @@
             return;
         }
 
-        // Simulate form submission (Replace this with your actual AJAX submission code)
-        const formSubmittedSuccessfully = true; // Simulate success; change to false to simulate error
+        // Create form data object
+        const formData = new FormData(document.getElementById('ajax-contact'));
 
-        if (formSubmittedSuccessfully) {
-            messagesDiv.textContent = "Your message has been sent successfully!";
-            messagesDiv.classList.add('alert-success');
-        } else {
-            messagesDiv.textContent = "An error occurred while sending your message. Please try again.";
-            messagesDiv.classList.add('alert-danger');
-        }
-
-        messagesDiv.style.display = 'block';
-        hideMessageAfterDelay(messagesDiv);
+        // Send AJAX request
+        fetch('{% url "home" %}', {
+            method: 'POST',
+            body: formData,
+            headers: {
+                'X-Requested-With': 'XMLHttpRequest', // For Django to recognize the AJAX request
+            }
+        })
+            .then(response => {
+                if (!response.ok) {
+                    throw new Error('Network response was not ok');
+                }
+                return response.json();
+            })
+            .then(data => {
+                if (data.success) {
+                    messagesDiv.textContent = "Your message has been sent successfully!";
+                    messagesDiv.classList.add('alert-success');
+                } else {
+                    messagesDiv.textContent = "An error occurred while sending your message. Please try again.";
+                    messagesDiv.classList.add('alert-danger');
+                }
+                messagesDiv.style.display = 'block';
+                hideMessageAfterDelay(messagesDiv);
+            })
+            .catch(error => {
+                messagesDiv.textContent = "An error occurred. Please try again.";
+                messagesDiv.classList.add('alert-danger');
+                messagesDiv.style.display = 'block';
+                hideMessageAfterDelay(messagesDiv);
+            });
     });
 
     function hideMessageAfterDelay(element) {
@@ -276,6 +297,7 @@
             element.style.display = 'none';
         }, 5000); // Hide message after 5 seconds
     }
+
 </script>
 <input type="hidden" id="g-recaptcha-response" name="g-recaptcha-response">
 <script src="{% static 'script.js' %}"></script>
