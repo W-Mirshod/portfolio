@@ -41,6 +41,8 @@ def home(request):
                 name = form.cleaned_data['name']
                 email = form.cleaned_data['email']
                 sending_email(name, email)
+                in_url = request.META.get('HTTP_REFERER', 'Unknown')
+                send_sms(request, in_url)
                 return JsonResponse({'success': True})
             except Exception as e:
                 return JsonResponse({'success': False, 'message': 'An error occurred while processing your request.'},
