@@ -223,59 +223,51 @@
 <script src='https://cdnjs.cloudflare.com/ajax/libs/fullPage.js/2.7.4/jquery.fullPage.min.js'></script>
 <script src="https://www.google.com/recaptcha/api.js?render=6Ld5slAqAAAAAOQ7IN70HQVoUKL7x6uGKrN5i7aZ"></script>
 <script>
-    grecaptcha.ready(function () {
-        grecaptcha.execute('6Ld5slAqAAAAAOQ7IN70HQVoUKL7x6uGKrN5i7aZ', {action: 'submit'}).then(function (token) {
-            // Add token to the form
-            var recaptchaResponse = document.getElementById('g-recaptcha-response');
-            recaptchaResponse.value = token;
-        });
-    });
-</script>
-<script>
-    document.getElementById('ajax-contact').addEventListener('submit', function (event) {
-        event.preventDefault(); // Prevent default form submission
-
-        // Set audio volume
-        const audio = document.getElementById('background-music');
-        audio.volume = 0.4; // Volume ranges from 0.0 to 1.0
-
-        const recaptchaResponse = grecaptcha.getResponse();
+    function displayMessage(message, isSuccess) {
         const messagesDiv = document.getElementById('form-messages');
-
-        // Clear previous messages
-        messagesDiv.style.display = 'none';
+        messagesDiv.textContent = message;
         messagesDiv.classList.remove('alert-success', 'alert-danger');
-        messagesDiv.textContent = '';
-
-        // Check if reCAPTCHA is checked
-        if (!recaptchaResponse) {
-            messagesDiv.textContent = "Please complete the reCAPTCHA to proceed.";
-            messagesDiv.classList.add('alert-danger');
-            messagesDiv.style.display = 'block';
-            hideMessageAfterDelay(messagesDiv);
-            return;
-        }
-
-        // Simulate form submission (Replace this with your actual AJAX submission code)
-        const formSubmittedSuccessfully = true; // Simulate success; change to false to simulate error
-
-        if (formSubmittedSuccessfully) {
-            messagesDiv.textContent = "Your message has been sent successfully!";
-            messagesDiv.classList.add('alert-success');
-        } else {
-            messagesDiv.textContent = "An error occurred while sending your message. Please try again.";
-            messagesDiv.classList.add('alert-danger');
-        }
-
+        messagesDiv.classList.add(isSuccess ? 'alert-success' : 'alert-danger');
         messagesDiv.style.display = 'block';
         hideMessageAfterDelay(messagesDiv);
-    });
+    }
 
     function hideMessageAfterDelay(element) {
         setTimeout(function () {
             element.style.display = 'none';
         }, 5000); // Hide message after 5 seconds
     }
+
+    grecaptcha.ready(function () {
+        grecaptcha.execute('6Ld5slAqAAAAAOQ7IN70HQVoUKL7x6uGKrN5i7aZ', {action: 'submit'}).then(function (token) {
+            document.getElementById('g-recaptcha-response').value = token;
+        });
+    });
+
+    document.getElementById('ajax-contact').addEventListener('submit', function (event) {
+        event.preventDefault(); // Prevent default form submission
+
+        // Serialize form data
+        const formData = new FormData(this);
+
+        // Submit the form using AJAX
+        fetch(this.action, {
+            method: 'POST',
+            body: formData,
+        })
+            .then(response => response.json())
+            .then(data => {
+                if (data.success) {
+                    displayMessage("Your message has been sent successfully!", true);
+                    this.reset();  // Clear the form fields
+                } else {
+                    displayMessage(data.message || "An error occurred. Please try again.", false);
+                }
+            })
+            .catch(() => {
+                displayMessage("An error occurred while sending your message. Please try again.", false);
+            });
+    });
 </script>
 <input type="hidden" id="g-recaptcha-response" name="g-recaptcha-response">
 <script src="{% static 'script.js' %}"></script>
