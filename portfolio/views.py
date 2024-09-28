@@ -1,20 +1,20 @@
 from datetime import datetime
 from multiprocessing.util import get_logger
 
+import requests
+from django.conf import settings
 from django.core.mail import EmailMultiAlternatives
+from django.http import JsonResponse
+from django.shortcuts import render
 from user_agents import parse
 
 from portfolio.models import RequestsLog
 from root.settings import DEFAULT_FROM_EMAIL
-
-import requests
-from django.conf import settings
-from django.http import JsonResponse
-from django.shortcuts import render
-from .models import Skills, Projects
 from .forms import ContactForm
+from .models import Skills, Projects
 
 logger = get_logger()
+
 
 def validate_recaptcha(recaptcha_response):
     """
@@ -33,13 +33,11 @@ def validate_recaptcha(recaptcha_response):
 def home(request):
     if request.method == 'POST':
         form = ContactForm(request.POST)
+
         recaptcha_response = request.POST.get('g-recaptcha-response')
-
-        # Validate reCAPTCHA
         if not validate_recaptcha(recaptcha_response):
-            return JsonResponse({'success': False}, status=400)
+            return JsonResponse({'success': False, 'message': 'Invalid reCAPTCHA. Please try again.'}, status=400)
 
-        # Validate form
         if form.is_valid():
             try:
                 form.save()
@@ -52,11 +50,8 @@ def home(request):
                 return JsonResponse({'success': False, 'message': 'An error occurred while processing your request.'},
                                     status=500)
         else:
-            # Return form errors if not valid
-            errors = form.errors.as_json()
-            return JsonResponse({'success': False, 'errors': errors}, status=400)
+            return JsonResponse({'success': False, 'errors': form.errors.as_json()}, status=400)
 
-    # Normal GET request processing
     context = {
         'skills': Skills.objects.all(),
         'projects': Projects.objects.filter(is_active=True),
