@@ -1,3 +1,4 @@
+import random
 from datetime import datetime
 
 import requests
@@ -84,13 +85,21 @@ def send_sms(entered_request, in_url):
         request_time=current_time)
 
 
+greetings = ["Hello",
+             "Hi there",
+             "Greetings",
+             "Welcome", ]
+
+
 def sending_email(name, gmail):
     subject = f"To {name} From W-Mirshod.com"
     from_email = DEFAULT_FROM_EMAIL
     to = [f'{gmail}']
 
+    greeting = random.choice(greetings)
+
     # HTML content only
-    html_content = """
+    html_content = f"""
         <html>
             <body style="margin: 0; padding: 0; font-family: Arial, sans-serif; background-color: #f4f4f4;">
                 <div style="max-width: 600px; margin: auto; background-color: #ffffff; padding: 20px; border-radius: 10px; box-shadow: 0 2px 4px rgba(0,0,0,0.1);">
@@ -99,7 +108,7 @@ def sending_email(name, gmail):
                     </header>
                     
                     <section style="color: #555555;">
-                        <h3 style="font-size: 20px; color: #333333;">Hello,</h3>
+                        <h3 style="font-size: 20px; color: #333333;">{greeting}</h3>
                         <p>Thank you for reaching out to us</p>
                         <p>Mirshod will respond to your inquiry as soon as possible 🫡. We appreciate your patience and look forward to assisting you.</p>
                         <br>
