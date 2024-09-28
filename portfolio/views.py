@@ -1,5 +1,4 @@
 from datetime import datetime
-from multiprocessing.util import get_logger
 
 import requests
 from django.conf import settings
@@ -12,8 +11,6 @@ from portfolio.models import RequestsLog
 from root.settings import DEFAULT_FROM_EMAIL
 from .forms import ContactForm
 from .models import Skills, Projects
-
-logger = get_logger()
 
 
 def validate_recaptcha(recaptcha_response):
@@ -46,7 +43,6 @@ def home(request):
                 sending_email(name, email)
                 return JsonResponse({'success': True})
             except Exception as e:
-                logger.error(f"Error saving form or sending email: {e}")
                 return JsonResponse({'success': False, 'message': 'An error occurred while processing your request.'},
                                     status=500)
         else:
@@ -124,13 +120,3 @@ def sending_email(name, gmail):
     msg.attach_alternative(html_content, "text/html")
 
     msg.send()
-
-
-def validate_recaptcha(recaptcha_response):
-    data = {
-        'secret': settings.RECAPTCHA_SECRET_KEY,
-        'response': recaptcha_response
-    }
-    r = requests.post('https://www.google.com/recaptcha/api/siteverify', data=data)
-    result = r.json()
-    return result.get('success', False)
