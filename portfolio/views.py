@@ -50,7 +50,8 @@ def home(request):
                 return JsonResponse({'success': False, 'message': 'An error occurred while processing your request.'},
                                     status=500)
         else:
-            return JsonResponse({'success': False, 'errors': form.errors.as_json()}, status=400)
+            errors = form.errors.as_json()
+            return JsonResponse({'success': False, 'errors': errors}, status=400)
 
     context = {
         'skills': Skills.objects.all(),
