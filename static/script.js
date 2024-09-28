@@ -14,7 +14,7 @@ $(document).ready(function () {
     })(jQuery);
 
     // input text for typing animation
-    $("#holder").writeText("SOFTWARE ENGINEER / DJANGO BACKEND DEVELOPER");
+    $("#holder").writeText("WEB DESIGNER + FRONT-END DEVELOPER");
 
     // initialize wow.js
     new WOW().init();
@@ -164,10 +164,12 @@ $(document).ready(function () {
         });
     });
 
-    // ajax form
+    //ajax form
     $(function () {
-        // Get the form and the messages div.
+        // Get the form.
         var form = $("#ajax-contact");
+
+        // Get the messages div.
         var formMessages = $("#form-messages");
 
         // Set up an event listener for the contact form.
@@ -184,29 +186,32 @@ $(document).ready(function () {
                 url: $(form).attr("action"),
                 data: formData
             })
-                .done(function () {
-                    // Set success message and class.
-                    $(formMessages).removeClass("error").addClass("success")
-                        .text("Your message has been successfully sent!");
+                .done(function (response) {
+                    // Make sure that the formMessages div has the 'success' class.
+                    $(formMessages).removeClass("error");
+                    $(formMessages).addClass("success");
 
-                    // Clear the form fields.
+                    // Set the message text.
+                    $(formMessages).text(response);
+
+                    // Clear the form.
                     $("#name").val("");
                     $("#email").val("");
                     $("#message").val("");
-
-                    // Remove the message after 5 seconds.
-                    setTimeout(function () {
-                        $(formMessages).text("").removeClass("success");
-                    }, 5000);
                 })
-                .fail(function () {
-                    // Set error message and class.
-                    $(formMessages).text("Oops! An error occurred, and your message could not be sent.");
+                .fail(function (data) {
+                    // Make sure that the formMessages div has the 'error' class.
+                    $(formMessages).removeClass("success");
+                    $(formMessages).addClass("error");
 
-                    // Remove the message after 5 seconds.
-                    setTimeout(function () {
-                        $(formMessages).text("").removeClass("error");
-                    }, 5000);
+                    // Set the message text.
+                    if (data.responseText !== "") {
+                        $(formMessages).text(data.responseText);
+                    } else {
+                        $(formMessages).text(
+                            "Oops! An error occured and your message could not be sent."
+                        );
+                    }
                 });
         });
     });
