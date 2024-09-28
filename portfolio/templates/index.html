@@ -222,61 +222,6 @@
 <script src='https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.5.2/js/bootstrap.min.js'></script>
 <script src='https://cdnjs.cloudflare.com/ajax/libs/fullPage.js/2.7.4/jquery.fullPage.min.js'></script>
 <script src="https://www.google.com/recaptcha/api.js?render=6Ld5slAqAAAAAOQ7IN70HQVoUKL7x6uGKrN5i7aZ"></script>
-<script>
-    function displayMessage(message, isSuccess) {
-        const messagesDiv = document.getElementById('form-messages');
-        messagesDiv.textContent = message;
-        messagesDiv.classList.remove('alert-success', 'alert-danger');
-        messagesDiv.classList.add(isSuccess ? 'alert-success' : 'alert-danger');
-        messagesDiv.style.display = 'block';
-        hideMessageAfterDelay(messagesDiv);
-    }
-
-    function hideMessageAfterDelay(element) {
-        setTimeout(function () {
-            element.style.display = 'none';
-        }, 5000); // Hide message after 5 seconds
-    }
-
-    grecaptcha.ready(function () {
-        grecaptcha.execute('6Ld5slAqAAAAAOQ7IN70HQVoUKL7x6uGKrN5i7aZ', {action: 'submit'}).then(function (token) {
-            document.getElementById('g-recaptcha-response').value = token;
-        });
-    });
-
-    document.getElementById('ajax-contact').addEventListener('submit', function (event) {
-        event.preventDefault(); // Prevent default form submission
-
-        // Serialize form data
-        const formData = new FormData(this);
-
-        // Submit the form using AJAX
-        f.fetch(this.action, {
-            method: 'POST',
-            body: formData,
-        })
-            .then(response => {
-                if (!response.ok) {
-                    return response.json().then(data => {
-                        throw new Error(data.message || "An error occurred.");
-                    });
-                }
-                return response.json();
-            })
-            .then(data => {
-                if (data.success) {
-                    displayMessage("Your message has been sent successfully!", true);
-                    this.reset();
-                } else {
-                    displayMessage(data.message || "An error occurred. Please try again.", false);
-                }
-            })
-            .catch(error => {
-                displayMessage(error.message || "An unexpected error occurred.", false);
-            });
-
-    });
-</script>
 <input type="hidden" id="g-recaptcha-response" name="g-recaptcha-response">
 <script src="{% static 'script.js' %}"></script>
 
