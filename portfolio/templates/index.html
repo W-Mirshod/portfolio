@@ -251,22 +251,30 @@
         const formData = new FormData(this);
 
         // Submit the form using AJAX
-        fetch(this.action, {
+        f.fetch(this.action, {
             method: 'POST',
             body: formData,
         })
-            .then(response => response.json())
+            .then(response => {
+                if (!response.ok) {
+                    return response.json().then(data => {
+                        throw new Error(data.message || "An error occurred.");
+                    });
+                }
+                return response.json();
+            })
             .then(data => {
                 if (data.success) {
                     displayMessage("Your message has been sent successfully!", true);
-                    this.reset();  // Clear the form fields
+                    this.reset();
                 } else {
                     displayMessage(data.message || "An error occurred. Please try again.", false);
                 }
             })
-            .catch(() => {
-                displayMessage("An error occurred while sending your message. Please try again.", false);
+            .catch(error => {
+                displayMessage(error.message || "An unexpected error occurred.", false);
             });
+
     });
 </script>
 <input type="hidden" id="g-recaptcha-response" name="g-recaptcha-response">
