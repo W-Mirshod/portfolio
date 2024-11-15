@@ -2,6 +2,7 @@ from django.db import models
 
 
 class BaseModel(models.Model):
+    id = models.AutoField(primary_key=True)
     created_at = models.DateTimeField(auto_now_add=True)
     updated_at = models.DateTimeField(auto_now=True)
 
@@ -29,6 +30,7 @@ class RequestsLog(BaseModel):
 
 
 class Skills(BaseModel):
+    id = models.AutoField(primary_key=True)
     title = models.CharField(max_length=100)
     percent = models.PositiveIntegerField(default=100)
     title_color = models.CharField(max_length=100)
@@ -45,6 +47,7 @@ class Skills(BaseModel):
 
 
 class Projects(BaseModel):
+    id = models.AutoField(primary_key=True)
     title = models.CharField(max_length=30)
     description = models.CharField(max_length=225)
     project_link = models.URLField()
@@ -61,6 +64,7 @@ class Projects(BaseModel):
 
 
 class Contacts(BaseModel):
+    id = models.AutoField(primary_key=True)
     name = models.TextField()
     email = models.EmailField()
     message = models.TextField()
