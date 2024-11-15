@@ -49,7 +49,7 @@ class SkillsAdmin(ImportExportModelAdmin, admin.ModelAdmin):
     list_display = ['title', 'percent', 'title_color', 'created_at', 'created_at']
     list_filter = ['title', 'percent', 'created_at', 'updated_at']
     search_fields = ['title']
-    prepopulated_fields = {'background_color': ('title_color',)}
+    prepopulated_fields = {'background_color': ('title_color',), 'index': ('id',)}
 
 
 @admin.register(Projects)
@@ -59,6 +59,7 @@ class ProjectsAdmin(ImportExportModelAdmin, admin.ModelAdmin):
     list_display = ['title', 'description', 'is_active', 'created_at', 'updated_at']
     list_filter = ['title', 'created_at', 'updated_at']
     search_fields = ['title']
+    prepopulated_fields = {'index': ('id',)}
 
 
 @admin.register(Contacts)
