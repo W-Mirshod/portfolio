@@ -1,16 +1,8 @@
 from django.db import models
 
 
-class BaseModel(models.Model):
+class RequestsLog(models.Model):
     id = models.AutoField(primary_key=True)
-    created_at = models.DateTimeField(auto_now_add=True)
-    updated_at = models.DateTimeField(auto_now=True)
-
-    class Meta:
-        abstract = True
-
-
-class RequestsLog(BaseModel):
     ip_address = models.GenericIPAddressField()
     browser = models.CharField(max_length=255, blank=True, null=True)
     os = models.CharField(max_length=255, blank=True, null=True)
@@ -20,6 +12,8 @@ class RequestsLog(BaseModel):
     is_pc = models.BooleanField(default=False)
     referred_to = models.TextField(blank=True, null=True)
     request_time = models.DateTimeField()
+    created_at = models.DateTimeField(auto_now_add=True)
+    updated_at = models.DateTimeField(auto_now=True)
 
     def __str__(self):
         return f"Request from {self.ip_address} on {self.request_time}"
@@ -29,13 +23,15 @@ class RequestsLog(BaseModel):
         ordering = ['-created_at']
 
 
-class Skills(BaseModel):
+class Skills(models.Model):
     id = models.AutoField(primary_key=True)
     title = models.CharField(max_length=100)
     percent = models.PositiveIntegerField(default=100)
     title_color = models.CharField(max_length=100)
     background_color = models.CharField(max_length=100)
     index = models.IntegerField(unique=True)
+    created_at = models.DateTimeField(auto_now_add=True)
+    updated_at = models.DateTimeField(auto_now=True)
 
     def save(self, *args, **kwargs):
         self.title_color = self.title_color.lower()
@@ -46,7 +42,7 @@ class Skills(BaseModel):
         verbose_name_plural = "Skills"
 
 
-class Projects(BaseModel):
+class Projects(models.Model):
     id = models.AutoField(primary_key=True)
     title = models.CharField(max_length=30)
     description = models.CharField(max_length=225)
@@ -54,6 +50,8 @@ class Projects(BaseModel):
     picture = models.URLField()
     is_active = models.BooleanField(default=True)
     index = models.IntegerField(unique=True)
+    created_at = models.DateTimeField(auto_now_add=True)
+    updated_at = models.DateTimeField(auto_now=True)
 
     class Meta:
         verbose_name_plural = "Projects"
@@ -63,11 +61,13 @@ class Projects(BaseModel):
         return self.title
 
 
-class Contacts(BaseModel):
+class Contacts(models.Model):
     id = models.AutoField(primary_key=True)
     name = models.TextField()
     email = models.EmailField()
     message = models.TextField()
+    created_at = models.DateTimeField(auto_now_add=True)
+    updated_at = models.DateTimeField(auto_now=True)
 
     class Meta:
         verbose_name_plural = "Contacts"
