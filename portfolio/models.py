@@ -2,7 +2,6 @@ from django.db import models
 
 
 class RequestsLog(models.Model):
-    id = models.AutoField(primary_key=True)
     ip_address = models.GenericIPAddressField()
     browser = models.CharField(max_length=255, blank=True, null=True)
     os = models.CharField(max_length=255, blank=True, null=True)
@@ -24,7 +23,6 @@ class RequestsLog(models.Model):
 
 
 class Skills(models.Model):
-    id = models.AutoField(primary_key=True)
     title = models.CharField(max_length=100)
     percent = models.PositiveIntegerField(default=100)
     title_color = models.CharField(max_length=100)
@@ -43,7 +41,6 @@ class Skills(models.Model):
 
 
 class Projects(models.Model):
-    id = models.AutoField(primary_key=True)
     title = models.CharField(max_length=30)
     description = models.CharField(max_length=225)
     project_link = models.URLField()
@@ -62,7 +59,6 @@ class Projects(models.Model):
 
 
 class Contacts(models.Model):
-    id = models.AutoField(primary_key=True)
     name = models.TextField()
     email = models.EmailField()
     message = models.TextField()
