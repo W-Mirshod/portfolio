@@ -1,35 +1,12 @@
 from django.contrib import admin
 from django.contrib.auth.models import User, Group
-from import_export import resources
 from import_export.admin import ImportExportModelAdmin
 
 from portfolio.models import RequestsLog, Skills, Projects, Contacts
+from portfolio.resources import RequestsResource, SkillsResource, ProjectsResource, ContactsResource
 
 admin.site.unregister(User)
 admin.site.unregister(Group)
-
-
-class RequestsResource(resources.ModelResource):
-    class Meta:
-        model = RequestsLog
-        fields = '__all__'
-
-
-class SkillsResource(resources.ModelResource):
-    class Meta:
-        model = Skills
-        fields = '__all__'
-
-class ProjectsResource(resources.ModelResource):
-    class Meta:
-        model = Projects
-        fields = '__all__'
-
-
-class ContactsResource(resources.ModelResource):
-    class Meta:
-        model = Contacts
-        fields = '__all__'
 
 
 @admin.register(RequestsLog)
