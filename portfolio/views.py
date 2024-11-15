@@ -52,8 +52,8 @@ def home(request):
             return JsonResponse({'success': False, 'errors': errors}, status=400)
 
     context = {
-        'skills': Skills.objects.all(),
-        'projects': Projects.objects.filter(is_active=True),
+        'skills': Skills.objects.all().order_by('index'),
+        'projects': Projects.objects.filter(is_active=True).order_by('index'),
         'form': ContactForm()
     }
     return render(request, 'index.html', context)
