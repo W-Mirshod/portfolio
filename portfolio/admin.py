@@ -18,7 +18,7 @@ class RequestsResource(resources.ModelResource):
 class SkillsResource(resources.ModelResource):
     class Meta:
         model = Skills
-        fields = '__all__'
+        fields = ['title', 'percent', 'title_color', 'background_color', 'index']
 
 
 class ProjectsResource(resources.ModelResource):
