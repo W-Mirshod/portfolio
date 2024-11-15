@@ -38,7 +38,6 @@ class Skills(BaseModel):
     def save(self, *args, **kwargs):
         self.title_color = self.title_color.lower()
         self.background_color = self.background_color.lower()
-        self.index = self.id
         super().save(*args, **kwargs)
 
     class Meta:
@@ -52,10 +51,6 @@ class Projects(BaseModel):
     picture = models.URLField()
     is_active = models.BooleanField(default=True)
     index = models.IntegerField(unique=True)
-
-    def save(self, *args, **kwargs):
-        self.index = self.id
-        super().save(*args, **kwargs)
 
     class Meta:
         verbose_name_plural = "Projects"
