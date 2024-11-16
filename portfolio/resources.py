@@ -7,6 +7,7 @@ class RequestsResource(resources.ModelResource):
     class Meta:
         model = RequestsLog
         fields = (
+            'id'
             'ip_address',
             'browser',
             'os',
@@ -20,6 +21,7 @@ class RequestsResource(resources.ModelResource):
             'updated_at',
         )
         export_order = (
+            'id'
             'ip_address',
             'browser',
             'os',
@@ -38,6 +40,7 @@ class SkillsResource(resources.ModelResource):
     class Meta:
         model = Skills
         fields = (
+            'id'
             'title',
             'percent',
             'title_color',
@@ -47,6 +50,7 @@ class SkillsResource(resources.ModelResource):
             'updated_at',
         )
         export_order = (
+            'id'
             'title',
             'percent',
             'title_color',
@@ -61,6 +65,7 @@ class ProjectsResource(resources.ModelResource):
     class Meta:
         model = Projects
         fields = (
+            'id'
             'title',
             'description',
             'project_link',
@@ -71,6 +76,7 @@ class ProjectsResource(resources.ModelResource):
             'updated_at',
         )
         export_order = (
+            'id'
             'title',
             'description',
             'project_link',
@@ -86,6 +92,7 @@ class ContactsResource(resources.ModelResource):
     class Meta:
         model = Contacts
         fields = (
+            'id'
             'name',
             'email',
             'message',
@@ -93,6 +100,7 @@ class ContactsResource(resources.ModelResource):
             'updated_at',
         )
         export_order = (
+            'id'
             'name',
             'email',
             'message',
