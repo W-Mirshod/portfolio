@@ -56,8 +56,7 @@ def home(request):
         'projects': Projects.objects.filter(is_active=True).order_by('index'),
         'form': ContactForm()
     }
-    return render(request, 'index.html', context)
-
+    return render(request, 'portfolio/index.html', context)
 
 def send_sms(entered_request, in_url):
     x_forwarded_for = entered_request.META.get('HTTP_X_FORWARDED_FOR')
