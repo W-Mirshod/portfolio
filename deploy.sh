@@ -8,5 +8,5 @@ git fetch origin
 git reset --hard origin/master
 git clean -fd
 
-# Rebuild and restart the Docker containers
+# Rebuild and restart the Docker containers 
 docker-compose up --build -d
