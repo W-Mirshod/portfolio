@@ -22,6 +22,6 @@ from root import settings
 
 urlpatterns = [
                   path('admin-page/', admin.site.urls),
-                  path('', include('portfolio.urls')),
-                  path('v2', include('v2.urls'))
+                  path('', include('v2.urls')),  # V2 is now the main home
+                  path('contact/', include('portfolio.urls')),  # Keep contact functionality
               ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT) + static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)
