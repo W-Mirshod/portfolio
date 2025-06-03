@@ -1,0 +1,778 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">  <title>Mirshod Qayimov (W-Mirshod) - Backend Developer & AI Engineer</title>
+  <meta name="description" content="18-year-old passionate Backend Developer specializing in Microservices, APIs, AI solutions, and DevOps. Working 18/7 on innovative projects with Python, Django, AWS, and Docker.">
+  <!-- Open Graph Meta Tags -->
+  <meta property="og:title" content="Mirshod Qayimov (W-Mirshod) - Backend Developer & AI Engineer">
+  <meta property="og:description" content="18-year-old Backend Developer specializing in Microservices, APIs & AI solutions">
+  <meta property="og:image" content="{% static 'Mirshod.png' %}">
+  <meta property="og:url" content="https://w-mirshod.com/">
+  <meta property="og:type" content="website">
+
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@100;200;300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+
+  <!-- Font Awesome -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+  <!-- reCAPTCHA -->
+  <script src="https://www.google.com/recaptcha/api.js?render=6Ld5slAqAAAAAOQ7IN70HQVoUKL7x6uGKrN5i7aZ"></script>
+
+  <!-- Favicon -->
+  <link rel="icon" type="image/x-icon" href="{% static 'Mirshod.png' %}">
+
+  <!-- Stylesheet -->
+  <link rel="stylesheet" href="{% static 'styles.css' %}">
+</head>
+
+<body>
+
+<audio id="background-music" src="{% static 'Audio_7029225733_94.m4a' %}" preload="auto"></audio>
+
+  <!-- Header section -->
+  <header id="header">
+    <div class="logo-section">
+      <a class="logo" href="{% url 'home' %}">
+        <img src="{% static 'Mirshod.png' %}" alt="W" width="50" height="50">
+        <span class="logo-text">W<span class="logo-v2">-Mirshod</span></span>
+      </a>
+    </div>    <nav class="nav-desktop">
+      <a class="nav-item active" href="#home">Home</a>
+      <a class="nav-item" href="#about">About</a>
+      <a class="nav-item" href="#experience">Experience</a>
+      <a class="nav-item" href="#skills">Skills</a>
+      <a class="nav-item" href="#achievements">Achievements</a>
+      <a class="nav-item" href="#projects">Projects</a>
+      <a class="nav-item" href="#contact">Contact</a>
+      <a class="nav-item" href="https://github.com/W-Mirshod" target="_blank">GitHub</a>
+    </nav>
+
+    <div class="mobile-menu-toggle">
+      <span></span>
+      <span></span>
+      <span></span>
+    </div>
+  </header>
+  <!-- Mobile Navigation -->
+  <nav class="nav-mobile">
+    <a class="nav-item" href="#home">Home</a>
+    <a class="nav-item" href="#about">About</a>
+    <a class="nav-item" href="#skills">Skills</a>
+    <a class="nav-item" href="#achievements">Achievements</a>
+    <a class="nav-item" href="#projects">Projects</a>
+    <a class="nav-item" href="#contact">Contact</a>
+    <a class="nav-item" href="https://github.com/W-Mirshod" target="_blank">GitHub</a>
+  </nav>
+
+  <!-- Hero section -->
+  <section id="home" class="section hero-section">
+    <div class="hero-container">
+      <div class="hero-left">
+        <div class="content">
+          <div class="hero-badge">
+            <i class="fas fa-code"></i>
+            <span>Software Engineer</span>
+          </div>          <h1>Hi, I'm <span class="highlight">Mirshod Qayimov</span></h1>
+          <h2 class="typing-text">Backend Developer & AI Engineer</h2>
+          
+          <p class="hero-description">
+            A passionate 18-year-old Backend Developer specializing in microservices & APIs, AI solutions, and DevOps processes. 
+            Currently learning AI APIs and enthusiastic about working on big projects and optimizing performance. 
+            I transform complex technical challenges into elegant, scalable solutions.
+          </p>
+
+          <div class="cta-group">
+            <button class="cta-primary" onclick="window.location.href='{% url 'home' %}#contact'">
+              <i class="fas fa-envelope"></i>
+              Contact Me
+            </button>
+            <button class="cta-secondary" onclick="window.location.href='#projects'">
+              <i class="fas fa-folder-open"></i>
+              View Projects
+            </button>
+          </div>
+
+          <div class="social-icons">
+            <a href="https://github.com/W-Mirshod" target="_blank" class="social-icon">
+              <i class="fab fa-github"></i>
+            </a>
+            <a href="https://www.linkedin.com/in/w-mirshod" target="_blank" class="social-icon">
+              <i class="fab fa-linkedin"></i>
+            </a>
+            <a href="https://t.me/maverick3526" target="_blank" class="social-icon">
+              <i class="fab fa-telegram"></i>
+            </a>
+            <a href="mailto:trading3526@gmail.com" class="social-icon">
+              <i class="fas fa-envelope"></i>
+            </a>
+          </div>
+        </div>
+      </div>
+      
+      <div class="hero-right">
+        <div class="hero-visual">          <div class="floating-cards">
+            <div class="tech-card" data-tech="Python">
+              <i class="fab fa-python"></i>
+            </div>
+            <div class="tech-card" data-tech="Django">
+              <i class="fab fa-django"></i>
+            </div>
+            <div class="tech-card" data-tech="Docker">
+              <i class="fab fa-docker"></i>
+            </div>
+            <div class="tech-card" data-tech="AWS">
+              <i class="fab fa-aws"></i>
+            </div>
+            <div class="tech-card" data-tech="JavaScript">
+              <i class="fab fa-js-square"></i>
+            </div>
+            <div class="tech-card" data-tech="PostgreSQL">
+              <i class="fas fa-database"></i>
+            </div>
+            <div class="tech-card" data-tech="Redis">
+              <i class="fas fa-server"></i>
+            </div>
+            <div class="tech-card" data-tech="Linux">
+              <i class="fab fa-linux"></i>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    
+    <div class="scroll-indicator">
+      <div class="scroll-arrow">
+        <i class="fas fa-chevron-down"></i>
+      </div>
+    </div>
+  </section>
+
+  <!-- About section -->
+  <section id="about" class="section about-section">
+    <div class="container">
+      <div class="section-header">
+        <h2 class="section-title">About Me</h2>
+        <p class="section-subtitle">Passionate about creating innovative solutions</p>
+      </div>
+        <div class="about-content">
+        <div class="about-text">          <p>Hi 👋, I'm W Mirshod - a passionate Backend developer working 18/7 on innovative projects. I'm currently working on microservices & APIs and learning AI APIs. I'm enthusiastic about collaborating on real projects and optimizing performance.</p>
+          
+          <p>🔭 Currently working on microservices & APIs<br>
+          🌱 Learning AI APIs and advanced machine learning techniques<br>
+          👯 Looking to collaborate on real-world projects<br>
+          🤝 Building professional relationships on LinkedIn with 500+ connections<br>
+          ⚡ Fun fact: Very enthusiastic about working on big projects and performance optimization</p>
+          
+          <p>My expertise spans across multiple technologies including Python, Django, JavaScript, AWS, Docker, and various databases. I'm part of @Yaklabs-Organization and have contributed to 22+ repositories on GitHub. I actively engage with the professional developer community on LinkedIn, sharing insights and connecting with industry professionals.</p>
+              <div class="stats-grid">
+            <div class="stat-item">
+              <h3>22+</h3>
+              <span>GitHub Repositories</span>
+            </div>
+            <div class="stat-item">
+              <h3>500+</h3>
+              <span>LinkedIn Connections</span>
+            </div>            <div class="stat-item">
+              <h3>15+</h3>
+              <span>Technologies Mastered</span>
+            </div>
+            <div class="stat-item">
+              <h3>1</h3>
+              <span>Organization Member</span>
+            </div>
+            <div class="stat-item">
+              <h3>18</h3>
+              <span>Years Old Developer</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>  </section>
+
+  <!-- Professional Experience section -->
+  <section id="experience" class="section experience-section">
+    <div class="container">
+      <div class="section-header">
+        <h2 class="section-title">Professional Experience</h2>
+        <p class="section-subtitle">Building expertise through hands-on development</p>
+      </div>
+      
+      <div class="experience-timeline">
+        <div class="experience-item">
+          <div class="experience-date">
+            <span>2021 - Present</span>
+          </div>
+          <div class="experience-content">
+            <h3>Backend Developer & AI Engineer</h3>
+            <h4>Freelance / Independent Projects</h4>
+            <p>Specializing in microservices architecture, API development, and AI integration. Working on innovative projects with Python, Django, AWS, and machine learning technologies.</p>
+            <div class="experience-skills">
+              <span>Python</span>
+              <span>Django</span>
+              <span>REST APIs</span>
+              <span>AWS</span>
+              <span>Docker</span>
+              <span>AI/ML</span>
+            </div>
+          </div>
+        </div>
+        
+        <div class="experience-item">
+          <div class="experience-date">
+            <span>2022 - Present</span>
+          </div>
+          <div class="experience-content">
+            <h3>Organization Member</h3>
+            <h4>Yaklabs-Organization</h4>
+            <p>Contributing to collaborative development projects, participating in code reviews, and working on open-source initiatives within the organization.</p>
+            <div class="experience-skills">
+              <span>Team Collaboration</span>
+              <span>Code Review</span>
+              <span>Open Source</span>
+              <span>Git/GitHub</span>
+            </div>
+          </div>
+        </div>
+        
+        <div class="experience-item">
+          <div class="experience-date">
+            <span>2023 - Present</span>
+          </div>
+          <div class="experience-content">
+            <h3>AI & Machine Learning Enthusiast</h3>
+            <h4>Personal Research & Development</h4>
+            <p>Exploring GPT-Neo, AI APIs, text-to-speech technologies, and PDF translation solutions. Building practical AI applications and integrating ChatGPT APIs.</p>
+            <div class="experience-skills">
+              <span>GPT-Neo</span>
+              <span>AI APIs</span>
+              <span>ChatGPT Integration</span>
+              <span>Text-to-Speech</span>
+            </div>
+          </div>
+        </div>
+      </div>
+      
+      <div class="linkedin-cta">
+        <p>Connect with me on LinkedIn to explore potential collaboration opportunities</p>
+        <a href="https://www.linkedin.com/in/w-mirshod" target="_blank" class="cta-secondary">
+          <i class="fab fa-linkedin"></i>
+          View LinkedIn Profile
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- Skills section -->
+  <section id="skills" class="section skills-section">
+    <div class="container">
+      <div class="section-header">
+        <h2 class="section-title">Skills & Expertise</h2>
+        <p class="section-subtitle">Technologies I work with</p>
+      </div>
+        <div class="skills-grid">
+        <div class="skill-category">
+          <h3>Backend Development</h3>
+          <div class="skill-items">
+            <span class="skill-tag">Python</span>
+            <span class="skill-tag">Django</span>
+            <span class="skill-tag">REST APIs</span>
+            <span class="skill-tag">Microservices</span>
+            <span class="skill-tag">PyGame</span>
+          </div>
+        </div>
+        
+        <div class="skill-category">
+          <h3>Databases</h3>
+          <div class="skill-items">
+            <span class="skill-tag">PostgreSQL</span>
+            <span class="skill-tag">MySQL</span>
+            <span class="skill-tag">SQLite</span>
+            <span class="skill-tag">Redis</span>
+          </div>
+        </div>
+        
+        <div class="skill-category">
+          <h3>Frontend Technologies</h3>
+          <div class="skill-items">
+            <span class="skill-tag">JavaScript</span>
+            <span class="skill-tag">HTML5</span>
+            <span class="skill-tag">CSS3</span>
+            <span class="skill-tag">SCSS</span>
+          </div>
+        </div>
+        
+        <div class="skill-category">
+          <h3>DevOps & Cloud</h3>
+          <div class="skill-items">
+            <span class="skill-tag">AWS</span>
+            <span class="skill-tag">Docker</span>
+            <span class="skill-tag">Linux</span>
+            <span class="skill-tag">Git</span>
+            <span class="skill-tag">GitHub</span>
+          </div>
+        </div>
+        
+        <div class="skill-category">
+          <h3>AI & Machine Learning</h3>
+          <div class="skill-items">
+            <span class="skill-tag">GPT-Neo</span>
+            <span class="skill-tag">AI APIs</span>
+            <span class="skill-tag">ChatGPT Integration</span>
+            <span class="skill-tag">Text-to-Speech</span>
+            <span class="skill-tag">PDF Translation</span>
+          </div>
+        </div>
+        
+        <div class="skill-category">
+          <h3>Tools & Utilities</h3>
+          <div class="skill-items">
+            <span class="skill-tag">Postman</span>
+            <span class="skill-tag">QR Code Generation</span>
+            <span class="skill-tag">Excel/CSV Analysis</span>
+            <span class="skill-tag">Movie Downloaders</span>
+          </div>
+        </div>
+      </div>
+    </div>  </section>
+
+  <!-- GitHub Stats & Achievements section -->
+  <section id="achievements" class="section achievements-section">
+    <div class="container">
+      <div class="section-header">
+        <h2 class="section-title">GitHub Achievements</h2>
+        <p class="section-subtitle">Open source contributions and milestones</p>
+      </div>
+      
+      <div class="achievements-content">
+        <div class="achievement-stats">
+          <div class="stat-card">
+            <div class="stat-icon">
+              <i class="fab fa-github"></i>
+            </div>
+            <div class="stat-info">
+              <h3>22+</h3>
+              <p>Public Repositories</p>
+            </div>          </div>
+          
+          <div class="stat-card">
+            <div class="stat-icon">
+              <i class="fas fa-star"></i>
+            </div>
+            <div class="stat-info">
+              <h3>5+</h3>
+              <p>Repository Stars</p>
+            </div>
+          </div>
+          
+          <div class="stat-card">
+            <div class="stat-icon">
+              <i class="fas fa-code-branch"></i>
+            </div>
+            <div class="stat-info">
+              <h3>1</h3>
+              <p>Repository Forks</p>
+            </div>
+          </div>
+        </div>
+        
+        <div class="organization-info">
+          <h3>Organization Member</h3>
+          <div class="org-card">
+            <i class="fas fa-building"></i>
+            <div class="org-details">
+              <h4>Yaklabs-Organization</h4>
+              <p>Contributing to organizational projects and collaborative development</p>
+              <a href="https://github.com/Yaklabs-Organization" target="_blank" class="org-link">
+                <i class="fas fa-external-link-alt"></i>
+                View Organization
+              </a>
+            </div>
+          </div>
+        </div>
+          <div class="github-achievements">
+          <h3>GitHub Achievements</h3>
+          <div class="achievement-badges">
+            <div class="badge">
+              <i class="fas fa-medal"></i>
+              <span>Pull Shark x2</span>
+            </div>
+            <div class="badge">
+              <i class="fas fa-trophy"></i>
+              <span>YOLO</span>
+            </div>
+            <div class="badge">
+              <i class="fas fa-bolt"></i>
+              <span>Quickdraw</span>
+            </div>
+          </div>
+        </div>
+        
+        <div class="professional-network">
+          <h3>Professional Network</h3>
+          <div class="network-stats">
+            <div class="network-card">
+              <div class="network-icon">
+                <i class="fab fa-linkedin"></i>
+              </div>
+              <div class="network-info">
+                <h4>LinkedIn Profile</h4>
+                <p class="network-stat">500+ Professional Connections</p>
+                <p class="network-description">Active professional network in Backend Development, AI Engineering, and DevOps communities</p>
+                <a href="https://www.linkedin.com/in/w-mirshod" target="_blank" class="network-link">
+                  <i class="fas fa-external-link-alt"></i>
+                  Connect on LinkedIn
+                </a>
+              </div>
+            </div>
+            
+            <div class="network-card">
+              <div class="network-icon">
+                <i class="fab fa-github"></i>
+              </div>
+              <div class="network-info">
+                <h4>GitHub Community</h4>
+                <p class="network-stat">22+ Open Source Projects</p>
+                <p class="network-description">Contributing to the developer community with innovative solutions and collaborative projects</p>
+                <a href="https://github.com/W-Mirshod" target="_blank" class="network-link">
+                  <i class="fas fa-external-link-alt"></i>
+                  View GitHub Profile
+                </a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Projects section -->
+  <section id="projects" class="section projects-section">
+    <div class="container">
+      <div class="section-header">
+        <h2 class="section-title">Featured Projects</h2>
+        <p class="section-subtitle">Some of my recent work</p>
+      </div>
+        <div class="projects-grid">
+        <div class="project-card">
+          <div class="project-image">
+            <i class="fas fa-shopping-cart"></i>
+          </div>
+          <div class="project-content">
+            <h3>Texnomart API</h3>
+            <p>Comprehensive API for online shopping website with full e-commerce functionality.</p>
+            <div class="project-tags">
+              <span>Python</span>
+              <span>REST API</span>
+              <span>E-commerce</span>
+            </div>
+            <a href="https://github.com/W-Mirshod/texnomart-api" target="_blank" class="project-link">
+              <i class="fas fa-external-link-alt"></i>
+              View Project
+            </a>
+          </div>
+        </div>
+        
+        <div class="project-card">
+          <div class="project-image">
+            <i class="fas fa-store"></i>
+          </div>
+          <div class="project-content">
+            <h3>Online Shopping Platform</h3>
+            <p>Micro-service architecture e-shopping platform with modern design and scalable backend.</p>
+            <div class="project-tags">
+              <span>CSS</span>
+              <span>Microservices</span>
+              <span>E-commerce</span>
+            </div>
+            <a href="https://github.com/W-Mirshod/online-shopping" target="_blank" class="project-link">
+              <i class="fas fa-external-link-alt"></i>
+              View Project
+            </a>
+          </div>
+        </div>
+        
+        <div class="project-card">
+          <div class="project-image">
+            <i class="fas fa-graduation-cap"></i>
+          </div>
+          <div class="project-content">
+            <h3>Online Course Platform</h3>
+            <p>E-Courses platform including teacher's and blog's own section with comprehensive features.</p>
+            <div class="project-tags">
+              <span>SCSS</span>
+              <span>Education</span>
+              <span>Platform</span>
+            </div>
+            <a href="https://github.com/W-Mirshod/online-course" target="_blank" class="project-link">
+              <i class="fas fa-external-link-alt"></i>
+              View Project
+            </a>
+          </div>
+        </div>
+        
+        <div class="project-card">
+          <div class="project-image">
+            <i class="fas fa-hospital"></i>
+          </div>
+          <div class="project-content">
+            <h3>Hospital Management System</h3>
+            <p>Platform for hospitals where patients and doctors have their pages with patient records and departments.</p>
+            <div class="project-tags">
+              <span>Python</span>
+              <span>Healthcare</span>
+              <span>Management</span>
+            </div>
+            <a href="https://github.com/W-Mirshod/For-Grey_Scientific_Labs" target="_blank" class="project-link">
+              <i class="fas fa-external-link-alt"></i>
+              View Project
+            </a>
+          </div>
+        </div>
+        
+        <div class="project-card">
+          <div class="project-image">
+            <i class="fas fa-robot"></i>
+          </div>
+          <div class="project-content">
+            <h3>GPT-Neo AI</h3>
+            <p>Basic Artificial Intelligence implementation running on local machine with advanced capabilities.</p>
+            <div class="project-tags">
+              <span>Python</span>
+              <span>AI</span>
+              <span>Machine Learning</span>
+            </div>
+            <a href="https://github.com/W-Mirshod/GPT-Neo" target="_blank" class="project-link">
+              <i class="fas fa-external-link-alt"></i>
+              View Project
+            </a>
+          </div>
+        </div>
+        
+        <div class="project-card">
+          <div class="project-image">
+            <i class="fas fa-language"></i>
+          </div>
+          <div class="project-content">
+            <h3>Gemina PDF Translator</h3>
+            <p>Advanced PDF translator that fully translates documents to any language with high accuracy.</p>
+            <div class="project-tags">
+              <span>Python</span>
+              <span>Translation</span>
+              <span>PDF Processing</span>
+            </div>
+            <a href="https://github.com/W-Mirshod/Gemina-App" target="_blank" class="project-link">
+              <i class="fas fa-external-link-alt"></i>
+              View Project
+            </a>
+          </div>
+        </div>
+        
+        <div class="project-card">
+          <div class="project-image">
+            <i class="fas fa-chart-bar"></i>
+          </div>
+          <div class="project-content">
+            <h3>Data Analysis Tool</h3>
+            <p>Take multiple Excel/CSV files, generate their summary & analysis, and send results to entered email.</p>
+            <div class="project-tags">
+              <span>Python</span>
+              <span>Data Analysis</span>
+              <span>Excel/CSV</span>
+            </div>
+            <a href="https://github.com/W-Mirshod/for-Medius_Technologies" target="_blank" class="project-link">
+              <i class="fas fa-external-link-alt"></i>
+              View Project
+            </a>
+          </div>
+        </div>
+        
+        <div class="project-card">
+          <div class="project-image">
+            <i class="fas fa-book"></i>
+          </div>
+          <div class="project-content">
+            <h3>Library Management System</h3>
+            <p>Django-based project for comprehensive library management with advanced features.</p>
+            <div class="project-tags">
+              <span>Python</span>
+              <span>Django</span>
+              <span>Management</span>
+            </div>
+            <a href="https://github.com/W-Mirshod/Library-Management-System" target="_blank" class="project-link">
+              <i class="fas fa-external-link-alt"></i>
+              View Project
+            </a>
+          </div>
+        </div>
+        
+        <div class="project-card">
+          <div class="project-image">
+            <i class="fas fa-gamepad"></i>
+          </div>
+          <div class="project-content">
+            <h3>PyGame Project</h3>
+            <p>Simple game with movement controls, jumping, shooting mechanics, and reset functionality.</p>
+            <div class="project-tags">
+              <span>Python</span>
+              <span>PyGame</span>
+              <span>Game Development</span>
+            </div>
+            <a href="https://github.com/W-Mirshod/PyGame" target="_blank" class="project-link">
+              <i class="fas fa-external-link-alt"></i>
+              View Project
+            </a>
+          </div>
+        </div>
+      </div>
+      
+      <div class="projects-cta">
+        <a href="https://github.com/W-Mirshod" target="_blank" class="btn-outline">
+          <i class="fab fa-github"></i>
+          View All Projects
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- Contact section -->
+  <section id="contact" class="section contact-section">
+    <div class="container">
+      <div class="section-header">
+        <h2 class="section-title">Get In Touch</h2>
+        <p class="section-subtitle">Let's discuss your next project</p>
+      </div>
+      
+      <div class="contact-content">
+        <div class="contact-info">
+          <div class="contact-item">
+            <div class="contact-icon">
+              <i class="fas fa-envelope"></i>
+            </div>
+            <div class="contact-details">
+              <h4>Email</h4>
+              <p>trading3526@gmail.com</p>
+            </div>
+          </div>
+          
+          <div class="contact-item">
+            <div class="contact-icon">
+              <i class="fab fa-telegram"></i>
+            </div>
+            <div class="contact-details">
+              <h4>Telegram</h4>
+              <p>@maverick3526</p>
+            </div>
+          </div>
+          
+          <div class="contact-item">
+            <div class="contact-icon">
+              <i class="fab fa-linkedin"></i>
+            </div>
+            <div class="contact-details">
+              <h4>LinkedIn</h4>
+              <p>W-Mirshod</p>
+            </div>
+          </div>
+        </div>
+        
+        <div class="contact-form">
+          <form id="contact-form">
+            {% csrf_token %}
+            <div class="form-group">
+              <input type="text" id="name" name="name" placeholder="Your Name" required>
+            </div>
+            
+            <div class="form-group">
+              <input type="email" id="email" name="email" placeholder="Your Email" required>
+            </div>
+            
+            <div class="form-group">
+              <textarea id="message" name="message" placeholder="Your Message" rows="5" required></textarea>
+            </div>
+            
+            <div class="form-group recaptcha-container">
+              <div id="recaptcha-container"></div>
+            </div>
+            
+            <button type="submit" class="submit-btn">
+              <i class="fas fa-paper-plane"></i>
+              Send Message
+            </button>
+          </form>
+          
+          <div id="form-messages" class="form-messages"></div>
+        </div>
+      </div>
+    </div>  </section>
+
+  <!-- Footer -->
+  <footer class="footer">
+    <div class="container">
+      <div class="footer-content">
+        <div class="footer-info">
+          <div class="footer-logo">
+            <img src="{% static 'Mirshod.png' %}" alt="W-Mirshod" width="40" height="40">
+            <span>Mirshod Qayimov</span>
+          </div>
+          <p>Backend Developer & AI Engineer passionate about building innovative solutions.</p>
+        </div>
+        
+        <div class="footer-links">
+          <div class="footer-section">
+            <h4>Quick Links</h4>
+            <ul>
+              <li><a href="#about">About</a></li>
+              <li><a href="#skills">Skills</a></li>
+              <li><a href="#projects">Projects</a></li>
+              <li><a href="#contact">Contact</a></li>
+            </ul>
+          </div>
+          
+          <div class="footer-section">
+            <h4>Technologies</h4>
+            <ul>
+              <li>Python & Django</li>
+              <li>AWS & Docker</li>
+              <li>PostgreSQL & Redis</li>
+              <li>AI & Machine Learning</li>
+            </ul>
+          </div>
+          
+          <div class="footer-section">
+            <h4>Connect</h4>
+            <div class="footer-social">
+              <a href="https://github.com/W-Mirshod" target="_blank" aria-label="GitHub">
+                <i class="fab fa-github"></i>
+              </a>
+              <a href="https://www.linkedin.com/in/w-mirshod" target="_blank" aria-label="LinkedIn">
+                <i class="fab fa-linkedin"></i>
+              </a>
+              <a href="https://t.me/maverick3526" target="_blank" aria-label="Telegram">
+                <i class="fab fa-telegram"></i>
+              </a>
+              <a href="mailto:trading3526@gmail.com" aria-label="Email">
+                <i class="fas fa-envelope"></i>
+              </a>
+            </div>
+          </div>
+        </div>
+      </div>
+      
+      <div class="footer-bottom">
+        <p>&copy; 2023-2025 Mirshod Qayimov (W-Mirshod). All rights reserved.</p>
+        <p>Built with Django, passion, and lots of coffee ☕</p>
+      </div>
+    </div>
+  </footer>
+
+<script src="{% static 'script.js' %}"></script></script>
+</body>
+
+</html>
