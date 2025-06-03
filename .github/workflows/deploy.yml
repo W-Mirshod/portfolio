@@ -21,3 +21,4 @@ jobs:
         key: ${{ secrets.SERVER_SSH_KEY }}
         script: |
           bash /mnt/portfolio/deploy.sh
+        
