@@ -1,4 +1,5 @@
 {% load static %}
+{% load i18n %}
 
 <!DOCTYPE html>
 <html lang="en">
@@ -6,12 +7,12 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-  <title>Mirshod Qayimov (W-Mirshod) - Backend Developer & AI Engineer</title>
-  <meta name="description" content="18-year-old passionate Backend Developer specializing in Microservices, APIs, AI solutions, and DevOps. Working 18/7 on innovative projects with Python, Django, AWS, and Docker.">
+  <title>{% trans "Mirshod Qayimov (W-Mirshod) - Backend Developer & AI Engineer" %}</title>
+  <meta name="description" content="{% trans '18-year-old passionate Backend Developer specializing in Microservices, APIs, AI solutions, and DevOps. Working 18/7 on innovative projects with Python, Django, AWS, and Docker.' %}">
   
   <!-- Open Graph Meta Tags -->
-  <meta property="og:title" content="Mirshod Qayimov (W-Mirshod) - Backend Developer & AI Engineer">
-  <meta property="og:description" content="18-year-old Backend Developer specializing in Microservices, APIs & AI solutions">
+  <meta property="og:title" content="{% trans 'Mirshod Qayimov (W-Mirshod) - Backend Developer & AI Engineer' %}">
+  <meta property="og:description" content="{% trans '18-year-old Backend Developer specializing in Microservices, APIs & AI solutions' %}">
   <meta property="og:image" content="{% static 'Mirshod.png' %}">
   <meta property="og:url" content="https://w-mirshod.com/">
   <meta property="og:type" content="website">

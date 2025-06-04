@@ -1,4 +1,5 @@
 {% load static %}
+{% load i18n %}
 
 <footer class="footer-section">
   <div class="container">
@@ -6,53 +7,53 @@
       
       <!-- Quick Links Section -->
       <div class="footer-column">
-        <h3 class="footer-title">Quick Links</h3>
+        <h3 class="footer-title">{% trans "Quick Links" %}</h3>
         <ul class="footer-links">
-          <li><a href="#home" class="footer-link">Home</a></li>
-          <li><a href="#about" class="footer-link">About</a></li>
-          <li><a href="#experience" class="footer-link">Experience</a></li>
-          <li><a href="#skills" class="footer-link">Skills</a></li>
-          <li><a href="#achievements" class="footer-link">Achievements</a></li>
-          <li><a href="#certificate" class="footer-link">Certificate</a></li>
-          <li><a href="#projects" class="footer-link">Projects</a></li>
-          <li><a href="#contact" class="footer-link">Contact</a></li>
+          <li><a href="#home" class="footer-link">{% trans "Home" %}</a></li>
+          <li><a href="#about" class="footer-link">{% trans "About" %}</a></li>
+          <li><a href="#experience" class="footer-link">{% trans "Experience" %}</a></li>
+          <li><a href="#skills" class="footer-link">{% trans "Skills" %}</a></li>
+          <li><a href="#achievements" class="footer-link">{% trans "Achievements" %}</a></li>
+          <li><a href="#certificate" class="footer-link">{% trans "Certificate" %}</a></li>
+          <li><a href="#projects" class="footer-link">{% trans "Projects" %}</a></li>
+          <li><a href="#contact" class="footer-link">{% trans "Contact" %}</a></li>
         </ul>
       </div>
 
       <!-- Major Specializations Section -->
       <div class="footer-column">
-        <h3 class="footer-title">Major Specializations</h3>
+        <h3 class="footer-title">{% trans "Major Specializations" %}</h3>
         <div class="specialization-grid">
           <div class="specialization-item">
             <i class="fas fa-server"></i>
-            <span>Backend Development</span>
+            <span>{% trans "Backend Development" %}</span>
           </div>
           <div class="specialization-item">
             <i class="fas fa-laptop-code"></i>
-            <span>Frontend Development</span>
+            <span>{% trans "Frontend Development" %}</span>
           </div>
           <div class="specialization-item">
             <i class="fas fa-cloud"></i>
-            <span>DevOps Engineering</span>
+            <span>{% trans "DevOps Engineering" %}</span>
           </div>
           <div class="specialization-item">
             <i class="fas fa-brain"></i>
-            <span>AI Engineering</span>
+            <span>{% trans "AI Engineering" %}</span>
           </div>
           <div class="specialization-item">
             <i class="fas fa-database"></i>
-            <span>Database Design</span>
+            <span>{% trans "Database Design" %}</span>
           </div>
           <div class="specialization-item">
             <i class="fas fa-cogs"></i>
-            <span>API Development</span>
+            <span>{% trans "API Development" %}</span>
           </div>
         </div>
       </div>
 
       <!-- Connect Section -->
       <div class="footer-column">
-        <h3 class="footer-title">Connect With Me</h3>
+        <h3 class="footer-title">{% trans "Connect With Me" %}</h3>
         <div class="connect-section">
           
           <!-- Social Platforms -->
@@ -103,7 +104,7 @@
             <a href="mailto:qayimovmirshod@gmail.com" class="contact-item">
               <i class="fas fa-envelope"></i>
               <div class="contact-details">
-                <span class="contact-label">Email</span>
+                <span class="contact-label">{% trans "Email" %}</span>
                 <span class="contact-value">qayimovmirshod@gmail.com</span>
               </div>
             </a>
@@ -111,7 +112,7 @@
             <a href="tel:+998901234567" class="contact-item">
               <i class="fas fa-phone"></i>
               <div class="contact-details">
-                <span class="contact-label">Phone</span>
+                <span class="contact-label">{% trans "Phone" %}</span>
                 <span class="contact-value">+998 (90) 123-45-67</span>
               </div>
             </a>
@@ -119,8 +120,8 @@
             <div class="contact-item">
               <i class="fas fa-map-marker-alt"></i>
               <div class="contact-details">
-                <span class="contact-label">Location</span>
-                <span class="contact-value">Uzbekistan</span>
+                <span class="contact-label">{% trans "Location" %}</span>
+                <span class="contact-value">{% trans "Uzbekistan" %}</span>
               </div>
             </div>
           </div>
@@ -133,24 +134,24 @@
     <div class="footer-bottom">
       <div class="footer-bottom-content">
         <div class="copyright">
-          <p>&copy; 2023-2025 Mirshod Qayimov. All rights reserved.</p>
+          <p>{% blocktrans %}© 2023-2025 Mirshod Qayimov. All rights reserved.{% endblocktrans %}</p>
         </div>
         
         <div class="footer-status">
           <div class="status-indicator">
             <div class="status-dot"></div>
-            <span>Available for new opportunities</span>
+            <span>{% trans "Available for new opportunities" %}</span>
           </div>
         </div>
 
         <div class="back-to-top">
-          <button class="back-to-top-btn" aria-label="Back to top">
+          <button class="back-to-top-btn" aria-label="{% trans 'Back to top' %}">
             <i class="fas fa-chevron-up"></i>
           </button>
         </div>
       </div>
       <div style="text-align:center; margin-top:1rem; color:var(--text-muted); font-size:0.95rem;">
-        Built with passion and lots of coffee ☕
+        {% trans "Built with passion and lots of coffee" %} ☕
       </div>
     </div>
     
