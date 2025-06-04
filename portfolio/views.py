@@ -43,7 +43,8 @@ def home(request):
                 form.save()
                 name = form.cleaned_data['name']
                 email = form.cleaned_data['email']
-                return JsonResponse({'success': True})
+                sending_email(name, email)
+                return JsonResponse({'success': True, 'message': 'Your message has been sent successfully! Thank you for contacting us.'})
             except Exception as e:
                 return JsonResponse({'success': False, 'message': 'An error occurred while processing your request.'},
                                     status=500)
