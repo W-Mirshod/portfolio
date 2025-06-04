@@ -19,12 +19,12 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 # See https://docs.djangoproject.com/en/5.1/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = 'django-insecure-ushc8z@y67lhxt0$cb!rg35d-=jwkzn-94mo4+deukr73)tz_w'
+SECRET_KEY = os.environ.get('DJANGO_SECRET_KEY', 'django-insecure-ushc8z@y67lhxt0$cb!rg35d-=jwkzn-94mo4+deukr73)tz_w')
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = False
+DEBUG = os.environ.get('DJANGO_DEBUG', 'False').lower() == 'true'
 
-ALLOWED_HOSTS = ['2.59.169.249', 'www.w-mirshod.com', 'w-mirshod.com', '0.0.0.0']
+ALLOWED_HOSTS = [host.strip() for host in os.environ.get('DJANGO_ALLOWED_HOSTS', '').split(',') if host.strip()] if os.environ.get('DJANGO_ALLOWED_HOSTS') else ['2.59.169.249', 'www.w-mirshod.com', 'w-mirshod.com', '0.0.0.0']
 
 # Application definition
 
@@ -127,15 +127,15 @@ DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
 # email configuration
 EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
-EMAIL_HOST = 'smtp.zoho.eu'
-EMAIL_PORT = 587
-EMAIL_USE_TLS = True
-EMAIL_HOST_USER = 'portfolio@w-mirshod.com'
-EMAIL_HOST_PASSWORD = 'zDZd CU7k vDyr'
-DEFAULT_FROM_EMAIL = EMAIL_HOST_USER
+EMAIL_HOST = os.environ.get('EMAIL_HOST', 'smtp.zoho.eu')
+EMAIL_PORT = int(os.environ.get('EMAIL_PORT', '587'))
+EMAIL_USE_TLS = os.environ.get('EMAIL_USE_TLS', 'True').lower() == 'true'
+EMAIL_HOST_USER = os.environ.get('EMAIL_HOST_USER', 'portfolio@w-mirshod.com')
+EMAIL_HOST_PASSWORD = os.environ.get('EMAIL_HOST_PASSWORD', '')
+DEFAULT_FROM_EMAIL = os.environ.get('DEFAULT_FROM_EMAIL', EMAIL_HOST_USER)
 
 # reCaptcha
-RECAPTCHA_SITE_KEY = '6Ld5slAqAAAAAOQ7IN70HQVoUKL7x6uGKrN5i7aZ'
-RECAPTCHA_SECRET_KEY = '6Ld5slAqAAAAAJbJN3teMF_q5paIEgP2F4Mw_4Vh'
+RECAPTCHA_SITE_KEY = os.environ.get('RECAPTCHA_SITE_KEY', '')
+RECAPTCHA_SECRET_KEY = os.environ.get('RECAPTCHA_SECRET_KEY', '')
 RECAPTCHA_REQUIRED_SCORE = 0.85
 
