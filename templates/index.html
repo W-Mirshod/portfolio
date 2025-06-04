@@ -23,7 +23,7 @@
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 
   <!-- reCAPTCHA -->
-  <script src="https://www.google.com/recaptcha/api.js?render=6Ld5slAqAAAAAOQ7IN70HQVoUKL7x6uGKrN5i7aZ"></script>
+  <script src="https://www.google.com/recaptcha/api.js" async defer></script>
 
   <!-- Favicon -->
   <link rel="icon" type="image/x-icon" href="{% static 'Mirshod.png' %}">
@@ -39,7 +39,7 @@
   <!-- Header section -->
   <header id="header">
     <div class="logo-section">
-      <a class="logo" href="{% url 'home' %}">
+      <a class="logo" href="#home">
         <img src="{% static 'Mirshod.png' %}" alt="W" width="50" height="50">
         <span class="logo-text">W<span class="logo-v2">-Mirshod</span></span>
       </a>
@@ -173,10 +173,6 @@
           <p>My expertise spans across multiple technologies including Python, Django, JavaScript, AWS, Docker, and various databases. I'm part of @Yaklabs-Organization and have contributed to 22+ repositories on GitHub. I actively engage with the professional developer community on LinkedIn, sharing insights and connecting with industry professionals.</p>
               <div class="stats-grid">
             <div class="stat-item">
-              <h3>22+</h3>
-              <span>GitHub Repositories</span>
-            </div>
-            <div class="stat-item">
               <h3>500+</h3>
               <span>LinkedIn Connections</span>
             </div>            <div class="stat-item">
@@ -184,7 +180,7 @@
               <span>Technologies Mastered</span>
             </div>
             <div class="stat-item">
-              <h3>1</h3>
+              <h3>3</h3>
               <span>Organization Member</span>
             </div>
             <div class="stat-item">
@@ -207,6 +203,41 @@
       <div class="experience-timeline">
         <div class="experience-item">
           <div class="experience-date">
+            <span>Mar 2025 - Present</span>
+          </div>
+          <div class="experience-content">
+            <h3>Senior Software Engineer</h3>
+            <h4>Yaklabs · Full-time</h4>
+            <p>Contributing to a tech-driven, future-oriented platform at YakLabs (Tashkent, Uzbekistan). Focused on innovative projects and modern technologies.</p>
+            <div class="experience-skills">
+              <span>DevOps</span>
+              <span>Flask</span>
+              <span>Microservices</span>
+              <span>Cloud Platforms</span>
+            </div>
+          </div>
+        </div>
+        
+        <div class="experience-item">
+          <div class="experience-date">
+            <span>Oct 2024 - Apr 2025</span>
+          </div>
+          <div class="experience-content">
+            <h3>Software Engineer</h3>
+            <h4>MegaDevs · Full-time</h4>
+            <p>Developed and maintained multiple projects, with a key focus on IMAP/SMTP mail protocols and automation solutions in Germany.</p>
+            <div class="experience-skills">
+              <span>Web Development</span>
+              <span>Web Engineering</span>
+              <span>Python</span>
+              <span>SMTP/IMAP</span>
+              <span>Automation</span>
+            </div>
+          </div>
+        </div>
+        
+        <div class="experience-item">
+          <div class="experience-date">
             <span>2021 - Present</span>
           </div>
           <div class="experience-content">
@@ -220,40 +251,6 @@
               <span>AWS</span>
               <span>Docker</span>
               <span>AI/ML</span>
-            </div>
-          </div>
-        </div>
-        
-        <div class="experience-item">
-          <div class="experience-date">
-            <span>2022 - Present</span>
-          </div>
-          <div class="experience-content">
-            <h3>Organization Member</h3>
-            <h4>Yaklabs-Organization</h4>
-            <p>Contributing to collaborative development projects, participating in code reviews, and working on open-source initiatives within the organization.</p>
-            <div class="experience-skills">
-              <span>Team Collaboration</span>
-              <span>Code Review</span>
-              <span>Open Source</span>
-              <span>Git/GitHub</span>
-            </div>
-          </div>
-        </div>
-        
-        <div class="experience-item">
-          <div class="experience-date">
-            <span>2023 - Present</span>
-          </div>
-          <div class="experience-content">
-            <h3>AI & Machine Learning Enthusiast</h3>
-            <h4>Personal Research & Development</h4>
-            <p>Exploring GPT-Neo, AI APIs, text-to-speech technologies, and PDF translation solutions. Building practical AI applications and integrating ChatGPT APIs.</p>
-            <div class="experience-skills">
-              <span>GPT-Neo</span>
-              <span>AI APIs</span>
-              <span>ChatGPT Integration</span>
-              <span>Text-to-Speech</span>
             </div>
           </div>
         </div>
@@ -316,6 +313,10 @@
             <span class="skill-tag">Linux</span>
             <span class="skill-tag">Git</span>
             <span class="skill-tag">GitHub</span>
+            <span class="skill-tag">CI/CD</span>
+            <span class="skill-tag">Pipelines</span>
+            <span class="skill-tag">Automated Deployment</span>
+            <span class="skill-tag">GitHub Actions</span>
           </div>
         </div>
         
@@ -363,6 +364,16 @@
           
           <div class="stat-card">
             <div class="stat-icon">
+              <i class="fas fa-lock"></i>
+            </div>
+            <div class="stat-info">
+              <h3>50+</h3>
+              <p>Private Repositories</p>
+            </div>
+          </div>
+
+          <div class="stat-card">
+            <div class="stat-icon">
               <i class="fas fa-star"></i>
             </div>
             <div class="stat-info">
@@ -390,6 +401,17 @@
               <h4>Yaklabs-Organization</h4>
               <p>Contributing to organizational projects and collaborative development</p>
               <a href="https://github.com/Yaklabs-Organization" target="_blank" class="org-link">
+                <i class="fas fa-external-link-alt"></i>
+                View Organization
+              </a>
+            </div>
+          </div>
+          <div class="org-card" style="margin-top: 1.5rem;">
+            <i class="fas fa-building"></i>
+            <div class="org-details">
+              <h4>MegaDevs</h4>
+              <p>Collaborating on innovative software solutions and full-stack development projects.</p>
+              <a href="https://github.com/mega-devs" target="_blank" class="org-link">
                 <i class="fas fa-external-link-alt"></i>
                 View Organization
               </a>
@@ -644,73 +666,39 @@
   <!-- Contact section -->
   <section id="contact" class="section contact-section">
     <div class="container">
-      <div class="section-header">
-        <h2 class="section-title">Get In Touch</h2>
-        <p class="section-subtitle">Let's discuss your next project</p>
-      </div>
-      
-      <div class="contact-content">
-        <div class="contact-info">
-          <div class="contact-item">
-            <div class="contact-icon">
-              <i class="fas fa-envelope"></i>
-            </div>
-            <div class="contact-details">
-              <h4>Email</h4>
-              <p>trading3526@gmail.com</p>
-            </div>
-          </div>
-          
-          <div class="contact-item">
-            <div class="contact-icon">
-              <i class="fab fa-telegram"></i>
-            </div>
-            <div class="contact-details">
-              <h4>Telegram</h4>
-              <p>@maverick3526</p>
-            </div>
-          </div>
-          
-          <div class="contact-item">
-            <div class="contact-icon">
-              <i class="fab fa-linkedin"></i>
-            </div>
-            <div class="contact-details">
-              <h4>LinkedIn</h4>
-              <p>W-Mirshod</p>
-            </div>
-          </div>
+        <div class="section-header">
+            <h2 class="section-title">Get In Touch</h2>
+            <p class="section-subtitle">Let's discuss your next project</p>
         </div>
-        
-        <div class="contact-form">
-          <form id="contact-form">
-            {% csrf_token %}
-            <div class="form-group">
-              <input type="text" id="name" name="name" placeholder="Your Name" required>
+        <div class="contact-content">
+            <div class="contact-form">
+                <form id="contact-form">
+                    {% csrf_token %}
+                    <div class="form-group">
+                        <input type="text" id="name" name="name" placeholder="Your Name" required>
+                    </div>
+                    <div class="form-group">
+                        <input type="email" id="email" name="email" placeholder="Your Email" required>
+                    </div>
+                    <div class="form-group">
+                        <textarea id="message" name="message" placeholder="Your Message" rows="5" required></textarea>
+                    </div>
+                    <!-- Enhanced reCAPTCHA placement and wrapper for styling -->
+                    <div class="form-group recaptcha-container">
+    <div class="recaptcha-wrapper">
+        <div id="recaptcha-container" class="g-recaptcha" data-sitekey="6Ld5slAqAAAAAOQ7IN70HQVoUKL7x6uGKrN5i7aZ"></div>
+    </div>
+</div>
+                    <button type="submit" class="submit-btn">
+                        <i class="fas fa-paper-plane"></i>
+                        Send Message
+                    </button>
+                </form>
+                <div id="form-messages" class="form-messages"></div>
             </div>
-            
-            <div class="form-group">
-              <input type="email" id="email" name="email" placeholder="Your Email" required>
-            </div>
-            
-            <div class="form-group">
-              <textarea id="message" name="message" placeholder="Your Message" rows="5" required></textarea>
-            </div>
-            
-            <div class="form-group recaptcha-container">
-              <div id="recaptcha-container"></div>
-            </div>
-            
-            <button type="submit" class="submit-btn">
-              <i class="fas fa-paper-plane"></i>
-              Send Message
-            </button>
-          </form>
-          
-          <div id="form-messages" class="form-messages"></div>
         </div>
-      </div>
-    </div>  </section>
+    </div>
+  </section>
 
   <!-- Footer -->
   <footer class="footer">
@@ -759,6 +747,9 @@
               </a>
               <a href="mailto:trading3526@gmail.com" aria-label="Email">
                 <i class="fas fa-envelope"></i>
+              </a>
+              <a href="tel:+998907126437" aria-label="Phone">
+                <i class="fas fa-phone"></i>
               </a>
             </div>
           </div>
