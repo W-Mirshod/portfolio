@@ -51,11 +51,41 @@ document.addEventListener('DOMContentLoaded', function() {
     const floatingCards = document.querySelectorAll('.tech-card');
     let ticking = false;
 
+    // Store original index for consistent parallax calculation if needed later
+    floatingCards.forEach((card, i) => {
+        card.dataset.originalIndex = i;
+    });
+
+    function getParallaxTransformValue(index) {
+        const scrolled = window.pageYOffset;
+        // Original parallax calculation: (index % 3 + 1) * 0.2
+        // Ensure 'index' is a number
+        const numericIndex = parseInt(index);
+        const parallaxMultiplier = ((numericIndex % 3) + 1) * 0.2;
+        const rate = scrolled * -0.05 * parallaxMultiplier;
+        return `translateY(${rate}px)`;
+    }
+
+    function restoreCardDefaultState(card, index) {
+        const parallaxTransform = getParallaxTransformValue(index);
+        card.style.transform = `${parallaxTransform} scale(1) rotate(0deg)`;
+        card.style.zIndex = '1';
+        card.style.filter = 'none';
+        // Re-apply continuous animations if they were stopped by JS,
+        // but prefer CSS to handle this if possible.
+        // card.style.animation = 'techCardPulse 4s ease-in-out infinite'; // Example if needed
+    }
+
+
     function updateParallax() {
         const scrolled = window.pageYOffset;
-        floatingCards.forEach((card, index) => {
-            const rate = scrolled * -0.05 * (index % 3 + 1) * 0.2;
-            card.style.transform = `translateY(${rate}px)`;
+        floatingCards.forEach((card) => {
+            // Only apply parallax if the card is not being actively interacted with
+            // This check is basic; more robust state management might be needed if issues persist
+            if (!card.classList.contains('is-hovered') && !card.classList.contains('is-clicking')) {
+                const index = card.dataset.originalIndex;
+                card.style.transform = getParallaxTransformValue(index);
+            }
         });
         ticking = false;
     }
@@ -67,105 +97,90 @@ document.addEventListener('DOMContentLoaded', function() {
         }
     });
 
-    // Enhanced hover effects for tech cards with staggered animations
+    // Consolidated event listeners for tech cards
     floatingCards.forEach((card, index) => {
-        // Add staggered reveal animation
+        // Add staggered reveal animation (from CSS)
         card.style.animationDelay = `${0.9 + (index * 0.1)}s`;
-        
+
         card.addEventListener('mouseenter', () => {
-            // Create ripple effect
-            const ripple = document.createElement('div');
-            ripple.className = 'tech-card-ripple';
-            card.appendChild(ripple);
-            
-            // Enhanced transform with technology-specific rotation
+            card.classList.add('is-hovered');
             const techType = card.getAttribute('data-tech');
             let rotation = index % 2 === 0 ? '8deg' : '-8deg';
             
-            // Special rotations for specific technologies
-            if (techType === 'react') rotation = '12deg';
             if (techType === 'python') rotation = '-12deg';
             if (techType === 'ai') rotation = '15deg';
+            if (techType === 'docker') rotation = '10deg';
+            if (techType === 'javascript') rotation = '12deg';
             
-            card.style.transform = `scale(1.2) translateY(-20px) rotate(${rotation})`;
+            const currentParallaxY = getParallaxTransformValue(index); // Get current Y due to parallax
+            // Apply hover effects on top of current parallax Y
+            card.style.transform = `${currentParallaxY} scale(1.2) translateY(-20px) rotate(${rotation})`;
             card.style.zIndex = '20';
-            
-            // Add glow effect based on technology
             card.style.filter = 'brightness(1.2) saturate(1.3)';
-            
-            // Remove ripple after animation
-            setTimeout(() => {
-                if (ripple && ripple.parentNode) {
-                    ripple.parentNode.removeChild(ripple);
-                }
-            }, 600);
         });
 
         card.addEventListener('mouseleave', () => {
-            // Smooth return with parallax consideration
-            const scrolled = window.pageYOffset;
-            const rate = scrolled * -0.05 * (index % 3 + 1) * 0.2;
-            card.style.transform = `scale(1) translateY(${rate}px) rotate(0deg)`;
-            card.style.zIndex = '1';
-            card.style.filter = 'none';
-            
-            // Re-enable pulse animation
-            card.style.animation = 'techCardPulse 4s ease-in-out infinite';
-        });
-        
-        // Add click effect
-        card.addEventListener('click', () => {
-            card.style.transform = `scale(0.95) translateY(-5px) rotate(0deg)`;
-            setTimeout(() => {
-                const scrolled = window.pageYOffset;
-                const rate = scrolled * -0.05 * (index % 3 + 1) * 0.2;
-                card.style.transform = `scale(1) translateY(${rate}px) rotate(0deg)`;
-            }, 150);
-        });
-    });
-
-    // Add magnetic effect to tech cards
-    floatingCards.forEach((card, index) => {
-        card.addEventListener('mousemove', (e) => {
-            const rect = card.getBoundingClientRect();
-            const x = e.clientX - rect.left - rect.width / 2;
-            const y = e.clientY - rect.top - rect.height / 2;
-            
-            const distance = Math.sqrt(x * x + y * y);
-            const maxDistance = 50;
-            
-            if (distance < maxDistance) {
-                const angle = Math.atan2(y, x);
-                const force = (maxDistance - distance) / maxDistance;
-                const offsetX = Math.cos(angle) * force * 8;
-                const offsetY = Math.sin(angle) * force * 8;
-                
-                card.style.transform = `translate(${offsetX}px, ${offsetY}px) scale(${1 + force * 0.1})`;
+            card.classList.remove('is-hovered');
+            if (!card.classList.contains('is-clicking')) { // Don't reset if a click animation is active
+                restoreCardDefaultState(card, index);
             }
         });
         
-        card.addEventListener('mouseleave', () => {
-            card.style.transform = '';
+        card.addEventListener('click', (e) => {
+            e.preventDefault();
+            card.classList.add('is-clicking');
+
+            const currentParallaxY = getParallaxTransformValue(index);
+            card.style.transform = `${currentParallaxY} scale(0.95) translateY(-5px) rotate(0deg)`;
+            // card.style.filter = 'brightness(1.5) saturate(1.5)'; // Optional: click filter effect
+
+            setTimeout(() => {
+                card.classList.remove('is-clicking');
+                // If mouse is still over, revert to hover state, else default state
+                if (card.matches(':hover')) {
+                    // Trigger mouseenter logic again or a specific post-click hover state
+                    // For simplicity, just restore to default, mouseenter will re-apply if needed
+                    card.dispatchEvent(new MouseEvent('mouseenter')); // Re-trigger hover if still over
+                } else {
+                    restoreCardDefaultState(card, index);
+                }
+                // card.style.filter = 'none'; // Reset filter if it was changed on click
+            }, 200); // Duration of click effect
+            
+            const techName = card.getAttribute('title') || card.getAttribute('data-tech');
+            if (techName) {
+                showTechInfo(techName, e.pageX, e.pageY);
+            }
         });
     });
 
-    // Add tech card performance metrics animation
+    // Remove or comment out the old magnetic effect and other conflicting loops
+    // The old forEach loops for magnetic effect and the second click listener are now removed/consolidated.
+
+    // Add tech card performance metrics animation (createTechCardParticles function definition)
+    // This function is defined but not called if particle effects are removed.
     function createTechCardParticles(card) {
         const particles = [];
         const techType = card.getAttribute('data-tech');
         const colors = {
-            'python': ['#3776ab', '#ffd43b'],
-            'javascript': ['#f7df1e', '#000000'],
-            'react': ['#61dafb', '#20232a'],
-            'docker': ['#2496ed', '#ffffff'],
+            'python': ['#306998', '#ffd43b'],
+            'django': ['#092E20', '#0C4B33'],
+            'javascript': ['#f7df1e', '#323330'],
+            'html5': ['#E34F26', '#F06529'],
+            'css3': ['#1572B6', '#33A9DC'],
+            'postgresql': ['#336791', '#4479A1'],
+            'mysql': ['#4479A1', '#FF9B00'],
+            'redis': ['#d82c20', '#a41f16'],
+            'celery': ['#ff9933', '#ffa500'],
+            'nginx': ['#009639', '#ffffff'],
+            'apache': ['#d22128', '#fbc400'],
+            'docker': ['#2496ed', '#0db7ed'],
+            'linux': ['#fcc624', '#333333'],
+            'github': ['#181717', '#FFFFFF'],
             'aws': ['#ff9900', '#232f3e'],
-            'git': ['#f05032', '#ffffff'],
-            'linux': ['#fcc624', '#000000'],
-            'django': ['#092e20', '#43a047'],
-            'node': ['#339933', '#68a063'],
-            'database': ['#336791', '#ffffff'],
-            'api': ['#ff6b35', '#ffffff'],
-            'ai': ['#9c27b0', '#e91e63']
+            'api': ['#ff6b35', '#e85a2b'],
+            'openai': ['#4AA08C', '#191919'],
+            'pygame': ['#6B9C39', '#A9D18E']
         };
         
         const techColors = colors[techType] || ['#3fa2f6', '#ffffff'];
@@ -209,29 +224,28 @@ document.addEventListener('DOMContentLoaded', function() {
     }
 
     // Enhanced click interaction
-    floatingCards.forEach((card, index) => {
-        card.addEventListener('click', (e) => {
-            e.preventDefault();
-            
-            // Create particles
-            createTechCardParticles(card);
-            
-            // Add impact effect
-            card.style.transform = 'scale(0.95)';
-            card.style.filter = 'brightness(1.5) saturate(1.5)';
-            
-            setTimeout(() => {
-                card.style.transform = '';
-                card.style.filter = '';
-            }, 200);
-            
-            // Show tech info (you can customize this)
-            const techName = card.getAttribute('title') || card.getAttribute('data-tech');
-            if (techName) {
-                showTechInfo(techName, e.pageX, e.pageY);
-            }
-        });
-    });
+    // floatingCards.forEach((card, index) => { // THIS ENTIRE LOOP IS NOW REMOVED / CONSOLIDATED
+    // card.addEventListener('click', (e) => {
+    //     e.preventDefault();
+    //     
+    //     // Create particles - REMOVED
+    //     // createTechCardParticles(card); 
+    //     
+    //     // Add impact effect
+    //     card.style.transform = 'scale(0.95)';
+    // 
+    //     setTimeout(() => {
+    //         card.style.transform = '';
+    //         card.style.filter = '';
+    //     }, 200);
+    //     
+    //     // Show tech info (you can customize this)
+    //     const techName = card.getAttribute('title') || card.getAttribute('data-tech');
+    //     if (techName) {
+    //         showTechInfo(techName, e.pageX, e.pageY);
+    //     }
+    // });
+    // });
     
     function showTechInfo(techName, x, y) {
         const tooltip = document.createElement('div');
