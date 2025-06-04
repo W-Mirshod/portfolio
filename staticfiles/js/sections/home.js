@@ -4,10 +4,12 @@ document.addEventListener('DOMContentLoaded', function() {
     
     // Typing animation for hero text
     const typingText = document.querySelector('.typing-text');
-    if (typingText) {
+    const typingCursor = document.querySelector('.typing-cursor');
+    
+    if (typingText && typingCursor) {
         const texts = [
             'Backend Developer & AI Engineer',
-            'Microservices & APIs Specialist',
+            'Microservices & APIs Specialist', 
             'DevOps & Cloud Expert',
             'AI APIs Enthusiast',
             'Performance Optimization Expert',
