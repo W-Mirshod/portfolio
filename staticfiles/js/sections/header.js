@@ -171,7 +171,7 @@ document.addEventListener('DOMContentLoaded', function() {
     function updateActiveNavItem(activeLink = null) {
         const navItems = document.querySelectorAll('.nav-item');
         
-        if (activeLink) {
+        if (activeLink && activeLink.classList) {
             navItems.forEach(item => item.classList.remove('active'));
             activeLink.classList.add('active');
         } else {
