@@ -13,29 +13,6 @@ document.addEventListener('DOMContentLoaded', function() {
         }
     });
 
-    // Mobile menu toggle
-    const mobileToggle = document.querySelector('.mobile-menu-toggle');
-    const mobileNav = document.querySelector('.nav-mobile');
-    const body = document.body;
-
-    if (mobileToggle && mobileNav) {
-        mobileToggle.addEventListener('click', () => {
-            mobileNav.classList.toggle('active');
-            mobileToggle.classList.toggle('active');
-            body.style.overflow = mobileNav.classList.contains('active') ? 'hidden' : '';
-        });
-
-        // Close mobile menu when clicking nav items
-        const mobileNavItems = document.querySelectorAll('.nav-mobile .nav-item');
-        mobileNavItems.forEach(item => {
-            item.addEventListener('click', () => {
-                mobileNav.classList.remove('active');
-                mobileToggle.classList.remove('active');
-                body.style.overflow = '';
-            });
-        });
-    }
-
     // Smooth scroll for anchor links
     const anchorLinks = document.querySelectorAll('a[href^="#"]');
     anchorLinks.forEach(link => {
@@ -125,7 +102,7 @@ document.addEventListener('DOMContentLoaded', function() {
     }, observerOptions);
 
     // Observe animated elements
-    const animatedElements = document.querySelectorAll('.skill-category, .project-card, .stat-item, .stat-card, .org-card, .badge, .experience-item');
+    const animatedElements = document.querySelectorAll('.skill-category, .project-card, .stat-item, .stat-card, .org-card, .badge, .experience-item, .certificate-card, .skill-item');
     animatedElements.forEach(el => {
         el.style.opacity = '0';
         el.style.transform = 'translateY(30px)';
