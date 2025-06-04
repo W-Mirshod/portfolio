@@ -1,7 +1,35 @@
 /* Home Section Styles */
 
+/* Tech Colors */
+:root {
+  --python-primary: #3776ab;
+  --python-secondary: #ffd43b;
+  --django-primary: #092e20;
+  --django-secondary: #43a047;
+  --javascript-primary: #f7df1e;
+  --javascript-secondary: #000000;
+  --react-primary: #61dafb;
+  --react-secondary: #20232a;
+  --node-primary: #339933;
+  --node-secondary: #68a063;
+  --docker-primary: #2496ed;
+  --docker-secondary: #ffffff;
+  --aws-primary: #ff9900;
+  --aws-secondary: #232f3e;
+  --git-primary: #f05032;
+  --git-secondary: #ffffff;
+  --linux-primary: #fcc624;
+  --linux-secondary: #000000;
+  --database-primary: #336791;
+  --database-secondary: #ffffff;
+  --api-primary: #ff6b35;
+  --api-secondary: #ffffff;
+  --ai-primary: #9c27b0;
+  --ai-secondary: #e91e63;
+}
+
 .hero-section {
-  padding-top: 60px;
+  padding-top: 100px;
   min-height: 100vh;
   display: flex;
   align-items: center;
@@ -202,36 +230,80 @@
 /* Floating Tech Cards */
 .floating-cards {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(60px, 1fr));
-  gap: 1rem;
-  max-width: 600px;
+  grid-template-columns: repeat(auto-fit, minmax(70px, 1fr));
+  gap: 1.2rem;
+  max-width: 650px;
   margin: 2rem auto 3rem auto;
-  padding: 1.5rem;
-  background: rgba(63, 162, 246, 0.03);
-  border-radius: 20px;
-  border: 1px solid rgba(63, 162, 246, 0.08);
-  backdrop-filter: blur(10px);
+  padding: 2rem;
+  background: rgba(63, 162, 246, 0.05);
+  border-radius: 24px;
+  border: 1px solid rgba(63, 162, 246, 0.1);
+  backdrop-filter: blur(15px);
   position: relative;
-  animation: fadeInUp 0.8s ease 0.9s both;
+  animation: fadeInUp 0.8s ease 0.9s both, float 6s ease-in-out infinite;
+  box-shadow: 
+    0 8px 32px rgba(63, 162, 246, 0.1),
+    inset 0 1px 0 rgba(255, 255, 255, 0.1);
+}
+
+@keyframes float {
+  0%, 100% { transform: translateY(0px); }
+  50% { transform: translateY(-10px); }
 }
 
 .floating-cards::before {
   content: '';
   position: absolute;
-  top: -1px;
-  left: -1px;
-  right: -1px;
-  bottom: -1px;
+  top: -2px;
+  left: -2px;
+  right: -2px;
+  bottom: -2px;
   background: linear-gradient(45deg, 
-    rgba(63, 162, 246, 0.1) 0%, 
-    rgba(63, 162, 246, 0.05) 25%, 
-    rgba(63, 162, 246, 0.1) 50%, 
-    rgba(63, 162, 246, 0.05) 75%, 
-    rgba(63, 162, 246, 0.1) 100%);
-  border-radius: 20px;
+    rgba(63, 162, 246, 0.2) 0%, 
+    rgba(147, 51, 234, 0.2) 25%, 
+    rgba(236, 72, 153, 0.2) 50%, 
+    rgba(251, 146, 60, 0.2) 75%, 
+    rgba(63, 162, 246, 0.2) 100%);
+  border-radius: 24px;
   z-index: -1;
   opacity: 0;
-  transition: opacity 0.3s ease;
+  transition: opacity 0.4s ease;
+  animation: gradientShift 8s ease-in-out infinite;
+}
+
+@keyframes gradientShift {
+  0%, 100% { 
+    background: linear-gradient(45deg, 
+      rgba(63, 162, 246, 0.2) 0%, 
+      rgba(147, 51, 234, 0.2) 25%, 
+      rgba(236, 72, 153, 0.2) 50%, 
+      rgba(251, 146, 60, 0.2) 75%, 
+      rgba(63, 162, 246, 0.2) 100%);
+  }
+  25% { 
+    background: linear-gradient(45deg, 
+      rgba(251, 146, 60, 0.2) 0%, 
+      rgba(63, 162, 246, 0.2) 25%, 
+      rgba(147, 51, 234, 0.2) 50%, 
+      rgba(236, 72, 153, 0.2) 75%, 
+      rgba(251, 146, 60, 0.2) 100%);
+  }
+  50% { 
+    background: linear-gradient(45deg, 
+      rgba(236, 72, 153, 0.2) 0%, 
+      rgba(251, 146, 60, 0.2) 25%, 
+      rgba(63, 162, 246, 0.2) 50%, 
+      rgba(147, 51, 234, 0.2) 75%, 
+      rgba(236, 72, 153, 0.2) 100%);
+  }
+  75% { 
+    background: linear-gradient(45deg, 
+      rgba(147, 51, 234, 0.2) 0%, 
+      rgba(236, 72, 153, 0.2) 25%, 
+      rgba(251, 146, 60, 0.2) 50%, 
+      rgba(63, 162, 246, 0.2) 75%, 
+      rgba(147, 51, 234, 0.2) 100%);
+  }
 }
 
 .floating-cards:hover::before {
@@ -243,113 +315,381 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  width: 65px;
-  height: 65px;
-  background: rgba(63, 162, 246, 0.08);
-  border: 1px solid rgba(63, 162, 246, 0.15);
-  border-radius: 16px;
-  color: var(--primary-color);
-  font-size: 1.8rem;
-  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  width: 72px;
+  height: 72px;
+  background: rgba(255, 255, 255, 0.08);
+  border: 2px solid transparent;
+  border-radius: 18px;
+  font-size: 2rem;
+  transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
   cursor: pointer;
   overflow: hidden;
   margin: 0 auto;
-}
-
-.tech-card::before {
-  content: '';
-  position: absolute;
-  top: 0;
-  left: -100%;
-  width: 100%;
-  height: 100%;
-  background: linear-gradient(90deg, transparent, rgba(63, 162, 246, 0.2), transparent);
-  transition: left 0.5s ease;
-}
-
-.tech-card:hover::before {
-  left: 100%;
-}
-
-.tech-card:hover {
-  transform: translateY(-8px) scale(1.1);
-  background: rgba(63, 162, 246, 0.15);
-  border-color: var(--primary-color);
+  backdrop-filter: blur(10px);
+  animation: techCardReveal 0.6s ease-out forwards, techCardPulse 4s ease-in-out infinite 2s;
+  opacity: 0;
   box-shadow: 
-    0 10px 30px rgba(63, 162, 246, 0.3),
-    0 0 0 2px rgba(63, 162, 246, 0.1);
+    0 4px 20px rgba(0, 0, 0, 0.1),
+    inset 0 1px 0 rgba(255, 255, 255, 0.1);
 }
 
+@keyframes techCardPulse {
+  0%, 100% { box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1), inset 0 1px 0 rgba(255, 255, 255, 0.1); }
+  50% { box-shadow: 0 6px 25px rgba(0, 0, 0, 0.15), inset 0 1px 0 rgba(255, 255, 255, 0.2); }
+}
+
+/* Ripple effect for tech cards */
+.tech-card-ripple {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 0;
+  height: 0;
+  border-radius: 50%;
+  background: radial-gradient(circle, rgba(255, 255, 255, 0.6) 0%, transparent 70%);
+  transform: translate(-50%, -50%);
+  animation: rippleEffect 0.6s ease-out forwards;
+  pointer-events: none;
+  z-index: 2;
+}
+
+@keyframes rippleEffect {
+  0% {
+    width: 0;
+    height: 0;
+    opacity: 1;
+  }
+  100% {
+    width: 150px;
+    height: 150px;
+    opacity: 0;
+  }
+}
+
+/* Enhanced hover effects for each technology */
 .tech-card[data-tech="python"]:hover {
   color: #3776ab;
   border-color: #3776ab;
-  box-shadow: 0 10px 30px rgba(55, 118, 171, 0.3);
+  background: linear-gradient(135deg, rgba(55, 118, 171, 0.2), rgba(255, 212, 59, 0.2));
+  box-shadow: 
+    0 20px 40px rgba(55, 118, 171, 0.4),
+    0 0 0 4px rgba(55, 118, 171, 0.1),
+    inset 0 1px 0 rgba(255, 255, 255, 0.3);
 }
 
 .tech-card[data-tech="django"]:hover {
   color: #092e20;
   border-color: #092e20;
-  box-shadow: 0 10px 30px rgba(9, 46, 32, 0.3);
+  background: linear-gradient(135deg, rgba(9, 46, 32, 0.2), rgba(67, 160, 71, 0.2));
+  box-shadow: 
+    0 20px 40px rgba(9, 46, 32, 0.4),
+    0 0 0 4px rgba(9, 46, 32, 0.1),
+    inset 0 1px 0 rgba(255, 255, 255, 0.3);
 }
 
 .tech-card[data-tech="javascript"]:hover {
   color: #f7df1e;
   border-color: #f7df1e;
-  box-shadow: 0 10px 30px rgba(247, 223, 30, 0.3);
+  background: linear-gradient(135deg, rgba(247, 223, 30, 0.2), rgba(0, 0, 0, 0.2));
+  box-shadow: 
+    0 20px 40px rgba(247, 223, 30, 0.4),
+    0 0 0 4px rgba(247, 223, 30, 0.1),
+    inset 0 1px 0 rgba(255, 255, 255, 0.3);
 }
 
 .tech-card[data-tech="react"]:hover {
   color: #61dafb;
   border-color: #61dafb;
-  box-shadow: 0 10px 30px rgba(97, 218, 251, 0.3);
+  background: linear-gradient(135deg, rgba(97, 218, 251, 0.2), rgba(32, 35, 42, 0.2));
+  box-shadow: 
+    0 20px 40px rgba(97, 218, 251, 0.4),
+    0 0 0 4px rgba(97, 218, 251, 0.1),
+    inset 0 1px 0 rgba(255, 255, 255, 0.3);
 }
 
 .tech-card[data-tech="docker"]:hover {
   color: #2496ed;
   border-color: #2496ed;
-  box-shadow: 0 10px 30px rgba(36, 150, 237, 0.3);
+  background: linear-gradient(135deg, rgba(36, 150, 237, 0.2), rgba(255, 255, 255, 0.2));
+  box-shadow: 
+    0 20px 40px rgba(36, 150, 237, 0.4),
+    0 0 0 4px rgba(36, 150, 237, 0.1),
+    inset 0 1px 0 rgba(255, 255, 255, 0.3);
 }
 
 .tech-card[data-tech="aws"]:hover {
   color: #ff9900;
   border-color: #ff9900;
-  box-shadow: 0 10px 30px rgba(255, 153, 0, 0.3);
+  background: linear-gradient(135deg, rgba(255, 153, 0, 0.2), rgba(35, 47, 62, 0.2));
+  box-shadow: 
+    0 20px 40px rgba(255, 153, 0, 0.4),
+    0 0 0 4px rgba(255, 153, 0, 0.1),
+    inset 0 1px 0 rgba(255, 255, 255, 0.3);
 }
 
 .tech-card[data-tech="git"]:hover {
   color: #f05032;
   border-color: #f05032;
-  box-shadow: 0 10px 30px rgba(240, 80, 50, 0.3);
+  background: linear-gradient(135deg, rgba(240, 80, 50, 0.2), rgba(255, 255, 255, 0.2));
+  box-shadow: 
+    0 20px 40px rgba(240, 80, 50, 0.4),
+    0 0 0 4px rgba(240, 80, 50, 0.1),
+    inset 0 1px 0 rgba(255, 255, 255, 0.3);
 }
 
 .tech-card[data-tech="linux"]:hover {
   color: #fcc624;
   border-color: #fcc624;
-  box-shadow: 0 10px 30px rgba(252, 198, 36, 0.3);
+  background: linear-gradient(135deg, rgba(252, 198, 36, 0.2), rgba(0, 0, 0, 0.2));
+  box-shadow: 
+    0 20px 40px rgba(252, 198, 36, 0.4),
+    0 0 0 4px rgba(252, 198, 36, 0.1),
+    inset 0 1px 0 rgba(255, 255, 255, 0.3);
 }
 
 .tech-card[data-tech="node"]:hover {
   color: #339933;
   border-color: #339933;
-  box-shadow: 0 10px 30px rgba(51, 153, 51, 0.3);
+  background: linear-gradient(135deg, rgba(51, 153, 51, 0.2), rgba(104, 160, 99, 0.2));
+  box-shadow: 
+    0 20px 40px rgba(51, 153, 51, 0.4),
+    0 0 0 4px rgba(51, 153, 51, 0.1),
+    inset 0 1px 0 rgba(255, 255, 255, 0.3);
 }
 
 .tech-card[data-tech="database"]:hover {
   color: #336791;
   border-color: #336791;
-  box-shadow: 0 10px 30px rgba(51, 103, 145, 0.3);
+  background: linear-gradient(135deg, rgba(51, 103, 145, 0.2), rgba(255, 255, 255, 0.2));
+  box-shadow: 
+    0 20px 40px rgba(51, 103, 145, 0.4),
+    0 0 0 4px rgba(51, 103, 145, 0.1),
+    inset 0 1px 0 rgba(255, 255, 255, 0.3);
 }
 
 .tech-card[data-tech="api"]:hover {
   color: #ff6b35;
   border-color: #ff6b35;
-  box-shadow: 0 10px 30px rgba(255, 107, 53, 0.3);
+  background: linear-gradient(135deg, rgba(255, 107, 53, 0.2), rgba(255, 255, 255, 0.2));
+  box-shadow: 
+    0 20px 40px rgba(255, 107, 53, 0.4),
+    0 0 0 4px rgba(255, 107, 53, 0.1),
+    inset 0 1px 0 rgba(255, 255, 255, 0.3);
 }
 
 .tech-card[data-tech="ai"]:hover {
   color: #9c27b0;
   border-color: #9c27b0;
-  box-shadow: 0 10px 30px rgba(156, 39, 176, 0.3);
+  background: linear-gradient(135deg, rgba(156, 39, 176, 0.2), rgba(233, 30, 99, 0.2));
+  box-shadow: 
+    0 20px 40px rgba(156, 39, 176, 0.4),
+        0 0 0 4px rgba(156, 39, 176, 0.1),
+    inset 0 1px 0 rgba(255, 255, 255, 0.3);
+}
+
+/* Individual Tech Card Default Colors (always visible) */
+.tech-card[data-tech="python"] {
+  color: var(--python-primary);
+  background: linear-gradient(135deg, rgba(55, 118, 171, 0.1), rgba(255, 212, 59, 0.05));
+  border-color: rgba(55, 118, 171, 0.2);
+}
+
+.tech-card[data-tech="django"] {
+  color: var(--django-primary);
+  background: linear-gradient(135deg, rgba(9, 46, 32, 0.1), rgba(67, 160, 71, 0.05));
+  border-color: rgba(9, 46, 32, 0.2);
+}
+
+.tech-card[data-tech="javascript"] {
+  color: var(--javascript-primary);
+  background: linear-gradient(135deg, rgba(247, 223, 30, 0.1), rgba(0, 0, 0, 0.05));
+  border-color: rgba(247, 223, 30, 0.2);
+  text-shadow: 0 1px 2px rgba(0, 0, 0, 0.3);
+}
+
+.tech-card[data-tech="react"] {
+  color: var(--react-primary);
+  background: linear-gradient(135deg, rgba(97, 218, 251, 0.1), rgba(32, 35, 42, 0.05));
+  border-color: rgba(97, 218, 251, 0.2);
+}
+
+.tech-card[data-tech="node"] {
+  color: var(--node-primary);
+  background: linear-gradient(135deg, rgba(51, 153, 51, 0.1), rgba(104, 160, 99, 0.05));
+  border-color: rgba(51, 153, 51, 0.2);
+}
+
+.tech-card[data-tech="docker"] {
+  color: var(--docker-primary);
+  background: linear-gradient(135deg, rgba(36, 150, 237, 0.1), rgba(255, 255, 255, 0.05));
+  border-color: rgba(36, 150, 237, 0.2);
+}
+
+.tech-card[data-tech="aws"] {
+  color: var(--aws-primary);
+  background: linear-gradient(135deg, rgba(255, 153, 0, 0.1), rgba(35, 47, 62, 0.05));
+  border-color: rgba(255, 153, 0, 0.2);
+}
+
+.tech-card[data-tech="git"] {
+  color: var(--git-primary);
+  background: linear-gradient(135deg, rgba(240, 80, 50, 0.1), rgba(255, 255, 255, 0.05));
+  border-color: rgba(240, 80, 50, 0.2);
+}
+
+.tech-card[data-tech="linux"] {
+  color: var(--linux-primary);
+  background: linear-gradient(135deg, rgba(252, 198, 36, 0.1), rgba(0, 0, 0, 0.05));
+  border-color: rgba(252, 198, 36, 0.2);
+  text-shadow: 0 1px 2px rgba(0, 0, 0, 0.3);
+}
+
+.tech-card[data-tech="database"] {
+  color: var(--database-primary);
+  background: linear-gradient(135deg, rgba(51, 103, 145, 0.1), rgba(255, 255, 255, 0.05));
+  border-color: rgba(51, 103, 145, 0.2);
+}
+
+.tech-card[data-tech="api"] {
+  color: var(--api-primary);
+  background: linear-gradient(135deg, rgba(255, 107, 53, 0.1), rgba(255, 255, 255, 0.05));
+  border-color: rgba(255, 107, 53, 0.2);
+}
+
+.tech-card[data-tech="ai"] {
+  color: var(--ai-primary);
+  background: linear-gradient(135deg, rgba(156, 39, 176, 0.1), rgba(233, 30, 99, 0.05));
+  border-color: rgba(156, 39, 176, 0.2);
+}
+
+/* Staggered reveal animation for tech cards */
+@keyframes techCardReveal {
+  0% {
+    opacity: 0;
+    transform: translateY(50px) scale(0.8) rotateY(180deg);
+  }
+  50% {
+    opacity: 0.5;
+    transform: translateY(25px) scale(0.9) rotateY(90deg);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0) scale(1) rotateY(0deg);
+  }
+}
+
+/* Enhanced floating cards hover effect */
+.floating-cards:hover {
+  transform: translateY(-5px);
+  box-shadow: 
+    0 15px 40px rgba(63, 162, 246, 0.15),
+    inset 0 1px 0 rgba(255, 255, 255, 0.2);
+}
+
+/* Magnetic effect for tech cards */
+@media (hover: hover) {
+  .floating-cards {
+    perspective: 1000px;
+  }
+  
+  .tech-card {
+    transform-style: preserve-3d;
+  }
+  
+  .tech-card:hover {
+    transform-origin: center center;
+    transform: translateY(-12px) scale(1.15) rotate3d(1, 1, 0, 15deg);
+  }
+}
+
+/* Loading shimmer effect */
+@keyframes shimmer {
+  0% {
+    background-position: -200px 0;
+  }
+  100% {
+    background-position: calc(200px + 100%) 0;
+  }
+}
+
+.tech-card::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(
+    90deg,
+    transparent,
+    rgba(255, 255, 255, 0.1),
+    transparent
+  );
+  background-size: 200px 100%;
+  animation: shimmer 3s infinite;
+  border-radius: 18px;
+  opacity: 0;
+  transition: opacity 0.3s ease;
+  pointer-events: none;
+  z-index: 3;
+}
+
+.floating-cards:hover .tech-card::after {
+  opacity: 1;
+}
+
+/* Tech card glow effect on interaction */
+.tech-card:active {
+  transform: translateY(-8px) scale(1.05);
+  transition: transform 0.1s ease;
+}
+
+.tech-card:active::before {
+  background: linear-gradient(90deg, 
+    transparent, 
+    rgba(255, 255, 255, 0.8), 
+    transparent);
+}
+
+/* Enhanced tech card tooltips */
+.tech-card[title]:hover::after {
+  content: attr(title);
+  position: absolute;
+  bottom: -45px;
+  left: 50%;
+  transform: translateX(-50%);
+  background: rgba(0, 0, 0, 0.9);
+  color: white;
+  padding: 8px 12px;
+  border-radius: 8px;
+  font-size: 0.85rem;
+  font-weight: 500;
+  white-space: nowrap;
+  z-index: 1000;
+  animation: tooltipFadeIn 0.3s ease;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+}
+
+.tech-card[title]:hover::before {
+  content: '';
+  position: absolute;
+  bottom: -10px;
+  left: 50%;
+  transform: translateX(-50%);
+  border: 6px solid transparent;
+  border-bottom-color: rgba(0, 0, 0, 0.9);
+  z-index: 1001;
+}
+
+@keyframes tooltipFadeIn {
+  0% {
+    opacity: 0;
+    transform: translateX(-50%) translateY(-5px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateX(-50%) translateY(0);
+  }
 }
 
 /* Tech Stack Section */
@@ -536,6 +876,10 @@
 
 /* Responsive Design */
 @media (max-width: 968px) {
+  .hero-section {
+    padding-top: 110px; /* Adjust for responsive header */
+  }
+  
   .hero-container {
     grid-template-columns: 1fr;
     text-align: center;
@@ -565,9 +909,31 @@
   }
 }
 
+@media (max-width: 768px) {
+  .hero-section {
+    padding-top: 90px; /* Adjust for mobile header */
+  }
+  
+  .floating-cards {
+    grid-template-columns: repeat(auto-fit, minmax(60px, 1fr));
+    gap: 1rem;
+    padding: 1.5rem;
+  }
+  
+  .tech-card {
+    width: 60px;
+    height: 60px;
+    font-size: 1.6rem;
+  }
+  
+  .tech-card:hover {
+    transform: translateY(-8px) scale(1.1);
+  }
+}
+
 @media (max-width: 600px) {
   .hero-section {
-    padding-top: 120px;
+    padding-top: 95px; /* Fine-tune for smaller mobile screens */
   }
   
   .cta-group {
@@ -611,4 +977,99 @@
   .typing-cursor {
     font-size: clamp(1.1rem, 4vw, 1.5rem);
   }
+}
+
+@media (max-width: 480px) {
+  .hero-section {
+    padding-top: 85px; /* Further adjust for very small screens */
+  }
+  
+  .floating-cards {
+    grid-template-columns: repeat(auto-fit, minmax(50px, 1fr));
+    gap: 0.8rem;
+    padding: 1rem;
+  }
+  
+  .tech-card {
+    width: 50px;
+    height: 50px;
+    font-size: 1.4rem;
+  }
+}
+
+/* Dark mode compatibility */
+@media (prefers-color-scheme: dark) {
+  .tech-card {
+    background: rgba(255, 255, 255, 0.05);
+    border-color: rgba(255, 255, 255, 0.1);
+  }
+  
+  .floating-cards {
+    background: rgba(0, 0, 0, 0.2);
+    border-color: rgba(255, 255, 255, 0.05);
+  }
+}
+
+/* Reduced motion accessibility */
+@media (prefers-reduced-motion: reduce) {
+  .tech-card,
+  .floating-cards,
+  .tech-card::before,
+  .tech-card::after {
+    animation: none !important;
+    transition: none !important;
+  }
+  
+  .tech-card:hover {
+    transform: scale(1.05);
+  }
+}
+
+/* Additional animations for enhanced interactions */
+@keyframes fadeInUp {
+  0% {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes fadeOutUp {
+  0% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+  100% {
+    opacity: 0;
+    transform: translateY(-20px);
+  }
+}
+
+/* Tech card focus states for accessibility */
+.tech-card:focus {
+  outline: none;
+  box-shadow: 
+    0 0 0 3px rgba(63, 162, 246, 0.5),
+    0 8px 25px rgba(0, 0, 0, 0.15);
+  transform: translateY(-5px) scale(1.05);
+}
+
+.tech-card:focus-visible {
+  outline: 2px solid var(--primary-color);
+  outline-offset: 2px;
+}
+
+/* Performance optimizations */
+.tech-card {
+  will-change: transform, box-shadow, filter;
+  backface-visibility: hidden;
+  perspective: 1000px;
+}
+
+.floating-cards {
+  will-change: transform;
+  contain: layout style paint;
 }
