@@ -400,8 +400,8 @@ msgid "Automation"
 msgstr "Avtomatlashtirish"
 
 #: templates/sections/experience.html:48
-msgid "2021 - Present"
-msgstr "2021 - Hozir"
+msgid "2022 - Oct 2024"
+msgstr "2022 - Oktabr 2024"
 
 #: templates/sections/experience.html:51 templates/sections/home.html:20
 msgid "Backend Developer & AI Engineer"
