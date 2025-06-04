@@ -284,23 +284,27 @@ document.addEventListener('DOMContentLoaded', function() {
     const formMessages = document.getElementById('form-messages');
     let recaptchaToken = null;
 
+    // Initialize reCAPTCHA v2
+    window.onRecaptchaCallback = function(token) {
+        recaptchaToken = token;
+    };
+
+    window.onRecaptchaExpired = function() {
+        recaptchaToken = null;
+    };
+
     // Initialize reCAPTCHA
     if (typeof grecaptcha !== 'undefined' && grecaptcha.ready) {
         grecaptcha.ready(function() {
             if (document.getElementById('recaptcha-container')) {
                 grecaptcha.render('recaptcha-container', {
-                    'sitekey': '***REMOVED***', // Replace with your site key
-                    'callback': function(token) {
-                        recaptchaToken = token;
-                    },
-                    'expired-callback': function() {
-                        recaptchaToken = null;
-                    }
+                    'sitekey': '***REMOVED***',
+                    'callback': 'onRecaptchaCallback',
+                    'expired-callback': 'onRecaptchaExpired'
                 });
             }
         });
     }
-
 
     if (contactForm) {
         contactForm.addEventListener('submit', async function(e) {
@@ -310,7 +314,7 @@ document.addEventListener('DOMContentLoaded', function() {
             const originalText = submitBtn.innerHTML;
             
             // Validate reCAPTCHA
-            if (!recaptchaToken && typeof grecaptcha !== 'undefined') { // Check if grecaptcha is defined
+            if (!recaptchaToken) {
                 showMessage('Please complete the reCAPTCHA verification.', 'error');
                 return;
             }
@@ -328,7 +332,7 @@ document.addEventListener('DOMContentLoaded', function() {
             };
             
             try {
-                const response = await fetch('/contact/', { // Ensure this URL is correct
+                const response = await fetch('/contact/', {
                     method: 'POST',
                     headers: {
                         'Content-Type': 'application/json',
@@ -342,7 +346,7 @@ document.addEventListener('DOMContentLoaded', function() {
                 if (result.success) {
                     showMessage(result.message, 'success');
                     contactForm.reset();
-                    if (typeof grecaptcha !== 'undefined' && grecaptcha.reset) { // Check if grecaptcha.reset is defined
+                    if (typeof grecaptcha !== 'undefined' && grecaptcha.reset) {
                         grecaptcha.reset();
                     }
                     recaptchaToken = null;
@@ -371,6 +375,16 @@ document.addEventListener('DOMContentLoaded', function() {
         }, 5000);
     }
 
+    // Phone number click handling (ensure tel: links work properly)
+    const phoneLinks = document.querySelectorAll('a[href^="tel:"]');
+    phoneLinks.forEach(link => {
+        link.addEventListener('click', function(e) {
+            // Allow default behavior for tel: links
+            // This will open the phone dialer on mobile devices
+            console.log('Phone link clicked:', this.getAttribute('href'));
+        });
+    });
+
     // Play background music on user interaction
     const backgroundMusic = document.getElementById('background-music');
     if (backgroundMusic) {
@@ -389,70 +403,4 @@ document.addEventListener('DOMContentLoaded', function() {
 
 });
 
-// Add enhanced CSS animations directly in JS for organization, or keep in CSS file
-const enhancedStyles = document.createElement('style');
-enhancedStyles.textContent = `
-    .animate-in {
-        animation: slideInUpStagger 0.8s cubic-bezier(0.4, 0, 0.2, 1) forwards;
-    }
-    
-    @keyframes slideInUpStagger { /* Renamed for clarity */
-        from {
-            opacity: 0;
-            transform: translateY(40px) scale(0.95);
-        }
-        to {
-            opacity: 1;
-            transform: translateY(0) scale(1);
-        }
-    }
-    
-    .section-visible {
-        animation: sectionRevealFadeIn 1.2s ease-out forwards; /* Smoother animation */
-    }
-    
-    @keyframes sectionRevealFadeIn { /* Renamed for clarity */
-        from {
-            opacity: 0; /* Start from fully transparent */
-            transform: translateY(30px); /* Slightly more pronounced effect */
-        }
-        to {
-            opacity: 1;
-            transform: translateY(0);
-        }
-    }
-    
-    .mobile-menu-toggle.active span:nth-child(1) {
-        transform: rotate(45deg) translate(5px, 5px);
-    }
-    
-    .mobile-menu-toggle.active span:nth-child(2) {
-        opacity: 0;
-        transform: scale(0);
-    }
-    
-    .mobile-menu-toggle.active span:nth-child(3) {
-        transform: rotate(-45deg) translate(7px, -6px); /* Adjusted for better alignment */
-    }
-    
-    /* Styles for background particles moved to styles.css for better organization */
-    
-    .tech-card {
-        transition: all 0.4s cubic-bezier(0.25, 0.8, 0.25, 1); /* Smoother transition */
-        box-shadow: 0 8px 15px rgba(63, 162, 246, 0.1); /* Default subtle shadow */
-    }
-    
-    .skill-tag, .project-card, .social-icon, .nav-item, .cta-primary, .cta-secondary, .btn-outline {
-        transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1); /* Consistent transitions */
-    }
-    
-    @media (prefers-reduced-motion: reduce) {
-        *, *::before, *::after {
-            animation-duration: 0.01ms !important;
-            animation-iteration-count: 1 !important;
-            transition-duration: 0.01ms !important;
-            animation-delay: 0ms !important; /* Ensure delay is also reduced */
-        }
-    }
-`;
-document.head.appendChild(enhancedStyles);
+// Remove the entire enhancedStyles block from here
