@@ -49,10 +49,6 @@
   color: var(--text-primary);
 }
 
-#header .logo-v2 {
-  color: var(--primary-color);
-}
-
 /* Navigation Styles - Header Specific */
 #header .nav-desktop {
   display: flex;
@@ -166,7 +162,6 @@
 /* Language Switcher Styles - Header Specific */
 #header .language-switcher {
   position: relative;
-  margin-left: 1rem;
 }
 
 #header .language-dropdown {
@@ -340,6 +335,29 @@
   opacity: 0.8;
 }
 
+/* Mobile Language Switcher */
+.nav-mobile .mobile-lang {
+  margin-top: 1rem;
+  padding-top: 1rem;
+  border-top: 1px solid rgba(63, 162, 246, 0.2);
+}
+
+.nav-mobile .mobile-lang .language-btn {
+  background: rgba(63, 162, 246, 0.15);
+  border-color: rgba(63, 162, 246, 0.3);
+  color: var(--text-primary);
+}
+
+.nav-mobile .mobile-lang .language-options {
+  position: relative;
+  top: 8px;
+  right: auto;
+  left: 0;
+  width: 100%;
+  min-width: auto;
+  margin-top: 8px;
+}
+
 /* Responsive Design - Header Only */
 @media (max-width: 768px) {
   #header .nav-desktop {
@@ -363,57 +381,32 @@
   #header .logo {
     font-size: 1.3rem;
   }
-  
-  #header .language-switcher {
-    margin-left: 0;
-    margin-right: 1rem;
-  }
-  
-  #header .language-btn {
-    padding: 8px 12px;
-    min-width: 70px;
-    font-size: 0.85rem;
-  }
-  
-  #header .language-options {
-    right: 0;
-    min-width: 160px;
-  }
-  
-  #header .language-option {
-    padding: 10px 14px;
-    font-size: 0.85rem;
-  }
 }
 
 @media (max-width: 480px) {
-  #header .language-btn {
-    padding: 6px 10px;
-    min-width: 60px;
+  .nav-mobile .mobile-lang .language-btn {
+    padding: 8px 12px;
+    min-width: 70px;
     gap: 6px;
   }
   
-  #header .language-btn .fas.fa-globe {
+  .nav-mobile .mobile-lang .language-btn .fas.fa-globe {
     font-size: 0.9rem;
   }
   
-  #header .current-lang {
+  .nav-mobile .mobile-lang .current-lang {
     font-size: 0.8rem;
   }
   
-  #header .dropdown-arrow {
+  .nav-mobile .mobile-lang .dropdown-arrow {
     font-size: 0.7rem;
   }
   
-  #header .language-options {
-    min-width: 140px;
-  }
-  
-  #header .lang-name {
+  .nav-mobile .mobile-lang .lang-name {
     display: none;
   }
   
-  #header .language-option {
+  .nav-mobile .mobile-lang .language-option {
     justify-content: center;
     padding: 8px 12px;
   }
