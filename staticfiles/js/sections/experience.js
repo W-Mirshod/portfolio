@@ -3,29 +3,61 @@
 
 document.addEventListener('DOMContentLoaded', function() {
     
-    // Experience items intersection observer
-    const experienceObserver = new IntersectionObserver((entries) => {
-        entries.forEach(entry => {
-            if (entry.isIntersecting) {
-                entry.target.style.opacity = '1';
-                entry.target.style.transform = 'translateY(0)';
-                
-                // Add stagger animation for experience items
-                if (entry.target.classList.contains('experience-item')) {
-                    const siblings = Array.from(entry.target.parentNode.children);
-                    const index = siblings.indexOf(entry.target);
-                    const delay = index * 200;
-                    entry.target.style.animationDelay = `${delay}ms`;
-                    entry.target.classList.add('animate-in');
+    // Enhanced responsive timeline handling
+    const updateTimelineLayout = () => {
+        const timelineLine = document.querySelector('.experience-timeline::before');
+        const experienceItems = document.querySelectorAll('.experience-item');
+        const isMobile = window.innerWidth <= 768;
+        
+        experienceItems.forEach((item, index) => {
+            if (isMobile) {
+                // Mobile layout - all items align left
+                item.style.flexDirection = 'row';
+                item.style.justifyContent = 'flex-start';
+            } else {
+                // Desktop layout - alternating sides
+                if (index % 2 === 0) {
+                    item.style.flexDirection = 'row';
+                } else {
+                    item.style.flexDirection = 'row-reverse';
                 }
             }
         });
+    };
+
+    // Call on load and resize
+    updateTimelineLayout();
+    window.addEventListener('resize', updateTimelineLayout);
+
+    // Enhanced intersection observer with better timing
+    const experienceObserver = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                const item = entry.target;
+                const siblings = Array.from(item.parentNode.children);
+                const index = siblings.indexOf(item);
+                
+                setTimeout(() => {
+                    item.style.opacity = '1';
+                    item.style.transform = 'translateY(0)';
+                    item.classList.add('animate-in');
+                    
+                    // Animate timeline dot
+                    const timelineDot = item.querySelector('.timeline-dot');
+                    if (timelineDot) {
+                        timelineDot.style.animation = 'pulse 1s ease-in-out';
+                    }
+                }, index * 200);
+                
+                experienceObserver.unobserve(item);
+            }
+        });
     }, {
-        threshold: 0.1,
-        rootMargin: '0px 0px -50px 0px'
+        threshold: window.innerWidth <= 768 ? 0.1 : 0.2,
+        rootMargin: '0px 0px -30px 0px'
     });
 
-    // Observe experience elements
+    // Observe experience elements with enhanced setup
     const experienceElements = document.querySelectorAll('.experience-item');
     experienceElements.forEach(el => {
         el.style.opacity = '0';
@@ -34,22 +66,21 @@ document.addEventListener('DOMContentLoaded', function() {
         experienceObserver.observe(el);
     });
 
-    // Enhanced hover effects for experience items
+    // Enhanced hover effects with responsive considerations
     experienceElements.forEach(item => {
         item.addEventListener('mouseenter', () => {
-            item.style.transform = 'translateY(-5px) scale(1.02)';
-            item.style.boxShadow = '0 15px 30px rgba(0, 0, 0, 0.1)';
-            
-            // Animate experience icon if exists
-            const experienceIcon = item.querySelector('.experience-icon');
-            if (experienceIcon) {
-                experienceIcon.style.transform = 'scale(1.2) rotate(10deg)';
+            if (window.innerWidth > 768) {
+                item.style.transform = 'translateY(-8px) scale(1.02)';
+            } else {
+                item.style.transform = 'translateY(-3px) scale(1.01)';
             }
-
-            // Highlight timeline dot
+            item.style.boxShadow = '0 15px 30px rgba(0, 0, 0, 0.15)';
+            
+            // Enhanced timeline dot animation
             const timelineDot = item.querySelector('.timeline-dot');
             if (timelineDot) {
-                timelineDot.style.transform = 'scale(1.3)';
+                timelineDot.style.transform = window.innerWidth > 768 ? 
+                    'translateX(-50%) scale(1.4)' : 'translateX(-50%) scale(1.2)';
                 timelineDot.style.boxShadow = '0 0 20px rgba(63, 162, 246, 0.6)';
             }
         });
@@ -58,16 +89,9 @@ document.addEventListener('DOMContentLoaded', function() {
             item.style.transform = 'translateY(0) scale(1)';
             item.style.boxShadow = '0 5px 15px rgba(0, 0, 0, 0.05)';
             
-            // Reset experience icon
-            const experienceIcon = item.querySelector('.experience-icon');
-            if (experienceIcon) {
-                experienceIcon.style.transform = 'scale(1) rotate(0deg)';
-            }
-
-            // Reset timeline dot
             const timelineDot = item.querySelector('.timeline-dot');
             if (timelineDot) {
-                timelineDot.style.transform = 'scale(1)';
+                timelineDot.style.transform = 'translateX(-50%) scale(1)';
                 timelineDot.style.boxShadow = '0 0 0 rgba(63, 162, 246, 0)';
             }
         });
