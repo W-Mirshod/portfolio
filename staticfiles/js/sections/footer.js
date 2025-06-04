@@ -96,7 +96,7 @@ document.addEventListener('DOMContentLoaded', function() {
     });
 
     // Back to top button functionality
-    const backToTopBtn = document.querySelector('.back-to-top');
+    const backToTopBtn = document.querySelector('.back-to-top-btn');
     if (backToTopBtn) {
         // Show/hide based on scroll position
         window.addEventListener('scroll', () => {
@@ -126,8 +126,90 @@ document.addEventListener('DOMContentLoaded', function() {
         });
     }
 
+    // Enhanced social platform links
+    const platformLinks = document.querySelectorAll('.platform-link');
+    platformLinks.forEach(link => {
+        link.addEventListener('mouseenter', () => {
+            const platform = link.getAttribute('data-platform');
+            const icon = link.querySelector('.platform-icon');
+            
+            // Platform-specific hover effects
+            switch(platform) {
+                case 'github':
+                    link.style.borderColor = '#ffffff';
+                    break;
+                case 'linkedin':
+                    link.style.borderColor = '#0077b5';
+                    break;
+                case 'telegram':
+                    link.style.borderColor = '#1da1f2';
+                    break;
+                case 'instagram':
+                    link.style.borderColor = '#e1306c';
+                    break;
+            }
+        });
+
+        link.addEventListener('mouseleave', () => {
+            link.style.borderColor = 'rgba(63, 162, 246, 0.1)';
+        });
+
+        // Click tracking
+        link.addEventListener('click', () => {
+            const platform = link.getAttribute('data-platform');
+            console.log(`${platform} link clicked`);
+        });
+    });
+
+    // Enhanced contact item interactions
+    const contactItems = document.querySelectorAll('.contact-item');
+    contactItems.forEach(item => {
+        item.addEventListener('click', function(e) {
+            // Add click animation
+            this.style.transform = 'translateX(8px) scale(0.98)';
+            setTimeout(() => {
+                this.style.transform = 'translateX(5px) scale(1)';
+            }, 150);
+        });
+    });
+
+    // Footer quick links smooth scrolling
+    const footerLinks = document.querySelectorAll('.footer-link');
+    footerLinks.forEach(link => {
+        link.addEventListener('click', (e) => {
+            if (link.getAttribute('href').startsWith('#')) {
+                e.preventDefault();
+                const targetId = link.getAttribute('href').substring(1);
+                const targetElement = document.getElementById(targetId);
+                
+                if (targetElement) {
+                    const header = document.getElementById('header');
+                    const headerHeight = header ? header.offsetHeight : 0;
+                    const targetPosition = targetElement.offsetTop - headerHeight;
+                    
+                    window.scrollTo({
+                        top: targetPosition,
+                        behavior: 'smooth'
+                    });
+                }
+            }
+        });
+    });
+
+    // Specialization items interaction
+    const specializationItems = document.querySelectorAll('.specialization-item');
+    specializationItems.forEach(item => {
+        item.addEventListener('click', () => {
+            // Add pulse animation
+            item.style.animation = 'pulse 0.6s ease-in-out';
+            setTimeout(() => {
+                item.style.animation = '';
+            }, 600);
+        });
+    });
+
     // Footer reveal animation
-    const footer = document.querySelector('footer');
+    const footer = document.querySelector('.footer-section');
     if (footer) {
         const footerObserver = new IntersectionObserver((entries) => {
             entries.forEach(entry => {
@@ -142,30 +224,41 @@ document.addEventListener('DOMContentLoaded', function() {
     }
 
     // Footer elements stagger animation
-    const footerElements = document.querySelectorAll('.footer-section');
-    footerElements.forEach((element, index) => {
-        const elementObserver = new IntersectionObserver((entries) => {
+    const footerColumns = document.querySelectorAll('.footer-column');
+    footerColumns.forEach((column, index) => {
+        const columnObserver = new IntersectionObserver((entries) => {
             entries.forEach(entry => {
                 if (entry.isIntersecting) {
                     setTimeout(() => {
                         entry.target.style.opacity = '1';
                         entry.target.style.transform = 'translateY(0)';
                     }, index * 200);
-                    elementObserver.unobserve(entry.target);
+                    columnObserver.unobserve(entry.target);
                 }
             });
         }, { threshold: 0.2 });
 
-        element.style.opacity = '0';
-        element.style.transform = 'translateY(30px)';
-        element.style.transition = 'all 0.6s cubic-bezier(0.4, 0, 0.2, 1)';
-        elementObserver.observe(element);
+        column.style.opacity = '0';
+        column.style.transform = 'translateY(30px)';
+        column.style.transition = 'all 0.6s cubic-bezier(0.4, 0, 0.2, 1)';
+        columnObserver.observe(column);
     });
 
     // Copyright year update
     const copyrightYear = document.querySelector('.copyright-year');
     if (copyrightYear) {
         copyrightYear.textContent = new Date().getFullYear();
+    }
+
+    // Status indicator animation
+    const statusDot = document.querySelector('.status-dot');
+    if (statusDot) {
+        setInterval(() => {
+            statusDot.style.boxShadow = '0 0 10px #4ade80';
+            setTimeout(() => {
+                statusDot.style.boxShadow = 'none';
+            }, 500);
+        }, 3000);
     }
 
     // Email link click tracking

@@ -1,63 +1,154 @@
 {% load static %}
-<!-- Footer -->
-<footer class="footer">
+
+<footer class="footer-section">
   <div class="container">
     <div class="footer-content">
-      <div class="footer-info">
-        <div class="footer-logo">
-          <img src="{% static 'Mirshod.png' %}" alt="W-Mirshod" width="40" height="40">
-          <span>Mirshod Qayimov</span>
-        </div>
-        <p>Backend Developer & AI Engineer passionate about building innovative solutions.</p>
-      </div>
       
-      <div class="footer-links">
-        <div class="footer-section">
-          <h4>Quick Links</h4>
-          <ul>
-            <li><a href="#about">About</a></li>
-            <li><a href="#skills">Skills</a></li>
-            <li><a href="#projects">Projects</a></li>
-            <li><a href="#contact">Contact</a></li>
-          </ul>
+      <!-- Quick Links Section -->
+      <div class="footer-column">
+        <h3 class="footer-title">Quick Links</h3>
+        <ul class="footer-links">
+          <li><a href="#home" class="footer-link">Home</a></li>
+          <li><a href="#about" class="footer-link">About</a></li>
+          <li><a href="#experience" class="footer-link">Experience</a></li>
+          <li><a href="#skills" class="footer-link">Skills</a></li>
+          <li><a href="#achievements" class="footer-link">Achievements</a></li>
+          <li><a href="#projects" class="footer-link">Projects</a></li>
+          <li><a href="#contact" class="footer-link">Contact</a></li>
+        </ul>
+      </div>
+
+      <!-- Major Specializations Section -->
+      <div class="footer-column">
+        <h3 class="footer-title">Major Specializations</h3>
+        <div class="specialization-grid">
+          <div class="specialization-item">
+            <i class="fas fa-server"></i>
+            <span>Backend Development</span>
+          </div>
+          <div class="specialization-item">
+            <i class="fas fa-laptop-code"></i>
+            <span>Frontend Development</span>
+          </div>
+          <div class="specialization-item">
+            <i class="fas fa-cloud"></i>
+            <span>DevOps Engineering</span>
+          </div>
+          <div class="specialization-item">
+            <i class="fas fa-brain"></i>
+            <span>AI Engineering</span>
+          </div>
+          <div class="specialization-item">
+            <i class="fas fa-database"></i>
+            <span>Database Design</span>
+          </div>
+          <div class="specialization-item">
+            <i class="fas fa-cogs"></i>
+            <span>API Development</span>
+          </div>
         </div>
-        
-        <div class="footer-section">
-          <h4>Technologies</h4>
-          <ul>
-            <li>Python & Django</li>
-            <li>AWS & Docker</li>
-            <li>PostgreSQL & Redis</li>
-            <li>AI & Machine Learning</li>
-          </ul>
-        </div>
-        
-        <div class="footer-section">
-          <h4>Connect</h4>
-          <div class="footer-social">
-            <a href="https://github.com/W-Mirshod" target="_blank" aria-label="GitHub">
-              <i class="fab fa-github"></i>
+      </div>
+
+      <!-- Connect Section -->
+      <div class="footer-column">
+        <h3 class="footer-title">Connect With Me</h3>
+        <div class="connect-section">
+          
+          <!-- Social Platforms -->
+          <div class="social-platforms">
+            <a href="https://github.com/W-Mirshod" target="_blank" class="platform-link" data-platform="github">
+              <div class="platform-icon">
+                <i class="fab fa-github"></i>
+              </div>
+              <div class="platform-info">
+                <span class="platform-name">GitHub</span>
+                <span class="platform-handle">@W-Mirshod</span>
+              </div>
             </a>
-            <a href="https://www.linkedin.com/in/w-mirshod" target="_blank" aria-label="LinkedIn">
-              <i class="fab fa-linkedin"></i>
+
+            <a href="https://bit.ly/WLinkedIn" target="_blank" class="platform-link" data-platform="linkedin">
+              <div class="platform-icon">
+                <i class="fab fa-linkedin-in"></i>
+              </div>
+              <div class="platform-info">
+                <span class="platform-name">LinkedIn</span>
+                <span class="platform-handle">Mirshod Qayimov</span>
+              </div>
             </a>
-            <a href="https://t.me/maverick3526" target="_blank" aria-label="Telegram">
-              <i class="fab fa-telegram"></i>
+
+            <a href="https://t.me/W_Mirshod" target="_blank" class="platform-link" data-platform="telegram">
+              <div class="platform-icon">
+                <i class="fab fa-telegram-plane"></i>
+              </div>
+              <div class="platform-info">
+                <span class="platform-name">Telegram</span>
+                <span class="platform-handle">@W_Mirshod</span>
+              </div>
             </a>
-            <a href="mailto:trading3526@gmail.com" aria-label="Email">
-              <i class="fas fa-envelope"></i>
-            </a>
-            <a href="tel:+998907126437" aria-label="Phone">
-              <i class="fas fa-phone"></i>
+
+            <a href="https://www.instagram.com/wmirshod" target="_blank" class="platform-link" data-platform="instagram">
+              <div class="platform-icon">
+                <i class="fab fa-instagram"></i>
+              </div>
+              <div class="platform-info">
+                <span class="platform-name">Instagram</span>
+                <span class="platform-handle">@wmirshod</span>
+              </div>
             </a>
           </div>
+
+          <!-- Contact Information -->
+          <div class="contact-info">
+            <a href="mailto:qayimovmirshod@gmail.com" class="contact-item">
+              <i class="fas fa-envelope"></i>
+              <div class="contact-details">
+                <span class="contact-label">Email</span>
+                <span class="contact-value">qayimovmirshod@gmail.com</span>
+              </div>
+            </a>
+
+            <a href="tel:+998901234567" class="contact-item">
+              <i class="fas fa-phone"></i>
+              <div class="contact-details">
+                <span class="contact-label">Phone</span>
+                <span class="contact-value">+998 (90) 123-45-67</span>
+              </div>
+            </a>
+
+            <div class="contact-item">
+              <i class="fas fa-map-marker-alt"></i>
+              <div class="contact-details">
+                <span class="contact-label">Location</span>
+                <span class="contact-value">Uzbekistan</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+    </div>
+
+    <!-- Footer Bottom -->
+    <div class="footer-bottom">
+      <div class="footer-bottom-content">
+        <div class="copyright">
+          <p>&copy; <span class="copyright-year">2024</span> Mirshod Qayimov. All rights reserved.</p>
+        </div>
+        
+        <div class="footer-status">
+          <div class="status-indicator">
+            <div class="status-dot"></div>
+            <span>Available for new opportunities</span>
+          </div>
+        </div>
+
+        <div class="back-to-top">
+          <button class="back-to-top-btn" aria-label="Back to top">
+            <i class="fas fa-chevron-up"></i>
+          </button>
         </div>
       </div>
     </div>
     
-    <div class="footer-bottom">
-      <p>&copy; 2023-2025 Mirshod Qayimov (W-Mirshod). All rights reserved.</p>
-      <p>Built with Django, passion, and lots of coffee ☕</p>
-    </div>
   </div>
 </footer>
