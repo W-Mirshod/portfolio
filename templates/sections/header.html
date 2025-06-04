@@ -5,7 +5,7 @@
   <div class="logo-section">
     <a class="logo" href="#home">
       <img src="{% static 'Mirshod.png' %}" alt="W" width="50" height="50">
-      <span class="logo-text">W<span class="logo-v2">-Mirshod</span></span>
+      <span class="logo-text"></span>
     </a>
   </div>
   
@@ -21,28 +21,27 @@
     <a class="nav-item" href="https://github.com/W-Mirshod" target="_blank">GitHub</a>
   </nav>
 
-  <!-- Professional Language Switcher -->
-  <div class="language-switcher">
-    <div class="language-dropdown">
-      <button class="language-btn" id="languageBtn" aria-haspopup="true" aria-expanded="false" aria-controls="languageOptions">
-        <i class="fas fa-globe"></i>
+  <!-- Compact Language Switcher - Desktop -->
+  <div class="header-actions">
+    <div class="language-switcher compact-switcher">
+      <button class="language-btn compact-btn" id="languageBtn" aria-haspopup="true" aria-expanded="false">
         <span class="current-lang">
           {% get_current_language as CURRENT_LANGUAGE %}
           {% if CURRENT_LANGUAGE == 'en' %}EN
-          {% elif CURRENT_LANGUAGE == 'uz' %}UZ
+          {% elif CURRENT_LANGUAGE == 'uz' %}UZ  
           {% elif CURRENT_LANGUAGE == 'ru' %}RU
           {% else %}{{ CURRENT_LANGUAGE|upper }}{% endif %}
         </span>
-        <i class="fas fa-chevron-down dropdown-arrow"></i>
+        <i class="fas fa-chevron-down compact-arrow"></i>
       </button>
-      <div class="language-options" id="languageOptions" role="menu">
+      <div class="language-options compact-options" id="languageOptions">
         {% get_available_languages as LANGUAGES %}
         {% for language_code, language_name in LANGUAGES %}
-          <form method="post" action="{% url 'set_language' %}" class="language-form" role="presentation">
+          <form method="post" action="{% url 'set_language' %}" class="language-form">
             {% csrf_token %}
             <input name="next" type="hidden" value="{{ request.get_full_path|slice:'3:' }}" />
             <input name="language" type="hidden" value="{{ language_code }}" />
-            <button type="submit" class="language-option {% if language_code == CURRENT_LANGUAGE %}active-lang{% endif %}" role="menuitem">
+            <button type="submit" class="language-option compact-option {% if language_code == CURRENT_LANGUAGE %}active{% endif %}">
               <span class="lang-code">
                 {% if language_code == 'en' %}EN
                 {% elif language_code == 'uz' %}UZ
@@ -55,7 +54,6 @@
                 {% elif language_code == 'ru' %}Русский
                 {% else %}{{ language_name }}{% endif %}
               </span>
-              {% if language_code == CURRENT_LANGUAGE %}<i class="fas fa-check lang-check"></i>{% endif %}
             </button>
           </form>
         {% endfor %}

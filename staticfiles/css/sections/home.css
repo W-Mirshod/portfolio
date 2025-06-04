@@ -32,8 +32,8 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  padding-top: 100px; /* Account for fixed header */
-  min-height: calc(100vh - 100px); /* Subtract header height */
+  padding-top: 80px; /* Reduced from 100px */
+  min-height: calc(100vh - 80px); /* Adjusted accordingly */
 }
 
 .hero-section .container {
@@ -884,8 +884,8 @@
   }
   
   .hero-section {
-    padding-top: 120px; /* More space for mobile header */
-    min-height: calc(100vh - 120px);
+    padding-top: 90px; /* Reduced from 120px */
+    min-height: calc(100vh - 90px);
   }
   
   .hero-visual {
@@ -913,8 +913,8 @@
 
 @media (max-width: 768px) {
   .hero-section {
-    padding-top: 100px;
-    min-height: calc(100vh - 100px);
+    padding-top: 80px; /* Reduced from 100px */
+    min-height: calc(100vh - 80px);
   }
   
   .floating-cards {
@@ -946,8 +946,8 @@
 
 @media (max-width: 600px) {
   .hero-section {
-    padding-top: 90px;
-    min-height: calc(100vh - 90px);
+    padding-top: 70px; /* Reduced from 90px */
+    min-height: calc(100vh - 70px);
   }
   
   .cta-group {
