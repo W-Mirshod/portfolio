@@ -46,7 +46,7 @@ document.addEventListener('DOMContentLoaded', function() {
         });
     }
 
-    // Smooth scroll for anchor links
+    // Smooth scroll for anchor links with gentle push effect
     const anchorLinks = document.querySelectorAll('a[href^="#"]');
     anchorLinks.forEach(link => {
         link.addEventListener('click', (e) => {
@@ -58,19 +58,100 @@ document.addEventListener('DOMContentLoaded', function() {
                 const headerHeight = header.offsetHeight;
                 const targetPosition = targetElement.offsetTop - headerHeight;
                 
-                window.scrollTo({
-                    top: targetPosition,
-                    behavior: 'smooth'
-                });
+                // Gentle scroll with easing
+                const startPosition = window.pageYOffset;
+                const distance = targetPosition - startPosition;
+                const duration = Math.min(800, Math.abs(distance) * 0.5); // Shorter duration
+                let startTime = null;
+
+                function scrollAnimation(currentTime) {
+                    if (startTime === null) startTime = currentTime;
+                    const timeElapsed = currentTime - startTime;
+                    const progress = Math.min(timeElapsed / duration, 1);
+                    
+                    // Ease-out function for smoother deceleration
+                    const easeOut = 1 - Math.pow(1 - progress, 3);
+                    
+                    window.scrollTo(0, startPosition + (distance * easeOut));
+                    
+                    if (progress < 1) {
+                        requestAnimationFrame(scrollAnimation);
+                    }
+                }
+                
+                requestAnimationFrame(scrollAnimation);
             }
         });
     });
 
-    // Active navigation highlighting
+    // Active navigation highlighting with gentle section assistance
     const sections = document.querySelectorAll('.section[id]');
     const navItems = document.querySelectorAll('.nav-item[href^="#"]');
+    let isScrolling = false;
+    let scrollTimeout;
+    
+    // Section boundary assistance
+    let scrollDirection = 0;
+    let scrollVelocity = 0;
+    let previousScrollY = 0;
+    let previousScrollTime = Date.now();
+    
+    function handleSectionAssistance() {
+        const currentTime = Date.now();
+        const currentScrollY = window.scrollY;
+        const timeDelta = currentTime - previousScrollTime;
+        
+        if (timeDelta > 0) {
+            scrollVelocity = (currentScrollY - previousScrollY) / timeDelta;
+            previousScrollY = currentScrollY;
+            previousScrollTime = currentTime;
+        }
+        
+        // Only assist if scroll velocity is very low (user is naturally stopping)
+        if (Math.abs(scrollVelocity) < 0.3 && Math.abs(scrollVelocity) > 0.05) {
+            sections.forEach(section => {
+                const rect = section.getBoundingClientRect();
+                const headerHeight = header.offsetHeight;
+                const sectionTop = rect.top + window.scrollY - headerHeight;
+                const currentPos = window.scrollY;
+                
+                // Check if we're near a section start (within 30px)
+                const distanceToTop = Math.abs(currentPos - sectionTop);
+                
+                if (distanceToTop < 30 && distanceToTop > 5) {
+                    // Very gentle nudge to section start
+                    const startPosition = window.pageYOffset;
+                    const distance = sectionTop - startPosition;
+                    const duration = 300; // Short, gentle animation
+                    let startTime = null;
+
+                    function nudgeAnimation(currentTime) {
+                        if (startTime === null) startTime = currentTime;
+                        const timeElapsed = currentTime - startTime;
+                        const progress = Math.min(timeElapsed / duration, 1);
+                        
+                        // Very gentle easing
+                        const easeOut = 1 - Math.pow(1 - progress, 2);
+                        
+                        window.scrollTo(0, startPosition + (distance * easeOut));
+                        
+                        if (progress < 1) {
+                            requestAnimationFrame(nudgeAnimation);
+                        }
+                    }
+                    
+                    requestAnimationFrame(nudgeAnimation);
+                }
+            });
+        }
+    }
 
     window.addEventListener('scroll', () => {
+        // Clear existing timeout
+        clearTimeout(scrollTimeout);
+        isScrolling = true;
+        
+        // Update active nav items
         let current = '';
         sections.forEach(section => {
             const sectionTop = section.offsetTop - header.offsetHeight - 100;
@@ -85,10 +166,15 @@ document.addEventListener('DOMContentLoaded', function() {
                 item.classList.add('active');
             }
         });
+        
+        // Set timeout to detect when scrolling has stopped
+        scrollTimeout = setTimeout(() => {
+            isScrolling = false;
+            handleSectionAssistance();
+        }, 150); // Wait 150ms after scrolling stops
     });
 
     // Header background blur effect on scroll
-    let lastScrollY = 0;
     window.addEventListener('scroll', () => {
         const currentScrollY = window.scrollY;
         
@@ -100,8 +186,6 @@ document.addEventListener('DOMContentLoaded', function() {
             header.style.backdropFilter = 'blur(20px)';
             header.style.background = 'rgba(10, 11, 15, 0.9)';
         }
-        
-        lastScrollY = currentScrollY;
     });
 
 });
