@@ -6,6 +6,7 @@ from django.conf import settings
 from django.core.mail import EmailMultiAlternatives
 from django.http import JsonResponse
 from django.shortcuts import render
+from django.utils import timezone
 from user_agents import parse
 
 from portfolio.models import RequestsLog
@@ -64,13 +65,11 @@ def send_sms(entered_request, in_url):
     if x_forwarded_for:
         ip_address = x_forwarded_for.split(',')[0]
     else:
-        ip_address = entered_request.META.get('REMOTE_ADDR')
-
-    # Get user agent string and parse it
+        ip_address = entered_request.META.get('REMOTE_ADDR')    # Get user agent string and parse it
     user_agent_string = entered_request.META.get('HTTP_USER_AGENT', '')
     user_agent = parse(user_agent_string)
 
-    current_time = datetime.now()
+    current_time = timezone.now()
 
     RequestsLog.objects.create(
         ip_address=ip_address,
