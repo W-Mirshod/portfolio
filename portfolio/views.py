@@ -4,7 +4,7 @@ from datetime import datetime
 import requests
 from django.conf import settings
 from django.core.mail import EmailMultiAlternatives
-from django.http import JsonResponse
+from django.http import JsonResponse, HttpResponse
 from django.shortcuts import render
 from django.utils import timezone
 from user_agents import parse
@@ -130,3 +130,27 @@ def sending_email(name, gmail):
     msg.attach_alternative(html_content, "text/html")
 
     msg.send()
+
+def robots_txt(request):
+    """
+    Generate robots.txt file
+    """
+    lines = [
+        "User-Agent: *",
+        "Allow: /",
+        "",
+        "# Sitemap location",
+        f"Sitemap: https://w-mirshod.com/sitemap.xml",
+        "",
+        "# Disallow admin and sensitive areas",
+        "Disallow: /admin-page/",
+        "Disallow: /static/admin/",
+        "",
+        "# Allow important pages",
+        "Allow: /en/",
+        "Allow: /uz/",
+        "Allow: /ru/",
+        "Allow: /static/",
+        "Allow: /media/",
+    ]
+    return HttpResponse("\n".join(lines), content_type="text/plain")
