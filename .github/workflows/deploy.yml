@@ -21,4 +21,9 @@ jobs:
         password: ${{ secrets.SERVER_PASSWORD }}
         port: 22
         script: |
+          cd /mnt/portfolio
+          git fetch origin
+          git reset --hard origin/master
+          git clean -fd
+          git pull
           bash /mnt/portfolio/deploy.sh
