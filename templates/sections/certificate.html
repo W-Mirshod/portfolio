@@ -1,9 +1,10 @@
+{% load i18n %}
 <!-- Certificate section -->
 <section id="certificate" class="section certificate-section">
   <div class="container">
     <div class="section-header">
-      <h2 class="section-title">Professional Certification</h2>
-      <p class="section-subtitle">Backend Development Bootcamp Achievement</p>
+      <h2 class="section-title">{% trans "Professional Certification" %}</h2>
+      <p class="section-subtitle">{% trans "Backend Development Bootcamp Achievement" %}</p>
     </div>
     
     <div class="certificate-content">
@@ -14,57 +15,57 @@
           </div>
           <div class="institution-info">
             <h3>Najot Ta'lim</h3>
-            <p>Tashkent, Uzbekistan</p>
+            <p>{% trans "Tashkent, Uzbekistan" %}</p>
           </div>
         </div>
         
         <div class="certificate-main">
           <div class="certificate-image">
             {% load static %}
-            <img src="{% static 'sertification.png' %}" alt="Backend Python Django Bootcamp Certificate" loading="lazy">
+            <img src="{% static 'sertification.png' %}" alt="{% trans 'Backend Python Django Bootcamp Certificate' %}" loading="lazy">
             <div class="certificate-overlay">
               <a href="https://erp.student.najottalim.uz/public/certificate/9d153d70-07b5-4dd9-ae1d-3ff0ea50f531" 
                  target="_blank" 
                  class="verify-btn">
                 <i class="fas fa-external-link-alt"></i>
-                Verify Certificate
+                {% trans "Verify Certificate" %}
               </a>
             </div>
           </div>
           
           <div class="certificate-details">
             <div class="certificate-title">
-              <h4>Backend Python Django (Standard)</h4>
-              <span class="duration-badge">8 Months Intensive Program</span>
+              <h4>{% trans "Backend Python Django (Standard)" %}</h4>
+              <span class="duration-badge">{% trans "8 Months Intensive Program" %}</span>
             </div>
             
             <div class="certificate-description">
-              <p>Successfully completed an intensive 8-month Backend Development bootcamp specializing in Python and Django framework. The program covered comprehensive backend development skills including:</p>
+              <p>{% trans "Successfully completed an intensive 8-month Backend Development bootcamp specializing in Python and Django framework. The program covered comprehensive backend development skills including:" %}</p>
               
               <div class="skills-covered">
                 <div class="skill-item">
                   <i class="fab fa-python"></i>
-                  <span>Advanced Python Programming</span>
+                  <span>{% trans "Advanced Python Programming" %}</span>
                 </div>
                 <div class="skill-item">
                   <i class="fas fa-cogs"></i>
-                  <span>Django Framework Mastery</span>
+                  <span>{% trans "Django Framework Mastery" %}</span>
                 </div>
                 <div class="skill-item">
                   <i class="fas fa-database"></i>
-                  <span>Database Design & Optimization</span>
+                  <span>{% trans "Database Design & Optimization" %}</span>
                 </div>
                 <div class="skill-item">
                   <i class="fas fa-server"></i>
-                  <span>RESTful API Development</span>
+                  <span>{% trans "RESTful API Development" %}</span>
                 </div>
                 <div class="skill-item">
                   <i class="fas fa-shield-alt"></i>
-                  <span>Security Best Practices</span>
+                  <span>{% trans "Security Best Practices" %}</span>
                 </div>
                 <div class="skill-item">
                   <i class="fas fa-rocket"></i>
-                  <span>Deployment & DevOps</span>
+                  <span>{% trans "Deployment & DevOps" %}</span>
                 </div>
               </div>
             </div>
@@ -76,8 +77,8 @@
                   <i class="fas fa-clock"></i>
                 </div>
                 <div class="stat-modern-info">
-                  <div class="stat-modern-value">8 Months</div>
-                  <div class="stat-modern-label">Intensive Training</div>
+                  <div class="stat-modern-value">{% trans "8 Months" %}</div>
+                  <div class="stat-modern-label">{% trans "Intensive Training" %}</div>
                 </div>
               </div>
               <div class="stat-modern">
@@ -86,7 +87,7 @@
                 </div>
                 <div class="stat-modern-info">
                   <div class="stat-modern-value">15+</div>
-                  <div class="stat-modern-label">Real Projects</div>
+                  <div class="stat-modern-label">{% trans "Real Projects" %}</div>
                 </div>
               </div>
               <div class="stat-modern">
@@ -94,7 +95,7 @@
                   <i class="fas fa-trophy"></i>
                 </div>
                 <div class="stat-modern-info">
-                  <div class="stat-modern-value">Certificate ID</div>
+                  <div class="stat-modern-value">{% trans "Certificate ID" %}</div>
                   <div class="stat-modern-label">22411C10260324</div>
                 </div>
               </div>
@@ -106,14 +107,14 @@
                  target="_blank" 
                  class="cta-primary certificate-link">
                 <i class="fas fa-certificate"></i>
-                View Official Certificate
+                {% trans "View Official Certificate" %}
               </a>
               
               <a href="https://najottalim.uz" 
                  target="_blank" 
                  class="cta-secondary institution-link">
                 <i class="fas fa-university"></i>
-                About Najot Ta'lim
+                {% trans "About Najot Ta'lim" %}
               </a>
             </div>
           </div>
@@ -122,11 +123,11 @@
         <div class="certificate-footer">
           <div class="achievement-badge">
             <i class="fas fa-star"></i>
-            <span>Successfully Graduated</span>
+            <span>{% trans "Successfully Graduated" %}</span>
           </div>
           <div class="date-info">
             <i class="fas fa-calendar-alt"></i>
-            <span>Completed: August 2024</span>
+            <span>{% trans "Completed: August 2024" %}</span>
           </div>
         </div>
       </div>

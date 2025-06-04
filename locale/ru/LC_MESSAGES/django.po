@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2025-06-04 21:42+0500\n"
+"POT-Creation-Date: 2025-06-04 23:15+0500\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: W-Mirshod <portfolio@w-mirshod.com>\n"
 "Language-Team: Russian <ru@li.org>\n"
@@ -19,1267 +19,741 @@ msgstr ""
 "n%10<=4 && (n%100<12 || n%100>14) ? 1 : n%10==0 || (n%10>=5 && n%10<=9) || "
 "(n%100>=11 && n%100<=14)? 2 : 3);\n"
 
-#: templates/sections/header.html:13 templates/sections/header.html:71
+#: templates/index.html:10 templates/index.html:14
+msgid "Mirshod Qayimov (W-Mirshod) - Backend Developer & AI Engineer"
+msgstr "Миршод Каюмов (W-Mirshod) - Backend разработчик и AI инженер"
+
+#: templates/index.html:11
+msgid ""
+"18-year-old passionate Backend Developer specializing in Microservices, "
+"APIs, AI solutions, and DevOps. Working 18/7 on innovative projects with "
+"Python, Django, AWS, and Docker."
+msgstr ""
+"18-летний увлечённый Backend разработчик, специализирующийся на микросервисах, "
+"API, AI решениях и DevOps. Работаю 18/7 над инновационными проектами с "
+"Python, Django, AWS и Docker."
+
+#: templates/index.html:15
+msgid ""
+"18-year-old Backend Developer specializing in Microservices, APIs & AI "
+"solutions"
+msgstr ""
+"18-летний Backend разработчик, специализирующийся на микросервисах, API и AI "
+"решениях"
+
+#: templates/sections/about.html:6
+#, fuzzy
+#| msgid "About"
+msgid "About Me"
+msgstr "Обо мне"
+
+#: templates/sections/about.html:7
+msgid "Passionate about creating innovative solutions"
+msgstr "Увлечён созданием инновационных решений"
+
+#: templates/sections/about.html:11
+msgid ""
+"Hi 👋, I'm W Mirshod - a passionate Backend developer working 18/7 on "
+"innovative projects. I'm currently working on microservices & APIs and "
+"learning AI APIs. I'm enthusiastic about collaborating on real projects and "
+"optimizing performance."
+msgstr ""
+"Привет 👋, я W Mirshod - увлечённый Backend разработчик, работающий 18/7 над "
+"инновационными проектами. В настоящее время работаю с микросервисами и API, "
+"изучаю AI API. Увлечён сотрудничеством в реальных проектах и оптимизацией производительности."
+
+#: templates/sections/about.html:13
+msgid "🔭 Currently working on microservices & APIs"
+msgstr "🔭 В настоящее время работаю с микросервисами и API"
+
+#: templates/sections/about.html:14
+msgid "🌱 Learning AI APIs and advanced machine learning techniques"
+msgstr "🌱 Изучаю AI API и продвинутые техники машинного обучения"
+
+#: templates/sections/about.html:15
+msgid "👯 Looking to collaborate on real-world projects"
+msgstr "👯 Ищу сотрудничество в реальных проектах"
+
+#: templates/sections/about.html:16
+msgid ""
+"🤝 Building professional relationships on LinkedIn with 500+ connections"
+msgstr ""
+"🤝 Строю профессиональные отношения в LinkedIn с 500+ связями"
+
+#: templates/sections/about.html:17
+msgid ""
+"⚡ Fun fact: Very enthusiastic about working on big projects and performance "
+"optimization"
+msgstr ""
+"⚡ Интересный факт: Очень увлечён работой над большими проектами и оптимизацией производительности"
+
+#: templates/sections/about.html:19
+msgid ""
+"My expertise spans across multiple technologies including Python, Django, "
+"JavaScript, AWS, Docker, and various databases. I'm part of @Yaklabs-"
+"Organization and have contributed to 22+ repositories on GitHub. I actively "
+"engage with the professional developer community on LinkedIn, sharing "
+"insights and connecting with industry professionals."
+msgstr ""
+"Мой опыт охватывает множество технологий, включая Python, Django, "
+"JavaScript, AWS, Docker и различные базы данных. Я часть @Yaklabs-"
+"Organization и внёс вклад в 22+ репозитория на GitHub. Активно участвую "
+"в профессиональном сообществе разработчиков в LinkedIn, делюсь идеями "
+"и общаюсь с профессионалами индустрии."
+
+#: templates/sections/about.html:24
+msgid "LinkedIn Connections"
+msgstr "Связи LinkedIn"
+
+#: templates/sections/about.html:28
+msgid "Technologies Mastered"
+msgstr "Освоенные технологии"
+
+#: templates/sections/about.html:32 templates/sections/achievements.html:54
+msgid "Organization Member"
+msgstr "Член организации"
+
+#: templates/sections/about.html:36
+msgid "Years Old Developer"
+msgstr "Летний разработчик"
+
+#: templates/sections/achievements.html:6
+#: templates/sections/achievements.html:80
+#, fuzzy
+#| msgid "Achievements"
+msgid "GitHub Achievements"
+msgstr "Достижения"
+
+#: templates/sections/achievements.html:7
+msgid "Open source contributions and milestones"
+msgstr "Вклад в открытый код и достижения"
+
+#: templates/sections/achievements.html:18
+msgid "Public Repositories"
+msgstr "Публичные репозитории"
+
+#: templates/sections/achievements.html:28
+msgid "Private Repositories"
+msgstr "Приватные репозитории"
+
+#: templates/sections/achievements.html:38
+msgid "Repository Stars"
+msgstr "Звёзды репозиториев"
+
+#: templates/sections/achievements.html:48
+msgid "Repository Forks"
+msgstr "Форки репозиториев"
+
+#: templates/sections/achievements.html:59
+msgid "Contributing to organizational projects and collaborative development"
+msgstr "Участие в организационных проектах и совместной разработке"
+
+#: templates/sections/achievements.html:62
+#: templates/sections/achievements.html:73
+msgid "View Organization"
+msgstr "Посмотреть организацию"
+
+#: templates/sections/achievements.html:70
+msgid ""
+"Collaborating on innovative software solutions and full-stack development "
+"projects."
+msgstr ""
+"Сотрудничество в инновационных программных решениях и проектах full-stack разработки."
+
+#: templates/sections/achievements.html:98
+msgid "Professional Network"
+msgstr "Профессиональная сеть"
+
+#: templates/sections/achievements.html:105
+msgid "LinkedIn Profile"
+msgstr "Профиль LinkedIn"
+
+#: templates/sections/achievements.html:106
+msgid "500+ Professional Connections"
+msgstr "500+ профессиональных связей"
+
+#: templates/sections/achievements.html:107
+msgid ""
+"Active professional network in Backend Development, AI Engineering, and "
+"DevOps communities"
+msgstr ""
+"Активная профессиональная сеть в сообществах Backend разработки, AI инженерии и DevOps"
+
+#: templates/sections/achievements.html:110
+msgid "Connect on LinkedIn"
+msgstr "Связаться через LinkedIn"
+
+#: templates/sections/achievements.html:120
+msgid "GitHub Community"
+msgstr "Сообщество GitHub"
+
+#: templates/sections/achievements.html:121
+msgid "22+ Open Source Projects"
+msgstr "22+ проекта с открытым кодом"
+
+#: templates/sections/achievements.html:122
+msgid ""
+"Contributing to the developer community with innovative solutions and "
+"collaborative projects"
+msgstr ""
+"Вклад в сообщество разработчиков с инновационными решениями и совместными проектами"
+
+#: templates/sections/achievements.html:125
+msgid "View GitHub Profile"
+msgstr "Посмотреть профиль GitHub"
+
+#: templates/sections/certificate.html:6
+msgid "Professional Certification"
+msgstr "Профессиональная сертификация"
+
+#: templates/sections/certificate.html:7
+msgid "Backend Development Bootcamp Achievement"
+msgstr "Достижение буткемпа Backend разработки"
+
+#: templates/sections/certificate.html:18
+msgid "Tashkent, Uzbekistan"
+msgstr "Ташкент, Узбекистан"
+
+#: templates/sections/certificate.html:25
+msgid "Backend Python Django Bootcamp Certificate"
+msgstr "Сертификат буткемпа Backend Python Django"
+
+#: templates/sections/certificate.html:31
+#, fuzzy
+#| msgid "Certificate"
+msgid "Verify Certificate"
+msgstr "Сертификаты"
+
+#: templates/sections/certificate.html:38
+msgid "Backend Python Django (Standard)"
+msgstr "Backend Python Django (Стандарт)"
+
+#: templates/sections/certificate.html:39
+msgid "8 Months Intensive Program"
+msgstr "8-месячная интенсивная программа"
+
+#: templates/sections/certificate.html:43
+msgid ""
+"Successfully completed an intensive 8-month Backend Development bootcamp "
+"specializing in Python and Django framework. The program covered "
+"comprehensive backend development skills including:"
+msgstr ""
+"Успешно завершил интенсивный 8-месячный буткемп Backend разработки, "
+"специализирующийся на Python и Django фреймворке. Программа охватывала "
+"комплексные навыки backend разработки, включая:"
+
+#: templates/sections/certificate.html:48
+msgid "Advanced Python Programming"
+msgstr "Продвинутое программирование на Python"
+
+#: templates/sections/certificate.html:52
+msgid "Django Framework Mastery"
+msgstr "Мастерство Django фреймворка"
+
+#: templates/sections/certificate.html:56
+msgid "Database Design & Optimization"
+msgstr "Проектирование и оптимизация баз данных"
+
+#: templates/sections/certificate.html:60
+msgid "RESTful API Development"
+msgstr "Разработка RESTful API"
+
+#: templates/sections/certificate.html:64
+msgid "Security Best Practices"
+msgstr "Лучшие практики безопасности"
+
+#: templates/sections/certificate.html:68
+msgid "Deployment & DevOps"
+msgstr "Развёртывание и DevOps"
+
+#: templates/sections/certificate.html:80
+msgid "8 Months"
+msgstr "8 месяцев"
+
+#: templates/sections/certificate.html:81
+msgid "Intensive Training"
+msgstr "Интенсивное обучение"
+
+#: templates/sections/certificate.html:90
+#, fuzzy
+#| msgid "Projects"
+msgid "Real Projects"
+msgstr "Проекты"
+
+#: templates/sections/certificate.html:98
+#, fuzzy
+#| msgid "Certificate"
+msgid "Certificate ID"
+msgstr "Сертификаты"
+
+#: templates/sections/certificate.html:110
+#, fuzzy
+#| msgid "Certificate"
+msgid "View Official Certificate"
+msgstr "Сертификаты"
+
+#: templates/sections/certificate.html:117
+msgid "About Najot Ta'lim"
+msgstr "О Najot Ta'lim"
+
+#: templates/sections/certificate.html:126
+msgid "Successfully Graduated"
+msgstr "Успешно окончил"
+
+#: templates/sections/certificate.html:130
+msgid "Completed: August 2024"
+msgstr "Завершено: Август 2024"
+
+#: templates/sections/contact.html:6 templates/sections/home.html:71
+msgid "Get In Touch"
+msgstr "Связаться"
+
+#: templates/sections/contact.html:7
+msgid "Let's discuss your next project"
+msgstr "Давайте обсудим ваш следующий проект"
+
+#: templates/sections/contact.html:14
+msgid "Your Name"
+msgstr "Ваше имя"
+
+#: templates/sections/contact.html:17
+msgid "Your Email"
+msgstr "Ваш email"
+
+#: templates/sections/contact.html:20
+msgid "Your Message"
+msgstr "Ваше сообщение"
+
+#: templates/sections/contact.html:30
+msgid "Send Message"
+msgstr "Отправить сообщение"
+
+#: templates/sections/experience.html:6
+#, fuzzy
+#| msgid "Experience"
+msgid "Professional Experience"
+msgstr "Опыт"
+
+#: templates/sections/experience.html:7
+msgid "Building expertise through hands-on development"
+msgstr "Создание экспертизы через практическую разработку"
+
+#: templates/sections/experience.html:13
+msgid "Mar 2025 - Present"
+msgstr "Март 2025 - Настоящее время"
+
+#: templates/sections/experience.html:16
+msgid "Senior Software Engineer"
+msgstr "Старший инженер-программист"
+
+#: templates/sections/experience.html:17
+msgid "Yaklabs · Full-time"
+msgstr "Yaklabs · Полная занятость"
+
+#: templates/sections/experience.html:18
+msgid ""
+"Contributing to a tech-driven, future-oriented platform at YakLabs "
+"(Tashkent, Uzbekistan). Focused on innovative projects and modern "
+"technologies."
+msgstr ""
+"Вклад в технологическую, ориентированную на будущее платформу в YakLabs "
+"(Ташкент, Узбекистан). Фокус на инновационных проектах и современных технологиях."
+
+#: templates/sections/experience.html:22 templates/sections/projects.html:39
+#: templates/sections/skills.html:17
+msgid "Microservices"
+msgstr "Микросервисы"
+
+#: templates/sections/experience.html:23
+msgid "Cloud Platforms"
+msgstr "Облачные платформы"
+
+#: templates/sections/experience.html:30
+msgid "Oct 2024 - Apr 2025"
+msgstr "Октябрь 2024 - Апрель 2025"
+
+#: templates/sections/experience.html:33
+msgid "Software Engineer"
+msgstr "Инженер-программист"
+
+#: templates/sections/experience.html:34
+msgid "MegaDevs · Full-time"
+msgstr "MegaDevs · Полная занятость"
+
+#: templates/sections/experience.html:35
+msgid ""
+"Developed and maintained multiple projects, with a key focus on IMAP/SMTP "
+"mail protocols and automation solutions in Germany."
+msgstr ""
+"Разрабатывал и поддерживал множество проектов с ключевым фокусом на протоколах "
+"электронной почты IMAP/SMTP и решениях автоматизации в Германии."
+
+#: templates/sections/experience.html:37
+msgid "Web Development"
+msgstr "Веб-разработка"
+
+#: templates/sections/experience.html:38
+msgid "Web Engineering"
+msgstr "Веб-инженерия"
+
+#: templates/sections/experience.html:41
+msgid "Automation"
+msgstr "Автоматизация"
+
+#: templates/sections/experience.html:48
+msgid "2021 - Present"
+msgstr "2021 - Настоящее время"
+
+#: templates/sections/experience.html:51 templates/sections/home.html:20
+msgid "Backend Developer & AI Engineer"
+msgstr "Backend разработчик и AI инженер"
+
+#: templates/sections/experience.html:52
+msgid "Freelance / Independent Projects"
+msgstr "Фриланс / Независимые проекты"
+
+#: templates/sections/experience.html:53
+msgid ""
+"Specializing in microservices architecture, API development, and AI "
+"integration. Working on innovative projects with Python, Django, AWS, and "
+"machine learning technologies."
+msgstr ""
+"Специализируюсь на архитектуре микросервисов, разработке API и интеграции AI. "
+"Работаю над инновационными проектами с Python, Django, AWS и технологиями машинного обучения."
+
+#: templates/sections/experience.html:67
+msgid ""
+"Connect with me on LinkedIn to explore potential collaboration opportunities"
+msgstr ""
+"Свяжитесь со мной в LinkedIn для изучения возможностей сотрудничества"
+
+#: templates/sections/experience.html:70
+msgid "View LinkedIn Profile"
+msgstr "Посмотреть профиль LinkedIn"
+
+#: templates/sections/footer.html:10
+msgid "Quick Links"
+msgstr "Быстрые ссылки"
+
+#: templates/sections/footer.html:12 templates/sections/header.html:13
+#: templates/sections/header.html:75
 msgid "Home"
 msgstr "Главная"
 
-#: templates/sections/header.html:14 templates/sections/header.html:72
+#: templates/sections/footer.html:13 templates/sections/header.html:14
+#: templates/sections/header.html:76
 msgid "About"
 msgstr "Обо мне"
 
-#: templates/sections/header.html:15 templates/sections/header.html:73
+#: templates/sections/footer.html:14 templates/sections/header.html:15
+#: templates/sections/header.html:77
 msgid "Experience"
 msgstr "Опыт"
 
-#: templates/sections/header.html:16 templates/sections/header.html:74
+#: templates/sections/footer.html:15 templates/sections/header.html:16
+#: templates/sections/header.html:78
 msgid "Skills"
 msgstr "Навыки"
 
-#: templates/sections/header.html:17 templates/sections/header.html:75
+#: templates/sections/footer.html:16 templates/sections/header.html:17
+#: templates/sections/header.html:79
 msgid "Achievements"
 msgstr "Достижения"
 
-#: templates/sections/header.html:18 templates/sections/header.html:76
+#: templates/sections/footer.html:17 templates/sections/header.html:18
+#: templates/sections/header.html:80
 msgid "Certificate"
 msgstr "Сертификаты"
 
-#: templates/sections/header.html:19 templates/sections/header.html:77
+#: templates/sections/footer.html:18 templates/sections/header.html:19
+#: templates/sections/header.html:81
 msgid "Projects"
 msgstr "Проекты"
 
-#: templates/sections/header.html:20 templates/sections/header.html:78
+#: templates/sections/footer.html:19 templates/sections/header.html:20
+#: templates/sections/header.html:82
 msgid "Contact"
 msgstr "Контакты"
 
-#: templates/sections/header.html:83 templates/sections/header.html:88
-msgid "Language"
-msgstr "Язык"
+#: templates/sections/footer.html:25
+msgid "Major Specializations"
+msgstr "Основные специализации"
 
-#: venv/lib/python3.12/site-packages/django/contrib/messages/apps.py:16
-msgid "Messages"
-msgstr ""
+#: templates/sections/footer.html:29 templates/sections/skills.html:12
+msgid "Backend Development"
+msgstr "Backend разработка"
 
-#: venv/lib/python3.12/site-packages/django/contrib/sitemaps/apps.py:8
-msgid "Site Maps"
-msgstr ""
+#: templates/sections/footer.html:33
+msgid "Frontend Development"
+msgstr "Frontend разработка"
 
-#: venv/lib/python3.12/site-packages/django/contrib/staticfiles/apps.py:9
-msgid "Static Files"
-msgstr ""
+#: templates/sections/footer.html:37
+msgid "DevOps Engineering"
+msgstr "DevOps инженерия"
 
-#: venv/lib/python3.12/site-packages/django/contrib/syndication/apps.py:7
-msgid "Syndication"
-msgstr ""
+#: templates/sections/footer.html:41
+msgid "AI Engineering"
+msgstr "AI инженерия"
 
-#. Translators: String used to replace omitted page numbers in elided page
-#. range generated by paginators, e.g. [1, 2, '…', 5, 6, 7, '…', 9, 10].
-#: venv/lib/python3.12/site-packages/django/core/paginator.py:30
-msgid "…"
-msgstr ""
+#: templates/sections/footer.html:45
+msgid "Database Design"
+msgstr "Проектирование баз данных"
 
-#: venv/lib/python3.12/site-packages/django/core/paginator.py:32
-msgid "That page number is not an integer"
-msgstr ""
+#: templates/sections/footer.html:49
+msgid "API Development"
+msgstr "Разработка API"
 
-#: venv/lib/python3.12/site-packages/django/core/paginator.py:33
-msgid "That page number is less than 1"
-msgstr ""
+#: templates/sections/footer.html:56
+msgid "Connect With Me"
+msgstr "Связаться со мной"
 
-#: venv/lib/python3.12/site-packages/django/core/paginator.py:34
-msgid "That page contains no results"
-msgstr ""
+#: templates/sections/footer.html:107
+msgid "Email"
+msgstr "Электронная почта"
 
-#: venv/lib/python3.12/site-packages/django/core/validators.py:22
-msgid "Enter a valid value."
-msgstr ""
+#: templates/sections/footer.html:115
+msgid "Phone"
+msgstr "Телефон"
 
-#: venv/lib/python3.12/site-packages/django/core/validators.py:70
-msgid "Enter a valid domain name."
-msgstr ""
+#: templates/sections/footer.html:123
+msgid "Location"
+msgstr "Местоположение"
 
-#: venv/lib/python3.12/site-packages/django/core/validators.py:155
-#: venv/lib/python3.12/site-packages/django/forms/fields.py:768
-msgid "Enter a valid URL."
-msgstr ""
+#: templates/sections/footer.html:124
+msgid "Uzbekistan"
+msgstr "Узбекистан"
 
-#: venv/lib/python3.12/site-packages/django/core/validators.py:216
-msgid "Enter a valid integer."
-msgstr ""
+#: templates/sections/footer.html:137
+msgid "© 2023-2025 Mirshod Qayimov. All rights reserved."
+msgstr "© 2023-2025 Миршод Каюмов. Все права защищены."
 
-#: venv/lib/python3.12/site-packages/django/core/validators.py:227
-msgid "Enter a valid email address."
-msgstr ""
+#: templates/sections/footer.html:143
+msgid "Available for new opportunities"
+msgstr "Доступен для новых возможностей"
 
-#. Translators: "letters" means latin letters: a-z and A-Z.
-#: venv/lib/python3.12/site-packages/django/core/validators.py:310
+#: templates/sections/footer.html:148
+msgid "Back to top"
+msgstr "Наверх"
+
+#: templates/sections/footer.html:154
+msgid "Built with passion and lots of coffee"
+msgstr "Создано с страстью и большим количеством кофе"
+
+#: templates/sections/home.html:11
+msgid "Software Engineer with 4 years of Experience"
+msgstr "Инженер-программист с 4-летним опытом"
+
+#: templates/sections/home.html:15
+msgid "Hi, I'm"
+msgstr "Привет, я"
+
+#: templates/sections/home.html:16
+msgid "18-year-old passionate"
+msgstr "18-летний увлечённый"
+
+#: templates/sections/home.html:25
 msgid ""
-"Enter a valid “slug” consisting of letters, numbers, underscores or hyphens."
+"Specialized in building robust microservices, scalable APIs, and intelligent "
+"AI solutions. Currently working 18/7 on innovative projects using Python, "
+"Django, AWS, and cutting-edge technologies."
 msgstr ""
+"Специализируюсь на создании надёжных микросервисов, масштабируемых API и "
+"интеллектуальных AI решений. В настоящее время работаю 18/7 над инновационными "
+"проектами, используя Python, Django, AWS и передовые технологии."
 
-#: venv/lib/python3.12/site-packages/django/core/validators.py:318
+#: templates/sections/home.html:75
+#, fuzzy
+#| msgid "Experience"
+msgid "View Experience"
+msgstr "Опыт"
+
+#: templates/sections/projects.html:6
+#, fuzzy
+#| msgid "Projects"
+msgid "Featured Projects"
+msgstr "Проекты"
+
+#: templates/sections/projects.html:7
+msgid "Some of my recent work"
+msgstr "Некоторые из моих недавних работ"
+
+#: templates/sections/projects.html:16
+msgid "Texnomart API"
+msgstr "Texnomart API"
+
+#: templates/sections/projects.html:17
 msgid ""
-"Enter a valid “slug” consisting of Unicode letters, numbers, underscores, or "
-"hyphens."
+"Comprehensive API for online shopping website with full e-commerce "
+"functionality."
 msgstr ""
+"Комплексный API для интернет-магазина с полной функциональностью электронной коммерции."
 
-#: venv/lib/python3.12/site-packages/django/core/validators.py:330
-#: venv/lib/python3.12/site-packages/django/core/validators.py:339
-#: venv/lib/python3.12/site-packages/django/core/validators.py:353
-#: venv/lib/python3.12/site-packages/django/db/models/fields/__init__.py:2215
-#, python-format
-msgid "Enter a valid %(protocol)s address."
-msgstr ""
+#: templates/sections/projects.html:21 templates/sections/projects.html:40
+msgid "E-commerce"
+msgstr "Электронная коммерция"
 
-#: venv/lib/python3.12/site-packages/django/core/validators.py:332
-msgid "IPv4"
-msgstr ""
+#: templates/sections/projects.html:25 templates/sections/projects.html:44
+#: templates/sections/projects.html:63 templates/sections/projects.html:82
+#: templates/sections/projects.html:101 templates/sections/projects.html:120
+#, fuzzy
+#| msgid "Projects"
+msgid "View Project"
+msgstr "Проекты"
 
-#: venv/lib/python3.12/site-packages/django/core/validators.py:341
-#: venv/lib/python3.12/site-packages/django/utils/ipv6.py:30
-msgid "IPv6"
-msgstr ""
+#: templates/sections/projects.html:35
+msgid "Online Shopping Platform"
+msgstr "Платформа онлайн-покупок"
 
-#: venv/lib/python3.12/site-packages/django/core/validators.py:355
-msgid "IPv4 or IPv6"
-msgstr ""
-
-#: venv/lib/python3.12/site-packages/django/core/validators.py:396
-msgid "Enter only digits separated by commas."
-msgstr ""
-
-#: venv/lib/python3.12/site-packages/django/core/validators.py:402
-#, python-format
-msgid "Ensure this value is %(limit_value)s (it is %(show_value)s)."
-msgstr ""
-
-#: venv/lib/python3.12/site-packages/django/core/validators.py:437
-#, python-format
-msgid "Ensure this value is less than or equal to %(limit_value)s."
-msgstr ""
-
-#: venv/lib/python3.12/site-packages/django/core/validators.py:446
-#, python-format
-msgid "Ensure this value is greater than or equal to %(limit_value)s."
-msgstr ""
-
-#: venv/lib/python3.12/site-packages/django/core/validators.py:455
-#, python-format
-msgid "Ensure this value is a multiple of step size %(limit_value)s."
-msgstr ""
-
-#: venv/lib/python3.12/site-packages/django/core/validators.py:462
-#, python-format
+#: templates/sections/projects.html:36
 msgid ""
-"Ensure this value is a multiple of step size %(limit_value)s, starting from "
-"%(offset)s, e.g. %(offset)s, %(valid_value1)s, %(valid_value2)s, and so on."
+"Micro-service architecture e-shopping platform with modern design and "
+"scalable backend."
 msgstr ""
+"Платформа электронных покупок с микросервисной архитектурой, современным дизайном "
+"и масштабируемым backend."
 
-#: venv/lib/python3.12/site-packages/django/core/validators.py:494
-#, python-format
+#: templates/sections/projects.html:54
+msgid "Online Course Platform"
+msgstr "Платформа онлайн-курсов"
+
+#: templates/sections/projects.html:55
 msgid ""
-"Ensure this value has at least %(limit_value)d character (it has "
-"%(show_value)d)."
-msgid_plural ""
-"Ensure this value has at least %(limit_value)d characters (it has "
-"%(show_value)d)."
-msgstr[0] ""
-msgstr[1] ""
+"E-Courses platform including teacher's and blog's own section with "
+"comprehensive features."
+msgstr ""
+"Платформа электронных курсов, включающая собственные разделы для преподавателей "
+"и блогов с комплексными функциями."
 
-#: venv/lib/python3.12/site-packages/django/core/validators.py:512
-#, python-format
+#: templates/sections/projects.html:58
+msgid "Education"
+msgstr "Образование"
+
+#: templates/sections/projects.html:59
+msgid "Platform"
+msgstr "Платформа"
+
+#: templates/sections/projects.html:73
+msgid "Hospital Management System"
+msgstr "Система управления больницей"
+
+#: templates/sections/projects.html:74
 msgid ""
-"Ensure this value has at most %(limit_value)d character (it has "
-"%(show_value)d)."
-msgid_plural ""
-"Ensure this value has at most %(limit_value)d characters (it has "
-"%(show_value)d)."
-msgstr[0] ""
-msgstr[1] ""
-
-#: venv/lib/python3.12/site-packages/django/core/validators.py:535
-#: venv/lib/python3.12/site-packages/django/forms/fields.py:359
-#: venv/lib/python3.12/site-packages/django/forms/fields.py:398
-msgid "Enter a number."
+"Platform for hospitals where patients and doctors have their pages with "
+"patient records and departments."
 msgstr ""
+"Платформа для больниц, где пациенты и врачи имеют свои страницы с "
+"записями пациентов и отделениями."
 
-#: venv/lib/python3.12/site-packages/django/core/validators.py:537
-#, python-format
-msgid "Ensure that there are no more than %(max)s digit in total."
-msgid_plural "Ensure that there are no more than %(max)s digits in total."
-msgstr[0] ""
-msgstr[1] ""
+#: templates/sections/projects.html:77
+msgid "Healthcare"
+msgstr "Здравоохранение"
 
-#: venv/lib/python3.12/site-packages/django/core/validators.py:542
-#, python-format
-msgid "Ensure that there are no more than %(max)s decimal place."
-msgid_plural "Ensure that there are no more than %(max)s decimal places."
-msgstr[0] ""
-msgstr[1] ""
+#: templates/sections/projects.html:78
+msgid "Management"
+msgstr "Управление"
 
-#: venv/lib/python3.12/site-packages/django/core/validators.py:547
-#, python-format
+#: templates/sections/projects.html:92
+msgid "GPT-Neo AI"
+msgstr "GPT-Neo AI"
+
+#: templates/sections/projects.html:93
 msgid ""
-"Ensure that there are no more than %(max)s digit before the decimal point."
-msgid_plural ""
-"Ensure that there are no more than %(max)s digits before the decimal point."
-msgstr[0] ""
-msgstr[1] ""
+"Basic Artificial Intelligence implementation running on local machine with "
+"advanced capabilities."
+msgstr ""
+"Базовая реализация искусственного интеллекта, работающая на локальной машине "
+"с продвинутыми возможностями."
 
-#: venv/lib/python3.12/site-packages/django/core/validators.py:618
-#, python-format
+#: templates/sections/projects.html:97
+msgid "Machine Learning"
+msgstr "Машинное обучение"
+
+#: templates/sections/projects.html:111
+msgid "Gemina PDF Translator"
+msgstr "Gemina PDF переводчик"
+
+#: templates/sections/projects.html:112
 msgid ""
-"File extension “%(extension)s” is not allowed. Allowed extensions are: "
-"%(allowed_extensions)s."
-msgstr ""
-
-#: venv/lib/python3.12/site-packages/django/core/validators.py:680
-msgid "Null characters are not allowed."
-msgstr ""
-
-#: venv/lib/python3.12/site-packages/django/db/models/base.py:1571
-#: venv/lib/python3.12/site-packages/django/forms/models.py:908
-msgid "and"
-msgstr ""
-
-#: venv/lib/python3.12/site-packages/django/db/models/base.py:1573
-#, python-format
-msgid "%(model_name)s with this %(field_labels)s already exists."
-msgstr ""
-
-#: venv/lib/python3.12/site-packages/django/db/models/constraints.py:22
-#, python-format
-msgid "Constraint “%(name)s” is violated."
-msgstr ""
-
-#: venv/lib/python3.12/site-packages/django/db/models/fields/__init__.py:134
-#, python-format
-msgid "Value %(value)r is not a valid choice."
-msgstr ""
-
-#: venv/lib/python3.12/site-packages/django/db/models/fields/__init__.py:135
-msgid "This field cannot be null."
-msgstr ""
-
-#: venv/lib/python3.12/site-packages/django/db/models/fields/__init__.py:136
-msgid "This field cannot be blank."
-msgstr ""
-
-#: venv/lib/python3.12/site-packages/django/db/models/fields/__init__.py:137
-#, python-format
-msgid "%(model_name)s with this %(field_label)s already exists."
-msgstr ""
-
-#. Translators: The 'lookup_type' is one of 'date', 'year' or
-#. 'month'. Eg: "Title must be unique for pub_date year"
-#: venv/lib/python3.12/site-packages/django/db/models/fields/__init__.py:141
-#, python-format
-msgid ""
-"%(field_label)s must be unique for %(date_field_label)s %(lookup_type)s."
-msgstr ""
-
-#: venv/lib/python3.12/site-packages/django/db/models/fields/__init__.py:180
-#, python-format
-msgid "Field of type: %(field_type)s"
-msgstr ""
-
-#: venv/lib/python3.12/site-packages/django/db/models/fields/__init__.py:1156
-#, python-format
-msgid "“%(value)s” value must be either True or False."
-msgstr ""
-
-#: venv/lib/python3.12/site-packages/django/db/models/fields/__init__.py:1157
-#, python-format
-msgid "“%(value)s” value must be either True, False, or None."
-msgstr ""
-
-#: venv/lib/python3.12/site-packages/django/db/models/fields/__init__.py:1159
-msgid "Boolean (Either True or False)"
-msgstr ""
-
-#: venv/lib/python3.12/site-packages/django/db/models/fields/__init__.py:1209
-#, python-format
-msgid "String (up to %(max_length)s)"
-msgstr ""
-
-#: venv/lib/python3.12/site-packages/django/db/models/fields/__init__.py:1211
-msgid "String (unlimited)"
-msgstr ""
-
-#: venv/lib/python3.12/site-packages/django/db/models/fields/__init__.py:1320
-msgid "Comma-separated integers"
-msgstr ""
-
-#: venv/lib/python3.12/site-packages/django/db/models/fields/__init__.py:1421
-#, python-format
-msgid ""
-"“%(value)s” value has an invalid date format. It must be in YYYY-MM-DD "
-"format."
-msgstr ""
-
-#: venv/lib/python3.12/site-packages/django/db/models/fields/__init__.py:1425
-#: venv/lib/python3.12/site-packages/django/db/models/fields/__init__.py:1560
-#, python-format
-msgid ""
-"“%(value)s” value has the correct format (YYYY-MM-DD) but it is an invalid "
-"date."
-msgstr ""
-
-#: venv/lib/python3.12/site-packages/django/db/models/fields/__init__.py:1429
-msgid "Date (without time)"
-msgstr ""
-
-#: venv/lib/python3.12/site-packages/django/db/models/fields/__init__.py:1556
-#, python-format
-msgid ""
-"“%(value)s” value has an invalid format. It must be in YYYY-MM-DD HH:MM[:ss[."
-"uuuuuu]][TZ] format."
-msgstr ""
-
-#: venv/lib/python3.12/site-packages/django/db/models/fields/__init__.py:1564
-#, python-format
-msgid ""
-"“%(value)s” value has the correct format (YYYY-MM-DD HH:MM[:ss[.uuuuuu]]"
-"[TZ]) but it is an invalid date/time."
-msgstr ""
-
-#: venv/lib/python3.12/site-packages/django/db/models/fields/__init__.py:1569
-msgid "Date (with time)"
-msgstr ""
-
-#: venv/lib/python3.12/site-packages/django/db/models/fields/__init__.py:1696
-#, python-format
-msgid "“%(value)s” value must be a decimal number."
-msgstr ""
-
-#: venv/lib/python3.12/site-packages/django/db/models/fields/__init__.py:1698
-msgid "Decimal number"
-msgstr ""
-
-#: venv/lib/python3.12/site-packages/django/db/models/fields/__init__.py:1859
-#, python-format
-msgid ""
-"“%(value)s” value has an invalid format. It must be in [DD] [[HH:]MM:]ss[."
-"uuuuuu] format."
-msgstr ""
-
-#: venv/lib/python3.12/site-packages/django/db/models/fields/__init__.py:1863
-msgid "Duration"
-msgstr ""
-
-#: venv/lib/python3.12/site-packages/django/db/models/fields/__init__.py:1915
-msgid "Email address"
-msgstr ""
-
-#: venv/lib/python3.12/site-packages/django/db/models/fields/__init__.py:1940
-msgid "File path"
-msgstr ""
-
-#: venv/lib/python3.12/site-packages/django/db/models/fields/__init__.py:2018
-#, python-format
-msgid "“%(value)s” value must be a float."
-msgstr ""
-
-#: venv/lib/python3.12/site-packages/django/db/models/fields/__init__.py:2020
-msgid "Floating point number"
-msgstr ""
-
-#: venv/lib/python3.12/site-packages/django/db/models/fields/__init__.py:2060
-#, python-format
-msgid "“%(value)s” value must be an integer."
-msgstr ""
-
-#: venv/lib/python3.12/site-packages/django/db/models/fields/__init__.py:2062
-msgid "Integer"
-msgstr ""
-
-#: venv/lib/python3.12/site-packages/django/db/models/fields/__init__.py:2158
-msgid "Big (8 byte) integer"
-msgstr ""
-
-#: venv/lib/python3.12/site-packages/django/db/models/fields/__init__.py:2175
-msgid "Small integer"
-msgstr ""
-
-#: venv/lib/python3.12/site-packages/django/db/models/fields/__init__.py:2183
-msgid "IPv4 address"
-msgstr ""
-
-#: venv/lib/python3.12/site-packages/django/db/models/fields/__init__.py:2214
-msgid "IP address"
-msgstr ""
-
-#: venv/lib/python3.12/site-packages/django/db/models/fields/__init__.py:2305
-#: venv/lib/python3.12/site-packages/django/db/models/fields/__init__.py:2306
-#, python-format
-msgid "“%(value)s” value must be either None, True or False."
-msgstr ""
-
-#: venv/lib/python3.12/site-packages/django/db/models/fields/__init__.py:2308
-msgid "Boolean (Either True, False or None)"
-msgstr ""
-
-#: venv/lib/python3.12/site-packages/django/db/models/fields/__init__.py:2359
-msgid "Positive big integer"
-msgstr ""
-
-#: venv/lib/python3.12/site-packages/django/db/models/fields/__init__.py:2374
-msgid "Positive integer"
-msgstr ""
-
-#: venv/lib/python3.12/site-packages/django/db/models/fields/__init__.py:2389
-msgid "Positive small integer"
-msgstr ""
-
-#: venv/lib/python3.12/site-packages/django/db/models/fields/__init__.py:2405
-#, python-format
-msgid "Slug (up to %(max_length)s)"
-msgstr ""
-
-#: venv/lib/python3.12/site-packages/django/db/models/fields/__init__.py:2441
-msgid "Text"
-msgstr ""
-
-#: venv/lib/python3.12/site-packages/django/db/models/fields/__init__.py:2521
-#, python-format
-msgid ""
-"“%(value)s” value has an invalid format. It must be in HH:MM[:ss[.uuuuuu]] "
-"format."
-msgstr ""
-
-#: venv/lib/python3.12/site-packages/django/db/models/fields/__init__.py:2525
-#, python-format
-msgid ""
-"“%(value)s” value has the correct format (HH:MM[:ss[.uuuuuu]]) but it is an "
-"invalid time."
-msgstr ""
-
-#: venv/lib/python3.12/site-packages/django/db/models/fields/__init__.py:2529
-msgid "Time"
-msgstr ""
-
-#: venv/lib/python3.12/site-packages/django/db/models/fields/__init__.py:2637
-msgid "URL"
-msgstr ""
-
-#: venv/lib/python3.12/site-packages/django/db/models/fields/__init__.py:2661
-msgid "Raw binary data"
-msgstr ""
-
-#: venv/lib/python3.12/site-packages/django/db/models/fields/__init__.py:2726
-#, python-format
-msgid "“%(value)s” is not a valid UUID."
-msgstr ""
-
-#: venv/lib/python3.12/site-packages/django/db/models/fields/__init__.py:2728
-msgid "Universally unique identifier"
-msgstr ""
-
-#: venv/lib/python3.12/site-packages/django/db/models/fields/files.py:244
-msgid "File"
-msgstr ""
-
-#: venv/lib/python3.12/site-packages/django/db/models/fields/files.py:420
-msgid "Image"
-msgstr ""
-
-#: venv/lib/python3.12/site-packages/django/db/models/fields/json.py:24
-msgid "A JSON object"
-msgstr ""
-
-#: venv/lib/python3.12/site-packages/django/db/models/fields/json.py:26
-msgid "Value must be valid JSON."
-msgstr ""
-
-#: venv/lib/python3.12/site-packages/django/db/models/fields/related.py:932
-#, python-format
-msgid "%(model)s instance with %(field)s %(value)r does not exist."
-msgstr ""
-
-#: venv/lib/python3.12/site-packages/django/db/models/fields/related.py:934
-msgid "Foreign Key (type determined by related field)"
-msgstr ""
-
-#: venv/lib/python3.12/site-packages/django/db/models/fields/related.py:1228
-msgid "One-to-one relationship"
-msgstr ""
-
-#: venv/lib/python3.12/site-packages/django/db/models/fields/related.py:1285
-#, python-format
-msgid "%(from)s-%(to)s relationship"
-msgstr ""
-
-#: venv/lib/python3.12/site-packages/django/db/models/fields/related.py:1287
-#, python-format
-msgid "%(from)s-%(to)s relationships"
-msgstr ""
-
-#: venv/lib/python3.12/site-packages/django/db/models/fields/related.py:1335
-msgid "Many-to-many relationship"
-msgstr ""
-
-#. Translators: If found as last label character, these punctuation
-#. characters will prevent the default label_suffix to be appended to the label
-#: venv/lib/python3.12/site-packages/django/forms/boundfield.py:185
-msgid ":?.!"
-msgstr ""
-
-#: venv/lib/python3.12/site-packages/django/forms/fields.py:95
-msgid "This field is required."
-msgstr ""
-
-#: venv/lib/python3.12/site-packages/django/forms/fields.py:308
-msgid "Enter a whole number."
-msgstr ""
-
-#: venv/lib/python3.12/site-packages/django/forms/fields.py:479
-#: venv/lib/python3.12/site-packages/django/forms/fields.py:1260
-msgid "Enter a valid date."
-msgstr ""
-
-#: venv/lib/python3.12/site-packages/django/forms/fields.py:502
-#: venv/lib/python3.12/site-packages/django/forms/fields.py:1261
-msgid "Enter a valid time."
-msgstr ""
-
-#: venv/lib/python3.12/site-packages/django/forms/fields.py:529
-msgid "Enter a valid date/time."
-msgstr ""
-
-#: venv/lib/python3.12/site-packages/django/forms/fields.py:563
-msgid "Enter a valid duration."
-msgstr ""
-
-#: venv/lib/python3.12/site-packages/django/forms/fields.py:564
-#, python-brace-format
-msgid "The number of days must be between {min_days} and {max_days}."
-msgstr ""
-
-#: venv/lib/python3.12/site-packages/django/forms/fields.py:633
-msgid "No file was submitted. Check the encoding type on the form."
-msgstr ""
-
-#: venv/lib/python3.12/site-packages/django/forms/fields.py:634
-msgid "No file was submitted."
-msgstr ""
-
-#: venv/lib/python3.12/site-packages/django/forms/fields.py:635
-msgid "The submitted file is empty."
-msgstr ""
-
-#: venv/lib/python3.12/site-packages/django/forms/fields.py:637
-#, python-format
-msgid "Ensure this filename has at most %(max)d character (it has %(length)d)."
-msgid_plural ""
-"Ensure this filename has at most %(max)d characters (it has %(length)d)."
-msgstr[0] ""
-msgstr[1] ""
-
-#: venv/lib/python3.12/site-packages/django/forms/fields.py:642
-msgid "Please either submit a file or check the clear checkbox, not both."
-msgstr ""
-
-#: venv/lib/python3.12/site-packages/django/forms/fields.py:710
-msgid ""
-"Upload a valid image. The file you uploaded was either not an image or a "
-"corrupted image."
-msgstr ""
-
-#: venv/lib/python3.12/site-packages/django/forms/fields.py:882
-#: venv/lib/python3.12/site-packages/django/forms/fields.py:968
-#: venv/lib/python3.12/site-packages/django/forms/models.py:1592
-#, python-format
-msgid "Select a valid choice. %(value)s is not one of the available choices."
-msgstr ""
-
-#: venv/lib/python3.12/site-packages/django/forms/fields.py:970
-#: venv/lib/python3.12/site-packages/django/forms/fields.py:1089
-#: venv/lib/python3.12/site-packages/django/forms/models.py:1590
-msgid "Enter a list of values."
-msgstr ""
-
-#: venv/lib/python3.12/site-packages/django/forms/fields.py:1090
-msgid "Enter a complete value."
-msgstr ""
-
-#: venv/lib/python3.12/site-packages/django/forms/fields.py:1329
-msgid "Enter a valid UUID."
-msgstr ""
-
-#: venv/lib/python3.12/site-packages/django/forms/fields.py:1359
-msgid "Enter a valid JSON."
-msgstr ""
-
-#. Translators: This is the default suffix added to form field labels
-#: venv/lib/python3.12/site-packages/django/forms/forms.py:94
-msgid ":"
-msgstr ""
-
-#: venv/lib/python3.12/site-packages/django/forms/forms.py:230
-#, python-format
-msgid "(Hidden field %(name)s) %(error)s"
-msgstr ""
-
-#: venv/lib/python3.12/site-packages/django/forms/formsets.py:61
-#, python-format
-msgid ""
-"ManagementForm data is missing or has been tampered with. Missing fields: "
-"%(field_names)s. You may need to file a bug report if the issue persists."
-msgstr ""
-
-#: venv/lib/python3.12/site-packages/django/forms/formsets.py:65
-#, python-format
-msgid "Please submit at most %(num)d form."
-msgid_plural "Please submit at most %(num)d forms."
-msgstr[0] ""
-msgstr[1] ""
-
-#: venv/lib/python3.12/site-packages/django/forms/formsets.py:70
-#, python-format
-msgid "Please submit at least %(num)d form."
-msgid_plural "Please submit at least %(num)d forms."
-msgstr[0] ""
-msgstr[1] ""
-
-#: venv/lib/python3.12/site-packages/django/forms/formsets.py:484
-#: venv/lib/python3.12/site-packages/django/forms/formsets.py:491
-msgid "Order"
-msgstr ""
-
-#: venv/lib/python3.12/site-packages/django/forms/formsets.py:499
-msgid "Delete"
-msgstr ""
-
-#: venv/lib/python3.12/site-packages/django/forms/models.py:901
-#, python-format
-msgid "Please correct the duplicate data for %(field)s."
-msgstr ""
-
-#: venv/lib/python3.12/site-packages/django/forms/models.py:906
-#, python-format
-msgid "Please correct the duplicate data for %(field)s, which must be unique."
-msgstr ""
-
-#: venv/lib/python3.12/site-packages/django/forms/models.py:913
-#, python-format
-msgid ""
-"Please correct the duplicate data for %(field_name)s which must be unique "
-"for the %(lookup)s in %(date_field)s."
-msgstr ""
-
-#: venv/lib/python3.12/site-packages/django/forms/models.py:922
-msgid "Please correct the duplicate values below."
-msgstr ""
-
-#: venv/lib/python3.12/site-packages/django/forms/models.py:1359
-msgid "The inline value did not match the parent instance."
-msgstr ""
-
-#: venv/lib/python3.12/site-packages/django/forms/models.py:1450
-msgid "Select a valid choice. That choice is not one of the available choices."
-msgstr ""
-
-#: venv/lib/python3.12/site-packages/django/forms/models.py:1594
-#, python-format
-msgid "“%(pk)s” is not a valid value."
-msgstr ""
-
-#: venv/lib/python3.12/site-packages/django/forms/utils.py:227
-#, python-format
-msgid ""
-"%(datetime)s couldn’t be interpreted in time zone %(current_timezone)s; it "
-"may be ambiguous or it may not exist."
-msgstr ""
-
-#: venv/lib/python3.12/site-packages/django/forms/widgets.py:461
-msgid "Clear"
-msgstr ""
-
-#: venv/lib/python3.12/site-packages/django/forms/widgets.py:462
-msgid "Currently"
-msgstr ""
-
-#: venv/lib/python3.12/site-packages/django/forms/widgets.py:463
-msgid "Change"
-msgstr ""
-
-#: venv/lib/python3.12/site-packages/django/forms/widgets.py:800
-msgid "Unknown"
-msgstr ""
-
-#: venv/lib/python3.12/site-packages/django/forms/widgets.py:801
-msgid "Yes"
-msgstr ""
-
-#: venv/lib/python3.12/site-packages/django/forms/widgets.py:802
-msgid "No"
-msgstr ""
-
-#. Translators: Please do not add spaces around commas.
-#: venv/lib/python3.12/site-packages/django/template/defaultfilters.py:873
-msgid "yes,no,maybe"
-msgstr ""
-
-#: venv/lib/python3.12/site-packages/django/template/defaultfilters.py:903
-#: venv/lib/python3.12/site-packages/django/template/defaultfilters.py:920
-#, python-format
-msgid "%(size)d byte"
-msgid_plural "%(size)d bytes"
-msgstr[0] ""
-msgstr[1] ""
-
-#: venv/lib/python3.12/site-packages/django/template/defaultfilters.py:922
-#, python-format
-msgid "%s KB"
-msgstr ""
-
-#: venv/lib/python3.12/site-packages/django/template/defaultfilters.py:924
-#, python-format
-msgid "%s MB"
-msgstr ""
-
-#: venv/lib/python3.12/site-packages/django/template/defaultfilters.py:926
-#, python-format
-msgid "%s GB"
-msgstr ""
-
-#: venv/lib/python3.12/site-packages/django/template/defaultfilters.py:928
-#, python-format
-msgid "%s TB"
-msgstr ""
-
-#: venv/lib/python3.12/site-packages/django/template/defaultfilters.py:930
-#, python-format
-msgid "%s PB"
-msgstr ""
-
-#: venv/lib/python3.12/site-packages/django/utils/dateformat.py:74
-msgid "p.m."
-msgstr ""
-
-#: venv/lib/python3.12/site-packages/django/utils/dateformat.py:75
-msgid "a.m."
-msgstr ""
-
-#: venv/lib/python3.12/site-packages/django/utils/dateformat.py:80
-msgid "PM"
-msgstr ""
-
-#: venv/lib/python3.12/site-packages/django/utils/dateformat.py:81
-msgid "AM"
-msgstr ""
-
-#: venv/lib/python3.12/site-packages/django/utils/dateformat.py:153
-msgid "midnight"
-msgstr ""
-
-#: venv/lib/python3.12/site-packages/django/utils/dateformat.py:155
-msgid "noon"
-msgstr ""
-
-#: venv/lib/python3.12/site-packages/django/utils/dates.py:7
-msgid "Monday"
-msgstr ""
-
-#: venv/lib/python3.12/site-packages/django/utils/dates.py:8
-msgid "Tuesday"
-msgstr ""
-
-#: venv/lib/python3.12/site-packages/django/utils/dates.py:9
-msgid "Wednesday"
-msgstr ""
-
-#: venv/lib/python3.12/site-packages/django/utils/dates.py:10
-msgid "Thursday"
-msgstr ""
-
-#: venv/lib/python3.12/site-packages/django/utils/dates.py:11
-msgid "Friday"
-msgstr ""
-
-#: venv/lib/python3.12/site-packages/django/utils/dates.py:12
-msgid "Saturday"
-msgstr ""
-
-#: venv/lib/python3.12/site-packages/django/utils/dates.py:13
-msgid "Sunday"
-msgstr ""
-
-#: venv/lib/python3.12/site-packages/django/utils/dates.py:16
-msgid "Mon"
-msgstr ""
-
-#: venv/lib/python3.12/site-packages/django/utils/dates.py:17
-msgid "Tue"
-msgstr ""
-
-#: venv/lib/python3.12/site-packages/django/utils/dates.py:18
-msgid "Wed"
-msgstr ""
-
-#: venv/lib/python3.12/site-packages/django/utils/dates.py:19
-msgid "Thu"
-msgstr ""
-
-#: venv/lib/python3.12/site-packages/django/utils/dates.py:20
-msgid "Fri"
-msgstr ""
-
-#: venv/lib/python3.12/site-packages/django/utils/dates.py:21
-msgid "Sat"
-msgstr ""
-
-#: venv/lib/python3.12/site-packages/django/utils/dates.py:22
-msgid "Sun"
-msgstr ""
-
-#: venv/lib/python3.12/site-packages/django/utils/dates.py:25
-msgid "January"
-msgstr ""
-
-#: venv/lib/python3.12/site-packages/django/utils/dates.py:26
-msgid "February"
-msgstr ""
-
-#: venv/lib/python3.12/site-packages/django/utils/dates.py:27
-msgid "March"
-msgstr ""
-
-#: venv/lib/python3.12/site-packages/django/utils/dates.py:28
-msgid "April"
-msgstr ""
-
-#: venv/lib/python3.12/site-packages/django/utils/dates.py:29
-msgid "May"
-msgstr ""
-
-#: venv/lib/python3.12/site-packages/django/utils/dates.py:30
-msgid "June"
-msgstr ""
-
-#: venv/lib/python3.12/site-packages/django/utils/dates.py:31
-msgid "July"
-msgstr ""
-
-#: venv/lib/python3.12/site-packages/django/utils/dates.py:32
-msgid "August"
-msgstr ""
-
-#: venv/lib/python3.12/site-packages/django/utils/dates.py:33
-msgid "September"
-msgstr ""
-
-#: venv/lib/python3.12/site-packages/django/utils/dates.py:34
-msgid "October"
-msgstr ""
-
-#: venv/lib/python3.12/site-packages/django/utils/dates.py:35
-msgid "November"
-msgstr ""
-
-#: venv/lib/python3.12/site-packages/django/utils/dates.py:36
-msgid "December"
-msgstr ""
-
-#: venv/lib/python3.12/site-packages/django/utils/dates.py:39
-msgid "jan"
-msgstr ""
-
-#: venv/lib/python3.12/site-packages/django/utils/dates.py:40
-msgid "feb"
-msgstr ""
-
-#: venv/lib/python3.12/site-packages/django/utils/dates.py:41
-msgid "mar"
-msgstr ""
-
-#: venv/lib/python3.12/site-packages/django/utils/dates.py:42
-msgid "apr"
-msgstr ""
-
-#: venv/lib/python3.12/site-packages/django/utils/dates.py:43
-msgid "may"
-msgstr ""
-
-#: venv/lib/python3.12/site-packages/django/utils/dates.py:44
-msgid "jun"
-msgstr ""
-
-#: venv/lib/python3.12/site-packages/django/utils/dates.py:45
-msgid "jul"
-msgstr ""
-
-#: venv/lib/python3.12/site-packages/django/utils/dates.py:46
-msgid "aug"
-msgstr ""
-
-#: venv/lib/python3.12/site-packages/django/utils/dates.py:47
-msgid "sep"
-msgstr ""
-
-#: venv/lib/python3.12/site-packages/django/utils/dates.py:48
-msgid "oct"
-msgstr ""
-
-#: venv/lib/python3.12/site-packages/django/utils/dates.py:49
-msgid "nov"
-msgstr ""
-
-#: venv/lib/python3.12/site-packages/django/utils/dates.py:50
-msgid "dec"
-msgstr ""
-
-#: venv/lib/python3.12/site-packages/django/utils/dates.py:53
-msgctxt "abbrev. month"
-msgid "Jan."
-msgstr ""
-
-#: venv/lib/python3.12/site-packages/django/utils/dates.py:54
-msgctxt "abbrev. month"
-msgid "Feb."
-msgstr ""
-
-#: venv/lib/python3.12/site-packages/django/utils/dates.py:55
-msgctxt "abbrev. month"
-msgid "March"
-msgstr ""
-
-#: venv/lib/python3.12/site-packages/django/utils/dates.py:56
-msgctxt "abbrev. month"
-msgid "April"
-msgstr ""
-
-#: venv/lib/python3.12/site-packages/django/utils/dates.py:57
-msgctxt "abbrev. month"
-msgid "May"
-msgstr ""
-
-#: venv/lib/python3.12/site-packages/django/utils/dates.py:58
-msgctxt "abbrev. month"
-msgid "June"
-msgstr ""
-
-#: venv/lib/python3.12/site-packages/django/utils/dates.py:59
-msgctxt "abbrev. month"
-msgid "July"
-msgstr ""
-
-#: venv/lib/python3.12/site-packages/django/utils/dates.py:60
-msgctxt "abbrev. month"
-msgid "Aug."
-msgstr ""
-
-#: venv/lib/python3.12/site-packages/django/utils/dates.py:61
-msgctxt "abbrev. month"
-msgid "Sept."
-msgstr ""
-
-#: venv/lib/python3.12/site-packages/django/utils/dates.py:62
-msgctxt "abbrev. month"
-msgid "Oct."
-msgstr ""
-
-#: venv/lib/python3.12/site-packages/django/utils/dates.py:63
-msgctxt "abbrev. month"
-msgid "Nov."
-msgstr ""
-
-#: venv/lib/python3.12/site-packages/django/utils/dates.py:64
-msgctxt "abbrev. month"
-msgid "Dec."
-msgstr ""
-
-#: venv/lib/python3.12/site-packages/django/utils/dates.py:67
-msgctxt "alt. month"
-msgid "January"
-msgstr ""
-
-#: venv/lib/python3.12/site-packages/django/utils/dates.py:68
-msgctxt "alt. month"
-msgid "February"
-msgstr ""
-
-#: venv/lib/python3.12/site-packages/django/utils/dates.py:69
-msgctxt "alt. month"
-msgid "March"
-msgstr ""
-
-#: venv/lib/python3.12/site-packages/django/utils/dates.py:70
-msgctxt "alt. month"
-msgid "April"
-msgstr ""
-
-#: venv/lib/python3.12/site-packages/django/utils/dates.py:71
-msgctxt "alt. month"
-msgid "May"
-msgstr ""
-
-#: venv/lib/python3.12/site-packages/django/utils/dates.py:72
-msgctxt "alt. month"
-msgid "June"
-msgstr ""
-
-#: venv/lib/python3.12/site-packages/django/utils/dates.py:73
-msgctxt "alt. month"
-msgid "July"
-msgstr ""
-
-#: venv/lib/python3.12/site-packages/django/utils/dates.py:74
-msgctxt "alt. month"
-msgid "August"
-msgstr ""
-
-#: venv/lib/python3.12/site-packages/django/utils/dates.py:75
-msgctxt "alt. month"
-msgid "September"
-msgstr ""
-
-#: venv/lib/python3.12/site-packages/django/utils/dates.py:76
-msgctxt "alt. month"
-msgid "October"
-msgstr ""
-
-#: venv/lib/python3.12/site-packages/django/utils/dates.py:77
-msgctxt "alt. month"
-msgid "November"
-msgstr ""
-
-#: venv/lib/python3.12/site-packages/django/utils/dates.py:78
-msgctxt "alt. month"
-msgid "December"
-msgstr ""
-
-#: venv/lib/python3.12/site-packages/django/utils/ipv6.py:8
-msgid "This is not a valid IPv6 address."
-msgstr ""
-
-#: venv/lib/python3.12/site-packages/django/utils/text.py:75
-#, python-format
-msgctxt "String to return when truncating text"
-msgid "%(truncated_text)s…"
-msgstr ""
-
-#: venv/lib/python3.12/site-packages/django/utils/text.py:286
-msgid "or"
-msgstr ""
-
-#. Translators: This string is used as a separator between list elements
-#: venv/lib/python3.12/site-packages/django/utils/text.py:305
-#: venv/lib/python3.12/site-packages/django/utils/timesince.py:135
-msgid ", "
-msgstr ""
-
-#: venv/lib/python3.12/site-packages/django/utils/timesince.py:8
-#, python-format
-msgid "%(num)d year"
-msgid_plural "%(num)d years"
-msgstr[0] ""
-msgstr[1] ""
-
-#: venv/lib/python3.12/site-packages/django/utils/timesince.py:9
-#, python-format
-msgid "%(num)d month"
-msgid_plural "%(num)d months"
-msgstr[0] ""
-msgstr[1] ""
-
-#: venv/lib/python3.12/site-packages/django/utils/timesince.py:10
-#, python-format
-msgid "%(num)d week"
-msgid_plural "%(num)d weeks"
-msgstr[0] ""
-msgstr[1] ""
-
-#: venv/lib/python3.12/site-packages/django/utils/timesince.py:11
-#, python-format
-msgid "%(num)d day"
-msgid_plural "%(num)d days"
-msgstr[0] ""
-msgstr[1] ""
-
-#: venv/lib/python3.12/site-packages/django/utils/timesince.py:12
-#, python-format
-msgid "%(num)d hour"
-msgid_plural "%(num)d hours"
-msgstr[0] ""
-msgstr[1] ""
-
-#: venv/lib/python3.12/site-packages/django/utils/timesince.py:13
-#, python-format
-msgid "%(num)d minute"
-msgid_plural "%(num)d minutes"
-msgstr[0] ""
-msgstr[1] ""
-
-#: venv/lib/python3.12/site-packages/django/views/csrf.py:29
-msgid "Forbidden"
-msgstr ""
-
-#: venv/lib/python3.12/site-packages/django/views/csrf.py:30
-msgid "CSRF verification failed. Request aborted."
-msgstr ""
-
-#: venv/lib/python3.12/site-packages/django/views/csrf.py:34
-msgid ""
-"You are seeing this message because this HTTPS site requires a “Referer "
-"header” to be sent by your web browser, but none was sent. This header is "
-"required for security reasons, to ensure that your browser is not being "
-"hijacked by third parties."
-msgstr ""
-
-#: venv/lib/python3.12/site-packages/django/views/csrf.py:40
-msgid ""
-"If you have configured your browser to disable “Referer” headers, please re-"
-"enable them, at least for this site, or for HTTPS connections, or for “same-"
-"origin” requests."
-msgstr ""
-
-#: venv/lib/python3.12/site-packages/django/views/csrf.py:45
-msgid ""
-"If you are using the <meta name=\"referrer\" content=\"no-referrer\"> tag or "
-"including the “Referrer-Policy: no-referrer” header, please remove them. The "
-"CSRF protection requires the “Referer” header to do strict referer checking. "
-"If you’re concerned about privacy, use alternatives like <a "
-"rel=\"noreferrer\" …> for links to third-party sites."
-msgstr ""
-
-#: venv/lib/python3.12/site-packages/django/views/csrf.py:54
-msgid ""
-"You are seeing this message because this site requires a CSRF cookie when "
-"submitting forms. This cookie is required for security reasons, to ensure "
-"that your browser is not being hijacked by third parties."
-msgstr ""
-
-#: venv/lib/python3.12/site-packages/django/views/csrf.py:60
-msgid ""
-"If you have configured your browser to disable cookies, please re-enable "
-"them, at least for this site, or for “same-origin” requests."
-msgstr ""
-
-#: venv/lib/python3.12/site-packages/django/views/csrf.py:66
-msgid "More information is available with DEBUG=True."
-msgstr ""
-
-#: venv/lib/python3.12/site-packages/django/views/generic/dates.py:44
-msgid "No year specified"
-msgstr ""
-
-#: venv/lib/python3.12/site-packages/django/views/generic/dates.py:64
-#: venv/lib/python3.12/site-packages/django/views/generic/dates.py:115
-#: venv/lib/python3.12/site-packages/django/views/generic/dates.py:214
-msgid "Date out of range"
-msgstr ""
-
-#: venv/lib/python3.12/site-packages/django/views/generic/dates.py:94
-msgid "No month specified"
-msgstr ""
-
-#: venv/lib/python3.12/site-packages/django/views/generic/dates.py:147
-msgid "No day specified"
-msgstr ""
-
-#: venv/lib/python3.12/site-packages/django/views/generic/dates.py:194
-msgid "No week specified"
-msgstr ""
-
-#: venv/lib/python3.12/site-packages/django/views/generic/dates.py:349
-#: venv/lib/python3.12/site-packages/django/views/generic/dates.py:380
-#, python-format
-msgid "No %(verbose_name_plural)s available"
-msgstr ""
-
-#: venv/lib/python3.12/site-packages/django/views/generic/dates.py:652
-#, python-format
-msgid ""
-"Future %(verbose_name_plural)s not available because %(class_name)s."
-"allow_future is False."
-msgstr ""
-
-#: venv/lib/python3.12/site-packages/django/views/generic/dates.py:692
-#, python-format
-msgid "Invalid date string “%(datestr)s” given format “%(format)s”"
-msgstr ""
-
-#: venv/lib/python3.12/site-packages/django/views/generic/detail.py:56
-#, python-format
-msgid "No %(verbose_name)s found matching the query"
-msgstr ""
-
-#: venv/lib/python3.12/site-packages/django/views/generic/list.py:70
-msgid "Page is not “last”, nor can it be converted to an int."
-msgstr ""
-
-#: venv/lib/python3.12/site-packages/django/views/generic/list.py:77
-#, python-format
-msgid "Invalid page (%(page_number)s): %(message)s"
-msgstr ""
-
-#: venv/lib/python3.12/site-packages/django/views/generic/list.py:169
-#, python-format
-msgid "Empty list and “%(class_name)s.allow_empty” is False."
-msgstr ""
-
-#: venv/lib/python3.12/site-packages/django/views/static.py:49
-msgid "Directory indexes are not allowed here."
-msgstr ""
-
-#: venv/lib/python3.12/site-packages/django/views/static.py:51
-#, python-format
-msgid "“%(path)s” does not exist"
-msgstr ""
-
-#: venv/lib/python3.12/site-packages/django/views/static.py:68
-#: venv/lib/python3.12/site-packages/django/views/templates/directory_index.html:8
-#: venv/lib/python3.12/site-packages/django/views/templates/directory_index.html:11
-#, python-format
-msgid "Index of %(directory)s"
-msgstr ""
-
-#: venv/lib/python3.12/site-packages/django/views/templates/default_urlconf.html:7
-#: venv/lib/python3.12/site-packages/django/views/templates/default_urlconf.html:204
-msgid "The install worked successfully! Congratulations!"
-msgstr ""
-
-#: venv/lib/python3.12/site-packages/django/views/templates/default_urlconf.html:206
-#, python-format
-msgid ""
-"View <a href=\"https://docs.djangoproject.com/en/%(version)s/releases/\" "
-"target=\"_blank\" rel=\"noopener\">release notes</a> for Django %(version)s"
-msgstr ""
-
-#: venv/lib/python3.12/site-packages/django/views/templates/default_urlconf.html:208
-#, python-format
-msgid ""
-"You are seeing this page because <a href=\"https://docs.djangoproject.com/en/"
-"%(version)s/ref/settings/#debug\" target=\"_blank\" "
-"rel=\"noopener\">DEBUG=True</a> is in your settings file and you have not "
-"configured any URLs."
-msgstr ""
-
-#: venv/lib/python3.12/site-packages/django/views/templates/default_urlconf.html:217
-msgid "Django Documentation"
-msgstr ""
-
-#: venv/lib/python3.12/site-packages/django/views/templates/default_urlconf.html:218
-msgid "Topics, references, &amp; how-to’s"
-msgstr ""
-
-#: venv/lib/python3.12/site-packages/django/views/templates/default_urlconf.html:226
-msgid "Tutorial: A Polling App"
-msgstr ""
-
-#: venv/lib/python3.12/site-packages/django/views/templates/default_urlconf.html:227
-msgid "Get started with Django"
-msgstr ""
-
-#: venv/lib/python3.12/site-packages/django/views/templates/default_urlconf.html:235
-msgid "Django Community"
-msgstr ""
-
-#: venv/lib/python3.12/site-packages/django/views/templates/default_urlconf.html:236
-msgid "Connect, get help, or contribute"
-msgstr ""
-
-#: venv/lib/python3.12/site-packages/django_recaptcha/fields.py:20
-#: venv/lib/python3.12/site-packages/django_recaptcha/fields.py:21
-msgid "Error verifying reCAPTCHA, please try again."
-msgstr ""
+"Advanced PDF translator that fully translates documents to any language with "
+"high accuracy."
+msgstr ""
+"Продвинутый PDF переводчик, который полностью переводит документы на любой язык "
+"с высокой точностью."
+
+#: templates/sections/projects.html:115
+msgid "Translation"
+msgstr "Перевод"
+
+#: templates/sections/projects.html:116
+msgid "PDF Processing"
+msgstr "Обработка PDF"
+
+#: templates/sections/projects.html:129
+#, fuzzy
+#| msgid "Projects"
+msgid "View All Projects"
+msgstr "Проекты"
+
+#: templates/sections/skills.html:6
+msgid "Skills & Expertise"
+msgstr "Навыки и экспертиза"
+
+#: templates/sections/skills.html:7
+msgid "Technologies I work with"
+msgstr "Технологии, с которыми я работаю"
+
+#: templates/sections/skills.html:23
+msgid "Databases"
+msgstr "Базы данных"
+
+#: templates/sections/skills.html:33
+msgid "Frontend Technologies"
+msgstr "Frontend технологии"
+
+#: templates/sections/skills.html:43
+msgid "DevOps & Cloud"
+msgstr "DevOps и облачные технологии"
+
+#: templates/sections/skills.html:51
+msgid "Pipelines"
+msgstr "Конвейеры"
+
+#: templates/sections/skills.html:52
+msgid "Automated Deployment"
+msgstr "Автоматизированное развёртывание"
+
+#: templates/sections/skills.html:58
+msgid "AI & Machine Learning"
+msgstr "AI и машинное обучение"
+
+#: templates/sections/skills.html:61
+msgid "AI APIs"
+msgstr "AI API"
+
+#: templates/sections/skills.html:62
+msgid "ChatGPT Integration"
+msgstr "Интеграция ChatGPT"
+
+#: templates/sections/skills.html:63
+msgid "Text-to-Speech"
+msgstr "Преобразование текста в речь"
+
+#: templates/sections/skills.html:64
+msgid "PDF Translation"
+msgstr "Перевод PDF"
+
+#: templates/sections/skills.html:69
+msgid "Tools & Utilities"
+msgstr "Инструменты и утилиты"
+
+#: templates/sections/skills.html:72
+msgid "QR Code Generation"
+msgstr "Генерация QR-кодов"
+
+#: templates/sections/skills.html:73
+msgid "Excel/CSV Analysis"
+msgstr "Анализ Excel/CSV"
+
+#: templates/sections/skills.html:74
+msgid "Movie Downloaders"
+msgstr "Загрузчики фильмов"
