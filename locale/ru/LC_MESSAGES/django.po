@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2025-06-04 23:15+0500\n"
+"POT-Creation-Date: 2025-06-05 01:59+0500\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: W-Mirshod <portfolio@w-mirshod.com>\n"
 "Language-Team: Russian <ru@li.org>\n"
@@ -18,28 +18,6 @@ msgstr ""
 "Plural-Forms: nplurals=4; plural=(n%10==1 && n%100!=11 ? 0 : n%10>=2 && "
 "n%10<=4 && (n%100<12 || n%100>14) ? 1 : n%10==0 || (n%10>=5 && n%10<=9) || "
 "(n%100>=11 && n%100<=14)? 2 : 3);\n"
-
-#: templates/index.html:10 templates/index.html:14
-msgid "Mirshod Qayimov (W-Mirshod) - Backend Developer & AI Engineer"
-msgstr "Миршод Каюмов (W-Mirshod) - Backend разработчик и AI инженер"
-
-#: templates/index.html:11
-msgid ""
-"18-year-old passionate Backend Developer specializing in Microservices, "
-"APIs, AI solutions, and DevOps. Working 18/7 on innovative projects with "
-"Python, Django, AWS, and Docker."
-msgstr ""
-"18-летний увлечённый Backend разработчик, специализирующийся на микросервисах, "
-"API, AI решениях и DevOps. Работаю 18/7 над инновационными проектами с "
-"Python, Django, AWS и Docker."
-
-#: templates/index.html:15
-msgid ""
-"18-year-old Backend Developer specializing in Microservices, APIs & AI "
-"solutions"
-msgstr ""
-"18-летний Backend разработчик, специализирующийся на микросервисах, API и AI "
-"решениях"
 
 #: templates/sections/about.html:6
 #, fuzzy
@@ -60,7 +38,8 @@ msgid ""
 msgstr ""
 "Привет 👋, я W Mirshod - увлечённый Backend разработчик, работающий 18/7 над "
 "инновационными проектами. В настоящее время работаю с микросервисами и API, "
-"изучаю AI API. Увлечён сотрудничеством в реальных проектах и оптимизацией производительности."
+"изучаю AI API. Увлечён сотрудничеством в реальных проектах и оптимизацией "
+"производительности."
 
 #: templates/sections/about.html:13
 msgid "🔭 Currently working on microservices & APIs"
@@ -77,15 +56,15 @@ msgstr "👯 Ищу сотрудничество в реальных проек�
 #: templates/sections/about.html:16
 msgid ""
 "🤝 Building professional relationships on LinkedIn with 500+ connections"
-msgstr ""
-"🤝 Строю профессиональные отношения в LinkedIn с 500+ связями"
+msgstr "🤝 Строю профессиональные отношения в LinkedIn с 500+ связями"
 
 #: templates/sections/about.html:17
 msgid ""
 "⚡ Fun fact: Very enthusiastic about working on big projects and performance "
 "optimization"
 msgstr ""
-"⚡ Интересный факт: Очень увлечён работой над большими проектами и оптимизацией производительности"
+"⚡ Интересный факт: Очень увлечён работой над большими проектами и "
+"оптимизацией производительности"
 
 #: templates/sections/about.html:19
 msgid ""
@@ -97,9 +76,9 @@ msgid ""
 msgstr ""
 "Мой опыт охватывает множество технологий, включая Python, Django, "
 "JavaScript, AWS, Docker и различные базы данных. Я часть @Yaklabs-"
-"Organization и внёс вклад в 22+ репозитория на GitHub. Активно участвую "
-"в профессиональном сообществе разработчиков в LinkedIn, делюсь идеями "
-"и общаюсь с профессионалами индустрии."
+"Organization и внёс вклад в 22+ репозитория на GitHub. Активно участвую в "
+"профессиональном сообществе разработчиков в LinkedIn, делюсь идеями и "
+"общаюсь с профессионалами индустрии."
 
 #: templates/sections/about.html:24
 msgid "LinkedIn Connections"
@@ -158,7 +137,8 @@ msgid ""
 "Collaborating on innovative software solutions and full-stack development "
 "projects."
 msgstr ""
-"Сотрудничество в инновационных программных решениях и проектах full-stack разработки."
+"Сотрудничество в инновационных программных решениях и проектах full-stack "
+"разработки."
 
 #: templates/sections/achievements.html:98
 msgid "Professional Network"
@@ -177,7 +157,8 @@ msgid ""
 "Active professional network in Backend Development, AI Engineering, and "
 "DevOps communities"
 msgstr ""
-"Активная профессиональная сеть в сообществах Backend разработки, AI инженерии и DevOps"
+"Активная профессиональная сеть в сообществах Backend разработки, AI "
+"инженерии и DevOps"
 
 #: templates/sections/achievements.html:110
 msgid "Connect on LinkedIn"
@@ -196,7 +177,8 @@ msgid ""
 "Contributing to the developer community with innovative solutions and "
 "collaborative projects"
 msgstr ""
-"Вклад в сообщество разработчиков с инновационными решениями и совместными проектами"
+"Вклад в сообщество разработчиков с инновационными решениями и совместными "
+"проектами"
 
 #: templates/sections/achievements.html:125
 msgid "View GitHub Profile"
@@ -357,7 +339,8 @@ msgid ""
 "technologies."
 msgstr ""
 "Вклад в технологическую, ориентированную на будущее платформу в YakLabs "
-"(Ташкент, Узбекистан). Фокус на инновационных проектах и современных технологиях."
+"(Ташкент, Узбекистан). Фокус на инновационных проектах и современных "
+"технологиях."
 
 #: templates/sections/experience.html:22 templates/sections/projects.html:39
 #: templates/sections/skills.html:17
@@ -385,8 +368,8 @@ msgid ""
 "Developed and maintained multiple projects, with a key focus on IMAP/SMTP "
 "mail protocols and automation solutions in Germany."
 msgstr ""
-"Разрабатывал и поддерживал множество проектов с ключевым фокусом на протоколах "
-"электронной почты IMAP/SMTP и решениях автоматизации в Германии."
+"Разрабатывал и поддерживал множество проектов с ключевым фокусом на "
+"протоколах электронной почты IMAP/SMTP и решениях автоматизации в Германии."
 
 #: templates/sections/experience.html:37
 msgid "Web Development"
@@ -418,14 +401,14 @@ msgid ""
 "integration. Working on innovative projects with Python, Django, AWS, and "
 "machine learning technologies."
 msgstr ""
-"Специализируюсь на архитектуре микросервисов, разработке API и интеграции AI. "
-"Работаю над инновационными проектами с Python, Django, AWS и технологиями машинного обучения."
+"Специализируюсь на архитектуре микросервисов, разработке API и интеграции "
+"AI. Работаю над инновационными проектами с Python, Django, AWS и "
+"технологиями машинного обучения."
 
 #: templates/sections/experience.html:67
 msgid ""
 "Connect with me on LinkedIn to explore potential collaboration opportunities"
-msgstr ""
-"Свяжитесь со мной в LinkedIn для изучения возможностей сотрудничества"
+msgstr "Свяжитесь со мной в LinkedIn для изучения возможностей сотрудничества"
 
 #: templates/sections/experience.html:70
 msgid "View LinkedIn Profile"
@@ -436,42 +419,42 @@ msgid "Quick Links"
 msgstr "Быстрые ссылки"
 
 #: templates/sections/footer.html:12 templates/sections/header.html:13
-#: templates/sections/header.html:75
+#: templates/sections/header.html:73
 msgid "Home"
 msgstr "Главная"
 
 #: templates/sections/footer.html:13 templates/sections/header.html:14
-#: templates/sections/header.html:76
+#: templates/sections/header.html:74
 msgid "About"
 msgstr "Обо мне"
 
 #: templates/sections/footer.html:14 templates/sections/header.html:15
-#: templates/sections/header.html:77
+#: templates/sections/header.html:75
 msgid "Experience"
 msgstr "Опыт"
 
 #: templates/sections/footer.html:15 templates/sections/header.html:16
-#: templates/sections/header.html:78
+#: templates/sections/header.html:76
 msgid "Skills"
 msgstr "Навыки"
 
 #: templates/sections/footer.html:16 templates/sections/header.html:17
-#: templates/sections/header.html:79
+#: templates/sections/header.html:77
 msgid "Achievements"
 msgstr "Достижения"
 
 #: templates/sections/footer.html:17 templates/sections/header.html:18
-#: templates/sections/header.html:80
+#: templates/sections/header.html:78
 msgid "Certificate"
 msgstr "Сертификаты"
 
 #: templates/sections/footer.html:18 templates/sections/header.html:19
-#: templates/sections/header.html:81
+#: templates/sections/header.html:79
 msgid "Projects"
 msgstr "Проекты"
 
 #: templates/sections/footer.html:19 templates/sections/header.html:20
-#: templates/sections/header.html:82
+#: templates/sections/header.html:80
 msgid "Contact"
 msgstr "Контакты"
 
@@ -558,8 +541,9 @@ msgid ""
 "Django, AWS, and cutting-edge technologies."
 msgstr ""
 "Специализируюсь на создании надёжных микросервисов, масштабируемых API и "
-"интеллектуальных AI решений. В настоящее время работаю 18/7 над инновационными "
-"проектами, используя Python, Django, AWS и передовые технологии."
+"интеллектуальных AI решений. В настоящее время работаю 18/7 над "
+"инновационными проектами, используя Python, Django, AWS и передовые "
+"технологии."
 
 #: templates/sections/home.html:75
 #, fuzzy
@@ -586,7 +570,8 @@ msgid ""
 "Comprehensive API for online shopping website with full e-commerce "
 "functionality."
 msgstr ""
-"Комплексный API для интернет-магазина с полной функциональностью электронной коммерции."
+"Комплексный API для интернет-магазина с полной функциональностью электронной "
+"коммерции."
 
 #: templates/sections/projects.html:21 templates/sections/projects.html:40
 msgid "E-commerce"
@@ -609,8 +594,8 @@ msgid ""
 "Micro-service architecture e-shopping platform with modern design and "
 "scalable backend."
 msgstr ""
-"Платформа электронных покупок с микросервисной архитектурой, современным дизайном "
-"и масштабируемым backend."
+"Платформа электронных покупок с микросервисной архитектурой, современным "
+"дизайном и масштабируемым backend."
 
 #: templates/sections/projects.html:54
 msgid "Online Course Platform"
@@ -621,8 +606,8 @@ msgid ""
 "E-Courses platform including teacher's and blog's own section with "
 "comprehensive features."
 msgstr ""
-"Платформа электронных курсов, включающая собственные разделы для преподавателей "
-"и блогов с комплексными функциями."
+"Платформа электронных курсов, включающая собственные разделы для "
+"преподавателей и блогов с комплексными функциями."
 
 #: templates/sections/projects.html:58
 msgid "Education"
@@ -641,8 +626,8 @@ msgid ""
 "Platform for hospitals where patients and doctors have their pages with "
 "patient records and departments."
 msgstr ""
-"Платформа для больниц, где пациенты и врачи имеют свои страницы с "
-"записями пациентов и отделениями."
+"Платформа для больниц, где пациенты и врачи имеют свои страницы с записями "
+"пациентов и отделениями."
 
 #: templates/sections/projects.html:77
 msgid "Healthcare"
@@ -677,8 +662,8 @@ msgid ""
 "Advanced PDF translator that fully translates documents to any language with "
 "high accuracy."
 msgstr ""
-"Продвинутый PDF переводчик, который полностью переводит документы на любой язык "
-"с высокой точностью."
+"Продвинутый PDF переводчик, который полностью переводит документы на любой "
+"язык с высокой точностью."
 
 #: templates/sections/projects.html:115
 msgid "Translation"
@@ -757,3 +742,22 @@ msgstr "Анализ Excel/CSV"
 #: templates/sections/skills.html:74
 msgid "Movie Downloaders"
 msgstr "Загрузчики фильмов"
+
+#~ msgid "Mirshod Qayimov (W-Mirshod) - Backend Developer & AI Engineer"
+#~ msgstr "Миршод Каюмов (W-Mirshod) - Backend разработчик и AI инженер"
+
+#~ msgid ""
+#~ "18-year-old passionate Backend Developer specializing in Microservices, "
+#~ "APIs, AI solutions, and DevOps. Working 18/7 on innovative projects with "
+#~ "Python, Django, AWS, and Docker."
+#~ msgstr ""
+#~ "18-летний увлечённый Backend разработчик, специализирующийся на "
+#~ "микросервисах, API, AI решениях и DevOps. Работаю 18/7 над инновационными "
+#~ "проектами с Python, Django, AWS и Docker."
+
+#~ msgid ""
+#~ "18-year-old Backend Developer specializing in Microservices, APIs & AI "
+#~ "solutions"
+#~ msgstr ""
+#~ "18-летний Backend разработчик, специализирующийся на микросервисах, API и "
+#~ "AI решениях"
