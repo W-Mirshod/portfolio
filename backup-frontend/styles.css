@@ -219,7 +219,7 @@ body::before {
 
 /* Hero Section */
 .hero-section {
-  padding-top: 140px;
+  padding-top: 100px; /* Reduced from 140px */
 }
 
 .hero-container {
@@ -1298,7 +1298,9 @@ h1 {
   }
   
   .hero-section {
-    padding-top: 120px;
+    padding-top: 80px; /* Reduced padding */
+    min-height: auto;
+    padding-bottom: 4rem;
   }
   
   .cta-group {
@@ -1348,7 +1350,7 @@ h1 {
     padding: 0 3%; /* Consistent padding */
   }
   .hero-section {
-    padding-top: 90px; /* Further adjust for smaller header */
+    padding-top: 60px; /* Minimal padding for small screens */
   }
   h1 { font-size: clamp(2rem, 8vw, 2.8rem); } /* Adjust h1 */
   .typing-text { font-size: clamp(1.1rem, 5vw, 1.5rem); }
@@ -1871,7 +1873,7 @@ h1 {
     padding: 0 3%; /* Consistent padding */
   }
   .hero-section {
-    padding-top: 90px; /* Further adjust for smaller header */
+    padding-top: 60px; /* Minimal padding for small screens */
   }
   h1 { font-size: clamp(2rem, 8vw, 2.8rem); } /* Adjust h1 */
   .typing-text { font-size: clamp(1.1rem, 5vw, 1.5rem); }

@@ -219,7 +219,7 @@ body::before {
 
 /* Hero Section */
 .hero-section {
-  padding-top: 140px;
+  padding-top: 100px; /* Reduced from 140px */
 }
 
 .hero-container {
@@ -1742,9 +1742,9 @@ h1 {
   .tech-card:nth-child(2) { top: 0%; right: 10%; }
   .tech-card:nth-child(3) { bottom: 20%; left: 15%; }
   .tech-card:nth-child(4) { bottom: 5%; right: 5%; }
-  .tech-card:nth-child(5) { top: 40%; left: 0%; display: none; } /* Hide some */
-  .tech-card:nth-child(6) { top: 50%; right: 0%; display: none; } /* Hide some */
-  .tech-card:nth-child(7) { bottom: 30%; left: 40%; display: none; } /* Hide some */
+  .tech-card:nth-child(5) { top: 40%; left: 0%; display: none; /* Hide some */ }
+  .tech-card:nth-child(6) { top: 50%; right: 0%; display: none; /* Hide some */ }
+  .tech-card:nth-child(7) { bottom: 30%; left: 40%; display: none; /* Hide some */ }
   .tech-card:nth-child(8) { top: 20%; right: 35%; }
 
 
