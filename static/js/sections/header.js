@@ -1,191 +1,221 @@
-// Header Section JavaScript
+// Header JavaScript functionality
 
 document.addEventListener('DOMContentLoaded', function() {
+    // Language switcher functionality
+    const languageBtn = document.getElementById('languageBtn');
+    const languageOptions = document.getElementById('languageOptions');
+    const languageDropdown = document.querySelector('.language-dropdown');
+    
+    if (languageBtn && languageOptions) {
+        // Toggle dropdown
+        languageBtn.addEventListener('click', function(e) {
+            e.preventDefault();
+            e.stopPropagation();
+            
+            const isOpen = languageOptions.classList.contains('show');
+            
+            if (isOpen) {
+                closeLanguageDropdown();
+            } else {
+                openLanguageDropdown();
+            }
+        });
+        
+        // Close dropdown when clicking outside
+        document.addEventListener('click', function(e) {
+            if (!languageDropdown.contains(e.target)) {
+                closeLanguageDropdown();
+            }
+        });
+        
+        // Close dropdown on escape key
+        document.addEventListener('keydown', function(e) {
+            if (e.key === 'Escape') {
+                closeLanguageDropdown();
+            }
+        });
+        
+        // Handle language option clicks
+        const languageOptionButtons = document.querySelectorAll('.language-option');
+        languageOptionButtons.forEach(button => {
+            button.addEventListener('click', function() {
+                // Add loading state
+                button.style.opacity = '0.7';
+                button.style.transform = 'scale(0.95)';
+                
+                // Close dropdown after selection
+                setTimeout(() => {
+                    closeLanguageDropdown();
+                }, 100);
+            });
+        });
+        
+        function openLanguageDropdown() {
+            languageOptions.classList.add('show');
+            languageDropdown.classList.add('active');
+            languageBtn.setAttribute('aria-expanded', 'true');
+            
+            // Add subtle animation to options
+            const options = languageOptions.querySelectorAll('.language-option');
+            options.forEach((option, index) => {
+                option.style.animation = `fadeInUp 0.3s ease ${index * 0.05}s both`;
+            });
+        }
+        
+        function closeLanguageDropdown() {
+            languageOptions.classList.remove('show');
+            languageDropdown.classList.remove('active');
+            languageBtn.setAttribute('aria-expanded', 'false');
+        }
+        
+        // Add ripple effect to language button
+        languageBtn.addEventListener('mousedown', function(e) {
+            const ripple = document.createElement('span');
+            const rect = this.getBoundingClientRect();
+            const size = Math.max(rect.width, rect.height);
+            const x = e.clientX - rect.left - size / 2;
+            const y = e.clientY - rect.top - size / 2;
+            
+            ripple.style.width = ripple.style.height = size + 'px';
+            ripple.style.left = x + 'px';
+            ripple.style.top = y + 'px';
+            ripple.classList.add('ripple-effect');
+            
+            this.appendChild(ripple);
+            
+            setTimeout(() => {
+                ripple.remove();
+            }, 600);
+        });
+    }
+    
+    // Mobile menu functionality
+    const menuToggle = document.querySelector('.menu-toggle');
+    const navMobile = document.querySelector('.nav-mobile');
+    
+    if (menuToggle && navMobile) {
+        menuToggle.addEventListener('click', function() {
+            const isOpen = navMobile.classList.contains('active');
+            
+            if (isOpen) {
+                closeMobileMenu();
+            } else {
+                openMobileMenu();
+            }
+        });
+        
+        // Close mobile menu when clicking nav items
+        const mobileNavItems = navMobile.querySelectorAll('.nav-item');
+        mobileNavItems.forEach(item => {
+            item.addEventListener('click', function() {
+                closeMobileMenu();
+            });
+        });
+        
+        function openMobileMenu() {
+            navMobile.classList.add('active');
+            menuToggle.classList.add('active');
+            menuToggle.setAttribute('aria-expanded', 'true');
+            document.body.style.overflow = 'hidden';
+        }
+        
+        function closeMobileMenu() {
+            navMobile.classList.remove('active');
+            menuToggle.classList.remove('active');
+            menuToggle.setAttribute('aria-expanded', 'false');
+            document.body.style.overflow = '';
+        }
+    }
     
     // Header scroll effect
     const header = document.getElementById('header');
-    const scrollThreshold = 50;
-
-    window.addEventListener('scroll', () => {
-        if (window.scrollY > scrollThreshold) {
+    let lastScrollTop = 0;
+    
+    window.addEventListener('scroll', function() {
+        const scrollTop = window.pageYOffset || document.documentElement.scrollTop;
+        
+        if (scrollTop > 100) {
             header.classList.add('scrolled');
         } else {
             header.classList.remove('scrolled');
         }
+        
+        lastScrollTop = scrollTop;
     });
-
-    // Mobile menu toggle
-    const mobileToggle = document.querySelector('.menu-toggle');
-    const mobileNav = document.querySelector('.nav-mobile');
-    const body = document.body;
-
-    if (mobileToggle && mobileNav) {
-        mobileToggle.addEventListener('click', () => {
-            mobileNav.classList.toggle('active');
-            mobileToggle.classList.toggle('active');
-            body.style.overflow = mobileNav.classList.contains('active') ? 'hidden' : '';
-        });
-
-        // Close mobile menu when clicking nav items
-        const mobileNavItems = document.querySelectorAll('.nav-mobile .nav-item');
-        mobileNavItems.forEach(item => {
-            item.addEventListener('click', () => {
-                mobileNav.classList.remove('active');
-                mobileToggle.classList.remove('active');
-                body.style.overflow = '';
-            });
-        });
-
-        // Close mobile menu when clicking outside
-        document.addEventListener('click', (e) => {
-            if (!header.contains(e.target) && mobileNav.classList.contains('active')) {
-                mobileNav.classList.remove('active');
-                mobileToggle.classList.remove('active');
-                body.style.overflow = '';
-            }
-        });
-    }
-
-    // Smooth scroll for anchor links with gentle push effect
-    const anchorLinks = document.querySelectorAll('a[href^="#"]');
-    anchorLinks.forEach(link => {
-        link.addEventListener('click', (e) => {
+    
+    // Smooth scroll for navigation links
+    const navLinks = document.querySelectorAll('.nav-item[href^="#"]');
+    navLinks.forEach(link => {
+        link.addEventListener('click', function(e) {
             e.preventDefault();
-            const targetId = link.getAttribute('href').substring(1);
-            const targetElement = document.getElementById(targetId);
             
-            if (targetElement) {
+            const targetId = this.getAttribute('href').substring(1);
+            const targetSection = document.getElementById(targetId);
+            
+            if (targetSection) {
                 const headerHeight = header.offsetHeight;
-                const targetPosition = targetElement.offsetTop - headerHeight;
+                const targetPosition = targetSection.offsetTop - headerHeight;
                 
-                // Gentle scroll with easing
-                const startPosition = window.pageYOffset;
-                const distance = targetPosition - startPosition;
-                const duration = Math.min(800, Math.abs(distance) * 0.5); // Shorter duration
-                let startTime = null;
-
-                function scrollAnimation(currentTime) {
-                    if (startTime === null) startTime = currentTime;
-                    const timeElapsed = currentTime - startTime;
-                    const progress = Math.min(timeElapsed / duration, 1);
-                    
-                    // Ease-out function for smoother deceleration
-                    const easeOut = 1 - Math.pow(1 - progress, 3);
-                    
-                    window.scrollTo(0, startPosition + (distance * easeOut));
-                    
-                    if (progress < 1) {
-                        requestAnimationFrame(scrollAnimation);
-                    }
-                }
+                window.scrollTo({
+                    top: targetPosition,
+                    behavior: 'smooth'
+                });
                 
-                requestAnimationFrame(scrollAnimation);
+                // Update active nav item
+                updateActiveNavItem(this);
             }
         });
     });
-
-    // Active navigation highlighting with gentle section assistance
-    const sections = document.querySelectorAll('.section[id]');
-    const navItems = document.querySelectorAll('.nav-item[href^="#"]');
-    let isScrolling = false;
-    let scrollTimeout;
     
-    // Section boundary assistance
-    let scrollDirection = 0;
-    let scrollVelocity = 0;
-    let previousScrollY = 0;
-    let previousScrollTime = Date.now();
-    
-    function handleSectionAssistance() {
-        const currentTime = Date.now();
-        const currentScrollY = window.scrollY;
-        const timeDelta = currentTime - previousScrollTime;
+    // Update active navigation item based on scroll position
+    function updateActiveNavItem(activeLink = null) {
+        const navItems = document.querySelectorAll('.nav-item');
         
-        if (timeDelta > 0) {
-            scrollVelocity = (currentScrollY - previousScrollY) / timeDelta;
-            previousScrollY = currentScrollY;
-            previousScrollTime = currentTime;
-        }
-        
-        // Only assist if scroll velocity is very low (user is naturally stopping)
-        if (Math.abs(scrollVelocity) < 0.3 && Math.abs(scrollVelocity) > 0.05) {
+        if (activeLink) {
+            navItems.forEach(item => item.classList.remove('active'));
+            activeLink.classList.add('active');
+        } else {
+            // Auto-detect based on scroll position
+            const sections = document.querySelectorAll('section[id]');
+            const scrollPos = window.scrollY + header.offsetHeight + 100;
+            
             sections.forEach(section => {
-                const rect = section.getBoundingClientRect();
-                const headerHeight = header.offsetHeight;
-                const sectionTop = rect.top + window.scrollY - headerHeight;
-                const currentPos = window.scrollY;
+                const sectionTop = section.offsetTop;
+                const sectionHeight = section.offsetHeight;
+                const sectionId = section.getAttribute('id');
                 
-                // Check if we're near a section start (within 30px)
-                const distanceToTop = Math.abs(currentPos - sectionTop);
-                
-                if (distanceToTop < 30 && distanceToTop > 5) {
-                    // Very gentle nudge to section start
-                    const startPosition = window.pageYOffset;
-                    const distance = sectionTop - startPosition;
-                    const duration = 300; // Short, gentle animation
-                    let startTime = null;
-
-                    function nudgeAnimation(currentTime) {
-                        if (startTime === null) startTime = currentTime;
-                        const timeElapsed = currentTime - startTime;
-                        const progress = Math.min(timeElapsed / duration, 1);
-                        
-                        // Very gentle easing
-                        const easeOut = 1 - Math.pow(1 - progress, 2);
-                        
-                        window.scrollTo(0, startPosition + (distance * easeOut));
-                        
-                        if (progress < 1) {
-                            requestAnimationFrame(nudgeAnimation);
-                        }
+                if (scrollPos >= sectionTop && scrollPos < sectionTop + sectionHeight) {
+                    navItems.forEach(item => item.classList.remove('active'));
+                    const activeNavItem = document.querySelector(`.nav-item[href="#${sectionId}"]`);
+                    if (activeNavItem) {
+                        activeNavItem.classList.add('active');
                     }
-                    
-                    requestAnimationFrame(nudgeAnimation);
                 }
             });
         }
     }
-
-    window.addEventListener('scroll', () => {
-        // Clear existing timeout
-        clearTimeout(scrollTimeout);
-        isScrolling = true;
-        
-        // Update active nav items
-        let current = '';
-        sections.forEach(section => {
-            const sectionTop = section.offsetTop - header.offsetHeight - 100;
-            if (window.scrollY >= sectionTop) {
-                current = section.getAttribute('id');
-            }
-        });
-
-        navItems.forEach(item => {
-            item.classList.remove('active');
-            if (item.getAttribute('href') === `#${current}`) {
-                item.classList.add('active');
-            }
-        });
-        
-        // Set timeout to detect when scrolling has stopped
-        scrollTimeout = setTimeout(() => {
-            isScrolling = false;
-            handleSectionAssistance();
-        }, 150); // Wait 150ms after scrolling stops
-    });
-
-    // Header background blur effect on scroll
-    window.addEventListener('scroll', () => {
-        const currentScrollY = window.scrollY;
-        
-        // Add more blur as user scrolls down
-        if (currentScrollY > 100) {
-            header.style.backdropFilter = 'blur(25px)';
-            header.style.background = 'rgba(10, 11, 15, 0.95)';
-        } else {
-            header.style.backdropFilter = 'blur(20px)';
-            header.style.background = 'rgba(10, 11, 15, 0.9)';
-        }
-    });
-
+    
+    // Update active nav item on scroll
+    window.addEventListener('scroll', updateActiveNavItem);
 });
+
+// Add CSS for ripple effect
+const style = document.createElement('style');
+style.textContent = `
+    .ripple-effect {
+        position: absolute;
+        border-radius: 50%;
+        background: rgba(255, 255, 255, 0.3);
+        transform: scale(0);
+        animation: ripple 0.6s linear;
+        pointer-events: none;
+    }
+    
+    @keyframes ripple {
+        to {
+            transform: scale(2);
+            opacity: 0;
+        }
+    }
+`;
+document.head.appendChild(style);
