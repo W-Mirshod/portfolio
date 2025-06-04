@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2025-06-05 01:59+0500\n"
+"POT-Creation-Date: 2025-06-05 04:16+0500\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: W-Mirshod <portfolio@w-mirshod.com>\n"
 "Language-Team: Russian <ru@li.org>\n"
@@ -20,86 +20,83 @@ msgstr ""
 "(n%100>=11 && n%100<=14)? 2 : 3);\n"
 
 #: templates/sections/about.html:6
-#, fuzzy
-#| msgid "About"
 msgid "About Me"
 msgstr "Обо мне"
 
 #: templates/sections/about.html:7
-msgid "Passionate about creating innovative solutions"
-msgstr "Увлечён созданием инновационных решений"
+msgid "Your Complete Digital Solution Partner"
+msgstr "Ваш полный партнёр по цифровым решениям"
 
 #: templates/sections/about.html:11
 msgid ""
-"Hi 👋, I'm W Mirshod - a passionate Backend developer working 18/7 on "
-"innovative projects. I'm currently working on microservices & APIs and "
-"learning AI APIs. I'm enthusiastic about collaborating on real projects and "
-"optimizing performance."
+"Ready to transform your vision into reality? 🚀 I'm W Mirshod - a full-stack "
+"solution architect who single-handedly delivers complete digital platforms "
+"from concept to deployment. Whether you need a simple e-commerce site or "
+"complex AI-powered systems, I handle every aspect of development so you "
+"don't have to manage multiple vendors."
 msgstr ""
-"Привет 👋, я W Mirshod - увлечённый Backend разработчик, работающий 18/7 над "
-"инновационными проектами. В настоящее время работаю с микросервисами и API, "
-"изучаю AI API. Увлечён сотрудничеством в реальных проектах и оптимизацией "
-"производительности."
+"Готовы превратить своё видение в реальность? 🚀 Я W Mirshod - full-stack "
+"архитектор решений, который самостоятельно создаёт полноценные цифровые "
+"платформы от концепции до развёртывания. Независимо от того, нужен ли вам "
+"простой интернет-магазин или сложные AI-системы, я занимаюсь всеми "
+"аспектами разработки, чтобы вам не пришлось управлять несколькими "
+"поставщиками."
 
 #: templates/sections/about.html:13
-msgid "🔭 Currently working on microservices & APIs"
-msgstr "🔭 В настоящее время работаю с микросервисами и API"
+msgid "🏗️ Complete Platform Development - Backend to Frontend"
+msgstr "🏗️ Полная разработка платформы - от Backend до Frontend"
 
 #: templates/sections/about.html:14
-msgid "🌱 Learning AI APIs and advanced machine learning techniques"
-msgstr "🌱 Изучаю AI API и продвинутые техники машинного обучения"
+msgid "🤖 AI Integration & Automation Solutions"
+msgstr "🤖 Интеграция AI и решения автоматизации"
 
 #: templates/sections/about.html:15
-msgid "👯 Looking to collaborate on real-world projects"
-msgstr "👯 Ищу сотрудничество в реальных проектах"
+msgid "☁️ Cloud Infrastructure & DevOps Management"
+msgstr "☁️ Облачная инфраструктура и управление DevOps"
 
 #: templates/sections/about.html:16
-msgid ""
-"🤝 Building professional relationships on LinkedIn with 500+ connections"
-msgstr "🤝 Строю профессиональные отношения в LinkedIn с 500+ связями"
+msgid "🛒 E-commerce to Enterprise-Level Applications"
+msgstr "🛒 От электронной коммерции до корпоративных приложений"
 
 #: templates/sections/about.html:17
-msgid ""
-"⚡ Fun fact: Very enthusiastic about working on big projects and performance "
-"optimization"
-msgstr ""
-"⚡ Интересный факт: Очень увлечён работой над большими проектами и "
-"оптимизацией производительности"
+msgid "⚡ Performance Optimization & Scalable Architecture"
+msgstr "⚡ Оптимизация производительности и масштабируемая архитектура"
 
 #: templates/sections/about.html:19
 msgid ""
-"My expertise spans across multiple technologies including Python, Django, "
-"JavaScript, AWS, Docker, and various databases. I'm part of @Yaklabs-"
-"Organization and have contributed to 22+ repositories on GitHub. I actively "
-"engage with the professional developer community on LinkedIn, sharing "
-"insights and connecting with industry professionals."
+"Why choose a one-person solution? You get unified vision, faster "
+"communication, and cost-effective development. My expertise covers Python, "
+"Django, JavaScript, React, AWS, Docker, AI APIs, and database optimization. "
+"I've architected microservices, built high-traffic platforms, and deployed "
+"scalable solutions for businesses. From MVP to enterprise-grade systems, I "
+"deliver end-to-end solutions that grow with your business."
 msgstr ""
-"Мой опыт охватывает множество технологий, включая Python, Django, "
-"JavaScript, AWS, Docker и различные базы данных. Я часть @Yaklabs-"
-"Organization и внёс вклад в 22+ репозитория на GitHub. Активно участвую в "
-"профессиональном сообществе разработчиков в LinkedIn, делюсь идеями и "
-"общаюсь с профессионалами индустрии."
+"Почему стоит выбрать решение от одного человека? Вы получаете единое "
+"видение, более быструю коммуникацию и экономически эффективную разработку. "
+"Мой опыт охватывает Python, Django, JavaScript, React, AWS, Docker, AI API "
+"и оптимизацию баз данных. Я проектировал микросервисы, создавал платформы "
+"с высокой нагрузкой и развёртывал масштабируемые решения для бизнеса. От "
+"MVP до корпоративных систем, я предоставляю end-to-end решения, которые "
+"растут вместе с вашим бизнесом."
 
 #: templates/sections/about.html:24
-msgid "LinkedIn Connections"
-msgstr "Связи LinkedIn"
+msgid "Project Ownership"
+msgstr "Проекты"
 
 #: templates/sections/about.html:28
-msgid "Technologies Mastered"
-msgstr "Освоенные технологии"
+msgid "Tech Stack Mastery"
+msgstr "Мастерство технологического стека"
 
-#: templates/sections/about.html:32 templates/sections/achievements.html:54
-msgid "Organization Member"
-msgstr "Член организации"
+#: templates/sections/about.html:32
+msgid "Development Focus"
+msgstr "Веб-разработка"
 
 #: templates/sections/about.html:36
-msgid "Years Old Developer"
-msgstr "Летний разработчик"
+msgid "Developer = Full Team"
+msgstr "Разработчик = Полная команда"
 
 #: templates/sections/achievements.html:6
 #: templates/sections/achievements.html:80
-#, fuzzy
-#| msgid "Achievements"
 msgid "GitHub Achievements"
 msgstr "Достижения"
 
@@ -122,6 +119,10 @@ msgstr "Звёзды репозиториев"
 #: templates/sections/achievements.html:48
 msgid "Repository Forks"
 msgstr "Форки репозиториев"
+
+#: templates/sections/achievements.html:54
+msgid "Organization Member"
+msgstr "Член организации"
 
 #: templates/sections/achievements.html:59
 msgid "Contributing to organizational projects and collaborative development"
@@ -201,8 +202,6 @@ msgid "Backend Python Django Bootcamp Certificate"
 msgstr "Сертификат буткемпа Backend Python Django"
 
 #: templates/sections/certificate.html:31
-#, fuzzy
-#| msgid "Certificate"
 msgid "Verify Certificate"
 msgstr "Сертификаты"
 
@@ -257,20 +256,14 @@ msgid "Intensive Training"
 msgstr "Интенсивное обучение"
 
 #: templates/sections/certificate.html:90
-#, fuzzy
-#| msgid "Projects"
 msgid "Real Projects"
 msgstr "Проекты"
 
 #: templates/sections/certificate.html:98
-#, fuzzy
-#| msgid "Certificate"
 msgid "Certificate ID"
 msgstr "Сертификаты"
 
 #: templates/sections/certificate.html:110
-#, fuzzy
-#| msgid "Certificate"
 msgid "View Official Certificate"
 msgstr "Сертификаты"
 
@@ -286,7 +279,7 @@ msgstr "Успешно окончил"
 msgid "Completed: August 2024"
 msgstr "Завершено: Август 2024"
 
-#: templates/sections/contact.html:6 templates/sections/home.html:71
+#: templates/sections/contact.html:6 templates/sections/home.html:80
 msgid "Get In Touch"
 msgstr "Связаться"
 
@@ -311,8 +304,6 @@ msgid "Send Message"
 msgstr "Отправить сообщение"
 
 #: templates/sections/experience.html:6
-#, fuzzy
-#| msgid "Experience"
 msgid "Professional Experience"
 msgstr "Опыт"
 
@@ -491,11 +482,11 @@ msgid "Connect With Me"
 msgstr "Связаться со мной"
 
 #: templates/sections/footer.html:107
-msgid "Email"
+msgid "Elektron pochta"
 msgstr "Электронная почта"
 
 #: templates/sections/footer.html:115
-msgid "Phone"
+msgid "Telefon"
 msgstr "Телефон"
 
 #: templates/sections/footer.html:123
@@ -545,15 +536,11 @@ msgstr ""
 "инновационными проектами, используя Python, Django, AWS и передовые "
 "технологии."
 
-#: templates/sections/home.html:75
-#, fuzzy
-#| msgid "Experience"
+#: templates/sections/home.html:84
 msgid "View Experience"
 msgstr "Опыт"
 
 #: templates/sections/projects.html:6
-#, fuzzy
-#| msgid "Projects"
 msgid "Featured Projects"
 msgstr "Проекты"
 
@@ -580,8 +567,6 @@ msgstr "Электронная коммерция"
 #: templates/sections/projects.html:25 templates/sections/projects.html:44
 #: templates/sections/projects.html:63 templates/sections/projects.html:82
 #: templates/sections/projects.html:101 templates/sections/projects.html:120
-#, fuzzy
-#| msgid "Projects"
 msgid "View Project"
 msgstr "Проекты"
 
@@ -674,8 +659,6 @@ msgid "PDF Processing"
 msgstr "Обработка PDF"
 
 #: templates/sections/projects.html:129
-#, fuzzy
-#| msgid "Projects"
 msgid "View All Projects"
 msgstr "Проекты"
 
@@ -742,6 +725,68 @@ msgstr "Анализ Excel/CSV"
 #: templates/sections/skills.html:74
 msgid "Movie Downloaders"
 msgstr "Загрузчики фильмов"
+
+#~ msgid "Passionate about creating innovative solutions"
+#~ msgstr "Увлечён созданием инновационных решений"
+
+#~ msgid ""
+#~ "Hi 👋, I'm W Mirshod - a passionate Backend developer working 18/7 on "
+#~ "innovative projects. I'm currently working on microservices & APIs and "
+#~ "learning AI APIs. I'm enthusiastic about collaborating on real projects "
+#~ "and optimizing performance."
+#~ msgstr ""
+#~ "Привет 👋, я W Mirshod - увлечённый Backend разработчик, работающий 18/7 "
+#~ "над инновационными проектами. В настоящее время работаю с микросервисами "
+#~ "и API, изучаю AI API. Увлечён сотрудничеством в реальных проектах и "
+#~ "оптимизацией производительности."
+
+#~ msgid "🔭 Currently working on microservices & APIs"
+#~ msgstr "🔭 В настоящее время работаю с микросервисами и API"
+
+#~ msgid "🌱 Learning AI APIs and advanced machine learning techniques"
+#~ msgstr "🌱 Изучаю AI API и продвинутые техники машинного обучения"
+
+#~ msgid "👯 Looking to collaborate on real-world projects"
+#~ msgstr "👯 Ищу сотрудничество в реальных проектах"
+
+#~ msgid ""
+#~ "🤝 Building professional relationships on LinkedIn with 500+ connections"
+#~ msgstr "🤝 Строю профессиональные отношения в LinkedIn с 500+ связями"
+
+#~ msgid ""
+#~ "⚡ Fun fact: Very enthusiastic about working on big projects and "
+#~ "performance optimization"
+#~ msgstr ""
+#~ "⚡ Интересный факт: Очень увлечён работой над большими проектами и "
+#~ "оптимизацией производительности"
+
+#~ msgid ""
+#~ "My expertise spans across multiple technologies including Python, Django, "
+#~ "JavaScript, AWS, Docker, and various databases. I'm part of @Yaklabs-"
+#~ "Organization and have contributed to 22+ repositories on GitHub. I "
+#~ "actively engage with the professional developer community on LinkedIn, "
+#~ "sharing insights and connecting with industry professionals."
+#~ msgstr ""
+#~ "Мой опыт охватывает множество технологий, включая Python, Django, "
+#~ "JavaScript, AWS, Docker и различные базы данных. Я часть @Yaklabs-"
+#~ "Organization и внёс вклад в 22+ репозитория на GitHub. Активно участвую в "
+#~ "профессиональном сообществе разработчиков в LinkedIn, делюсь идеями и "
+#~ "общаюсь с профессионалами индустрии."
+
+#~ msgid "LinkedIn Connections"
+#~ msgstr "Связи LinkedIn"
+
+#~ msgid "Technologies Mastered"
+#~ msgstr "Освоенные технологии"
+
+#~ msgid "Years Old Developer"
+#~ msgstr "Летний разработчик"
+
+#~ msgid "Email"
+#~ msgstr "Электронная почта"
+
+#~ msgid "Phone"
+#~ msgstr "Телефон"
 
 #~ msgid "Mirshod Qayimov (W-Mirshod) - Backend Developer & AI Engineer"
 #~ msgstr "Миршод Каюмов (W-Mirshod) - Backend разработчик и AI инженер"
