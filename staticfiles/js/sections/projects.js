@@ -3,58 +3,63 @@
 
 document.addEventListener('DOMContentLoaded', function() {
     
-    // Project cards intersection observer
+    // Enhanced project cards intersection observer
     const projectObserver = new IntersectionObserver((entries) => {
         entries.forEach(entry => {
             if (entry.isIntersecting) {
-                entry.target.style.opacity = '1';
-                entry.target.style.transform = 'translateY(0)';
+                // Professional morphing animation for project cards
+                const siblings = Array.from(entry.target.parentNode.children);
+                const index = siblings.indexOf(entry.target);
+                const delay = index * 180;
                 
-                // Add stagger animation for project cards
-                if (entry.target.classList.contains('project-card')) {
-                    const siblings = Array.from(entry.target.parentNode.children);
-                    const index = siblings.indexOf(entry.target);
-                    const delay = index * 150;
-                    entry.target.style.animationDelay = `${delay}ms`;
-                    entry.target.classList.add('animate-in');
-                }
+                setTimeout(() => {
+                    entry.target.style.opacity = '1';
+                    entry.target.style.transform = 'translateY(0) scale(1)';
+                    entry.target.classList.add('animate-elastic');
+                }, delay);
+                
+                projectObserver.unobserve(entry.target);
             }
         });
     }, {
-        threshold: 0.1,
-        rootMargin: '0px 0px -50px 0px'
+        threshold: 0.2,
+        rootMargin: '0px 0px -100px 0px'
     });
 
-    // Observe project elements
+    // Observe project elements with enhanced initial state
     const projectElements = document.querySelectorAll('.project-card');
     projectElements.forEach(el => {
         el.style.opacity = '0';
-        el.style.transform = 'translateY(30px)';
-        el.style.transition = 'all 0.6s cubic-bezier(0.4, 0, 0.2, 1)';
+        el.style.transform = 'translateY(50px) scale(0.9)';
+        el.style.transition = 'all 1s cubic-bezier(0.68, -0.55, 0.265, 1.55)';
         projectObserver.observe(el);
     });
 
     // Enhanced hover effects for project cards
     projectElements.forEach(card => {
         card.addEventListener('mouseenter', () => {
-            card.style.transform = 'translateY(-15px) scale(1.03)';
-            card.style.boxShadow = '0 25px 50px rgba(0, 0, 0, 0.2)';
+            card.style.transform = 'translateY(-20px) scale(1.05) rotateY(2deg)';
+            card.style.boxShadow = '0 30px 60px rgba(0, 0, 0, 0.25), 0 0 40px rgba(63, 162, 246, 0.1)';
+            card.style.transition = 'all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275)';
             
             // Animate project image if exists
             const projectImage = card.querySelector('.project-image');
             if (projectImage) {
-                projectImage.style.transform = 'scale(1.1)';
+                projectImage.style.transform = 'scale(1.15) rotate(5deg)';
+                projectImage.style.transition = 'all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275)';
             }
         });
 
         card.addEventListener('mouseleave', () => {
-            card.style.transform = 'translateY(0) scale(1)';
+            card.style.transform = 'translateY(0) scale(1) rotateY(0deg)';
             card.style.boxShadow = '0 10px 30px rgba(0, 0, 0, 0.1)';
+            card.style.transition = 'all 0.5s cubic-bezier(0.23, 1, 0.32, 1)';
             
             // Reset project image
             const projectImage = card.querySelector('.project-image');
             if (projectImage) {
-                projectImage.style.transform = 'scale(1)';
+                projectImage.style.transform = 'scale(1) rotate(0deg)';
+                projectImage.style.transition = 'all 0.5s cubic-bezier(0.23, 1, 0.32, 1)';
             }
         });
     });

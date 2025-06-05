@@ -3,98 +3,79 @@
 
 document.addEventListener('DOMContentLoaded', function() {
     
-    // Enhanced responsive timeline handling
-    const updateTimelineLayout = () => {
-        const timelineLine = document.querySelector('.experience-timeline::before');
-        const experienceItems = document.querySelectorAll('.experience-item');
-        const isMobile = window.innerWidth <= 768;
-        
-        experienceItems.forEach((item, index) => {
-            if (isMobile) {
-                // Mobile layout - all items align left
-                item.style.flexDirection = 'row';
-                item.style.justifyContent = 'flex-start';
-            } else {
-                // Desktop layout - alternating sides
-                if (index % 2 === 0) {
-                    item.style.flexDirection = 'row';
-                } else {
-                    item.style.flexDirection = 'row-reverse';
-                }
-            }
-        });
-    };
-
-    // Call on load and resize
-    updateTimelineLayout();
-    window.addEventListener('resize', updateTimelineLayout);
-
-    // Enhanced intersection observer with better timing
+    // Mobile detection
+    const isMobile = window.innerWidth <= 768;
+    const isSmallMobile = window.innerWidth <= 480;
+    
+    // Enhanced experience items intersection observer
     const experienceObserver = new IntersectionObserver((entries) => {
         entries.forEach(entry => {
             if (entry.isIntersecting) {
-                const item = entry.target;
-                const siblings = Array.from(item.parentNode.children);
-                const index = siblings.indexOf(item);
+                const siblings = Array.from(entry.target.parentNode.children);
+                const index = siblings.indexOf(entry.target);
+                const delay = index * 300;
+                const isEven = index % 2 === 0;
                 
                 setTimeout(() => {
-                    item.style.opacity = '1';
-                    item.style.transform = 'translateY(0)';
-                    item.classList.add('animate-in');
+                    entry.target.style.opacity = '1';
+                    entry.target.style.transform = 'translateY(0) translateX(0) rotate(0deg)';
+                    entry.target.classList.add(isEven ? 'animate-slide-right' : 'animate-slide-left');
                     
-                    // Animate timeline dot
-                    const timelineDot = item.querySelector('.timeline-dot');
+                    // Animate timeline dot with elastic effect
+                    const timelineDot = entry.target.querySelector('.timeline-dot');
                     if (timelineDot) {
-                        timelineDot.style.animation = 'pulse 1s ease-in-out';
+                        setTimeout(() => {
+                            timelineDot.style.transform = 'translateX(-50%) scale(1)';
+                            timelineDot.style.opacity = '1';
+                            timelineDot.classList.add('animate-elastic');
+                        }, 200);
                     }
-                }, index * 200);
+                    
+                    // Cascade animate experience skills
+                    const skills = entry.target.querySelectorAll('.experience-skill');
+                    skills.forEach((skill, skillIndex) => {
+                        setTimeout(() => {
+                            skill.style.opacity = '1';
+                            skill.style.transform = 'translateX(0) scale(1)';
+                            skill.classList.add('animate-cascade');
+                        }, 400 + skillIndex * 80);
+                    });
+                    
+                }, delay);
                 
-                experienceObserver.unobserve(item);
+                experienceObserver.unobserve(entry.target);
             }
         });
     }, {
-        threshold: window.innerWidth <= 768 ? 0.1 : 0.2,
-        rootMargin: '0px 0px -30px 0px'
+        threshold: 0.3,
+        rootMargin: '0px 0px -120px 0px'
     });
 
-    // Observe experience elements with enhanced setup
+    // Enhanced initial styling for experience elements
     const experienceElements = document.querySelectorAll('.experience-item');
-    experienceElements.forEach(el => {
+    experienceElements.forEach((el, index) => {
+        const isEven = index % 2 === 0;
         el.style.opacity = '0';
-        el.style.transform = 'translateY(30px)';
-        el.style.transition = 'all 0.6s cubic-bezier(0.4, 0, 0.2, 1)';
+        el.style.transform = `translateY(60px) translateX(${isEven ? '-40px' : '40px'}) rotate(${isEven ? '-2deg' : '2deg'})`;
+        el.style.transition = 'all 1s cubic-bezier(0.23, 1, 0.32, 1)';
+        
+        // Hide timeline dots initially
+        const timelineDot = el.querySelector('.timeline-dot');
+        if (timelineDot) {
+            timelineDot.style.opacity = '0';
+            timelineDot.style.transform = 'translateX(-50%) scale(0.3)';
+            timelineDot.style.transition = 'all 0.8s cubic-bezier(0.68, -0.55, 0.265, 1.55)';
+        }
+        
+        // Hide skills initially
+        const skills = el.querySelectorAll('.experience-skill');
+        skills.forEach(skill => {
+            skill.style.opacity = '0';
+            skill.style.transform = 'translateX(-20px) scale(0.8)';
+            skill.style.transition = 'all 0.6s cubic-bezier(0.175, 0.885, 0.32, 1.275)';
+        });
+        
         experienceObserver.observe(el);
-    });
-
-    // Enhanced hover effects with responsive considerations
-    experienceElements.forEach(item => {
-        item.addEventListener('mouseenter', () => {
-            if (window.innerWidth > 768) {
-                item.style.transform = 'translateY(-8px) scale(1.02)';
-            } else {
-                item.style.transform = 'translateY(-3px) scale(1.01)';
-            }
-            item.style.boxShadow = '0 15px 30px rgba(0, 0, 0, 0.15)';
-            
-            // Enhanced timeline dot animation
-            const timelineDot = item.querySelector('.timeline-dot');
-            if (timelineDot) {
-                timelineDot.style.transform = window.innerWidth > 768 ? 
-                    'translateX(-50%) scale(1.4)' : 'translateX(-50%) scale(1.2)';
-                timelineDot.style.boxShadow = '0 0 20px rgba(63, 162, 246, 0.6)';
-            }
-        });
-
-        item.addEventListener('mouseleave', () => {
-            item.style.transform = 'translateY(0) scale(1)';
-            item.style.boxShadow = '0 5px 15px rgba(0, 0, 0, 0.05)';
-            
-            const timelineDot = item.querySelector('.timeline-dot');
-            if (timelineDot) {
-                timelineDot.style.transform = 'translateX(-50%) scale(1)';
-                timelineDot.style.boxShadow = '0 0 0 rgba(63, 162, 246, 0)';
-            }
-        });
     });
 
     // Timeline progress animation
@@ -220,19 +201,64 @@ document.addEventListener('DOMContentLoaded', function() {
         achievementObserver.observe(achievement);
     });
 
-    // Skills tags within experience items
+    // Mobile-friendly skills interaction
     const experienceSkills = document.querySelectorAll('.experience-skill');
     experienceSkills.forEach(skill => {
-        skill.addEventListener('click', () => {
-            // Add ripple effect
-            const ripple = document.createElement('span');
-            ripple.classList.add('ripple');
-            skill.appendChild(ripple);
-            
+        // Enhanced mobile tap feedback
+        skill.addEventListener('touchstart', (e) => {
+            e.preventDefault();
+            skill.style.transform = 'scale(0.95)';
+            skill.style.backgroundColor = 'rgba(63, 162, 246, 0.15)';
+        }, { passive: false });
+        
+        skill.addEventListener('touchend', () => {
             setTimeout(() => {
-                ripple.remove();
-            }, 600);
+                skill.style.transform = 'scale(1)';
+                skill.style.backgroundColor = 'rgba(63, 162, 246, 0.08)';
+            }, 100);
+        });
+        
+        // Desktop click for ripple effect
+        skill.addEventListener('click', () => {
+            if (!isMobile) {
+                const ripple = document.createElement('span');
+                ripple.classList.add('ripple');
+                skill.appendChild(ripple);
+                
+                setTimeout(() => {
+                    ripple.remove();
+                }, 600);
+            }
         });
     });
 
-});
+    // Mobile scroll optimization
+    let scrollTimeout;
+    const handleMobileScroll = () => {
+        if (isMobile) {
+            document.body.classList.add('scrolling');
+            clearTimeout(scrollTimeout);
+            scrollTimeout = setTimeout(() => {
+                document.body.classList.remove('scrolling');
+            }, 150);
+        }
+    };
+
+    if (isMobile) {
+        window.addEventListener('scroll', handleMobileScroll, { passive: true });
+    }
+
+    // Glass card animation
+    const glassCard = document.querySelector('.glass-card');
+    if (glassCard) {
+        const glassObserver = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    setTimeout(() => {
+                        entry.target.style.opacity = '1';
+                        entry.target.style.transform = 'translateY(0) scale(1)';
+                        entry.target.classList.add('animate-elastic');
+                        
+                        // Animate connection stats
+                        const connectionCount = entry.target.querySelector('.connection-count');
+                        if

@@ -189,59 +189,65 @@ document.addEventListener('DOMContentLoaded', function() {
         return isValid;
     }
 
-    // Professional network cards animations
+    // Enhanced professional network cards animations
     const networkCards = document.querySelectorAll('.network-card');
     const networkObserver = new IntersectionObserver((entries) => {
         entries.forEach(entry => {
             if (entry.isIntersecting) {
-                entry.target.style.opacity = '1';
-                entry.target.style.transform = 'translateY(0)';
-                
-                // Add stagger animation
                 const siblings = Array.from(entry.target.parentNode.children);
                 const index = siblings.indexOf(entry.target);
                 const delay = index * 150;
-                entry.target.style.animationDelay = `${delay}ms`;
-                entry.target.classList.add('animate-in');
+                
+                setTimeout(() => {
+                    entry.target.style.opacity = '1';
+                    entry.target.style.transform = 'translateY(0) scale(1)';
+                    entry.target.classList.add('animate-elastic');
+                }, delay);
+                
+                networkObserver.unobserve(entry.target);
             }
         });
     }, {
-        threshold: 0.1,
-        rootMargin: '0px 0px -50px 0px'
+        threshold: 0.2,
+        rootMargin: '0px 0px -80px 0px'
     });
 
-    // Observe network cards
+    // Enhanced network cards styling and observation
     networkCards.forEach(card => {
         card.style.opacity = '0';
-        card.style.transform = 'translateY(30px)';
-        card.style.transition = 'all 0.6s cubic-bezier(0.4, 0, 0.2, 1)';
+        card.style.transform = 'translateY(40px) scale(0.9)';
+        card.style.transition = 'all 1s cubic-bezier(0.68, -0.55, 0.265, 1.55)';
         networkObserver.observe(card);
 
-        // Enhanced hover effects
+        // Enhanced hover effects with 3D transforms
         card.addEventListener('mouseenter', () => {
-            card.style.transform = 'translateY(-10px) scale(1.05)';
-            card.style.boxShadow = '0 20px 40px rgba(0, 0, 0, 0.15)';
+            card.style.transform = 'translateY(-15px) scale(1.08) rotateX(5deg) rotateY(5deg)';
+            card.style.boxShadow = '0 25px 50px rgba(0, 0, 0, 0.2), 0 0 40px rgba(63, 162, 246, 0.15)';
+            card.style.transition = 'all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275)';
             
-            // Animate network icon
+            // Enhanced network icon animation
             const icon = card.querySelector('.network-icon');
             if (icon) {
-                icon.style.transform = 'scale(1.2) rotate(10deg)';
+                icon.style.transform = 'scale(1.3) rotate(15deg)';
+                icon.style.transition = 'all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275)';
             }
         });
 
         card.addEventListener('mouseleave', () => {
-            card.style.transform = 'translateY(0) scale(1)';
+            card.style.transform = 'translateY(0) scale(1) rotateX(0deg) rotateY(0deg)';
             card.style.boxShadow = '0 8px 25px rgba(0, 0, 0, 0.1)';
+            card.style.transition = 'all 0.5s cubic-bezier(0.23, 1, 0.32, 1)';
             
             // Reset network icon
             const icon = card.querySelector('.network-icon');
             if (icon) {
                 icon.style.transform = 'scale(1) rotate(0deg)';
+                icon.style.transition = 'all 0.5s cubic-bezier(0.23, 1, 0.32, 1)';
             }
         });
     });
 
-    // Contact information animations
+    // Enhanced contact information animations with cascade effect
     const contactInfo = document.querySelectorAll('.contact-info-item');
     contactInfo.forEach((item, index) => {
         const infoObserver = new IntersectionObserver((entries) => {
@@ -249,27 +255,30 @@ document.addEventListener('DOMContentLoaded', function() {
                 if (entry.isIntersecting) {
                     setTimeout(() => {
                         entry.target.style.opacity = '1';
-                        entry.target.style.transform = 'translateX(0)';
-                    }, index * 100);
+                        entry.target.style.transform = 'translateX(0) scale(1)';
+                        entry.target.classList.add('animate-cascade');
+                    }, index * 120);
                     infoObserver.unobserve(entry.target);
                 }
             });
-        }, { threshold: 0.5 });
+        }, { threshold: 0.4 });
 
         item.style.opacity = '0';
-        item.style.transform = 'translateX(-30px)';
-        item.style.transition = 'all 0.5s cubic-bezier(0.4, 0, 0.2, 1)';
+        item.style.transform = 'translateX(-40px) scale(0.9)';
+        item.style.transition = 'all 0.7s cubic-bezier(0.175, 0.885, 0.32, 1.275)';
         infoObserver.observe(item);
 
-        // Hover effects for contact info
+        // Enhanced hover effects for contact info
         item.addEventListener('mouseenter', () => {
-            item.style.transform = 'translateX(10px) scale(1.02)';
-            item.style.backgroundColor = 'rgba(63, 162, 246, 0.05)';
+            item.style.transform = 'translateX(15px) scale(1.05) rotateY(3deg)';
+            item.style.backgroundColor = 'rgba(63, 162, 246, 0.08)';
+            item.style.transition = 'all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275)';
         });
 
         item.addEventListener('mouseleave', () => {
-            item.style.transform = 'translateX(0) scale(1)';
+            item.style.transform = 'translateX(0) scale(1) rotateY(0deg)';
             item.style.backgroundColor = 'transparent';
+            item.style.transition = 'all 0.4s cubic-bezier(0.23, 1, 0.32, 1)';
         });
     });
 

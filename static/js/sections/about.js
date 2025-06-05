@@ -55,39 +55,59 @@ document.addEventListener('DOMContentLoaded', function() {
         requestAnimationFrame(animate);
     }
 
-    // Professional section reveal with stagger
+    // Enhanced professional section reveal with advanced stagger
     const aboutElements = document.querySelectorAll('.about-text p, .stats-grid .stat-item');
     const revealObserver = new IntersectionObserver((entries) => {
         entries.forEach((entry, index) => {
             if (entry.isIntersecting) {
+                const elementIndex = Array.from(aboutElements).indexOf(entry.target);
+                const delay = elementIndex * 200;
+                
                 setTimeout(() => {
                     entry.target.style.opacity = '1';
-                    entry.target.style.transform = 'translateY(0)';
-                }, index * 150);
+                    entry.target.style.transform = 'translateY(0) scale(1)';
+                    
+                    // Apply different animation classes based on element type
+                    if (entry.target.classList.contains('stat-item')) {
+                        entry.target.classList.add('animate-elastic');
+                    } else {
+                        entry.target.classList.add('animate-morph');
+                    }
+                }, delay);
+                
                 revealObserver.unobserve(entry.target);
             }
         });
-    }, { threshold: 0.2 });
+    }, { 
+        threshold: 0.25,
+        rootMargin: '0px 0px -100px 0px'
+    });
 
-    aboutElements.forEach(element => {
+    aboutElements.forEach((element, index) => {
         element.style.opacity = '0';
-        element.style.transform = 'translateY(30px)';
-        element.style.transition = 'all 0.8s cubic-bezier(0.16, 1, 0.3, 1)';
+        if (element.classList.contains('stat-item')) {
+            element.style.transform = 'translateY(40px) scale(0.8)';
+        } else {
+            element.style.transform = 'translateY(50px) scaleY(0.7)';
+        }
+        element.style.transition = 'all 1s cubic-bezier(0.25, 0.46, 0.45, 0.94)';
         revealObserver.observe(element);
     });
 
-    // Premium hover effects for stat items
+    // Enhanced premium hover effects for stat items
     const statItems = document.querySelectorAll('.stat-item');
     statItems.forEach((item, index) => {
         item.style.transitionDelay = `${index * 0.1}s`;
         
         item.addEventListener('mouseenter', () => {
-            item.style.transform = 'translateY(-12px) scale(1.05)';
-            item.querySelector('h3').style.textShadow = '0 0 20px var(--primary-color)';
+            item.style.transform = 'translateY(-18px) scale(1.08) rotateY(5deg)';
+            item.style.transition = 'all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275)';
+            item.querySelector('h3').style.textShadow = '0 0 30px var(--primary-color)';
         });
 
         item.addEventListener('mouseleave', () => {
-            item.style.transform = 'translateY(0) scale(1)';
+            item.style.transform = 'translateY(0) scale(1) rotateY(0deg)';
+            item.style.transition = 'all 0.5s cubic-bezier(0.23, 1, 0.32, 1)';
             item.querySelector('h3').style.textShadow = 'none';
         });
     });
