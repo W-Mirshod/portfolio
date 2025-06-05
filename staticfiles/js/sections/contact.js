@@ -8,6 +8,7 @@ document.addEventListener('DOMContentLoaded', function() {
     const formMessages = document.getElementById('form-messages');
     let recaptchaToken = null;
 
+<<<<<<< HEAD
     // reCAPTCHA handling with duplication prevention
     let recaptchaLoaded = false;
     let recaptchaWidgetId = null;
@@ -71,6 +72,9 @@ document.addEventListener('DOMContentLoaded', function() {
     };
 
     // Initialize reCAPTCHA
+=======
+    // Initialize reCAPTCHA v2
+>>>>>>> parent of 1482f2b (Enhance UI/UX across multiple sections)
     window.onRecaptchaCallback = function(token) {
         recaptchaToken = token;
     };
@@ -78,6 +82,19 @@ document.addEventListener('DOMContentLoaded', function() {
     window.onRecaptchaExpired = function() {
         recaptchaToken = null;
     };
+
+    // Initialize reCAPTCHA
+    if (typeof grecaptcha !== 'undefined' && grecaptcha.ready) {
+        grecaptcha.ready(function() {
+            if (document.getElementById('recaptcha-container')) {
+                grecaptcha.render('recaptcha-container', {
+                    'sitekey': '***REMOVED***',
+                    'callback': 'onRecaptchaCallback',
+                    'expired-callback': 'onRecaptchaExpired'
+                });
+            }
+        });
+    }
 
     // Contact form submission
     if (contactForm) {
