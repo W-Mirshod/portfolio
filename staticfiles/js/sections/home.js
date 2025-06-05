@@ -276,6 +276,34 @@ document.addEventListener('DOMContentLoaded', function() {
         }, 2000);
     }
 
+    // Scroll indicator functionality
+    const scrollIndicator = document.querySelector('.scroll-indicator');
+    if (scrollIndicator) {
+        scrollIndicator.addEventListener('click', () => {
+            const aboutSection = document.getElementById('about');
+            if (aboutSection) {
+                const header = document.getElementById('header');
+                const headerHeight = header ? header.offsetHeight : 0;
+                const targetPosition = aboutSection.offsetTop - headerHeight;
+                window.scrollTo({
+                    top: targetPosition,
+                    behavior: 'smooth'
+                });
+            }
+        });
+
+        // Hide scroll indicator when scrolling down
+        window.addEventListener('scroll', () => {
+            if (window.scrollY > 300) {
+                scrollIndicator.style.opacity = '0';
+                scrollIndicator.style.transform = 'translateX(-50%) translateY(20px)';
+            } else {
+                scrollIndicator.style.opacity = '1';
+                scrollIndicator.style.transform = 'translateX(-50%) translateY(0)';
+            }
+        });
+    }
+
     // Add dynamic background particles
     createBackgroundParticles();
 

@@ -170,20 +170,6 @@ document.addEventListener('DOMContentLoaded', function() {
         });
     });
 
-    // Close modal on Escape key
-    document.addEventListener('keydown', (e) => {
-        if (e.key === 'Escape') {
-            const activeModal = document.querySelector('.project-modal.active');
-            if (activeModal) {
-                activeModal.classList.remove('active');
-                setTimeout(() => {
-                    activeModal.style.display = 'none';
-                    document.body.style.overflow = '';
-                }, 300);
-            }
-        }
-    });
-
     // Project search functionality
     const projectSearch = document.getElementById('project-search');
     if (projectSearch) {
