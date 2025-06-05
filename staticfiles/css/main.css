@@ -420,3 +420,29 @@ body::before {
     transform: none !important;
   }
 }
+
+/* Focus styles for better accessibility */
+button:focus,
+.language-btn:focus,
+.menu-toggle:focus {
+  outline: 2px solid var(--primary-color);
+  outline-offset: 2px;
+}
+
+/* Ensure clickable elements have proper cursor */
+.language-btn,
+.language-option,
+.menu-toggle,
+.nav-item {
+  cursor: pointer;
+}
+
+/* Prevent text selection on interactive elements */
+.language-btn,
+.menu-toggle,
+.nav-item {
+  user-select: none;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+}
