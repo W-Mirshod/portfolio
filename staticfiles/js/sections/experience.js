@@ -261,4 +261,57 @@ document.addEventListener('DOMContentLoaded', function() {
                         
                         // Animate connection stats
                         const connectionCount = entry.target.querySelector('.connection-count');
-                        if
+                        if (connectionCount) {
+                            connectionCount.style.transition = 'all 0.6s cubic-bezier(0.23, 1, 0.32, 1)';
+                            connectionCount.style.transform = 'translateY(0)';
+                            connectionCount.style.opacity = '1';
+                        }
+                        
+                    }, 300);
+                    
+                    glassObserver.unobserve(entry.target);
+                }
+            });
+        }, {
+            threshold: 0.3,
+            rootMargin: '0px 0px -100px 0px'
+        });
+
+        glassCard.style.opacity = '0';
+        glassCard.style.transform = 'translateY(30px) scale(0.9)';
+        glassCard.style.transition = 'all 0.8s cubic-bezier(0.23, 1, 0.32, 1)';
+        glassObserver.observe(glassCard);
+    }
+
+    // Initialize experience section animations
+    const experienceCards = document.querySelectorAll('.experience-card');
+    
+    if (experienceCards.length > 0) {
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -50px 0px'
+        };
+
+        const observer = new IntersectionObserver(function(entries) {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.style.opacity = '1';
+                    entry.target.style.transform = 'translateY(0)';
+                }
+            });
+        }, observerOptions);
+
+        experienceCards.forEach(card => {
+            card.style.opacity = '0';
+            card.style.transform = 'translateY(30px)';
+            card.style.transition = 'all 0.6s ease-out';
+            observer.observe(card);
+        });
+    }
+
+    // Add timeline animations
+    const timelineItems = document.querySelectorAll('.timeline-item');
+    timelineItems.forEach((item, index) => {
+        item.style.animationDelay = `${index * 0.2}s`;
+    });
+});

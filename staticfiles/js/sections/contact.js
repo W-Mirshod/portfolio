@@ -8,7 +8,69 @@ document.addEventListener('DOMContentLoaded', function() {
     const formMessages = document.getElementById('form-messages');
     let recaptchaToken = null;
 
-    // Initialize reCAPTCHA v2
+    // reCAPTCHA handling with duplication prevention
+    let recaptchaLoaded = false;
+    let recaptchaWidgetId = null;
+
+    function loadRecaptcha() {
+        if (recaptchaLoaded || !window.grecaptcha) {
+            return;
+        }
+
+        const recaptchaContainer = document.getElementById('recaptcha-container');
+        if (!recaptchaContainer) {
+            console.warn('reCAPTCHA container not found');
+            return;
+        }
+
+        // Check if reCAPTCHA is already rendered
+        if (recaptchaContainer.hasChildNodes()) {
+            console.log('reCAPTCHA already rendered');
+            return;
+        }
+
+        try {
+            window.grecaptcha.ready(function() {
+                if (!recaptchaLoaded) {
+                    recaptchaWidgetId = window.grecaptcha.render('recaptcha-container', {
+                        'sitekey': '6Ld5slAqAAAAAOQ7IN70HQVoUKL7x6uGKrN5i7aZ',
+                        'callback': 'onRecaptchaCallback',
+                        'expired-callback': 'onRecaptchaExpired'
+                    });
+                    recaptchaLoaded = true;
+                }
+            });
+        } catch (error) {
+            console.error('reCAPTCHA rendering error:', error);
+        }
+    }
+
+    // Load reCAPTCHA when contact section is visible
+    const contactSection = document.getElementById('contact');
+    if (contactSection) {
+        const contactObserver = new IntersectionObserver(function(entries) {
+            entries.forEach(entry => {
+                if (entry.isIntersecting && !recaptchaLoaded) {
+                    loadRecaptcha();
+                }
+            });
+        }, { threshold: 0.1 });
+
+        contactObserver.observe(contactSection);
+    }
+
+    // Reset reCAPTCHA function
+    window.resetRecaptcha = function() {
+        if (recaptchaWidgetId !== null && window.grecaptcha) {
+            try {
+                window.grecaptcha.reset(recaptchaWidgetId);
+            } catch (error) {
+                console.error('reCAPTCHA reset error:', error);
+            }
+        }
+    };
+
+    // Initialize reCAPTCHA
     window.onRecaptchaCallback = function(token) {
         recaptchaToken = token;
     };
@@ -16,19 +78,6 @@ document.addEventListener('DOMContentLoaded', function() {
     window.onRecaptchaExpired = function() {
         recaptchaToken = null;
     };
-
-    // Initialize reCAPTCHA
-    if (typeof grecaptcha !== 'undefined' && grecaptcha.ready) {
-        grecaptcha.ready(function() {
-            if (document.getElementById('recaptcha-container')) {
-                grecaptcha.render('recaptcha-container', {
-                    'sitekey': '6Ld5slAqAAAAAOQ7IN70HQVoUKL7x6uGKrN5i7aZ',
-                    'callback': 'onRecaptchaCallback',
-                    'expired-callback': 'onRecaptchaExpired'
-                });
-            }
-        });
-    }
 
     // Contact form submission
     if (contactForm) {
