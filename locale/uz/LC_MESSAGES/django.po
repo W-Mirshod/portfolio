@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2025-06-05 04:43+0500\n"
+"POT-Creation-Date: 2025-06-05 05:00+0500\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: W-Mirshod <portfolio@w-mirshod.com>\n"
 "Language-Team: Uzbek <uz@li.org>\n"
@@ -356,44 +356,42 @@ msgstr "Dasturiy ta'minot muhandisi"
 msgid "MegaDevs (Germany Company) · Full-time"
 msgstr "MegaDevs · To'liq vaqt"
 
-#: templates/sections/experience.html:35
-#, fuzzy
-#| msgid ""
-#| "Developed and maintained multiple projects, with a key focus on IMAP/SMTP "
-#| "mail protocols and automation solutions in Germany."
+#: templates/sections/experience.html:36
 msgid ""
-"Developed and maintained 20+ diverse projects for a leading German software "
-"company, with specialized expertise in IMAP/SMTP mail protocols and "
-"comprehensive automation solutions."
+"Developed and maintained 20+ diverse projects for MegaDevs, a leading "
+"software company based in Germany, with specialized expertise in IMAP/SMTP "
+"mail protocols and comprehensive automation solutions."
 msgstr ""
-"Ko'plab loyihalarni ishlab chiqish va qo'llab-quvvatlash, asosiy e'tibor "
-"IMAP/SMTP pochta protokollari va Germaniyada avtomatlashtirish yechimlariga."
+"Germaniyada joylashgan MegaDevs kompaniyasi uchun 20 dan ortiq turli "
+"loyihalarni ishlab chiqdim va qo‘llab-quvvatladim. IMAP/SMTP pochta "
+"protokollari va keng qamrovli avtomatlashtirish yechimlari bo‘yicha maxsus "
+"tajribaga egaman."
 
-#: templates/sections/experience.html:37
+#: templates/sections/experience.html:39
 msgid "Web Development"
 msgstr "Veb rivojlantirish"
 
-#: templates/sections/experience.html:38
+#: templates/sections/experience.html:40
 msgid "Web Engineering"
 msgstr "Veb muhandislik"
 
-#: templates/sections/experience.html:41
+#: templates/sections/experience.html:43
 msgid "Automation"
 msgstr "Avtomatlashtirish"
 
-#: templates/sections/experience.html:48
+#: templates/sections/experience.html:50
 msgid "2022 - Oct 2024"
 msgstr "2022 - Oktabr 2024"
 
-#: templates/sections/experience.html:51 templates/sections/home.html:20
+#: templates/sections/experience.html:53 templates/sections/home.html:20
 msgid "Backend Developer & AI Engineer"
 msgstr "Backend dasturchi va AI muhandis"
 
-#: templates/sections/experience.html:52
+#: templates/sections/experience.html:54
 msgid "Freelance / Independent Projects"
 msgstr "Frilanser / Mustaqil loyihalar"
 
-#: templates/sections/experience.html:53
+#: templates/sections/experience.html:55
 msgid ""
 "Specializing in microservices architecture, API development, and AI "
 "integration. Working on innovative projects with Python, Django, AWS, and "
@@ -403,14 +401,14 @@ msgstr ""
 "bo'yicha mutaxassis. Python, Django, AWS va mashina o'rganish "
 "texnologiyalari bilan innovatsion loyihalarda ishlash."
 
-#: templates/sections/experience.html:67
+#: templates/sections/experience.html:69
 msgid ""
 "Connect with me on LinkedIn to explore potential collaboration opportunities"
 msgstr ""
 "Potentsial hamkorlik imkoniyatlarini o'rganish uchun LinkedIn orqali men "
 "bilan bog'laning"
 
-#: templates/sections/experience.html:70
+#: templates/sections/experience.html:72
 msgid "View LinkedIn Profile"
 msgstr "LinkedIn profilini ko'rish"
 
