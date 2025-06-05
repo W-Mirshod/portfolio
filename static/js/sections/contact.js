@@ -46,8 +46,8 @@ document.addEventListener('DOMContentLoaded', function() {
     }
 
     // Load reCAPTCHA when contact section is visible
-    const contactSection = document.getElementById('contact');
-    if (contactSection) {
+    const contactSectionRecaptcha = document.getElementById('contact');
+    if (contactSectionRecaptcha) {
         const contactObserver = new IntersectionObserver(function(entries) {
             entries.forEach(entry => {
                 if (entry.isIntersecting && !recaptchaLoaded) {
@@ -56,7 +56,7 @@ document.addEventListener('DOMContentLoaded', function() {
             });
         }, { threshold: 0.1 });
 
-        contactObserver.observe(contactSection);
+        contactObserver.observe(contactSectionRecaptcha);
     }
 
     // Reset reCAPTCHA function
@@ -357,8 +357,8 @@ document.addEventListener('DOMContentLoaded', function() {
     });
 
     // Contact section reveal animation
-    const contactSection = document.getElementById('contact');
-    if (contactSection) {
+    const contactSectionReveal = document.getElementById('contact');
+    if (contactSectionReveal) {
         const sectionObserver = new IntersectionObserver((entries) => {
             entries.forEach(entry => {
                 if (entry.isIntersecting) {
@@ -368,7 +368,7 @@ document.addEventListener('DOMContentLoaded', function() {
             });
         }, { threshold: 0.15 });
 
-        sectionObserver.observe(contactSection);
+        sectionObserver.observe(contactSectionReveal);
     }
 
 });

@@ -336,4 +336,76 @@ document.addEventListener('DOMContentLoaded', function() {
         document.addEventListener('keypress', playMusic, { once: true });
     }
 
+    // PDP Banner interactive effects
+    const pdpBanner = document.querySelector('.pdp-acceptance-banner');
+    if (pdpBanner) {
+        // Add click tracking
+        pdpBanner.addEventListener('click', function() {
+            // Track banner click (optional analytics)
+            console.log('PDP University banner clicked');
+        });
+
+        // Add particle effect on hover
+        pdpBanner.addEventListener('mouseenter', function() {
+            createPdpParticles(this);
+        });
+
+        // Remove particles on mouse leave
+        pdpBanner.addEventListener('mouseleave', function() {
+            const particles = this.querySelectorAll('.pdp-particle');
+            particles.forEach(particle => {
+                particle.remove();
+            });
+        });
+    }
+
+    function createPdpParticles(banner) {
+        const particleCount = 8;
+        const rect = banner.getBoundingClientRect();
+        
+        for (let i = 0; i < particleCount; i++) {
+            const particle = document.createElement('div');
+            particle.className = 'pdp-particle';
+            particle.style.cssText = `
+                position: absolute;
+                width: 4px;
+                height: 4px;
+                background: radial-gradient(circle, #10b981, transparent);
+                border-radius: 50%;
+                pointer-events: none;
+                z-index: 1000;
+                left: ${rect.left + Math.random() * rect.width}px;
+                top: ${rect.top + Math.random() * rect.height}px;
+                animation: pdpParticleFloat 2s ease-out forwards;
+            `;
+            
+            document.body.appendChild(particle);
+            
+            setTimeout(() => {
+                if (particle.parentNode) {
+                    particle.parentNode.removeChild(particle);
+                }
+            }, 2000);
+        }
+    }
+
+    // Add particle animation styles
+    if (!document.querySelector('#pdp-particle-styles')) {
+        const style = document.createElement('style');
+        style.id = 'pdp-particle-styles';
+        style.textContent = `
+            @keyframes pdpParticleFloat {
+                0% {
+                    opacity: 1;
+                    transform: translateY(0) scale(1);
+                }
+                100% {
+                    opacity: 0;
+                    transform: translateY(-30px) scale(0.5);
+                }
+            }
+        `;
+        document.head.appendChild(style);
+    }
+
 });
