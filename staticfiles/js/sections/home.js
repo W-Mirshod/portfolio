@@ -77,23 +77,30 @@ document.addEventListener('DOMContentLoaded', function() {
     }
 
 
+    // Simplified parallax with throttling for performance
     function updateParallax() {
         const scrolled = window.pageYOffset;
-        floatingCards.forEach((card) => {
-            // Only apply parallax if the card is not being actively interacted with
-            // This check is basic; more robust state management might be needed if issues persist
-            if (!card.classList.contains('is-hovered') && !card.classList.contains('is-clicking')) {
-                const index = card.dataset.originalIndex;
-                card.style.transform = getParallaxTransformValue(index);
+        
+        // Only apply parallax to first 8 cards for performance
+        floatingCards.forEach((card, index) => {
+            if (index < 8 && !card.classList.contains('is-hovered') && !card.classList.contains('is-clicking')) {
+                const rate = scrolled * -0.02 * ((index % 3) + 1) * 0.2; // Reduced intensity
+                card.style.transform = `translateY(${rate}px)`;
             }
         });
         ticking = false;
     }
 
+    // Throttled scroll listener for better performance
+    let scrollTimer = null;
     window.addEventListener('scroll', () => {
         if (!ticking) {
-            requestAnimationFrame(updateParallax);
-            ticking = true;
+            // Further throttle scroll events
+            if (scrollTimer) clearTimeout(scrollTimer);
+            scrollTimer = setTimeout(() => {
+                requestAnimationFrame(updateParallax);
+                ticking = true;
+            }, 16); // ~60fps
         }
     });
 
@@ -276,52 +283,12 @@ document.addEventListener('DOMContentLoaded', function() {
         }, 2000);
     }
 
-    // Scroll indicator functionality
-    const scrollIndicator = document.querySelector('.scroll-indicator');
-    if (scrollIndicator) {
-        scrollIndicator.addEventListener('click', () => {
-            const aboutSection = document.getElementById('about');
-            if (aboutSection) {
-                const header = document.getElementById('header');
-                const headerHeight = header ? header.offsetHeight : 0;
-                const targetPosition = aboutSection.offsetTop - headerHeight;
-                window.scrollTo({
-                    top: targetPosition,
-                    behavior: 'smooth'
-                });
-            }
-        });
-
-        // Hide scroll indicator when scrolling down
-        window.addEventListener('scroll', () => {
-            if (window.scrollY > 300) {
-                scrollIndicator.style.opacity = '0';
-                scrollIndicator.style.transform = 'translateX(-50%) translateY(20px)';
-            } else {
-                scrollIndicator.style.opacity = '1';
-                scrollIndicator.style.transform = 'translateX(-50%) translateY(0)';
-            }
-        });
-    }
-
-    // Add dynamic background particles
-    createBackgroundParticles();
+    // Background particles disabled for performance
+    // createBackgroundParticles();
 
     function createBackgroundParticles() {
-        const particlesContainer = document.createElement('div');
-        particlesContainer.className = 'background-particles';
-
-        for (let i = 0; i < 30; i++) {
-            const particle = document.createElement('div');
-            particle.className = 'particle-item';
-            particle.style.left = `${Math.random() * 100}%`;
-            particle.style.top = `${Math.random() * 100}%`;
-            particle.style.animationDelay = `${Math.random() * 10}s`;
-            particle.style.animationDuration = `${10 + Math.random() * 15}s`;
-            particlesContainer.appendChild(particle);
-        }
-
-        document.body.insertBefore(particlesContainer, document.body.firstChild);
+        // Disabled for performance - was causing high CPU/GPU usage
+        return;
     }
 
     // Hero content reveal animation
@@ -373,48 +340,21 @@ document.addEventListener('DOMContentLoaded', function() {
             console.log('PDP University banner clicked');
         });
 
-        // Add particle effect on hover
+        // Simplified PDP particle effect
         pdpBanner.addEventListener('mouseenter', function() {
-            createPdpParticles(this);
+            // Disabled heavy particle effects for performance
+            this.style.transform = 'scale(1.02)';
+            this.style.transition = 'transform 0.3s ease';
         });
 
-        // Remove particles on mouse leave
         pdpBanner.addEventListener('mouseleave', function() {
-            const particles = this.querySelectorAll('.pdp-particle');
-            particles.forEach(particle => {
-                particle.remove();
-            });
+            this.style.transform = 'scale(1)';
         });
     }
 
     function createPdpParticles(banner) {
-        const particleCount = 8;
-        const rect = banner.getBoundingClientRect();
-        
-        for (let i = 0; i < particleCount; i++) {
-            const particle = document.createElement('div');
-            particle.className = 'pdp-particle';
-            particle.style.cssText = `
-                position: absolute;
-                width: 4px;
-                height: 4px;
-                background: radial-gradient(circle, #10b981, transparent);
-                border-radius: 50%;
-                pointer-events: none;
-                z-index: 1000;
-                left: ${rect.left + Math.random() * rect.width}px;
-                top: ${rect.top + Math.random() * rect.height}px;
-                animation: pdpParticleFloat 2s ease-out forwards;
-            `;
-            
-            document.body.appendChild(particle);
-            
-            setTimeout(() => {
-                if (particle.parentNode) {
-                    particle.parentNode.removeChild(particle);
-                }
-            }, 2000);
-        }
+        // Disabled for performance - was causing GPU strain
+        return;
     }
 
     // Add particle animation styles
