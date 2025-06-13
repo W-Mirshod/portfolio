@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2025-06-05 05:00+0500\n"
+"POT-Creation-Date: 2025-06-13 07:07+0500\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: W-Mirshod <portfolio@w-mirshod.com>\n"
 "Language-Team: Russian <ru@li.org>\n"
@@ -278,7 +278,7 @@ msgstr "Успешно окончил"
 msgid "Completed: August 2024"
 msgstr "Завершено: Август 2024"
 
-#: templates/sections/contact.html:6 templates/sections/home.html:80
+#: templates/sections/contact.html:6 templates/sections/home.html:107
 msgid "Get In Touch"
 msgstr "Связаться"
 
@@ -310,19 +310,23 @@ msgstr "Опыт"
 msgid "Building expertise through hands-on development"
 msgstr "Создание экспертизы через практическую разработку"
 
-#: templates/sections/experience.html:13
+#: templates/sections/experience.html:10
+msgid "Professional experience timeline"
+msgstr "Хронология профессионального опыта"
+
+#: templates/sections/experience.html:14
 msgid "Mar 2025 - Present"
 msgstr "Март 2025 - Настоящее время"
 
-#: templates/sections/experience.html:16
+#: templates/sections/experience.html:17
 msgid "Senior Software Engineer"
 msgstr "Старший инженер-программист"
 
-#: templates/sections/experience.html:17
+#: templates/sections/experience.html:18
 msgid "Yaklabs · Full-time"
 msgstr "Yaklabs · Полная занятость"
 
-#: templates/sections/experience.html:18
+#: templates/sections/experience.html:19
 msgid ""
 "Contributing to a tech-driven, future-oriented platform at YakLabs "
 "(Tashkent, Uzbekistan). Focused on innovative projects and modern "
@@ -332,64 +336,68 @@ msgstr ""
 "(Ташкент, Узбекистан). Фокус на инновационных проектах и современных "
 "технологиях."
 
-#: templates/sections/experience.html:22 templates/sections/projects.html:39
-#: templates/sections/skills.html:17
+#: templates/sections/experience.html:20 templates/sections/experience.html:42
+#: templates/sections/experience.html:61
+msgid "Technologies used"
+msgstr "Используемые технологии"
+
+#: templates/sections/experience.html:25 templates/sections/projects.html:60
+#: templates/sections/skills.html:18
 msgid "Microservices"
 msgstr "Микросервисы"
 
-#: templates/sections/experience.html:23
+#: templates/sections/experience.html:26
 msgid "Cloud Platforms"
 msgstr "Облачные платформы"
 
-#: templates/sections/experience.html:30
+#: templates/sections/experience.html:34
 msgid "Oct 2024 - Apr 2025"
 msgstr "Октябрь 2024 - Апрель 2025"
 
-#: templates/sections/experience.html:33
+#: templates/sections/experience.html:37
 msgid "Software Engineer"
 msgstr "Инженер-программист"
 
-#: templates/sections/experience.html:34
-#, fuzzy
-#| msgid "MegaDevs · Full-time"
+#: templates/sections/experience.html:38
 msgid "MegaDevs (Germany Company) · Full-time"
-msgstr "MegaDevs · Полная занятость"
+msgstr "MegaDevs (Немецкая компания) · Полная занятость"
 
-#: templates/sections/experience.html:36
+#: templates/sections/experience.html:40
 msgid ""
 "Developed and maintained 20+ diverse projects for MegaDevs, a leading "
 "software company based in Germany, with specialized expertise in IMAP/SMTP "
 "mail protocols and comprehensive automation solutions."
 msgstr ""
-"Разрабатывал и поддерживал более 20 различных проектов для MegaDevs — ведущей "
-"программной компании из Германии, обладая специализированной экспертизой в "
-"протоколах электронной почты IMAP/SMTP и комплексных решениях автоматизации."
+"Разрабатывал и поддерживал более 20 различных проектов для MegaDevs — "
+"ведущей программной компании из Германии, обладая специализированной "
+"экспертизой в протоколах электронной почты IMAP/SMTP и комплексных решениях "
+"автоматизации."
 
-#: templates/sections/experience.html:39
+#: templates/sections/experience.html:43
 msgid "Web Development"
 msgstr "Веб-разработка"
 
-#: templates/sections/experience.html:40
+#: templates/sections/experience.html:44
 msgid "Web Engineering"
 msgstr "Веб-инженерия"
 
-#: templates/sections/experience.html:43
-msgid "Automation"
-msgstr "Автоматизация"
+#: templates/sections/experience.html:47
+msgid "Automation(CI/CD)"
+msgstr "Автоматизация(CI/CD)"
 
-#: templates/sections/experience.html:50
+#: templates/sections/experience.html:55
 msgid "2022 - Oct 2024"
 msgstr "2022 - Октябрь 2024"
 
-#: templates/sections/experience.html:53 templates/sections/home.html:20
+#: templates/sections/experience.html:58 templates/sections/home.html:22
 msgid "Backend Developer & AI Engineer"
 msgstr "Backend разработчик и AI инженер"
 
-#: templates/sections/experience.html:54
+#: templates/sections/experience.html:59
 msgid "Freelance / Independent Projects"
 msgstr "Фриланс / Независимые проекты"
 
-#: templates/sections/experience.html:55
+#: templates/sections/experience.html:60
 msgid ""
 "Specializing in microservices architecture, API development, and AI "
 "integration. Working on innovative projects with Python, Django, AWS, and "
@@ -399,12 +407,20 @@ msgstr ""
 "AI. Работаю над инновационными проектами с Python, Django, AWS и "
 "технологиями машинного обучения."
 
-#: templates/sections/experience.html:69
+#: templates/sections/experience.html:78
+msgid "Professional Connections"
+msgstr "Профессиональные связи"
+
+#: templates/sections/experience.html:80
 msgid ""
 "Connect with me on LinkedIn to explore potential collaboration opportunities"
 msgstr "Свяжитесь со мной в LinkedIn для изучения возможностей сотрудничества"
 
-#: templates/sections/experience.html:72
+#: templates/sections/experience.html:81
+msgid "View LinkedIn Profile - Opens in new tab"
+msgstr "Посмотреть профиль LinkedIn - Открывается в новой вкладке"
+
+#: templates/sections/experience.html:83
 msgid "View LinkedIn Profile"
 msgstr "Посмотреть профиль LinkedIn"
 
@@ -413,42 +429,42 @@ msgid "Quick Links"
 msgstr "Быстрые ссылки"
 
 #: templates/sections/footer.html:12 templates/sections/header.html:13
-#: templates/sections/header.html:73
+#: templates/sections/header.html:72
 msgid "Home"
 msgstr "Главная"
 
 #: templates/sections/footer.html:13 templates/sections/header.html:14
-#: templates/sections/header.html:74
+#: templates/sections/header.html:73
 msgid "About"
 msgstr "Обо мне"
 
 #: templates/sections/footer.html:14 templates/sections/header.html:15
-#: templates/sections/header.html:75
+#: templates/sections/header.html:74
 msgid "Experience"
 msgstr "Опыт"
 
 #: templates/sections/footer.html:15 templates/sections/header.html:16
-#: templates/sections/header.html:76
+#: templates/sections/header.html:75
 msgid "Skills"
 msgstr "Навыки"
 
 #: templates/sections/footer.html:16 templates/sections/header.html:17
-#: templates/sections/header.html:77
+#: templates/sections/header.html:76
 msgid "Achievements"
 msgstr "Достижения"
 
 #: templates/sections/footer.html:17 templates/sections/header.html:18
-#: templates/sections/header.html:78
+#: templates/sections/header.html:77
 msgid "Certificate"
 msgstr "Сертификаты"
 
 #: templates/sections/footer.html:18 templates/sections/header.html:19
-#: templates/sections/header.html:79
+#: templates/sections/header.html:78
 msgid "Projects"
 msgstr "Проекты"
 
 #: templates/sections/footer.html:19 templates/sections/header.html:20
-#: templates/sections/header.html:80
+#: templates/sections/header.html:79
 msgid "Contact"
 msgstr "Контакты"
 
@@ -505,8 +521,8 @@ msgid "© 2023-2025 Mirshod Qayimov. All rights reserved."
 msgstr "© 2023-2025 Миршод Каюмов. Все права защищены."
 
 #: templates/sections/footer.html:143
-msgid "Available for new opportunities"
-msgstr "Доступен для новых возможностей"
+msgid "Working from home"
+msgstr "Работаю из дома"
 
 #: templates/sections/footer.html:148
 msgid "Back to top"
@@ -516,30 +532,25 @@ msgstr "Наверх"
 msgid "Built with passion and lots of coffee"
 msgstr "Создано с страстью и большим количеством кофе"
 
-#: templates/sections/home.html:11
-msgid "Software Engineer with 4 years of Experience"
-msgstr "Инженер-программист с 4-летним опытом"
-
-#: templates/sections/home.html:15
-msgid "Hi, I'm"
-msgstr "Привет, я"
-
-#: templates/sections/home.html:16
-msgid "18-year-old passionate"
-msgstr "18-летний увлечённый"
-
-#: templates/sections/home.html:25
+#: templates/sections/home.html:17
 msgid ""
-"Specialized in building robust microservices, scalable APIs, and intelligent "
-"AI solutions. Currently working 12/7 on innovative projects using Python, "
-"Django, AWS, and cutting-edge technologies."
+"Hi, I'm <span class=\"highlight\">Mirshod Qayimov</span><br>\n"
+"          Building Digital Solutions"
 msgstr ""
-"Специализируюсь на создании надёжных микросервисов, масштабируемых API и "
-"интеллектуальных AI решений. В настоящее время работаю 12/7 над "
-"инновационными проектами, используя Python, Django, AWS и передовые "
-"технологии."
+"Привет, я <span class=\"highlight\">Миршод Каюмов</span><br>\n"
+"          Создаю цифровые решения"
 
-#: templates/sections/home.html:84
+#: templates/sections/home.html:37
+msgid ""
+"As an 18-year-old developer, I specialize in building robust microservices, "
+"scalable APIs, and intelligent AI solutions. Currently working 18/7 on "
+"innovative projects using Python, Django, AWS, and cutting-edge technologies."
+msgstr ""
+"Как 18-летний разработчик, я специализируюсь на создании надёжных микросервисов, "
+"масштабируемых API и интеллектуальных AI решений. В настоящее время работаю 18/7 над "
+"инновационными проектами, используя Python, Django, AWS и передовые технологии."
+
+#: templates/sections/home.html:111
 msgid "View Experience"
 msgstr "Опыт"
 
@@ -552,10 +563,29 @@ msgid "Some of my recent work"
 msgstr "Некоторые из моих недавних работ"
 
 #: templates/sections/projects.html:16
+msgid "Yaklabs IoT Platform"
+msgstr "IoT Платформа Yaklabs"
+
+#: templates/sections/projects.html:17
+msgid ""
+"Innovative platform for IoT device management and data analytics with real-"
+"time capabilities."
+msgstr ""
+"Инновационная платформа для управления IoT устройствами и аналитики данных с "
+"возможностями реального времени."
+
+#: templates/sections/projects.html:27 templates/sections/projects.html:46
+#: templates/sections/projects.html:65 templates/sections/projects.html:84
+#: templates/sections/projects.html:103 templates/sections/projects.html:122
+#: templates/sections/projects.html:141
+msgid "View Project"
+msgstr "Проекты"
+
+#: templates/sections/projects.html:37
 msgid "Texnomart API"
 msgstr "Texnomart API"
 
-#: templates/sections/projects.html:17
+#: templates/sections/projects.html:38
 msgid ""
 "Comprehensive API for online shopping website with full e-commerce "
 "functionality."
@@ -563,21 +593,15 @@ msgstr ""
 "Комплексный API для интернет-магазина с полной функциональностью электронной "
 "коммерции."
 
-#: templates/sections/projects.html:21 templates/sections/projects.html:40
+#: templates/sections/projects.html:42 templates/sections/projects.html:61
 msgid "E-commerce"
 msgstr "Электронная коммерция"
 
-#: templates/sections/projects.html:25 templates/sections/projects.html:44
-#: templates/sections/projects.html:63 templates/sections/projects.html:82
-#: templates/sections/projects.html:101 templates/sections/projects.html:120
-msgid "View Project"
-msgstr "Проекты"
-
-#: templates/sections/projects.html:35
+#: templates/sections/projects.html:56
 msgid "Online Shopping Platform"
 msgstr "Платформа онлайн-покупок"
 
-#: templates/sections/projects.html:36
+#: templates/sections/projects.html:57
 msgid ""
 "Micro-service architecture e-shopping platform with modern design and "
 "scalable backend."
@@ -585,11 +609,11 @@ msgstr ""
 "Платформа электронных покупок с микросервисной архитектурой, современным "
 "дизайном и масштабируемым backend."
 
-#: templates/sections/projects.html:54
+#: templates/sections/projects.html:75
 msgid "Online Course Platform"
 msgstr "Платформа онлайн-курсов"
 
-#: templates/sections/projects.html:55
+#: templates/sections/projects.html:76
 msgid ""
 "E-Courses platform including teacher's and blog's own section with "
 "comprehensive features."
@@ -597,19 +621,19 @@ msgstr ""
 "Платформа электронных курсов, включающая собственные разделы для "
 "преподавателей и блогов с комплексными функциями."
 
-#: templates/sections/projects.html:58
+#: templates/sections/projects.html:79
 msgid "Education"
 msgstr "Образование"
 
-#: templates/sections/projects.html:59
+#: templates/sections/projects.html:80
 msgid "Platform"
 msgstr "Платформа"
 
-#: templates/sections/projects.html:73
+#: templates/sections/projects.html:94
 msgid "Hospital Management System"
 msgstr "Система управления больницей"
 
-#: templates/sections/projects.html:74
+#: templates/sections/projects.html:95
 msgid ""
 "Platform for hospitals where patients and doctors have their pages with "
 "patient records and departments."
@@ -617,19 +641,19 @@ msgstr ""
 "Платформа для больниц, где пациенты и врачи имеют свои страницы с записями "
 "пациентов и отделениями."
 
-#: templates/sections/projects.html:77
+#: templates/sections/projects.html:98
 msgid "Healthcare"
 msgstr "Здравоохранение"
 
-#: templates/sections/projects.html:78
+#: templates/sections/projects.html:99
 msgid "Management"
 msgstr "Управление"
 
-#: templates/sections/projects.html:92
+#: templates/sections/projects.html:113
 msgid "GPT-Neo AI"
 msgstr "GPT-Neo AI"
 
-#: templates/sections/projects.html:93
+#: templates/sections/projects.html:114
 msgid ""
 "Basic Artificial Intelligence implementation running on local machine with "
 "advanced capabilities."
@@ -637,15 +661,15 @@ msgstr ""
 "Базовая реализация искусственного интеллекта, работающая на локальной машине "
 "с продвинутыми возможностями."
 
-#: templates/sections/projects.html:97
+#: templates/sections/projects.html:118
 msgid "Machine Learning"
 msgstr "Машинное обучение"
 
-#: templates/sections/projects.html:111
+#: templates/sections/projects.html:132
 msgid "Gemina PDF Translator"
 msgstr "Gemina PDF переводчик"
 
-#: templates/sections/projects.html:112
+#: templates/sections/projects.html:133
 msgid ""
 "Advanced PDF translator that fully translates documents to any language with "
 "high accuracy."
@@ -653,15 +677,15 @@ msgstr ""
 "Продвинутый PDF переводчик, который полностью переводит документы на любой "
 "язык с высокой точностью."
 
-#: templates/sections/projects.html:115
+#: templates/sections/projects.html:136
 msgid "Translation"
 msgstr "Перевод"
 
-#: templates/sections/projects.html:116
+#: templates/sections/projects.html:137
 msgid "PDF Processing"
 msgstr "Обработка PDF"
 
-#: templates/sections/projects.html:129
+#: templates/sections/projects.html:150
 msgid "View All Projects"
 msgstr "Проекты"
 
@@ -670,142 +694,63 @@ msgid "Skills & Expertise"
 msgstr "Навыки и экспертиза"
 
 #: templates/sections/skills.html:7
-msgid "Technologies I work with"
-msgstr "Технологии, с которыми я работаю"
+msgid ""
+"As an 18-year-old developer, these are the primary technologies I work with:"
+msgstr ""
+"Как 18-летний разработчик, я работаю с этими основными технологиями:"
 
-#: templates/sections/skills.html:23
-msgid "Databases"
-msgstr "Базы данных"
-
-#: templates/sections/skills.html:33
+#: templates/sections/skills.html:25
 msgid "Frontend Technologies"
 msgstr "Frontend технологии"
 
-#: templates/sections/skills.html:43
+#: templates/sections/skills.html:38
 msgid "DevOps & Cloud"
 msgstr "DevOps и облачные технологии"
 
-#: templates/sections/skills.html:51
+#: templates/sections/skills.html:46
 msgid "Pipelines"
 msgstr "Конвейеры"
 
-#: templates/sections/skills.html:52
+#: templates/sections/skills.html:47
 msgid "Automated Deployment"
 msgstr "Автоматизированное развёртывание"
 
-#: templates/sections/skills.html:58
+#: templates/sections/skills.html:53
+msgid "Databases"
+msgstr "Базы данных"
+
+#: templates/sections/skills.html:63
 msgid "AI & Machine Learning"
 msgstr "AI и машинное обучение"
 
-#: templates/sections/skills.html:61
+#: templates/sections/skills.html:66
 msgid "AI APIs"
 msgstr "AI API"
 
-#: templates/sections/skills.html:62
+#: templates/sections/skills.html:67
 msgid "ChatGPT Integration"
 msgstr "Интеграция ChatGPT"
 
-#: templates/sections/skills.html:63
+#: templates/sections/skills.html:68
 msgid "Text-to-Speech"
 msgstr "Преобразование текста в речь"
 
-#: templates/sections/skills.html:64
+#: templates/sections/skills.html:69
 msgid "PDF Translation"
 msgstr "Перевод PDF"
 
-#: templates/sections/skills.html:69
+#: templates/sections/skills.html:74
 msgid "Tools & Utilities"
 msgstr "Инструменты и утилиты"
 
-#: templates/sections/skills.html:72
+#: templates/sections/skills.html:77
 msgid "QR Code Generation"
 msgstr "Генерация QR-кодов"
 
-#: templates/sections/skills.html:73
+#: templates/sections/skills.html:78
 msgid "Excel/CSV Analysis"
 msgstr "Анализ Excel/CSV"
 
-#: templates/sections/skills.html:74
+#: templates/sections/skills.html:79
 msgid "Movie Downloaders"
 msgstr "Загрузчики фильмов"
-
-#~ msgid "Passionate about creating innovative solutions"
-#~ msgstr "Увлечён созданием инновационных решений"
-
-#~ msgid ""
-#~ "Hi 👋, I'm W Mirshod - a passionate Backend developer working 12/7 on "
-#~ "innovative projects. I'm currently working on microservices & APIs and "
-#~ "learning AI APIs. I'm enthusiastic about collaborating on real projects "
-#~ "and optimizing performance."
-#~ msgstr ""
-#~ "Привет 👋, я W Mirshod - увлечённый Backend разработчик, работающий 12/7 "
-#~ "над инновационными проектами. В настоящее время работаю с микросервисами "
-#~ "и API, изучаю AI API. Увлечён сотрудничеством в реальных проектах и "
-#~ "оптимизацией производительности."
-
-#~ msgid "🔭 Currently working on microservices & APIs"
-#~ msgstr "🔭 В настоящее время работаю с микросервисами и API"
-
-#~ msgid "🌱 Learning AI APIs and advanced machine learning techniques"
-#~ msgstr "🌱 Изучаю AI API и продвинутые техники машинного обучения"
-
-#~ msgid "👯 Looking to collaborate on real-world projects"
-#~ msgstr "👯 Ищу сотрудничество в реальных проектах"
-
-#~ msgid ""
-#~ "🤝 Building professional relationships on LinkedIn with 500+ connections"
-#~ msgstr "🤝 Строю профессиональные отношения в LinkedIn с 500+ связями"
-
-#~ msgid ""
-#~ "⚡ Fun fact: Very enthusiastic about working on big projects and "
-#~ "performance optimization"
-#~ msgstr ""
-#~ "⚡ Интересный факт: Очень увлечён работой над большими проектами и "
-#~ "оптимизацией производительности"
-
-#~ msgid ""
-#~ "My expertise spans across multiple technologies including Python, Django, "
-#~ "JavaScript, AWS, Docker, and various databases. I'm part of @Yaklabs-"
-#~ "Organization and have contributed to 22+ repositories on GitHub. I "
-#~ "actively engage with the professional developer community on LinkedIn, "
-#~ "sharing insights and connecting with industry professionals."
-#~ msgstr ""
-#~ "Мой опыт охватывает множество технологий, включая Python, Django, "
-#~ "JavaScript, AWS, Docker и различные базы данных. Я часть @Yaklabs-"
-#~ "Organization и внёс вклад в 22+ репозитория на GitHub. Активно участвую в "
-#~ "профессиональном сообществе разработчиков в LinkedIn, делюсь идеями и "
-#~ "общаюсь с профессионалами индустрии."
-
-#~ msgid "LinkedIn Connections"
-#~ msgstr "Связи LinkedIn"
-
-#~ msgid "Technologies Mastered"
-#~ msgstr "Освоенные технологии"
-
-#~ msgid "Years Old Developer"
-#~ msgstr "Летний разработчик"
-
-#~ msgid "Email"
-#~ msgstr "Электронная почта"
-
-#~ msgid "Phone"
-#~ msgstr "Телефон"
-
-#~ msgid "Mirshod Qayimov (W-Mirshod) - Backend Developer & AI Engineer"
-#~ msgstr "Миршод Каюмов (W-Mirshod) - Backend разработчик и AI инженер"
-
-#~ msgid ""
-#~ "18-year-old passionate Backend Developer specializing in Microservices, "
-#~ "APIs, AI solutions, and DevOps. Working 12/7 on innovative projects with "
-#~ "Python, Django, AWS, and Docker."
-#~ msgstr ""
-#~ "18-летний увлечённый Backend разработчик, специализирующийся на "
-#~ "микросервисах, API, AI решениях и DevOps. Работаю 12/7 над инновационными "
-#~ "проектами с Python, Django, AWS и Docker."
-
-#~ msgid ""
-#~ "18-year-old Backend Developer specializing in Microservices, APIs & AI "
-#~ "solutions"
-#~ msgstr ""
-#~ "18-летний Backend разработчик, специализирующийся на микросервисах, API и "
-#~ "AI решениях"
