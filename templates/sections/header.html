@@ -39,7 +39,6 @@
         {% for language_code, language_name in LANGUAGES %}
           <form method="post" action="{% url 'set_language' %}" class="language-form">
             {% csrf_token %}
-            <input name="next" type="hidden" value="{{ request.get_full_path|slice:'3:' }}" />
             <input name="language" type="hidden" value="{{ language_code }}" />
             <button type="submit" class="language-option compact-option {% if language_code == CURRENT_LANGUAGE %}active{% endif %}">
               <span class="lang-code">
@@ -83,3 +82,4 @@
 
 <!-- Include Header JavaScript -->
 <script src="{% static 'js/sections/header.js' %}"></script>
+<script src="{% static 'js/language_switcher.js' %}"></script>
