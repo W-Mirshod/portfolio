@@ -4,7 +4,7 @@
   <div class="container">
     <div class="section-header">
       <h2 class="section-title">{% trans "Skills & Expertise" %}</h2>
-      <p class="section-subtitle">{% trans "Technologies I work with" %}</p>
+      <p class="section-subtitle">{% blocktrans %}As an 18-year-old developer, these are the primary technologies I work with:{% endblocktrans %}</p>
     </div>
     
     <div class="skills-grid">
@@ -13,27 +13,20 @@
         <div class="skill-items">
           <span class="skill-tag">Python</span>
           <span class="skill-tag">Django</span>
+          <span class="skill-tag">FastAPI</span>
           <span class="skill-tag">REST APIs</span>
           <span class="skill-tag">{% trans "Microservices" %}</span>
           <span class="skill-tag">PyGame</span>
           <span class="skill-tag">WebSocket</span>
         </div>
       </div>
-      
-      <div class="skill-category">
-        <h3>{% trans "Databases" %}</h3>
-        <div class="skill-items">
-          <span class="skill-tag">PostgreSQL</span>
-          <span class="skill-tag">MySQL</span>
-          <span class="skill-tag">SQLite</span>
-          <span class="skill-tag">Redis</span>
-        </div>
-      </div>
-      
+
       <div class="skill-category">
         <h3>{% trans "Frontend Technologies" %}</h3>
         <div class="skill-items">
           <span class="skill-tag">JavaScript</span>
+          <span class="skill-tag">React</span>
+          <span class="skill-tag">Vite</span>
           <span class="skill-tag">HTML5</span>
           <span class="skill-tag">CSS3</span>
           <span class="skill-tag">SCSS</span>
@@ -53,6 +46,16 @@
           <span class="skill-tag">{% trans "Pipelines" %}</span>
           <span class="skill-tag">{% trans "Automated Deployment" %}</span>
           <span class="skill-tag">GitHub Actions</span>
+        </div>
+      </div>
+
+      <div class="skill-category">
+        <h3>{% trans "Databases" %}</h3>
+        <div class="skill-items">
+          <span class="skill-tag">PostgreSQL</span>
+          <span class="skill-tag">MySQL</span>
+          <span class="skill-tag">SQLite</span>
+          <span class="skill-tag">Redis</span>
         </div>
       </div>
       
