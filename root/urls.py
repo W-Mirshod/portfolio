@@ -6,10 +6,13 @@ from django.conf.urls.i18n import i18n_patterns
 from django.contrib import admin
 from django.contrib.sitemaps.views import sitemap
 from django.urls import path, include
+from django.views.decorators.csrf import csrf_exempt
+from django.views.i18n import set_language
 from portfolio.sitemaps import sitemaps
 from root import settings
 
 urlpatterns = [
+    path('i18n/setlang/', csrf_exempt(set_language), name='set_language'),
     path('i18n/', include('django.conf.urls.i18n')),
     path('sitemap.xml', sitemap, {'sitemaps': sitemaps}, name='django.contrib.sitemaps.views.sitemap'),
 ]

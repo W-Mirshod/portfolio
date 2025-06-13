@@ -149,6 +149,9 @@ EMAIL_HOST_USER = os.environ.get('EMAIL_HOST_USER', 'portfolio@w-mirshod.com')
 EMAIL_HOST_PASSWORD = os.environ.get('EMAIL_HOST_PASSWORD', '')
 DEFAULT_FROM_EMAIL = os.environ.get('DEFAULT_FROM_EMAIL', EMAIL_HOST_USER)
 
+# CSRF settings
+CSRF_TRUSTED_ORIGINS = ['https://www.w-mirshod.com', 'https://w-mirshod.com', 'http://www.w-mirshod.com', 'http://w-mirshod.com', 'http://2.59.169.249']
+
 # reCaptcha
 RECAPTCHA_SITE_KEY = os.environ.get('RECAPTCHA_SITE_KEY', '')
 RECAPTCHA_SECRET_KEY = os.environ.get('RECAPTCHA_SECRET_KEY', '')
