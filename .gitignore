@@ -127,3 +127,18 @@ dmypy.json
 
 # Pyre type checker
 .pyre/
+
+# React/Vite build output
+/node_modules/
+.env.local
+/.env.development.local
+/.env.test.local
+/.env.production.local
+/dist/
+# Vite cache
+/.vite/deps
+# React editor files
+*.log
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
