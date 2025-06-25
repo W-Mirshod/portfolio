@@ -1,0 +1,163 @@
+{
+  "hero": {
+    "title": "Hi, I'm <1>Mirshod Qayimov</1><br/>Building Digital Solutions",
+    "badge": "Full Stack Developer",
+    "typingTexts": [
+      "Backend Developer & AI Engineer",
+      "Microservices & APIs Specialist",
+      "DevOps & Cloud Expert",
+      "AI APIs Enthusiast",
+      "Performance Optimization Expert",
+      "Full-Stack Python Developer"
+    ],
+    "pdpBanner": {
+      "main": "PDP University Student",
+      "sub": "Computer Science & AI"
+    }
+  },
+  "navigation": {
+    "home": "Home",
+    "about": "About",
+    "experience": "Experience",
+    "skills": "Skills",
+    "achievements": "Achievements",
+    "certificate": "Certificate",
+    "projects": "Projects",
+    "contact": "Contact"
+  },
+  "footer": {
+    "quickLinks": {
+      "title": "Quick Links",
+      "home": "Home",
+      "about": "About",
+      "experience": "Experience",
+      "skills": "Skills",
+      "achievements": "Achievements",
+      "certificate": "Certificate",
+      "projects": "Projects",
+      "contact": "Contact"
+    },
+    "specializations": {
+      "title": "Specializations",
+      "backend": "Backend",
+      "frontend": "Frontend",
+      "devops": "DevOps",
+      "ai": "AI",
+      "database": "Database",
+      "api": "API"
+    },
+    "connect": {
+      "title": "Connect",
+      "email": "Email",
+      "phone": "Phone",
+      "location": "Location",
+      "country": "Uzbekistan"
+    },
+    "copyright": "© {{year}} Mirshod Qayimov. All rights reserved.",
+    "status": "Available for new opportunities",
+    "backToTop": "Back to top"
+  },
+  "experience": {
+    "title": "Professional Experience",
+    "subtitle": "A journey of growth and expertise",
+    "timelineLabel": "Experience Timeline",
+    "technologiesLabel": "Technologies Used",
+    "job1": {
+      "period": "March 2025 - Present",
+      "title": "Senior Backend Developer",
+      "company": "Tech Solutions Inc.",
+      "description": "Leading backend development and API integrations.",
+      "skills": ["Python", "Django", "REST APIs", "PostgreSQL"]
+    },
+    "job2": {
+      "period": "October 2024 - March 2025",
+      "title": "Full Stack Developer",
+      "company": "Innovatech",
+      "description": "Developed full-stack applications and optimized performance.",
+      "skills": ["React", "Node.js", "MongoDB", "Docker"]
+    },
+    "job3": {
+      "period": "2022 - 2024",
+      "title": "Junior Developer",
+      "company": "Startup Hub",
+      "description": "Contributed to various projects and learned new technologies.",
+      "skills": ["HTML", "CSS", "JavaScript", "Git"]
+    },
+    "ctaText": "Explore more on LinkedIn",
+    "ctaButton": "Visit LinkedIn"
+  },
+  "skills": {
+    "title": "Skills",
+    "subtitle": "Technologies I use",
+    "backend": {
+      "title": "Backend",
+      "items": ["Python", "Django", "Node.js"]
+    },
+    "frontend": {
+      "title": "Frontend",
+      "items": ["React", "HTML", "CSS"]
+    },
+    "devops": {
+      "title": "DevOps",
+      "items": ["Docker", "Nginx"]
+    },
+    "databases": {
+      "title": "Databases",
+      "items": ["PostgreSQL", "MongoDB"]
+    },
+    "ai": {
+      "title": "AI",
+      "items": ["TensorFlow", "PyTorch"]
+    },
+    "tools": {
+      "title": "Tools",
+      "items": ["Git", "VS Code"]
+    }
+  },
+  "projects": {
+    "title": "Projects",
+    "subtitle": "Some of my work",
+    "viewProject": "View Project",
+    "viewAll": "View All Projects",
+    "project1": {
+      "title": "YakLabs Platform",
+      "description": "A real-time collaboration platform using Python, Django, WebSocket, and WebRTC.",
+      "tags": ["Python", "Django", "WebSocket", "WebRTC"]
+    },
+    "project2": {
+      "title": "Texnomart API",
+      "description": "RESTful API for e-commerce using Node.js and MongoDB.",
+      "tags": ["Node.js", "MongoDB", "REST API"]
+    },
+    "project3": {
+      "title": "Online Shopping",
+      "description": "Full-stack online shopping web app.",
+      "tags": ["React", "Node.js", "Express"]
+    },
+    "project4": {
+      "title": "Online Course",
+      "description": "Platform for online courses and learning.",
+      "tags": ["React", "Django", "PostgreSQL"]
+    },
+    "project5": {
+      "title": "Hospital Management",
+      "description": "System for managing hospital operations.",
+      "tags": ["Python", "Flask", "MySQL"]
+    },
+    "project6": {
+      "title": "GPT-Neo",
+      "description": "Custom AI language model implementation.",
+      "tags": ["Python", "AI", "NLP"]
+    },
+    "project7": {
+      "title": "Gemina App",
+      "description": "Multilingual translation and communication app.",
+      "tags": ["React Native", "Translation", "Mobile"]
+    },
+    "project8": {
+      "title": "Medius Analytics",
+      "description": "Analytics dashboard for business intelligence.",
+      "tags": ["React", "D3.js", "Analytics"]
+    }
+  }
+}

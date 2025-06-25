@@ -1,0 +1,18 @@
+{
+  "hero": {
+    "title": "Salom, men <1>Mirshod Qayimov</1><br/>Raqamli yechimlar yaratuvchisi",
+    "badge": "Full Stack Dasturchi",
+    "typingTexts": [
+      "Backend Dasturchi & AI Muhandis",
+      "Mikroservislar & API Mutaxassisi",
+      "DevOps & Cloud Mutaxassisi",
+      "AI API Mutaxassisi",
+      "Samaradorlikni Optimallash Mutaxassisi",
+      "Full-Stack Python Dasturchi"
+    ],
+    "pdpBanner": {
+      "main": "PDP Universiteti Talabasi",
+      "sub": "Computer Science & AI"
+    }
+  }
+}
