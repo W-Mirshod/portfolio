@@ -1,5 +1,6 @@
 import { useEffect } from 'react';
 import './App.css';
+import './components/styles/SectionsCommon.css';
 import './utils/i18n';
 
 // Import components

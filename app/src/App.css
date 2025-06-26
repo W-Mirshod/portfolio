@@ -1,4 +1,6 @@
 /* Main App Styles */
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap');
+
 :root {
   /* Dark theme as default for premium look */
   --bg-color: #0a0b0f;
@@ -11,6 +13,22 @@
   --accent-color-dark: #2563eb;
   --accent-color-light: #dbeafe;
   --border-color: rgba(255, 255, 255, 0.1);
+  
+  /* Primary theme colors */
+  --primary-color: #3FA2F6;
+  --primary-dark: #2a8cd8;
+  --primary-light: #5db4f8;
+  --primary-rgb: 63, 162, 246;
+  --bg-primary: #0a0b0f;
+  --bg-secondary: #161822;
+  --bg-tertiary: #1e2028;
+  --text-primary: #ffffff;
+  --text-secondary: #b8bcc8;
+  --shadow-light: rgba(63, 162, 246, 0.1);
+  --shadow-medium: rgba(0, 0, 0, 0.3);
+  --shadow-heavy: rgba(0, 0, 0, 0.7);
+  --gradient-primary: linear-gradient(135deg, var(--primary-color), var(--primary-dark));
+  --gradient-bg: linear-gradient(135deg, var(--bg-primary) 0%, var(--bg-secondary) 100%);
   
   /* Tag colors */
   --tag-bg: #374151;
@@ -28,9 +46,6 @@
   --footer-item-bg: rgba(255, 255, 255, 0.05);
   --footer-item-hover-bg: rgba(255, 255, 255, 0.1);
   --footer-border: rgba(255, 255, 255, 0.1);
-  
-  /* Gradient */
-  --gradient-primary: linear-gradient(135deg, #3b82f6, #60a5fa);
 }
 
 /* Light theme override */
