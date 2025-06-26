@@ -1,82 +1,82 @@
 import { useTranslation } from 'react-i18next';
-import '../styles/Experience.css';
+import '../../components/styles/ExperienceSection.css';
 
 const Experience = () => {
   const { t } = useTranslation();
 
-  const getSkills = (key) => {
-    const val = t(key, { returnObjects: true });
-    return Array.isArray(val) ? val : [];
-  };
+  const experiences = [
+    {
+      period: "Mar 2025 - Present",
+      title: "Senior Software Engineer",
+      company: "Yaklabs · Full-time",
+      description: "Contributing to a tech-driven, future-oriented platform at YakLabs (Tashkent, Uzbekistan). Focused on innovative projects and modern technologies.",
+      skills: ["Python", "Django", "AWS", "Docker", "PostgreSQL", "Redis", "WebSocket"]
+    },
+    {
+      period: "Oct 2024 - Apr 2025",
+      title: "Software Engineer",
+      company: "MegaDevs (Germany Company) · Full-time",
+      description: "Developed scalable web applications and microservices architecture. Led backend development initiatives and implemented DevOps practices for continuous integration and deployment.",
+      skills: ["React", "Node.js", "TypeScript", "Docker", "Kubernetes", "AWS", "CI/CD"]
+    },
+    {
+      period: "2022 - Oct 2024",
+      title: "Backend Developer & AI Engineer",
+      company: "Freelance / Independent Projects",
+      description: "Specializing in microservices architecture, API development, and AI integration. Working on innovative projects with Python, Django, AWS, and machine learning technologies.",
+      skills: ["Python", "Django", "FastAPI", "AI APIs", "Machine Learning", "AWS", "PostgreSQL"]
+    }
+  ];
 
   return (
     <section id="experience" className="section experience-section" role="main" aria-labelledby="experience-title">
       <div className="container">
         <header className="section-header">
-          <h2 id="experience-title" className="section-title">{t('experience.title')}</h2>
-          <p className="section-subtitle">{t('experience.subtitle')}</p>
+          <h2 id="experience-title" className="section-title">Professional Experience</h2>
+          <p className="section-subtitle">Building expertise through hands-on development</p>
         </header>
         
-        <div className="experience-timeline" role="list" aria-label={t('experience.timelineLabel')}>
-          <article className="experience-item" role="listitem">
-            <div className="timeline-dot" aria-hidden="true"></div>
-            <time className="experience-date" dateTime="2025-03">
-              <span>{t('experience.job1.period')}</span>
-            </time>
-            <div className="experience-content">
-              <h3 className="experience-title">{t('experience.job1.title')}</h3>
-              <h4 className="experience-company">{t('experience.job1.company')}</h4>
-              <p className="experience-description">{t('experience.job1.description')}</p>
-              <div className="experience-skills" role="list" aria-label={t('experience.technologiesLabel')}>
-                {getSkills('experience.job1.skills').map((skill, index) => (
-                  <span className="experience-skill" role="listitem" key={index}>{skill}</span>
-                ))}
+        <div className="experience-timeline" role="list" aria-label="Professional experience timeline">
+          {experiences.map((exp, index) => (
+            <article key={index} className="experience-item" role="listitem">
+              <div className="timeline-dot" aria-hidden="true"></div>
+              <time className="experience-date" dateTime={exp.period.split(' - ')[0]}>
+                <span>{exp.period}</span>
+              </time>
+              <div className="experience-content">
+                <h3 className="experience-title">{exp.title}</h3>
+                <h4 className="experience-company">{exp.company}</h4>
+                <p className="experience-description">{exp.description}</p>
+                <div className="experience-skills" role="list" aria-label="Technologies used">
+                  {exp.skills.map((skill, skillIndex) => (
+                    <span key={skillIndex} className="skill-tag" role="listitem">
+                      {skill}
+                    </span>
+                  ))}
+                </div>
               </div>
-            </div>
-          </article>
-          
-          <article className="experience-item" role="listitem">
-            <div className="timeline-dot" aria-hidden="true"></div>
-            <time className="experience-date" dateTime="2024-10">
-              <span>{t('experience.job2.period')}</span>
-            </time>
-            <div className="experience-content">
-              <h3 className="experience-title">{t('experience.job2.title')}</h3>
-              <h4 className="experience-company">{t('experience.job2.company')}</h4>
-              <p className="experience-description">{t('experience.job2.description')}</p>
-              <div className="experience-skills" role="list" aria-label={t('experience.technologiesLabel')}>
-                {getSkills('experience.job2.skills').map((skill, index) => (
-                  <span className="experience-skill" role="listitem" key={index}>{skill}</span>
-                ))}
-              </div>
-            </div>
-          </article>
-          
-          <article className="experience-item" role="listitem">
-            <div className="timeline-dot" aria-hidden="true"></div>
-            <time className="experience-date" dateTime="2022">
-              <span>{t('experience.job3.period')}</span>
-            </time>
-            <div className="experience-content">
-              <h3 className="experience-title">{t('experience.job3.title')}</h3>
-              <h4 className="experience-company">{t('experience.job3.company')}</h4>
-              <p className="experience-description">{t('experience.job3.description')}</p>
-              <div className="experience-skills" role="list" aria-label={t('experience.technologiesLabel')}>
-                {getSkills('experience.job3.skills').map((skill, index) => (
-                  <span className="experience-skill" role="listitem" key={index}>{skill}</span>
-                ))}
-              </div>
-            </div>
-          </article>
+            </article>
+          ))}
         </div>
         
-        <div className="linkedin-cta">
-          <p>{t('experience.ctaText')}</p>
-          <a href="https://www.linkedin.com/in/w-mirshod" target="_blank" rel="noopener noreferrer" className="cta-secondary">
-            <i className="fab fa-linkedin"></i>
-            {t('experience.ctaButton')}
-          </a>
-        </div>
+        <aside className="linkedin-cta">
+          <div className="glass-card">
+            <div className="glass-card-content">
+              <h3>Want to see more details?</h3>
+              <p>Check out my complete professional journey on LinkedIn</p>
+              <a 
+                href="https://linkedin.com/in/wmirshod" 
+                target="_blank" 
+                rel="noopener noreferrer"
+                className="linkedin-btn"
+              >
+                <i className="fab fa-linkedin"></i>
+                Visit LinkedIn Profile
+              </a>
+            </div>
+            <div className="glass-reflection"></div>
+          </div>
+        </aside>
       </div>
     </section>
   );

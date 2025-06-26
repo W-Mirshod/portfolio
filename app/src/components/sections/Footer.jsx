@@ -1,13 +1,53 @@
 import { useTranslation } from 'react-i18next';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faChevronUp, faServer, faLaptopCode, faCloud, faBrain, faDatabase, faCogs } from '@fortawesome/free-solid-svg-icons';
-import { faGithub, faLinkedin, faTelegram, faInstagram } from '@fortawesome/free-brands-svg-icons';
-import '../styles/Footer.css';
-import mirshodLogo from '../../assets/images/Mirshod.png';
+import '../../components/styles/FooterSection.css';
 
 const Footer = () => {
   const { t } = useTranslation();
-  
+  const currentYear = new Date().getFullYear();
+
+  const quickLinks = [
+    { href: '#home', label: 'Home' },
+    { href: '#about', label: 'About' },
+    { href: '#experience', label: 'Experience' },
+    { href: '#skills', label: 'Skills' },
+    { href: '#achievements', label: 'Achievements' },
+    { href: '#certificate', label: 'Certificate' },
+    { href: '#projects', label: 'Projects' },
+    { href: '#contact', label: 'Contact' }
+  ];
+
+  const specializations = [
+    'Backend Development',
+    'Frontend Development', 
+    'DevOps & Cloud',
+    'AI Integration',
+    'Database Design',
+    'API Development'
+  ];
+
+  const socialLinks = [
+    {
+      icon: 'fab fa-github',
+      url: 'https://github.com/W-Mirshod',
+      label: 'GitHub'
+    },
+    {
+      icon: 'fab fa-linkedin',
+      url: 'https://linkedin.com/in/wmirshod',
+      label: 'LinkedIn'
+    },
+    {
+      icon: 'fab fa-telegram',
+      url: 'https://t.me/wmirshod',
+      label: 'Telegram'
+    },
+    {
+      icon: 'fas fa-envelope',
+      url: 'mailto:mirshod@wmirshod.com',
+      label: 'Email'
+    }
+  ];
+
   const scrollToTop = () => {
     window.scrollTo({
       top: 0,
@@ -16,155 +56,121 @@ const Footer = () => {
   };
 
   return (
-    <footer className="footer-section">
-      <div className="container">
+    <footer className="footer">
+      <div className="footer-container">
         <div className="footer-content">
-          
-          {/* Quick Links Section */}
-          <div className="footer-column">
-            <h3 className="footer-title">{t('footer.quickLinks.title')}</h3>
-            <ul className="footer-links">
-              <li><a href="#home" className="footer-link">{t('footer.quickLinks.home')}</a></li>
-              <li><a href="#about" className="footer-link">{t('footer.quickLinks.about')}</a></li>
-              <li><a href="#experience" className="footer-link">{t('footer.quickLinks.experience')}</a></li>
-              <li><a href="#skills" className="footer-link">{t('footer.quickLinks.skills')}</a></li>
-              <li><a href="#achievements" className="footer-link">{t('footer.quickLinks.achievements')}</a></li>
-              <li><a href="#certificate" className="footer-link">{t('footer.quickLinks.certificate')}</a></li>
-              <li><a href="#projects" className="footer-link">{t('footer.quickLinks.projects')}</a></li>
-              <li><a href="#contact" className="footer-link">{t('footer.quickLinks.contact')}</a></li>
-            </ul>
-          </div>
-
-          {/* Major Specializations Section */}
-          <div className="footer-column">
-            <h3 className="footer-title">{t('footer.specializations.title')}</h3>
-            <div className="specialization-grid">
-              <div className="specialization-item">
-                <FontAwesomeIcon icon={faServer} />
-                <span>{t('footer.specializations.backend')}</span>
+          {/* Brand Section */}
+          <div className="footer-brand">
+            <div className="footer-logo">
+              <img src="/Mirshod.png" alt="W Mirshod" width="50" height="50" />
+              <h3>W Mirshod</h3>
+            </div>
+            <p className="footer-description">
+              Full-stack developer specializing in Python, Django, React, and AI solutions. 
+              Building innovative digital experiences that make a difference.
+            </p>
+            <div className="footer-status">
+              <div className="status-indicator">
+                <div className="status-dot"></div>
+                <span>Available for new opportunities</span>
               </div>
-              <div className="specialization-item">
-                <FontAwesomeIcon icon={faLaptopCode} />
-                <span>{t('footer.specializations.frontend')}</span>
-              </div>
-              <div className="specialization-item">
-                <FontAwesomeIcon icon={faCloud} />
-                <span>{t('footer.specializations.devops')}</span>
-              </div>
-              <div className="specialization-item">
-                <FontAwesomeIcon icon={faBrain} />
-                <span>{t('footer.specializations.ai')}</span>
-              </div>
-              <div className="specialization-item">
-                <FontAwesomeIcon icon={faDatabase} />
-                <span>{t('footer.specializations.database')}</span>
-              </div>
-              <div className="specialization-item">
-                <FontAwesomeIcon icon={faCogs} />
-                <span>{t('footer.specializations.api')}</span>
-              </div>
+            </div>
+            <div className="footer-social">
+              {socialLinks.map((social, index) => (
+                <a
+                  key={index}
+                  href={social.url}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="social-link"
+                  aria-label={social.label}
+                >
+                  <i className={social.icon}></i>
+                </a>
+              ))}
             </div>
           </div>
 
-          {/* Connect Section */}
-          <div className="footer-column">
-            <h3 className="footer-title">{t('footer.connect.title')}</h3>
-            <div className="connect-section">
-              
-              {/* Social Platforms */}
-              <div className="social-platforms">
-                <a href="https://github.com/W-Mirshod" target="_blank" rel="noopener noreferrer" className="platform-link" data-platform="github">
-                  <div className="platform-icon">
-                    <FontAwesomeIcon icon={faGithub} />
-                  </div>
-                  <div className="platform-info">
-                    <span className="platform-name">GitHub</span>
-                    <span className="platform-handle">@W-Mirshod</span>
-                  </div>
-                </a>
-                
-                <a href="https://www.linkedin.com/in/w-mirshod" target="_blank" rel="noopener noreferrer" className="platform-link" data-platform="linkedin">
-                  <div className="platform-icon">
-                    <FontAwesomeIcon icon={faLinkedin} />
-                  </div>
-                  <div className="platform-info">
-                    <span className="platform-name">LinkedIn</span>
-                    <span className="platform-handle">@w-mirshod</span>
-                  </div>
-                </a>
-                
-                <a href="https://t.me/maverick3526" target="_blank" rel="noopener noreferrer" className="platform-link" data-platform="telegram">
-                  <div className="platform-icon">
-                    <FontAwesomeIcon icon={faTelegram} />
-                  </div>
-                  <div className="platform-info">
-                    <span className="platform-name">Telegram</span>
-                    <span className="platform-handle">@maverick3526</span>
-                  </div>
-                </a>
-                
-                <a href="https://instagram.com/wmirshod" target="_blank" rel="noopener noreferrer" className="platform-link" data-platform="instagram">
-                  <div className="platform-icon">
-                    <FontAwesomeIcon icon={faInstagram} />
-                  </div>
-                  <div className="platform-info">
-                    <span className="platform-name">Instagram</span>
-                    <span className="platform-handle">@wmirshod</span>
-                  </div>
+          {/* Quick Links */}
+          <div className="footer-section">
+            <h4 className="footer-title">Quick Links</h4>
+            <ul className="footer-links">
+              {quickLinks.map((link, index) => (
+                <li key={index}>
+                  <a href={link.href} className="footer-link">
+                    {link.label}
+                  </a>
+                </li>
+              ))}
+            </ul>
+          </div>
+
+          {/* Specializations */}
+          <div className="footer-section">
+            <h4 className="footer-title">Specializations</h4>
+            <ul className="footer-links">
+              {specializations.map((spec, index) => (
+                <li key={index}>
+                  <span className="footer-text">{spec}</span>
+                </li>
+              ))}
+            </ul>
+          </div>
+
+          {/* Contact Info */}
+          <div className="footer-section">
+            <h4 className="footer-title">Connect</h4>
+            <div className="footer-contact">
+              <div className="contact-item">
+                <i className="fas fa-envelope"></i>
+                <a href="mailto:mirshod@wmirshod.com" className="footer-link">
+                  mirshod@wmirshod.com
                 </a>
               </div>
-
-              {/* Contact Information */}
-              <div className="contact-info">
-                <a href="mailto:wmirshod@gmail.com" className="contact-item">
-                  <i className="fas fa-envelope"></i>
-                  <div className="contact-details">
-                    <span className="contact-label">{t('footer.connect.email')}</span>
-                    <span className="contact-value">wmirshod@gmail.com</span>
-                  </div>
+              <div className="contact-item">
+                <i className="fab fa-telegram"></i>
+                <a href="https://t.me/wmirshod" target="_blank" rel="noopener noreferrer" className="footer-link">
+                  @wmirshod
                 </a>
-
-                <a href="tel:+998907126437" className="contact-item">
-                  <i className="fas fa-phone"></i>
-                  <div className="contact-details">
-                    <span className="contact-label">{t('footer.connect.phone')}</span>
-                    <span className="contact-value">+998 (90) 712-64-37</span>
-                  </div>
-                </a>
-
-                <div className="contact-item">
-                  <i className="fas fa-map-marker-alt"></i>
-                  <div className="contact-details">
-                    <span className="contact-label">{t('footer.connect.location')}</span>
-                    <span className="contact-value">{t('footer.connect.country')}</span>
-                  </div>
-                </div>
               </div>
+              <div className="contact-item">
+                <i className="fas fa-map-marker-alt"></i>
+                <span className="footer-text">Tashkent, Uzbekistan</span>
+              </div>
+              <div className="contact-item">
+                <i className="fas fa-globe"></i>
+                <span className="footer-text">Available Worldwide</span>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        {/* Footer Bottom */}
+        <div className="footer-bottom">
+          <div className="footer-bottom-content">
+            <div className="footer-copyright">
+              <p>© {currentYear} Mirshod Qayimov. All rights reserved.</p>
+              <p className="footer-subtitle">Built with React & passion ❤️</p>
+            </div>
+            
+            <div className="footer-actions">
+              <button 
+                onClick={scrollToTop} 
+                className="back-to-top"
+                aria-label="Back to top"
+              >
+                <i className="fas fa-arrow-up"></i>
+                <span>Back to top</span>
+              </button>
             </div>
           </div>
         </div>
       </div>
 
-      {/* Footer Bottom */}
-      <div className="footer-bottom">
-        <div className="footer-bottom-content">
-          <div className="copyright">
-            <p>{t('footer.copyright', { year: new Date().getFullYear() })}</p>
-          </div>
-          
-          <div className="footer-status">
-            <div className="status-indicator">
-              <div className="status-dot"></div>
-              <span>{t('footer.status')}</span>
-            </div>
-          </div>
-
-          <div className="back-to-top">
-            <button className="back-to-top-btn" aria-label={t('footer.backToTop')} onClick={scrollToTop}>
-              <FontAwesomeIcon icon={faChevronUp} />
-            </button>
-          </div>
-        </div>
+      {/* Background Elements */}
+      <div className="footer-bg-elements">
+        <div className="footer-pattern"></div>
+        <div className="footer-gradient"></div>
       </div>
     </footer>
   );

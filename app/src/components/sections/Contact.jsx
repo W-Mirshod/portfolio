@@ -1,20 +1,54 @@
-import { useState } from 'react';
+import { useState, useEffect, useRef } from 'react';
 import { useTranslation } from 'react-i18next';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faPaperPlane } from '@fortawesome/free-solid-svg-icons';
-import '../styles/Contact.css';
+import '../../components/styles/ContactSection.css';
 
 const Contact = () => {
   const { t } = useTranslation();
-  
   const [formData, setFormData] = useState({
     name: '',
     email: '',
     message: ''
   });
-  const [formStatus, setFormStatus] = useState(null);
+  const [formMessage, setFormMessage] = useState(null);
+  const contactFormRef = useRef(null);
+  const recaptchaRef = useRef(null);
 
-  const handleChange = (e) => {
+  // Load reCAPTCHA script
+  useEffect(() => {
+    const loadRecaptcha = () => {
+      if (window.grecaptcha) return;
+
+      const script = document.createElement('script');
+      script.src = 'https://www.google.com/recaptcha/api.js';
+      script.async = true;
+      script.defer = true;
+      document.body.appendChild(script);
+    };
+
+    loadRecaptcha();
+
+    // Initialize animations
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('animate-in');
+          observer.unobserve(entry.target);
+        }
+      });
+    }, { threshold: 0.2 });
+
+    if (contactFormRef.current) {
+      observer.observe(contactFormRef.current);
+    }
+
+    return () => {
+      if (contactFormRef.current) {
+        observer.unobserve(contactFormRef.current);
+      }
+    };
+  }, []);
+
+  const handleInputChange = (e) => {
     const { name, value } = e.target;
     setFormData(prev => ({
       ...prev,
@@ -25,19 +59,26 @@ const Contact = () => {
   const handleSubmit = async (e) => {
     e.preventDefault();
     
+    // Check if reCAPTCHA is completed
+    if (!window.grecaptcha || !window.grecaptcha.getResponse()) {
+      setFormMessage({ type: 'error', text: t('Please complete the reCAPTCHA verification') });
+      return;
+    }
+    
     try {
-      setFormStatus({ type: 'loading', message: t('contact.sending') });
+      // Here you would typically make an API call to your backend
+      // For demo purposes, we'll simulate a successful submission
+      await new Promise(resolve => setTimeout(resolve, 1000));
       
-      // In a real implementation, we would send the form data to a server
-      // For now, we'll simulate a successful submission after a delay
-      await new Promise(resolve => setTimeout(resolve, 1500));
-      
-      setFormStatus({ type: 'success', message: t('contact.success') });
+      setFormMessage({ type: 'success', text: t('Your message has been sent successfully!') });
       setFormData({ name: '', email: '', message: '' });
       
+      // Reset reCAPTCHA
+      if (window.grecaptcha) {
+        window.grecaptcha.reset();
+      }
     } catch (error) {
-      console.error('Error submitting form:', error);
-      setFormStatus({ type: 'error', message: t('contact.error') });
+      setFormMessage({ type: 'error', text: t('An error occurred. Please try again later.') });
     }
   };
 
@@ -45,21 +86,22 @@ const Contact = () => {
     <section id="contact" className="section contact-section">
       <div className="container">
         <div className="section-header">
-          <h2 className="section-title">{t('contact.title')}</h2>
-          <p className="section-subtitle">{t('contact.subtitle')}</p>
+          <h2 className="section-title">{t("Get In Touch")}</h2>
+          <p className="section-subtitle">{t("Let's discuss your next project")}</p>
         </div>
+        
         <div className="contact-content">
-          <div className="contact-form">
+          <div className="contact-form" ref={contactFormRef}>
             <form id="contact-form" onSubmit={handleSubmit}>
               <div className="form-group">
                 <input 
                   type="text" 
                   id="name" 
                   name="name" 
-                  placeholder={t('contact.form.name')}
                   value={formData.name}
-                  onChange={handleChange}
-                  required
+                  onChange={handleInputChange}
+                  placeholder={t("Your Name")} 
+                  required 
                 />
               </div>
               <div className="form-group">
@@ -67,19 +109,19 @@ const Contact = () => {
                   type="email" 
                   id="email" 
                   name="email" 
-                  placeholder={t('contact.form.email')}
                   value={formData.email}
-                  onChange={handleChange}
-                  required
+                  onChange={handleInputChange}
+                  placeholder={t("Your Email")} 
+                  required 
                 />
               </div>
               <div className="form-group">
                 <textarea 
                   id="message" 
                   name="message" 
-                  placeholder={t('contact.form.message')}
                   value={formData.message}
-                  onChange={handleChange}
+                  onChange={handleInputChange}
+                  placeholder={t("Your Message")} 
                   rows="5" 
                   required
                 ></textarea>
@@ -89,69 +131,21 @@ const Contact = () => {
                   <div 
                     id="recaptcha-container" 
                     className="g-recaptcha" 
+                    ref={recaptchaRef}
                     data-sitekey="***REMOVED***"
                   ></div>
                 </div>
               </div>
-              <button type="submit" className="submit-btn" disabled={formStatus?.type === 'loading'}>
-                <FontAwesomeIcon icon={faPaperPlane} />
-                {formStatus?.type === 'loading' ? t('contact.form.sending') : t('contact.form.submit')}
+              <button type="submit" className="submit-btn">
+                <i className="fas fa-paper-plane"></i>
+                {t("Send Message")}
               </button>
             </form>
-            
-            {formStatus && (
-              <div className={`form-messages ${formStatus.type}`}>
-                {formStatus.message}
+            {formMessage && (
+              <div id="form-messages" className={`form-messages ${formMessage.type}`}>
+                {formMessage.text}
               </div>
             )}
-          </div>
-          
-          <div className="contact-info">
-            <div className="contact-card">
-              <h3>{t('contact.info.title')}</h3>
-              <p>{t('contact.info.description')}</p>
-              
-              <div className="contact-methods">
-                <a href="mailto:wmirshod@gmail.com" className="contact-item">
-                  <i className="fas fa-envelope"></i>
-                  <div className="contact-details">
-                    <span className="contact-label">{t('contact.info.email')}</span>
-                    <span className="contact-value">wmirshod@gmail.com</span>
-                  </div>
-                </a>
-
-                <a href="tel:+998907126437" className="contact-item">
-                  <i className="fas fa-phone"></i>
-                  <div className="contact-details">
-                    <span className="contact-label">{t('contact.info.phone')}</span>
-                    <span className="contact-value">+998 (90) 712-64-37</span>
-                  </div>
-                </a>
-
-                <div className="contact-item">
-                  <i className="fas fa-map-marker-alt"></i>
-                  <div className="contact-details">
-                    <span className="contact-label">{t('contact.info.location')}</span>
-                    <span className="contact-value">{t('contact.info.country')}</span>
-                  </div>
-                </div>
-
-                <div className="contact-socials">
-                  <h4>{t('contact.info.social')}</h4>
-                  <div className="social-links">
-                    <a href="https://github.com/W-Mirshod" target="_blank" rel="noopener noreferrer">
-                      <i className="fab fa-github"></i>
-                    </a>
-                    <a href="https://www.linkedin.com/in/w-mirshod" target="_blank" rel="noopener noreferrer">
-                      <i className="fab fa-linkedin"></i>
-                    </a>
-                    <a href="https://t.me/maverick3526" target="_blank" rel="noopener noreferrer">
-                      <i className="fab fa-telegram"></i>
-                    </a>
-                  </div>
-                </div>
-              </div>
-            </div>
           </div>
         </div>
       </div>
