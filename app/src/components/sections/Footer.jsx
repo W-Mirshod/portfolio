@@ -1,4 +1,5 @@
 import { useTranslation } from 'react-i18next';
+import MirshodImg from '../../assets/images/Mirshod.png';
 
 const Footer = () => {
   const { t } = useTranslation();
@@ -60,7 +61,7 @@ const Footer = () => {
         <div className="flex flex-col md:flex-row md:justify-between gap-10 md:gap-6 items-start md:items-stretch">
           <div className="flex-1 flex flex-col items-center md:items-start mb-8 md:mb-0">
             <div className="flex items-center gap-3 mb-2">
-              <img src="/Mirshod.png" alt="W Mirshod" width={50} height={50} className="rounded-full border-2 border-primary shadow" />
+              <img src={MirshodImg} alt="W Mirshod" width={50} height={50} className="rounded-full border-2 border-primary shadow" />
               <h3 className="text-xl font-bold text-footer-heading">W Mirshod</h3>
             </div>
             <p className="text-footer-text-muted text-sm mb-3 text-center md:text-left max-w-xs">

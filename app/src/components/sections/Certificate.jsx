@@ -1,4 +1,5 @@
 import { useTranslation } from 'react-i18next';
+import CertificateImg from '../../assets/images/Certification.png';
 
 const Certificate = () => {
   const { t } = useTranslation();
@@ -32,9 +33,9 @@ const Certificate = () => {
             </div>
             <div className="flex flex-col md:flex-row gap-8 items-center justify-center">
               <div className="relative flex flex-col items-center">
-                <div className="w-28 h-28 rounded-xl bg-gradient-to-br from-primary to-primary-dark flex items-center justify-center mb-4 overflow-hidden">
+                <div className="w-40 h-40 rounded-xl bg-gradient-to-br from-primary to-primary-dark flex items-center justify-center mb-4 overflow-hidden">
                   <img 
-                    src="/sertification.png" 
+                    src={CertificateImg} 
                     alt="Backend Python Django Bootcamp Certificate" 
                     loading="lazy"
                     className="w-full h-full object-contain rounded-xl"

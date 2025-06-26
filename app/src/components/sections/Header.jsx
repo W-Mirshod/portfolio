@@ -1,5 +1,6 @@
 import { useState, useEffect } from 'react';
 import { useTranslation } from 'react-i18next';
+import MirshodImg from '../../assets/images/Mirshod.png';
 
 const Header = () => {
   const { t, i18n } = useTranslation();
@@ -58,7 +59,7 @@ const Header = () => {
         <div className="flex items-center gap-3">
           <a href="#home" className="flex items-center gap-3 group">
             <div className="w-12 h-12 rounded-full bg-bg-tertiary shadow-neumorphism-inset p-1 group-hover:shadow-neumorphism-hover transition-all duration-300">
-              <img src="/Mirshod.png" alt="W" className="w-full h-full rounded-full object-cover" />
+              <img src={MirshodImg} alt="W" className="w-full h-full rounded-full object-cover" />
             </div>
             <span className="text-xl font-bold text-primary tracking-wide">W Mirshod</span>
           </a>
