@@ -20,18 +20,6 @@ Create or modify `/etc/nginx/sites-available/w-mirshod.com.conf` with the follow
 server {
     server_name w-mirshod.com www.w-mirshod.com;
 
-    # Document root for the static files
-    root /mnt/portfolio/root;
-
-    # Static files
-    location /static/ {
-        alias /mnt/portfolio/staticfiles/;
-    }
-    # Media files (if any)
-    location /media/ {
-        alias /mnt/portfolio/mediafiles;
-    }
-
     # Reverse proxy to Docker container
     location / {
         proxy_pass http://localhost:8080;
