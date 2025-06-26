@@ -1,6 +1,5 @@
 import { useTranslation } from 'react-i18next';
 import { useEffect, useRef } from 'react';
-import '../../components/styles/SkillsSection.css';
 
 const Skills = () => {
   const { t } = useTranslation();
@@ -34,28 +33,21 @@ const Skills = () => {
     }
   ];
 
-  // Animate skill categories and tags with staggered timing
   useEffect(() => {
-    // Skills section animations with enhanced easing
     skillsObserver.current = new IntersectionObserver((entries) => {
       entries.forEach(entry => {
         if (entry.isIntersecting) {
-          // Add professional stagger animation for skill categories
           const siblings = Array.from(entry.target.parentNode.children);
           const index = siblings.indexOf(entry.target);
           const delay = index * 200;
-          
           setTimeout(() => {
             entry.target.style.opacity = '1';
             entry.target.style.transform = 'translateY(0)';
             entry.target.classList.add('animate-morph');
-            
-            // Animate skill tags within the category with cascade effect
             const skillTags = entry.target.querySelectorAll('.skill-tag');
             skillTags.forEach((tag, tagIndex) => {
               tag.style.opacity = '0';
               tag.style.transform = 'translateY(20px) scale(0.8)';
-              
               setTimeout(() => {
                 tag.style.opacity = '1';
                 tag.style.transform = 'translateY(0) scale(1)';
@@ -64,16 +56,13 @@ const Skills = () => {
               }, tagIndex * 100 + index * 50);
             });
           }, delay);
-          
           skillsObserver.current.unobserve(entry.target);
         }
       });
-    }, { 
+    }, {
       threshold: 0.15,
       rootMargin: '0px 0px -80px 0px'
     });
-
-    // Initialize skill categories for animation
     const skillCategories = document.querySelectorAll('.skill-category');
     skillCategories.forEach(category => {
       category.style.opacity = '0';
@@ -81,7 +70,6 @@ const Skills = () => {
       category.style.transition = 'all 0.8s cubic-bezier(0.25, 0.46, 0.45, 0.94)';
       skillsObserver.current.observe(category);
     });
-
     return () => {
       if (skillsObserver.current) {
         skillsObserver.current.disconnect();
@@ -90,20 +78,29 @@ const Skills = () => {
   }, []);
 
   return (
-    <section id="skills" className="section skills-section">
-      <div className="container">
-        <div className="section-header">
-          <h2 className="section-title">{t("Skills & Expertise")}</h2>
-          <p className="section-subtitle">{t("As an 18-year-old developer, these are the primary technologies I work with:")}</p>
+    <section id="skills" className="py-20 bg-gradient-to-b from-[#181a24] to-[#23263a] dark:bg-[#181a24]">
+      <div className="max-w-6xl mx-auto px-4">
+        <div className="mb-12 text-center">
+          <h2 className="text-3xl md:text-4xl font-bold text-white drop-shadow-lg mb-2">{t("Skills & Expertise")}</h2>
+          <p className="text-lg text-gray-400">{t("As an 18-year-old developer, these are the primary technologies I work with:")}</p>
         </div>
-        
-        <div className="skills-grid" ref={skillsGridRef}>
+        <div
+          className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 md:gap-8 justify-items-center items-start"
+          ref={skillsGridRef}
+        >
           {skillCategories.map((category, index) => (
-            <div key={index} className="skill-category">
-              <h3>{t(category.title)}</h3>
-              <div className="skill-items">
+            <div
+              key={index}
+              className="skill-category w-full max-w-xs md:max-w-sm bg-[#23263a]/80 dark:bg-[#23263a]/80 p-6 md:p-7 rounded-2xl border border-[#23263a] dark:border-[#23263a] shadow-[0_8px_32px_0_rgba(31,38,135,0.25)] backdrop-blur-md text-center transition-all duration-400 hover:-translate-y-1.5 hover:shadow-[0_8px_25px_rgba(63,162,246,0.15)]"
+              style={{ opacity: 1, transform: 'translateY(0)' }}
+            >
+              <h3 className="text-[#3fa2f6] mb-4 text-lg font-semibold flex items-center justify-center gap-2">{t(category.title)}</h3>
+              <div className="skill-items flex flex-wrap gap-2 justify-center items-center">
                 {category.skills.map((skill, skillIndex) => (
-                  <span key={skillIndex} className="skill-tag">
+                  <span
+                    key={skillIndex}
+                    className="skill-tag bg-[#3fa2f6]/10 text-[#3fa2f6] px-3 py-1 rounded-full text-xs font-medium border border-[#3fa2f6]/20 transition-all duration-200 cursor-default hover:bg-[#3fa2f6] hover:text-white hover:-translate-y-0.5 hover:shadow-[0_4px_12px_rgba(63,162,246,0.2)]"
+                  >
                     {t(skill)}
                   </span>
                 ))}

@@ -1,6 +1,5 @@
 import { useState, useEffect } from 'react';
 import { useTranslation } from 'react-i18next';
-import '../../components/styles/HomeSection.css';
 
 const Home = () => {
   const { t } = useTranslation();
@@ -69,85 +68,72 @@ const Home = () => {
   ];
 
   return (
-    <section id="home" className="section hero-section">
-      <div className="container">
-        <div className="hero-container">
-          <div className="hero-content">
-            <div className="hero-badge">
-              <i className="fas fa-code"></i>
+    <section id="home" className="relative flex items-start justify-center pt-24 min-h-[80vh] bg-bg-primary">
+      <div className="w-full max-w-7xl mx-auto px-4">
+        <div className="flex flex-col items-center justify-center text-center w-full max-w-5xl mx-auto">
+          <div className="flex flex-col items-center justify-center text-center w-full mt-2">
+            <div className="inline-flex items-center gap-2 bg-primary/10 border border-primary/20 px-3 py-1.5 rounded-2xl mb-4 text-xs text-primary font-medium animate-fadeInUp">
+              <i className="fas fa-code" />
               <span>Full Stack Developer</span>
             </div>
-
-            <h1>
-              Hi, I'm <span className="highlight">Mirshod Qayimov</span><br/>
-              Building Digital Solutions
+            <h1 className="text-3xl md:text-4xl lg:text-5xl font-extrabold leading-tight mb-2 animate-fadeInUp bg-gradient-to-r from-primary to-primary-dark bg-clip-text text-transparent">
+              Hi, I'm <span className="">Mirshod Qayimov</span><br />
+              <span className="text-text-secondary font-semibold">Building Digital Solutions</span>
             </h1>
-
-            <div className="typing-container">
-              <div className="typing-text" id="typing-text">{typingText}</div>
-              <span className="typing-cursor">|</span>
+            <div className="flex items-center justify-center mb-2 min-h-8 w-full animate-fadeInUp">
+              <div className="font-semibold text-primary text-base md:text-lg tracking-wide" id="typing-text">{typingText}</div>
+              <span className="font-normal text-primary text-base md:text-lg animate-blink">|</span>
             </div>
-            
             <a 
               href="https://pdp.uz" 
               target="_blank" 
               rel="noopener noreferrer" 
-              className="pdp-acceptance-banner"
+              className="inline-flex items-center gap-2 bg-gradient-to-r from-emerald-400/15 to-emerald-700/15 border-2 border-emerald-500/30 px-6 py-3 rounded-full my-4 font-bold text-emerald-500 text-base backdrop-blur-sm shadow-lg transition-all duration-300 hover:scale-105 hover:border-emerald-500 hover:text-emerald-600 relative overflow-hidden"
             >
-              <i className="fas fa-graduation-cap pdp-banner-icon"></i>
-              <div className="pdp-banner-text">
-                <span className="pdp-banner-main">{t("PDP University Student")}</span>
-                <span className="pdp-banner-sub">{t("Programming & Development")}</span>
+              <i className="fas fa-graduation-cap text-emerald-500 text-lg drop-shadow" />
+              <div className="flex flex-col items-center gap-0.5">
+                <span className="font-extrabold text-emerald-500 text-base leading-tight">{t("PDP University Student")}</span>
+                <span className="font-semibold text-emerald-600 text-xs leading-tight">{t("Programming & Development")}</span>
               </div>
             </a>
-
-            <p className="hero-description">
-              As an 18-year-old developer, I specialize in building robust microservices, scalable APIs, 
-              and intelligent AI solutions. Currently working 18/7 on innovative projects using Python, 
-              Django, AWS, and cutting-edge technologies.
+            <p className="text-base md:text-lg text-text-secondary my-6 max-w-xl mx-auto leading-relaxed animate-fadeInUp">
+              As an 18-year-old developer, I specialize in building robust microservices, scalable APIs, and intelligent AI solutions. Currently working 18/7 on innovative projects using Python, Django, AWS, and cutting-edge technologies.
             </p>
-            
-            <div className="floating-cards">
+            <div className="flex flex-wrap justify-center gap-3 md:gap-4 my-8 max-w-3xl mx-auto animate-fadeInUp">
               {techStack.map((tech, index) => (
-                <div 
+                <div
                   key={tech.name}
-                  className="tech-card" 
-                  data-tech={tech.name.toLowerCase().replace(/[^a-z0-9]/g, '')} 
+                  className="flex items-center gap-2 bg-white/5 border border-white/10 px-4 py-2 rounded-full text-sm font-medium text-text-primary backdrop-blur-md shadow hover:scale-105 hover:bg-white/10 hover:border-primary transition-all duration-200 cursor-pointer"
                   title={tech.name}
-                  style={{
-                    animationDelay: `${index * 0.1}s`
-                  }}
+                  style={{ animationDelay: `${index * 0.1}s` }}
                 >
-                  <img 
-                    src={tech.img} 
+                  <img
+                    src={tech.img}
                     alt={tech.name}
                     loading="lazy"
-                    width="48"
-                    height="48"
+                    width="32"
+                    height="32"
+                    className="w-8 h-8 object-contain"
                   />
                 </div>
               ))}
             </div>
-
-            <div className="cta-group">
-              <a href="#contact" className="cta-primary">
-                <i className="fas fa-envelope"></i>
+            <div className="flex flex-col sm:flex-row gap-4 justify-center my-6 animate-fadeInUp">
+              <a href="#contact" className="inline-flex items-center gap-2 px-8 py-3 rounded-full font-semibold text-base bg-gradient-to-r from-primary to-primary-dark text-white border-2 border-transparent shadow transition-all duration-200 hover:scale-105">
+                <i className="fas fa-envelope" />
                 {t("Get In Touch")}
               </a>
-              <a href="#experience" className="cta-secondary">
-                <i className="fas fa-briefcase"></i>
+              <a href="#experience" className="inline-flex items-center gap-2 px-8 py-3 rounded-full font-semibold text-base border-2 border-primary text-primary bg-transparent shadow transition-all duration-200 hover:bg-primary hover:text-white hover:scale-105">
+                <i className="fas fa-briefcase" />
                 {t("View Experience")}
               </a>
             </div>
           </div>
-          
-          <div className="hero-visual">
-          </div>
+          <div className="relative w-full h-72 mt-12 animate-fadeInUp"></div>
         </div>
-        
-        <div className="scroll-indicator">
-          <div className="scroll-arrow">
-            <i className="fas fa-chevron-down"></i>
+        <div className="absolute bottom-8 left-1/2 -translate-x-1/2 animate-fadeInUp">
+          <div className="flex items-center justify-center w-10 h-10 border-2 border-primary rounded-full text-primary animate-bounce cursor-pointer transition-all duration-200 hover:bg-primary hover:text-white">
+            <i className="fas fa-chevron-down" />
           </div>
         </div>
       </div>
