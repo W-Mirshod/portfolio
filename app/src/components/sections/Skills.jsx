@@ -9,27 +9,27 @@ const Skills = () => {
   const skillCategories = [
     {
       title: "Backend Development",
-      skills: ["Python", "Django", "FastAPI", "REST APIs", "Microservices", "PyGame", "WebSocket"]
+      skills: ["Python", "Django", "Django ORM", "Flask", "FastAPI", "REST APIs", "WebSockets", "WebRTC", "Monolithic/Microservices", "API Integration", "Celery", "Flower", "Performance Optimization", "PyGame"]
     },
     {
       title: "Frontend Technologies",
-      skills: ["JavaScript", "React", "Vite", "HTML5", "CSS3", "SCSS", "WebRTC"]
+      skills: ["JavaScript", "React", "React Native", "Vite", "Tailwind", "HTML5", "CSS3", "SCSS"]
     },
     {
       title: "DevOps & Cloud",
-      skills: ["AWS", "Docker", "Linux", "Git", "GitHub", "CI/CD", "Pipelines", "Automated Deployment", "GitHub Actions"]
+      skills: ["AWS (EC2, S3, CodePipeline, CodeDeploy)", "Docker", "Docker Compose", "Linux", "Git", "GitHub", "GitHub Actions", "CI/CD", "Automation", "Nginx", "Apache"]
     },
     {
       title: "Databases",
-      skills: ["PostgreSQL", "MySQL", "SQLite", "Redis"]
+      skills: ["PostgreSQL", "MySQL", "SQLite", "Redis", "Caching"]
     },
     {
       title: "AI & Machine Learning",
-      skills: ["GPT-Neo", "AI APIs", "ChatGPT Integration", "Text-to-Speech", "PDF Translation"]
+      skills: ["Azure APIs", "AI APIs", "Personal AI Model (GPT-Neo)"]
     },
     {
       title: "Tools & Utilities",
-      skills: ["Postman", "QR Code Generation", "Excel/CSV Analysis", "Movie Downloaders"]
+      skills: ["Swagger/OpenAPI", "Postman", "Pytest", "Excel/CSV Analysis"]
     }
   ];
 
