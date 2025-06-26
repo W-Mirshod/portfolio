@@ -1,5 +1,6 @@
 import { useState, useEffect } from 'react';
 import { useTranslation } from 'react-i18next';
+import { createPortal } from 'react-dom';
 import MirshodImg from '../../assets/images/Mirshod.png';
 
 const Header = () => {
@@ -54,7 +55,7 @@ const Header = () => {
     { href: '#contact', key: 'contact', label: 'Contact' }
   ];
   return (
-    <header className="fixed top-0 left-0 w-full z-50 bg-bg-secondary/80 backdrop-blur-md border-b border-border-color shadow-neumorphism">
+    <header className="fixed top-0 left-0 w-full z-[100] bg-bg-secondary/80 backdrop-blur-md border-b border-border-color shadow-neumorphism">
       <div className="max-w-7xl mx-auto flex items-center justify-between px-8 py-4 lg:px-6 md:px-4">
         <div className="flex items-center gap-3">
           <a href="#home" className="flex items-center gap-3 group">
@@ -136,27 +137,48 @@ const Header = () => {
           </div>
         </div>
       </div>
-      <nav className={`fixed top-0 right-0 h-full w-80 bg-bg-secondary border-l border-border-color shadow-neumorphism z-40 flex flex-col gap-4 px-6 py-20 transform transition-transform duration-300 lg:hidden ${isMenuOpen ? 'translate-x-0' : 'translate-x-full'} md:w-full`} id="mobileNavMenu">
-        {navItems.map((item) => (
-          <a
-            key={item.key}
-            className="px-4 py-3 rounded-xl font-medium text-base text-text-secondary border-b border-border-color/30 hover:text-primary hover:bg-bg-tertiary/50 hover:shadow-neumorphism transition-all duration-300"
-            href={item.href}
-            onClick={() => setIsMenuOpen(false)}
-          >
-            {item.label}
-          </a>
-        ))}
-        <a
-          className="px-4 py-3 rounded-xl font-medium text-base text-text-secondary hover:text-primary hover:bg-bg-tertiary/50 hover:shadow-neumorphism transition-all duration-300"
-          href="https://github.com/W-Mirshod"
-          target="_blank"
-          rel="noopener noreferrer"
-          onClick={() => setIsMenuOpen(false)}
-        >
-          GitHub
-        </a>
-      </nav>
+      {typeof window !== 'undefined' && createPortal(
+        <>
+          <nav className={`fixed top-0 right-0 h-full w-80 bg-bg-secondary border-l border-border-color shadow-neumorphism z-[110] flex flex-col gap-4 px-6 py-20 transform transition-transform duration-300 lg:hidden ${isMenuOpen ? 'translate-x-0' : 'translate-x-full'} md:w-full`} id="mobileNavMenu">
+            {navItems.map((item) => (
+              <a
+                key={item.key}
+                className="px-4 py-3 rounded-xl font-medium text-base text-text-secondary border-b border-border-color/30 hover:text-primary hover:bg-bg-tertiary/50 hover:shadow-neumorphism transition-all duration-300"
+                href={item.href}
+                onClick={() => setIsMenuOpen(false)}
+              >
+                {item.label}
+              </a>
+            ))}
+            <a
+              className="px-4 py-3 rounded-xl font-medium text-base text-text-secondary hover:text-primary hover:bg-bg-tertiary/50 hover:shadow-neumorphism transition-all duration-300"
+              href="https://github.com/W-Mirshod"
+              target="_blank"
+              rel="noopener noreferrer"
+              onClick={() => setIsMenuOpen(false)}
+            >
+              GitHub
+            </a>
+            <div className="mt-auto flex flex-col items-center gap-4 pb-6 pt-10 border-t border-border-color/30">
+              <div className="flex flex-col items-center gap-1 text-sm text-footer-text-muted">
+                <span className="font-bold text-lg text-footer-heading">W-Mirshod</span>
+                <span className="font-medium">© 2023-2025 All Rights Reserved</span>
+              </div>
+              <a
+                href="https://github.com/W-Mirshod"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="flex items-center gap-2 px-4 py-2 rounded-full bg-primary text-white text-sm font-semibold shadow hover:shadow-lg transition-all duration-300 hover:scale-105"
+              >
+                <i className="fab fa-github text-lg" />
+                <span>Visit GitHub</span>
+              </a>
+            </div>
+          </nav>
+          {isMenuOpen && <div className="fixed inset-0 bg-black/40 z-[100] lg:hidden" onClick={() => setIsMenuOpen(false)} />}
+        </>,
+        document.body
+      )}
     </header>
   );
 };
