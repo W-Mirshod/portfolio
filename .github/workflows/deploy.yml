@@ -3,7 +3,7 @@ name: Deploy
 on:
   push:
     branches:
-      - master
+      - main
 
 jobs:
   deploy:
@@ -27,10 +27,10 @@ jobs:
           git reset --hard origin/master
           git clean -fd
           git pull
-          # Build Docker image
-          docker build -t portfolio-frontend .
-          # Stop and remove existing container if running
-          docker stop portfolio-frontend || true
-          docker rm portfolio-frontend || true
-          # Run new container
-          docker run -d --name portfolio-frontend -p 8080:8080 portfolio-frontend
+          docker-compose build
+          if docker-compose run --rm app true; then
+            docker-compose down || true
+            docker-compose up -d --build
+          else
+            echo 'Build failed, keeping existing running container.'
+          fi
