@@ -54,12 +54,27 @@ const Contact = () => {
       setFormMessage({ type: 'error', text: t('Please complete the reCAPTCHA verification') });
       return;
     }
+    setFormMessage(null);
     try {
-      await new Promise(resolve => setTimeout(resolve, 1000));
-      setFormMessage({ type: 'success', text: t('Your message has been sent successfully!') });
-      setFormData({ name: '', email: '', message: '' });
-      if (window.grecaptcha) {
-        window.grecaptcha.reset();
+      const res = await fetch("http://localhost:54832/api/contact", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({
+          name: formData.name,
+          email: formData.email,
+          message: formData.message,
+          recaptchaToken: window.grecaptcha ? window.grecaptcha.getResponse() : "test-token"
+        })
+      });
+      if (res.ok) {
+        setFormMessage({ type: 'success', text: t('Your message has been sent successfully!') });
+        setFormData({ name: '', email: '', message: '' });
+        if (window.grecaptcha) {
+          window.grecaptcha.reset();
+        }
+      } else {
+        const data = await res.json();
+        setFormMessage({ type: 'error', text: data.error || t('An error occurred. Please try again later.') });
       }
     } catch (error) {
       setFormMessage({ type: 'error', text: t('An error occurred. Please try again later.') });
