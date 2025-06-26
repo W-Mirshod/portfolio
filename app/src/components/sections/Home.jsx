@@ -45,34 +45,41 @@ const Home = () => {
   }, [typingText, isDeleting, currentIndex, typingTexts]);
 
   const techStack = [
+    // Backend
     { name: 'Python', img: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/python/python-original.svg' },
     { name: 'Django', img: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/django/django-plain.svg' },
     { name: 'Flask', img: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/flask/flask-original.svg' },
     { name: 'FastAPI', img: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/fastapi/fastapi-original.svg' },
+    // Frontend
     { name: 'React', img: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/react/react-original.svg' },
     { name: 'Vite', img: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/vitejs/vitejs-original.svg' },
     { name: 'Tailwind', img: 'https://icon.icepanel.io/Technology/svg/Tailwind-CSS.svg' },
     { name: 'HTML5', img: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/html5/html5-original.svg' },
+    // Frontend cont.
     { name: 'CSS3', img: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/css3/css3-original.svg' },
     { name: 'SCSS', img: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/sass/sass-original.svg' },
+    { name: 'PyGame', img: 'https://www.pygame.org/docs/_static/pygame_logo.png' },
+    { name: 'Swagger/OpenAPI', img: 'https://icon.icepanel.io/Technology/svg/Swagger.svg' },
+    // DevOps & Cloud
     { name: 'AWS', img: 'https://icon.icepanel.io/Technology/png-shadow-512/AWS.png' },
     { name: 'Docker', img: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/docker/docker-original.svg' },
     { name: 'Linux', img: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/linux/linux-original.svg' },
+    { name: 'Fedora', img: 'https://icon.icepanel.io/Technology/svg/Fedora.svg' },
+    // DevOps cont.
     { name: 'Git', img: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/git/git-original.svg' },
     { name: 'GitHub Codespaces', img: 'https://icon.icepanel.io/Technology/png-shadow-512/GitHub-Codespaces.png' },
     { name: 'GitLab', img: 'https://icon.icepanel.io/Technology/svg/GitLab.svg' },
+    { name: 'Apache', img: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/apache/apache-original.svg' },
+    // Databases
     { name: 'PostgreSQL', img: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/postgresql/postgresql-original.svg' },
     { name: 'MySQL', img: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/mysql/mysql-original.svg' },
     { name: 'SQLite', img: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/sqlite/sqlite-original.svg' },
     { name: 'Redis', img: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/redis/redis-original.svg' },
-    { name: 'Swagger/OpenAPI', img: 'https://icon.icepanel.io/Technology/svg/Swagger.svg' },
+    // Utilities & Testing
     { name: 'Postman', img: 'https://icon.icepanel.io/Technology/svg/Postman.svg' },
     { name: 'Pytest', img: 'https://docs.pytest.org/en/latest/_static/pytest1.png' },
     { name: 'Celery', img: 'https://docs.celeryq.dev/en/stable/_static/celery_512.png' },
-    { name: 'Apache', img: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/apache/apache-original.svg' },
-    { name: 'PyGame', img: 'https://www.pygame.org/docs/_static/pygame_logo.png' },
-    { name: 'Azure APIs', img: 'https://upload.wikimedia.org/wikipedia/commons/thumb/a/a8/Microsoft_Azure_Logo.svg/2048px-Microsoft_Azure_Logo.svg.png' },
-    { name: 'AI APIs', img: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/python/python-original.svg' },
+    { name: 'Azure APIs', img: 'https://icon.icepanel.io/Technology/svg/Azure.svg' },
   ];
 
   return (
