@@ -1,26 +1,26 @@
 /* Main App Styles */
 :root {
-  /* Main colors */
-  --bg-color: #f9fafb;
-  --bg-alt: #f3f4f6;
-  --card-bg: #ffffff;
-  --text-color: #1f2937;
-  --text-muted: #6b7280;
+  /* Dark theme as default for premium look */
+  --bg-color: #0a0b0f;
+  --bg-alt: #181a20;
+  --card-bg: #1f2937;
+  --text-color: #f9fafb;
+  --text-muted: #9ca3af;
   --accent-color: #3b82f6;
   --accent-color-rgb: 59, 130, 246;
   --accent-color-dark: #2563eb;
   --accent-color-light: #dbeafe;
-  --border-color: #e5e7eb;
+  --border-color: rgba(255, 255, 255, 0.1);
   
   /* Tag colors */
-  --tag-bg: #f3f4f6;
-  --tag-color: #4b5563;
+  --tag-bg: #374151;
+  --tag-color: #d1d5db;
   
   /* Input colors */
-  --input-bg: #ffffff;
+  --input-bg: #374151;
   
   /* Footer colors */
-  --footer-bg: #1f2937;
+  --footer-bg: #0a0b0f;
   --footer-text: #f3f4f6;
   --footer-heading: #ffffff;
   --footer-link: #d1d5db;
@@ -33,20 +33,18 @@
   --gradient-primary: linear-gradient(135deg, #3b82f6, #60a5fa);
 }
 
-[data-theme="dark"] {
-  --bg-color: #111827;
-  --bg-alt: #1f2937;
-  --card-bg: #1f2937;
-  --text-color: #f9fafb;
-  --text-muted: #9ca3af;
-  --border-color: #374151;
-  --tag-bg: #374151;
-  --tag-color: #d1d5db;
-  --input-bg: #374151;
-  
-  /* Footer colors in dark mode */
-  --footer-bg: #111827;
-  --footer-border: rgba(255, 255, 255, 0.1);
+/* Light theme override */
+[data-theme="light"] {
+  --bg-color: #f9fafb;
+  --bg-alt: #f3f4f6;
+  --card-bg: #ffffff;
+  --text-color: #1f2937;
+  --text-muted: #6b7280;
+  --border-color: #e5e7eb;
+  --tag-bg: #f3f4f6;
+  --tag-color: #4b5563;
+  --input-bg: #ffffff;
+  --footer-bg: #1f2937;
 }
 
 * {
