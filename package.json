@@ -2,6 +2,8 @@
   "dependencies": {
     "@react-three/drei": "^10.3.0",
     "@react-three/fiber": "^9.1.2",
+    "@tsparticles/engine": "^3.8.1",
+    "@tsparticles/react": "^3.0.0",
     "framer-motion": "^12.19.1",
     "lucide-react": "^0.523.0",
     "react-tooltip": "^5.29.1",
