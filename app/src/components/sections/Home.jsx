@@ -1,7 +1,6 @@
 import { useState, useEffect } from 'react';
 import { useTranslation } from 'react-i18next';
 import { initializeAudio } from '../../utils/audio';
-import { motion } from 'framer-motion';
 
 const Home = () => {
   const { t } = useTranslation();
@@ -19,11 +18,11 @@ const Home = () => {
   ];
 
   useEffect(() => {
-    const typeSpeed = isDeleting ? 50 : 100;
+    const typeSpeed = isDeleting ? 80 : 140;
     const currentText = typingTexts[currentIndex];
 
     if (!isDeleting && typingText === currentText) {
-      setTimeout(() => setIsDeleting(true), 2000);
+      setTimeout(() => setIsDeleting(true), 1200);
       return;
     }
 
@@ -85,7 +84,7 @@ const Home = () => {
   ];
 
   useEffect(() => {
-    const cleanupAudio = initializeAudio('/warm-ambient-sound.mp3', 0.4);
+    const cleanupAudio = initializeAudio('/warm-ambient-sound.mp3', 0.2);
     return cleanupAudio;
   }, []);
 
@@ -109,7 +108,7 @@ const Home = () => {
     '> show project Online Shopping Platform',
     'Micro-service architecture e-shopping platform with modern design and scalable backend.',
     '> show project Online Course Platform',
-    'E-Courses platform including teacher\'s and blog\'s own section with comprehensive features.',
+    "E-Courses platform including teacher's and blog's own section with comprehensive features.",
     '> show project Hospital Management System',
     'Platform for hospitals where patients and doctors have their pages with patient records and departments.',
     '> show project GPT-Neo AI',
@@ -128,7 +127,7 @@ const Home = () => {
       if (typed.length < terminalLines[currentLine].length) {
         const timeout = setTimeout(() => {
           setTyped(terminalLines[currentLine].slice(0, typed.length + 1));
-        }, 22);
+        }, 40);
         return () => clearTimeout(timeout);
       } else {
         setIsAnimating(false);
@@ -138,7 +137,7 @@ const Home = () => {
           setCurrentLine((l) => (l + 1) % terminalLines.length);
           const terminalDiv = document.querySelector('.bg-\\[\\#10151f\\]');
           if (terminalDiv) terminalDiv.scrollTop = terminalDiv.scrollHeight;
-        }, 180);
+        }, 200);
         return () => clearTimeout(timeout);
       }
     } else {
@@ -149,7 +148,7 @@ const Home = () => {
         setCurrentLine((l) => (l + 1) % terminalLines.length);
         const terminalDiv = document.querySelector('.bg-\\[\\#10151f\\]');
         if (terminalDiv) terminalDiv.scrollTop = terminalDiv.scrollHeight;
-      }, 70);
+      }, 120);
       return () => clearTimeout(timeout);
     }
   }, [typed, currentLine, terminalLines]);
@@ -157,38 +156,34 @@ const Home = () => {
   return (
     <section id="home" className="relative flex flex-col items-center justify-center min-h-screen h-screen w-full overflow-hidden pt-12">
       <div className="absolute inset-0 w-full h-full z-0">
-        <div className="absolute inset-0 w-full h-full bg-gradient-to-br from-[#0a101a] via-[#1a2633] to-[#008080] opacity-90 animate-gradient-move" style={{ zIndex: 0 }} />
+        <div className="absolute inset-0 w-full h-full bg-gradient-to-br from-[#0a101a] via-[#1a2633] to-[#008080] opacity-90" style={{ zIndex: 0 }} />
       </div>
       <div className="relative flex flex-col justify-center items-center w-full h-full max-w-7xl mx-auto px-2 sm:px-4 z-10">
         <div className="flex flex-col items-center justify-center text-center w-full max-w-5xl mx-auto h-full py-6">
           <div className="flex flex-col items-center justify-center text-center w-full">
-            <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: 0.2 }} className="inline-flex items-center gap-2 bg-primary/10 border border-primary/20 px-3 py-1.5 rounded-2xl mb-4 text-xs text-primary font-medium animate-fadeInUp">
+            <div className="inline-flex items-center gap-2 bg-primary/10 border border-primary/20 px-3 py-1.5 rounded-2xl mb-4 text-xs text-primary font-medium">
               <i className="fas fa-code" />
               <span>Full Stack Developer</span>
-            </motion.div>
-            <motion.h1 initial="hidden" animate="visible" variants={{ hidden: { opacity: 0 }, visible: { opacity: 1, transition: { staggerChildren: 0.05 } } }} className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-extrabold leading-tight mb-2 bg-gradient-to-r from-primary to-primary-dark bg-clip-text text-transparent">
-              {"Mirshod Qayimov".split("").map((l, i) => (
-                <motion.span key={i} variants={{ hidden: { opacity: 0, y: 10 }, visible: { opacity: 1, y: 0 } }} transition={{ type: 'spring', stiffness: 200, damping: 20 }}>{l === ' ' ? '\u00A0' : l}</motion.span>
-              ))}
-            </motion.h1>
+            </div>
+            <h1 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-extrabold leading-tight mb-2 bg-gradient-to-r from-primary to-primary-dark bg-clip-text text-transparent">
+              {"Mirshod Qayimov"}
+            </h1>
             <div className="flex items-center justify-center mb-2 min-h-8 w-full">
-              <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1 }} transition={{ delay: 0.7 }} className="font-semibold text-primary text-base md:text-lg tracking-wide" id="typing-text">
-                {typingText.split("").map((l, i) => (
-                  <motion.span key={i} initial={{ opacity: 0 }} animate={{ opacity: 1 }} transition={{ delay: 0.03 * i }}>{l === ' ' ? '\u00A0' : l}</motion.span>
-                ))}
-              </motion.div>
+              <div className="font-semibold text-primary text-base md:text-lg tracking-wide" id="typing-text">
+                {typingText}
+              </div>
               <span className="font-normal text-primary text-base md:text-lg animate-blink">|</span>
             </div>
-            <motion.p initial={{ opacity: 0, y: 10 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: 1 }} className="text-base sm:text-lg text-text-secondary my-4 max-w-md">
+            <p className="text-base sm:text-lg text-text-secondary my-4 max-w-md">
               Building robust microservices, scalable APIs, and intelligent AI solutions for modern businesses.
-            </motion.p>
-            <motion.a whileHover={{ scale: 1.08, boxShadow: '0 0 16px #00fff0, 0 0 32px #ff00ea' }} transition={{ type: 'spring', stiffness: 300, damping: 15 }} href="#contact" className="inline-flex items-center gap-2 px-6 sm:px-8 py-3 rounded-full font-semibold text-base bg-gradient-to-r from-primary to-primary-dark text-white border-2 border-transparent shadow transition-all duration-200 hover:scale-105 relative overflow-hidden mb-6">
-              <span className="absolute inset-0 z-0 pointer-events-none" style={{ background: 'radial-gradient(circle at 50% 50%, rgba(0,255,240,0.15) 0%, transparent 80%)' }} />
+            </p>
+            <a href="#contact" className="inline-flex items-center gap-2 px-6 sm:px-8 py-3 rounded-full font-semibold text-base bg-gradient-to-r from-primary to-primary-dark text-white border-2 border-transparent shadow transition-all duration-200 hover:scale-105 relative overflow-hidden mb-6">
+              <span className="absolute inset-0 z-0 pointer-events-none" style={{ background: 'radial-gradient(circle at 50% 50%, rgba(0,255,240,0.10) 0%, transparent 80%)' }} />
               <i className="fas fa-envelope z-10" />
               <span className="z-10">{t("Get In Touch")}</span>
-            </motion.a>
+            </a>
             <div className="w-full flex justify-center mb-8">
-              <div className="bg-[#10151f] border border-[#222c3a] rounded-lg shadow-lg w-full max-w-xl p-4 text-left text-green-400 font-mono text-sm overflow-y-auto" style={{ height: 90 }}>
+              <div className="bg-[#10151f] border border-[#222c3a] rounded-lg w-full max-w-xl p-4 text-left text-green-400 font-mono text-sm overflow-y-auto" style={{ height: 90 }}>
                 <div className="flex flex-col justify-end" style={{ height: '100%' }}>
                   {terminalHistory.map((line, idx) => (
                     <div key={idx}>{line}</div>
@@ -201,13 +196,11 @@ const Home = () => {
             </div>
             <div className="flex flex-wrap justify-center gap-2 sm:gap-3 md:gap-4 my-4 max-w-3xl mx-auto">
               {techStack.map((tech, index) => (
-                <motion.div
+                <div
                   key={tech.name}
-                  className="flex items-center gap-2 bg-white/5 border border-white/10 px-3 sm:px-4 py-2 rounded-full text-sm font-medium text-text-primary backdrop-blur-md shadow hover:scale-110 hover:bg-white/10 hover:border-primary transition-all duration-200 cursor-pointer"
+                  className="flex items-center gap-2 bg-white/5 border border-white/10 px-3 sm:px-4 py-2 rounded-full text-sm font-medium text-text-primary transition-all duration-200 cursor-pointer hover:scale-110"
                   title={tech.name}
                   style={{ animationDelay: `${index * 0.1}s` }}
-                  whileHover={{ scale: 1.15, boxShadow: '0 0 16px #00fff0, 0 0 32px #ff00ea', rotateX: 8, rotateY: 8 }}
-                  transition={{ type: 'spring', stiffness: 300, damping: 18 }}
                 >
                   <img
                     src={tech.img}
@@ -216,9 +209,8 @@ const Home = () => {
                     width="28"
                     height="28"
                     className="w-7 h-7 sm:w-8 sm:h-8 object-contain"
-                    style={{ filter: 'drop-shadow(0 0 3px #00fff0)' }}
                   />
-                </motion.div>
+                </div>
               ))}
             </div>
           </div>
