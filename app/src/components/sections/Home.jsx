@@ -1,7 +1,5 @@
-import { useCallback, useState, useEffect } from 'react';
+import { useState, useEffect } from 'react';
 import { useTranslation } from 'react-i18next';
-import { loadFull } from 'tsparticles';
-import Particles from 'react-tsparticles';
 import { initializeAudio } from '../../utils/audio';
 import { motion } from 'framer-motion';
 
@@ -10,37 +8,6 @@ const Home = () => {
   const [typingText, setTypingText] = useState('');
   const [currentIndex, setCurrentIndex] = useState(0);
   const [isDeleting, setIsDeleting] = useState(false);
-
-  const particlesInit = useCallback(async (engine) => {
-    await loadFull(engine);
-  }, []);
-
-  const particlesOptions = {
-    fullScreen: false,
-    background: { color: 'transparent' },
-    fpsLimit: 60,
-    particles: {
-      number: { value: 60, density: { enable: true, area: 800 } },
-      color: { value: ['#00fff0', '#ff00ea', '#3b82f6'] },
-      links: { enable: true, color: '#00fff0', opacity: 0.2, width: 1 },
-      move: { enable: true, speed: 1.2, direction: 'none', random: true, straight: false, outModes: 'out', parallax: { enable: true, force: 60, smooth: 20 } },
-      opacity: { value: 0.5 },
-      size: { value: { min: 1, max: 3 } },
-      shape: { type: 'circle' },
-    },
-    interactivity: {
-      events: {
-        onHover: { enable: true, mode: 'repulse' },
-        onClick: { enable: true, mode: 'push' },
-        resize: true,
-      },
-      modes: {
-        repulse: { distance: 80, duration: 0.4 },
-        push: { quantity: 2 },
-      },
-    },
-    detectRetina: true,
-  };
 
   const typingTexts = [
     "Backend Developer & AI Engineer",
@@ -191,7 +158,6 @@ const Home = () => {
     <section id="home" className="relative flex flex-col items-center justify-center min-h-screen h-screen w-full overflow-hidden pt-12">
       <div className="absolute inset-0 w-full h-full z-0">
         <div className="absolute inset-0 w-full h-full bg-gradient-to-br from-[#0a101a] via-[#1a2633] to-[#008080] opacity-90 animate-gradient-move" style={{ zIndex: 0 }} />
-        <Particles id="tsparticles" init={particlesInit} options={particlesOptions} className="w-full h-full absolute inset-0" />
       </div>
       <div className="relative flex flex-col justify-center items-center w-full h-full max-w-7xl mx-auto px-2 sm:px-4 z-10">
         <div className="flex flex-col items-center justify-center text-center w-full max-w-5xl mx-auto h-full py-6">
