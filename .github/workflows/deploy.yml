@@ -23,14 +23,13 @@ jobs:
         script: |
           cd /mnt/portfolio
           export GIT_SSH_COMMAND='ssh -i /mnt/github_deploy_key -o IdentitiesOnly=yes'
-          export DOCKER_BUILDKIT=1
-          
+
           git remote set-url origin git@github.com:W-Mirshod/portfolio.git
           git fetch origin
           git reset --hard origin/master
           git clean -fd
           
-          npm install tsparticles
+          export DOCKER_BUILDKIT=0 
           
           docker-compose build
           if docker-compose ps | grep -q portfolio; then
