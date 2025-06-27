@@ -28,7 +28,7 @@ jobs:
           git clean -fd
           git pull
           docker-compose build
-          if docker-compose run --rm app true; then
+          if docker-compose run --rm portfolio true; then
             docker-compose down || true
             docker-compose up -d --build
           else
