@@ -1,11 +1,46 @@
-import { useState, useEffect } from 'react';
+import { useCallback, useState, useEffect } from 'react';
 import { useTranslation } from 'react-i18next';
+import { loadFull } from 'tsparticles';
+import Particles from 'react-tsparticles';
+import { initializeAudio } from '../../utils/audio';
+import { motion } from 'framer-motion';
 
 const Home = () => {
   const { t } = useTranslation();
   const [typingText, setTypingText] = useState('');
   const [currentIndex, setCurrentIndex] = useState(0);
   const [isDeleting, setIsDeleting] = useState(false);
+
+  const particlesInit = useCallback(async (engine) => {
+    await loadFull(engine);
+  }, []);
+
+  const particlesOptions = {
+    fullScreen: false,
+    background: { color: 'transparent' },
+    fpsLimit: 60,
+    particles: {
+      number: { value: 60, density: { enable: true, area: 800 } },
+      color: { value: ['#00fff0', '#ff00ea', '#3b82f6'] },
+      links: { enable: true, color: '#00fff0', opacity: 0.2, width: 1 },
+      move: { enable: true, speed: 1.2, direction: 'none', random: true, straight: false, outModes: 'out', parallax: { enable: true, force: 60, smooth: 20 } },
+      opacity: { value: 0.5 },
+      size: { value: { min: 1, max: 3 } },
+      shape: { type: 'circle' },
+    },
+    interactivity: {
+      events: {
+        onHover: { enable: true, mode: 'repulse' },
+        onClick: { enable: true, mode: 'push' },
+        resize: true,
+      },
+      modes: {
+        repulse: { distance: 80, duration: 0.4 },
+        push: { quantity: 2 },
+      },
+    },
+    detectRetina: true,
+  };
 
   const typingTexts = [
     "Backend Developer & AI Engineer",
@@ -82,73 +117,144 @@ const Home = () => {
     { name: 'Azure APIs', img: 'https://icon.icepanel.io/Technology/svg/Azure.svg' },
   ];
 
+  useEffect(() => {
+    const cleanupAudio = initializeAudio('/warm-ambient-sound.mp3', 0.4);
+    return cleanupAudio;
+  }, []);
+
+  const terminalLines = [
+    '> whoami',
+    'w mirshod',
+    '> skills',
+    'Backend: Python, Django, Flask, FastAPI, REST APIs, WebSockets, Celery, PyGame',
+    'Frontend: JavaScript, React, Vite, Tailwind, HTML5, CSS3, SCSS',
+    'DevOps: AWS, Docker, Linux, Git, GitHub Actions, CI/CD, Nginx, Apache',
+    'Databases: PostgreSQL, MySQL, SQLite, Redis',
+    'AI: Azure APIs, AI APIs, GPT-Neo',
+    '> projects',
+    'Yaklabs IoT Platform, Texnomart API, Online Shopping Platform, Online Course Platform, Hospital Management System, GPT-Neo AI',
+    '> stack',
+    'Python, Django, Flask, FastAPI, React, Vite, Tailwind, AWS, Docker, Linux, Git, PostgreSQL, MySQL, SQLite, Redis, Pytest, Celery, Swagger, Postman, Azure APIs',
+    '> show project Yaklabs IoT Platform',
+    'Innovative platform for IoT device management and data analytics with real-time capabilities.',
+    '> show project Texnomart API',
+    'Comprehensive API for online shopping website with full e-commerce functionality.',
+    '> show project Online Shopping Platform',
+    'Micro-service architecture e-shopping platform with modern design and scalable backend.',
+    '> show project Online Course Platform',
+    'E-Courses platform including teacher\'s and blog\'s own section with comprehensive features.',
+    '> show project Hospital Management System',
+    'Platform for hospitals where patients and doctors have their pages with patient records and departments.',
+    '> show project GPT-Neo AI',
+    'Basic Artificial Intelligence implementation running on local machine with advanced capabilities.',
+    '> _'
+  ];
+  const [terminalHistory, setTerminalHistory] = useState([]);
+  const [currentLine, setCurrentLine] = useState(0);
+  const [typed, setTyped] = useState('');
+  const [isAnimating, setIsAnimating] = useState(false);
+
+  useEffect(() => {
+    if (currentLine >= terminalLines.length) return;
+    if (terminalLines[currentLine].startsWith('>')) {
+      setIsAnimating(true);
+      if (typed.length < terminalLines[currentLine].length) {
+        const timeout = setTimeout(() => {
+          setTyped(terminalLines[currentLine].slice(0, typed.length + 1));
+        }, 22);
+        return () => clearTimeout(timeout);
+      } else {
+        setIsAnimating(false);
+        const timeout = setTimeout(() => {
+          setTerminalHistory((h) => [...h, terminalLines[currentLine]]);
+          setTyped('');
+          setCurrentLine((l) => (l + 1) % terminalLines.length);
+          const terminalDiv = document.querySelector('.bg-\\[\\#10151f\\]');
+          if (terminalDiv) terminalDiv.scrollTop = terminalDiv.scrollHeight;
+        }, 180);
+        return () => clearTimeout(timeout);
+      }
+    } else {
+      setIsAnimating(false);
+      const timeout = setTimeout(() => {
+        setTerminalHistory((h) => [...h, terminalLines[currentLine]]);
+        setTyped('');
+        setCurrentLine((l) => (l + 1) % terminalLines.length);
+        const terminalDiv = document.querySelector('.bg-\\[\\#10151f\\]');
+        if (terminalDiv) terminalDiv.scrollTop = terminalDiv.scrollHeight;
+      }, 70);
+      return () => clearTimeout(timeout);
+    }
+  }, [typed, currentLine, terminalLines]);
+
   return (
-    <section id="home" className="relative flex items-start justify-center pt-24 min-h-[80vh] bg-bg-primary">
-      <div className="w-full max-w-7xl mx-auto px-4">
-        <div className="flex flex-col items-center justify-center text-center w-full max-w-5xl mx-auto">
-          <div className="flex flex-col items-center justify-center text-center w-full mt-2">
-            <div className="inline-flex items-center gap-2 bg-primary/10 border border-primary/20 px-3 py-1.5 rounded-2xl mb-4 text-xs text-primary font-medium animate-fadeInUp">
+    <section id="home" className="relative flex flex-col items-center justify-center min-h-screen h-screen w-full overflow-hidden pt-12">
+      <div className="absolute inset-0 w-full h-full z-0">
+        <div className="absolute inset-0 w-full h-full bg-gradient-to-br from-[#0a101a] via-[#1a2633] to-[#008080] opacity-90 animate-gradient-move" style={{ zIndex: 0 }} />
+        <Particles id="tsparticles" init={particlesInit} options={particlesOptions} className="w-full h-full absolute inset-0" />
+      </div>
+      <div className="relative flex flex-col justify-center items-center w-full h-full max-w-7xl mx-auto px-2 sm:px-4 z-10">
+        <div className="flex flex-col items-center justify-center text-center w-full max-w-5xl mx-auto h-full py-6">
+          <div className="flex flex-col items-center justify-center text-center w-full">
+            <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: 0.2 }} className="inline-flex items-center gap-2 bg-primary/10 border border-primary/20 px-3 py-1.5 rounded-2xl mb-4 text-xs text-primary font-medium animate-fadeInUp">
               <i className="fas fa-code" />
               <span>Full Stack Developer</span>
-            </div>
-            <h1 className="text-3xl md:text-4xl lg:text-5xl font-extrabold leading-tight mb-2 animate-fadeInUp bg-gradient-to-r from-primary to-primary-dark bg-clip-text text-transparent">
-              Hi, I'm <span className="">Mirshod Qayimov</span><br />
-              <span className="text-text-secondary font-semibold">Building Digital Solutions</span>
-            </h1>
-            <div className="flex items-center justify-center mb-2 min-h-8 w-full animate-fadeInUp">
-              <div className="font-semibold text-primary text-base md:text-lg tracking-wide" id="typing-text">{typingText}</div>
+            </motion.div>
+            <motion.h1 initial="hidden" animate="visible" variants={{ hidden: { opacity: 0 }, visible: { opacity: 1, transition: { staggerChildren: 0.05 } } }} className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-extrabold leading-tight mb-2 bg-gradient-to-r from-primary to-primary-dark bg-clip-text text-transparent">
+              {"Mirshod Qayimov".split("").map((l, i) => (
+                <motion.span key={i} variants={{ hidden: { opacity: 0, y: 10 }, visible: { opacity: 1, y: 0 } }} transition={{ type: 'spring', stiffness: 200, damping: 20 }}>{l === ' ' ? '\u00A0' : l}</motion.span>
+              ))}
+            </motion.h1>
+            <div className="flex items-center justify-center mb-2 min-h-8 w-full">
+              <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1 }} transition={{ delay: 0.7 }} className="font-semibold text-primary text-base md:text-lg tracking-wide" id="typing-text">
+                {typingText.split("").map((l, i) => (
+                  <motion.span key={i} initial={{ opacity: 0 }} animate={{ opacity: 1 }} transition={{ delay: 0.03 * i }}>{l === ' ' ? '\u00A0' : l}</motion.span>
+                ))}
+              </motion.div>
               <span className="font-normal text-primary text-base md:text-lg animate-blink">|</span>
             </div>
-            <a 
-              href="https://pdp.uz" 
-              target="_blank" 
-              rel="noopener noreferrer" 
-              className="inline-flex items-center gap-2 bg-gradient-to-r from-emerald-400/15 to-emerald-700/15 border-2 border-emerald-500/30 px-6 py-3 rounded-full my-4 font-bold text-emerald-500 text-base backdrop-blur-sm shadow-lg transition-all duration-300 hover:scale-105 hover:border-emerald-500 hover:text-emerald-600 relative overflow-hidden"
-            >
-              <i className="fas fa-graduation-cap text-emerald-500 text-lg drop-shadow" />
-              <div className="flex flex-col items-center gap-0.5">
-                <span className="font-extrabold text-emerald-500 text-base leading-tight">{t("PDP University Student")}</span>
-                <span className="font-semibold text-emerald-600 text-xs leading-tight">{t("Programming & Development")}</span>
+            <motion.p initial={{ opacity: 0, y: 10 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: 1 }} className="text-base sm:text-lg text-text-secondary my-4 max-w-md">
+              Building robust microservices, scalable APIs, and intelligent AI solutions for modern businesses.
+            </motion.p>
+            <motion.a whileHover={{ scale: 1.08, boxShadow: '0 0 16px #00fff0, 0 0 32px #ff00ea' }} transition={{ type: 'spring', stiffness: 300, damping: 15 }} href="#contact" className="inline-flex items-center gap-2 px-6 sm:px-8 py-3 rounded-full font-semibold text-base bg-gradient-to-r from-primary to-primary-dark text-white border-2 border-transparent shadow transition-all duration-200 hover:scale-105 relative overflow-hidden mb-6">
+              <span className="absolute inset-0 z-0 pointer-events-none" style={{ background: 'radial-gradient(circle at 50% 50%, rgba(0,255,240,0.15) 0%, transparent 80%)' }} />
+              <i className="fas fa-envelope z-10" />
+              <span className="z-10">{t("Get In Touch")}</span>
+            </motion.a>
+            <div className="w-full flex justify-center mb-8">
+              <div className="bg-[#10151f] border border-[#222c3a] rounded-lg shadow-lg w-full max-w-xl p-4 text-left text-green-400 font-mono text-sm overflow-y-auto" style={{ height: 90 }}>
+                <div className="flex flex-col justify-end" style={{ height: '100%' }}>
+                  {terminalHistory.map((line, idx) => (
+                    <div key={idx}>{line}</div>
+                  ))}
+                  {currentLine < terminalLines.length && (
+                    <div>{typed}<span className="animate-blink">|</span></div>
+                  )}
+                </div>
               </div>
-            </a>
-            <p className="text-base md:text-lg text-text-secondary my-6 max-w-xl mx-auto leading-relaxed animate-fadeInUp">
-              As an 18-year-old developer, I specialize in building robust microservices, scalable APIs, and intelligent AI solutions. Currently working 18/7 on innovative projects using Python, Django, AWS, and cutting-edge technologies.
-            </p>
-            <div className="flex flex-wrap justify-center gap-3 md:gap-4 my-8 max-w-3xl mx-auto animate-fadeInUp">
+            </div>
+            <div className="flex flex-wrap justify-center gap-2 sm:gap-3 md:gap-4 my-4 max-w-3xl mx-auto">
               {techStack.map((tech, index) => (
-                <div
+                <motion.div
                   key={tech.name}
-                  className="flex items-center gap-2 bg-white/5 border border-white/10 px-4 py-2 rounded-full text-sm font-medium text-text-primary backdrop-blur-md shadow hover:scale-105 hover:bg-white/10 hover:border-primary transition-all duration-200 cursor-pointer"
+                  className="flex items-center gap-2 bg-white/5 border border-white/10 px-3 sm:px-4 py-2 rounded-full text-sm font-medium text-text-primary backdrop-blur-md shadow hover:scale-110 hover:bg-white/10 hover:border-primary transition-all duration-200 cursor-pointer"
                   title={tech.name}
                   style={{ animationDelay: `${index * 0.1}s` }}
+                  whileHover={{ scale: 1.15, boxShadow: '0 0 16px #00fff0, 0 0 32px #ff00ea', rotateX: 8, rotateY: 8 }}
+                  transition={{ type: 'spring', stiffness: 300, damping: 18 }}
                 >
                   <img
                     src={tech.img}
                     alt={tech.name}
                     loading="lazy"
-                    width="32"
-                    height="32"
-                    className="w-8 h-8 object-contain"
+                    width="28"
+                    height="28"
+                    className="w-7 h-7 sm:w-8 sm:h-8 object-contain"
+                    style={{ filter: 'drop-shadow(0 0 3px #00fff0)' }}
                   />
-                </div>
+                </motion.div>
               ))}
             </div>
-            <div className="flex flex-col sm:flex-row gap-4 justify-center my-6 animate-fadeInUp">
-              <a href="#contact" className="inline-flex items-center gap-2 px-8 py-3 rounded-full font-semibold text-base bg-gradient-to-r from-primary to-primary-dark text-white border-2 border-transparent shadow transition-all duration-200 hover:scale-105">
-                <i className="fas fa-envelope" />
-                {t("Get In Touch")}
-              </a>
-              <a href="#experience" className="inline-flex items-center gap-2 px-8 py-3 rounded-full font-semibold text-base border-2 border-primary text-primary bg-transparent shadow transition-all duration-200 hover:bg-primary hover:text-white hover:scale-105">
-                <i className="fas fa-briefcase" />
-                {t("View Experience")}
-              </a>
-            </div>
-          </div>
-          <div className="relative w-full h-72 mt-12 animate-fadeInUp"></div>
-        </div>
-        <div className="absolute bottom-8 left-1/2 -translate-x-1/2 animate-fadeInUp">
-          <div className="flex items-center justify-center w-10 h-10 border-2 border-primary rounded-full text-primary animate-bounce cursor-pointer transition-all duration-200 hover:bg-primary hover:text-white">
-            <i className="fas fa-chevron-down" />
           </div>
         </div>
       </div>

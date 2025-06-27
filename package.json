@@ -1,8 +1,14 @@
 {
   "dependencies": {
+    "@react-three/drei": "^10.3.0",
+    "@react-three/fiber": "^9.1.2",
     "framer-motion": "^12.19.1",
     "lucide-react": "^0.523.0",
-    "shadcn-ui": "^0.9.5"
+    "react-tooltip": "^5.29.1",
+    "react-tsparticles": "^2.12.2",
+    "shadcn-ui": "^0.9.5",
+    "three": "^0.177.0",
+    "tsparticles": "^3.8.1"
   },
   "devDependencies": {
     "autoprefixer": "^10.4.21",
