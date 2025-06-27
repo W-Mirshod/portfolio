@@ -1,4 +1,3 @@
-import { useEffect } from 'react';
 import { useTranslation } from 'react-i18next';
 import MirshodImg from '../../assets/images/Mirshod.png';
 
@@ -48,26 +47,6 @@ const Footer = () => {
       label: 'Email'
     }
   ];
-
-  const scrollToTop = () => {
-    window.scrollTo({
-      top: 0,
-      behavior: 'smooth'
-    });
-  };
-
-  useEffect(() => {
-    const audio = new Audio('/audio.m4a');
-    const playAudio = () => {
-      audio.play();
-      document.removeEventListener('click', playAudio);
-    };
-    document.addEventListener('click', playAudio);
-
-    return () => {
-      document.removeEventListener('click', playAudio);
-    };
-  }, []);
 
   return (
     <footer className="bg-bg-secondary text-text-secondary py-12 border-t border-border-color">
