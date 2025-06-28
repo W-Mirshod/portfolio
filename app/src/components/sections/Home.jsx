@@ -84,7 +84,7 @@ const Home = () => {
   ];
 
   useEffect(() => {
-    const cleanupAudio = initializeAudio('/warm-ambient-sound.mp3', 0.2);
+    const cleanupAudio = initializeAudio('/warm-ambient-sound.mp3', 0.5);
     return cleanupAudio;
   }, []);
 
