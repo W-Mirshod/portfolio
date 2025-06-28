@@ -2,6 +2,7 @@ import { useEffect } from 'react';
 import './App.css';
 import './components/styles/SectionsCommon.css';
 import './utils/i18n';
+import { Routes, Route } from "react-router-dom";
 
 // Import components
 import Header from './components/sections/Header';
@@ -14,6 +15,8 @@ import Certificate from './components/sections/Certificate';
 import Projects from './components/sections/Projects';
 import Contact from './components/sections/Contact';
 import Footer from './components/sections/Footer';
+import AdminLogin from "./components/sections/admin/AdminLogin";
+import AdminDashboard from "./components/sections/admin/AdminDashboard";
 
 function App() {
   useEffect(() => {
@@ -37,20 +40,26 @@ function App() {
   }, []);
 
   return (
-    <>
-      <Header />
-      <main>
-        <Home />
-        <About />
-        <Experience />
-        <Skills />
-        <Achievements />
-        <Certificate />
-        <Projects />
-        <Contact />
-      </main>
-      <Footer />
-    </>
+      <Routes>
+        <Route path="/admin/login" element={<AdminLogin />} />
+        <Route path="/admin/dashboard" element={<AdminDashboard />} />
+        <Route path="/" element={
+          <>
+            <Header />
+            <main>
+              <Home />
+              <About />
+              <Experience />
+              <Skills />
+              <Achievements />
+              <Certificate />
+              <Projects />
+              <Contact />
+            </main>
+            <Footer />
+          </>
+        } />
+      </Routes>
   );
 }
 

@@ -1,9 +1,11 @@
-from fastapi import FastAPI, Request, status
-from fastapi.responses import JSONResponse
-from fastapi.middleware.cors import CORSMiddleware
-import httpx
 import aiosmtplib
 from email.message import EmailMessage
+
+from fastapi import FastAPI, Request
+from fastapi.middleware.cors import CORSMiddleware
+from pydantic import BaseModel
+
+from admin_auth import login_admin
 
 EMAIL_HOST = "smtp.zoho.eu"
 EMAIL_PORT = 587
@@ -30,14 +32,6 @@ async def contact(request: Request):
     email = data.get("email")
     message = data.get("message")
     recaptcha_token = data.get("recaptchaToken")
-    # async with httpx.AsyncClient() as client:
-    #     resp = await client.post(
-    #         "https://www.google.com/recaptcha/api/siteverify",
-    #         data={"secret": RECAPTCHA_SECRET_KEY, "response": recaptcha_token},
-    #     )
-    #     result = resp.json()
-    #     if not result.get("success"):
-    #         return JSONResponse({"error": "Invalid reCAPTCHA"}, status_code=status.HTTP_400_BAD_REQUEST)
     msg = EmailMessage()
     msg["From"] = DEFAULT_FROM_EMAIL
     msg["To"] = DEFAULT_FROM_EMAIL
@@ -68,3 +62,11 @@ async def contact(request: Request):
         start_tls=True,
     )
     return {"success": True}
+
+class AdminLoginRequest(BaseModel):
+    username: str
+    password: str
+
+@app.post("/api/admin/login")
+async def admin_login(data: AdminLoginRequest):
+    return login_admin(data)
