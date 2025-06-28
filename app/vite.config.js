@@ -10,5 +10,10 @@ export default defineConfig({
   },
   optimizeDeps: {
     include: ['react-tsparticles', 'tsparticles']
+  },
+  server: {
+    proxy: {
+      '/api': 'http://localhost:8000'
+    }
   }
 })
