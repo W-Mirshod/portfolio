@@ -58,15 +58,24 @@ const Experience = () => {
             </article>
           ))}
         </div>
-        <aside className="mt-16 flex justify-center">
+        <aside className="mt-16 flex flex-col items-center justify-center">
           <a
             href="https://linkedin.com/in/wmirshod"
             target="_blank"
             rel="noopener noreferrer"
-            className="inline-flex items-center gap-2 px-8 py-4 rounded-xl bg-gradient-to-r from-primary to-primary-dark text-white font-semibold text-lg shadow-neumorphism transition-all duration-200 hover:scale-105 hover:shadow-neumorphism-hover"
+            className="inline-flex flex-col items-center gap-1 px-6 py-3 rounded-xl bg-gradient-to-r from-primary via-cyan-500 to-primary-dark text-white font-semibold text-base shadow-neumorphism transition-all duration-300 hover:scale-105 hover:shadow-neumorphism-hover border border-cyan-500 animate-pulse-slow"
+            style={{ boxShadow: '0 0 12px 2px #22d3ee, 0 2px 8px 0 #0002' }}
           >
-            <i className="fab fa-linkedin text-2xl" />
-            Visit LinkedIn Profile
+            <span className="flex items-center gap-2">
+              <i className="fab fa-linkedin text-xl" />
+              <span>LinkedIn Profile</span>
+              <span className="ml-2 flex items-center bg-white/10 text-cyan-100 font-bold text-lg px-3 py-1 rounded-full border border-cyan-400 animate-bounce-slow">
+                <svg className="w-4 h-4 mr-1" fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" d="M17 20h5v-2a4 4 0 00-3-3.87M9 20H4v-2a4 4 0 013-3.87m6 0A4 4 0 0012 4a4 4 0 00-1 7.87" /></svg>
+                600+
+                <span className="ml-1 text-sm font-medium">Connections</span>
+              </span>
+            </span>
+            <span className="text-cyan-200 font-medium text-xs mt-1">Visit LinkedIn profile</span>
           </a>
         </aside>
       </div>
