@@ -16,6 +16,22 @@ const Certificate = () => {
   return (
     <section id="certificate" className="bg-bg-secondary/30 py-16">
       <div className="max-w-6xl mx-auto px-4">
+        <div className="flex flex-col items-center mb-8">
+          <a
+            href="https://university.pdp.uz/"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="inline-flex items-center gap-3 px-6 py-2 rounded-lg bg-gradient-to-r from-primary via-blue-500 to-primary-dark text-white font-semibold text-lg shadow-lg border border-blue-500 transition mb-2 animate-glow"
+            style={{ boxShadow: '0 0 24px 4px #3b82f6, 0 2px 8px 0 #0002' }}
+          >
+            <i className="fas fa-university text-xl" />
+            <span className="drop-shadow-lg">Accepted at PDP University</span>
+          </a>
+          <span className="text-blue-500 font-medium text-sm mb-2">Tashkent, Uzbekistan</span>
+          <p className="text-center text-text-secondary text-base max-w-xl">
+            PDP University is a leading institution in Uzbekistan, renowned for its modern approach to IT education and strong industry connections. Being accepted here is a significant milestone, opening doors to advanced learning, innovative projects, and a vibrant tech community.
+          </p>
+        </div>
         <div className="text-center mb-12">
           <h2 className="text-3xl md:text-4xl font-bold text-primary mb-2">Professional Certification</h2>
           <p className="text-lg text-text-secondary">Backend Development Bootcamp Achievement</p>
