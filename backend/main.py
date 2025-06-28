@@ -1,11 +1,15 @@
 import aiosmtplib
 from email.message import EmailMessage
+import json
+import os
 
 from fastapi import FastAPI, Request
 from fastapi.middleware.cors import CORSMiddleware
+from fastapi.responses import JSONResponse
 from pydantic import BaseModel
 
 from admin_auth import login_admin
+from request_logger import log_request
 
 EMAIL_HOST = "smtp.zoho.eu"
 EMAIL_PORT = 587
@@ -24,6 +28,12 @@ app.add_middleware(
     allow_methods=["*"],
     allow_headers=["*"]
 )
+
+@app.middleware("http")
+async def log_all_requests(request: Request, call_next):
+    log_request(request)
+    response = await call_next(request)
+    return response
 
 @app.post("/api/contact")
 async def contact(request: Request):
@@ -70,3 +80,16 @@ class AdminLoginRequest(BaseModel):
 @app.post("/api/admin/login")
 async def admin_login(data: AdminLoginRequest):
     return login_admin(data)
+
+@app.get("/api/admin/request-logs")
+def get_request_logs():
+    log_path = os.path.join(os.path.dirname(__file__), "request_logs.jsonl")
+    logs = []
+    if os.path.exists(log_path):
+        with open(log_path) as f:
+            for line in f:
+                try:
+                    logs.append(json.loads(line))
+                except Exception:
+                    pass
+    return JSONResponse(logs)

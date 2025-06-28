@@ -17,6 +17,7 @@ import Contact from './components/sections/Contact';
 import Footer from './components/sections/Footer';
 import AdminLogin from "./components/sections/admin/AdminLogin";
 import AdminDashboard from "./components/sections/admin/AdminDashboard";
+import RequestLogs from "./components/sections/admin/RequestLogs";
 
 function App() {
   useEffect(() => {
@@ -43,6 +44,8 @@ function App() {
       <Routes>
         <Route path="/admin/login" element={<AdminLogin />} />
         <Route path="/admin/dashboard" element={<AdminDashboard />} />
+        <Route path="/admin/request-logs" element={<RequestLogs />} />
+        <Route path="/admin" element={<AdminDashboard />} />
         <Route path="/" element={
           <>
             <Header />
