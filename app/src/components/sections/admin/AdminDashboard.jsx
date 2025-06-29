@@ -5,6 +5,11 @@ export default function AdminDashboard() {
   const navigate = useNavigate();
   const canvasRef = useRef(null);
   useEffect(() => {
+    fetch("/api/admin/request-logs").then(res => {
+      if (res.status === 401) {
+        navigate("/admin/login");
+      }
+    });
     document.title = "Welcome Mirshod";
     const canvas = canvasRef.current;
     const ctx = canvas.getContext("2d");
@@ -42,7 +47,7 @@ export default function AdminDashboard() {
     }
     window.addEventListener('resize', handleResize);
     return () => window.removeEventListener('resize', handleResize);
-  }, []);
+  }, [navigate]);
   return (
     <div className="relative flex flex-col items-center justify-center min-h-screen h-screen overflow-hidden bg-[#0a0f1c]">
       <canvas ref={canvasRef} className="fixed inset-0 w-full h-full z-0" style={{pointerEvents:'none'}} />
@@ -113,6 +118,12 @@ export default function AdminDashboard() {
           style={{boxShadow:'0 0 16px #00eaffcc'}} onClick={() => navigate("/admin/settings")}
         >
           Settings
+        </button>
+        <button
+          className="mt-3 w-full px-3 py-2 bg-gradient-to-r from-[#0ff] to-[#00eaff] text-[#101624] font-semibold rounded-xl border border-cyan-400 hover:from-cyan-400 hover:to-blue-400 hover:border-blue-400 transition-all duration-150 text-sm tracking-wider focus:outline-none focus:ring-2 focus:ring-cyan-400/60 shadow-lg backdrop-blur-md"
+          style={{boxShadow:'0 0 16px #00eaffcc'}} onClick={() => navigate("/admin/change-password")}
+        >
+          Change Password
         </button>
       </div>
     </div>

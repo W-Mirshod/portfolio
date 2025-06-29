@@ -17,3 +17,5 @@ services:
     restart: always
     ports:
       - "54832:8000"
+    volumes:
+      - ./backend/admin_auth.json:/app/admin_auth.json

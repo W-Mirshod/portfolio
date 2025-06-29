@@ -21,9 +21,17 @@ export default function RequestLogs() {
 
   useEffect(() => {
     fetch("/api/admin/request-logs")
-      .then(res => res.json())
-      .then(setLogs);
-  }, []);
+      .then(res => {
+        if (res.status === 401) {
+          navigate("/admin/login");
+          return null;
+        }
+        return res.json();
+      })
+      .then(data => {
+        if (data) setLogs(data);
+      });
+  }, [navigate]);
 
   const filtered = logs.filter(log =>
     (!ipFilter || (log.ip && log.ip.includes(ipFilter))) &&
