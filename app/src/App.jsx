@@ -18,6 +18,7 @@ import Footer from './components/sections/Footer';
 import AdminLogin from "./components/sections/admin/AdminLogin";
 import AdminDashboard from "./components/sections/admin/AdminDashboard";
 import RequestLogs from "./components/sections/admin/RequestLogs";
+import ChangePassword from "./components/sections/admin/ChangePassword";
 
 function App() {
   useEffect(() => {
@@ -45,6 +46,7 @@ function App() {
         <Route path="/admin/login" element={<AdminLogin />} />
         <Route path="/admin/dashboard" element={<AdminDashboard />} />
         <Route path="/admin/request-logs" element={<RequestLogs />} />
+        <Route path="/admin/change-password" element={<ChangePassword />} />
         <Route path="/admin" element={<AdminDashboard />} />
         <Route path="/" element={
           <>

@@ -1,19 +1,21 @@
 import json
-from datetime import datetime
+from datetime import datetime, timedelta, timezone
 from fastapi import Request
 import os
 
 LOG_FILE = os.path.join(os.path.dirname(__file__), "request_logs.jsonl")
 
 def get_client_info(request: Request):
-    ip = request.client.host if request.client else None
+    xff = request.headers.get("x-forwarded-for", "")
+    ip = xff.split(",")[0].strip() if xff else (request.client.host if request.client else None)
     user_agent = request.headers.get("user-agent", "")
     return ip, user_agent
 
 def log_request(request: Request):
     ip, user_agent = get_client_info(request)
+    tz = timezone(timedelta(hours=5))
     log_entry = {
-        "timestamp": datetime.utcnow().isoformat(),
+        "timestamp": datetime.now(tz).isoformat(),
         "ip": ip,
         "user_agent": user_agent,
         "method": request.method,

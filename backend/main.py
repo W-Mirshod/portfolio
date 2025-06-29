@@ -3,12 +3,12 @@ from email.message import EmailMessage
 import json
 import os
 
-from fastapi import FastAPI, Request
+from fastapi import FastAPI, Request, Body, Depends
 from fastapi.middleware.cors import CORSMiddleware
 from fastapi.responses import JSONResponse
 from pydantic import BaseModel
 
-from admin_auth import login_admin
+from admin_auth import login_admin, require_admin
 from request_logger import log_request
 
 EMAIL_HOST = "smtp.zoho.eu"
@@ -82,7 +82,7 @@ async def admin_login(data: AdminLoginRequest):
     return login_admin(data)
 
 @app.get("/api/admin/request-logs")
-def get_request_logs():
+async def get_request_logs(request: Request, auth=Depends(require_admin)):
     log_path = os.path.join(os.path.dirname(__file__), "request_logs.jsonl")
     logs = []
     if os.path.exists(log_path):
@@ -93,3 +93,17 @@ def get_request_logs():
                 except Exception:
                     pass
     return JSONResponse(logs)
+
+class ChangePasswordRequest(BaseModel):
+    new_password: str
+
+@app.post("/api/admin/change-password")
+def change_password(data: ChangePasswordRequest = Body(...), request: Request = None, auth=Depends(require_admin)):
+    try:
+        from admin_auth import load_auth, save_password
+        auth = load_auth()
+        username = auth["username"]
+        save_password(username, data.new_password)
+        return {"success": True}
+    except Exception as e:
+        return JSONResponse({"detail": str(e)}, status_code=500)
