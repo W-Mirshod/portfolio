@@ -1,4 +1,4 @@
-version: '3'
+version: '3.8'
 
 services:
   portfolio:
@@ -6,16 +6,25 @@ services:
       context: ./app
       dockerfile: Dockerfile
     restart: always
-    ports:
-      - "8080:8080"
+    expose:
+      - "8080"
+    networks:
+      - web
     volumes:
       - ./app/nginx.conf:/etc/nginx/conf.d/default.conf
+
   backend:
     build:
       context: ./backend
       dockerfile: Dockerfile
     restart: always
-    ports:
-      - "54832:8000"
+    expose:
+      - "8000"
+    networks:
+      - web
     volumes:
       - ./backend/admin_auth.json:/app/admin_auth.json
+
+networks:
+  web:
+    external: true
