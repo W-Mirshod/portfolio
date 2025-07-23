@@ -1,7 +1,7 @@
 from django.contrib import admin
 from django.contrib.auth.models import Group
 from import_export.admin import ImportExportModelAdmin
-from .models import Project, Experience, SkillCategory, Organization, TechStackItem, TerminalLine
+from .models import Project, Experience, SkillCategory, Organization, TechStackItem
 
 admin.site.unregister(Group)
 
@@ -32,8 +32,3 @@ class OrganizationAdmin(ImportExportModelAdmin):
 class TechStackItemAdmin(ImportExportModelAdmin):
     list_display = ('name', 'img')
     search_fields = ('name',)
-
-@admin.register(TerminalLine)
-class TerminalLineAdmin(ImportExportModelAdmin):
-    list_display = ('line',)
-    search_fields = ('line',)

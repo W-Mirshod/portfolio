@@ -1,9 +1,9 @@
 from django.shortcuts import render
 from rest_framework import viewsets
-from .models import Project, Experience, SkillCategory, Organization, TechStackItem, TerminalLine
+from .models import Project, Experience, SkillCategory, Organization, TechStackItem
 from .serializers import (
     ProjectSerializer, ExperienceSerializer, SkillCategorySerializer,
-    OrganizationSerializer, TechStackItemSerializer, TerminalLineSerializer
+    OrganizationSerializer, TechStackItemSerializer
 )
 
 
@@ -26,7 +26,3 @@ class OrganizationViewSet(viewsets.ModelViewSet):
 class TechStackItemViewSet(viewsets.ModelViewSet):
     queryset = TechStackItem.objects.all()
     serializer_class = TechStackItemSerializer
-
-class TerminalLineViewSet(viewsets.ModelViewSet):
-    queryset = TerminalLine.objects.all()
-    serializer_class = TerminalLineSerializer
