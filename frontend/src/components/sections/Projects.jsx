@@ -1,15 +1,16 @@
 import { useTranslation } from 'react-i18next';
+import { useState, useEffect } from 'react';
 
 const Projects = () => {
   const { t } = useTranslation();
-  const projects = [
-    { id: 1, title: "Yaklabs IoT Platform", description: "Innovative platform for IoT device management and data analytics with real-time capabilities.", icon: "fas fa-flask", technologies: ["Python", "Django", "WebSocket", "WebRTC", "Yaklabs"], githubUrl: "https://github.com/W-Mirshod/yaklabs-platform" },
-    { id: 2, title: "Texnomart API", description: "Comprehensive API for online shopping website with full e-commerce functionality.", icon: "fas fa-shopping-cart", technologies: ["Python", "REST API", "E-commerce"], githubUrl: "https://github.com/W-Mirshod/texnomart-api" },
-    { id: 3, title: "Online Shopping Platform", description: "Micro-service architecture e-shopping platform with modern design and scalable backend.", icon: "fas fa-store", technologies: ["CSS", "Microservices", "E-commerce"], githubUrl: "https://github.com/W-Mirshod/online-shopping" },
-    { id: 4, title: "Online Course Platform", description: "E-Courses platform including teacher's and blog's own section with comprehensive features.", icon: "fas fa-graduation-cap", technologies: ["SCSS", "Education", "Platform"], githubUrl: "https://github.com/W-Mirshod/online-course" },
-    { id: 5, title: "Hospital Management System", description: "Platform for hospitals where patients and doctors have their pages with patient records and departments.", icon: "fas fa-hospital", technologies: ["Python", "Healthcare", "Management"], githubUrl: "https://github.com/W-Mirshod/For-Grey_Scientific_Labs" },
-    { id: 6, title: "GPT-Neo AI", description: "Basic Artificial Intelligence implementation running on local machine with advanced capabilities.", icon: "fas fa-robot", technologies: ["Python", "AI", "Machine Learning"], githubUrl: "https://github.com/W-Mirshod/GPT-Neo" }
-  ];
+  const [projects, setProjects] = useState([]);
+
+  useEffect(() => {
+    fetch('/api/projects/')
+      .then(res => res.json())
+      .then(data => setProjects(data))
+      .catch(() => setProjects([]));
+  }, []);
 
   return (
     <section id="projects" className="py-20 bg-gradient-to-b from-[#181a24] to-[#23263a] dark:bg-[#181a24]">
@@ -21,7 +22,7 @@ const Projects = () => {
         <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-8 mb-12">
           {projects.map((project, index) => (
             <div
-              key={project.id}
+              key={project.id || project.title}
               className="group relative flex flex-col bg-[#23263a]/80 dark:bg-[#23263a]/80 rounded-2xl p-7 border border-[#23263a] dark:border-[#23263a] shadow-[0_8px_32px_0_rgba(31,38,135,0.25)] backdrop-blur-md transition-all duration-300 hover:-translate-y-3 hover:shadow-[0_20px_40px_rgba(63,162,246,0.15),0_0_40px_rgba(63,162,246,0.10)] cursor-pointer"
               style={{ animationDelay: `${0.4 + (index * 0.1)}s` }}
             >
@@ -32,7 +33,7 @@ const Projects = () => {
                 <h3 className="text-xl font-semibold text-white mb-2">{t(project.title)}</h3>
                 <p className="text-gray-400 mb-4">{t(project.description)}</p>
                 <div className="flex flex-wrap gap-2 mb-4">
-                  {project.technologies.map((tech, idx) => (
+                  {Array.isArray(project.technologies) && project.technologies.map((tech, idx) => (
                     <span
                       key={idx}
                       className="bg-[#3fa2f6]/10 text-[#3fa2f6] px-3 py-1 rounded-full text-xs font-medium border border-[#3fa2f6]/20 transition-all duration-200 hover:bg-[#3fa2f6] hover:text-white"
@@ -43,7 +44,7 @@ const Projects = () => {
                 </div>
                 <div className="mt-auto flex gap-3">
                   <a
-                    href={project.githubUrl}
+                    href={project.url || project.githubUrl}
                     target="_blank"
                     rel="noopener noreferrer"
                     className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-gradient-to-r from-[#3fa2f6] to-[#23263a] text-white font-medium text-sm transition-all duration-200 hover:shadow-[0_4px_15px_rgba(63,162,246,0.25)] hover:-translate-y-0.5"
@@ -58,7 +59,7 @@ const Projects = () => {
         </div>
         <div className="text-center">
           <a
-            href="https://github.com/W-Mirshod"
+            href="https://github.com/W-Mirshod?tab=repositories"
             target="_blank"
             rel="noopener noreferrer"
             className="inline-flex items-center gap-2 px-6 py-3 border-2 border-[#3fa2f6] rounded-full text-[#3fa2f6] font-semibold transition-all duration-200 hover:bg-[#3fa2f6] hover:text-white hover:-translate-y-1 hover:shadow-[0_8px_25px_rgba(63,162,246,0.15)]"

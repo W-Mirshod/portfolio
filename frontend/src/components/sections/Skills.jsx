@@ -1,37 +1,18 @@
 import { useTranslation } from 'react-i18next';
-import { useEffect, useRef } from 'react';
+import { useEffect, useRef, useState } from 'react';
 
 const Skills = () => {
   const { t } = useTranslation();
   const skillsGridRef = useRef(null);
   const skillsObserver = useRef(null);
+  const [skillCategories, setSkillCategories] = useState([]);
 
-  const skillCategories = [
-    {
-      title: "Backend Development",
-      skills: ["Python", "Django", "Django ORM", "Flask", "FastAPI", "REST APIs", "WebSockets", "WebRTC", "Monolithic/Microservices", "API Integration", "Celery", "Flower", "Performance Optimization", "PyGame"]
-    },
-    {
-      title: "Frontend Technologies",
-      skills: ["JavaScript", "React", "React Native", "Vite", "Tailwind", "HTML5", "CSS3", "SCSS"]
-    },
-    {
-      title: "DevOps & Cloud",
-      skills: ["AWS (EC2, S3, CodePipeline, CodeDeploy)", "Docker", "Docker Compose", "Linux", "Git", "GitHub", "GitHub Actions", "CI/CD", "Automation", "Nginx", "Apache"]
-    },
-    {
-      title: "Databases",
-      skills: ["PostgreSQL", "MySQL", "SQLite", "Redis", "Caching"]
-    },
-    {
-      title: "AI & Machine Learning",
-      skills: ["Azure APIs", "AI APIs", "Personal AI Model (GPT-Neo)"]
-    },
-    {
-      title: "Tools & Utilities",
-      skills: ["Swagger/OpenAPI", "Postman", "Pytest", "Excel/CSV Analysis"]
-    }
-  ];
+  useEffect(() => {
+    fetch('/api/skill-categories/')
+      .then(res => res.json())
+      .then(data => setSkillCategories(data))
+      .catch(() => setSkillCategories([]));
+  }, []);
 
   useEffect(() => {
     skillsObserver.current = new IntersectionObserver((entries) => {
@@ -63,8 +44,8 @@ const Skills = () => {
       threshold: 0.15,
       rootMargin: '0px 0px -80px 0px'
     });
-    const skillCategories = document.querySelectorAll('.skill-category');
-    skillCategories.forEach(category => {
+    const skillCategoriesEls = document.querySelectorAll('.skill-category');
+    skillCategoriesEls.forEach(category => {
       category.style.opacity = '0';
       category.style.transform = 'translateY(40px) scale(0.9)';
       category.style.transition = 'all 0.8s cubic-bezier(0.25, 0.46, 0.45, 0.94)';
@@ -75,7 +56,7 @@ const Skills = () => {
         skillsObserver.current.disconnect();
       }
     };
-  }, []);
+  }, [skillCategories]);
 
   return (
     <section id="skills" className="py-20 bg-gradient-to-b from-[#181a24] to-[#23263a] dark:bg-[#181a24]">
@@ -96,7 +77,7 @@ const Skills = () => {
             >
               <h3 className="text-[#3fa2f6] mb-4 text-lg font-semibold flex items-center justify-center gap-2">{t(category.title)}</h3>
               <div className="skill-items flex flex-wrap gap-2 justify-center items-center">
-                {category.skills.map((skill, skillIndex) => (
+                {Array.isArray(category.skills) && category.skills.map((skill, skillIndex) => (
                   <span
                     key={skillIndex}
                     className="skill-tag bg-[#3fa2f6]/10 text-[#3fa2f6] px-3 py-1 rounded-full text-xs font-medium border border-[#3fa2f6]/20 transition-all duration-200 cursor-default hover:bg-[#3fa2f6] hover:text-white hover:-translate-y-0.5 hover:shadow-[0_4px_12px_rgba(63,162,246,0.2)]"

@@ -1,19 +1,39 @@
 import { useTranslation } from 'react-i18next';
+import { useState, useEffect } from 'react';
+
+const githubAchievements = [
+  {
+    label: 'Arctic Code Vault Contributor',
+    icon: 'https://github.githubassets.com/images/modules/profile/achievements/arctic-code-vault-contributor-default.png',
+    count: 2
+  },
+  {
+    label: 'Pull Shark',
+    icon: 'https://github.githubassets.com/images/modules/profile/achievements/pull-shark-default.png'
+  },
+  {
+    label: 'Quickdraw',
+    icon: 'https://github.githubassets.com/images/modules/profile/achievements/quickdraw-default.png'
+  }
+];
+
+const githubHighlights = [
+  {
+    label: 'PRO',
+    icon: null // Use a star icon from font-awesome or similar
+  }
+];
 
 const Achievements = () => {
   const { t } = useTranslation();
+  const [organizations, setOrganizations] = useState([]);
 
-  const achievements = [
-    { icon: "fab fa-github", number: "22+", label: "Public Repositories" },
-    { icon: "fas fa-lock", number: "50+", label: "Private Repositories" },
-    { icon: "fas fa-star", number: "5+", label: "Repository Stars" },
-    { icon: "fas fa-code-branch", number: "1", label: "Repository Forks" }
-  ];
-
-  const organizations = [
-    { name: "Yaklabs-Organization", description: "Contributing to organizational projects and collaborative development", link: "https://github.com/Yaklabs-Organization" },
-    { name: "MegaDevs", description: "Collaborating on innovative software solutions and full-stack development projects.", link: null }
-  ];
+  useEffect(() => {
+    fetch('/api/organizations/')
+      .then(res => res.json())
+      .then(data => setOrganizations(data))
+      .catch(() => setOrganizations([]));
+  }, []);
 
   return (
     <section id="achievements" className="bg-bg-secondary/30 py-16">
@@ -22,16 +42,38 @@ const Achievements = () => {
           <h2 className="text-3xl md:text-4xl font-bold text-primary mb-2">GitHub Achievements</h2>
           <p className="text-lg text-text-secondary">Open source contributions and milestones</p>
         </div>
-        <div className="flex flex-col gap-12">
-          <div className="grid grid-cols-2 md:grid-cols-4 gap-6 max-w-3xl mx-auto mb-8">
-            {achievements.map((stat, index) => (
-              <div key={index} className="flex flex-col items-center bg-bg-tertiary/80 rounded-xl p-6 border border-border-color shadow-neumorphism">
-                <div className="text-3xl text-primary mb-2"><i className={stat.icon} /></div>
-                <div className="font-bold text-2xl text-primary">{stat.number}</div>
-                <div className="text-xs text-text-secondary mt-1">{stat.label}</div>
+        {/* GitHub Achievements Visuals */}
+        <div className="flex flex-col md:flex-row gap-8 justify-center items-center mb-10">
+          <div className="flex gap-4 items-center">
+            {githubAchievements.map((ach, idx) => (
+              <div key={ach.label} className="relative flex flex-col items-center">
+                <img
+                  src={ach.icon}
+                  alt={ach.label}
+                  className="w-16 h-16 rounded-full border-4 border-primary shadow-lg bg-white"
+                  title={ach.label}
+                />
+                {ach.count && (
+                  <span className="absolute -bottom-2 -right-2 bg-primary text-white text-xs font-bold px-2 py-0.5 rounded-full border-2 border-white">x{ach.count}</span>
+                )}
+                <span className="text-xs mt-2 text-text-secondary text-center max-w-[80px]">{ach.label}</span>
               </div>
             ))}
           </div>
+          {/* Highlights */}
+          <div className="flex flex-col items-center gap-2 ml-8">
+            <span className="font-bold text-base text-primary mb-1">Highlights</span>
+            <div className="flex gap-2">
+              {githubHighlights.map((hl, idx) => (
+                <span key={hl.label} className="flex items-center gap-1 px-3 py-1 rounded-full border border-primary text-primary text-xs font-semibold bg-white/5">
+                  <i className="fas fa-star text-primary" />
+                  {hl.label}
+                </span>
+              ))}
+            </div>
+          </div>
+        </div>
+        <div className="flex flex-col gap-12">
           <div className="bg-bg-tertiary/80 rounded-xl p-8 border border-border-color shadow-neumorphism max-w-2xl mx-auto mb-8">
             <h3 className="text-xl font-bold text-primary mb-4">Organization Member</h3>
             {organizations.map((org, index) => (
@@ -46,44 +88,6 @@ const Achievements = () => {
                 </div>
               </div>
             ))}
-          </div>
-          <div className="bg-bg-tertiary/80 rounded-xl p-8 border border-border-color shadow-neumorphism max-w-2xl mx-auto mb-8">
-            <h3 className="text-xl font-bold text-primary mb-4">GitHub Achievements</h3>
-            <div className="flex flex-wrap gap-4">
-              <div className="flex items-center gap-2 bg-primary/10 text-primary px-4 py-2 rounded-full text-xs font-medium">
-                <i className="fas fa-trophy" />
-                <span>Arctic Code Vault Contributor</span>
-              </div>
-              <div className="flex items-center gap-2 bg-primary/10 text-primary px-4 py-2 rounded-full text-xs font-medium">
-                <i className="fas fa-medal" />
-                <span>Pull Shark</span>
-              </div>
-              <div className="flex items-center gap-2 bg-primary/10 text-primary px-4 py-2 rounded-full text-xs font-medium">
-                <i className="fas fa-star" />
-                <span>Quickdraw</span>
-              </div>
-            </div>
-          </div>
-          <div className="bg-bg-tertiary/80 rounded-xl p-8 border border-border-color shadow-neumorphism max-w-2xl mx-auto">
-            <h3 className="text-xl font-bold text-primary mb-4">Professional Network</h3>
-            <div className="flex flex-col md:flex-row gap-6">
-              <div className="flex items-center gap-4 bg-bg-secondary/80 rounded-lg p-4 flex-1">
-                <i className="fab fa-github text-primary text-2xl" />
-                <div>
-                  <h4 className="font-semibold text-text-primary text-base">GitHub Profile</h4>
-                  <p className="text-xs text-text-secondary mb-1">Follow my open source journey</p>
-                  <a href="https://github.com/W-Mirshod" target="_blank" rel="noopener noreferrer" className="text-primary underline text-xs font-medium">View Profile</a>
-                </div>
-              </div>
-              <div className="flex items-center gap-4 bg-bg-secondary/80 rounded-lg p-4 flex-1">
-                <i className="fab fa-linkedin text-primary text-2xl" />
-                <div>
-                  <h4 className="font-semibold text-text-primary text-base">LinkedIn</h4>
-                  <p className="text-xs text-text-secondary mb-1">Professional connections and updates</p>
-                  <a href="https://linkedin.com/in/wmirshod" target="_blank" rel="noopener noreferrer" className="text-primary underline text-xs font-medium">Connect</a>
-                </div>
-              </div>
-            </div>
           </div>
         </div>
       </div>
