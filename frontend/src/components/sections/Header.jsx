@@ -82,25 +82,23 @@ const Header = () => {
 
   return (
     <>
-      <aside className="hidden lg:fixed lg:flex flex-col items-center top-0 right-0 h-full w-20 z-30 bg-gradient-to-b from-[#181c24] via-[#23283a] to-[#181c24] border-l border-[#23283a] shadow-xl" style={{fontFamily:'Poppins,sans-serif',letterSpacing:'0.03em'}}>
-        <a href="#home" className="flex flex-col items-center gap-2 mt-8 mb-8 group"
-          onClick={handleLogoClick}
-        >
-          <div className="w-12 h-12 rounded-2xl bg-[#23283a] shadow-lg p-1 transition-transform duration-200 group-hover:scale-105">
+      <aside className="hidden lg:fixed lg:flex flex-col items-center top-0 right-0 h-full w-16 sm:w-20 z-30 bg-gradient-to-b from-[#181c24] via-[#23283a] to-[#181c24] border-l border-[#23283a] shadow-xl animate-fadeInUp" style={{fontFamily:'Poppins,sans-serif',letterSpacing:'0.03em'}}>
+        <a href="#home" className="flex flex-col items-center gap-2 mt-8 mb-8 group" onClick={handleLogoClick}>
+          <div className="w-10 h-10 sm:w-12 sm:h-12 rounded-2xl bg-[#23283a] shadow-lg p-1 transition-transform duration-200 group-hover:scale-105">
             <img src={MirshodImg} alt="W" className="w-full h-full rounded-2xl object-cover" />
           </div>
           <span className="text-xs font-bold text-[#00d0ff] tracking-wider">W Mirshod</span>
         </a>
-        <nav className="flex flex-col gap-4 w-full items-center">
+        <nav className="flex flex-col gap-3 sm:gap-4 w-full items-center">
           {navItems.map((item) => (
             <a
               key={item.key}
-              className={`w-12 h-12 flex flex-col items-center justify-center rounded-lg font-medium text-xs transition-transform duration-200 hover:scale-105 ${activeSection === item.key ? 'bg-[#23283a] text-[#00d0ff] shadow-lg' : 'text-[#b0b8d1] hover:text-[#00d0ff] hover:bg-[#23283a]/80'}`}
+              className={`w-10 h-10 sm:w-12 sm:h-12 flex flex-col items-center justify-center rounded-lg font-medium text-xs transition-transform duration-200 hover:scale-105 ${activeSection === item.key ? 'bg-[#23283a] text-[#00d0ff] shadow-lg' : 'text-[#b0b8d1] hover:text-[#00d0ff] hover:bg-[#23283a]/80'}`}
               href={item.href}
               style={activeSection === item.key ? {boxShadow: '0 0 6px #00d0ff55'} : {}}
             >
               <span className="text-lg mb-1">{item.icon}</span>
-              <span className="tracking-wide">{item.label}</span>
+              <span className="tracking-wide hidden sm:block">{item.label}</span>
             </a>
           ))}
         </nav>
@@ -114,7 +112,7 @@ const Header = () => {
             {getLanguageDisplay(currentLanguage)}
           </button>
           {isLanguageOpen && (
-            <div className="absolute right-20 top-8 bg-[#23283a] border border-[#23283a] rounded-lg shadow-lg overflow-hidden min-w-[100px] z-40">
+            <div className="absolute right-16 sm:right-20 top-8 bg-[#23283a] border border-[#23283a] rounded-lg shadow-lg overflow-hidden min-w-[100px] z-40">
               {languages.map((language) => (
                 <button
                   key={language.code}
@@ -128,19 +126,19 @@ const Header = () => {
           )}
         </div>
       </aside>
-      <header className="fixed top-0 left-0 w-full z-20 lg:pr-20 bg-gradient-to-r from-[#181c24]/95 to-[#23283a]/90 border-b border-[#23283a] shadow-xl" style={{letterSpacing: '0.03em'}}>
-        <div className="max-w-7xl mx-auto flex items-center justify-between px-6 py-3 lg:px-4 md:px-2">
-          <div className="flex items-center gap-3 lg:hidden">
-            <a href="#home" className="flex items-center gap-3 group" onClick={handleLogoClick}>
-              <div className="w-10 h-10 rounded-full bg-[#23283a] shadow-lg p-1 group-hover:scale-105 transition-transform duration-200">
+      <header className="fixed top-0 left-0 w-full z-20 lg:pr-20 bg-gradient-to-r from-[#181c24]/95 to-[#23283a]/90 border-b border-[#23283a] shadow-xl animate-fadeInUp" style={{letterSpacing: '0.03em'}}>
+        <div className="max-w-7xl mx-auto flex items-center justify-between px-3 sm:px-6 py-2 sm:py-3 lg:px-4 md:px-2">
+          <div className="flex items-center gap-2 sm:gap-3 lg:hidden">
+            <a href="#home" className="flex items-center gap-2 sm:gap-3 group" onClick={handleLogoClick}>
+              <div className="w-8 h-8 sm:w-10 sm:h-10 rounded-full bg-[#23283a] shadow-lg p-1 group-hover:scale-105 transition-transform duration-200">
                 <img src={MirshodImg} alt="W" className="w-full h-full rounded-full object-cover" />
               </div>
-              <span className="text-lg font-bold text-[#00d0ff] tracking-wide">W Mirshod</span>
+              <span className="text-base font-bold text-[#00d0ff] tracking-wide">W Mirshod</span>
             </a>
           </div>
-          <div className="relative flex items-center gap-3 lg:hidden">
+          <div className="relative flex items-center gap-2 sm:gap-3 lg:hidden">
             <button
-              className="px-4 py-2 bg-[#23283a] rounded-lg font-semibold text-sm text-[#00d0ff] hover:bg-[#23283a]/80 transition-colors duration-200"
+              className="px-3 sm:px-4 py-2 bg-[#23283a] rounded-lg font-semibold text-sm text-[#00d0ff] hover:bg-[#23283a]/80 transition-colors duration-200"
               aria-haspopup="true"
               aria-expanded={isLanguageOpen}
               onClick={() => setIsLanguageOpen(!isLanguageOpen)}
@@ -180,7 +178,7 @@ const Header = () => {
           <>
             <nav className={`fixed top-0 right-0 h-full w-64 bg-gradient-to-b from-[#181c24] via-[#23283a] to-[#181c24] z-30 flex flex-col gap-4 px-4 py-16 transition-transform duration-300 lg:hidden ${isMenuOpen ? 'translate-x-0' : 'translate-x-full'} md:w-full`} id="mobileNavMenu" style={{boxShadow:'0 4px 16px 0 #00d0ff22',letterSpacing:'0.03em'}}>
               <a href="#home" className="flex flex-col items-center gap-2 mb-8 group" onClick={handleLogoClick}>
-                <div className="w-12 h-12 rounded-2xl bg-[#23283a] shadow-lg p-1 group-hover:scale-105 transition-transform duration-200">
+                <div className="w-10 h-10 sm:w-12 sm:h-12 rounded-2xl bg-[#23283a] shadow-lg p-1 group-hover:scale-105 transition-transform duration-200">
                   <img src={MirshodImg} alt="W" className="w-full h-full rounded-2xl object-cover" />
                 </div>
                 <span className="text-sm font-bold text-[#00d0ff] tracking-wider">W Mirshod</span>

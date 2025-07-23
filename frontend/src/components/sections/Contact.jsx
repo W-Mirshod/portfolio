@@ -82,16 +82,16 @@ const Contact = () => {
   };
 
   return (
-    <section id="contact" className="w-full bg-[rgba(22,24,34,0.3)] py-16 dark:bg-[rgba(22,24,34,0.3)]">
-      <div className="max-w-4xl mx-auto px-4">
-        <div className="mb-10 text-center">
-          <h2 className="text-3xl md:text-4xl font-bold text-gray-900 dark:text-gray-100 mb-2 drop-shadow-lg">{t("Get In Touch")}</h2>
-          <p className="text-lg text-gray-500 dark:text-gray-300">{t("Let's discuss your next project")}</p>
+    <section id="contact" className="w-full bg-[rgba(22,24,34,0.3)] py-14 px-2 sm:px-4 dark:bg-[rgba(22,24,34,0.3)]">
+      <div className="max-w-4xl mx-auto">
+        <div className="mb-8 sm:mb-10 text-center">
+          <h2 className="text-2xl xs:text-3xl md:text-4xl font-bold text-gray-900 dark:text-gray-100 mb-2 drop-shadow-lg animate-fadeInUp">{t("Get In Touch")}</h2>
+          <p className="text-base sm:text-lg text-gray-500 dark:text-gray-300 animate-fadeInUp delay-100">{t("Let's discuss your next project")}</p>
         </div>
-        <div className="flex justify-center items-center flex-col gap-8">
-          <div ref={contactFormRef} className="w-full max-w-xl bg-[rgba(30,32,40,0.8)] dark:bg-[rgba(30,32,40,0.8)] p-8 md:p-10 rounded-2xl border border-gray-700/60 shadow-[0_8px_32px_0_rgba(0,0,0,0.25)] backdrop-blur-md transition-transform duration-400 ease-[cubic-bezier(0.175,0.885,0.32,1.275)] hover:-translate-y-1.5">
-            <form id="contact-form" onSubmit={handleSubmit}>
-              <div className="mb-6">
+        <div className="flex justify-center items-center flex-col gap-8 animate-fadeInUp delay-200">
+          <div ref={contactFormRef} className="w-full max-w-xl bg-[rgba(30,32,40,0.8)] dark:bg-[rgba(30,32,40,0.8)] p-6 sm:p-8 md:p-10 rounded-2xl border border-gray-700/60 shadow-[0_8px_32px_0_rgba(0,0,0,0.25)] backdrop-blur-md transition-transform duration-400 ease-[cubic-bezier(0.175,0.885,0.32,1.275)] hover:-translate-y-1.5">
+            <form id="contact-form" onSubmit={handleSubmit} className="space-y-5 sm:space-y-6">
+              <div>
                 <input
                   type="text"
                   id="name"
@@ -103,7 +103,7 @@ const Contact = () => {
                   className="w-full px-4 py-3 bg-[rgba(22,24,34,0.8)] border border-gray-700/60 rounded-lg text-gray-100 text-base font-medium focus:outline-none focus:border-blue-400 focus:bg-[rgba(22,24,34,0.9)] placeholder-gray-400 transition-all duration-300"
                 />
               </div>
-              <div className="mb-6">
+              <div>
                 <input
                   type="email"
                   id="email"
@@ -115,7 +115,7 @@ const Contact = () => {
                   className="w-full px-4 py-3 bg-[rgba(22,24,34,0.8)] border border-gray-700/60 rounded-lg text-gray-100 text-base font-medium focus:outline-none focus:border-blue-400 focus:bg-[rgba(22,24,34,0.9)] placeholder-gray-400 transition-all duration-300"
                 />
               </div>
-              <div className="mb-6">
+              <div>
                 <textarea
                   id="message"
                   name="message"
@@ -127,8 +127,8 @@ const Contact = () => {
                   className="w-full px-4 py-3 min-h-[120px] max-h-[200px] bg-[rgba(22,24,34,0.8)] border border-gray-700/60 rounded-lg text-gray-100 text-base font-medium focus:outline-none focus:border-blue-400 focus:bg-[rgba(22,24,34,0.9)] placeholder-gray-400 resize-y transition-all duration-300"
                 ></textarea>
               </div>
-              <div className="flex justify-center items-center mb-4">
-                <div className="bg-[rgba(63,162,246,0.1)] border border-blue-400 rounded-xl px-5 pt-4 pb-2 shadow-[0_4px_24px_0_rgba(63,162,246,0.13),0_1.5px_8px_rgba(0,0,0,0.07)] min-w-[300px] max-w-[350px] transition-all duration-300 focus-within:shadow-[0_8px_32px_0_rgba(63,162,246,0.22),0_2.5px_12px_rgba(0,0,0,0.13)] focus-within:border-blue-300 hover:shadow-[0_8px_32px_0_rgba(63,162,246,0.22),0_2.5px_12px_rgba(0,0,0,0.13)] hover:border-blue-300">
+              <div className="flex justify-center items-center mb-2 sm:mb-4">
+                <div className="bg-[rgba(63,162,246,0.1)] border border-blue-400 rounded-xl px-5 pt-4 pb-2 shadow-[0_4px_24px_0_rgba(63,162,246,0.13),0_1.5px_8px_rgba(0,0,0,0.07)] min-w-[220px] sm:min-w-[300px] max-w-[350px] transition-all duration-300 focus-within:shadow-[0_8px_32px_0_rgba(63,162,246,0.22),0_2.5px_12px_rgba(0,0,0,0.13)] focus-within:border-blue-300 hover:shadow-[0_8px_32px_0_rgba(63,162,246,0.22),0_2.5px_12px_rgba(0,0,0,0.13)] hover:border-blue-300">
                   <div
                     id="recaptcha-container"
                     className="g-recaptcha"
@@ -146,7 +146,7 @@ const Contact = () => {
               </button>
             </form>
             {formMessage && (
-              <div id="form-messages" className={`mt-4 p-4 rounded-lg text-center font-medium animate-fadeIn ${formMessage.type === 'success' ? 'bg-green-100/10 border border-green-500 text-green-500' : 'bg-red-100/10 border border-red-500 text-red-500'}`}>
+              <div id="form-messages" className={`mt-4 p-4 rounded-lg text-center font-medium animate-fadeInUp ${formMessage.type === 'success' ? 'bg-green-100/10 border border-green-500 text-green-500' : 'bg-red-100/10 border border-red-500 text-red-500'}`}>
                 {formMessage.text}
               </div>
             )}
