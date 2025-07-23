@@ -15,10 +15,6 @@ import Certificate from './components/sections/Certificate';
 import Projects from './components/sections/Projects';
 import Contact from './components/sections/Contact';
 import Footer from './components/sections/Footer';
-import AdminLogin from "./components/sections/admin/AdminLogin";
-import AdminDashboard from "./components/sections/admin/AdminDashboard";
-import RequestLogs from "./components/sections/admin/RequestLogs";
-import ChangePassword from "./components/sections/admin/ChangePassword";
 
 function App() {
   useEffect(() => {
@@ -43,11 +39,6 @@ function App() {
 
   return (
       <Routes>
-        <Route path="/admin/login" element={<AdminLogin />} />
-        <Route path="/admin/dashboard" element={<AdminDashboard />} />
-        <Route path="/admin/request-logs" element={<RequestLogs />} />
-        <Route path="/admin/change-password" element={<ChangePassword />} />
-        <Route path="/admin" element={<AdminDashboard />} />
         <Route path="/" element={
           <>
             <Header />
