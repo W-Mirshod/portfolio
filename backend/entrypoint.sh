@@ -3,6 +3,7 @@ set -e
 
 # Run migrations
 python manage.py migrate
+python manage.py collectstatic --noinput
 
 # Create default superuser if it doesn't exist
 python manage.py shell << END
