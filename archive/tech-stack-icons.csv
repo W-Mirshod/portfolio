@@ -1,0 +1,29 @@
+name,img,order
+"Python","https://cdn.jsdelivr.net/gh/devicons/devicon/icons/python/python-original.svg",1
+"Django","https://cdn.jsdelivr.net/gh/devicons/devicon/icons/django/django-plain.svg",2
+"Flask","https://cdn.jsdelivr.net/gh/devicons/devicon/icons/flask/flask-original.svg",3
+"FastAPI","https://cdn.jsdelivr.net/gh/devicons/devicon/icons/fastapi/fastapi-original.svg",4
+"React","https://cdn.jsdelivr.net/gh/devicons/devicon/icons/react/react-original.svg",5
+"Vite","https://cdn.jsdelivr.net/gh/devicons/devicon/icons/vitejs/vitejs-original.svg",6
+"Tailwind","https://icon.icepanel.io/Technology/svg/Tailwind-CSS.svg",7
+"HTML5","https://cdn.jsdelivr.net/gh/devicons/devicon/icons/html5/html5-original.svg",8
+"CSS3","https://cdn.jsdelivr.net/gh/devicons/devicon/icons/css3/css3-original.svg",9
+"SCSS","https://cdn.jsdelivr.net/gh/devicons/devicon/icons/sass/sass-original.svg",10
+"PyGame","https://www.pygame.org/docs/_static/pygame_logo.png",11
+"Swagger/OpenAPI","https://icon.icepanel.io/Technology/svg/Swagger.svg",12
+"AWS","https://icon.icepanel.io/Technology/png-shadow-512/AWS.png",13
+"Docker","https://cdn.jsdelivr.net/gh/devicons/devicon/icons/docker/docker-original.svg",14
+"Linux","https://cdn.jsdelivr.net/gh/devicons/devicon/icons/linux/linux-original.svg",15
+"Fedora","https://icon.icepanel.io/Technology/svg/Fedora.svg",16
+"Git","https://cdn.jsdelivr.net/gh/devicons/devicon/icons/git/git-original.svg",17
+"GitHub Codespaces","https://icon.icepanel.io/Technology/png-shadow-512/GitHub-Codespaces.png",18
+"GitLab","https://icon.icepanel.io/Technology/svg/GitLab.svg",19
+"Apache","https://cdn.jsdelivr.net/gh/devicons/devicon/icons/apache/apache-original.svg",20
+"PostgreSQL","https://cdn.jsdelivr.net/gh/devicons/devicon/icons/postgresql/postgresql-original.svg",21
+"MySQL","https://cdn.jsdelivr.net/gh/devicons/devicon/icons/mysql/mysql-original.svg",22
+"SQLite","https://cdn.jsdelivr.net/gh/devicons/devicon/icons/sqlite/sqlite-original.svg",23
+"Redis","https://cdn.jsdelivr.net/gh/devicons/devicon/icons/redis/redis-original.svg",24
+"Postman","https://icon.icepanel.io/Technology/svg/Postman.svg",25
+"Pytest","https://docs.pytest.org/en/latest/_static/pytest1.png",26
+"Celery","https://docs.celeryq.dev/en/stable/_static/celery_512.png",27
+"Azure APIs","https://icon.icepanel.io/Technology/svg/Azure.svg",28 

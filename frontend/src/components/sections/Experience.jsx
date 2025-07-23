@@ -1,31 +1,16 @@
 import { useTranslation } from 'react-i18next';
+import { useState, useEffect } from 'react';
 
 const Experience = () => {
   const { t } = useTranslation();
+  const [experiences, setExperiences] = useState([]);
 
-  const experiences = [
-    {
-      period: "Mar 2025 - Present",
-      title: "Senior Software Engineer",
-      company: "Yaklabs · Full-time",
-      description: "Contributing to a tech-driven, future-oriented platform at YakLabs (Tashkent, Uzbekistan). Focused on innovative projects and modern technologies.",
-      skills: ["Python", "Django", "AWS", "Docker", "PostgreSQL", "Redis", "WebSocket"]
-    },
-    {
-      period: "Oct 2024 - Apr 2025",
-      title: "Software Engineer",
-      company: "MegaDevs (Germany Company) · Full-time",
-      description: "Developed scalable web applications and microservices architecture. Led backend development initiatives and implemented DevOps practices for continuous integration and deployment.",
-      skills: ["React", "Node.js", "TypeScript", "Docker", "Kubernetes", "AWS", "CI/CD"]
-    },
-    {
-      period: "2022 - Oct 2024",
-      title: "Backend Developer & AI Engineer",
-      company: "Freelance / Independent Projects",
-      description: "Specializing in microservices architecture, API development, and AI integration. Working on innovative projects with Python, Django, AWS, and machine learning technologies.",
-      skills: ["Python", "Django", "FastAPI", "AI APIs", "Machine Learning", "AWS", "PostgreSQL"]
-    }
-  ];
+  useEffect(() => {
+    fetch('/api/experiences/')
+      .then(res => res.json())
+      .then(data => setExperiences(data))
+      .catch(() => setExperiences([]));
+  }, []);
 
   return (
     <section id="experience" className="bg-bg-secondary/30 py-16" role="main" aria-labelledby="experience-title">
@@ -48,7 +33,7 @@ const Experience = () => {
                 <h4 className="text-base font-medium text-text-secondary mb-1">{exp.company}</h4>
                 <p className="text-base text-text-secondary mb-2">{exp.description}</p>
                 <div className="flex flex-wrap gap-2 mt-2">
-                  {exp.skills.map((skill, skillIndex) => (
+                  {Array.isArray(exp.skills) && exp.skills.map((skill, skillIndex) => (
                     <span key={skillIndex} className="bg-primary/10 text-primary px-3 py-1 rounded-full text-xs font-medium border border-primary/20">
                       {skill}
                     </span>
