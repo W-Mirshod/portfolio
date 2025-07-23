@@ -17,13 +17,12 @@ services:
       context: ./backend
       dockerfile: Dockerfile
     restart: always
-    expose:
-      - "8000"
+    ports:
+      - "7007:8000"
     networks:
       - web
     volumes:
       - ./backend/media:/app/media
-      - ./backend/static:/app/static
       - ./backend/admin_auth.json:/app/admin_auth.json
 
 networks:
