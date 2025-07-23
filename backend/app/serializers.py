@@ -1,5 +1,5 @@
 from rest_framework import serializers
-from .models import Project, Experience, SkillCategory, Organization, TechStackItem, TerminalLine
+from .models import Project, Experience, SkillCategory, Organization, TechStackItem
 
 class ProjectSerializer(serializers.ModelSerializer):
     class Meta:
@@ -24,9 +24,4 @@ class OrganizationSerializer(serializers.ModelSerializer):
 class TechStackItemSerializer(serializers.ModelSerializer):
     class Meta:
         model = TechStackItem
-        fields = '__all__'
-
-class TerminalLineSerializer(serializers.ModelSerializer):
-    class Meta:
-        model = TerminalLine
         fields = '__all__' 
