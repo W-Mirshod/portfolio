@@ -124,36 +124,36 @@ const Home = () => {
   }, [typed, currentLine, terminalLines]);
 
   return (
-    <section id="home" className="relative flex flex-col items-center justify-center min-h-screen h-screen w-full overflow-hidden pt-12">
+    <section id="home" className="relative flex flex-col items-center justify-center min-h-screen h-screen w-full overflow-hidden pt-10 sm:pt-12 animate-fadeInUp">
       <div className="absolute inset-0 w-full h-full z-0">
         <div className="absolute inset-0 w-full h-full bg-gradient-to-br from-[#0a101a] via-[#1a2633] to-[#008080] opacity-90" style={{ zIndex: 0 }} />
       </div>
       <div className="relative flex flex-col justify-center items-center w-full h-full max-w-7xl mx-auto px-2 sm:px-4 z-10">
-        <div className="flex flex-col items-center justify-center text-center w-full max-w-5xl mx-auto h-full py-6">
+        <div className="flex flex-col items-center justify-center text-center w-full max-w-5xl mx-auto h-full py-4 sm:py-6">
           <div className="flex flex-col items-center justify-center text-center w-full">
-            <div className="inline-flex items-center gap-2 bg-primary/10 border border-primary/20 px-3 py-1.5 rounded-2xl mb-4 text-xs text-primary font-medium">
+            <div className="inline-flex items-center gap-2 bg-primary/10 border border-primary/20 px-3 py-1.5 rounded-2xl mb-4 text-xs text-primary font-medium animate-fadeInUp">
               <i className="fas fa-code" />
               <span>Full Stack Developer</span>
             </div>
-            <h1 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-extrabold leading-tight mb-2 bg-gradient-to-r from-primary to-primary-dark bg-clip-text text-transparent">
+            <h1 className="text-xl sm:text-2xl md:text-4xl lg:text-5xl font-extrabold leading-tight mb-2 bg-gradient-to-r from-primary to-primary-dark bg-clip-text text-transparent animate-fadeInUp">
               {"Mirshod Qayimov"}
             </h1>
-            <div className="flex items-center justify-center mb-2 min-h-8 w-full">
+            <div className="flex items-center justify-center mb-2 min-h-8 w-full animate-fadeInUp delay-100">
               <div className="font-semibold text-primary text-base md:text-lg tracking-wide" id="typing-text">
                 {typingText}
               </div>
               <span className="font-normal text-primary text-base md:text-lg animate-blink">|</span>
             </div>
-            <p className="text-base sm:text-lg text-text-secondary my-4 max-w-md">
+            <p className="text-xs sm:text-base md:text-lg text-text-secondary my-3 sm:my-4 max-w-md animate-fadeInUp delay-200">
               Building robust microservices, scalable APIs, and intelligent AI solutions for modern businesses.
             </p>
-            <a href="#contact" className="inline-flex items-center gap-2 px-6 sm:px-8 py-3 rounded-full font-semibold text-base bg-gradient-to-r from-primary to-primary-dark text-white border-2 border-transparent shadow transition-all duration-200 hover:scale-105 relative overflow-hidden mb-6">
+            <a href="#contact" className="inline-flex items-center gap-2 px-5 sm:px-8 py-3 rounded-full font-semibold text-base bg-gradient-to-r from-primary to-primary-dark text-white border-2 border-transparent shadow transition-all duration-200 hover:scale-105 relative overflow-hidden mb-6 animate-fadeInUp delay-300">
               <span className="absolute inset-0 z-0 pointer-events-none" style={{ background: 'radial-gradient(circle at 50% 50%, rgba(0,255,240,0.10) 0%, transparent 80%)' }} />
               <i className="fas fa-envelope z-10" />
               <span className="z-10">{t("Get In Touch")}</span>
             </a>
-            <div className="w-full flex justify-center mb-8">
-              <div className="bg-[#10151f] border border-[#222c3a] rounded-lg w-full max-w-xl p-4 text-left text-green-400 font-mono text-sm overflow-y-auto" style={{ height: 90 }}>
+            <div className="w-full flex justify-center mb-6 sm:mb-8 animate-fadeInUp delay-400">
+              <div className="bg-[#10151f] border border-[#222c3a] rounded-lg w-full max-w-xl p-3 sm:p-4 text-left text-green-400 font-mono text-xs sm:text-sm overflow-y-auto" style={{ height: 90 }}>
                 <div className="flex flex-col justify-end" style={{ height: '100%' }}>
                   {terminalHistory.map((line, idx) => (
                     <div key={idx}>{line}</div>
@@ -164,11 +164,11 @@ const Home = () => {
                 </div>
               </div>
             </div>
-            <div className="flex flex-wrap justify-center gap-2 sm:gap-3 md:gap-4 my-4 max-w-3xl mx-auto">
+            <div className="flex flex-wrap justify-center gap-2 sm:gap-3 md:gap-4 my-2 sm:my-4 max-w-3xl mx-auto animate-fadeInUp delay-500">
               {techStack.map((tech, index) => (
                 <div
                   key={tech.name}
-                  className="flex items-center gap-2 bg-white/5 border border-white/10 px-3 sm:px-4 py-2 rounded-full text-sm font-medium text-text-primary transition-all duration-200 cursor-pointer hover:scale-110"
+                  className="flex items-center gap-2 bg-white/5 border border-white/10 px-3 sm:px-4 py-2 rounded-full text-xs sm:text-sm font-medium text-text-primary transition-all duration-200 cursor-pointer hover:scale-110"
                   title={tech.name}
                   style={{ animationDelay: `${index * 0.1}s` }}
                 >
@@ -176,9 +176,9 @@ const Home = () => {
                     src={tech.img}
                     alt={tech.name}
                     loading="lazy"
-                    width="28"
-                    height="28"
-                    className="w-7 h-7 sm:w-8 sm:h-8 object-contain"
+                    width="24"
+                    height="24"
+                    className="w-6 h-6 sm:w-8 sm:h-8 object-contain"
                   />
                 </div>
               ))}

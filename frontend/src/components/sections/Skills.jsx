@@ -59,28 +59,28 @@ const Skills = () => {
   }, [skillCategories]);
 
   return (
-    <section id="skills" className="py-20 bg-gradient-to-b from-[#181a24] to-[#23263a] dark:bg-[#181a24]">
-      <div className="max-w-6xl mx-auto px-4">
-        <div className="mb-12 text-center">
-          <h2 className="text-3xl md:text-4xl font-bold text-white drop-shadow-lg mb-2">{t("Skills & Expertise")}</h2>
-          <p className="text-lg text-gray-400">{t("These are the primary technologies I specialize in:")}</p>
+    <section id="skills" className="py-14 px-2 sm:px-4 bg-gradient-to-b from-[#181a24] to-[#23263a] dark:bg-[#181a24] animate-fadeInUp">
+      <div className="max-w-6xl mx-auto">
+        <div className="mb-10 sm:mb-12 text-center">
+          <h2 className="text-2xl xs:text-3xl md:text-4xl font-bold text-white drop-shadow-lg mb-2 animate-fadeInUp">{t("Skills & Expertise")}</h2>
+          <p className="text-base sm:text-lg text-gray-400 animate-fadeInUp delay-100">{t("These are the primary technologies I specialize in:")}</p>
         </div>
         <div
-          className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 md:gap-8 justify-items-center items-start"
+          className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-6 md:gap-8 justify-items-center items-start animate-fadeInUp delay-200"
           ref={skillsGridRef}
         >
           {skillCategories.map((category, index) => (
             <div
               key={index}
-              className="skill-category w-full max-w-xs md:max-w-sm bg-[#23263a]/80 dark:bg-[#23263a]/80 p-6 md:p-7 rounded-2xl border border-[#23263a] dark:border-[#23263a] shadow-[0_8px_32px_0_rgba(31,38,135,0.25)] backdrop-blur-md text-center transition-all duration-400 hover:-translate-y-1.5 hover:shadow-[0_8px_25px_rgba(63,162,246,0.15)]"
+              className="skill-category w-full max-w-xs md:max-w-sm bg-[#23263a]/80 dark:bg-[#23263a]/80 p-5 sm:p-6 md:p-7 rounded-2xl border border-[#23263a] dark:border-[#23263a] shadow-[0_8px_32px_0_rgba(31,38,135,0.25)] backdrop-blur-md text-center transition-all duration-400 hover:-translate-y-1.5 hover:shadow-[0_8px_25px_rgba(63,162,246,0.15)] animate-fadeInUp"
               style={{ opacity: 1, transform: 'translateY(0)' }}
             >
-              <h3 className="text-[#3fa2f6] mb-4 text-lg font-semibold flex items-center justify-center gap-2">{t(category.title)}</h3>
+              <h3 className="text-[#3fa2f6] mb-3 sm:mb-4 text-base sm:text-lg font-semibold flex items-center justify-center gap-2">{t(category.title)}</h3>
               <div className="skill-items flex flex-wrap gap-2 justify-center items-center">
                 {Array.isArray(category.skills) && category.skills.map((skill, skillIndex) => (
                   <span
                     key={skillIndex}
-                    className="skill-tag bg-[#3fa2f6]/10 text-[#3fa2f6] px-3 py-1 rounded-full text-xs font-medium border border-[#3fa2f6]/20 transition-all duration-200 cursor-default hover:bg-[#3fa2f6] hover:text-white hover:-translate-y-0.5 hover:shadow-[0_4px_12px_rgba(63,162,246,0.2)]"
+                    className="skill-tag bg-[#3fa2f6]/10 text-[#3fa2f6] px-3 py-1 rounded-full text-xs font-medium border border-[#3fa2f6]/20 transition-all duration-200 cursor-default hover:bg-[#3fa2f6] hover:text-white hover:-translate-y-0.5 hover:shadow-[0_4px_12px_rgba(63,162,246,0.2)] animate-fadeInUp"
                   >
                     {t(skill)}
                   </span>
