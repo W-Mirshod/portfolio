@@ -12,7 +12,7 @@ class ProjectViewSet(viewsets.ModelViewSet):
     serializer_class = ProjectSerializer
 
 class ExperienceViewSet(viewsets.ModelViewSet):
-    queryset = Experience.objects.all()
+    queryset = Experience.objects.all().order_by('order')
     serializer_class = ExperienceSerializer
 
 class SkillCategoryViewSet(viewsets.ModelViewSet):

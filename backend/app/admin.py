@@ -13,7 +13,7 @@ class ProjectAdmin(ImportExportModelAdmin):
 
 @admin.register(Experience)
 class ExperienceAdmin(ImportExportModelAdmin):
-    list_display = ('period', 'title', 'company')
+    list_display = ('period', 'title', 'company', 'order')
     search_fields = ('title', 'company', 'description', 'skills')
     list_filter = ('company',)
 
