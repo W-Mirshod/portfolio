@@ -1,0 +1,39 @@
+id,name,img,order
+77,Python,https://cdn.jsdelivr.net/gh/devicons/devicon/icons/python/python-original.svg,1
+78,Django,https://cdn.jsdelivr.net/gh/devicons/devicon/icons/django/django-plain.svg,2
+79,Flask,https://cdn.jsdelivr.net/gh/devicons/devicon/icons/flask/flask-original.svg,3
+80,FastAPI,https://cdn.jsdelivr.net/gh/devicons/devicon/icons/fastapi/fastapi-original.svg,4
+81,React,https://cdn.jsdelivr.net/gh/devicons/devicon/icons/react/react-original.svg,5
+82,React Native,https://www.quadrilite.com/wp-content/uploads/2024/04/React-natived-1.png,6
+83,Vite,https://cdn.jsdelivr.net/gh/devicons/devicon/icons/vitejs/vitejs-original.svg,7
+84,Tailwind,https://icon.icepanel.io/Technology/svg/Tailwind-CSS.svg,8
+85,HTML5,https://cdn.jsdelivr.net/gh/devicons/devicon/icons/html5/html5-original.svg,9
+86,CSS3,https://cdn.jsdelivr.net/gh/devicons/devicon/icons/css3/css3-original.svg,10
+87,SCSS,https://cdn.jsdelivr.net/gh/devicons/devicon/icons/sass/sass-original.svg,11
+88,PyGame,https://www.pygame.org/docs/_static/pygame_logo.png,12
+89,Swagger/OpenAPI,https://icon.icepanel.io/Technology/svg/Swagger.svg,13
+90,AWS,https://icon.icepanel.io/Technology/png-shadow-512/AWS.png,14
+91,Docker,https://cdn.jsdelivr.net/gh/devicons/devicon/icons/docker/docker-original.svg,15
+92,Linux,https://cdn.jsdelivr.net/gh/devicons/devicon/icons/linux/linux-original.svg,16
+93,Fedora,https://icon.icepanel.io/Technology/svg/Fedora.svg,17
+94,Git,https://cdn.jsdelivr.net/gh/devicons/devicon/icons/git/git-original.svg,18
+95,GitHub Codespaces,https://icon.icepanel.io/Technology/png-shadow-512/GitHub-Codespaces.png,19
+96,GitLab,https://icon.icepanel.io/Technology/svg/GitLab.svg,20
+97,Apache,https://cdn.jsdelivr.net/gh/devicons/devicon/icons/apache/apache-original.svg,21
+98,PostgreSQL,https://cdn.jsdelivr.net/gh/devicons/devicon/icons/postgresql/postgresql-original.svg,22
+99,MySQL,https://cdn.jsdelivr.net/gh/devicons/devicon/icons/mysql/mysql-original.svg,23
+100,SQLite,https://cdn.jsdelivr.net/gh/devicons/devicon/icons/sqlite/sqlite-original.svg,24
+101,Redis,https://cdn.jsdelivr.net/gh/devicons/devicon/icons/redis/redis-original.svg,25
+102,Postman,https://icon.icepanel.io/Technology/svg/Postman.svg,26
+103,Pytest,https://docs.pytest.org/en/latest/_static/pytest1.png,27
+104,Celery,https://docs.celeryq.dev/en/stable/_static/celery_512.png,28
+105,Azure APIs,https://icon.icepanel.io/Technology/svg/Azure.svg,29
+106,PyTorch,https://cdn.jsdelivr.net/gh/devicons/devicon/icons/pytorch/pytorch-original.svg,30
+107,Jupyter,https://cdn.jsdelivr.net/gh/devicons/devicon/icons/jupyter/jupyter-original.svg,31
+108,Grafana,https://icon.icepanel.io/Technology/svg/Grafana.svg,32
+109,Prometheus,https://icon.icepanel.io/Technology/svg/Prometheus.svg,33
+110,Python-telegram-bot,https://avatars.githubusercontent.com/u/16178365?s=200&v=4,34
+111,YoloV8,https://cdn.sanity.io/images/k7elabj6/production/43ed2a0bd025b8f5d7ef611cc85726af8c3da57a-252x264.svg,35
+112,Jira,https://icon.icepanel.io/Technology/svg/Jira.svg,36
+113,Stripe,https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcREFG_shbxV7ib4ezJAaos2DcQ95T6j_AC8ng&s,37
+114,Trello,https://icon.icepanel.io/Technology/svg/Trello.svg,38

@@ -1,5 +1,9 @@
 title,description,icon,technologies,url
 "Yaklabs IoT Platform","Innovative platform for IoT device management and data analytics with real-time capabilities.","fas fa-flask","['Python', 'Django', 'WebSocket', 'WebRTC', 'Yaklabs']","https://github.com/W-Mirshod/yaklabs-platform"
+"AI-Powered Mobile App","Cross-platform mobile application with AI integration using React Native and PyTorch.","fas fa-mobile-alt","['React Native', 'PyTorch', 'Python', 'AI/ML']","https://github.com/W-Mirshod/ai-mobile-app"
+"Telegram Bot Platform","Advanced Telegram bot with AI capabilities using python-telegram-bot and langchain.","fas fa-robot","['Python', 'python-telegram-bot', 'langchain-community', 'AI']","https://github.com/W-Mirshod/telegram-ai-bot"
+"Computer Vision System","YOLOv8-based object detection system with real-time processing capabilities.","fas fa-eye","['Python', 'YOLOv8', 'OpenCV', 'Computer Vision']","https://github.com/W-Mirshod/yolo-detection"
+"Monitoring Dashboard","Comprehensive monitoring solution using Grafana and Prometheus for system metrics.","fas fa-chart-line","['Grafana', 'Prometheus', 'Docker', 'Monitoring']","https://github.com/W-Mirshod/monitoring-dashboard"
 "Texnomart API","Comprehensive API for online shopping website with full e-commerce functionality.","fas fa-shopping-cart","['Python', 'REST API', 'E-commerce']","https://github.com/W-Mirshod/texnomart-api"
 "Online Shopping Platform","Micro-service architecture e-shopping platform with modern design and scalable backend.","fas fa-store","['CSS', 'Microservices', 'E-commerce']","https://github.com/W-Mirshod/online-shopping"
 "Online Course Platform","E-Courses platform including teacher's and blog's own section with comprehensive features.","fas fa-graduation-cap","['SCSS', 'Education', 'Platform']","https://github.com/W-Mirshod/online-course"

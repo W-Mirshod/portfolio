@@ -1,7 +1,8 @@
 title,skills
-"Backend Development","['Python', 'Django', 'Django ORM', 'Flask', 'FastAPI', 'REST APIs', 'WebSockets', 'WebRTC', 'Monolithic/Microservices', 'API Integration', 'Celery', 'Flower', 'Performance Optimization', 'PyGame']"
-"Frontend Technologies","['JavaScript', 'React', 'React Native', 'Vite', 'Tailwind', 'HTML5', 'CSS3', 'SCSS']"
-"DevOps & Cloud","['AWS (EC2, S3, CodePipeline, CodeDeploy)', 'Docker', 'Docker Compose', 'Linux', 'Git', 'GitHub', 'GitHub Actions', 'CI/CD', 'Automation', 'Nginx', 'Apache']"
+"Backend Development","['Python', 'Django', 'Django ORM', 'Flask', 'FastAPI', 'REST APIs', 'WebSockets', 'WebRTC', 'Monolithic/Microservices', 'API Integration', 'Celery', 'Flower', 'Python-telegram-bot', 'Aiogram', 'Telethon', 'Performance Optimization', 'PyGame']"
+"Frontend Technologies","['JavaScript', 'React', 'Vite', 'Tailwind', 'HTML5', 'CSS3', 'SCSS']"
+"Mobile Development","['React Native (iOS & Android)']"
+"DevOps & Cloud","['AWS (EC2, S3, CodePipeline, CodeDeploy)', 'Docker', 'Docker Compose', 'Linux', 'Git', 'GitHub', 'GitHub Actions', 'CI/CD', 'Automation', 'Nginx', 'Apache', 'Grafana', 'Prometheus']"
 "Databases","['PostgreSQL', 'MySQL', 'SQLite', 'Redis', 'Caching']"
-"AI & Machine Learning","['Azure APIs', 'AI APIs', 'Personal AI Model (GPT-Neo)']"
-"Tools & Utilities","['Swagger/OpenAPI', 'Postman', 'Pytest', 'Excel/CSV Analysis']" 
+"AI & Machine Learning","['PyTorch', 'langchain-community', 'Jupyter', 'YoloV8', 'Azure APIs', 'AI APIs', 'Personal AI Model (GPT-Neo)']"
+"Tools & Utilities","['Swagger/OpenAPI', 'Postman', 'Pytest', 'Excel/CSV Analysis', 'Jira', 'Stripe', 'Trello']" 
