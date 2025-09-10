@@ -56,7 +56,7 @@ const Experience = () => {
               <span>LinkedIn Profile</span>
               <span className="ml-2 flex items-center bg-white/10 text-cyan-100 font-bold text-lg px-3 py-1 rounded-full border border-cyan-400 animate-bounce-slow">
                 <svg className="w-4 h-4 mr-1" fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" d="M17 20h5v-2a4 4 0 00-3-3.87M9 20H4v-2a4 4 0 013-3.87m6 0A4 4 0 0012 4a4 4 0 00-1 7.87" /></svg>
-                600+
+                900+
                 <span className="ml-1 text-sm font-medium">Connections</span>
               </span>
             </span>
