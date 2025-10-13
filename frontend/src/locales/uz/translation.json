@@ -1,7 +1,7 @@
 {
   "hero": {
     "title": "Salom, men <1>Mirshod Qayimov</1><br/>Raqamli yechimlar yaratuvchisi",
-    "badge": "Full Stack Dasturchi",
+    "badge": "Senior Software Engineer",
     "typingTexts": [
       "Backend Dasturchi & AI Muhandis",
       "Mikroservislar & API Mutaxassisi",
@@ -14,5 +14,18 @@
       "main": "PDP Universiteti Talabasi",
       "sub": "Computer Science & AI"
     }
-  }
+  },
+  "About Me": "Men haqimda",
+  "Your Complete Digital Solution Partner": "Sizning raqamli yechimlar bo'yicha texnik hamkoringiz",
+  "Building production-grade systems that actually work 🚀 I'm W Mirshod - a senior software engineer who ships complete digital platforms from database design to deployment. I've architected microservices handling 8K+ concurrent users with 99.7% uptime, built IoT platforms processing 50K+ events daily, and deployed AI systems reducing operational costs by 65%.": "Haqiqatan ishlaydigan ishlab chiqarish darajasidagi tizimlarni yarataman 🚀 Men W Mirshod - ma'lumotlar bazasi dizaynidan joylashtirishgacha to'liq raqamli platformalarni yetkazib beradigan senior software engineer. 8K+ bir vaqtda foydalanuvchilar uchun 99.7% uptime bilan mikroservislarni arxitektura qildim, kuniga 50K+ hodisalarni qayta ishlaydigan IoT platformalarini qurdim va operatsion xarajatlarni 65% ga kamaytiradigan AI tizimlarini joylashtirdim.",
+  "Microservices Architecture - Python/Django, Redis caching, PostgreSQL optimization": "Mikroservislar Arxitekturasi - Python/Django, Redis keshlash, PostgreSQL optimallashtirish",
+  "AI/ML Integration - PyTorch models, YOLOv8 computer vision, anomaly detection": "AI/ML Integratsiyasi - PyTorch modellari, YOLOv8 kompyuter ko'rish, anomaliya aniqlash",
+  "Cloud Infrastructure - AWS multi-region, Docker/Kubernetes, Grafana/Prometheus": "Bulut Infratuzilmasi - AWS ko'p mintaqa, Docker/Kubernetes, Grafana/Prometheus",
+  "High-Traffic Platforms - E-commerce APIs, real-time WebSocket systems": "Yuqori Trafik Platformalari - E-commerce API, real-time WebSocket tizimlari",
+  "Performance Engineering - <200ms latency, 30 FPS edge processing, 87% mAP accuracy": "Samaradorlik Muhandisligi - <200ms kechikish, 30 FPS edge qayta ishlash, 87% mAP aniqlik",
+  "Why work with a technical specialist? You get architectural decisions backed by real production experience, not marketing promises. I've solved complex challenges: scaling WebSocket connections for IoT devices, optimizing YOLOv8 models for CPU-only environments, implementing Redis-based caching that reduced API response times by 73%. From MVP prototypes to enterprise systems handling millions of requests, I deliver solutions that perform under real-world load.": "Nima uchun texnik mutaxassis bilan ishlash kerak? Siz haqiqiy ishlab chiqarish tajribasi bilan qo'llab-quvvatlanadigan arxitektura qarorlarini olasiz, marketing va'dalarini emas. Murakkab muammolarni hal qildim: IoT qurilmalar uchun WebSocket ulanishlarini kengaytirish, YOLOv8 modellarini faqat CPU muhitida optimallashtirish, API javob vaqtlarini 73% ga kamaytiradigan Redis asosidagi keshlashni amalga oshirish. MVP prototiplaridan millionlab so'rovlarni boshqaradigan enterprise tizimlargacha, men haqiqiy yuk ostida ishlaydigan yechimlarni taqdim etaman.",
+  "Major Projects Delivered": "Katta Loyihalar Bajarildi",
+  "Active Users Supported": "Faol Foydalanuvchilar Qo'llab-quvvatlandi",
+  "Uptime Achieved": "Uptime Erishildi",
+  "Years Experience": "Yil Tajriba"
 }

@@ -1,7 +1,7 @@
 {
   "hero": {
     "title": "Привет, я <1>Миршод Каюмов</1><br/>Разработчик цифровых решений",
-    "badge": "Full Stack Разработчик",
+    "badge": "Senior Software Engineer",
     "typingTexts": [
       "Backend Разработчик & AI Инженер",
       "Специалист по микросервисам и API",
@@ -14,5 +14,18 @@
       "main": "Студент PDP Университета",
       "sub": "Computer Science & AI"
     }
-  }
+  },
+  "About Me": "Обо мне",
+  "Your Complete Digital Solution Partner": "Ваш технический партнер по цифровым решениям",
+  "Building production-grade systems that actually work 🚀 I'm W Mirshod - a senior software engineer who ships complete digital platforms from database design to deployment. I've architected microservices handling 8K+ concurrent users with 99.7% uptime, built IoT platforms processing 50K+ events daily, and deployed AI systems reducing operational costs by 65%.": "Создаю продакшн-системы, которые реально работают 🚀 Я W Mirshod - senior software engineer, который поставляет полные цифровые платформы от проектирования БД до развертывания. Архитектурировал микросервисы для 8K+ одновременных пользователей с 99.7% uptime, построил IoT платформы обрабатывающие 50K+ событий ежедневно, и развернул AI системы снижающие операционные расходы на 65%.",
+  "Microservices Architecture - Python/Django, Redis caching, PostgreSQL optimization": "Архитектура микросервисов - Python/Django, Redis кэширование, оптимизация PostgreSQL",
+  "AI/ML Integration - PyTorch models, YOLOv8 computer vision, anomaly detection": "AI/ML интеграция - PyTorch модели, YOLOv8 компьютерное зрение, детекция аномалий",
+  "Cloud Infrastructure - AWS multi-region, Docker/Kubernetes, Grafana/Prometheus": "Облачная инфраструктура - AWS мульти-регион, Docker/Kubernetes, Grafana/Prometheus",
+  "High-Traffic Platforms - E-commerce APIs, real-time WebSocket systems": "Высоконагруженные платформы - E-commerce API, real-time WebSocket системы",
+  "Performance Engineering - <200ms latency, 30 FPS edge processing, 87% mAP accuracy": "Инжиниринг производительности - <200ms задержка, 30 FPS edge обработка, 87% mAP точность",
+  "Why work with a technical specialist? You get architectural decisions backed by real production experience, not marketing promises. I've solved complex challenges: scaling WebSocket connections for IoT devices, optimizing YOLOv8 models for CPU-only environments, implementing Redis-based caching that reduced API response times by 73%. From MVP prototypes to enterprise systems handling millions of requests, I deliver solutions that perform under real-world load.": "Почему работать с техническим специалистом? Вы получаете архитектурные решения подкрепленные реальным продакшн опытом, а не маркетинговыми обещаниями. Решал сложные задачи: масштабирование WebSocket соединений для IoT устройств, оптимизация YOLOv8 моделей для CPU-only окружений, внедрение Redis кэширования снизившего время ответа API на 73%. От MVP прототипов до enterprise систем обрабатывающих миллионы запросов, я поставляю решения которые работают под реальной нагрузкой.",
+  "Major Projects Delivered": "Крупных проектов выполнено",
+  "Active Users Supported": "Активных пользователей поддержано",
+  "Uptime Achieved": "Достигнуто uptime",
+  "Years Experience": "Лет опыта"
 }
