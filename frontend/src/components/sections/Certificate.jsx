@@ -1,5 +1,6 @@
 import { useTranslation } from 'react-i18next';
-import CertificateImg from '../../assets/images/Certification.png';
+// Use optimized certificate image for better performance
+import CertificateImg from '/Certification-optimized.webp';
 
 const Certificate = () => {
   const { t } = useTranslation();
@@ -50,11 +51,16 @@ const Certificate = () => {
               </div>
               <div className="relative flex flex-col items-center mt-4 md:mt-0">
                 <div className="w-32 h-32 sm:w-40 sm:h-40 rounded-xl bg-gradient-to-br from-primary to-primary-dark flex items-center justify-center mb-4 overflow-hidden shadow-lg">
-                  <img 
-                    src={CertificateImg} 
-                    alt="Backend Python Django Bootcamp Certificate" 
+                  <img
+                    src={CertificateImg}
+                    alt="Backend Python Django Bootcamp Certificate"
                     loading="lazy"
                     className="w-full h-full object-contain rounded-xl"
+                    onError={(e) => {
+                      console.error('Certificate image failed to load:', e);
+                      e.target.style.display = 'none';
+                    }}
+                    onLoad={() => console.log('Certificate image loaded successfully')}
                   />
                   <div className="absolute inset-0 flex items-center justify-center bg-black/60 opacity-0 hover:opacity-100 transition-opacity">
                     <a 

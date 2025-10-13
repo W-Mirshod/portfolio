@@ -1,5 +1,6 @@
 import { useState, useEffect, useRef } from 'react';
 import { useTranslation } from 'react-i18next';
+import { loadFontAwesome, loadRecaptcha } from '../../App';
 
 const Contact = () => {
   const { t } = useTranslation();
@@ -13,26 +14,24 @@ const Contact = () => {
   const recaptchaRef = useRef(null);
 
   useEffect(() => {
-    const loadRecaptcha = () => {
-      if (window.grecaptcha) return;
-      const script = document.createElement('script');
-      script.src = 'https://www.google.com/recaptcha/api.js';
-      script.async = true;
-      script.defer = true;
-      document.body.appendChild(script);
-    };
-    loadRecaptcha();
+    // Load scripts only when component is about to come into view
     const observer = new IntersectionObserver((entries) => {
       entries.forEach(entry => {
         if (entry.isIntersecting) {
+          // Load Font Awesome for the send button icon
+          loadFontAwesome();
+          // Load reCAPTCHA for form validation
+          loadRecaptcha();
           entry.target.classList.add('animate-in');
           observer.unobserve(entry.target);
         }
       });
     }, { threshold: 0.2 });
+
     if (contactFormRef.current) {
       observer.observe(contactFormRef.current);
     }
+
     return () => {
       if (contactFormRef.current) {
         observer.unobserve(contactFormRef.current);
