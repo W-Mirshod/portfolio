@@ -1,7 +1,6 @@
 import { useState, useEffect } from 'react';
 import { useTranslation } from 'react-i18next';
 import { createPortal } from 'react-dom';
-import { useNavigate } from 'react-router-dom';
 import MirshodImg from '../../assets/images/Mirshod.png';
 import { FaHome, FaUser, FaBriefcase, FaCode, FaTrophy, FaCertificate, FaProjectDiagram, FaEnvelope } from 'react-icons/fa';
 import '../styles/menu-futuristic.css';
@@ -17,9 +16,6 @@ const Header = () => {
     { code: 'uz', name: 'Uzbek' },
     { code: 'ru', name: 'Russian' }
   ];
-  const navigate = useNavigate();
-  const [tapCount, setTapCount] = useState(0);
-  const [lastTap, setLastTap] = useState(0);
 
   useEffect(() => {
     const handleScroll = () => {
@@ -54,20 +50,6 @@ const Header = () => {
     }
   };
 
-  const handleLogoClick = () => {
-    const now = Date.now();
-    if (now - lastTap < 600) {
-      const newCount = tapCount + 1;
-      setTapCount(newCount);
-      if (newCount === 3) {
-        setTapCount(0);
-        navigate('/admin/login');
-      }
-    } else {
-      setTapCount(1);
-    }
-    setLastTap(now);
-  };
 
   const navItems = [
     { href: '#home', key: 'home', label: 'Home', icon: <FaHome size={16} /> },
@@ -83,7 +65,7 @@ const Header = () => {
   return (
     <>
       <aside className="hidden lg:fixed lg:flex flex-col items-center top-0 right-0 h-full w-16 sm:w-20 z-30 bg-gradient-to-b from-[#181c24] via-[#23283a] to-[#181c24] border-l border-[#23283a] shadow-xl animate-fadeInUp" style={{fontFamily:'Poppins,sans-serif',letterSpacing:'0.03em'}}>
-        <a href="#home" className="flex flex-col items-center gap-2 mt-8 mb-8 group" onClick={handleLogoClick}>
+        <a href="#home" className="flex flex-col items-center gap-2 mt-8 mb-8 group">
           <div className="w-10 h-10 sm:w-12 sm:h-12 rounded-2xl bg-[#23283a] shadow-lg p-1 transition-transform duration-200 group-hover:scale-105">
             <img src={MirshodImg} alt="W" className="w-full h-full rounded-2xl object-cover" />
           </div>
@@ -129,7 +111,7 @@ const Header = () => {
       <header className="fixed top-0 left-0 w-full z-20 lg:pr-20 bg-gradient-to-r from-[#181c24]/95 to-[#23283a]/90 border-b border-[#23283a] shadow-xl animate-fadeInUp" style={{letterSpacing: '0.03em'}}>
         <div className="max-w-7xl mx-auto flex items-center justify-between px-3 sm:px-6 py-2 sm:py-3 lg:px-4 md:px-2">
           <div className="flex items-center gap-2 sm:gap-3 lg:hidden">
-            <a href="#home" className="flex items-center gap-2 sm:gap-3 group" onClick={handleLogoClick}>
+            <a href="#home" className="flex items-center gap-2 sm:gap-3 group">
               <div className="w-8 h-8 sm:w-10 sm:h-10 rounded-full bg-[#23283a] shadow-lg p-1 group-hover:scale-105 transition-transform duration-200">
                 <img src={MirshodImg} alt="W" className="w-full h-full rounded-full object-cover" />
               </div>
@@ -177,7 +159,7 @@ const Header = () => {
         {typeof window !== 'undefined' && createPortal(
           <>
             <nav className={`fixed top-0 right-0 h-full w-64 bg-gradient-to-b from-[#181c24] via-[#23283a] to-[#181c24] z-30 flex flex-col gap-4 px-4 py-16 transition-transform duration-300 lg:hidden ${isMenuOpen ? 'translate-x-0' : 'translate-x-full'} md:w-full`} id="mobileNavMenu" style={{boxShadow:'0 4px 16px 0 #00d0ff22',letterSpacing:'0.03em'}}>
-              <a href="#home" className="flex flex-col items-center gap-2 mb-8 group" onClick={handleLogoClick}>
+              <a href="#home" className="flex flex-col items-center gap-2 mb-8 group">
                 <div className="w-10 h-10 sm:w-12 sm:h-12 rounded-2xl bg-[#23283a] shadow-lg p-1 group-hover:scale-105 transition-transform duration-200">
                   <img src={MirshodImg} alt="W" className="w-full h-full rounded-2xl object-cover" />
                 </div>
