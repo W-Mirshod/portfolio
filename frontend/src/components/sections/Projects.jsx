@@ -1,16 +1,8 @@
 import { useTranslation } from 'react-i18next';
-import { useState, useEffect } from 'react';
+import projectsData from '../../data/projects.json';
 
 const Projects = () => {
   const { t } = useTranslation();
-  const [projects, setProjects] = useState([]);
-
-  useEffect(() => {
-    fetch('/api/projects/')
-      .then(res => res.json())
-      .then(data => setProjects(data))
-      .catch(() => setProjects([]));
-  }, []);
 
   return (
     <section id="projects" className="py-14 px-2 sm:px-4 bg-gradient-to-b from-[#181a24] to-[#23263a] dark:bg-[#181a24] animate-fadeInUp">
@@ -20,7 +12,7 @@ const Projects = () => {
           <p className="text-base sm:text-lg text-gray-400 animate-fadeInUp delay-100">{t("Some of my recent work")}</p>
         </div>
         <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-6 sm:gap-8 mb-10 sm:mb-12 animate-fadeInUp delay-200">
-          {projects.map((project, index) => (
+          {projectsData.map((project, index) => (
             <div
               key={project.id || project.title}
               className="group relative flex flex-col bg-[#23263a]/80 dark:bg-[#23263a]/80 rounded-2xl p-5 sm:p-7 border border-[#23263a] dark:border-[#23263a] shadow-[0_8px_32px_0_rgba(31,38,135,0.25)] backdrop-blur-md transition-all duration-300 hover:-translate-y-2 hover:shadow-[0_20px_40px_rgba(63,162,246,0.15),0_0_40px_rgba(63,162,246,0.10)] cursor-pointer animate-fadeInUp"

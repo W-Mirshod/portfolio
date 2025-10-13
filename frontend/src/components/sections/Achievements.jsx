@@ -1,5 +1,5 @@
 import { useTranslation } from 'react-i18next';
-import { useState, useEffect } from 'react';
+import organizationsData from '../../data/organizations.json';
 
 const githubAchievements = [
   {
@@ -26,14 +26,6 @@ const githubHighlights = [
 
 const Achievements = () => {
   const { t } = useTranslation();
-  const [organizations, setOrganizations] = useState([]);
-
-  useEffect(() => {
-    fetch('/api/organizations/')
-      .then(res => res.json())
-      .then(data => setOrganizations(data))
-      .catch(() => setOrganizations([]));
-  }, []);
 
   return (
     <section id="achievements" className="bg-bg-secondary/30 py-14 px-2 sm:px-4">
@@ -74,7 +66,7 @@ const Achievements = () => {
         <div className="flex flex-col gap-10 animate-fadeInUp delay-300">
           <div className="bg-bg-tertiary/80 rounded-xl p-6 sm:p-8 border border-border-color shadow-neumorphism max-w-2xl mx-auto mb-8">
             <h3 className="text-lg sm:text-xl font-bold text-primary mb-4">Organization Member</h3>
-            {organizations.map((org, index) => (
+            {organizationsData.map((org, index) => (
               <div key={index} className={`flex flex-col sm:flex-row items-start gap-4 py-4 ${index > 0 ? 'mt-6 border-t border-border-color/50' : ''}`}>
                 <i className="fas fa-building text-primary text-2xl mt-1" />
                 <div>

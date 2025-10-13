@@ -1,18 +1,11 @@
 import { useTranslation } from 'react-i18next';
-import { useEffect, useRef, useState } from 'react';
+import { useEffect, useRef } from 'react';
+import skillCategoriesData from '../../data/skills.json';
 
 const Skills = () => {
   const { t } = useTranslation();
   const skillsGridRef = useRef(null);
   const skillsObserver = useRef(null);
-  const [skillCategories, setSkillCategories] = useState([]);
-
-  useEffect(() => {
-    fetch('/api/skill-categories/')
-      .then(res => res.json())
-      .then(data => setSkillCategories(data))
-      .catch(() => setSkillCategories([]));
-  }, []);
 
   useEffect(() => {
     skillsObserver.current = new IntersectionObserver((entries) => {
@@ -56,7 +49,7 @@ const Skills = () => {
         skillsObserver.current.disconnect();
       }
     };
-  }, [skillCategories]);
+  }, []);
 
   return (
     <section id="skills" className="py-14 px-2 sm:px-4 bg-gradient-to-b from-[#181a24] to-[#23263a] dark:bg-[#181a24] animate-fadeInUp">
@@ -69,7 +62,7 @@ const Skills = () => {
           className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-6 md:gap-8 justify-items-center items-start animate-fadeInUp delay-200"
           ref={skillsGridRef}
         >
-          {skillCategories.map((category, index) => (
+          {skillCategoriesData.map((category, index) => (
             <div
               key={index}
               className="skill-category w-full max-w-xs md:max-w-sm bg-[#23263a]/80 dark:bg-[#23263a]/80 p-5 sm:p-6 md:p-7 rounded-2xl border border-[#23263a] dark:border-[#23263a] shadow-[0_8px_32px_0_rgba(31,38,135,0.25)] backdrop-blur-md text-center transition-all duration-400 hover:-translate-y-1.5 hover:shadow-[0_8px_25px_rgba(63,162,246,0.15)] animate-fadeInUp"
