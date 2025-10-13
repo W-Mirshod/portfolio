@@ -9,14 +9,7 @@ const Home = () => {
   const [currentIndex, setCurrentIndex] = useState(0);
   const [isDeleting, setIsDeleting] = useState(false);
 
-  const typingTexts = [
-    "Backend Developer & AI Engineer",
-    "Microservices & APIs Specialist", 
-    "DevOps & Cloud Expert",
-    "AI APIs Enthusiast",
-    "Performance Optimization Expert",
-    "Full-Stack Python Developer"
-  ];
+  const typingTexts = t('hero.typingTexts', { returnObjects: true });
 
   useEffect(() => {
     const typeSpeed = isDeleting ? 80 : 140;
@@ -126,7 +119,7 @@ const Home = () => {
           <div className="flex flex-col items-center justify-center text-center w-full">
             <div className="inline-flex items-center gap-2 bg-primary/10 border border-primary/20 px-3 py-1.5 rounded-2xl mb-4 text-xs text-primary font-medium animate-fadeInUp">
               <i className="fas fa-code" />
-              <span>Full Stack Developer</span>
+              <span>{t('hero.badge')}</span>
             </div>
             <h1 className="text-xl sm:text-2xl md:text-4xl lg:text-5xl font-extrabold leading-tight mb-2 bg-gradient-to-r from-primary to-primary-dark bg-clip-text text-transparent animate-fadeInUp">
               {"Mirshod Qayimov"}
@@ -138,7 +131,7 @@ const Home = () => {
               <span className="font-normal text-primary text-base md:text-lg animate-blink">|</span>
             </div>
             <p className="text-xs sm:text-base md:text-lg text-text-secondary my-3 sm:my-4 max-w-md animate-fadeInUp delay-200">
-              Building robust microservices, scalable APIs, and intelligent AI solutions for modern businesses.
+              {t('hero.subtitle')}
             </p>
             <a href="#contact" className="inline-flex items-center gap-2 px-5 sm:px-8 py-3 rounded-full font-semibold text-base bg-gradient-to-r from-primary to-primary-dark text-white border-2 border-transparent shadow transition-all duration-200 hover:scale-105 relative overflow-hidden mb-6 animate-fadeInUp delay-300">
               <span className="absolute inset-0 z-0 pointer-events-none" style={{ background: 'radial-gradient(circle at 50% 50%, rgba(0,255,240,0.10) 0%, transparent 80%)' }} />

@@ -1,7 +1,8 @@
 {
   "hero": {
     "title": "Привет, я <1>Миршод Каюмов</1><br/>Разработчик цифровых решений",
-    "badge": "Senior Software Engineer",
+    "badge": "Full Stack Разработчик",
+    "subtitle": "Создание надежных микросервисов, масштабируемых API и интеллектуальных AI решений для современного бизнеса.",
     "typingTexts": [
       "Backend Разработчик & AI Инженер",
       "Специалист по микросервисам и API",
@@ -13,6 +14,151 @@
     "pdpBanner": {
       "main": "Студент PDP Университета",
       "sub": "Computer Science & AI"
+    }
+  },
+  "navigation": {
+    "home": "Главная",
+    "about": "Обо мне",
+    "experience": "Опыт",
+    "skills": "Навыки",
+    "achievements": "Достижения",
+    "certificate": "Сертификаты",
+    "projects": "Проекты",
+    "contact": "Контакты"
+  },
+  "footer": {
+    "quickLinks": {
+      "title": "Быстрые ссылки",
+      "home": "Главная",
+      "about": "Обо мне",
+      "experience": "Опыт",
+      "skills": "Навыки",
+      "achievements": "Достижения",
+      "certificate": "Сертификаты",
+      "projects": "Проекты",
+      "contact": "Контакты"
+    },
+    "specializations": {
+      "title": "Специализации",
+      "backend": "Backend",
+      "frontend": "Frontend",
+      "devops": "DevOps",
+      "ai": "AI",
+      "database": "База данных",
+      "api": "API"
+    },
+    "connect": {
+      "title": "Связь",
+      "email": "Email",
+      "phone": "Телефон",
+      "location": "Местоположение",
+      "country": "Узбекистан"
+    },
+    "copyright": "© {{year}} Миршод Каюмов. Все права защищены.",
+    "status": "Доступен для новых возможностей",
+    "backToTop": "Наверх"
+  },
+  "experience": {
+    "title": "Профессиональный опыт",
+    "subtitle": "Путь роста и экспертизы",
+    "timelineLabel": "Временная шкала опыта",
+    "technologiesLabel": "Используемые технологии",
+    "job1": {
+      "period": "Март 2025 - Настоящее время",
+      "title": "Senior Backend Разработчик",
+      "company": "Tech Solutions Inc.",
+      "description": "Руководство backend разработкой и интеграцией API.",
+      "skills": ["Python", "Django", "REST APIs", "PostgreSQL"]
+    },
+    "job2": {
+      "period": "Октябрь 2024 - Март 2025",
+      "title": "Full Stack Разработчик",
+      "company": "Innovatech",
+      "description": "Разработка full-stack приложений и оптимизация производительности.",
+      "skills": ["React", "Node.js", "MongoDB", "Docker"]
+    },
+    "job3": {
+      "period": "2022 - 2024",
+      "title": "Junior Разработчик",
+      "company": "Startup Hub",
+      "description": "Участие в различных проектах и изучение новых технологий.",
+      "skills": ["HTML", "CSS", "JavaScript", "Git"]
+    },
+    "ctaText": "Узнать больше на LinkedIn",
+    "ctaButton": "Посетить LinkedIn"
+  },
+  "skills": {
+    "title": "Навыки",
+    "subtitle": "Технологии, которые я использую",
+    "backend": {
+      "title": "Backend",
+      "items": ["Python", "Django", "Node.js"]
+    },
+    "frontend": {
+      "title": "Frontend",
+      "items": ["React", "HTML", "CSS"]
+    },
+    "devops": {
+      "title": "DevOps",
+      "items": ["Docker", "Nginx"]
+    },
+    "databases": {
+      "title": "Базы данных",
+      "items": ["PostgreSQL", "MongoDB"]
+    },
+    "ai": {
+      "title": "AI",
+      "items": ["TensorFlow", "PyTorch"]
+    },
+    "tools": {
+      "title": "Инструменты",
+      "items": ["Git", "VS Code"]
+    }
+  },
+  "projects": {
+    "title": "Проекты",
+    "subtitle": "Некоторые из моих работ",
+    "viewProject": "Посмотреть проект",
+    "viewAll": "Посмотреть все проекты",
+    "project1": {
+      "title": "YakLabs Платформа",
+      "description": "Платформа для реального времени сотрудничества с использованием Python, Django, WebSocket и WebRTC.",
+      "tags": ["Python", "Django", "WebSocket", "WebRTC"]
+    },
+    "project2": {
+      "title": "Texnomart API",
+      "description": "RESTful API для электронной коммерции с использованием Node.js и MongoDB.",
+      "tags": ["Node.js", "MongoDB", "REST API"]
+    },
+    "project3": {
+      "title": "Онлайн магазин",
+      "description": "Full-stack веб-приложение для онлайн покупок.",
+      "tags": ["React", "Node.js", "Express"]
+    },
+    "project4": {
+      "title": "Онлайн курсы",
+      "description": "Платформа для онлайн курсов и обучения.",
+      "tags": ["React", "Django", "PostgreSQL"]
+    },
+    "project5": {
+      "title": "Управление больницей",
+      "description": "Система для управления операциями больницы.",
+      "tags": ["Python", "Flask", "MySQL"]
+    },
+    "project6": {
+      "title": "GPT-Neo",
+      "description": "Реализация пользовательской AI языковой модели.",
+      "tags": ["Python", "AI", "NLP"]
+    },
+    "project7": {
+      "title": "Gemina App",
+      "description": "Многоязычное приложение для перевода и общения.",
+      "tags": ["React Native", "Translation", "Mobile"]
+    },
+    "project8": {
+      "title": "Medius Analytics",
+      "description": "Панель аналитики для бизнес-аналитики.",
+      "tags": ["React", "D3.js", "Analytics"]
     }
   },
   "About Me": "Обо мне",
@@ -27,5 +173,14 @@
   "Major Projects Delivered": "Крупных проектов выполнено",
   "Active Users Supported": "Активных пользователей поддержано",
   "Uptime Achieved": "Достигнуто uptime",
-  "Years Experience": "Лет опыта"
+  "Years Experience": "Лет опыта",
+  "Get In Touch": "Связаться",
+  "Featured Projects": "Избранные проекты",
+  "Some of my recent work": "Некоторые из моих недавних работ",
+  "View Project": "Посмотреть проект",
+  "View All Projects": "Посмотреть все проекты",
+  "Quick Links": "Быстрые ссылки",
+  "Specializations": "Специализации",
+  "Connect With Me": "Связаться со мной",
+  "All Rights Reserved.": "Все права защищены."
 }

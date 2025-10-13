@@ -52,14 +52,14 @@ const Header = () => {
 
 
   const navItems = [
-    { href: '#home', key: 'home', label: 'Home', icon: <FaHome size={16} /> },
-    { href: '#about', key: 'about', label: 'About', icon: <FaUser size={16} /> },
-    { href: '#experience', key: 'experience', label: 'Experience', icon: <FaBriefcase size={16} /> },
-    { href: '#skills', key: 'skills', label: 'Skills', icon: <FaCode size={16} /> },
-    { href: '#achievements', key: 'achievements', label: 'Achievements', icon: <FaTrophy size={16} /> },
-    { href: '#certificate', key: 'certificate', label: 'Certificate', icon: <FaCertificate size={16} /> },
-    { href: '#projects', key: 'projects', label: 'Projects', icon: <FaProjectDiagram size={16} /> },
-    { href: '#footer', key: 'contact', label: 'Contact', icon: <FaEnvelope size={16} /> }
+    { href: '#home', key: 'home', label: t('navigation.home'), icon: <FaHome size={16} /> },
+    { href: '#about', key: 'about', label: t('navigation.about'), icon: <FaUser size={16} /> },
+    { href: '#experience', key: 'experience', label: t('navigation.experience'), icon: <FaBriefcase size={16} /> },
+    { href: '#skills', key: 'skills', label: t('navigation.skills'), icon: <FaCode size={16} /> },
+    { href: '#achievements', key: 'achievements', label: t('navigation.achievements'), icon: <FaTrophy size={16} /> },
+    { href: '#certificate', key: 'certificate', label: t('navigation.certificate'), icon: <FaCertificate size={16} /> },
+    { href: '#projects', key: 'projects', label: t('navigation.projects'), icon: <FaProjectDiagram size={16} /> },
+    { href: '#footer', key: 'contact', label: t('navigation.contact'), icon: <FaEnvelope size={16} /> }
   ];
 
   return (

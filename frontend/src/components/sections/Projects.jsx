@@ -8,8 +8,8 @@ const Projects = () => {
     <section id="projects" className="py-14 px-2 sm:px-4 bg-gradient-to-b from-[#181a24] to-[#23263a] dark:bg-[#181a24] animate-fadeInUp">
       <div className="max-w-6xl mx-auto">
         <div className="mb-10 sm:mb-12 text-center">
-          <h2 className="text-2xl xs:text-3xl md:text-4xl font-bold text-white drop-shadow-lg mb-2 animate-fadeInUp">{t("Featured Projects")}</h2>
-          <p className="text-base sm:text-lg text-gray-400 animate-fadeInUp delay-100">{t("Some of my recent work")}</p>
+          <h2 className="text-2xl xs:text-3xl md:text-4xl font-bold text-white drop-shadow-lg mb-2 animate-fadeInUp">{t("projects.title")}</h2>
+          <p className="text-base sm:text-lg text-gray-400 animate-fadeInUp delay-100">{t("projects.subtitle")}</p>
         </div>
         <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-6 sm:gap-8 mb-10 sm:mb-12 animate-fadeInUp delay-200">
           {projectsData.map((project, index) => (
@@ -42,7 +42,7 @@ const Projects = () => {
                     className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-gradient-to-r from-[#3fa2f6] to-[#23263a] text-white font-medium text-xs sm:text-sm transition-all duration-200 hover:shadow-[0_4px_15px_rgba(63,162,246,0.25)] hover:-translate-y-0.5 animate-fadeInUp"
                   >
                     <i className="fas fa-external-link-alt"></i>
-                    {t("View Project")}
+                    {t("projects.viewProject")}
                   </a>
                 </div>
               </div>
@@ -57,7 +57,7 @@ const Projects = () => {
             className="inline-flex items-center gap-2 px-5 sm:px-6 py-3 border-2 border-[#3fa2f6] rounded-full text-[#3fa2f6] font-semibold text-xs sm:text-base transition-all duration-200 hover:bg-[#3fa2f6] hover:text-white hover:-translate-y-1 hover:shadow-[0_8px_25px_rgba(63,162,246,0.15)]"
           >
             <i className="fab fa-github"></i>
-            {t("View All Projects")}
+            {t("projects.viewAll")}
           </a>
         </div>
       </div>

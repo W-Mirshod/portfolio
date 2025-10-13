@@ -1,7 +1,8 @@
 {
   "hero": {
     "title": "Salom, men <1>Mirshod Qayimov</1><br/>Raqamli yechimlar yaratuvchisi",
-    "badge": "Senior Software Engineer",
+    "badge": "Full Stack Dasturchi",
+    "subtitle": "Zamonaviy biznes uchun mustahkam mikroservislar, kengaytiriladigan API va aqlli AI yechimlarini yaratish.",
     "typingTexts": [
       "Backend Dasturchi & AI Muhandis",
       "Mikroservislar & API Mutaxassisi",
@@ -13,6 +14,151 @@
     "pdpBanner": {
       "main": "PDP Universiteti Talabasi",
       "sub": "Computer Science & AI"
+    }
+  },
+  "navigation": {
+    "home": "Bosh sahifa",
+    "about": "Men haqimda",
+    "experience": "Tajriba",
+    "skills": "Ko'nikmalar",
+    "achievements": "Yutuqlar",
+    "certificate": "Sertifikatlar",
+    "projects": "Loyihalar",
+    "contact": "Aloqa"
+  },
+  "footer": {
+    "quickLinks": {
+      "title": "Tezkor havolalar",
+      "home": "Bosh sahifa",
+      "about": "Men haqimda",
+      "experience": "Tajriba",
+      "skills": "Ko'nikmalar",
+      "achievements": "Yutuqlar",
+      "certificate": "Sertifikatlar",
+      "projects": "Loyihalar",
+      "contact": "Aloqa"
+    },
+    "specializations": {
+      "title": "Mutaxassisliklar",
+      "backend": "Backend",
+      "frontend": "Frontend",
+      "devops": "DevOps",
+      "ai": "AI",
+      "database": "Ma'lumotlar bazasi",
+      "api": "API"
+    },
+    "connect": {
+      "title": "Aloqa",
+      "email": "Email",
+      "phone": "Telefon",
+      "location": "Manzil",
+      "country": "O'zbekiston"
+    },
+    "copyright": "© {{year}} Mirshod Qayimov. Barcha huquqlar himoyalangan.",
+    "status": "Yangi imkoniyatlar uchun mavjud",
+    "backToTop": "Yuqoriga"
+  },
+  "experience": {
+    "title": "Professional tajriba",
+    "subtitle": "O'sish va ekspertiza yo'li",
+    "timelineLabel": "Tajriba vaqti",
+    "technologiesLabel": "Ishlatilgan texnologiyalar",
+    "job1": {
+      "period": "Mart 2025 - Hozirgi vaqt",
+      "title": "Senior Backend Dasturchi",
+      "company": "Tech Solutions Inc.",
+      "description": "Backend dasturlash va API integratsiyalarini boshqarish.",
+      "skills": ["Python", "Django", "REST APIs", "PostgreSQL"]
+    },
+    "job2": {
+      "period": "Oktyabr 2024 - Mart 2025",
+      "title": "Full Stack Dasturchi",
+      "company": "Innovatech",
+      "description": "Full-stack ilovalarni ishlab chiqish va samaradorlikni optimallashtirish.",
+      "skills": ["React", "Node.js", "MongoDB", "Docker"]
+    },
+    "job3": {
+      "period": "2022 - 2024",
+      "title": "Junior Dasturchi",
+      "company": "Startup Hub",
+      "description": "Turli loyihalarda ishtirok etish va yangi texnologiyalarni o'rganish.",
+      "skills": ["HTML", "CSS", "JavaScript", "Git"]
+    },
+    "ctaText": "LinkedIn'da ko'proq ma'lumot",
+    "ctaButton": "LinkedIn'ni tashrif buyuring"
+  },
+  "skills": {
+    "title": "Ko'nikmalar",
+    "subtitle": "Men ishlatadigan texnologiyalar",
+    "backend": {
+      "title": "Backend",
+      "items": ["Python", "Django", "Node.js"]
+    },
+    "frontend": {
+      "title": "Frontend",
+      "items": ["React", "HTML", "CSS"]
+    },
+    "devops": {
+      "title": "DevOps",
+      "items": ["Docker", "Nginx"]
+    },
+    "databases": {
+      "title": "Ma'lumotlar bazasi",
+      "items": ["PostgreSQL", "MongoDB"]
+    },
+    "ai": {
+      "title": "AI",
+      "items": ["TensorFlow", "PyTorch"]
+    },
+    "tools": {
+      "title": "Asboblar",
+      "items": ["Git", "VS Code"]
+    }
+  },
+  "projects": {
+    "title": "Loyihalar",
+    "subtitle": "Mening ishlarimdan ba'zilari",
+    "viewProject": "Loyihani ko'rish",
+    "viewAll": "Barcha loyihalarni ko'rish",
+    "project1": {
+      "title": "YakLabs Platformasi",
+      "description": "Python, Django, WebSocket va WebRTC yordamida real vaqtda hamkorlik platformasi.",
+      "tags": ["Python", "Django", "WebSocket", "WebRTC"]
+    },
+    "project2": {
+      "title": "Texnomart API",
+      "description": "Node.js va MongoDB yordamida elektron tijorat uchun RESTful API.",
+      "tags": ["Node.js", "MongoDB", "REST API"]
+    },
+    "project3": {
+      "title": "Onlayn do'kon",
+      "description": "Onlayn xaridlar uchun full-stack veb-ilova.",
+      "tags": ["React", "Node.js", "Express"]
+    },
+    "project4": {
+      "title": "Onlayn kurslar",
+      "description": "Onlayn kurslar va o'qitish uchun platforma.",
+      "tags": ["React", "Django", "PostgreSQL"]
+    },
+    "project5": {
+      "title": "Kasallixona boshqaruvi",
+      "description": "Kasallixona operatsiyalarini boshqarish tizimi.",
+      "tags": ["Python", "Flask", "MySQL"]
+    },
+    "project6": {
+      "title": "GPT-Neo",
+      "description": "Maxsus AI til modelini amalga oshirish.",
+      "tags": ["Python", "AI", "NLP"]
+    },
+    "project7": {
+      "title": "Gemina App",
+      "description": "Ko'p tilli tarjima va muloqot ilovasi.",
+      "tags": ["React Native", "Translation", "Mobile"]
+    },
+    "project8": {
+      "title": "Medius Analytics",
+      "description": "Biznes tahlili uchun analitika paneli.",
+      "tags": ["React", "D3.js", "Analytics"]
     }
   },
   "About Me": "Men haqimda",
@@ -27,5 +173,14 @@
   "Major Projects Delivered": "Katta Loyihalar Bajarildi",
   "Active Users Supported": "Faol Foydalanuvchilar Qo'llab-quvvatlandi",
   "Uptime Achieved": "Uptime Erishildi",
-  "Years Experience": "Yil Tajriba"
+  "Years Experience": "Yil Tajriba",
+  "Get In Touch": "Bog'lanish",
+  "Featured Projects": "Tanlangan loyihalar",
+  "Some of my recent work": "Mening so'nggi ishlarimdan ba'zilari",
+  "View Project": "Loyihani ko'rish",
+  "View All Projects": "Barcha loyihalarni ko'rish",
+  "Quick Links": "Tezkor havolalar",
+  "Specializations": "Mutaxassisliklar",
+  "Connect With Me": "Men bilan bog'lanish",
+  "All Rights Reserved.": "Barcha huquqlar himoyalangan."
 }
