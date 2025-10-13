@@ -8,8 +8,8 @@ const Experience = () => {
     <section id="experience" className="bg-bg-secondary/30 py-14 px-2 sm:px-4" role="main" aria-labelledby="experience-title">
       <div className="max-w-6xl mx-auto">
         <header className="text-center mb-10 sm:mb-12">
-          <h2 id="experience-title" className="text-2xl xs:text-3xl md:text-4xl font-bold text-primary mb-2 drop-shadow-lg animate-fadeInUp">Professional Experience</h2>
-          <p className="text-base sm:text-lg text-text-secondary animate-fadeInUp delay-100">Building expertise through hands-on development</p>
+          <h2 id="experience-title" className="text-2xl xs:text-3xl md:text-4xl font-bold text-primary mb-2 drop-shadow-lg animate-fadeInUp">{t('experience.title')}</h2>
+          <p className="text-base sm:text-lg text-text-secondary animate-fadeInUp delay-100">{t('experience.subtitle')}</p>
         </header>
         <div className="flex flex-col gap-8 sm:gap-10 max-w-3xl mx-auto animate-fadeInUp delay-200" role="list" aria-label="Professional experience timeline">
           {experienceData.map((exp, index) => (

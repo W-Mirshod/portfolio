@@ -6,23 +6,23 @@ const Footer = () => {
   const currentYear = new Date().getFullYear();
 
   const quickLinks = [
-    { href: '#home', label: 'Home' },
-    { href: '#about', label: 'About' },
-    { href: '#experience', label: 'Experience' },
-    { href: '#skills', label: 'Skills' },
-    { href: '#achievements', label: 'Achievements' },
-    { href: '#certificate', label: 'Certificate' },
-    { href: '#projects', label: 'Projects' },
-    { href: '#contact', label: 'Contact' }
+    { href: '#home', label: t('footer.quickLinks.home') },
+    { href: '#about', label: t('footer.quickLinks.about') },
+    { href: '#experience', label: t('footer.quickLinks.experience') },
+    { href: '#skills', label: t('footer.quickLinks.skills') },
+    { href: '#achievements', label: t('footer.quickLinks.achievements') },
+    { href: '#certificate', label: t('footer.quickLinks.certificate') },
+    { href: '#projects', label: t('footer.quickLinks.projects') },
+    { href: '#contact', label: t('footer.quickLinks.contact') }
   ];
 
   const specializations = [
-    'Backend Development',
-    'Frontend Development', 
-    'DevOps & Cloud',
-    'AI Integration',
-    'Database Design',
-    'API Development'
+    t('footer.specializations.backend'),
+    t('footer.specializations.frontend'), 
+    t('footer.specializations.devops'),
+    t('footer.specializations.ai'),
+    t('footer.specializations.database'),
+    t('footer.specializations.api')
   ];
 
   const socialLinks = [
@@ -49,7 +49,7 @@ const Footer = () => {
   ];
 
   return (
-    <footer id="footer" className="bg-gradient-to-t from-bg-secondary to-bg-tertiary text-text-secondary py-10 sm:py-14 border-t border-border-color px-2 sm:px-4 animate-fadeInUp">
+    <footer id="contact" className="bg-gradient-to-t from-bg-secondary to-bg-tertiary text-text-secondary py-10 sm:py-14 border-t border-border-color px-2 sm:px-4 animate-fadeInUp">
       <div className="max-w-7xl mx-auto">
         <div className="grid grid-cols-1 md:grid-cols-4 gap-8 sm:gap-10">
           <div className="flex flex-col items-center text-center mb-6 md:mb-0">
@@ -59,7 +59,7 @@ const Footer = () => {
           </div>
           <div className="flex flex-col md:pl-4 md:border-l border-border-color/20 items-center text-center mb-6 md:mb-0">
             <h3 className="text-base font-semibold text-primary mb-5 tracking-wide relative inline-block">
-              <span className="after:content-[''] after:absolute after:bottom-0 after:left-0 after:w-12 after:h-0.5 after:bg-primary after:-mb-2 after:rounded-full">{t("Quick Links")}</span>
+              <span className="after:content-[''] after:absolute after:bottom-0 after:left-0 after:w-12 after:h-0.5 after:bg-primary after:-mb-2 after:rounded-full">{t("footer.quickLinks.title")}</span>
             </h3>
             <ul className="grid grid-cols-2 xs:grid-cols-3 gap-2 sm:gap-3 w-full">
               {quickLinks.map((link) => (
@@ -77,7 +77,7 @@ const Footer = () => {
           </div>
           <div className="flex flex-col md:pl-4 md:border-l border-border-color/20 items-center text-center mb-6 md:mb-0">
             <h3 className="text-base font-semibold text-primary mb-5 tracking-wide relative inline-block">
-              <span className="after:content-[''] after:absolute after:bottom-0 after:left-0 after:w-12 after:h-0.5 after:bg-primary after:-mb-2 after:rounded-full">{t("Specializations")}</span>
+              <span className="after:content-[''] after:absolute after:bottom-0 after:left-0 after:w-12 after:h-0.5 after:bg-primary after:-mb-2 after:rounded-full">{t("footer.specializations.title")}</span>
             </h3>
             <div className="grid grid-cols-2 gap-2 sm:gap-3 w-full">
               {specializations.map((item, index) => (
@@ -85,7 +85,7 @@ const Footer = () => {
                   key={index}
                   className="flex items-center justify-center px-3 py-2 rounded-lg bg-white/5 text-text-primary font-medium text-xs sm:text-sm border border-border-color select-none cursor-default hover:scale-105 transition-transform duration-200"
                 >
-                  {t(item)}
+                  {item}
                 </span>
               ))}
             </div>
@@ -165,7 +165,7 @@ const Footer = () => {
           </div>
         </div>
         <div className="mt-10 sm:mt-12 text-center text-xs text-text-muted tracking-wide animate-fadeInUp delay-200">
-          © 2023-{currentYear} W-Mirshod. {t("All Rights Reserved.")} | Thanks for visiting my portfolio!
+          {t('footer.copyright', { year: currentYear })} | {t('footer.status')}
         </div>
       </div>
     </footer>
