@@ -8,7 +8,4 @@ export default defineConfig({
       external: []
     }
   },
-  optimizeDeps: {
-    include: ['react-tsparticles', 'tsparticles']
-  }
 })
