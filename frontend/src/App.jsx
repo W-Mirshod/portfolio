@@ -16,7 +16,6 @@ const Skills = lazy(() => import('./components/sections/Skills'));
 const Achievements = lazy(() => import('./components/sections/Achievements'));
 const Certificate = lazy(() => import('./components/sections/Certificate'));
 const Projects = lazy(() => import('./components/sections/Projects'));
-const Contact = lazy(() => import('./components/sections/Contact'));
 
 // Load scripts only when needed
 const loadFontAwesome = () => {
@@ -28,21 +27,11 @@ const loadFontAwesome = () => {
   }
 };
 
-const loadRecaptcha = () => {
-  if (!document.querySelector('script[src*="recaptcha"]')) {
-    const script = document.createElement('script');
-    script.src = 'https://www.google.com/recaptcha/api.js';
-    script.async = true;
-    script.defer = true;
-    document.body.appendChild(script);
-  }
-};
 
 function App() {
   // Load Font Awesome immediately since it's used in the Home section
   useEffect(() => {
     loadFontAwesome();
-    // reCAPTCHA will be loaded lazily by the Contact component when needed
   }, []);
 
   return (
@@ -70,9 +59,6 @@ function App() {
               <Suspense fallback={<div className="section-loading">Loading...</div>}>
                 <Projects />
               </Suspense>
-              <Suspense fallback={<div className="section-loading">Loading...</div>}>
-                <Contact />
-              </Suspense>
             </main>
             <Footer />
           </>
@@ -82,6 +68,6 @@ function App() {
 }
 
 // Export utility functions for components
-export { loadFontAwesome, loadRecaptcha };
+export { loadFontAwesome };
 
 export default App

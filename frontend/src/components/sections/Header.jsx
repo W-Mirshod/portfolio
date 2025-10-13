@@ -19,7 +19,7 @@ const Header = () => {
 
   useEffect(() => {
     const handleScroll = () => {
-      const sections = ['home', 'about', 'experience', 'skills', 'achievements', 'certificate', 'projects', 'contact'];
+      const sections = ['home', 'about', 'experience', 'skills', 'achievements', 'certificate', 'projects'];
       const scrollPosition = window.scrollY + 100;
       for (const section of sections) {
         const element = document.getElementById(section);
@@ -59,7 +59,7 @@ const Header = () => {
     { href: '#achievements', key: 'achievements', label: 'Achievements', icon: <FaTrophy size={16} /> },
     { href: '#certificate', key: 'certificate', label: 'Certificate', icon: <FaCertificate size={16} /> },
     { href: '#projects', key: 'projects', label: 'Projects', icon: <FaProjectDiagram size={16} /> },
-    { href: '#contact', key: 'contact', label: 'Contact', icon: <FaEnvelope size={16} /> }
+    { href: '#footer', key: 'contact', label: 'Contact', icon: <FaEnvelope size={16} /> }
   ];
 
   return (

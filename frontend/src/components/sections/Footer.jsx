@@ -49,7 +49,7 @@ const Footer = () => {
   ];
 
   return (
-    <footer className="bg-gradient-to-t from-bg-secondary to-bg-tertiary text-text-secondary py-10 sm:py-14 border-t border-border-color px-2 sm:px-4 animate-fadeInUp">
+    <footer id="footer" className="bg-gradient-to-t from-bg-secondary to-bg-tertiary text-text-secondary py-10 sm:py-14 border-t border-border-color px-2 sm:px-4 animate-fadeInUp">
       <div className="max-w-7xl mx-auto">
         <div className="grid grid-cols-1 md:grid-cols-4 gap-8 sm:gap-10">
           <div className="flex flex-col items-center text-center mb-6 md:mb-0">
@@ -139,6 +139,16 @@ const Footer = () => {
                 >
                   <span className="flex items-center justify-center w-7 h-7 sm:w-8 sm:h-8 rounded-md bg-gray-800/10 text-gray-800"><i className="fab fa-github text-lg" /></span>
                   github.com/W-Mirshod
+                </a>
+                <a
+                  href="https://www.instagram.com/wmirshod?igsh=czRpZ3d5dzBxa2o3&utm_source=qr"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="flex items-center gap-2 sm:gap-3 px-3 sm:px-4 py-2 rounded-lg bg-white/5 text-text-primary font-medium text-xs sm:text-base border border-border-color hover:bg-pink-500/10 transition w-full justify-center"
+                  style={{ letterSpacing: '.01em' }}
+                >
+                  <span className="flex items-center justify-center w-7 h-7 sm:w-8 sm:h-8 rounded-md bg-pink-500/10 text-pink-500"><i className="fab fa-instagram text-lg" /></span>
+                  @wmirshod
                 </a>
                 <a
                   href="https://maps.google.com/?q=Tashkent, Uzbekistan"
