@@ -1,16 +1,8 @@
 import { useTranslation } from 'react-i18next';
-import { useState, useEffect } from 'react';
+import experienceData from '../../data/experience.json';
 
 const Experience = () => {
   const { t } = useTranslation();
-  const [experiences, setExperiences] = useState([]);
-
-  useEffect(() => {
-    fetch('/api/experiences/')
-      .then(res => res.json())
-      .then(data => setExperiences(data))
-      .catch(() => setExperiences([]));
-  }, []);
 
   return (
     <section id="experience" className="bg-bg-secondary/30 py-14 px-2 sm:px-4" role="main" aria-labelledby="experience-title">
@@ -20,7 +12,7 @@ const Experience = () => {
           <p className="text-base sm:text-lg text-text-secondary animate-fadeInUp delay-100">Building expertise through hands-on development</p>
         </header>
         <div className="flex flex-col gap-8 sm:gap-10 max-w-3xl mx-auto animate-fadeInUp delay-200" role="list" aria-label="Professional experience timeline">
-          {experiences.map((exp, index) => (
+          {experienceData.map((exp, index) => (
             <article key={index} className="relative flex flex-col md:flex-row bg-bg-tertiary/80 rounded-2xl p-5 sm:p-8 border border-border-color shadow-neumorphism transition-all duration-300 hover:shadow-neumorphism-hover hover:scale-[1.01]" role="listitem">
               <div className="absolute left-4 top-8 w-4 h-4 rounded-full bg-primary shadow-lg border-4 border-bg-secondary z-10 hidden sm:block" aria-hidden="true"></div>
               <div className="md:w-1/4 flex-shrink-0 flex flex-col items-start md:items-end mb-4 md:mb-0 pr-0 md:pr-8">

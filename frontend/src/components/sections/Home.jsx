@@ -1,13 +1,13 @@
 import { useState, useEffect } from 'react';
 import { useTranslation } from 'react-i18next';
 import { initializeAudio } from '../../utils/audio';
+import techStackData from '../../data/techStack.json';
 
 const Home = () => {
   const { t } = useTranslation();
   const [typingText, setTypingText] = useState('');
   const [currentIndex, setCurrentIndex] = useState(0);
   const [isDeleting, setIsDeleting] = useState(false);
-  const [techStack, setTechStack] = useState([]);
 
   const typingTexts = [
     "Backend Developer & AI Engineer",
@@ -49,13 +49,6 @@ const Home = () => {
   useEffect(() => {
     const cleanupAudio = initializeAudio('/warm-ambient-sound.mp3', 0.5);
     return cleanupAudio;
-  }, []);
-
-  useEffect(() => {
-    fetch('/api/tech-stack/')
-      .then(res => res.json())
-      .then(data => setTechStack(data))
-      .catch(() => setTechStack([]));
   }, []);
 
   const terminalLines = [
@@ -164,8 +157,8 @@ const Home = () => {
                 </div>
               </div>
             </div>
-            <div className="flex flex-wrap justify-center gap-2 sm:gap-3 md:gap-4 my-2 sm:my-4 max-w-3xl mx-auto animate-fadeInUp delay-500">
-              {techStack.map((tech, index) => (
+            <div className="flex flex-wrap gap-3 sm:gap-4 justify-center">
+              {techStackData.map((tech, index) => (
                 <div
                   key={tech.name}
                   className="flex items-center gap-2 bg-white/5 border border-white/10 px-3 sm:px-4 py-2 rounded-full text-xs sm:text-sm font-medium text-text-primary transition-all duration-200 cursor-pointer hover:scale-110"

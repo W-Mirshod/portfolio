@@ -1,0 +1,57 @@
+[
+  {
+    "id": 1,
+    "period": "Mar 2025 - Present",
+    "title": "Senior Software Engineer",
+    "company": "Yaklabs \u00b7 Full-time",
+    "description": "Contributing to a tech-driven, future-oriented platform at YakLabs (Tashkent, Uzbekistan). Focused on innovative projects and modern technologies including AI/ML integration, mobile development, and advanced DevOps practices.",
+    "skills": [
+      "Python",
+      "Django",
+      "AWS",
+      "Docker",
+      "PostgreSQL",
+      "Redis",
+      "WebSocket",
+      "React Native",
+      "PyTorch",
+      "Grafana",
+      "Prometheus"
+    ],
+    "order": 0
+  },
+  {
+    "id": 2,
+    "period": "Oct 2024 - Apr 2025",
+    "title": "Software Engineer",
+    "company": "MegaDevs (Germany Company) \u00b7 Full-time",
+    "description": "Developed scalable web applications and microservices architecture. Led backend development initiatives and implemented DevOps practices for continuous integration and deployment.",
+    "skills": [
+      "React",
+      "Node.js",
+      "TypeScript",
+      "Docker",
+      "Kubernetes",
+      "AWS",
+      "CI/CD"
+    ],
+    "order": 0
+  },
+  {
+    "id": 3,
+    "period": "2022 - Oct 2024",
+    "title": "Backend Developer & AI Engineer",
+    "company": "Freelance / Independent Projects",
+    "description": "Specializing in microservices architecture, API development, and AI integration. Working on innovative projects with Python, Django, AWS, and machine learning technologies.",
+    "skills": [
+      "Python",
+      "Django",
+      "FastAPI",
+      "AI APIs",
+      "Machine Learning",
+      "AWS",
+      "PostgreSQL"
+    ],
+    "order": 0
+  }
+]

@@ -1,0 +1,101 @@
+[
+  {
+    "id": 1,
+    "title": "Backend Development",
+    "skills": [
+      "Python",
+      "Django",
+      "Django ORM",
+      "Flask",
+      "FastAPI",
+      "REST APIs",
+      "WebSockets",
+      "WebRTC",
+      "Monolithic/Microservices",
+      "API Integration",
+      "Celery",
+      "Flower",
+      "Python-telegram-bot",
+      "Aiogram",
+      "Telethon",
+      "Performance Optimization",
+      "PyGame"
+    ]
+  },
+  {
+    "id": 2,
+    "title": "Frontend Technologies",
+    "skills": [
+      "JavaScript",
+      "React",
+      "Vite",
+      "Tailwind",
+      "HTML5",
+      "CSS3",
+      "SCSS"
+    ]
+  },
+  {
+    "id": 3,
+    "title": "Mobile Development",
+    "skills": [
+      "React Native (iOS & Android)"
+    ]
+  },
+  {
+    "id": 4,
+    "title": "DevOps & Cloud",
+    "skills": [
+      "AWS (EC2, S3, CodePipeline, CodeDeploy)",
+      "Docker",
+      "Docker Compose",
+      "Linux",
+      "Git",
+      "GitHub",
+      "GitHub Actions",
+      "CI/CD",
+      "Automation",
+      "Nginx",
+      "Apache",
+      "Grafana",
+      "Prometheus"
+    ]
+  },
+  {
+    "id": 5,
+    "title": "Databases",
+    "skills": [
+      "PostgreSQL",
+      "MySQL",
+      "SQLite",
+      "Redis",
+      "Caching"
+    ]
+  },
+  {
+    "id": 6,
+    "title": "AI & Machine Learning",
+    "skills": [
+      "PyTorch",
+      "langchain-community",
+      "Jupyter",
+      "YoloV8",
+      "Azure APIs",
+      "AI APIs",
+      "Personal AI Model (GPT-Neo)"
+    ]
+  },
+  {
+    "id": 7,
+    "title": "Tools & Utilities",
+    "skills": [
+      "Swagger/OpenAPI",
+      "Postman",
+      "Pytest",
+      "Excel/CSV Analysis",
+      "Jira",
+      "Stripe",
+      "Trello"
+    ]
+  }
+]
