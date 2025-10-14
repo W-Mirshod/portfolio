@@ -1,5 +1,5 @@
 import { useTranslation } from 'react-i18next';
-import MirshodImg from '../../assets/images/Mirshod.png';
+const MirshodImg = '/Mirshod-optimized.webp';
 
 const Footer = () => {
   const { t } = useTranslation();
