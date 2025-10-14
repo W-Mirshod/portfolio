@@ -7,7 +7,6 @@ const Footer = () => {
 
   const quickLinks = [
     { href: '#home', label: t('footer.quickLinks.home') },
-    { href: '#about', label: t('footer.quickLinks.about') },
     { href: '#experience', label: t('footer.quickLinks.experience') },
     { href: '#skills', label: t('footer.quickLinks.skills') },
     { href: '#achievements', label: t('footer.quickLinks.achievements') },

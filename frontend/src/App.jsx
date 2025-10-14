@@ -13,7 +13,6 @@ import Home from './components/sections/Home';
 import Footer from './components/sections/Footer';
 
 // Lazy load non-critical sections for code splitting
-const About = () => import('./components/sections/About');
 const Experience = () => import('./components/sections/Experience');
 const Skills = () => import('./components/sections/Skills');
 const Achievements = () => import('./components/sections/Achievements');
@@ -70,8 +69,6 @@ function App() {
             <Header />
             <main>
               <Home />
-
-              <LazySection loader={About} fallback={<SectionSkeleton height="h-96" />} minHeight="24rem" />
               <LazySection loader={Experience} fallback={<SectionSkeleton height="h-80" />} minHeight="20rem" />
               <LazySection loader={Skills} fallback={<SectionSkeleton height="h-72" />} minHeight="18rem" />
               <LazySection loader={Achievements} fallback={<SectionSkeleton height="h-64" />} minHeight="16rem" />
