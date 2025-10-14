@@ -19,7 +19,7 @@ const Header = () => {
 
   useEffect(() => {
     const handleScroll = () => {
-      const sections = ['home', 'about', 'experience', 'skills', 'achievements', 'certificate', 'projects'];
+      const sections = ['home', 'experience', 'skills', 'achievements', 'certificate', 'projects'];
       const scrollPosition = window.scrollY + 100;
       for (const section of sections) {
         const element = document.getElementById(section);
@@ -53,7 +53,6 @@ const Header = () => {
 
   const navItems = [
     { href: '#home', key: 'home', label: t('navigation.home'), icon: <FaHome size={16} /> },
-    { href: '#about', key: 'about', label: t('navigation.about'), icon: <FaUser size={16} /> },
     { href: '#experience', key: 'experience', label: t('navigation.experience'), icon: <FaBriefcase size={16} /> },
     { href: '#skills', key: 'skills', label: t('navigation.skills'), icon: <FaCode size={16} /> },
     { href: '#achievements', key: 'achievements', label: t('navigation.achievements'), icon: <FaTrophy size={16} /> },

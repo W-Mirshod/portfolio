@@ -1,7 +1,7 @@
 {
   "hero": {
     "title": "Hi, I'm <1>Mirshod Qayimov</1><br/>Building Digital Solutions",
-    "badge": "Full Stack Developer",
+    "badge": "Software Engineer",
     "subtitle": "Building robust microservices, scalable APIs, and intelligent AI solutions for modern businesses.",
     "typingTexts": [
       "Backend Developer & AI Engineer",
@@ -18,7 +18,6 @@
   },
   "navigation": {
     "home": "Home",
-    "about": "About",
     "experience": "Experience",
     "skills": "Skills",
     "achievements": "Achievements",
@@ -30,7 +29,6 @@
     "quickLinks": {
       "title": "Quick Links",
       "home": "Home",
-      "about": "About",
       "experience": "Experience",
       "skills": "Skills",
       "achievements": "Achievements",
@@ -161,6 +159,26 @@
       "tags": ["React", "D3.js", "Analytics"]
     }
   },
+  "About Me": "About Me",
+  "Your Complete Digital Solution Partner": "Your Complete Digital Solution Partner",
+  "Senior Software Engineer specializing in scalable backend systems, AI integration, and cloud infrastructure. I build production-grade platforms that handle real-world traffic with enterprise-level reliability.": "Senior Software Engineer specializing in scalable backend systems, AI integration, and cloud infrastructure. I build production-grade platforms that handle real-world traffic with enterprise-level reliability.",
+  "Backend Architecture": "Backend Architecture",
+  "Microservices, APIs, Database Design": "Microservices, APIs, Database Design",
+  "AI & Machine Learning": "AI & Machine Learning",
+  "Computer Vision, NLP, Model Optimization": "Computer Vision, NLP, Model Optimization",
+  "Cloud & DevOps": "Cloud & DevOps",
+  "Infrastructure, Monitoring, Deployment": "Infrastructure, Monitoring, Deployment",
+  "Performance Engineering": "Performance Engineering",
+  "Optimization, Scalability, Real-time Systems": "Optimization, Scalability, Real-time Systems",
+  "Track Record": "Track Record",
+  "Projects Delivered": "Projects Delivered",
+  "Production Ready": "Production Ready",
+  "Concurrent Users": "Concurrent Users",
+  "Peak Load": "Peak Load",
+  "System Uptime": "System Uptime",
+  "Enterprise SLA": "Enterprise SLA",
+  "Years Experience": "Years Experience",
+  "Full Stack": "Full Stack",
   "Get In Touch": "Get In Touch",
   "Featured Projects": "Featured Projects",
   "Some of my recent work": "Some of my recent work",
