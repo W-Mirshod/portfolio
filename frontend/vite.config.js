@@ -4,43 +4,77 @@ import react from '@vitejs/plugin-react'
 export default defineConfig({
   plugins: [react()],
   build: {
-    // Enable source maps for production debugging
     sourcemap: false,
-    // Optimize bundle size
     minify: 'esbuild',
-    // Target modern browsers for better optimization
     target: 'esnext',
     rollupOptions: {
       output: {
-        // Manual chunk splitting for better caching
-        manualChunks: {
-          // Vendor chunk for React and core dependencies
-          vendor: ['react', 'react-dom'],
+        manualChunks: (id) => {
+          // Core React chunk
+          if (id.includes('react') || id.includes('react-dom')) {
+            return 'react-core';
+          }
+          
           // Router chunk
-          router: ['react-router-dom'],
-          // Icons chunk (loaded on demand)
-          icons: ['react-icons', 'lucide-react'],
+          if (id.includes('react-router')) {
+            return 'router';
+          }
+          
+          // FontAwesome chunk (large library)
+          if (id.includes('@fortawesome')) {
+            return 'fontawesome';
+          }
+          
+          // Icons chunk
+          if (id.includes('react-icons') || id.includes('lucide-react')) {
+            return 'icons';
+          }
+          
           // i18n chunk
-          i18n: ['i18next', 'react-i18next', 'i18next-browser-languagedetector']
+          if (id.includes('i18next') || id.includes('react-i18next')) {
+            return 'i18n';
+          }
+          
+          // Component chunks for better caching
+          if (id.includes('/components/sections/')) {
+            const sectionName = id.split('/').pop().replace('.jsx', '');
+            return `section-${sectionName.toLowerCase()}`;
+          }
+          
+          // Utils chunk
+          if (id.includes('/utils/')) {
+            return 'utils';
+          }
+          
+          // Vendor chunk for other dependencies
+          if (id.includes('node_modules')) {
+            return 'vendor';
+          }
         },
-        // Optimize chunk naming for better caching
         chunkFileNames: 'assets/[name]-[hash].js',
         entryFileNames: 'assets/[name]-[hash].js',
         assetFileNames: 'assets/[name]-[hash].[ext]'
       }
     },
-    // CSS code splitting
     cssCodeSplit: true,
-    // Enable tree shaking
     modulePreload: {
       polyfill: false
+    },
+    // Optimize chunk size warnings
+    chunkSizeWarningLimit: 1000,
+    // Enable tree shaking
+    treeshake: {
+      moduleSideEffects: false
     }
   },
-  // Optimize dev server
   server: {
     fs: {
-      // Allow serving files from one level up to the project root
       allow: ['..']
     }
+  },
+  // Optimize dependencies
+  optimizeDeps: {
+    include: ['react', 'react-dom', 'react-router-dom'],
+    exclude: ['@fortawesome/free-brands-svg-icons', '@fortawesome/free-solid-svg-icons']
   }
 })

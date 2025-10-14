@@ -2,6 +2,7 @@ import { useState, useEffect } from 'react';
 import { useTranslation } from 'react-i18next';
 import { initializeAudio } from '../../utils/audio';
 import ParallaxBackground from '../ui/ParallaxBackground';
+import LazyImage from '../ui/LazyImage';
 import techStackData from '../../data/techStack.json';
 
 const Home = () => {
@@ -166,10 +167,9 @@ const Home = () => {
                   title={tech.name}
                   style={{ animationDelay: `${0.7 + (index * 0.05)}s` }}
                 >
-                  <img
+                  <LazyImage
                     src={tech.img}
                     alt={tech.name}
-                    loading="lazy"
                     width="24"
                     height="24"
                     className="w-6 h-6 sm:w-8 sm:h-8 object-contain transition-transform duration-300 hover:rotate-12"
