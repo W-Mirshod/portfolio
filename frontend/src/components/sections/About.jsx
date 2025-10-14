@@ -3,10 +3,15 @@ import ParallaxBackground from '../ui/ParallaxBackground';
 
 const About = () => {
   const { t } = useTranslation();
+  
+  // Conditional effects for better performance
+  const enableEffects = typeof window !== 'undefined' &&
+    window.matchMedia('(prefers-reduced-motion: no-preference)').matches &&
+    window.matchMedia('(min-width: 768px)').matches;
 
   return (
     <section id="about" className="bg-bg-secondary/30 py-16 px-2 sm:px-4 relative overflow-hidden">
-      <ParallaxBackground className="absolute inset-0 opacity-30" particleCount={10} />
+      {enableEffects && <ParallaxBackground className="absolute inset-0 opacity-30" particleCount={10} />}
 
       <div className="max-w-6xl mx-auto relative z-10">
         <div className="text-center mb-10 sm:mb-12">

@@ -1,7 +1,7 @@
 import { useState, useEffect } from 'react';
 import { useTranslation } from 'react-i18next';
 import { createPortal } from 'react-dom';
-import MirshodImg from '../../assets/images/Mirshod.png';
+const MirshodImg = '/Mirshod-optimized.webp';
 import { FaHome, FaUser, FaBriefcase, FaCode, FaTrophy, FaCertificate, FaProjectDiagram, FaEnvelope } from 'react-icons/fa';
 import '../styles/menu-futuristic.css';
 

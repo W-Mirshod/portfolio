@@ -12,6 +12,11 @@ const Home = () => {
   const [isDeleting, setIsDeleting] = useState(false);
 
   const typingTexts = t('hero.typingTexts', { returnObjects: true });
+  
+  // Conditional effects for better performance
+  const enableEffects = typeof window !== 'undefined' &&
+    window.matchMedia('(prefers-reduced-motion: no-preference)').matches &&
+    window.matchMedia('(min-width: 768px)').matches;
 
   useEffect(() => {
     const typeSpeed = isDeleting ? 80 : 140;
@@ -42,8 +47,21 @@ const Home = () => {
   }, [typingText, isDeleting, currentIndex, typingTexts]);
 
   useEffect(() => {
-    const cleanupAudio = initializeAudio('/warm-ambient-sound.mp3', 0.5);
-    return cleanupAudio;
+    // Load audio after first user interaction
+    let started = false;
+    const start = () => {
+      if (started) return;
+      started = true;
+      const cleanup = initializeAudio('/warm-ambient-sound.mp3', 0.5);
+      window.removeEventListener('pointerdown', start);
+      window.removeEventListener('keydown', start);
+    };
+    window.addEventListener('pointerdown', start, { once: true });
+    window.addEventListener('keydown', start, { once: true });
+    return () => {
+      window.removeEventListener('pointerdown', start);
+      window.removeEventListener('keydown', start);
+    };
   }, []);
 
   const terminalLines = [
@@ -113,9 +131,14 @@ const Home = () => {
 
   return (
     <section id="home" className="relative flex flex-col items-center justify-center min-h-screen h-screen w-full overflow-hidden pt-10 sm:pt-12">
-      <ParallaxBackground className="absolute inset-0">
+      {enableEffects && (
+        <ParallaxBackground className="absolute inset-0">
+          <div className="absolute inset-0 w-full h-full bg-gradient-to-br from-[#0a101a] via-[#1a2633] to-[#008080] opacity-80" />
+        </ParallaxBackground>
+      )}
+      {!enableEffects && (
         <div className="absolute inset-0 w-full h-full bg-gradient-to-br from-[#0a101a] via-[#1a2633] to-[#008080] opacity-80" />
-      </ParallaxBackground>
+      )}
 
       <div className="relative flex flex-col justify-center items-center w-full h-full max-w-7xl mx-auto px-2 sm:px-4 z-10">
         <div className="flex flex-col items-center justify-center text-center w-full max-w-5xl mx-auto h-full py-4 sm:py-6">
