@@ -1,0 +1,21 @@
+services:
+  portfolio-dev:
+    build:
+      context: ./frontend
+      dockerfile: Dockerfile.dev
+    restart: unless-stopped
+    ports:
+      - "5173:5173"
+    volumes:
+      - ./frontend:/app
+      - /app/node_modules
+    environment:
+      - NODE_ENV=development
+    networks:
+      - web
+    stdin_open: true
+    tty: true
+
+networks:
+  web:
+    driver: bridge
