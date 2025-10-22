@@ -114,6 +114,10 @@ export const fetchUserRepositories = async (page = 1, perPage = 100) => {
     );
 
     if (!response.ok) {
+      if (response.status === 403) {
+        console.warn('GitHub API rate-limited or forbidden. Using fallback data.');
+        return getFallbackRepositories();
+      }
       throw new Error(`GitHub API error: ${response.status}`);
     }
 
@@ -144,7 +148,8 @@ export const fetchUserRepositories = async (page = 1, perPage = 100) => {
     return repositoriesWithLanguages.map(formatRepositoryData);
   } catch (error) {
     console.error('Error fetching repositories:', error);
-    throw error;
+    console.warn('Falling back to static data due to API error.');
+    return getFallbackRepositories();
   }
 };
 
@@ -188,4 +193,45 @@ export const getLanguageIcon = (language) => {
 
 export const getCategoryIcon = (category) => {
   return categoryIcons[category] || categoryIcons['default'];
+};
+
+const getFallbackRepositories = () => {
+  return [
+    {
+      id: 1,
+      title: 'Library Management System',
+      description: 'Django project for managing library',
+      icon: 'fas fa-book',
+      technologies: ['Python', 'Django', 'PostgreSQL'],
+      url: 'https://github.com/W-Mirshod/library-management-system',
+      githubUrl: 'https://github.com/W-Mirshod/library-management-system',
+      stars: 0,
+      forks: 0,
+      language: 'Python',
+      updatedAt: new Date().toISOString(),
+      createdAt: new Date().toISOString(),
+      topics: [],
+      isPrivate: false,
+      hasPages: false,
+      size: 0
+    },
+    {
+      id: 2,
+      title: 'For Medius Technologies',
+      description: 'Take multiple Excel/CSV files and generate their summary & analysis will be send \'em to entered email',
+      icon: 'fas fa-file-excel',
+      technologies: ['Python', 'Pandas', 'Openpyxl'],
+      url: 'https://github.com/W-Mirshod/medius-technologies',
+      githubUrl: 'https://github.com/W-Mirshod/medius-technologies',
+      stars: 1,
+      forks: 0,
+      language: 'Python',
+      updatedAt: new Date().toISOString(),
+      createdAt: new Date().toISOString(),
+      topics: [],
+      isPrivate: false,
+      hasPages: false,
+      size: 0
+    }
+  ];
 };

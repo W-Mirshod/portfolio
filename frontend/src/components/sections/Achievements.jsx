@@ -1,26 +1,29 @@
 import { useTranslation } from 'react-i18next';
-import organizationsData from '../../data/organizations.json';
 
 const githubAchievements = [
   {
     label: 'Arctic Code Vault Contributor',
     icon: 'https://github.githubassets.com/images/modules/profile/achievements/arctic-code-vault-contributor-default.png',
-    count: 2
+    count: 2,
+    description: 'Code preserved in Arctic vault'
   },
   {
     label: 'Pull Shark',
-    icon: 'https://github.githubassets.com/images/modules/profile/achievements/pull-shark-default.png'
+    icon: 'https://github.githubassets.com/images/modules/profile/achievements/pull-shark-default.png',
+    description: 'Expert pull request reviewer'
   },
   {
     label: 'Quickdraw',
-    icon: 'https://github.githubassets.com/images/modules/profile/achievements/quickdraw-default.png'
+    icon: 'https://github.githubassets.com/images/modules/profile/achievements/quickdraw-default.png',
+    description: 'Fast issue resolution'
   }
 ];
 
 const githubHighlights = [
   {
     label: 'PRO',
-    icon: null
+    icon: 'fas fa-star',
+    description: 'GitHub Pro subscriber'
   }
 ];
 
@@ -28,56 +31,69 @@ const Achievements = () => {
   const { t } = useTranslation();
 
   return (
-    <section id="achievements" className="bg-bg-secondary/30 py-14 px-2 sm:px-4">
-      <div className="max-w-6xl mx-auto">
-        <div className="text-center mb-10 sm:mb-12">
-          <h2 className="text-2xl xs:text-3xl md:text-4xl font-bold text-primary mb-2 drop-shadow-lg animate-fadeInUp">GitHub Achievements</h2>
-          <p className="text-base sm:text-lg text-text-secondary animate-fadeInUp delay-100">Open source contributions and milestones</p>
-        </div>
-        <div className="flex flex-col md:flex-row gap-8 justify-center items-center mb-10 animate-fadeInUp delay-200">
-          <div className="flex gap-4 items-center">
-            {githubAchievements.map((ach, idx) => (
-              <div key={ach.label} className="relative flex flex-col items-center group transition-transform duration-300 hover:scale-110">
-                <img
-                  src={ach.icon}
-                  alt={ach.label}
-                  className="w-14 h-14 sm:w-16 sm:h-16 rounded-full border-4 border-primary shadow-lg bg-white animate-fadeInUp"
-                  title={ach.label}
-                />
-                {ach.count && (
-                  <span className="absolute -bottom-2 -right-2 bg-primary text-white text-xs font-bold px-2 py-0.5 rounded-full border-2 border-white animate-bounce">x{ach.count}</span>
-                )}
-                <span className="text-xs mt-2 text-text-secondary text-center max-w-[80px] animate-fadeInUp delay-100">{ach.label}</span>
+    <section id="achievements" className="py-20 px-4 bg-bg-secondary/30">
+      <div className="max-w-5xl mx-auto">
+        <header className="text-center mb-16">
+          <h2 className="text-3xl font-light text-white mb-3 tracking-wide animate-fadeInUp">GitHub Achievements</h2>
+          <div className="w-16 h-px bg-gradient-to-r from-transparent via-white/30 to-transparent mx-auto animate-fadeInUp delay-100"></div>
+        </header>
+
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-8 animate-fadeInUp delay-200">
+          {/* Achievements Section */}
+          <div className="bg-white/5 backdrop-blur-sm rounded-xl p-8 border border-white/10">
+            <div className="flex items-center gap-3 mb-6">
+              <div className="w-8 h-8 rounded-lg bg-white/10 flex items-center justify-center">
+                <i className="fas fa-trophy text-sm text-white/70"></i>
               </div>
-            ))}
-          </div>
-          <div className="flex flex-col items-center gap-2 ml-0 md:ml-8 animate-fadeInUp delay-200">
-            <span className="font-bold text-base text-primary mb-1">Highlights</span>
-            <div className="flex gap-2">
-              {githubHighlights.map((hl, idx) => (
-                <span key={hl.label} className="flex items-center gap-1 px-3 py-1 rounded-full border border-primary text-primary text-xs font-semibold bg-white/5 animate-fadeInUp delay-300">
-                  <i className="fas fa-star text-primary" />
-                  {hl.label}
-                </span>
+              <h3 className="text-lg font-semibold text-white">Achievements</h3>
+            </div>
+            
+            <div className="grid grid-cols-1 gap-4">
+              {githubAchievements.map((achievement, index) => (
+                <div key={achievement.label} className="group flex items-center gap-4 p-4 rounded-lg bg-gray-900/50 border border-gray-800 hover:bg-gray-800/50 hover:border-gray-700 transition-all duration-300">
+                  <div className="relative">
+                    <img
+                      src={achievement.icon}
+                      alt={achievement.label}
+                      className="w-12 h-12 rounded-lg border border-gray-700 group-hover:border-gray-600 transition-colors duration-300"
+                    />
+                    {achievement.count && (
+                      <div className="absolute -top-2 -right-2 w-6 h-6 bg-blue-600 text-white text-xs font-bold rounded-full flex items-center justify-center border-2 border-gray-900">
+                        {achievement.count}
+                      </div>
+                    )}
+                  </div>
+                  <div className="flex-1">
+                    <h4 className="text-sm font-semibold text-white mb-1">{achievement.label}</h4>
+                    <p className="text-xs text-gray-400">{achievement.description}</p>
+                  </div>
+                </div>
               ))}
             </div>
           </div>
-        </div>
-        <div className="flex flex-col gap-10 animate-fadeInUp delay-300">
-          <div className="bg-bg-tertiary/80 rounded-xl p-6 sm:p-8 border border-border-color shadow-neumorphism max-w-2xl mx-auto mb-8">
-            <h3 className="text-lg sm:text-xl font-bold text-primary mb-4">Organization Member</h3>
-            {organizationsData.map((org, index) => (
-              <div key={index} className={`flex flex-col sm:flex-row items-start gap-4 py-4 ${index > 0 ? 'mt-6 border-t border-border-color/50' : ''}`}>
-                <i className="fas fa-building text-primary text-2xl mt-1" />
-                <div>
-                  <h4 className="font-semibold text-text-primary text-base">{org.name}</h4>
-                  <p className="text-sm text-text-secondary mb-1">{org.description}</p>
-                  {org.link && (
-                    <a href={org.link} target="_blank" rel="noopener noreferrer" className="text-primary underline text-xs font-medium">Visit Organization</a>
-                  )}
-                </div>
+
+          {/* Highlights Section */}
+          <div className="bg-white/5 backdrop-blur-sm rounded-xl p-8 border border-white/10">
+            <div className="flex items-center gap-3 mb-6">
+              <div className="w-8 h-8 rounded-lg bg-white/10 flex items-center justify-center">
+                <i className="fas fa-star text-sm text-white/70"></i>
               </div>
-            ))}
+              <h3 className="text-lg font-semibold text-white">Highlights</h3>
+            </div>
+            
+            <div className="space-y-4">
+              {githubHighlights.map((highlight, index) => (
+                <div key={highlight.label} className="group flex items-center gap-4 p-4 rounded-lg bg-gray-900/50 border border-gray-800 hover:bg-gray-800/50 hover:border-gray-700 transition-all duration-300">
+                  <div className="w-12 h-12 rounded-lg bg-gradient-to-br from-blue-600 to-blue-700 flex items-center justify-center">
+                    <i className={`${highlight.icon} text-white text-lg`}></i>
+                  </div>
+                  <div className="flex-1">
+                    <h4 className="text-sm font-semibold text-white mb-1">{highlight.label}</h4>
+                    <p className="text-xs text-gray-400">{highlight.description}</p>
+                  </div>
+                </div>
+              ))}
+            </div>
           </div>
         </div>
       </div>

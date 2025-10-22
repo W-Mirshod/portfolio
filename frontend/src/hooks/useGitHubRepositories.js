@@ -84,7 +84,10 @@ export const useGitHubRepositories = () => {
       setHasMore(data.length === 30);
       setPage(pageNum);
     } catch (err) {
-      setError(err.message);
+      // Only set error if we don't have any repositories (fallback failed too)
+      if (repositories.length === 0) {
+        setError(err.message);
+      }
       console.error('Failed to load repositories:', err);
     } finally {
       setLoading(false);
