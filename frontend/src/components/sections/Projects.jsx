@@ -1,10 +1,24 @@
 import { useTranslation } from 'react-i18next';
 import { useScrollReveal } from '../../utils/parallax';
-import projectsData from '../../data/projects.json';
+import { useGitHubRepositories } from '../../hooks/useGitHubRepositories';
+import { getLanguageIcon } from '../../services/githubApi';
 
 const Projects = () => {
   const { t } = useTranslation();
   const revealRef = useScrollReveal();
+  const { 
+    repositories, 
+    allRepositories,
+    loading, 
+    error, 
+    hasMore, 
+    filter,
+    sortBy,
+    loadMore, 
+    refresh,
+    applyFilter,
+    applySort
+  } = useGitHubRepositories();
 
   return (
     <section id="projects" className="py-14 px-2 sm:px-4 bg-gradient-to-b from-[#181a24] to-[#23263a] dark:bg-[#181a24] relative overflow-hidden">
@@ -28,58 +42,174 @@ const Projects = () => {
       <div className="max-w-6xl mx-auto relative z-10">
         <div className="mb-10 sm:mb-12 text-center">
           <h2 className="text-2xl xs:text-3xl md:text-4xl font-bold text-white drop-shadow-lg mb-2 layered-entrance">{t("projects.title")}</h2>
-          <p className="text-base sm:text-lg text-gray-400 layered-entrance" style={{ animationDelay: '0.2s' }}>{t("projects.subtitle")}</p>
-        </div>
-
-        <div
-          ref={revealRef}
-          className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-6 sm:gap-8 mb-10 sm:mb-12"
-        >
-          {projectsData.map((project, index) => (
-            <div
-              key={project.id || project.title}
-              className="group relative flex flex-col card-depth-3 rounded-2xl p-5 sm:p-7 depth-hover-card layered-entrance cursor-pointer"
-              style={{ animationDelay: `${0.3 + (index * 0.15)}s` }}
-            >
-              <div className="flex items-center justify-center w-16 h-16 sm:w-20 sm:h-20 bg-gradient-to-br from-[#3fa2f6] to-[#23263a] rounded-xl mb-4 sm:mb-6 text-2xl sm:text-3xl text-white transition-all duration-500 group-hover:rotate-6 group-hover:scale-110 group-hover:shadow-[0_0_30px_rgba(63,162,246,0.4)]">
-                <i className={project.icon}></i>
-              </div>
-
-              <div className="flex flex-col flex-1">
-                <h3 className="text-lg sm:text-xl font-semibold text-white mb-2 group-hover:text-[#3fa2f6] transition-colors duration-300">{t(project.title)}</h3>
-                <p className="text-xs sm:text-base text-gray-400 mb-3 sm:mb-4 leading-relaxed">{t(project.description)}</p>
-
-                <div className="flex flex-wrap gap-2 mb-3 sm:mb-4">
-                  {Array.isArray(project.technologies) && project.technologies.map((tech, idx) => (
-                    <span
-                      key={idx}
-                      className="bg-[#3fa2f6]/10 text-[#3fa2f6] px-3 py-1 rounded-full text-xs font-medium border border-[#3fa2f6]/20 transition-all duration-300 hover:bg-[#3fa2f6] hover:text-white hover:-translate-y-0.5 hover:shadow-[0_4px_12px_rgba(63,162,246,0.3)] layered-entrance"
-                      style={{ animationDelay: `${0.5 + (index * 0.1) + (idx * 0.05)}s` }}
-                    >
-                      {t(tech)}
-                    </span>
-                  ))}
-                </div>
-
-                <div className="mt-auto flex gap-2 sm:gap-3">
-                  <a
-                    href={project.url || project.githubUrl}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-gradient-to-r from-[#3fa2f6] to-[#23263a] text-white font-medium text-xs sm:text-sm transition-all duration-300 hover:shadow-[0_8px_25px_rgba(63,162,246,0.3)] hover:-translate-y-1 hover:scale-105 layered-entrance"
-                    style={{ animationDelay: `${0.7 + (index * 0.1)}s` }}
-                  >
-                    <i className="fas fa-external-link-alt transition-transform duration-300 group-hover:scale-110"></i>
-                    {t("projects.viewProject")}
-                  </a>
-                </div>
-              </div>
-
-              {/* Depth enhancement overlay */}
-              <div className="absolute inset-0 rounded-2xl bg-gradient-to-br from-transparent via-transparent to-rgba(63,162,246,0.02) opacity-0 group-hover:opacity-100 transition-opacity duration-500 pointer-events-none" />
+          <p className="text-base sm:text-lg text-gray-400 layered-entrance mb-6" style={{ animationDelay: '0.2s' }}>{t("projects.subtitle")}</p>
+          
+          {/* Filter and Sort Controls */}
+          <div className="flex flex-wrap justify-center gap-4 mb-8">
+            <div className="flex flex-wrap gap-2">
+              <span className="text-gray-400 text-sm font-medium">Filter:</span>
+              {['all', 'web', 'mobile', 'ai', 'api', 'python', 'javascript', 'popular'].map((filterType) => (
+                <button
+                  key={filterType}
+                  onClick={() => applyFilter(filterType)}
+                  className={`px-3 py-1 rounded-full text-xs font-medium transition-all duration-300 ${
+                    filter === filterType
+                      ? 'bg-[#3fa2f6] text-white shadow-[0_4px_12px_rgba(63,162,246,0.3)]'
+                      : 'bg-gray-700 text-gray-300 hover:bg-gray-600 hover:text-white'
+                  }`}
+                >
+                  {filterType.charAt(0).toUpperCase() + filterType.slice(1)}
+                </button>
+              ))}
             </div>
-          ))}
+            
+            <div className="flex flex-wrap gap-2">
+              <span className="text-gray-400 text-sm font-medium">Sort:</span>
+              {['updated', 'stars', 'name', 'created'].map((sortType) => (
+                <button
+                  key={sortType}
+                  onClick={() => applySort(sortType)}
+                  className={`px-3 py-1 rounded-full text-xs font-medium transition-all duration-300 ${
+                    sortBy === sortType
+                      ? 'bg-[#3fa2f6] text-white shadow-[0_4px_12px_rgba(63,162,246,0.3)]'
+                      : 'bg-gray-700 text-gray-300 hover:bg-gray-600 hover:text-white'
+                  }`}
+                >
+                  {sortType.charAt(0).toUpperCase() + sortType.slice(1)}
+                </button>
+              ))}
+            </div>
+          </div>
+          
+          {/* Stats */}
+          <div className="flex justify-center gap-6 text-sm text-gray-400 mb-4">
+            <span>📊 {allRepositories.length} Total Projects</span>
+            <span>⭐ {allRepositories.reduce((sum, repo) => sum + repo.stars, 0)} Stars</span>
+            <span>🔧 {new Set(allRepositories.flatMap(repo => repo.technologies)).size} Technologies</span>
+          </div>
         </div>
+
+        {loading && repositories.length === 0 ? (
+          <div className="flex justify-center items-center py-20">
+            <div className="flex flex-col items-center gap-4">
+              <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-[#3fa2f6]"></div>
+              <p className="text-gray-400 text-lg">Loading amazing projects...</p>
+            </div>
+          </div>
+        ) : repositories.length === 0 && !loading ? (
+          <div className="flex justify-center items-center py-20">
+            <div className="text-center">
+              <div className="text-gray-400 text-6xl mb-4">
+                <i className="fas fa-search"></i>
+              </div>
+              <h3 className="text-xl font-semibold text-white mb-2">No projects found</h3>
+              <p className="text-gray-400 mb-4">Try adjusting your filters to see more projects</p>
+              <button
+                onClick={() => applyFilter('all')}
+                className="px-6 py-3 bg-[#3fa2f6] text-white rounded-full hover:bg-[#2563eb] transition-colors duration-300"
+              >
+                Show All Projects
+              </button>
+            </div>
+          </div>
+        ) : error ? (
+          <div className="flex justify-center items-center py-20">
+            <div className="text-center">
+              <div className="text-red-400 text-6xl mb-4">
+                <i className="fas fa-exclamation-triangle"></i>
+              </div>
+              <h3 className="text-xl font-semibold text-white mb-2">Oops! Something went wrong</h3>
+              <p className="text-gray-400 mb-4">{error}</p>
+              <button
+                onClick={refresh}
+                className="px-6 py-3 bg-[#3fa2f6] text-white rounded-full hover:bg-[#2563eb] transition-colors duration-300"
+              >
+                Try Again
+              </button>
+            </div>
+          </div>
+        ) : (
+          <div
+            ref={revealRef}
+            className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-6 sm:gap-8 mb-10 sm:mb-12"
+          >
+            {repositories.map((project, index) => (
+              <div
+                key={project.id || project.title}
+                className="group relative flex flex-col card-depth-3 rounded-2xl p-5 sm:p-7 depth-hover-card layered-entrance cursor-pointer"
+                style={{ animationDelay: `${0.3 + (index * 0.15)}s` }}
+              >
+                <div className="flex items-center justify-center w-16 h-16 sm:w-20 sm:h-20 bg-gradient-to-br from-[#3fa2f6] to-[#23263a] rounded-xl mb-4 sm:mb-6 text-2xl sm:text-3xl text-white transition-all duration-500 group-hover:rotate-6 group-hover:scale-110 group-hover:shadow-[0_0_30px_rgba(63,162,246,0.4)]">
+                  <i className={project.icon}></i>
+                </div>
+
+                <div className="flex flex-col flex-1">
+                  <div className="flex items-center justify-between mb-2">
+                    <h3 className="text-lg sm:text-xl font-semibold text-white group-hover:text-[#3fa2f6] transition-colors duration-300">
+                      {project.title}
+                    </h3>
+                    {project.stars > 0 && (
+                      <div className="flex items-center gap-1 text-yellow-400 text-sm">
+                        <i className="fas fa-star"></i>
+                        <span>{project.stars}</span>
+                      </div>
+                    )}
+                  </div>
+                  
+                  <p className="text-xs sm:text-base text-gray-400 mb-3 sm:mb-4 leading-relaxed">
+                    {project.description}
+                  </p>
+
+                  <div className="flex flex-wrap gap-2 mb-3 sm:mb-4">
+                    {project.technologies.map((tech, idx) => (
+                      <span
+                        key={idx}
+                        className="bg-[#3fa2f6]/10 text-[#3fa2f6] px-3 py-1 rounded-full text-xs font-medium border border-[#3fa2f6]/20 transition-all duration-300 hover:bg-[#3fa2f6] hover:text-white hover:-translate-y-0.5 hover:shadow-[0_4px_12px_rgba(63,162,246,0.3)] layered-entrance"
+                        style={{ animationDelay: `${0.5 + (index * 0.1) + (idx * 0.05)}s` }}
+                      >
+                        {tech}
+                      </span>
+                    ))}
+                  </div>
+
+                  <div className="mt-auto flex gap-2 sm:gap-3">
+                    <a
+                      href={project.url || project.githubUrl}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-gradient-to-r from-[#3fa2f6] to-[#23263a] text-white font-medium text-xs sm:text-sm transition-all duration-300 hover:shadow-[0_8px_25px_rgba(63,162,246,0.3)] hover:-translate-y-1 hover:scale-105 layered-entrance"
+                      style={{ animationDelay: `${0.7 + (index * 0.1)}s` }}
+                    >
+                      <i className="fab fa-github transition-transform duration-300 group-hover:scale-110"></i>
+                      View Project
+                    </a>
+                  </div>
+                </div>
+
+                {/* Depth enhancement overlay */}
+                <div className="absolute inset-0 rounded-2xl bg-gradient-to-br from-transparent via-transparent to-rgba(63,162,246,0.02) opacity-0 group-hover:opacity-100 transition-opacity duration-500 pointer-events-none" />
+              </div>
+            ))}
+          </div>
+        )}
+
+        {hasMore && !loading && (
+          <div className="text-center mb-8">
+            <button
+              onClick={loadMore}
+              className="inline-flex items-center gap-2 px-6 py-3 bg-gradient-to-r from-[#3fa2f6] to-[#23263a] text-white font-semibold rounded-full transition-all duration-300 hover:shadow-[0_8px_25px_rgba(63,162,246,0.3)] hover:-translate-y-1 hover:scale-105"
+            >
+              <i className="fas fa-plus"></i>
+              Load More Projects
+            </button>
+          </div>
+        )}
+
+        {loading && repositories.length > 0 && (
+          <div className="flex justify-center items-center py-8">
+            <div className="animate-spin rounded-full h-8 w-8 border-b-2 border-[#3fa2f6]"></div>
+          </div>
+        )}
 
         <div className="text-center layered-entrance" style={{ animationDelay: '1s' }}>
           <a

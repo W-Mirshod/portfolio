@@ -13,21 +13,7 @@ A **modern, blazing-fast** portfolio website built with React + Vite, featuring 
 
 ## 🚀 Quick Start
 
-### Development (with Hot Reload) 🔥
-```bash
-# Start development environment with hot reload
-./dev.sh
-
-# Or manually:
-docker compose -f docker-compose.dev.yml up --build
-
-# Stop development environment
-./dev-stop.sh
-```
-
-**Access your app at:** `http://localhost:5173`
-
-### Traditional Development
+### Development
 ```bash
 cd frontend
 npm install
@@ -116,13 +102,7 @@ portfolio/
 
 ### 🐳 Docker Configuration
 
-#### **Development Environment** 🔥
-- **Hot Reload**: Live code changes without container restart
-- **Volume Mounts**: Direct file sync between host and container
-- **Fast Startup**: Optimized for development workflow
-- **Port**: `5173` (Vite dev server)
-
-#### **Production Build Process**
+#### **Multi-Stage Build Process**
 1. **Build Stage**: Node.js Alpine → Install dependencies → Build React app
 2. **Production Stage**: Nginx Alpine → Serve static files → Apply optimizations
 
