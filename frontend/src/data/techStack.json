@@ -96,10 +96,22 @@
     "order": 16
   },
   {
+    "id": 16.5,
+    "name": "Ubuntu",
+    "img": "https://upload.wikimedia.org/wikipedia/commons/1/16/Ubuntu_and_Ubuntu_Server_Icon.png",
+    "order": 16.5
+  },
+  {
     "id": 17,
     "name": "Fedora",
     "img": "https://icon.icepanel.io/Technology/svg/Fedora.svg",
     "order": 17
+  },
+  {
+    "id": 17.5,
+    "name": "Cursor IDE",
+    "img": "https://cursor.sh/favicon.ico",
+    "order": 17.5
   },
   {
     "id": 18,

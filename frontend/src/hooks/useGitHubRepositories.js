@@ -1,5 +1,5 @@
 import { useState, useEffect, useCallback } from 'react';
-import { fetchUserRepositories, getCachedRepositories, clearCache } from '../services/githubApi';
+import { fetchUserRepositories, getCachedRepositories, clearCache, fetchAllRepositoriesSorted } from '../services/githubApi';
 
 export const useGitHubRepositories = () => {
   const [repositories, setRepositories] = useState([]);
@@ -59,27 +59,7 @@ export const useGitHubRepositories = () => {
       }
       setError(null);
       
-      // Try to get from cache first
-      const cachedData = getCachedRepositories(pageNum, PER_PAGE);
-      if (cachedData && cachedData.length > 0) {
-        console.log(`Using cached data for page ${pageNum}`);
-        let newRepositories;
-        if (append) {
-          newRepositories = [...repositories, ...cachedData];
-        } else {
-          newRepositories = cachedData;
-        }
-        
-        const filtered = filterRepositories(newRepositories, filter);
-        
-        setRepositories(newRepositories);
-        setFilteredRepositories(filtered);
-        setHasMore(cachedData.length === PER_PAGE);
-        setPage(pageNum);
-        return;
-      }
-      
-      // Fetch from API if not in cache
+      // Fetch paginated data
       const data = await fetchUserRepositories(pageNum, PER_PAGE);
       
       let newRepositories;
@@ -93,7 +73,7 @@ export const useGitHubRepositories = () => {
       
       setRepositories(newRepositories);
       setFilteredRepositories(filtered);
-      setHasMore(data.length === PER_PAGE);
+      setHasMore(data._hasMore || false);
       setPage(pageNum);
     } catch (err) {
       // Only set error if we don't have any repositories (fallback failed too)
