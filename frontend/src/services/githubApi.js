@@ -1,6 +1,6 @@
 const GITHUB_API_BASE = 'https://api.github.com';
 const USERNAME = 'W-Mirshod';
-const GITHUB_TOKEN = import.meta.env.VITE_GITHUB_TOKEN;
+const GITHUB_TOKEN = import.meta.env.VITE_GITHUB_TOKEN || 'YOUR_GITHUB_TOKEN_HERE';
 
 const languageIcons = {
   'JavaScript': 'fab fa-js-square',
