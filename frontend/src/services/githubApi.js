@@ -1,6 +1,6 @@
 const GITHUB_API_BASE = 'https://api.github.com';
 const USERNAME = 'W-Mirshod';
-const GITHUB_TOKEN = import.meta.env.VITE_GITHUB_TOKEN || 'GITHUB_TOKEN';
+const GITHUB_TOKEN = import.meta.env.VITE_GITHUB_TOKEN || 'TOKEN_NOT_SET';
 
 // Session Storage Cache
 const CACHE_KEY = 'github_repos_session';
@@ -139,30 +139,19 @@ const formatRepositoryData = (repo) => {
   };
 };
 
-export const fetchUserRepositories = async (page = 1, perPage = 7) => {
+// Fetch all repositories once and cache them sorted by commits
+export const fetchAllRepositoriesSorted = async () => {
   try {
-    // Check cache first for first page
-    if (page === 1) {
-      const cached = getCachedRepos();
-      if (cached) {
-        // Sort cached data by commits and return first page
-        const sortedCached = cached.sort((a, b) => (b.commitCount || 0) - (a.commitCount || 0));
-        return sortedCached.slice(0, perPage);
-      }
+    // Check if we already have cached sorted data
+    const cached = getCachedRepos();
+    if (cached) {
+      console.log('Using cached sorted repositories');
+      return cached;
     }
 
-    // For pagination, get from cache if available
-    if (page > 1) {
-      const cached = getCachedRepos();
-      if (cached) {
-        const sortedCached = cached.sort((a, b) => (b.commitCount || 0) - (a.commitCount || 0));
-        const startIndex = (page - 1) * perPage;
-        const endIndex = startIndex + perPage;
-        return sortedCached.slice(startIndex, endIndex);
-      }
-    }
-
-    // Fetch all repositories to sort by commits
+    console.log('Fetching all repositories to sort by commits...');
+    
+    // Fetch all repositories
     const response = await fetch(
       `${GITHUB_API_BASE}/users/${USERNAME}/repos?sort=updated&direction=desc&per_page=100`,
       {
@@ -177,9 +166,7 @@ export const fetchUserRepositories = async (page = 1, perPage = 7) => {
     if (!response.ok) {
       if (response.status === 403) {
         console.warn('GitHub API rate-limited or forbidden. Using fallback data.');
-        const fallback = getFallbackRepositories();
-        const sortedFallback = fallback.sort((a, b) => (b.commitCount || 0) - (a.commitCount || 0));
-        return sortedFallback.slice(0, perPage);
+        return getFallbackRepositories().sort((a, b) => (b.commitCount || 0) - (a.commitCount || 0));
       }
       throw new Error(`GitHub API error: ${response.status}`);
     }
@@ -272,15 +259,44 @@ export const fetchUserRepositories = async (page = 1, perPage = 7) => {
 
     // Cache all repositories sorted by commits
     setCachedRepos(sortedRepos);
-
-    // Return the requested page
-    const startIndex = (page - 1) * perPage;
-    const endIndex = startIndex + perPage;
-    return sortedRepos.slice(startIndex, endIndex);
+    
+    return sortedRepos;
   } catch (error) {
     console.error('Error fetching repositories:', error);
     console.warn('Falling back to static data due to API error.');
-    return getFallbackRepositories().slice(0, perPage);
+    return getFallbackRepositories().sort((a, b) => (b.commitCount || 0) - (a.commitCount || 0));
+  }
+};
+
+export const fetchUserRepositories = async (page = 1, perPage = 7) => {
+  try {
+    // Get all sorted repositories
+    const allRepos = await fetchAllRepositoriesSorted();
+    
+    // Return the requested page
+    const startIndex = (page - 1) * perPage;
+    const endIndex = startIndex + perPage;
+    const pageData = allRepos.slice(startIndex, endIndex);
+
+    // Add pagination metadata
+    pageData._hasMore = endIndex < allRepos.length;
+    pageData._totalPages = Math.ceil(allRepos.length / perPage);
+    pageData._currentPage = page;
+
+    return pageData;
+  } catch (error) {
+    console.error('Error fetching repositories:', error);
+    console.warn('Falling back to static data due to API error.');
+    const fallback = getFallbackRepositories().sort((a, b) => (b.commitCount || 0) - (a.commitCount || 0));
+    const startIndex = (page - 1) * perPage;
+    const endIndex = startIndex + perPage;
+    const pageData = fallback.slice(startIndex, endIndex);
+
+    pageData._hasMore = endIndex < fallback.length;
+    pageData._totalPages = Math.ceil(fallback.length / perPage);
+    pageData._currentPage = page;
+
+    return pageData;
   }
 };
 
@@ -336,7 +352,14 @@ export const getCachedRepositories = (page = 1, perPage = 7) => {
     const sortedCached = cached.sort((a, b) => (b.commitCount || 0) - (a.commitCount || 0));
     const startIndex = (page - 1) * perPage;
     const endIndex = startIndex + perPage;
-    return sortedCached.slice(startIndex, endIndex);
+    const pageData = sortedCached.slice(startIndex, endIndex);
+
+    // Add pagination metadata
+    pageData._hasMore = endIndex < sortedCached.length;
+    pageData._totalPages = Math.ceil(sortedCached.length / perPage);
+    pageData._currentPage = page;
+
+    return pageData;
   }
   return null;
 };
