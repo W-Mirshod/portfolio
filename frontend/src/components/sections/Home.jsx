@@ -130,69 +130,76 @@ const Home = () => {
   }, [typed, currentLine, terminalLines]);
 
   return (
-    <section id="home" className="relative flex flex-col items-center justify-center min-h-screen h-screen w-full overflow-hidden pt-10 sm:pt-12">
+    <section id="home" className="relative flex flex-col items-center justify-center min-h-screen h-screen w-full overflow-hidden pt-16 sm:pt-20 xl:pt-10 xl:sm:pt-12">
       {enableEffects && (
         <ParallaxBackground className="absolute inset-0">
-          <div className="absolute inset-0 w-full h-full bg-gradient-to-br from-[#0a0e14] via-[#1a1f2e] to-[#2d3748] opacity-90" />
-          <div className="absolute inset-0 w-full h-full bg-gradient-to-t from-transparent via-transparent to-[#1a1f2e]/20" />
+          <div className="absolute inset-0 w-full h-full bg-bg-secondary/30" />
+          <div className="absolute inset-0 w-full h-full bg-gradient-to-t from-transparent via-transparent to-bg-secondary/20" />
         </ParallaxBackground>
       )}
       {!enableEffects && (
-        <div className="absolute inset-0 w-full h-full bg-gradient-to-br from-[#0a0e14] via-[#1a1f2e] to-[#2d3748] opacity-90" />
+        <div className="absolute inset-0 w-full h-full bg-bg-secondary/30" />
       )}
 
       <div className="relative flex flex-col justify-center items-center w-full h-full max-w-6xl mx-auto px-3 sm:px-4 md:px-6 z-10">
-        <div className="flex flex-col items-center justify-center text-center w-full max-w-4xl mx-auto h-full py-4 sm:py-6 md:py-8">
-          <div className="flex flex-col items-center justify-center text-center w-full space-y-4 sm:space-y-6">
+        {/* Subtle background elements */}
+        <div className="absolute inset-0 overflow-hidden pointer-events-none">
+          <div className="absolute top-1/4 left-1/4 w-96 h-96 bg-blue-500/3 rounded-full blur-3xl animate-pulse"></div>
+          <div className="absolute bottom-1/4 right-1/4 w-80 h-80 bg-white/2 rounded-full blur-3xl animate-pulse" style={{ animationDelay: '2s' }}></div>
+        </div>
+        <div className="flex flex-col items-center justify-center text-center w-full max-w-4xl mx-auto h-full py-4 sm:py-6 md:py-8 relative">
+          {/* Glassmorphism overlay */}
+          <div className="absolute inset-0 bg-white/5 backdrop-blur-sm rounded-3xl border border-white/10 shadow-2xl"></div>
+          <div className="relative z-10 flex flex-col items-center justify-center text-center w-full space-y-4 sm:space-y-6">
             {/* Professional Badge */}
-            <div className="inline-flex items-center gap-2 bg-gradient-to-r from-[#3b82f6]/10 to-[#1d4ed8]/10 border border-[#3b82f6]/20 px-4 py-2 rounded-full text-sm text-[#60a5fa] font-medium backdrop-blur-sm layered-entrance">
-              <i className="fas fa-code text-xs" />
+            <div className="inline-flex items-center gap-2 bg-white/5 backdrop-blur-sm border border-white/10 px-4 py-2 rounded-full text-sm text-white/90 font-medium shadow-lg layered-entrance">
+              <i className="fas fa-code text-xs text-white/70" />
               <span>{t('hero.badge')}</span>
             </div>
 
             {/* Modern Typography */}
             <div className="space-y-3">
-              <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold leading-tight bg-gradient-to-r from-white via-[#e2e8f0] to-[#94a3b8] bg-clip-text text-transparent layered-entrance" style={{ animationDelay: '0.1s' }}>
+              <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold leading-tight bg-gradient-to-r from-white via-white to-gray-300 bg-clip-text text-transparent layered-entrance" style={{ animationDelay: '0.1s' }}>
                 Mirshod Qayimov
               </h1>
 
               <div className="flex items-center justify-center min-h-10 w-full layered-entrance" style={{ animationDelay: '0.2s' }}>
-                <div className="font-semibold text-[#60a5fa] text-lg md:text-xl tracking-wide subtle-bounce" id="typing-text">
+                <div className="font-semibold text-white/80 text-lg md:text-xl tracking-wide subtle-bounce" id="typing-text">
                   {typingText}
                 </div>
-                <span className="font-normal text-[#60a5fa] text-lg md:text-xl animate-blink ml-1">|</span>
+                <span className="font-normal text-white/80 text-lg md:text-xl animate-blink ml-1">|</span>
               </div>
             </div>
 
             {/* Professional Description */}
-            <p className="text-sm sm:text-base md:text-lg text-[#94a3b8] max-w-2xl leading-relaxed layered-entrance" style={{ animationDelay: '0.3s' }}>
+            <p className="text-sm sm:text-base md:text-lg text-gray-400 max-w-2xl leading-relaxed layered-entrance" style={{ animationDelay: '0.3s' }}>
               {t('hero.subtitle')}
             </p>
 
             {/* Modern CTA Button */}
-            <a href="#contact" className="group inline-flex items-center gap-3 px-8 py-4 rounded-xl font-semibold text-base bg-gradient-to-r from-[#3b82f6] to-[#1d4ed8] text-white shadow-lg transition-all duration-300 hover:scale-105 hover:shadow-[0_0_40px_rgba(59,130,246,0.4)] relative overflow-hidden layered-entrance modern-glow gradient-shift" style={{ animationDelay: '0.4s' }}>
-              <span className="absolute inset-0 z-0 pointer-events-none opacity-0 group-hover:opacity-100 transition-opacity duration-300 bg-gradient-to-r from-[#1d4ed8] to-[#1e40af]" />
+            <a href="#contact" className="group inline-flex items-center gap-3 px-8 py-4 rounded-xl font-semibold text-base bg-gradient-to-r from-blue-600 via-blue-500 to-blue-600 text-white shadow-lg transition-all duration-300 hover:scale-105 hover:shadow-[0_0_40px_rgba(59,130,246,0.4)] relative overflow-hidden layered-entrance modern-glow gradient-shift" style={{ animationDelay: '0.4s' }}>
+              <span className="absolute inset-0 z-0 pointer-events-none opacity-0 group-hover:opacity-100 transition-opacity duration-300 bg-gradient-to-r from-blue-500 to-blue-700" />
               <i className="fas fa-envelope z-10 transition-transform duration-300 group-hover:scale-110" />
               <span className="z-10">{t("Get In Touch")}</span>
             </a>
 
             {/* Compact Terminal */}
             <div className="w-full flex justify-center layered-entrance" style={{ animationDelay: '0.5s' }}>
-              <div className="bg-[#0f172a]/95 backdrop-blur-md border border-[#1e293b] rounded-xl w-full max-w-2xl p-4 text-left text-[#10b981] font-mono text-sm overflow-hidden shadow-2xl terminal-glow">
-                <div className="flex items-center gap-2 mb-3 pb-2 border-b border-[#1e293b]">
+              <div className="bg-gray-900/80 backdrop-blur-sm border border-white/10 rounded-xl w-full max-w-2xl p-4 text-left text-green-400 font-mono text-sm overflow-hidden shadow-2xl terminal-glow">
+                <div className="flex items-center gap-2 mb-3 pb-2 border-b border-white/10">
                   <div className="flex gap-1.5">
-                    <div className="w-3 h-3 rounded-full bg-[#ef4444]"></div>
-                    <div className="w-3 h-3 rounded-full bg-[#f59e0b]"></div>
-                    <div className="w-3 h-3 rounded-full bg-[#10b981]"></div>
+                    <div className="w-3 h-3 rounded-full bg-red-500"></div>
+                    <div className="w-3 h-3 rounded-full bg-yellow-500"></div>
+                    <div className="w-3 h-3 rounded-full bg-green-500"></div>
                   </div>
-                  <span className="text-xs text-[#64748b]">terminal</span>
+                  <span className="text-xs text-gray-400">terminal</span>
                 </div>
                 <div className="space-y-1 max-h-20 overflow-y-auto">
                   {terminalHistory.slice(-3).map((line, idx) => (
                     <div key={idx} className="opacity-80 hover:opacity-100 transition-opacity duration-200 text-xs">{line}</div>
                   ))}
                   {currentLine < terminalLines.length && (
-                    <div className="text-[#34d399] text-xs">{typed}<span className="animate-blink text-[#34d399]">|</span></div>
+                    <div className="text-green-300 text-xs">{typed}<span className="animate-blink text-green-300">|</span></div>
                   )}
                 </div>
               </div>
@@ -204,7 +211,7 @@ const Home = () => {
               {techStackData.map((tech, index) => (
                 <div
                   key={tech.name}
-                  className="group flex flex-col items-center gap-1.5 bg-[#1e293b]/60 backdrop-blur-sm border border-[#334155] p-2.5 sm:p-3 md:p-3.5 rounded-lg transition-all duration-300 cursor-pointer hover:scale-105 sm:hover:scale-110 hover:bg-[#1e293b]/80 hover:border-[#3b82f6]/50 hover:shadow-[0_0_15px_rgba(59,130,246,0.2)] tech-hover"
+                  className="group flex flex-col items-center gap-1.5 bg-white/5 backdrop-blur-sm border border-white/10 p-2.5 sm:p-3 md:p-3.5 rounded-lg transition-all duration-300 cursor-pointer hover:scale-105 sm:hover:scale-110 hover:bg-white/8 hover:border-white/20 hover:shadow-xl hover:shadow-primary/5 tech-hover"
                   title={tech.name}
                   style={{ animationDelay: `${0.7 + (index * 0.02)}s` }}
                 >
@@ -216,7 +223,7 @@ const Home = () => {
                     className="w-6 h-6 sm:w-7 sm:h-7 md:w-8 md:h-8 lg:w-9 lg:h-9 object-contain transition-transform duration-300 group-hover:scale-105 sm:group-hover:scale-110"
                     blurDataURL="data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iNDAiIGhlaWdodD0iNDAiIHZpZXdCb3g9IjAgMCA0MCA0MCIgZmlsbD0ibm9uZSIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj4KPHJlY3Qgd2lkdGg9IjQwIiBoZWlnaHQ9IjQwIiBmaWxsPSIjZjNmNGY2IiBmaWxsLW9wYWNpdHk9IjAuMDUiLz4KPC9zdmc+Cg=="
                   />
-                  <span className="text-xs text-[#94a3b8] font-medium hidden md:block group-hover:text-white transition-colors duration-300">
+                  <span className="text-xs text-gray-300 font-medium hidden md:block group-hover:text-white transition-colors duration-300">
                     {tech.name}
                   </span>
                 </div>
