@@ -1,5 +1,6 @@
 const GITHUB_API_BASE = 'https://api.github.com';
 const USERNAME = 'W-Mirshod';
+const GITHUB_TOKEN = import.meta.env.VITE_GITHUB_TOKEN;
 
 const languageIcons = {
   'JavaScript': 'fab fa-js-square',
@@ -108,7 +109,8 @@ export const fetchUserRepositories = async (page = 1, perPage = 100) => {
       {
         headers: {
           'Accept': 'application/vnd.github.v3+json',
-          'User-Agent': 'Portfolio-App'
+          'User-Agent': 'Portfolio-App',
+          ...(GITHUB_TOKEN && { 'Authorization': `token ${GITHUB_TOKEN}` })
         }
       }
     );
@@ -129,7 +131,8 @@ export const fetchUserRepositories = async (page = 1, perPage = 100) => {
           const languagesResponse = await fetch(repo.languages_url, {
             headers: {
               'Accept': 'application/vnd.github.v3+json',
-              'User-Agent': 'Portfolio-App'
+              'User-Agent': 'Portfolio-App',
+              ...(GITHUB_TOKEN && { 'Authorization': `token ${GITHUB_TOKEN}` })
             }
           });
           
@@ -160,7 +163,8 @@ export const fetchRepositoryDetails = async (repoName) => {
       {
         headers: {
           'Accept': 'application/vnd.github.v3+json',
-          'User-Agent': 'Portfolio-App'
+          'User-Agent': 'Portfolio-App',
+          ...(GITHUB_TOKEN && { 'Authorization': `token ${GITHUB_TOKEN}` })
         }
       }
     );
@@ -174,7 +178,8 @@ export const fetchRepositoryDetails = async (repoName) => {
     const languagesResponse = await fetch(repo.languages_url, {
       headers: {
         'Accept': 'application/vnd.github.v3+json',
-        'User-Agent': 'Portfolio-App'
+        'User-Agent': 'Portfolio-App',
+        ...(GITHUB_TOKEN && { 'Authorization': `token ${GITHUB_TOKEN}` })
       }
     });
     
