@@ -1,3 +1,4 @@
+import React, { useRef, useCallback, useEffect } from 'react';
 import { useTranslation } from 'react-i18next';
 import { useScrollReveal } from '../../utils/parallax';
 import { useGitHubRepositories } from '../../hooks/useGitHubRepositories';
@@ -6,14 +7,30 @@ import { getLanguageIcon } from '../../services/githubApi';
 const Projects = () => {
   const { t } = useTranslation();
   const revealRef = useScrollReveal();
+  const observerRef = useRef();
   const { 
     repositories, 
     loading, 
+    loadingMore,
     error, 
     hasMore, 
     loadMore, 
     refresh
   } = useGitHubRepositories();
+
+  // Intersection Observer for lazy loading
+  const lastRepoRef = useCallback(node => {
+    if (loadingMore) return;
+    if (observerRef.current) observerRef.current.disconnect();
+    
+    observerRef.current = new IntersectionObserver(entries => {
+      if (entries[0].isIntersecting && hasMore) {
+        loadMore();
+      }
+    });
+    
+    if (node) observerRef.current.observe(node);
+  }, [loadingMore, hasMore, loadMore]);
 
   return (
     <section id="projects" className="py-20 px-4 bg-bg-secondary/30">
@@ -64,6 +81,7 @@ const Projects = () => {
             {repositories.map((project, index) => (
               <div
                 key={project.id || project.title}
+                ref={index === repositories.length - 1 ? lastRepoRef : null}
                 className="group bg-white/5 backdrop-blur-sm rounded-lg p-5 border border-white/10 transition-all duration-300 hover:bg-white/8 hover:border-white/20"
               >
                 <div className="flex items-center justify-between mb-3">
@@ -121,7 +139,7 @@ const Projects = () => {
           </div>
         )}
 
-        {hasMore && !loading && (
+        {hasMore && !loadingMore && (
           <div className="text-center mb-8">
             <button
               onClick={loadMore}
@@ -133,9 +151,12 @@ const Projects = () => {
           </div>
         )}
 
-        {loading && repositories.length > 0 && (
+        {loadingMore && (
           <div className="flex justify-center items-center py-8">
-            <div className="animate-spin rounded-full h-8 w-8 border-b-2 border-white"></div>
+            <div className="flex flex-col items-center gap-4">
+              <div className="animate-spin rounded-full h-8 w-8 border-b-2 border-[#3fa2f6]"></div>
+              <p className="text-gray-400 text-sm">Loading more projects...</p>
+            </div>
           </div>
         )}
 

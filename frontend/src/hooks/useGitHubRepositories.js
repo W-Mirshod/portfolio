@@ -1,5 +1,5 @@
 import { useState, useEffect, useCallback } from 'react';
-import { fetchUserRepositories } from '../services/githubApi';
+import { fetchUserRepositories, getCachedRepositories, clearCache } from '../services/githubApi';
 
 export const useGitHubRepositories = () => {
   const [repositories, setRepositories] = useState([]);
@@ -10,6 +10,9 @@ export const useGitHubRepositories = () => {
   const [page, setPage] = useState(1);
   const [filter, setFilter] = useState('all');
   const [sortBy, setSortBy] = useState('commits');
+  const [loadingMore, setLoadingMore] = useState(false);
+
+  const PER_PAGE = 7;
 
   const filterRepositories = useCallback((repos, filterType) => {
     if (filterType === 'all') return repos;
@@ -46,30 +49,38 @@ export const useGitHubRepositories = () => {
     });
   }, []);
 
-  const sortRepositories = useCallback((repos, sortType) => {
-    const sorted = [...repos];
-    
-    switch (sortType) {
-      case 'stars':
-        return sorted.sort((a, b) => b.stars - a.stars);
-      case 'name':
-        return sorted.sort((a, b) => a.title.localeCompare(b.title));
-      case 'created':
-        return sorted.sort((a, b) => new Date(b.createdAt) - new Date(a.createdAt));
-      case 'commits':
-        return sorted.sort((a, b) => (b.commitCount || 0) - (a.commitCount || 0));
-      case 'updated':
-      default:
-        return sorted.sort((a, b) => new Date(b.updatedAt) - new Date(a.updatedAt));
-    }
-  }, []);
 
   const loadRepositories = useCallback(async (pageNum = 1, append = false) => {
     try {
-      setLoading(true);
+      if (append) {
+        setLoadingMore(true);
+      } else {
+        setLoading(true);
+      }
       setError(null);
       
-      const data = await fetchUserRepositories(pageNum, 30);
+      // Try to get from cache first
+      const cachedData = getCachedRepositories(pageNum, PER_PAGE);
+      if (cachedData && cachedData.length > 0) {
+        console.log(`Using cached data for page ${pageNum}`);
+        let newRepositories;
+        if (append) {
+          newRepositories = [...repositories, ...cachedData];
+        } else {
+          newRepositories = cachedData;
+        }
+        
+        const filtered = filterRepositories(newRepositories, filter);
+        
+        setRepositories(newRepositories);
+        setFilteredRepositories(filtered);
+        setHasMore(cachedData.length === PER_PAGE);
+        setPage(pageNum);
+        return;
+      }
+      
+      // Fetch from API if not in cache
+      const data = await fetchUserRepositories(pageNum, PER_PAGE);
       
       let newRepositories;
       if (append) {
@@ -78,12 +89,11 @@ export const useGitHubRepositories = () => {
         newRepositories = data;
       }
       
-      const sorted = sortRepositories(newRepositories, sortBy);
-      const filtered = filterRepositories(sorted, filter);
+      const filtered = filterRepositories(newRepositories, filter);
       
-      setRepositories(sorted);
+      setRepositories(newRepositories);
       setFilteredRepositories(filtered);
-      setHasMore(data.length === 30);
+      setHasMore(data.length === PER_PAGE);
       setPage(pageNum);
     } catch (err) {
       // Only set error if we don't have any repositories (fallback failed too)
@@ -93,16 +103,18 @@ export const useGitHubRepositories = () => {
       console.error('Failed to load repositories:', err);
     } finally {
       setLoading(false);
+      setLoadingMore(false);
     }
-  }, [repositories, sortBy, filter, sortRepositories, filterRepositories]);
+  }, [repositories, filter, filterRepositories]);
 
   const loadMore = useCallback(() => {
-    if (!loading && hasMore) {
+    if (!loadingMore && hasMore) {
       loadRepositories(page + 1, true);
     }
-  }, [loading, hasMore, page, loadRepositories]);
+  }, [loadingMore, hasMore, page, loadRepositories]);
 
   const refresh = useCallback(() => {
+    clearCache();
     loadRepositories(1, false);
   }, [loadRepositories]);
 
@@ -112,15 +124,9 @@ export const useGitHubRepositories = () => {
     setFilteredRepositories(filtered);
   }, [repositories, filterRepositories]);
 
-  const applySort = useCallback((sortType) => {
-    setSortBy(sortType);
-    const sorted = sortRepositories(repositories, sortType);
-    const filtered = filterRepositories(sorted, filter);
-    setRepositories(sorted);
-    setFilteredRepositories(filtered);
-  }, [repositories, filter, sortRepositories, filterRepositories]);
-
   useEffect(() => {
+    // Clear cache to ensure fresh data with new commit counting
+    clearCache();
     loadRepositories(1, false);
   }, []);
 
@@ -133,13 +139,13 @@ export const useGitHubRepositories = () => {
     repositories: filteredRepositories,
     allRepositories: repositories,
     loading,
+    loadingMore,
     error,
     hasMore,
     filter,
     sortBy,
     loadMore,
     refresh,
-    applyFilter,
-    applySort
+    applyFilter
   };
 };
