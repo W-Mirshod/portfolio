@@ -742,6 +742,30 @@ body.mobile-menu-open {
   animation: terminal-glow 4s ease-in-out infinite;
 }
 
+/* Terminal auto-scroll enhancement */
+.terminal-scroll-container {
+  scroll-behavior: smooth;
+  scrollbar-width: thin;
+  scrollbar-color: rgba(34, 197, 94, 0.3) transparent;
+}
+
+.terminal-scroll-container::-webkit-scrollbar {
+  width: 4px;
+}
+
+.terminal-scroll-container::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+.terminal-scroll-container::-webkit-scrollbar-thumb {
+  background: rgba(34, 197, 94, 0.3);
+  border-radius: 2px;
+}
+
+.terminal-scroll-container::-webkit-scrollbar-thumb:hover {
+  background: rgba(34, 197, 94, 0.5);
+}
+
 .gradient-shift {
   background-size: 200% 200%;
   animation: gradient-shift 8s ease-in-out infinite;

@@ -1,4 +1,4 @@
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useRef } from 'react';
 import { useTranslation } from 'react-i18next';
 import { initializeAudio } from '../../utils/audio';
 import ParallaxBackground from '../ui/ParallaxBackground';
@@ -95,6 +95,17 @@ const Home = () => {
   const [currentLine, setCurrentLine] = useState(0);
   const [typed, setTyped] = useState('');
   const [isAnimating, setIsAnimating] = useState(false);
+  const terminalScrollRef = useRef(null);
+
+  // Auto-scroll function that forces terminal to bottom
+  const scrollToBottom = () => {
+    if (terminalScrollRef.current) {
+      terminalScrollRef.current.scrollTo({
+        top: terminalScrollRef.current.scrollHeight,
+        behavior: 'smooth'
+      });
+    }
+  };
 
   useEffect(() => {
     if (currentLine >= terminalLines.length) return;
@@ -103,6 +114,8 @@ const Home = () => {
       if (typed.length < terminalLines[currentLine].length) {
         const timeout = setTimeout(() => {
           setTyped(terminalLines[currentLine].slice(0, typed.length + 1));
+          // Auto-scroll on every character typed
+          scrollToBottom();
         }, 40);
         return () => clearTimeout(timeout);
       } else {
@@ -111,8 +124,8 @@ const Home = () => {
           setTerminalHistory((h) => [...h, terminalLines[currentLine]]);
           setTyped('');
           setCurrentLine((l) => (l + 1) % terminalLines.length);
-          const terminalDiv = document.querySelector('.bg-\\[\\#10151f\\]');
-          if (terminalDiv) terminalDiv.scrollTop = terminalDiv.scrollHeight;
+          // Auto-scroll when line is complete
+          scrollToBottom();
         }, 200);
         return () => clearTimeout(timeout);
       }
@@ -122,12 +135,17 @@ const Home = () => {
         setTerminalHistory((h) => [...h, terminalLines[currentLine]]);
         setTyped('');
         setCurrentLine((l) => (l + 1) % terminalLines.length);
-        const terminalDiv = document.querySelector('.bg-\\[\\#10151f\\]');
-        if (terminalDiv) terminalDiv.scrollTop = terminalDiv.scrollHeight;
+        // Auto-scroll when output line is complete
+        scrollToBottom();
       }, 120);
       return () => clearTimeout(timeout);
     }
   }, [typed, currentLine, terminalLines]);
+
+  // Additional effect to ensure scroll on history changes
+  useEffect(() => {
+    scrollToBottom();
+  }, [terminalHistory]);
 
   return (
     <section id="home" className="relative flex flex-col items-center justify-center min-h-screen h-screen w-full overflow-hidden pt-16 sm:pt-20 xl:pt-10 xl:sm:pt-12">
@@ -194,7 +212,7 @@ const Home = () => {
                   </div>
                   <span className="text-xs text-gray-400">terminal</span>
                 </div>
-                <div className="space-y-1 max-h-20 overflow-y-auto">
+                <div ref={terminalScrollRef} className="terminal-scroll-container space-y-1 max-h-20 overflow-y-auto">
                   {terminalHistory.slice(-3).map((line, idx) => (
                     <div key={idx} className="opacity-80 hover:opacity-100 transition-opacity duration-200 text-xs">{line}</div>
                   ))}
