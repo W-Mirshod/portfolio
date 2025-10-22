@@ -75,12 +75,20 @@ const Projects = () => {
                       <h3 className="text-base font-semibold text-white">
                         {project.title}
                       </h3>
-                      {project.stars > 0 && (
-                        <div className="flex items-center gap-1 text-gray-400 text-xs">
-                          <i className="fas fa-star"></i>
-                          <span>{project.stars}</span>
-                        </div>
-                      )}
+                      <div className="flex items-center gap-3 text-gray-400 text-xs">
+                        {project.stars > 0 && (
+                          <div className="flex items-center gap-1">
+                            <i className="fas fa-star"></i>
+                            <span>{project.stars}</span>
+                          </div>
+                        )}
+                        {project.commitCount > 0 && (
+                          <div className="flex items-center gap-1">
+                            <i className="fas fa-code-branch"></i>
+                            <span>{project.commitCount}</span>
+                          </div>
+                        )}
+                      </div>
                     </div>
                   </div>
                   <a

@@ -123,7 +123,7 @@ const Footer = () => {
 
         <div className="text-center pt-8 border-t border-white/10">
           <p className="text-sm text-gray-400">
-            © {currentYear} W-Mirshod. All rights reserved.
+            © 2023-{currentYear} W-Mirshod. All rights reserved.
           </p>
         </div>
       </div>

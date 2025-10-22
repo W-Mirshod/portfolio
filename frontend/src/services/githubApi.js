@@ -98,7 +98,8 @@ const formatRepositoryData = (repo) => {
     topics: repo.topics || [],
     isPrivate: repo.private,
     hasPages: repo.has_pages,
-    size: repo.size
+    size: repo.size,
+    commitCount: repo.commit_count || 0
   };
 };
 
@@ -128,23 +129,51 @@ export const fetchUserRepositories = async (page = 1, perPage = 100) => {
     const repositoriesWithLanguages = await Promise.all(
       repositories.map(async (repo) => {
         try {
-          const languagesResponse = await fetch(repo.languages_url, {
-            headers: {
-              'Accept': 'application/vnd.github.v3+json',
-              'User-Agent': 'Portfolio-App',
-              ...(GITHUB_TOKEN && { 'Authorization': `token ${GITHUB_TOKEN}` })
-            }
-          });
+          const [languagesResponse, commitsResponse] = await Promise.all([
+            fetch(repo.languages_url, {
+              headers: {
+                'Accept': 'application/vnd.github.v3+json',
+                'User-Agent': 'Portfolio-App',
+                ...(GITHUB_TOKEN && { 'Authorization': `token ${GITHUB_TOKEN}` })
+              }
+            }),
+            fetch(`${repo.url}/commits?per_page=1`, {
+              headers: {
+                'Accept': 'application/vnd.github.v3+json',
+                'User-Agent': 'Portfolio-App',
+                ...(GITHUB_TOKEN && { 'Authorization': `token ${GITHUB_TOKEN}` })
+              }
+            })
+          ]);
+          
+          let languages = {};
+          let commitCount = 0;
           
           if (languagesResponse.ok) {
-            const languages = await languagesResponse.json();
-            return { ...repo, languages };
+            languages = await languagesResponse.json();
           }
+          
+          if (commitsResponse.ok) {
+            const commits = await commitsResponse.json();
+            // Get total commit count from the Link header or estimate from first page
+            const linkHeader = commitsResponse.headers.get('Link');
+            if (linkHeader) {
+              const lastPageMatch = linkHeader.match(/page=(\d+)>; rel="last"/);
+              if (lastPageMatch) {
+                commitCount = parseInt(lastPageMatch[1]);
+              }
+            } else if (commits.length > 0) {
+              // Fallback: estimate based on available commits
+              commitCount = commits.length;
+            }
+          }
+          
+          return { ...repo, languages, commit_count: commitCount };
         } catch (error) {
-          console.warn(`Failed to fetch languages for ${repo.name}:`, error);
+          console.warn(`Failed to fetch data for ${repo.name}:`, error);
         }
         
-        return { ...repo, languages: {} };
+        return { ...repo, languages: {}, commit_count: 0 };
       })
     );
 
@@ -218,7 +247,8 @@ const getFallbackRepositories = () => {
       topics: [],
       isPrivate: false,
       hasPages: false,
-      size: 0
+      size: 0,
+      commitCount: 45
     },
     {
       id: 2,
@@ -236,7 +266,8 @@ const getFallbackRepositories = () => {
       topics: [],
       isPrivate: false,
       hasPages: false,
-      size: 0
+      size: 0,
+      commitCount: 23
     }
   ];
 };

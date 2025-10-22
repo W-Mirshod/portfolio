@@ -9,7 +9,7 @@ export const useGitHubRepositories = () => {
   const [hasMore, setHasMore] = useState(true);
   const [page, setPage] = useState(1);
   const [filter, setFilter] = useState('all');
-  const [sortBy, setSortBy] = useState('updated');
+  const [sortBy, setSortBy] = useState('commits');
 
   const filterRepositories = useCallback((repos, filterType) => {
     if (filterType === 'all') return repos;
@@ -56,6 +56,8 @@ export const useGitHubRepositories = () => {
         return sorted.sort((a, b) => a.title.localeCompare(b.title));
       case 'created':
         return sorted.sort((a, b) => new Date(b.createdAt) - new Date(a.createdAt));
+      case 'commits':
+        return sorted.sort((a, b) => (b.commitCount || 0) - (a.commitCount || 0));
       case 'updated':
       default:
         return sorted.sort((a, b) => new Date(b.updatedAt) - new Date(a.updatedAt));
