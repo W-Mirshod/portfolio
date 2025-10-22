@@ -36,7 +36,17 @@ const Projects = () => {
     <section id="projects" className="py-20 px-4 bg-bg-secondary/30">
       <div className="max-w-5xl mx-auto">
         <header className="text-center mb-16">
-          <h2 className="text-3xl font-light text-white mb-3 tracking-wide animate-fadeInUp">{t("projects.title")}</h2>
+          <div className="flex items-center justify-center gap-4 mb-6">
+            <h2 className="text-3xl font-light text-white tracking-wide animate-fadeInUp">{t("projects.title")}</h2>
+            <button
+              onClick={refresh}
+              disabled={loading}
+              className="px-4 py-2 rounded-lg bg-white/10 text-white text-sm border border-white/20 hover:bg-white/20 hover:border-white/30 transition-all duration-300 disabled:opacity-50 disabled:cursor-not-allowed"
+              title="Refresh projects data"
+            >
+              <i className="fas fa-sync-alt"></i>
+            </button>
+          </div>
           <div className="w-16 h-px bg-gradient-to-r from-transparent via-white/30 to-transparent mx-auto animate-fadeInUp delay-100"></div>
         </header>
 
@@ -100,12 +110,10 @@ const Projects = () => {
                             <span>{project.stars}</span>
                           </div>
                         )}
-                        {project.commitCount > 0 && (
-                          <div className="flex items-center gap-1">
-                            <i className="fas fa-code-branch"></i>
-                            <span>{project.commitCount}</span>
-                          </div>
-                        )}
+                        <div className="flex items-center gap-1">
+                          <i className="fas fa-code-branch"></i>
+                          <span>{project.commitCount || 0}</span>
+                        </div>
                       </div>
                     </div>
                   </div>
