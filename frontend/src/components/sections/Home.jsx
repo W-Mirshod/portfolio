@@ -199,21 +199,22 @@ const Home = () => {
             </div>
 
             {/* Modern Tech Stack Grid */}
-            <div className="flex justify-center items-center w-full">
-              <div className="grid grid-cols-8 sm:grid-cols-12 md:grid-cols-16 lg:grid-cols-20 xl:grid-cols-24 2xl:grid-cols-28 gap-1.5 sm:gap-2 md:gap-2.5 layered-entrance" style={{ animationDelay: '0.6s' }}>
+            <div className="flex justify-center items-center w-full px-2">
+              <div className="grid grid-cols-7 sm:grid-cols-9 md:grid-cols-13 lg:grid-cols-18 xl:grid-cols-22 2xl:grid-cols-26 gap-1.5 sm:gap-2 md:gap-2.5 layered-entrance max-w-full" style={{ animationDelay: '0.6s' }}>
               {techStackData.map((tech, index) => (
                 <div
                   key={tech.name}
-                  className="group flex flex-col items-center gap-1.5 bg-[#1e293b]/50 backdrop-blur-sm border border-[#334155] p-2 sm:p-2.5 md:p-3 rounded-lg transition-all duration-300 cursor-pointer hover:scale-110 hover:bg-[#1e293b]/70 hover:border-[#3b82f6]/50 hover:shadow-[0_0_20px_rgba(59,130,246,0.2)] tech-hover"
+                  className="group flex flex-col items-center gap-1.5 bg-[#1e293b]/60 backdrop-blur-sm border border-[#334155] p-2.5 sm:p-3 md:p-3.5 rounded-lg transition-all duration-300 cursor-pointer hover:scale-105 sm:hover:scale-110 hover:bg-[#1e293b]/80 hover:border-[#3b82f6]/50 hover:shadow-[0_0_15px_rgba(59,130,246,0.2)] tech-hover"
                   title={tech.name}
                   style={{ animationDelay: `${0.7 + (index * 0.02)}s` }}
                 >
                   <LazyImage
                     src={tech.img}
                     alt={tech.name}
-                    width="24"
-                    height="24"
-                    className="w-6 h-6 sm:w-7 sm:h-7 md:w-8 md:h-8 object-contain transition-transform duration-300 group-hover:scale-110"
+                    width="40"
+                    height="40"
+                    className="w-6 h-6 sm:w-7 sm:h-7 md:w-8 md:h-8 lg:w-9 lg:h-9 object-contain transition-transform duration-300 group-hover:scale-105 sm:group-hover:scale-110"
+                    blurDataURL="data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iNDAiIGhlaWdodD0iNDAiIHZpZXdCb3g9IjAgMCA0MCA0MCIgZmlsbD0ibm9uZSIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj4KPHJlY3Qgd2lkdGg9IjQwIiBoZWlnaHQ9IjQwIiBmaWxsPSIjZjNmNGY2IiBmaWxsLW9wYWNpdHk9IjAuMDUiLz4KPC9zdmc+Cg=="
                   />
                   <span className="text-xs text-[#94a3b8] font-medium hidden md:block group-hover:text-white transition-colors duration-300">
                     {tech.name}
