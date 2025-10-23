@@ -2,7 +2,7 @@ import { useState, useEffect } from 'react';
 import { useTranslation } from 'react-i18next';
 import { createPortal } from 'react-dom';
 const MirshodImg = '/Mirshod-optimized.webp';
-import { FaHome, FaUser, FaBriefcase, FaCode, FaTrophy, FaCertificate, FaProjectDiagram, FaEnvelope } from 'react-icons/fa';
+import { FaHome, FaUser, FaBriefcase, FaCode, FaTrophy, FaCertificate, FaProjectDiagram, FaEnvelope, FaSun, FaMoon } from 'react-icons/fa';
 import '../styles/menu-futuristic.css';
 
 const Header = () => {
@@ -10,12 +10,29 @@ const Header = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [activeSection, setActiveSection] = useState('home');
   const [isLanguageOpen, setIsLanguageOpen] = useState(false);
+  const [theme, setTheme] = useState('dark');
   const currentLanguage = i18n.language;
   const languages = [
     { code: 'en', name: 'English' },
     { code: 'uz', name: 'Uzbek' },
     { code: 'ru', name: 'Russian' }
   ];
+
+  // Theme management - ALWAYS DEFAULT TO DARK
+  useEffect(() => {
+    // Always default to dark theme, even overriding saved preferences
+    const initialTheme = 'dark';
+    setTheme(initialTheme);
+    document.documentElement.setAttribute('data-theme', initialTheme);
+    localStorage.setItem('theme', initialTheme); // Ensure it's saved as dark
+  }, []);
+
+  const toggleTheme = () => {
+    const newTheme = theme === 'dark' ? 'light' : 'dark';
+    setTheme(newTheme);
+    localStorage.setItem('theme', newTheme);
+    document.documentElement.setAttribute('data-theme', newTheme);
+  };
 
   useEffect(() => {
     const handleScroll = () => {
@@ -119,27 +136,50 @@ const Header = () => {
               ))}
             </nav>
             <div className="mt-auto mb-8 flex flex-col items-center gap-2">
-            <button
-              className="px-4 py-2.5 bg-white/10 backdrop-blur-sm border border-white/20 rounded-xl font-semibold text-sm text-white/90 shadow-lg hover:bg-white/15 hover:border-white/30 transition-all duration-300 hover:shadow-cyan-500/20"
-              aria-haspopup="true"
-              aria-expanded={isLanguageOpen}
-              onClick={() => setIsLanguageOpen(!isLanguageOpen)}
-            >
-              {getLanguageDisplay(currentLanguage)}
-            </button>
-            {isLanguageOpen && (
-              <div className="absolute right-20 sm:right-24 top-8 bg-white/10 backdrop-blur-xl border border-white/20 rounded-xl shadow-2xl overflow-hidden min-w-[110px] z-50">
-                {languages.map((language) => (
-                  <button
-                    key={language.code}
-                    className={`w-full px-4 py-2.5 text-left text-sm transition-all duration-200 ${currentLanguage === language.code ? 'bg-cyan-500/20 text-cyan-300 border-l-2 border-cyan-400' : 'text-white/80 hover:bg-white/10 hover:text-white'}`}
-                    onClick={() => handleLanguageChange(language.code)}
-                  >
-                    {language.name}
-                  </button>
-                ))}
-              </div>
-            )}
+              {/* Theme Toggle */}
+              <button
+                onClick={toggleTheme}
+                className="theme-toggle-btn w-12 h-12 flex items-center justify-center rounded-xl bg-white/10 backdrop-blur-sm border border-white/20 shadow-lg hover:bg-white/15 hover:border-white/30 transition-all duration-300 hover:shadow-cyan-500/20 group"
+                aria-label={`Switch to ${theme === 'dark' ? 'light' : 'dark'} mode`}
+                title={`Switch to ${theme === 'dark' ? 'light' : 'dark'} mode`}
+              >
+                <div className="relative w-5 h-5">
+                  {/* Sun icon */}
+                  <FaSun
+                    className={`absolute inset-0 w-5 h-5 transition-all duration-300 ${
+                      theme === 'dark' ? 'opacity-0 rotate-90 scale-0' : 'opacity-100 rotate-0 scale-100'
+                    } text-cyan-400 group-hover:text-cyan-300`}
+                  />
+                  {/* Moon icon */}
+                  <FaMoon
+                    className={`absolute inset-0 w-5 h-5 transition-all duration-300 ${
+                      theme === 'dark' ? 'opacity-100 rotate-0 scale-100' : 'opacity-0 -rotate-90 scale-0'
+                    } text-cyan-400 group-hover:text-cyan-300`}
+                  />
+                </div>
+              </button>
+
+              <button
+                className="px-4 py-2.5 bg-white/10 backdrop-blur-sm border border-white/20 rounded-xl font-semibold text-sm text-white/90 shadow-lg hover:bg-white/15 hover:border-white/30 transition-all duration-300 hover:shadow-cyan-500/20"
+                aria-haspopup="true"
+                aria-expanded={isLanguageOpen}
+                onClick={() => setIsLanguageOpen(!isLanguageOpen)}
+              >
+                {getLanguageDisplay(currentLanguage)}
+              </button>
+              {isLanguageOpen && (
+                <div className="absolute right-20 sm:right-24 top-8 bg-white/10 backdrop-blur-xl border border-white/20 rounded-xl shadow-2xl overflow-hidden min-w-[110px] z-50">
+                  {languages.map((language) => (
+                    <button
+                      key={language.code}
+                      className={`w-full px-4 py-2.5 text-left text-sm transition-all duration-200 ${currentLanguage === language.code ? 'bg-cyan-500/20 text-cyan-300 border-l-2 border-cyan-400' : 'text-white/80 hover:bg-white/10 hover:text-white'}`}
+                      onClick={() => handleLanguageChange(language.code)}
+                    >
+                      {language.name}
+                    </button>
+                  ))}
+                </div>
+              )}
             </div>
           </div>
         </div>
@@ -158,6 +198,29 @@ const Header = () => {
               </a>
             </div>
             <div className="relative flex items-center gap-2 sm:gap-3">
+              {/* Theme Toggle for Mobile Header */}
+              <button
+                onClick={toggleTheme}
+                className="theme-toggle-btn w-8 h-8 sm:w-10 sm:h-10 flex items-center justify-center rounded-lg bg-white/10 backdrop-blur-sm border border-white/20 shadow-lg hover:bg-white/15 hover:border-white/30 transition-all duration-300 hover:shadow-cyan-500/20 group"
+                aria-label={`Switch to ${theme === 'dark' ? 'light' : 'dark'} mode`}
+                title={`Switch to ${theme === 'dark' ? 'light' : 'dark'} mode`}
+              >
+                <div className="relative w-4 h-4 sm:w-5 sm:h-5">
+                  {/* Sun icon */}
+                  <FaSun
+                    className={`absolute inset-0 w-4 h-4 sm:w-5 sm:h-5 transition-all duration-300 ${
+                      theme === 'dark' ? 'opacity-0 rotate-90 scale-0' : 'opacity-100 rotate-0 scale-100'
+                    } text-cyan-400 group-hover:text-cyan-300`}
+                  />
+                  {/* Moon icon */}
+                  <FaMoon
+                    className={`absolute inset-0 w-4 h-4 sm:w-5 sm:h-5 transition-all duration-300 ${
+                      theme === 'dark' ? 'opacity-100 rotate-0 scale-100' : 'opacity-0 -rotate-90 scale-0'
+                    } text-cyan-400 group-hover:text-cyan-300`}
+                  />
+                </div>
+              </button>
+
               <button
                 className="px-3 sm:px-4 py-2 bg-white/10 backdrop-blur-sm border border-white/20 rounded-lg font-semibold text-xs sm:text-sm text-white/90 shadow-lg hover:bg-white/15 hover:border-white/30 transition-all duration-300 hover:shadow-cyan-500/20"
                 aria-haspopup="true"
@@ -226,6 +289,32 @@ const Header = () => {
                     <span className="tracking-wide font-medium">{item.label}</span>
                   </a>
                 ))}
+
+                {/* Theme Toggle in Mobile Menu */}
+                <div className="flex justify-center mb-4">
+                  <button
+                    onClick={toggleTheme}
+                    className="theme-toggle-btn w-12 h-12 flex items-center justify-center rounded-xl bg-white/10 backdrop-blur-sm border border-white/20 shadow-lg hover:bg-white/15 hover:border-white/30 transition-all duration-300 hover:shadow-cyan-500/20 group"
+                    aria-label={`Switch to ${theme === 'dark' ? 'light' : 'dark'} mode`}
+                    title={`Switch to ${theme === 'dark' ? 'light' : 'dark'} mode`}
+                  >
+                    <div className="relative w-5 h-5">
+                      {/* Sun icon */}
+                      <FaSun
+                        className={`absolute inset-0 w-5 h-5 transition-all duration-300 ${
+                          theme === 'dark' ? 'opacity-0 rotate-90 scale-0' : 'opacity-100 rotate-0 scale-100'
+                        } text-cyan-400 group-hover:text-cyan-300`}
+                      />
+                      {/* Moon icon */}
+                      <FaMoon
+                        className={`absolute inset-0 w-5 h-5 transition-all duration-300 ${
+                          theme === 'dark' ? 'opacity-100 rotate-0 scale-100' : 'opacity-0 -rotate-90 scale-0'
+                        } text-cyan-400 group-hover:text-cyan-300`}
+                      />
+                    </div>
+                  </button>
+                </div>
+
                 <div className="mobile-menu-footer flex flex-col items-center gap-2 sm:gap-3 pb-2 sm:pb-3 pt-2 sm:pt-3">
                   <div className="flex flex-col items-center gap-1 sm:gap-2 text-xs sm:text-sm text-white/60 backdrop-blur-sm border border-white/10 rounded-lg px-3 sm:px-4 py-2 sm:py-3">
                     <span className="font-bold text-sm sm:text-base text-cyan-300">W-Mirshod</span>
