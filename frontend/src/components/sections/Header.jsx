@@ -10,7 +10,7 @@ const Header = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [activeSection, setActiveSection] = useState('home');
   const [isLanguageOpen, setIsLanguageOpen] = useState(false);
-  const [theme, setTheme] = useState('dark');
+  const [theme, setTheme] = useState(null);
   const currentLanguage = i18n.language;
   const languages = [
     { code: 'en', name: 'English' },
@@ -19,17 +19,20 @@ const Header = () => {
   ];
 
 
-  // Theme management - ALWAYS DEFAULT TO DARK
+  // Theme management - RESPECT USER PREFERENCES
   useEffect(() => {
-    // Always default to dark theme, even overriding saved preferences
-    const initialTheme = 'dark';
+    // Check for saved theme preference or default to system preference
+    const savedTheme = localStorage.getItem('theme');
+    const systemPrefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+
+    const initialTheme = savedTheme || (systemPrefersDark ? 'dark' : 'light');
     setTheme(initialTheme);
     document.documentElement.setAttribute('data-theme', initialTheme);
-    localStorage.setItem('theme', initialTheme); // Ensure it's saved as dark
   }, []);
 
   const toggleTheme = () => {
-    const newTheme = theme === 'dark' ? 'light' : 'dark';
+    const currentTheme = theme || 'dark'; // Default to dark if theme is null
+    const newTheme = currentTheme === 'dark' ? 'light' : 'dark';
     setTheme(newTheme);
     localStorage.setItem('theme', newTheme);
     document.documentElement.setAttribute('data-theme', newTheme);
@@ -157,20 +160,20 @@ const Header = () => {
               <button
                 onClick={toggleTheme}
                 className="theme-toggle-btn w-12 h-12 flex items-center justify-center rounded-xl bg-white/10 backdrop-blur-sm border border-white/20 shadow-lg hover:bg-white/15 hover:border-white/30 transition-all duration-300 hover:shadow-cyan-500/20 group"
-                aria-label={`Switch to ${theme === 'dark' ? 'light' : 'dark'} mode`}
-                title={`Switch to ${theme === 'dark' ? 'light' : 'dark'} mode`}
+                aria-label={`Switch to ${(theme || 'dark') === 'dark' ? 'light' : 'dark'} mode`}
+                title={`Switch to ${(theme || 'dark') === 'dark' ? 'light' : 'dark'} mode`}
               >
                 <div className="relative w-5 h-5">
                   {/* Sun icon */}
                   <FaSun
                     className={`absolute inset-0 w-5 h-5 transition-all duration-300 ${
-                      theme === 'dark' ? 'opacity-0 rotate-90 scale-0' : 'opacity-100 rotate-0 scale-100'
+                      (theme || 'dark') === 'dark' ? 'opacity-0 rotate-90 scale-0' : 'opacity-100 rotate-0 scale-100'
                     } text-cyan-400 group-hover:text-cyan-300`}
                   />
                   {/* Moon icon */}
                   <FaMoon
                     className={`absolute inset-0 w-5 h-5 transition-all duration-300 ${
-                      theme === 'dark' ? 'opacity-100 rotate-0 scale-100' : 'opacity-0 -rotate-90 scale-0'
+                      (theme || 'dark') === 'dark' ? 'opacity-100 rotate-0 scale-100' : 'opacity-0 -rotate-90 scale-0'
                     } text-cyan-400 group-hover:text-cyan-300`}
                   />
                 </div>
@@ -221,20 +224,20 @@ const Header = () => {
               <button
                 onClick={toggleTheme}
                 className="theme-toggle-btn w-8 h-8 sm:w-10 sm:h-10 flex items-center justify-center rounded-lg bg-white/10 backdrop-blur-sm border border-white/20 shadow-lg hover:bg-white/15 hover:border-white/30 transition-all duration-300 hover:shadow-cyan-500/20 group"
-                aria-label={`Switch to ${theme === 'dark' ? 'light' : 'dark'} mode`}
-                title={`Switch to ${theme === 'dark' ? 'light' : 'dark'} mode`}
+                aria-label={`Switch to ${(theme || 'dark') === 'dark' ? 'light' : 'dark'} mode`}
+                title={`Switch to ${(theme || 'dark') === 'dark' ? 'light' : 'dark'} mode`}
               >
                 <div className="relative w-4 h-4 sm:w-5 sm:h-5">
                   {/* Sun icon */}
                   <FaSun
                     className={`absolute inset-0 w-4 h-4 sm:w-5 sm:h-5 transition-all duration-300 ${
-                      theme === 'dark' ? 'opacity-0 rotate-90 scale-0' : 'opacity-100 rotate-0 scale-100'
+                      (theme || 'dark') === 'dark' ? 'opacity-0 rotate-90 scale-0' : 'opacity-100 rotate-0 scale-100'
                     } text-cyan-400 group-hover:text-cyan-300`}
                   />
                   {/* Moon icon */}
                   <FaMoon
                     className={`absolute inset-0 w-4 h-4 sm:w-5 sm:h-5 transition-all duration-300 ${
-                      theme === 'dark' ? 'opacity-100 rotate-0 scale-100' : 'opacity-0 -rotate-90 scale-0'
+                      (theme || 'dark') === 'dark' ? 'opacity-100 rotate-0 scale-100' : 'opacity-0 -rotate-90 scale-0'
                     } text-cyan-400 group-hover:text-cyan-300`}
                   />
                 </div>
@@ -316,20 +319,20 @@ const Header = () => {
                   <button
                     onClick={toggleTheme}
                     className="theme-toggle-btn w-12 h-12 flex items-center justify-center rounded-xl bg-white/10 backdrop-blur-sm border border-white/20 shadow-lg hover:bg-white/15 hover:border-white/30 transition-all duration-300 hover:shadow-cyan-500/20 group"
-                    aria-label={`Switch to ${theme === 'dark' ? 'light' : 'dark'} mode`}
-                    title={`Switch to ${theme === 'dark' ? 'light' : 'dark'} mode`}
+                    aria-label={`Switch to ${(theme || 'dark') === 'dark' ? 'light' : 'dark'} mode`}
+                    title={`Switch to ${(theme || 'dark') === 'dark' ? 'light' : 'dark'} mode`}
                   >
                     <div className="relative w-5 h-5">
                       {/* Sun icon */}
                       <FaSun
                         className={`absolute inset-0 w-5 h-5 transition-all duration-300 ${
-                          theme === 'dark' ? 'opacity-0 rotate-90 scale-0' : 'opacity-100 rotate-0 scale-100'
+                          (theme || 'dark') === 'dark' ? 'opacity-0 rotate-90 scale-0' : 'opacity-100 rotate-0 scale-100'
                         } text-cyan-400 group-hover:text-cyan-300`}
                       />
                       {/* Moon icon */}
                       <FaMoon
                         className={`absolute inset-0 w-5 h-5 transition-all duration-300 ${
-                          theme === 'dark' ? 'opacity-100 rotate-0 scale-100' : 'opacity-0 -rotate-90 scale-0'
+                          (theme || 'dark') === 'dark' ? 'opacity-100 rotate-0 scale-100' : 'opacity-0 -rotate-90 scale-0'
                         } text-cyan-400 group-hover:text-cyan-300`}
                       />
                     </div>
