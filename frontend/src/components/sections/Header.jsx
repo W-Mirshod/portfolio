@@ -18,6 +18,7 @@ const Header = () => {
     { code: 'ru', name: 'Russian' }
   ];
 
+
   // Theme management - ALWAYS DEFAULT TO DARK
   useEffect(() => {
     // Always default to dark theme, even overriding saved preferences
@@ -53,10 +54,12 @@ const Header = () => {
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
 
-  // Manage body class for mobile menu
+  // Manage body class for mobile menu and close language dropdown when mobile menu opens
   useEffect(() => {
     if (isMenuOpen) {
       document.body.classList.add('mobile-menu-open');
+      // Close language dropdown when mobile menu opens
+      setIsLanguageOpen(false);
     } else {
       document.body.classList.remove('mobile-menu-open');
     }
@@ -70,13 +73,27 @@ const Header = () => {
   const handleNavigation = (href) => {
     const element = document.querySelector(href);
     if (element) {
-      element.scrollIntoView({ 
+      element.scrollIntoView({
         behavior: 'smooth',
         block: 'start'
       });
     }
     setIsMenuOpen(false);
+    setIsLanguageOpen(false);
   };
+
+  // Close language dropdown when clicking outside
+  useEffect(() => {
+    const handleClickOutside = (event) => {
+      if (isLanguageOpen && !event.target.closest('.language-dropdown-container')) {
+        setIsLanguageOpen(false);
+      }
+    };
+
+    // Use capture phase to handle clicks before they bubble up
+    document.addEventListener('click', handleClickOutside, true);
+    return () => document.removeEventListener('click', handleClickOutside, true);
+  }, [isLanguageOpen]);
 
   const handleLanguageChange = (langCode) => {
     i18n.changeLanguage(langCode);
@@ -106,7 +123,7 @@ const Header = () => {
   return (
     <>
       <aside className="hidden xl:fixed xl:flex flex-col items-center top-0 right-0 h-full w-20 sm:w-24 z-30 animate-fadeInUp desktop-sidebar" style={{fontFamily:'Poppins,sans-serif',letterSpacing:'0.03em'}}>
-        <div className="w-full h-full bg-white/5 backdrop-blur-xl border-l border-white/10 shadow-2xl flex flex-col items-center relative overflow-hidden">
+        <div className="w-full h-full bg-white/5 backdrop-blur-xl border-l border-white/10 shadow-2xl flex flex-col items-center relative">
           <div className="absolute inset-0 glass-shimmer opacity-30"></div>
           <div className="relative z-10">
             <a href="#home" className="flex flex-col items-center gap-2 mt-8 mb-8 group" onClick={(e) => {
@@ -159,33 +176,35 @@ const Header = () => {
                 </div>
               </button>
 
-              <button
-                className="px-4 py-2.5 bg-white/10 backdrop-blur-sm border border-white/20 rounded-xl font-semibold text-sm text-white/90 shadow-lg hover:bg-white/15 hover:border-white/30 transition-all duration-300 hover:shadow-cyan-500/20"
-                aria-haspopup="true"
-                aria-expanded={isLanguageOpen}
-                onClick={() => setIsLanguageOpen(!isLanguageOpen)}
-              >
-                {getLanguageDisplay(currentLanguage)}
-              </button>
-              {isLanguageOpen && (
-                <div className="absolute right-20 sm:right-24 top-8 bg-white/10 backdrop-blur-xl border border-white/20 rounded-xl shadow-2xl overflow-hidden min-w-[110px] z-50">
-                  {languages.map((language) => (
-                    <button
-                      key={language.code}
-                      className={`w-full px-4 py-2.5 text-left text-sm transition-all duration-200 ${currentLanguage === language.code ? 'bg-cyan-500/20 text-cyan-300 border-l-2 border-cyan-400' : 'text-white/80 hover:bg-white/10 hover:text-white'}`}
-                      onClick={() => handleLanguageChange(language.code)}
-                    >
-                      {language.name}
-                    </button>
-                  ))}
-                </div>
-              )}
+              <div className="relative language-dropdown-container">
+                <button
+                  className="px-4 py-2.5 bg-white/10 backdrop-blur-sm border border-white/20 rounded-xl font-semibold text-sm text-white/90 shadow-lg hover:bg-white/15 hover:border-white/30 transition-all duration-300 hover:shadow-cyan-500/20"
+                  aria-haspopup="true"
+                  aria-expanded={isLanguageOpen}
+                  onClick={() => setIsLanguageOpen(!isLanguageOpen)}
+                >
+                  {getLanguageDisplay(currentLanguage)}
+                </button>
+                {isLanguageOpen && (
+                  <div className="absolute top-full right-0 mt-2 bg-black/90 backdrop-blur-xl border border-white/30 rounded-xl shadow-2xl overflow-hidden min-w-[110px] z-50">
+                    {languages.map((language) => (
+                      <button
+                        key={language.code}
+                        className={`w-full px-4 py-2.5 text-left text-sm transition-all duration-200 ${currentLanguage === language.code ? 'bg-cyan-500/30 text-cyan-300 border-l-2 border-cyan-400' : 'text-white/80 hover:bg-white/10 hover:text-white'}`}
+                        onClick={() => handleLanguageChange(language.code)}
+                      >
+                        {language.name}
+                      </button>
+                    ))}
+                  </div>
+                )}
+              </div>
             </div>
           </div>
         </div>
       </aside>
       <header className="fixed top-0 left-0 w-full z-20 xl:hidden animate-fadeInUp mobile-header" style={{letterSpacing: '0.03em'}}>
-        <div className="w-full bg-white/5 backdrop-blur-xl border-b border-white/10 shadow-2xl relative overflow-hidden">
+        <div className="w-full bg-white/5 backdrop-blur-xl border-b border-white/10 shadow-2xl relative">
           <div className="absolute inset-0 glass-shimmer opacity-20"></div>
           <div className="relative z-10">
             <div className="max-w-7xl mx-auto flex items-center justify-between px-3 sm:px-4 md:px-6 py-2.5 sm:py-3">
@@ -221,27 +240,29 @@ const Header = () => {
                 </div>
               </button>
 
-              <button
-                className="px-3 sm:px-4 py-2 bg-white/10 backdrop-blur-sm border border-white/20 rounded-lg font-semibold text-xs sm:text-sm text-white/90 shadow-lg hover:bg-white/15 hover:border-white/30 transition-all duration-300 hover:shadow-cyan-500/20"
-                aria-haspopup="true"
-                aria-expanded={isLanguageOpen}
-                onClick={() => setIsLanguageOpen(!isLanguageOpen)}
-              >
-                {getLanguageDisplay(currentLanguage)}
-              </button>
-              {isLanguageOpen && (
-                <div className="absolute top-full right-0 mt-2 bg-white/10 backdrop-blur-xl border border-white/20 rounded-lg shadow-2xl overflow-hidden min-w-[100px] z-50">
-                  {languages.map((language) => (
-                    <button
-                      key={language.code}
-                      className={`w-full px-3 py-2 text-left text-sm transition-all duration-200 ${currentLanguage === language.code ? 'bg-cyan-500/20 text-cyan-300 border-l-2 border-cyan-400' : 'text-white/80 hover:bg-white/10 hover:text-white'}`}
-                      onClick={() => handleLanguageChange(language.code)}
-                    >
-                      {language.name}
-                    </button>
-                  ))}
-                </div>
-              )}
+              <div className="relative language-dropdown-container">
+                <button
+                  className="px-3 sm:px-4 py-2 bg-white/10 backdrop-blur-sm border border-white/20 rounded-lg font-semibold text-xs sm:text-sm text-white/90 shadow-lg hover:bg-white/15 hover:border-white/30 transition-all duration-300 hover:shadow-cyan-500/20"
+                  aria-haspopup="true"
+                  aria-expanded={isLanguageOpen}
+                  onClick={() => setIsLanguageOpen(!isLanguageOpen)}
+                >
+                  {getLanguageDisplay(currentLanguage)}
+                </button>
+                {isLanguageOpen && (
+                  <div className="absolute top-full right-0 mt-2 bg-black/90 backdrop-blur-xl border border-white/30 rounded-lg shadow-2xl overflow-hidden min-w-[100px] z-50">
+                    {languages.map((language) => (
+                      <button
+                        key={language.code}
+                        className={`w-full px-3 py-2 text-left text-sm transition-all duration-200 ${currentLanguage === language.code ? 'bg-cyan-500/30 text-cyan-300 border-l-2 border-cyan-400' : 'text-white/80 hover:bg-white/10 hover:text-white'}`}
+                        onClick={() => handleLanguageChange(language.code)}
+                      >
+                        {language.name}
+                      </button>
+                    ))}
+                  </div>
+                )}
+              </div>
               <div
                 className="flex flex-col justify-center items-center w-8 h-8 sm:w-10 sm:h-10 bg-white/10 backdrop-blur-sm border border-white/20 rounded-lg cursor-pointer transition-all duration-300 hover:scale-105 hover:bg-white/15 hover:shadow-cyan-500/20"
                 role="button"
@@ -324,7 +345,7 @@ const Header = () => {
               </div>
             </nav>
             <div
-              className="mobile-menu-backdrop bg-black/30 backdrop-blur-sm"
+              className="mobile-menu-backdrop fixed inset-0 bg-black/30 backdrop-blur-sm z-40"
               onClick={() => setIsMenuOpen(false)}
             />
           </>,
