@@ -38,24 +38,25 @@ const Header = () => {
     document.documentElement.setAttribute('data-theme', newTheme);
   };
 
-  useEffect(() => {
-    const handleScroll = () => {
-      const sections = ['home', 'experience', 'skills', 'achievements', 'certificate', 'projects'];
-      const scrollPosition = window.scrollY + 100;
-      for (const section of sections) {
-        const element = document.getElementById(section);
-        if (element) {
-          const { offsetTop, offsetHeight } = element;
-          if (scrollPosition >= offsetTop && scrollPosition < offsetTop + offsetHeight) {
-            setActiveSection(section);
-            break;
-          }
-        }
-      }
-    };
-    window.addEventListener('scroll', handleScroll);
-    return () => window.removeEventListener('scroll', handleScroll);
-  }, []);
+  // Removed scroll handler to prevent navbar minimization
+  // useEffect(() => {
+  //   const handleScroll = () => {
+  //     const sections = ['home', 'experience', 'skills', 'achievements', 'certificate', 'projects'];
+  //     const scrollPosition = window.scrollY + 100;
+  //     for (const section of sections) {
+  //       const element = document.getElementById(section);
+  //       if (element) {
+  //         const { offsetTop, offsetHeight } = element;
+  //         if (scrollPosition >= offsetTop && scrollPosition < offsetTop + offsetHeight) {
+  //           setActiveSection(section);
+  //           break;
+  //         }
+  //       }
+  //     }
+  //   };
+  //   window.addEventListener('scroll', handleScroll);
+  //   return () => window.removeEventListener('scroll', handleScroll);
+  // }, []);
 
   // Manage body class for mobile menu and close language dropdown when mobile menu opens
   useEffect(() => {
@@ -125,7 +126,7 @@ const Header = () => {
 
   return (
     <>
-      <aside className="hidden xl:fixed xl:flex flex-col items-center top-0 right-0 h-full w-20 sm:w-24 z-30 animate-fadeInUp desktop-sidebar" style={{fontFamily:'Poppins,sans-serif',letterSpacing:'0.03em'}}>
+      <aside className="hidden xl:fixed xl:flex flex-col items-center top-0 right-0 h-full w-20 sm:w-24 z-30 desktop-sidebar" style={{fontFamily:'Poppins,sans-serif',letterSpacing:'0.03em'}}>
         <div className="w-full h-full bg-white/5 backdrop-blur-xl border-l border-white/10 shadow-2xl flex flex-col items-center relative">
           <div className="absolute inset-0 glass-shimmer opacity-30"></div>
           <div className="relative z-10">
@@ -206,11 +207,11 @@ const Header = () => {
           </div>
         </div>
       </aside>
-      <header className="fixed top-0 left-0 w-full z-20 xl:hidden animate-fadeInUp mobile-header" style={{letterSpacing: '0.03em'}}>
+      <header className="fixed top-0 left-0 w-full z-20 xl:hidden mobile-header" style={{letterSpacing: '0.03em'}}>
         <div className="w-full bg-white/5 backdrop-blur-xl border-b border-white/10 shadow-2xl relative">
           <div className="absolute inset-0 glass-shimmer opacity-20"></div>
           <div className="relative z-10">
-            <div className="max-w-7xl mx-auto flex items-center justify-between px-3 sm:px-4 md:px-6 py-2.5 sm:py-3">
+            <div className="max-w-7xl mx-auto flex items-center justify-between px-3 sm:px-4 md:px-6 py-4">
             <div className="flex items-center gap-2 sm:gap-3">
               <a href="#home" className="flex items-center gap-2 sm:gap-3 group">
                 <div className="w-8 h-8 sm:w-10 sm:h-10 rounded-xl bg-white/10 backdrop-blur-sm border border-white/20 shadow-lg p-1 transition-all duration-300 group-hover:scale-105 group-hover:bg-white/15">
