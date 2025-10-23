@@ -110,3 +110,25 @@ a, button {
     opacity: 0;
   }
 }
+
+/* Language dropdown styles */
+.language-dropdown-container {
+  position: relative;
+}
+
+.language-dropdown-container .absolute {
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+}
+
+.language-dropdown-container button {
+  white-space: nowrap;
+}
+
+/* Ensure dropdowns are above mobile menu backdrop */
+@media (max-width: 1279px) {
+  .language-dropdown-container .absolute {
+    z-index: 60;
+  }
+}
