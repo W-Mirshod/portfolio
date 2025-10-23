@@ -76,18 +76,18 @@ body.mobile-menu-open {
 }
 
 :root {
-  --primary-color: #3FA2F6;
-  --primary-dark: #2a8cd8;
-  --primary-light: #5db4f8;
-  --primary-rgb: 63, 162, 246;
-  --bg-primary: #0a0b0f;
-  --bg-secondary: #161822;
-  --bg-tertiary: #1e2028;
-  --text-primary: #ffffff;
-  --text-secondary: #b8bcc8;
-  --text-muted: #8892a6;
-  --border-color: #2a2d37;
-  --shadow-light: rgba(63, 162, 246, 0.1);
+  --primary-color: #6366f1;
+  --primary-dark: #4f46e5;
+  --primary-light: #818cf8;
+  --primary-rgb: 99, 102, 241;
+  --bg-primary: #1d4ed8;
+  --bg-secondary: #1e40af;
+  --bg-tertiary: #1e3a8a;
+  --text-primary: #1e3a8a;
+  --text-secondary: #1e40af;
+  --text-muted: #1e3a8a;
+  --border-color: #1d4ed8;
+  --shadow-light: rgba(99, 102, 241, 0.1);
   --shadow-medium: rgba(0, 0, 0, 0.3);
   --shadow-heavy: rgba(0, 0, 0, 0.7);
   --gradient-primary: linear-gradient(135deg, var(--primary-color), var(--primary-dark));
