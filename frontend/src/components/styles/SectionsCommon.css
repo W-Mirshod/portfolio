@@ -13,6 +13,65 @@
   }
 }
 
+/* Force header to never minimize on scroll */
+.mobile-header,
+.desktop-sidebar {
+  transform: none !important;
+  transition: none !important;
+  animation: none !important;
+  height: auto !important;
+  min-height: auto !important;
+  max-height: none !important;
+  padding: inherit !important;
+  scale: 1 !important;
+  will-change: auto !important;
+  position: fixed !important;
+  top: 0 !important;
+  left: 0 !important;
+  right: 0 !important;
+  z-index: 9999 !important;
+}
+
+/* Lock mobile header container padding */
+.mobile-header .max-w-7xl {
+  padding-top: 1rem !important;
+  padding-bottom: 1rem !important;
+  min-height: 4rem !important;
+  height: 4rem !important;
+}
+
+/* Lock desktop sidebar dimensions */
+.desktop-sidebar {
+  width: 5rem !important;
+  min-width: 5rem !important;
+  max-width: 5rem !important;
+  height: 100vh !important;
+  min-height: 100vh !important;
+}
+
+/* Force all header elements to stay the same size */
+.mobile-header *,
+.desktop-sidebar * {
+  transform: none !important;
+  transition: none !important;
+  animation: none !important;
+  scale: 1 !important;
+}
+
+/* Override any responsive classes */
+.mobile-header .w-8,
+.mobile-header .h-8,
+.mobile-header .w-10,
+.mobile-header .h-10 {
+  width: 2.5rem !important;
+  height: 2.5rem !important;
+}
+
+.mobile-header .text-base,
+.mobile-header .text-lg {
+  font-size: 1rem !important;
+}
+
 /* Mobile Menu Z-Index Fix */
 #mobileNavMenu {
   z-index: 9999 !important;
