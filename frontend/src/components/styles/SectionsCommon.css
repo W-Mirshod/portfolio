@@ -58,6 +58,23 @@
   scale: 1 !important;
 }
 
+/* Lock section headers to prevent minimization during scroll */
+section h2,
+section header h2,
+.animate-fadeInUp {
+  transform: none !important;
+  scale: 1 !important;
+  animation-fill-mode: forwards !important;
+  will-change: auto !important;
+}
+
+/* Ensure section headers maintain their size after animation */
+section h2.animate-fadeInUp {
+  animation: fadeInUp 0.6s cubic-bezier(0.16, 1, 0.3, 1) forwards !important;
+  transform: translate3d(0, 0, 0) !important;
+  opacity: 1 !important;
+}
+
 /* Override any responsive classes */
 .mobile-header .w-8,
 .mobile-header .h-8,
