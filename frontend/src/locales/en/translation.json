@@ -52,7 +52,7 @@
       "location": "Location",
       "country": "Uzbekistan"
     },
-    "copyright": "© {{year}} Mirshod Qayimov. All rights reserved.",
+    "copyright": "© 2023-{{year}} Mirshod Qayimov. All rights reserved.",
     "status": "Available for new opportunities",
     "backToTop": "Back to top"
   },

@@ -70,6 +70,8 @@ class PerformanceMonitor {
     if (!('PerformanceObserver' in window)) return;
     
     let clsValue = 0;
+    let lastLoggedValue = 0;
+    
     const observer = new PerformanceObserver((list) => {
       const entries = list.getEntries();
       entries.forEach((entry) => {
@@ -80,8 +82,9 @@ class PerformanceMonitor {
       
       this.metrics.cls = clsValue;
       
-      if (this.isDev) {
+      if (this.isDev && (Math.abs(clsValue - lastLoggedValue) > 0.001 || lastLoggedValue === 0)) {
         console.log('📐 CLS (Cumulative Layout Shift):', clsValue.toFixed(4));
+        lastLoggedValue = clsValue;
       }
     });
     

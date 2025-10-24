@@ -1,23 +1,18 @@
 [
   {
+    "id": 4,
+    "period": "Jul 2025 - Present",
+    "title": "Software Engineer",
+    "company": "Taffi · Full-time",
+    "description": "Developing AI-driven solutions to enhance personalized shopping experiences. Building scalable systems that increase sales conversions and customer retention through intelligent recommendation engines and data analytics.",
+    "order": 0
+  },
+  {
     "id": 1,
-    "period": "Mar 2025 - Present",
+    "period": "Mar 2025 - Jun 2025",
     "title": "Senior Software Engineer",
     "company": "Yaklabs \u00b7 Full-time",
-    "description": "Leading IoT platform development at YakLabs (Tashkent, Uzbekistan). Architected microservices handling 8K+ concurrent users with 99.7% uptime using Python/Django, Redis caching, and PostgreSQL optimization. Built real-time WebSocket system processing 50K+ IoT events daily, implemented PyTorch-based anomaly detection reducing false alerts by 73%, and deployed multi-region AWS infrastructure with Grafana/Prometheus monitoring.",
-    "skills": [
-      "Python",
-      "Django",
-      "AWS",
-      "Docker",
-      "PostgreSQL",
-      "Redis",
-      "WebSocket",
-      "React Native",
-      "PyTorch",
-      "Grafana",
-      "Prometheus"
-    ],
+    "description": "Leading IoT platform development. Built microservices for 8K+ users with 99.7% uptime, real-time WebSocket systems, and PyTorch anomaly detection (73% false alert reduction). Deployed multi-region AWS infrastructure.",
     "order": 0
   },
   {
@@ -25,16 +20,7 @@
     "period": "Oct 2024 - Apr 2025",
     "title": "Software Engineer",
     "company": "MegaDevs (Germany Company) \u00b7 Full-time",
-    "description": "Developed scalable web applications and microservices architecture at MegaDevs (Germany). Led backend development initiatives handling 15K+ daily active users, implemented CI/CD pipelines reducing deployment time by 60%, and architected Kubernetes-based infrastructure supporting 99.5% uptime. Built TypeScript/Node.js APIs processing 2M+ requests monthly with <150ms average response time.",
-    "skills": [
-      "React",
-      "Node.js",
-      "TypeScript",
-      "Docker",
-      "Kubernetes",
-      "AWS",
-      "CI/CD"
-    ],
+    "description": "Developed scalable web apps and microservices. Led backend for 15K+ daily users, implemented CI/CD (60% faster deployments), and built Kubernetes infrastructure (99.5% uptime). TypeScript/Node.js APIs handling 2M+ monthly requests.",
     "order": 0
   },
   {
@@ -42,16 +28,7 @@
     "period": "2022 - Oct 2024",
     "title": "Backend Developer & AI Engineer",
     "company": "Freelance / Independent Projects",
-    "description": "Specialized in microservices architecture, API development, and AI integration as freelance developer. Built Python/Django REST APIs serving 5K+ users, implemented FastAPI services with 95% test coverage, and deployed AI-powered chatbots handling 10K+ conversations monthly. Architected PostgreSQL databases optimized for 100K+ records with sub-50ms query performance.",
-    "skills": [
-      "Python",
-      "Django",
-      "FastAPI",
-      "AI APIs",
-      "Machine Learning",
-      "AWS",
-      "PostgreSQL"
-    ],
+    "description": "Specialized in microservices and AI integration. Built Python/Django APIs for 5K+ users, FastAPI services with 95% test coverage, and AI chatbots handling 10K+ monthly conversations. Optimized PostgreSQL for 100K+ records.",
     "order": 0
   }
 ]
