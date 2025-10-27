@@ -53,14 +53,12 @@ const LazyImage = ({
     >
       {/* Blur placeholder */}
       {!isLoaded && (
-        <div 
+        <div
           className="absolute inset-0 bg-gray-200 animate-pulse"
           style={{
             backgroundImage: `url(${blurDataURL})`,
             backgroundSize: 'cover',
-            backgroundPosition: 'center',
-            filter: 'blur(10px)',
-            transform: 'scale(1.1)'
+            backgroundPosition: 'center'
           }}
         />
       )}
@@ -79,6 +77,10 @@ const LazyImage = ({
           } ${className}`}
           loading="lazy"
           decoding="async"
+          style={{
+            imageRendering: 'crisp-edges',
+            WebkitImageRendering: 'optimize-contrast'
+          }}
           {...props}
         />
       )}
