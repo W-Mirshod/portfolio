@@ -93,6 +93,7 @@ dmypy.json
 
 # React/Vite/Node build output
 /node_modules/
+/frontend/node_modules/
 .env.local
 /.env.development.local
 /.env.test.local
