@@ -1,6 +1,6 @@
 const GITHUB_API_BASE = 'https://api.github.com';
 const USERNAME = 'W-Mirshod';
-const GITHUB_TOKEN = import.meta.env.VITE_GITHUB_TOKEN || 'TOKEN_NOT_SET';
+const GITHUB_TOKEN = import.meta.env.VITE_GITHUB_TOKEN;
 
 // Session Storage Cache
 const CACHE_KEY = 'github_repos_session';
