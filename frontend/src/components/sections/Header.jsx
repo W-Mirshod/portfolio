@@ -340,10 +340,10 @@ const Header = () => {
                   </button>
                 </div>
 
-                <div className="mobile-menu-footer flex flex-col items-center gap-2 sm:gap-3 pb-2 sm:pb-3 pt-2 sm:pt-3">
-                  <div className="flex flex-col items-center gap-1 sm:gap-2 text-xs sm:text-sm text-white/60 backdrop-blur-sm border border-white/10 rounded-lg px-3 sm:px-4 py-2 sm:py-3">
-                    <span className="font-bold text-sm sm:text-base text-cyan-300">W-Mirshod</span>
-                    <span className="font-medium leading-tight text-center">© 2023-2025 All Rights Reserved</span>
+                <div className="mobile-menu-footer flex flex-col items-center gap-1.5 sm:gap-2">
+                  <div className="flex flex-col items-center gap-0.5 sm:gap-1 text-xs sm:text-sm text-white/60 backdrop-blur-sm border border-white/10 rounded-lg px-2 sm:px-3 py-1.5 sm:py-2">
+                    <span className="font-bold text-xs sm:text-sm text-cyan-300">W-Mirshod</span>
+                    <span className="font-medium leading-tight text-center text-xs">© 2023-2025 All Rights Reserved</span>
                   </div>
                 </div>
               </div>

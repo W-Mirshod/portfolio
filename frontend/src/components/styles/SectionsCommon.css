@@ -123,17 +123,12 @@ section h2.animate-fadeInUp {
 /* Mobile Menu Footer Positioning */
 #mobileNavMenu .mobile-menu-footer {
   margin-top: auto !important;
-  position: absolute !important;
-  bottom: 0.5rem !important;
-  left: 1rem !important;
-  right: 1rem !important;
+  padding-bottom: 1rem !important;
 }
 
 @media (min-width: 640px) {
   #mobileNavMenu .mobile-menu-footer {
-    bottom: 0.75rem !important;
-    left: 1.25rem !important;
-    right: 1.25rem !important;
+    padding-bottom: 1.25rem !important;
   }
 }
 
