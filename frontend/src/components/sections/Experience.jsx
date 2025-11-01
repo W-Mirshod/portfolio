@@ -1,26 +1,49 @@
 import { useTranslation } from 'react-i18next';
+import { useHolographicTransition } from '../../utils/parallax';
 import experienceData from '../../data/experience.json';
+import '../styles/HolographicTransition.css';
 
 const Experience = () => {
   const { t } = useTranslation();
+  const { elementRef, isVisible, scrollProgress } = useHolographicTransition(0.2);
 
   return (
-    <section id="experience" className="bg-bg-secondary/30 py-14 px-2 sm:px-4" role="main" aria-labelledby="experience-title">
-      <div className="max-w-6xl mx-auto">
+    <section 
+      id="experience" 
+      ref={elementRef}
+      className="holographic-section bg-bg-secondary/30 py-14 px-2 sm:px-4" 
+      role="main" 
+      aria-labelledby="experience-title"
+    >
+      {/* Hologram Shimmer Overlay */}
+      <div className="hologram-shimmer" />
+      
+      {/* Scanline Overlay */}
+      <div className="scanline-overlay" />
+
+      {/* Particle Effect Overlay */}
+      <div className="holographic-particles" />
+
+      {/* Content Container */}
+      <div className="holographic-content max-w-6xl mx-auto">
         <header className="text-center mb-16">
-          <h2 id="experience-title" className="text-3xl font-light text-white mb-3 tracking-wide animate-fadeInUp">{t('experience.title')}</h2>
-          <div className="w-16 h-px bg-gradient-to-r from-transparent via-white/30 to-transparent mx-auto animate-fadeInUp delay-100"></div>
+          <h2 id="experience-title" className="text-3xl font-light text-white mb-3 tracking-wide">{t('experience.title')}</h2>
+          <div className="w-16 h-px bg-gradient-to-r from-transparent via-cyan-400 to-transparent mx-auto"></div>
         </header>
-        <div className="flex flex-col gap-6 max-w-4xl mx-auto animate-fadeInUp delay-200" role="list" aria-label="Professional experience timeline">
+        <div className="flex flex-col gap-6 max-w-4xl mx-auto" role="list" aria-label="Professional experience timeline">
           {experienceData.map((exp, index) => (
-            <article key={index} className="group relative bg-white/5 backdrop-blur-sm rounded-xl p-6 border border-white/10 transition-all duration-500 hover:bg-white/8 hover:border-white/20 hover:shadow-xl hover:shadow-primary/5" role="listitem">
+            <article 
+              key={index} 
+              className="holographic-border group relative bg-white/5 backdrop-blur-sm rounded-xl p-6 border border-cyan-400/20 transition-all duration-500 hover:bg-white/8 hover:border-cyan-400/40 hover:shadow-[0_0_30px_rgba(6,182,212,0.3)]" 
+              role="listitem"
+            >
               <div className="flex flex-col space-y-4">
                 <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-3">
                   <div className="flex flex-col space-y-1">
                     <h3 className="text-xl font-semibold text-white tracking-tight">{exp.title}</h3>
                     <h4 className="text-sm font-medium text-gray-400">{exp.company}</h4>
                   </div>
-                  <time className="text-xs font-mono text-gray-500 bg-gray-900/50 px-3 py-1 rounded-md border border-gray-800 self-start sm:self-center" dateTime={exp.period.split(' - ')[0]}>
+                  <time className="text-xs font-mono text-cyan-400 bg-gray-900/50 px-3 py-1 rounded-md border border-cyan-400/30 self-start sm:self-center" dateTime={exp.period.split(' - ')[0]}>
                     {exp.period}
                   </time>
                 </div>
@@ -29,7 +52,7 @@ const Experience = () => {
             </article>
           ))}
         </div>
-        <aside className="mt-20 flex flex-col items-center justify-center animate-fadeInUp delay-300">
+        <aside className="mt-20 flex flex-col items-center justify-center">
           <a
             href="https://linkedin.com/in/wmirshod"
             target="_blank"

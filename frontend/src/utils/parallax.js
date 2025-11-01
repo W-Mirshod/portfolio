@@ -1,4 +1,4 @@
-import { useEffect, useRef } from 'react';
+import { useEffect, useRef, useState } from 'react';
 
 export const useParallax = (speed = 0.5) => {
   const elementRef = useRef(null);
@@ -115,4 +115,88 @@ export const useFloatingParticles = (particleCount = 20) => {
       }
     };
   }, [particleCount]);
+};
+
+export const useHolographicTransition = (threshold = 0.2) => {
+  const elementRef = useRef(null);
+  const [isVisible, setIsVisible] = useState(false);
+  const [scrollProgress, setScrollProgress] = useState(0);
+  const [isRevealing, setIsRevealing] = useState(false);
+  const rafRef = useRef(null);
+
+  useEffect(() => {
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        const visible = entry.isIntersecting && entry.intersectionRatio >= threshold;
+        setIsVisible(visible);
+        
+        if (visible && !isRevealing) {
+          setIsRevealing(true);
+          if (elementRef.current) {
+            elementRef.current.classList.add('active');
+            // Use requestAnimationFrame for smoother timing
+            requestAnimationFrame(() => {
+              setTimeout(() => {
+                if (elementRef.current) {
+                  elementRef.current.classList.add('revealing');
+                }
+              }, 150);
+            });
+          }
+        } else if (!visible && isRevealing) {
+          // Reset when scrolled out of view (optional - comment out if you want one-time effect)
+          // setIsRevealing(false);
+          // elementRef.current?.classList.remove('active', 'revealing');
+        }
+      },
+      {
+        threshold: [0, threshold, 0.5, 1],
+        rootMargin: '-50px 0px -100px 0px',
+      }
+    );
+
+    if (elementRef.current) {
+      observer.observe(elementRef.current);
+    }
+
+    return () => observer.disconnect();
+  }, [threshold, isRevealing]);
+
+  useEffect(() => {
+    if (!isVisible) return;
+
+    const handleScroll = () => {
+      if (rafRef.current) {
+        cancelAnimationFrame(rafRef.current);
+      }
+
+      rafRef.current = requestAnimationFrame(() => {
+        if (!elementRef.current) return;
+
+        const rect = elementRef.current.getBoundingClientRect();
+        const windowHeight = window.innerHeight;
+        const sectionTop = rect.top;
+        const sectionHeight = rect.height;
+
+        const progress = Math.max(
+          0,
+          Math.min(1, (windowHeight - sectionTop) / (windowHeight + sectionHeight))
+        );
+
+        setScrollProgress(progress);
+      });
+    };
+
+    window.addEventListener('scroll', handleScroll, { passive: true });
+    handleScroll(); // Initial calculation
+
+    return () => {
+      window.removeEventListener('scroll', handleScroll);
+      if (rafRef.current) {
+        cancelAnimationFrame(rafRef.current);
+      }
+    };
+  }, [isVisible]);
+
+  return { elementRef, isVisible, scrollProgress, isRevealing };
 };
