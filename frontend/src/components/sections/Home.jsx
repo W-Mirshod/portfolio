@@ -203,7 +203,7 @@ const Home = () => {
 
             {/* Compact Terminal */}
             <div className="w-full flex justify-center layered-entrance" style={{ animationDelay: '0.5s' }}>
-              <div className="bg-gray-900/80 backdrop-blur-sm border border-white/10 rounded-xl w-full max-w-2xl p-4 text-left text-green-400 font-mono text-sm overflow-hidden shadow-2xl terminal-glow">
+              <div className="bg-gray-900/80 backdrop-blur-sm border border-white/10 rounded-xl w-full max-w-2xl p-4 text-left text-green-400 font-mono text-sm overflow-hidden shadow-2xl terminal-glow h-32 sm:h-36">
                 <div className="flex items-center gap-2 mb-3 pb-2 border-b border-white/10">
                   <div className="flex gap-1.5">
                     <div className="w-3 h-3 rounded-full bg-red-500"></div>
@@ -224,7 +224,7 @@ const Home = () => {
             </div>
 
             {/* Modern Tech Stack Grid */}
-            <div className="flex justify-center items-center w-full px-2">
+            <div className="flex justify-center items-center w-full px-2 flex-shrink-0">
               <div className="grid grid-cols-7 sm:grid-cols-9 md:grid-cols-13 lg:grid-cols-18 xl:grid-cols-22 2xl:grid-cols-26 gap-1.5 sm:gap-2 md:gap-2.5 layered-entrance max-w-full" style={{ animationDelay: '0.6s' }}>
               {techStackData.map((tech, index) => (
                 <div
