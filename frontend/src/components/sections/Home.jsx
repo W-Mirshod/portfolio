@@ -148,7 +148,7 @@ const Home = () => {
   }, [terminalHistory]);
 
   return (
-    <section id="home" className="relative flex flex-col items-center justify-center min-h-screen h-screen w-full overflow-hidden pt-16 sm:pt-20 xl:pt-10 xl:sm:pt-12">
+    <section id="home" className="relative flex flex-col items-center justify-center min-h-screen h-screen w-full overflow-hidden pt-16 sm:pt-20 xl:pt-10 xl:pr-20 xl:sm:pt-12">
       {enableEffects && (
         <ParallaxBackground className="absolute inset-0">
           <div className="absolute inset-0 w-full h-full bg-bg-secondary/30" />
@@ -159,13 +159,13 @@ const Home = () => {
         <div className="absolute inset-0 w-full h-full bg-bg-secondary/30" />
       )}
 
-      <div className="relative flex flex-col justify-center items-center w-full h-full max-w-6xl mx-auto px-3 sm:px-4 md:px-6 z-10">
+      <div className="relative flex flex-col justify-center items-center w-full h-full max-w-7xl mx-auto px-3 sm:px-4 md:px-6 lg:px-8 z-10">
         {/* Subtle background elements */}
         <div className="absolute inset-0 overflow-hidden pointer-events-none">
           <div className="absolute top-1/4 left-1/4 w-96 h-96 bg-blue-500/3 rounded-full blur-3xl animate-pulse"></div>
           <div className="absolute bottom-1/4 right-1/4 w-80 h-80 bg-white/2 rounded-full blur-3xl animate-pulse" style={{ animationDelay: '2s' }}></div>
         </div>
-        <div className="flex flex-col items-center justify-center text-center w-full max-w-4xl mx-auto h-full py-4 sm:py-6 md:py-8 relative">
+        <div className="flex flex-col items-center justify-center text-center w-full max-w-5xl mx-auto h-full py-4 sm:py-6 md:py-8 relative">
           {/* Glassmorphism overlay */}
           <div className="absolute inset-0 bg-white/5 backdrop-blur-sm rounded-3xl border border-white/10 shadow-2xl"></div>
           <div className="relative z-10 flex flex-col items-center justify-center text-center w-full space-y-4 sm:space-y-6">
@@ -225,7 +225,7 @@ const Home = () => {
 
             {/* Modern Tech Stack Grid */}
             <div className="flex justify-center items-center w-full px-2 flex-shrink-0">
-              <div className="grid grid-cols-7 sm:grid-cols-9 md:grid-cols-13 lg:grid-cols-18 xl:grid-cols-22 2xl:grid-cols-26 gap-1.5 sm:gap-2 md:gap-2.5 layered-entrance max-w-full" style={{ animationDelay: '0.6s' }}>
+              <div className="grid grid-cols-7 sm:grid-cols-9 md:grid-cols-10 lg:grid-cols-12 xl:grid-cols-14 2xl:grid-cols-16 gap-1.5 sm:gap-2 md:gap-2.5 layered-entrance w-full max-w-6xl mx-auto" style={{ animationDelay: '0.6s' }}>
               {techStackData.map((tech, index) => (
                 <div
                   key={tech.name}

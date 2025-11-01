@@ -195,6 +195,19 @@ body.mobile-menu-open {
   position: relative;
 }
 
+/* Prevent content from stretching too wide on large screens */
+@media (min-width: 1920px) {
+  .section {
+    padding: 0 10%;
+  }
+}
+
+@media (min-width: 2560px) {
+  .section {
+    padding: 0 15%;
+  }
+}
+
 .container {
   max-width: 1200px;
   margin: 0 auto;
