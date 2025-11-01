@@ -108,10 +108,22 @@
     "order": 17
   },
   {
+    "id": 17.4,
+    "name": "VS Code",
+    "img": "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/vscode/vscode-original.svg",
+    "order": 17.4
+  },
+  {
     "id": 17.5,
     "name": "Cursor IDE",
     "img": "https://cursor.sh/favicon.ico",
     "order": 17.5
+  },
+  {
+    "id": 17.6,
+    "name": "Terminal",
+    "img": "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/bash/bash-original.svg",
+    "order": 17.6
   },
   {
     "id": 18,
