@@ -176,22 +176,13 @@ export const fetchAllRepositoriesSorted = async () => {
     const repositoriesWithLanguages = await Promise.all(
       repositories.map(async (repo) => {
         try {
-          const [languagesResponse, statsResponse] = await Promise.all([
-            fetch(repo.languages_url, {
-              headers: {
-                'Accept': 'application/vnd.github.v3+json',
-                'User-Agent': 'Portfolio-App',
-                ...(GITHUB_TOKEN && { 'Authorization': `token ${GITHUB_TOKEN}` })
-              }
-            }),
-            fetch(`${GITHUB_API_BASE}/repos/${repo.owner.login}/${repo.name}/stats/contributors`, {
-              headers: {
-                'Accept': 'application/vnd.github.v3+json',
-                'User-Agent': 'Portfolio-App',
-                ...(GITHUB_TOKEN && { 'Authorization': `token ${GITHUB_TOKEN}` })
-              }
-            })
-          ]);
+          const languagesResponse = await fetch(repo.languages_url, {
+            headers: {
+              'Accept': 'application/vnd.github.v3+json',
+              'User-Agent': 'Portfolio-App',
+              ...(GITHUB_TOKEN && { 'Authorization': `token ${GITHUB_TOKEN}` })
+            }
+          });
 
           let languages = {};
           let commitCount = 0;
@@ -200,41 +191,49 @@ export const fetchAllRepositoriesSorted = async () => {
             languages = await languagesResponse.json();
           }
 
-          if (statsResponse.ok) {
-            const stats = await statsResponse.json();
-            // Sum up all commits from all contributors
-            if (stats && Array.isArray(stats)) {
-              commitCount = stats.reduce((total, contributor) => {
-                return total + (contributor.total || 0);
-              }, 0);
-            }
-          } else {
-            // Fallback: try to get commit count from commits API
-            try {
-              const commitsResponse = await fetch(`${repo.url}/commits?per_page=1`, {
+          // Fetch commit count using commits API (more reliable than stats API)
+          try {
+            const commitsResponse = await fetch(
+              `${GITHUB_API_BASE}/repos/${repo.owner.login}/${repo.name}/commits?per_page=1`,
+              {
                 headers: {
                   'Accept': 'application/vnd.github.v3+json',
                   'User-Agent': 'Portfolio-App',
                   ...(GITHUB_TOKEN && { 'Authorization': `token ${GITHUB_TOKEN}` })
                 }
-              });
+              }
+            );
 
-              if (commitsResponse.ok) {
-                const linkHeader = commitsResponse.headers.get('Link');
-                if (linkHeader) {
-                  const lastPageMatch = linkHeader.match(/page=(\d+)>; rel="last"/);
-                  if (lastPageMatch) {
-                    commitCount = parseInt(lastPageMatch[1]);
-                  }
+            if (commitsResponse.ok) {
+              const linkHeader = commitsResponse.headers.get('Link');
+              if (linkHeader) {
+                // Parse Link header to find total pages
+                const lastPageMatch = linkHeader.match(/page=(\d+)>; rel="last"/);
+                if (lastPageMatch) {
+                  commitCount = parseInt(lastPageMatch[1], 10);
                 } else {
-                  // If no pagination, count commits in this response
-                  const commits = await commitsResponse.json();
+                  // Try alternative format
+                  const matches = linkHeader.match(/page=(\d+)/g);
+                  if (matches && matches.length > 0) {
+                    const pageNumbers = matches.map(m => parseInt(m.match(/\d+/)[0], 10));
+                    commitCount = Math.max(...pageNumbers);
+                  }
+                }
+              } else {
+                // No pagination, try to get total from first page
+                const commits = await commitsResponse.json();
+                if (Array.isArray(commits)) {
                   commitCount = commits.length;
                 }
               }
-            } catch (error) {
-              console.warn(`Failed to fetch commit count for ${repo.name}:`, error);
+            } else if (commitsResponse.status === 404) {
+              // Repository has no commits or is empty
+              commitCount = 0;
+            } else {
+              console.warn(`Failed to fetch commits for ${repo.name}: ${commitsResponse.status}`);
             }
+          } catch (error) {
+            console.warn(`Error fetching commit count for ${repo.name}:`, error.message);
           }
           
           return { ...repo, languages, commit_count: commitCount };

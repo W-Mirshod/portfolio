@@ -110,8 +110,8 @@ const Projects = () => {
                             <span>{project.stars}</span>
                           </div>
                         )}
-                        <div className="flex items-center gap-1">
-                          <i className="fas fa-code-branch"></i>
+                        <div className="flex items-center gap-1" title="Commits">
+                          <i className="fas fa-history"></i>
                           <span>{project.commitCount || 0}</span>
                         </div>
                       </div>
