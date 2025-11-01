@@ -77,7 +77,7 @@ portfolio/
   - `LazyImage.jsx` - Optimized image loading
   - `LazySection.jsx` - Intersection Observer wrapper
   - `ParallaxBackground.jsx` - Parallax effect component
-  - `PerformanceMonitor.jsx` - Performance tracking
+  - `GoToTop.jsx` - Scroll to top button
 
 #### **Data Management**
 - **`data/`** - Structured JSON files
@@ -98,7 +98,6 @@ portfolio/
   - `i18n.js` - Internationalization setup
   - `parallax.js` - Parallax effect utilities
   - `audio.js` - Audio management
-  - `performanceMonitor.js` - Performance tracking
 
 ### 🐳 Docker Configuration
 

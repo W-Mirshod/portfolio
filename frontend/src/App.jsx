@@ -3,9 +3,8 @@ import './App.css';
 import './components/styles/SectionsCommon.css';
 import './utils/i18n';
 import { Routes, Route } from "react-router-dom";
-import performanceMonitor from './utils/performanceMonitor';
-import PerformanceMonitor from './components/ui/PerformanceMonitor';
 import LazySection from './components/ui/LazySection';
+import GoToTop from './components/ui/GoToTop';
 
 // Import critical components immediately
 import Header from './components/sections/Header';
@@ -27,10 +26,6 @@ const loadFontAwesome = () => {
       script.src = 'https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/js/all.min.js';
       script.async = true;
       script.defer = true;
-      script.onload = () => {
-        performanceMonitor.markUserInteraction('fontawesome-loaded');
-        performanceMonitor.measureUserInteraction('fontawesome-loaded');
-      };
       document.body.appendChild(script);
     };
     if ('requestIdleCallback' in window) {
@@ -50,15 +45,8 @@ const SectionSkeleton = ({ height = 'h-64' }) => (
 
 function App() {
   useEffect(() => {
-    // Initialize performance monitoring
-    performanceMonitor.markUserInteraction('app-start');
-    
     // Load Font Awesome after initial render (idle callback)
     loadFontAwesome();
-    
-    // Mark app initialization complete
-    performanceMonitor.markUserInteraction('app-initialized');
-    performanceMonitor.measureUserInteraction('app-initialized');
   }, []);
 
   return (
@@ -80,8 +68,8 @@ function App() {
         } />
       </Routes>
       
-      {/* Performance Monitor (dev only) */}
-      <PerformanceMonitor />
+      {/* Go to Top Button */}
+      <GoToTop />
     </>
   );
 }
