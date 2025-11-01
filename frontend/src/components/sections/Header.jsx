@@ -137,7 +137,7 @@ const Header = () => {
               <div className="w-12 h-12 sm:w-14 sm:h-14 rounded-2xl bg-white/10 backdrop-blur-sm border border-white/20 shadow-lg p-1 transition-all duration-300 group-hover:scale-105 group-hover:bg-white/15">
                 <img src={MirshodImg} alt="W" className="w-full h-full rounded-2xl object-cover" />
               </div>
-              <span className="text-sm font-bold text-white/90 tracking-wider drop-shadow-sm">W Mirshod</span>
+              <span className="text-sm font-bold text-white/90 tracking-wider drop-shadow-sm">Mirshod</span>
             </a>
             <nav className="flex flex-col gap-2 sm:gap-3 w-full items-center px-2">
               {navItems.map((item) => (
@@ -217,7 +217,7 @@ const Header = () => {
                 <div className="w-8 h-8 sm:w-10 sm:h-10 rounded-xl bg-white/10 backdrop-blur-sm border border-white/20 shadow-lg p-1 transition-all duration-300 group-hover:scale-105 group-hover:bg-white/15">
                   <img src={MirshodImg} alt="W" className="w-full h-full rounded-xl object-cover" />
                 </div>
-                <span className="text-base sm:text-lg font-bold text-white/90 tracking-wide drop-shadow-sm">W Mirshod</span>
+                <span className="text-base sm:text-lg font-bold text-white/90 tracking-wide drop-shadow-sm">Mirshod</span>
               </a>
             </div>
             <div className="relative flex items-center gap-2 sm:gap-3">
@@ -297,7 +297,7 @@ const Header = () => {
                   <div className="w-10 h-10 sm:w-12 sm:h-12 rounded-xl bg-white/10 backdrop-blur-sm border border-white/20 shadow-lg p-1 transition-all duration-300 group-hover:scale-105 group-hover:bg-white/15">
                     <img src={MirshodImg} alt="W" className="w-full h-full rounded-xl object-cover" />
                   </div>
-                  <span className="text-base sm:text-lg font-bold text-white/90 tracking-wider drop-shadow-sm">W Mirshod</span>
+                  <span className="text-base sm:text-lg font-bold text-white/90 tracking-wider drop-shadow-sm">Mirshod</span>
                 </a>
                 {navItems.map((item) => (
                   <a
