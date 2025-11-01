@@ -12,7 +12,8 @@ export const useGitHubRepositories = () => {
   const [sortBy, setSortBy] = useState('commits');
   const [loadingMore, setLoadingMore] = useState(false);
 
-  const PER_PAGE = 7;
+  const INITIAL_PER_PAGE = 7;
+  const LOAD_MORE_PER_PAGE = 5;
 
   const filterRepositories = useCallback((repos, filterType) => {
     if (filterType === 'all') return repos;
@@ -50,7 +51,7 @@ export const useGitHubRepositories = () => {
   }, []);
 
 
-  const loadRepositories = useCallback(async (pageNum = 1, append = false) => {
+  const loadRepositories = useCallback(async (pageNum = 1, append = false, perPage = INITIAL_PER_PAGE) => {
     try {
       if (append) {
         setLoadingMore(true);
@@ -59,8 +60,8 @@ export const useGitHubRepositories = () => {
       }
       setError(null);
       
-      // Fetch paginated data
-      const data = await fetchUserRepositories(pageNum, PER_PAGE);
+      // Fetch paginated data with appropriate perPage value
+      const data = await fetchUserRepositories(pageNum, perPage, append ? repositories.length : 0);
       
       let newRepositories;
       if (append) {
@@ -89,13 +90,13 @@ export const useGitHubRepositories = () => {
 
   const loadMore = useCallback(() => {
     if (!loadingMore && hasMore) {
-      loadRepositories(page + 1, true);
+      loadRepositories(page + 1, true, LOAD_MORE_PER_PAGE);
     }
   }, [loadingMore, hasMore, page, loadRepositories]);
 
   const refresh = useCallback(() => {
     clearCache();
-    loadRepositories(1, false);
+    loadRepositories(1, false, INITIAL_PER_PAGE);
   }, [loadRepositories]);
 
   const applyFilter = useCallback((filterType) => {
@@ -107,7 +108,7 @@ export const useGitHubRepositories = () => {
   useEffect(() => {
     // Clear cache to ensure fresh data with new commit counting
     clearCache();
-    loadRepositories(1, false);
+    loadRepositories(1, false, INITIAL_PER_PAGE);
   }, []);
 
   useEffect(() => {

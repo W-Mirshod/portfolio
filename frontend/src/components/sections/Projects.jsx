@@ -1,13 +1,11 @@
-import React, { useRef, useCallback, useEffect } from 'react';
+import React from 'react';
 import { useTranslation } from 'react-i18next';
 import { useScrollReveal } from '../../utils/parallax';
 import { useGitHubRepositories } from '../../hooks/useGitHubRepositories';
-import { getLanguageIcon } from '../../services/githubApi';
 
 const Projects = () => {
   const { t } = useTranslation();
   const revealRef = useScrollReveal();
-  const observerRef = useRef();
   const { 
     repositories, 
     loading, 
@@ -18,19 +16,7 @@ const Projects = () => {
     refresh
   } = useGitHubRepositories();
 
-  // Intersection Observer for lazy loading
-  const lastRepoRef = useCallback(node => {
-    if (loadingMore) return;
-    if (observerRef.current) observerRef.current.disconnect();
-    
-    observerRef.current = new IntersectionObserver(entries => {
-      if (entries[0].isIntersecting && hasMore) {
-        loadMore();
-      }
-    });
-    
-    if (node) observerRef.current.observe(node);
-  }, [loadingMore, hasMore, loadMore]);
+  // Intersection Observer disabled - using explicit "Load More" button instead
 
   return (
     <section id="projects" className="py-20 px-4 bg-bg-secondary/30">
@@ -91,7 +77,6 @@ const Projects = () => {
             {repositories.map((project, index) => (
               <div
                 key={project.id || project.title}
-                ref={index === repositories.length - 1 ? lastRepoRef : null}
                 className="group bg-white/5 backdrop-blur-sm rounded-lg p-5 border border-white/10 transition-all duration-300 hover:bg-white/8 hover:border-white/20"
               >
                 <div className="flex items-center justify-between mb-3">

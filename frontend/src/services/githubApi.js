@@ -267,13 +267,13 @@ export const fetchAllRepositoriesSorted = async () => {
   }
 };
 
-export const fetchUserRepositories = async (page = 1, perPage = 7) => {
+export const fetchUserRepositories = async (page = 1, perPage = 7, offset = 0) => {
   try {
     // Get all sorted repositories
     const allRepos = await fetchAllRepositoriesSorted();
     
-    // Return the requested page
-    const startIndex = (page - 1) * perPage;
+    // Calculate start index: use offset if provided (for load more), otherwise use page-based calculation
+    const startIndex = offset > 0 ? offset : (page - 1) * perPage;
     const endIndex = startIndex + perPage;
     const pageData = allRepos.slice(startIndex, endIndex);
 
@@ -287,7 +287,7 @@ export const fetchUserRepositories = async (page = 1, perPage = 7) => {
     console.error('Error fetching repositories:', error);
     console.warn('Falling back to static data due to API error.');
     const fallback = getFallbackRepositories().sort((a, b) => (b.commitCount || 0) - (a.commitCount || 0));
-    const startIndex = (page - 1) * perPage;
+    const startIndex = offset > 0 ? offset : (page - 1) * perPage;
     const endIndex = startIndex + perPage;
     const pageData = fallback.slice(startIndex, endIndex);
 
