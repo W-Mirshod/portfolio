@@ -3,6 +3,7 @@ services:
     build:
       context: ./frontend
       dockerfile: Dockerfile
+    container_name: portfolio-portfolio-1
     restart: always
     ports:
       - "8080:8080"
