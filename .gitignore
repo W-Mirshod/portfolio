@@ -100,6 +100,8 @@ dmypy.json
 /.env.production.local
 /dist/
 /.vite/
+/.next/
+/frontend/.next/
 
 # Log files
 *.log
