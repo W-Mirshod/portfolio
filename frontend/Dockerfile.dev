@@ -4,8 +4,9 @@ WORKDIR /app
 
 COPY package*.json ./
 
-RUN npm install || true
+RUN npm install
 
 EXPOSE 5173
 
-CMD ["npm", "run", "dev", "--", "--host", "0.0.0.0"]
+# Install dependencies if node_modules doesn't exist, then start dev server
+CMD sh -c "if [ ! -d 'node_modules' ] || [ ! -f 'node_modules/.bin/vite' ]; then npm install; fi && npm run dev -- --host 0.0.0.0"
