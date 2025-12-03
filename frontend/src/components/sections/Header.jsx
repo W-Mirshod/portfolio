@@ -126,15 +126,15 @@ const Header = () => {
 
   return (
     <>
-      <aside className="hidden xl:fixed xl:flex flex-col items-center top-0 right-0 h-full w-20 sm:w-24 z-30 desktop-sidebar" style={{fontFamily:'Poppins,sans-serif',letterSpacing:'0.03em'}}>
+      <aside className="hidden xl:fixed xl:flex flex-col items-center top-0 right-0 h-full w-28 sm:w-32 z-30 desktop-sidebar" style={{fontFamily:'Poppins,sans-serif',letterSpacing:'0.03em'}}>
         <div className="w-full h-full bg-white/5 backdrop-blur-xl border-l border-white/10 shadow-2xl flex flex-col items-center relative">
           <div className="absolute inset-0 glass-shimmer opacity-30"></div>
-          <div className="relative z-10">
+          <div className="relative z-10 flex flex-col h-full w-full items-center">
             <a href="#home" className="flex flex-col items-center gap-2 mt-8 mb-8 group" onClick={(e) => {
               e.preventDefault();
               handleNavigation('#home');
             }}>
-              <div className="w-12 h-12 sm:w-14 sm:h-14 rounded-2xl bg-white/10 backdrop-blur-sm border border-white/20 shadow-lg p-1 transition-all duration-300 group-hover:scale-105 group-hover:bg-white/15">
+              <div className="w-14 h-14 sm:w-16 sm:h-16 rounded-2xl bg-white/10 backdrop-blur-sm border border-white/20 shadow-lg p-1 transition-all duration-300 group-hover:scale-105 group-hover:bg-white/15">
                 <img src={MirshodImg} alt="W" className="w-full h-full rounded-2xl object-cover" />
               </div>
               <span className="text-sm font-bold text-white/90 tracking-wider drop-shadow-sm">Mirshod</span>
@@ -143,7 +143,7 @@ const Header = () => {
               {navItems.map((item) => (
                 <a
                   key={item.key}
-                  className={`w-12 h-12 sm:w-14 sm:h-14 flex flex-col items-center justify-center rounded-xl font-medium text-sm transition-all duration-300 backdrop-blur-sm border ${activeSection === item.key ? 'bg-white/15 text-white shadow-lg border-white/30 shadow-cyan-500/20' : 'text-white/70 hover:text-white hover:bg-white/10 hover:border-white/20 hover:shadow-lg hover:shadow-cyan-500/10'}`}
+                  className={`w-20 h-14 sm:w-24 sm:h-16 flex flex-col items-center justify-center rounded-xl font-medium text-sm transition-all duration-300 backdrop-blur-sm border ${activeSection === item.key ? 'bg-white/15 text-white shadow-lg border-white/30 shadow-cyan-500/20' : 'text-white/70 hover:text-white hover:bg-white/10 hover:border-white/20 hover:shadow-lg hover:shadow-cyan-500/10'}`}
                   href={item.href}
                   onClick={(e) => {
                     e.preventDefault();
@@ -160,7 +160,7 @@ const Header = () => {
               {/* Theme Toggle */}
               <button
                 onClick={toggleTheme}
-                className="theme-toggle-btn w-12 h-12 flex items-center justify-center rounded-xl bg-white/10 backdrop-blur-sm border border-white/20 shadow-lg hover:bg-white/15 hover:border-white/30 transition-all duration-300 hover:shadow-cyan-500/20 group"
+                className="theme-toggle-btn w-20 h-14 sm:w-24 sm:h-16 flex items-center justify-center rounded-xl bg-white/10 backdrop-blur-sm border border-white/20 shadow-lg hover:bg-white/15 hover:border-white/30 transition-all duration-300 hover:shadow-cyan-500/20 group"
                 aria-label={`Switch to ${(theme || 'dark') === 'dark' ? 'light' : 'dark'} mode`}
                 title={`Switch to ${(theme || 'dark') === 'dark' ? 'light' : 'dark'} mode`}
               >
@@ -182,7 +182,7 @@ const Header = () => {
 
               <div className="relative language-dropdown-container">
                 <button
-                  className="px-4 py-2.5 bg-white/10 backdrop-blur-sm border border-white/20 rounded-xl font-semibold text-sm text-white/90 shadow-lg hover:bg-white/15 hover:border-white/30 transition-all duration-300 hover:shadow-cyan-500/20"
+                  className="w-20 h-14 sm:w-24 sm:h-16 flex items-center justify-center bg-white/10 backdrop-blur-sm border border-white/20 rounded-xl font-semibold text-sm text-white/90 shadow-lg hover:bg-white/15 hover:border-white/30 transition-all duration-300 hover:shadow-cyan-500/20"
                   aria-haspopup="true"
                   aria-expanded={isLanguageOpen}
                   onClick={() => setIsLanguageOpen(!isLanguageOpen)}

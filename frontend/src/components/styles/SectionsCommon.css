@@ -42,9 +42,9 @@
 
 /* Lock desktop sidebar dimensions */
 .desktop-sidebar {
-  width: 5rem !important;
-  min-width: 5rem !important;
-  max-width: 5rem !important;
+  width: 8rem !important;
+  min-width: 8rem !important;
+  max-width: 8rem !important;
   height: 100vh !important;
   min-height: 100vh !important;
 }
