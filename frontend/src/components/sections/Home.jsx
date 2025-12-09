@@ -56,8 +56,8 @@ const Home = () => {
         </div>
 
         <div className="flex flex-col items-center justify-center text-center w-full max-w-5xl mx-auto relative space-y-8 sm:space-y-10 md:space-y-12">
-          <div className="flex flex-col items-center justify-center text-center w-full space-y-4 sm:space-y-5 md:space-y-6 px-4 sm:px-6 md:px-8">
-            <div className="flex flex-col sm:flex-row items-center justify-center gap-4 sm:gap-6 layered-entrance">
+          <div className="flex flex-col items-center justify-center text-center w-full space-y-4 sm:space-y-5 md:space-y-6 px-4 sm:px-6 md:px-8 lg:items-start lg:text-left">
+            <div className="flex flex-col sm:flex-row items-center justify-center gap-4 sm:gap-6 layered-entrance lg:justify-start">
               <div className="relative">
                 <div className="absolute inset-0 bg-gradient-to-r from-cyan-400/50 to-blue-500/50 rounded-full blur-xl animate-pulse"></div>
                 <img
@@ -67,7 +67,7 @@ const Home = () => {
                   loading="eager"
                 />
               </div>
-              <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl xl:text-7xl font-bold leading-tight bg-gradient-to-r from-white via-white to-gray-300 bg-clip-text text-transparent">
+              <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl xl:text-7xl font-bold leading-tight bg-gradient-to-r from-white via-white to-gray-300 bg-clip-text text-transparent lg:text-left">
                 Mirshod Qayimov
               </h1>
             </div>
@@ -76,11 +76,11 @@ const Home = () => {
               Backend Engineer + AI Integration
             </h2>
 
-            <p className="text-sm sm:text-base md:text-lg lg:text-xl text-gray-300 max-w-3xl leading-relaxed layered-entrance flex items-center justify-center gap-2 sm:gap-3" style={{ animationDelay: '0.2s' }}>
+            <p className="text-sm sm:text-base md:text-lg lg:text-xl text-gray-300 max-w-3xl leading-relaxed layered-entrance flex items-center justify-center gap-2 sm:gap-3 lg:justify-start" style={{ animationDelay: '0.2s' }}>
               Building AI-powered product prototype <i className="fas fa-arrow-right-long text-cyan-400"></i> Production-Ready
             </p>
 
-            <div className="flex flex-wrap items-center justify-center gap-3 sm:gap-4 mt-6 sm:mt-8 layered-entrance" style={{ animationDelay: '0.3s' }}>
+            <div className="flex flex-wrap items-center justify-center gap-3 sm:gap-4 mt-6 sm:mt-8 layered-entrance lg:justify-start" style={{ animationDelay: '0.3s' }}>
               <button
                 onClick={() => handleNavigation('#projects')}
                 className="px-6 sm:px-8 py-3 sm:py-3.5 bg-white/10 backdrop-blur-sm border border-white/20 rounded-lg text-white font-medium text-sm sm:text-base hover:bg-white/20 hover:border-white/30 transition-all duration-300 shadow-lg hover:shadow-xl"
@@ -96,47 +96,51 @@ const Home = () => {
             </div>
           </div>
 
-          <div className="w-full max-w-4xl mx-auto layered-entrance" style={{ animationDelay: '0.4s' }}>
-            <div className="grid grid-cols-1 sm:grid-cols-3 gap-4 sm:gap-6">
-              <div className="bg-white/5 backdrop-blur-sm border border-white/10 rounded-xl p-4 sm:p-6 text-center hover:bg-white/8 hover:border-white/20 transition-all duration-300">
-                <div className="text-2xl sm:text-3xl md:text-4xl font-bold text-white mb-2">15+</div>
-                <div className="text-sm sm:text-base text-gray-300 mb-1">Projects</div>
-                <div className="text-xs text-gray-400/70">Projects delivered</div>
+          <div className="w-full max-w-4xl mx-auto layered-entrance mt-8" style={{ animationDelay: '0.4s' }}>
+            <div className="flex flex-col gap-4 lg:flex-row lg:items-start lg:gap-6">
+              <div className="flex-1">
+                <div className="bg-white/5 backdrop-blur-sm border border-white/10 rounded-xl p-6 text-center lg:text-left h-full flex flex-col justify-center">
+                  <div className="text-5xl sm:text-6xl font-extrabold text-white mb-2">99.7%</div>
+                  <div className="text-lg sm:text-xl text-gray-300 mb-1">Uptime</div>
+                  <div className="text-sm text-gray-400/70">System uptime</div>
+                </div>
               </div>
-              <div className="bg-white/5 backdrop-blur-sm border border-white/10 rounded-xl p-4 sm:p-6 text-center hover:bg-white/8 hover:border-white/20 transition-all duration-300">
-                <div className="text-2xl sm:text-3xl md:text-4xl font-bold text-white mb-2">99.7%</div>
-                <div className="text-sm sm:text-base text-gray-300 mb-1">Uptime</div>
-                <div className="text-xs text-gray-400/70">System uptime</div>
-              </div>
-              <div className="bg-white/5 backdrop-blur-sm border border-white/10 rounded-xl p-4 sm:p-6 text-center hover:bg-white/8 hover:border-white/20 transition-all duration-300">
-                <div className="text-2xl sm:text-3xl md:text-4xl font-bold text-white mb-2">91%</div>
-                <div className="text-sm sm:text-base text-gray-300 mb-1">Speed ↑</div>
-                <div className="text-xs text-gray-400/70">Performance gains</div>
+              <div className="flex-1 flex flex-col gap-4 lg:gap-4">
+                <div className="bg-white/5 backdrop-blur-sm border border-white/10 rounded-xl p-4 sm:p-6 text-center hover:bg-white/8 hover:border-white/20 transition-all duration-300">
+                  <div className="text-3xl sm:text-4xl font-bold text-white mb-2">15+</div>
+                  <div className="text-base sm:text-lg text-gray-300 mb-1">Projects</div>
+                  <div className="text-sm text-gray-400/70">Projects delivered</div>
+                </div>
+                <div className="bg-white/5 backdrop-blur-sm border border-white/10 rounded-xl p-4 sm:p-6 text-center hover:bg-white/8 hover:border-white/20 transition-all duration-300">
+                  <div className="text-3xl sm:text-4xl font-bold text-white mb-2">91%</div>
+                  <div className="text-base sm:text-lg text-gray-300 mb-1">Speed ↑</div>
+                  <div className="text-sm text-gray-400/70">Performance gains</div>
+                </div>
               </div>
             </div>
           </div>
 
-          <div className="w-full max-w-4xl mx-auto layered-entrance" style={{ animationDelay: '0.5s' }}>
+          <div className="w-full max-w-4xl mx-auto layered-entrance mt-6 lg:mt-8" style={{ animationDelay: '0.5s' }}>
             <div className="bg-white/5 backdrop-blur-sm border border-white/10 rounded-xl p-6 sm:p-8">
-              <h3 className="text-xl sm:text-2xl font-semibold text-white mb-6 text-center">What I Do</h3>
-              <div className="grid grid-cols-1 sm:grid-cols-3 gap-4 sm:gap-6">
+              <h3 className="text-xl sm:text-2xl font-semibold text-white mb-6 text-center lg:text-left">What I Do</h3>
+              <div className="grid grid-cols-1 lg:grid-cols-2 gap-4 sm:gap-6">
                 <div className="bg-white/5 backdrop-blur-sm rounded-lg p-5 sm:p-6 border border-white/10 hover:bg-white/8 hover:border-white/20 transition-all duration-300 text-center">
                   <div className="w-12 h-12 sm:w-14 sm:h-14 mx-auto mb-4 rounded-lg bg-white/10 flex items-center justify-center">
                     <i className="fas fa-server text-xl sm:text-2xl text-white/70"></i>
                   </div>
-                  <h4 className="text-base sm:text-lg font-semibold text-white mb-2">Backend APIs</h4>
+                  <h4 className="text-lg sm:text-xl font-semibold text-white mb-2">Backend APIs</h4>
                 </div>
                 <div className="bg-white/5 backdrop-blur-sm rounded-lg p-5 sm:p-6 border border-white/10 hover:bg-white/8 hover:border-white/20 transition-all duration-300 text-center">
                   <div className="w-12 h-12 sm:w-14 sm:h-14 mx-auto mb-4 rounded-lg bg-white/10 flex items-center justify-center">
                     <i className="fas fa-brain text-xl sm:text-2xl text-white/70"></i>
                   </div>
-                  <h4 className="text-base sm:text-lg font-semibold text-white mb-2">AI/ML Systems</h4>
+                  <h4 className="text-lg sm:text-xl font-semibold text-white mb-2">AI/ML Systems</h4>
                 </div>
                 <div className="bg-white/5 backdrop-blur-sm rounded-lg p-5 sm:p-6 border border-white/10 hover:bg-white/8 hover:border-white/20 transition-all duration-300 text-center">
                   <div className="w-12 h-12 sm:w-14 sm:h-14 mx-auto mb-4 rounded-lg bg-white/10 flex items-center justify-center">
                     <i className="fas fa-cloud text-xl sm:text-2xl text-white/70"></i>
                   </div>
-                  <h4 className="text-base sm:text-lg font-semibold text-white mb-2">DevOps</h4>
+                  <h4 className="text-lg sm:text-xl font-semibold text-white mb-2">DevOps</h4>
                 </div>
               </div>
             </div>
