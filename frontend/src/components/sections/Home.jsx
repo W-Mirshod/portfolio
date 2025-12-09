@@ -2,8 +2,7 @@ import { useState, useEffect, useRef } from 'react';
 import { useTranslation } from 'react-i18next';
 import { initializeAudio } from '../../utils/audio';
 import ParallaxBackground from '../ui/ParallaxBackground';
-import LazyImage from '../ui/LazyImage';
-import techStackData from '../../data/techStack.json';
+import projectsData from '../../data/projects.json';
 
 const Home = () => {
   const { t } = useTranslation();
@@ -204,28 +203,60 @@ const Home = () => {
               </div>
             </div>
 
-            <div className="flex justify-center items-center w-full px-1 sm:px-2 flex-shrink-0">
-              <div className="grid grid-cols-4 xs:grid-cols-5 sm:grid-cols-6 md:grid-cols-8 lg:grid-cols-10 xl:grid-cols-12 2xl:grid-cols-14 gap-1 sm:gap-1.5 md:gap-2 lg:gap-2.5 layered-entrance w-full max-w-6xl mx-auto" style={{ animationDelay: '0.6s' }}>
-              {techStackData.map((tech, index) => (
-                <div
-                  key={tech.name}
-                  className="group flex flex-col items-center gap-1 sm:gap-1.5 bg-white/5 backdrop-blur-sm border border-white/10 p-1.5 sm:p-2 md:p-2.5 lg:p-3 rounded-lg transition-all duration-300 cursor-pointer hover:scale-105 sm:hover:scale-110 hover:bg-white/8 hover:border-white/20 hover:shadow-xl hover:shadow-primary/5 tech-hover"
-                  title={tech.name}
-                  style={{ animationDelay: `${0.7 + (index * 0.02)}s` }}
-                >
-                  <LazyImage
-                    src={tech.img}
-                    alt={tech.name}
-                    width="40"
-                    height="40"
-                    className="w-5 h-5 sm:w-6 sm:h-6 md:w-7 md:h-7 lg:w-8 lg:h-8 xl:w-9 xl:h-9 object-contain transition-transform duration-300 group-hover:scale-105 sm:group-hover:scale-110"
-                    blurDataURL="data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iNDAiIGhlaWdodD0iNDAiIHZpZXdCb3g9IjAgMCA0MCA0MCIgZmlsbD0ibm9uZSIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj4KPHJlY3Qgd2lkdGg9IjQwIiBoZWlnaHQ9IjQwIiBmaWxsPSIjZjNmNGY2IiBmaWxsLW9wYWNpdHk9IjAuMDUiLz4KPC9zdmc+Cg=="
-                  />
-                  <span className="text-[9px] sm:text-[10px] md:text-xs text-gray-300 font-medium hidden sm:block group-hover:text-white transition-colors duration-300 text-center leading-tight">
-                    {tech.name}
-                  </span>
+            <div className="w-full max-w-4xl mx-auto layered-entrance" style={{ animationDelay: '0.6s' }}>
+              <div className="bg-white/5 backdrop-blur-sm border border-white/10 rounded-xl p-6 sm:p-8 space-y-6">
+                <div className="flex items-center gap-3 mb-4">
+                  <div className="w-10 h-10 rounded-lg bg-white/10 flex items-center justify-center">
+                    <i className="fas fa-briefcase text-lg text-white/70"></i>
+                  </div>
+                  <h3 className="text-xl font-semibold text-white">Recent Projects</h3>
                 </div>
-              ))}
+                
+                <div className="space-y-4">
+                  {projectsData.slice(0, 2).map((project, index) => (
+                    <div
+                      key={project.id || index}
+                      className="group bg-white/5 backdrop-blur-sm rounded-lg p-4 sm:p-5 border border-white/10 transition-all duration-300 hover:bg-white/8 hover:border-white/20"
+                    >
+                      <div className="flex items-start justify-between gap-3 mb-2">
+                        <div className="flex items-center gap-3 flex-1">
+                          <div className="w-8 h-8 rounded-md bg-white/10 flex items-center justify-center flex-shrink-0">
+                            <i className={`${project.icon} text-white text-sm`}></i>
+                          </div>
+                          <h4 className="text-base sm:text-lg font-semibold text-white">
+                            {project.title}
+                          </h4>
+                        </div>
+                        {project.url && project.url !== '#' && (
+                          <a
+                            href={project.url}
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-md bg-white/10 text-white text-xs font-medium border border-white/20 hover:bg-white/20 hover:border-white/30 transition-all duration-200 flex-shrink-0"
+                          >
+                            <i className="fab fa-github text-xs"></i>
+                            <span className="hidden sm:inline">View</span>
+                          </a>
+                        )}
+                      </div>
+                      
+                      <p className="text-sm text-gray-300 leading-relaxed mb-3">
+                        {project.description}
+                      </p>
+                      
+                      <div className="flex flex-wrap gap-1.5">
+                        {project.technologies.slice(0, 4).map((tech, idx) => (
+                          <span
+                            key={idx}
+                            className="text-[10px] sm:text-xs text-gray-300 bg-gray-900/50 px-2 py-1 rounded border border-gray-800"
+                          >
+                            {tech}
+                          </span>
+                        ))}
+                      </div>
+                    </div>
+                  ))}
+                </div>
               </div>
             </div>
           </div>
