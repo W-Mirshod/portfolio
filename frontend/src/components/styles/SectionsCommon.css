@@ -784,6 +784,17 @@ body.mobile-menu-open {
   }
 }
 
+@keyframes slideInLeft {
+  0% {
+    transform: translateX(-100%);
+    opacity: 0;
+  }
+  100% {
+    transform: translateX(0);
+    opacity: 1;
+  }
+}
+
 /* Modern animation classes */
 .modern-glow {
   animation: modern-glow 3s ease-in-out infinite;
@@ -900,4 +911,8 @@ body.mobile-menu-open {
 
 .animate-slideInRight {
   animation: slideInRight 0.3s ease-out forwards;
+}
+
+.animate-slideInLeft {
+  animation: slideInLeft 0.3s ease-out forwards;
 }
