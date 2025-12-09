@@ -5,11 +5,9 @@
     "description": "Innovative platform for IoT device management and data analytics with real-time capabilities.",
     "icon": "fas fa-flask",
     "technologies": [
-      "Python",
-      "Django",
-      "WebSocket",
-      "WebRTC",
-      "Yaklabs"
+      "Full-Stack Developer",
+      "iOT Backend",
+      "AI/ML"
     ],
     "url": "https://github.com/W-Mirshod/yaklabs-platform"
   },
@@ -19,8 +17,10 @@
     "description": "Professional project developed for Taffi company.",
     "icon": "fas fa-code",
     "technologies": [
-      "JavaScript",
-      "Python"
+      "CTO",
+      "AI Computer Vision",
+      "Backend API",
+      "B2B SaaS"
     ],
     "url": "#"
   }

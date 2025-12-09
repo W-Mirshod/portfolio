@@ -2,7 +2,7 @@
   "hero": {
     "title": "Salom, men <1>Mirshod Qayimov</1><br/>Raqamli yechimlar yaratuvchisi",
     "badge": "Dastur muhandisi",
-    "subtitle": "Zamonaviy biznes uchun mustahkam mikroservislar, kengaytiriladigan API va aqlli AI yechimlarini yaratish.",
+    "subtitle": "Noldan ishlab chiqarishgacha AI-mahsulotlarini yaratish",
     "typingTexts": [
       "Backend Dasturchi & AI Muhandis",
       "Mikroservislar & API Mutaxassisi",
@@ -120,8 +120,8 @@
     "viewAll": "Barcha loyihalarni ko'rish",
     "project1": {
       "title": "YakLabs Platformasi",
-      "description": "Python, Django, WebSocket va WebRTC yordamida real vaqtda hamkorlik platformasi.",
-      "tags": ["Python", "Django", "WebSocket", "WebRTC"]
+      "description": "Python, Django va WebSocket yordamida real vaqtda hamkorlik platformasi.",
+      "tags": ["Full-Stack Developer", "iOT Backend", "AI/ML"]
     },
     "project2": {
       "title": "Texnomart API",

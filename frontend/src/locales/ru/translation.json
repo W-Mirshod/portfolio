@@ -2,7 +2,7 @@
   "hero": {
     "title": "Привет, я <1>Миршод Каюмов</1><br/>Разработчик цифровых решений",
     "badge": "Инженер-программист",
-    "subtitle": "Создание надежных микросервисов, масштабируемых API и интеллектуальных AI решений для современного бизнеса.",
+    "subtitle": "Создание AI-продуктов с нуля до продакшена",
     "typingTexts": [
       "Backend Разработчик & AI Инженер",
       "Специалист по микросервисам и API",
@@ -120,8 +120,8 @@
     "viewAll": "Посмотреть все проекты",
     "project1": {
       "title": "YakLabs Платформа",
-      "description": "Платформа для реального времени сотрудничества с использованием Python, Django, WebSocket и WebRTC.",
-      "tags": ["Python", "Django", "WebSocket", "WebRTC"]
+      "description": "Платформа для реального времени сотрудничества с использованием Python, Django и WebSocket.",
+      "tags": ["Full-Stack Developer", "iOT Backend", "AI/ML"]
     },
     "project2": {
       "title": "Texnomart API",

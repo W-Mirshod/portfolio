@@ -66,29 +66,20 @@ const Home = () => {
 
   const terminalLines = [
     '> whoami',
-    'w mirshod',
-    '> skills',
-    'Backend: Python, Django, Flask, FastAPI, REST APIs, WebSockets, Celery',
-    'Frontend: JavaScript, React, Vite, Tailwind, HTML5, CSS3, SCSS',
-    'DevOps: AWS, Docker, Linux, Git, GitHub Actions, CI/CD, Nginx, Apache',
-    'Databases: PostgreSQL, MySQL, SQLite, Redis',
-    'AI: Azure APIs, AI APIs, GPT-Neo',
-    '> projects',
-    'Yaklabs IoT Platform, Texnomart API, Online Shopping Platform, Online Course Platform, Hospital Management System, GPT-Neo AI',
-    '> stack',
-    'Python, Django, Flask, FastAPI, React, Vite, Tailwind, AWS, Docker, Linux, Git, PostgreSQL, MySQL, SQLite, Redis, Pytest, Celery, Swagger, Postman, Azure APIs',
-    '> show project Yaklabs IoT Platform',
-    'Innovative platform for IoT device management and data analytics with real-time capabilities.',
-    '> show project Texnomart API',
-    'Comprehensive API for online shopping website with full e-commerce functionality.',
-    '> show project Online Shopping Platform',
-    'Micro-service architecture e-shopping platform with modern design and scalable backend.',
-    '> show project Online Course Platform',
-    "E-Courses platform including teacher's and blog's own section with comprehensive features.",
-    '> show project Hospital Management System',
-    'Platform for hospitals where patients and doctors have their pages with patient records and departments.',
-    '> show project GPT-Neo AI',
-    'Basic Artificial Intelligence implementation running on local machine with advanced capabilities.',
+    'Mirshod Qayimov - Backend + AI Engineer',
+    '',
+    '> current_status',
+    'Building TAFFI.AI, 99.7% uptime',
+    '',
+    '> stack --primary',
+    'FastAPI • Django • PostgreSQL • Redis • Docker • AWS',
+    '',
+    '> expertise',
+    'Backend APIs | AI Integration | DevOps & Cloud',
+    '',
+    '> availability',
+    '🟢 Open for contracts',
+    '',
     '> _'
   ];
   const [terminalHistory, setTerminalHistory] = useState([]);
@@ -116,7 +107,7 @@ const Home = () => {
           setTyped(terminalLines[currentLine].slice(0, typed.length + 1));
           // Auto-scroll on every character typed
           scrollToBottom();
-        }, 40);
+        }, 32);
         return () => clearTimeout(timeout);
       } else {
         setIsAnimating(false);
@@ -126,7 +117,7 @@ const Home = () => {
           setCurrentLine((l) => (l + 1) % terminalLines.length);
           // Auto-scroll when line is complete
           scrollToBottom();
-        }, 200);
+        }, 160);
         return () => clearTimeout(timeout);
       }
     } else {
@@ -137,7 +128,7 @@ const Home = () => {
         setCurrentLine((l) => (l + 1) % terminalLines.length);
         // Auto-scroll when output line is complete
         scrollToBottom();
-      }, 120);
+      }, 96);
       return () => clearTimeout(timeout);
     }
   }, [typed, currentLine, terminalLines]);
@@ -178,7 +169,7 @@ const Home = () => {
               </h1>
 
               <div className="flex items-center justify-center min-h-[2.5rem] sm:min-h-[2.75rem] md:min-h-10 w-full layered-entrance px-2" style={{ animationDelay: '0.2s' }}>
-                <div className="font-semibold text-white/80 text-base sm:text-lg md:text-xl lg:text-2xl tracking-wide subtle-bounce" id="typing-text">
+                <div className="font-semibold text-white/80 text-base sm:text-lg md:text-xl lg:text-2xl tracking-wide" id="typing-text">
                   {typingText}
                 </div>
                 <span className="font-bold text-white text-base sm:text-lg md:text-xl lg:text-2xl animate-blink ml-1.5 sm:ml-2 inline-block w-0.5 sm:w-1 h-5 sm:h-6 md:h-7 bg-white rounded-sm"></span>
@@ -189,13 +180,7 @@ const Home = () => {
               {t('hero.subtitle')}
             </p>
 
-            <a href="#contact" className="group inline-flex items-center gap-2 sm:gap-3 px-6 py-3 sm:px-8 sm:py-4 rounded-xl font-semibold text-sm sm:text-base bg-gradient-to-r from-blue-600 via-blue-500 to-blue-600 text-white shadow-lg transition-all duration-300 hover:scale-105 hover:shadow-[0_0_40px_rgba(59,130,246,0.4)] relative overflow-hidden layered-entrance modern-glow gradient-shift" style={{ animationDelay: '0.4s' }}>
-              <span className="absolute inset-0 z-0 pointer-events-none opacity-0 group-hover:opacity-100 transition-opacity duration-300 bg-gradient-to-r from-blue-500 to-blue-700" />
-              <i className="fas fa-envelope z-10 transition-transform duration-300 group-hover:scale-110 text-sm sm:text-base" />
-              <span className="z-10">{t("Get In Touch")}</span>
-            </a>
-
-            <div className="w-full flex justify-center layered-entrance max-w-full" style={{ animationDelay: '0.5s' }}>
+            <div className="w-full flex justify-center layered-entrance max-w-full" style={{ animationDelay: '0.4s' }}>
               <div className="bg-gray-900/80 backdrop-blur-sm border border-white/10 rounded-xl w-full max-w-2xl p-3 sm:p-4 text-left text-green-400 font-mono text-xs sm:text-sm overflow-hidden shadow-2xl terminal-glow min-h-[8rem] sm:min-h-[9rem] md:h-32 lg:h-36 flex flex-col">
                 <div className="flex items-center gap-2 mb-2 sm:mb-3 pb-2 border-b border-white/10 flex-shrink-0">
                   <div className="flex gap-1 sm:gap-1.5">
