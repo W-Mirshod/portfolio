@@ -68,7 +68,7 @@ const Home = () => {
     '> whoami',
     'w mirshod',
     '> skills',
-    'Backend: Python, Django, Flask, FastAPI, REST APIs, WebSockets, Celery, PyGame',
+    'Backend: Python, Django, Flask, FastAPI, REST APIs, WebSockets, Celery',
     'Frontend: JavaScript, React, Vite, Tailwind, HTML5, CSS3, SCSS',
     'DevOps: AWS, Docker, Linux, Git, GitHub Actions, CI/CD, Nginx, Apache',
     'Databases: PostgreSQL, MySQL, SQLite, Redis',
