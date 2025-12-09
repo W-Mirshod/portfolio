@@ -1,40 +1,54 @@
+import { useEffect, useRef } from 'react';
 import { useTranslation } from 'react-i18next';
-import { useHolographicTransition } from '../../utils/parallax';
+import { gsap } from 'gsap';
+import { ScrollTrigger } from 'gsap/ScrollTrigger';
 import experienceData from '../../data/experience.json';
-import '../styles/HolographicTransition.css';
 
 const Experience = () => {
   const { t } = useTranslation();
-  const { elementRef, isVisible, scrollProgress } = useHolographicTransition(0.2);
+  const sectionRef = useRef(null);
+  const contentRef = useRef(null);
+
+  useEffect(() => {
+    if (!sectionRef.current || !contentRef.current) return;
+
+    gsap.set(contentRef.current, { opacity: 0 });
+
+    ScrollTrigger.create({
+      trigger: sectionRef.current,
+      start: 'top 85%',
+      onEnter: () => {
+        gsap.set(contentRef.current, { opacity: 1, y: 0 });
+      },
+    });
+
+    return () => {
+      ScrollTrigger.getAll().forEach(trigger => {
+        if (trigger.vars.trigger === sectionRef.current) {
+          trigger.kill();
+        }
+      });
+    };
+  }, []);
 
   return (
     <section 
       id="experience" 
-      ref={elementRef}
-      className="holographic-section bg-bg-secondary/30 py-14 px-2 sm:px-4" 
+      ref={sectionRef}
+      className="bg-bg-secondary/30 py-14 px-2 sm:px-4" 
       role="main" 
       aria-labelledby="experience-title"
     >
-      {/* Hologram Shimmer Overlay */}
-      <div className="hologram-shimmer" />
-      
-      {/* Scanline Overlay */}
-      <div className="scanline-overlay" />
-
-      {/* Particle Effect Overlay */}
-      <div className="holographic-particles" />
-
-      {/* Content Container */}
-      <div className="holographic-content max-w-6xl mx-auto">
+      <div ref={contentRef} className="max-w-6xl mx-auto">
         <header className="text-center mb-16">
           <h2 id="experience-title" className="text-3xl font-light text-white mb-3 tracking-wide">{t('experience.title')}</h2>
           <div className="w-16 h-px bg-gradient-to-r from-transparent via-cyan-400 to-transparent mx-auto"></div>
         </header>
-        <div className="flex flex-col gap-6 max-w-4xl mx-auto" role="list" aria-label="Professional experience timeline">
+        <div className="flex flex-col gap-8 sm:gap-6 max-w-4xl mx-auto" role="list" aria-label="Professional experience timeline">
           {experienceData.map((exp, index) => (
             <article 
               key={index} 
-              className="holographic-border group relative bg-white/5 backdrop-blur-sm rounded-xl p-6 border border-cyan-400/20 transition-all duration-500 hover:bg-white/8 hover:border-cyan-400/40 hover:shadow-[0_0_30px_rgba(6,182,212,0.3)]" 
+              className="group relative bg-white/5 backdrop-blur-sm rounded-xl p-6 border border-cyan-400/20 transition-all duration-500 hover:bg-white/8 hover:border-cyan-400/40 hover:shadow-[0_0_30px_rgba(6,182,212,0.3)]" 
               role="listitem"
             >
               <div className="flex flex-col space-y-4">

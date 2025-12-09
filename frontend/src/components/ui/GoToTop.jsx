@@ -6,25 +6,41 @@ const GoToTop = () => {
 
   useEffect(() => {
     const toggleVisibility = () => {
-      if (window.pageYOffset > 300) {
+      const scrollY = window.lenis?.scroll || window.pageYOffset || 0;
+      if (scrollY > 300) {
         setIsVisible(true);
       } else {
         setIsVisible(false);
       }
     };
 
-    window.addEventListener('scroll', toggleVisibility);
+    const lenisInstance = window.lenis;
+    if (lenisInstance) {
+      lenisInstance.on('scroll', toggleVisibility);
+    } else {
+      window.addEventListener('scroll', toggleVisibility);
+    }
+
+    toggleVisibility();
 
     return () => {
-      window.removeEventListener('scroll', toggleVisibility);
+      if (lenisInstance) {
+        lenisInstance.off('scroll', toggleVisibility);
+      } else {
+        window.removeEventListener('scroll', toggleVisibility);
+      }
     };
   }, []);
 
-  const scrollToTop = () => {
-    window.scrollTo({
-      top: 0,
-      behavior: 'smooth',
-    });
+  const scrollToTop = (e) => {
+    e.preventDefault();
+    e.stopPropagation();
+    const lenisInstance = window.lenis;
+    if (lenisInstance) {
+      lenisInstance.scrollTo(0, { immediate: false, duration: 1.2 });
+    } else {
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    }
   };
 
   return (
@@ -39,9 +55,6 @@ const GoToTop = () => {
           style={{
             padding: '10px',
             borderRadius: '10px',
-            background: isHovered
-              ? 'linear-gradient(135deg, #0f0c29 0%, #302b63 25%, #24243e 50%, #302b63 75%, #0f0c29 100%)'
-              : 'linear-gradient(135deg, #1a1a2e 0%, #16213e 50%, #0f3460 100%)',
             border: '1.5px solid transparent',
             backgroundImage: isHovered
               ? 'linear-gradient(135deg, #0f0c29 0%, #302b63 25%, #24243e 50%, #302b63 75%, #0f0c29 100%), linear-gradient(135deg, #ff00ff, #00ffff, #ff00ff)'
