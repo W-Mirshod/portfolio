@@ -15,114 +15,13 @@
   },
   {
     "id": 2,
-    "title": "AI-Powered Mobile App",
-    "description": "Cross-platform mobile application with AI integration using React Native and PyTorch.",
-    "icon": "fas fa-mobile-alt",
+    "title": "Taffi",
+    "description": "Professional project developed for Taffi company.",
+    "icon": "fas fa-code",
     "technologies": [
-      "React Native",
-      "PyTorch",
-      "Python",
-      "AI/ML"
+      "JavaScript",
+      "Python"
     ],
-    "url": "https://github.com/W-Mirshod/ai-mobile-app"
-  },
-  {
-    "id": 3,
-    "title": "Telegram Bot Platform",
-    "description": "Advanced Telegram bot with AI capabilities using python-telegram-bot and langchain.",
-    "icon": "fas fa-robot",
-    "technologies": [
-      "Python",
-      "python-telegram-bot",
-      "langchain-community",
-      "AI"
-    ],
-    "url": "https://github.com/W-Mirshod/telegram-ai-bot"
-  },
-  {
-    "id": 4,
-    "title": "Computer Vision System",
-    "description": "YOLOv8-based object detection system with real-time processing capabilities.",
-    "icon": "fas fa-eye",
-    "technologies": [
-      "Python",
-      "YOLOv8",
-      "OpenCV",
-      "Computer Vision"
-    ],
-    "url": "https://github.com/W-Mirshod/yolo-detection"
-  },
-  {
-    "id": 5,
-    "title": "Monitoring Dashboard",
-    "description": "Comprehensive monitoring solution using Grafana and Prometheus for system metrics.",
-    "icon": "fas fa-chart-line",
-    "technologies": [
-      "Grafana",
-      "Prometheus",
-      "Docker",
-      "Monitoring"
-    ],
-    "url": "https://github.com/W-Mirshod/monitoring-dashboard"
-  },
-  {
-    "id": 6,
-    "title": "Texnomart API",
-    "description": "Comprehensive API for online shopping website with full e-commerce functionality.",
-    "icon": "fas fa-shopping-cart",
-    "technologies": [
-      "Python",
-      "REST API",
-      "E-commerce"
-    ],
-    "url": "https://github.com/W-Mirshod/texnomart-api"
-  },
-  {
-    "id": 7,
-    "title": "Online Shopping Platform",
-    "description": "Micro-service architecture e-shopping platform with modern design and scalable backend.",
-    "icon": "fas fa-store",
-    "technologies": [
-      "CSS",
-      "Microservices",
-      "E-commerce"
-    ],
-    "url": "https://github.com/W-Mirshod/online-shopping"
-  },
-  {
-    "id": 8,
-    "title": "Online Course Platform",
-    "description": "E-Courses platform including teacher's and blog's own section with comprehensive features.",
-    "icon": "fas fa-graduation-cap",
-    "technologies": [
-      "SCSS",
-      "Education",
-      "Platform"
-    ],
-    "url": "https://github.com/W-Mirshod/online-course"
-  },
-  {
-    "id": 9,
-    "title": "Hospital Management System",
-    "description": "Platform for hospitals where patients and doctors have their pages with patient records and departments.",
-    "icon": "fas fa-hospital",
-    "technologies": [
-      "Python",
-      "Healthcare",
-      "Management"
-    ],
-    "url": "https://github.com/W-Mirshod/For-Grey_Scientific_Labs"
-  },
-  {
-    "id": 10,
-    "title": "GPT-Neo AI",
-    "description": "Basic Artificial Intelligence implementation running on local machine with advanced capabilities.",
-    "icon": "fas fa-robot",
-    "technologies": [
-      "Python",
-      "AI",
-      "Machine Learning"
-    ],
-    "url": "https://github.com/W-Mirshod/GPT-Neo "
+    "url": "#"
   }
 ]
