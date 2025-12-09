@@ -148,7 +148,7 @@ const Home = () => {
   }, [terminalHistory]);
 
   return (
-    <section id="home" className="relative flex flex-col items-center justify-center min-h-screen h-screen w-full overflow-hidden pt-16 sm:pt-20 xl:pt-10 xl:pr-20 xl:sm:pt-12">
+    <section id="home" className="relative flex flex-col items-center justify-center min-h-screen w-full overflow-hidden pt-16 sm:pt-20 md:pt-24 lg:pt-10 px-3 sm:px-4 md:px-6 lg:px-8 xl:px-20">
       {enableEffects && (
         <ParallaxBackground className="absolute inset-0">
           <div className="absolute inset-0 w-full h-full bg-bg-secondary/30" />
@@ -159,77 +159,72 @@ const Home = () => {
         <div className="absolute inset-0 w-full h-full bg-bg-secondary/30" />
       )}
 
-      <div className="relative flex flex-col justify-center items-center w-full h-full max-w-7xl mx-auto px-3 sm:px-4 md:px-6 lg:px-8 z-10">
-        {/* Subtle background elements */}
+      <div className="relative flex flex-col justify-center items-center w-full h-full max-w-7xl mx-auto z-10 py-4 sm:py-6 md:py-8 lg:py-12">
         <div className="absolute inset-0 overflow-hidden pointer-events-none">
-          <div className="absolute top-1/4 left-1/4 w-96 h-96 bg-blue-500/3 rounded-full blur-3xl animate-pulse"></div>
-          <div className="absolute bottom-1/4 right-1/4 w-80 h-80 bg-white/2 rounded-full blur-3xl animate-pulse" style={{ animationDelay: '2s' }}></div>
+          <div className="absolute top-1/4 left-1/4 w-64 h-64 sm:w-96 sm:h-96 bg-blue-500/3 rounded-full blur-3xl animate-pulse"></div>
+          <div className="absolute bottom-1/4 right-1/4 w-56 h-56 sm:w-80 sm:h-80 bg-white/2 rounded-full blur-3xl animate-pulse" style={{ animationDelay: '2s' }}></div>
         </div>
-        <div className="flex flex-col items-center justify-center text-center w-full max-w-5xl mx-auto h-full py-4 sm:py-6 md:py-8 relative">
-          {/* Glassmorphism overlay */}
+        <div className="flex flex-col items-center justify-center text-center w-full max-w-5xl mx-auto relative">
           <div className="absolute inset-0 bg-white/5 backdrop-blur-sm rounded-3xl border border-white/10 shadow-2xl"></div>
-          <div className="relative z-10 flex flex-col items-center justify-center text-center w-full space-y-4 sm:space-y-6">
-            {/* Professional Badge */}
-            <div className="inline-flex items-center gap-2 bg-white/5 backdrop-blur-sm border border-white/10 px-4 py-2 rounded-full text-sm text-white/90 font-medium shadow-lg layered-entrance">
+          <div className="relative z-10 flex flex-col items-center justify-center text-center w-full space-y-3 sm:space-y-4 md:space-y-5 lg:space-y-6 px-4 sm:px-6 md:px-8">
+            <div className="inline-flex items-center gap-2 bg-white/5 backdrop-blur-sm border border-white/10 px-3 py-1.5 sm:px-4 sm:py-2 rounded-full text-xs sm:text-sm text-white/90 font-medium shadow-lg layered-entrance">
               <i className="fas fa-code text-xs text-white/70" />
               <span>{t('hero.badge')}</span>
             </div>
 
-            {/* Modern Typography */}
-            <div className="space-y-3">
-              <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold leading-tight bg-gradient-to-r from-white via-white to-gray-300 bg-clip-text text-transparent layered-entrance" style={{ animationDelay: '0.1s' }}>
+            <div className="space-y-2 sm:space-y-3">
+              <h1 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl xl:text-6xl font-bold leading-tight bg-gradient-to-r from-white via-white to-gray-300 bg-clip-text text-transparent layered-entrance px-2" style={{ animationDelay: '0.1s' }}>
                 Mirshod Qayimov
               </h1>
 
-              <div className="flex items-center justify-center min-h-10 w-full layered-entrance" style={{ animationDelay: '0.2s' }}>
-                <div className="font-semibold text-white/80 text-lg md:text-xl tracking-wide subtle-bounce" id="typing-text">
+              <div className="flex items-center justify-center min-h-[2.5rem] sm:min-h-[2.75rem] md:min-h-10 w-full layered-entrance px-2" style={{ animationDelay: '0.2s' }}>
+                <div className="font-semibold text-white/80 text-base sm:text-lg md:text-xl lg:text-2xl tracking-wide subtle-bounce" id="typing-text">
                   {typingText}
                 </div>
-                <span className="font-normal text-white/80 text-lg md:text-xl animate-blink ml-1">|</span>
+                <span className="font-bold text-white text-base sm:text-lg md:text-xl lg:text-2xl animate-blink ml-1.5 sm:ml-2 inline-block w-0.5 sm:w-1 h-5 sm:h-6 md:h-7 bg-white rounded-sm"></span>
               </div>
             </div>
 
-            {/* Professional Description */}
-            <p className="text-sm sm:text-base md:text-lg text-gray-400 max-w-2xl leading-relaxed layered-entrance" style={{ animationDelay: '0.3s' }}>
+            <p className="text-xs sm:text-sm md:text-base lg:text-lg text-gray-400 max-w-2xl leading-relaxed layered-entrance px-4" style={{ animationDelay: '0.3s' }}>
               {t('hero.subtitle')}
             </p>
 
-            {/* Modern CTA Button */}
-            <a href="#contact" className="group inline-flex items-center gap-3 px-8 py-4 rounded-xl font-semibold text-base bg-gradient-to-r from-blue-600 via-blue-500 to-blue-600 text-white shadow-lg transition-all duration-300 hover:scale-105 hover:shadow-[0_0_40px_rgba(59,130,246,0.4)] relative overflow-hidden layered-entrance modern-glow gradient-shift" style={{ animationDelay: '0.4s' }}>
+            <a href="#contact" className="group inline-flex items-center gap-2 sm:gap-3 px-6 py-3 sm:px-8 sm:py-4 rounded-xl font-semibold text-sm sm:text-base bg-gradient-to-r from-blue-600 via-blue-500 to-blue-600 text-white shadow-lg transition-all duration-300 hover:scale-105 hover:shadow-[0_0_40px_rgba(59,130,246,0.4)] relative overflow-hidden layered-entrance modern-glow gradient-shift" style={{ animationDelay: '0.4s' }}>
               <span className="absolute inset-0 z-0 pointer-events-none opacity-0 group-hover:opacity-100 transition-opacity duration-300 bg-gradient-to-r from-blue-500 to-blue-700" />
-              <i className="fas fa-envelope z-10 transition-transform duration-300 group-hover:scale-110" />
+              <i className="fas fa-envelope z-10 transition-transform duration-300 group-hover:scale-110 text-sm sm:text-base" />
               <span className="z-10">{t("Get In Touch")}</span>
             </a>
 
-            {/* Compact Terminal */}
-            <div className="w-full flex justify-center layered-entrance" style={{ animationDelay: '0.5s' }}>
-              <div className="bg-gray-900/80 backdrop-blur-sm border border-white/10 rounded-xl w-full max-w-2xl p-4 text-left text-green-400 font-mono text-sm overflow-hidden shadow-2xl terminal-glow h-32 sm:h-36">
-                <div className="flex items-center gap-2 mb-3 pb-2 border-b border-white/10">
-                  <div className="flex gap-1.5">
-                    <div className="w-3 h-3 rounded-full bg-red-500"></div>
-                    <div className="w-3 h-3 rounded-full bg-yellow-500"></div>
-                    <div className="w-3 h-3 rounded-full bg-green-500"></div>
+            <div className="w-full flex justify-center layered-entrance max-w-full" style={{ animationDelay: '0.5s' }}>
+              <div className="bg-gray-900/80 backdrop-blur-sm border border-white/10 rounded-xl w-full max-w-2xl p-3 sm:p-4 text-left text-green-400 font-mono text-xs sm:text-sm overflow-hidden shadow-2xl terminal-glow min-h-[8rem] sm:min-h-[9rem] md:h-32 lg:h-36 flex flex-col">
+                <div className="flex items-center gap-2 mb-2 sm:mb-3 pb-2 border-b border-white/10 flex-shrink-0">
+                  <div className="flex gap-1 sm:gap-1.5">
+                    <div className="w-2.5 h-2.5 sm:w-3 sm:h-3 rounded-full bg-red-500"></div>
+                    <div className="w-2.5 h-2.5 sm:w-3 sm:h-3 rounded-full bg-yellow-500"></div>
+                    <div className="w-2.5 h-2.5 sm:w-3 sm:h-3 rounded-full bg-green-500"></div>
                   </div>
-                  <span className="text-xs text-gray-400">terminal</span>
+                  <span className="text-[10px] sm:text-xs text-gray-400">terminal</span>
                 </div>
-                <div ref={terminalScrollRef} className="terminal-scroll-container space-y-1 max-h-20 overflow-y-auto">
+                <div ref={terminalScrollRef} className="terminal-scroll-container space-y-0.5 sm:space-y-1 flex-1 overflow-y-auto pr-1">
                   {terminalHistory.slice(-3).map((line, idx) => (
-                    <div key={idx} className="opacity-80 hover:opacity-100 transition-opacity duration-200 text-xs">{line}</div>
+                    <div key={idx} className="opacity-80 hover:opacity-100 transition-opacity duration-200 text-[10px] sm:text-xs break-words">{line}</div>
                   ))}
                   {currentLine < terminalLines.length && (
-                    <div className="text-green-300 text-xs">{typed}<span className="animate-blink text-green-300">|</span></div>
+                    <div className="text-green-300 text-[10px] sm:text-xs break-words">
+                      {typed}
+                      <span className="animate-blink text-green-300 font-bold inline-block w-0.5 sm:w-1 h-3 sm:h-4 bg-green-300 rounded-sm ml-0.5"></span>
+                    </div>
                   )}
                 </div>
               </div>
             </div>
 
-            {/* Modern Tech Stack Grid */}
-            <div className="flex justify-center items-center w-full px-2 flex-shrink-0">
-              <div className="grid grid-cols-7 sm:grid-cols-9 md:grid-cols-10 lg:grid-cols-12 xl:grid-cols-14 2xl:grid-cols-16 gap-1.5 sm:gap-2 md:gap-2.5 layered-entrance w-full max-w-6xl mx-auto" style={{ animationDelay: '0.6s' }}>
+            <div className="flex justify-center items-center w-full px-1 sm:px-2 flex-shrink-0">
+              <div className="grid grid-cols-4 xs:grid-cols-5 sm:grid-cols-6 md:grid-cols-8 lg:grid-cols-10 xl:grid-cols-12 2xl:grid-cols-14 gap-1 sm:gap-1.5 md:gap-2 lg:gap-2.5 layered-entrance w-full max-w-6xl mx-auto" style={{ animationDelay: '0.6s' }}>
               {techStackData.map((tech, index) => (
                 <div
                   key={tech.name}
-                  className="group flex flex-col items-center gap-1.5 bg-white/5 backdrop-blur-sm border border-white/10 p-2.5 sm:p-3 md:p-3.5 rounded-lg transition-all duration-300 cursor-pointer hover:scale-105 sm:hover:scale-110 hover:bg-white/8 hover:border-white/20 hover:shadow-xl hover:shadow-primary/5 tech-hover"
+                  className="group flex flex-col items-center gap-1 sm:gap-1.5 bg-white/5 backdrop-blur-sm border border-white/10 p-1.5 sm:p-2 md:p-2.5 lg:p-3 rounded-lg transition-all duration-300 cursor-pointer hover:scale-105 sm:hover:scale-110 hover:bg-white/8 hover:border-white/20 hover:shadow-xl hover:shadow-primary/5 tech-hover"
                   title={tech.name}
                   style={{ animationDelay: `${0.7 + (index * 0.02)}s` }}
                 >
@@ -238,10 +233,10 @@ const Home = () => {
                     alt={tech.name}
                     width="40"
                     height="40"
-                    className="w-6 h-6 sm:w-7 sm:h-7 md:w-8 md:h-8 lg:w-9 lg:h-9 object-contain transition-transform duration-300 group-hover:scale-105 sm:group-hover:scale-110"
+                    className="w-5 h-5 sm:w-6 sm:h-6 md:w-7 md:h-7 lg:w-8 lg:h-8 xl:w-9 xl:h-9 object-contain transition-transform duration-300 group-hover:scale-105 sm:group-hover:scale-110"
                     blurDataURL="data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iNDAiIGhlaWdodD0iNDAiIHZpZXdCb3g9IjAgMCA0MCA0MCIgZmlsbD0ibm9uZSIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj4KPHJlY3Qgd2lkdGg9IjQwIiBoZWlnaHQ9IjQwIiBmaWxsPSIjZjNmNGY2IiBmaWxsLW9wYWNpdHk9IjAuMDUiLz4KPC9zdmc+Cg=="
                   />
-                  <span className="text-xs text-gray-300 font-medium hidden md:block group-hover:text-white transition-colors duration-300">
+                  <span className="text-[9px] sm:text-[10px] md:text-xs text-gray-300 font-medium hidden sm:block group-hover:text-white transition-colors duration-300 text-center leading-tight">
                     {tech.name}
                   </span>
                 </div>
