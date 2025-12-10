@@ -19,7 +19,7 @@ const Footer = () => {
     },
     {
       icon: 'fab fa-telegram',
-      url: 'https://t.me/wmirshod',
+      url: 'https://t.me/w_mirshod',
       label: 'Telegram',
       color: 'hover:text-cyan-400'
     },
