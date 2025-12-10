@@ -123,20 +123,20 @@ const Home = () => {
           <div className="w-full max-w-4xl mx-auto layered-entrance mt-6 lg:mt-8" style={{ animationDelay: '0.5s' }}>
             <div className="bg-white/5 backdrop-blur-sm border border-white/10 rounded-xl p-6 sm:p-8">
               <h3 className="text-xl sm:text-2xl font-semibold text-white mb-6 text-center lg:text-left">What I Do</h3>
-              <div className="flex flex-col gap-4 sm:gap-6">
-                <div className="bg-white/5 backdrop-blur-sm rounded-lg p-5 sm:p-6 border border-white/10 hover:bg-white/8 hover:border-white/20 transition-all duration-300 text-center">
+              <div className="flex flex-row gap-4 sm:gap-6">
+                <div className="flex-1 bg-white/5 backdrop-blur-sm rounded-lg p-5 sm:p-6 border border-white/10 hover:bg-white/8 hover:border-white/20 transition-all duration-300 text-center">
                   <div className="w-12 h-12 sm:w-14 sm:h-14 mx-auto mb-4 rounded-lg bg-white/10 flex items-center justify-center">
                     <i className="fas fa-server text-xl sm:text-2xl text-white/70"></i>
                   </div>
                   <h4 className="text-lg sm:text-xl font-semibold text-white mb-2">Backend APIs</h4>
                 </div>
-                <div className="bg-white/5 backdrop-blur-sm rounded-lg p-5 sm:p-6 border border-white/10 hover:bg-white/8 hover:border-white/20 transition-all duration-300 text-center">
+                <div className="flex-1 bg-white/5 backdrop-blur-sm rounded-lg p-5 sm:p-6 border border-white/10 hover:bg-white/8 hover:border-white/20 transition-all duration-300 text-center">
                   <div className="w-12 h-12 sm:w-14 sm:h-14 mx-auto mb-4 rounded-lg bg-white/10 flex items-center justify-center">
                     <i className="fas fa-brain text-xl sm:text-2xl text-white/70"></i>
                   </div>
                   <h4 className="text-lg sm:text-xl font-semibold text-white mb-2">AI/ML Systems</h4>
                 </div>
-                <div className="bg-white/5 backdrop-blur-sm rounded-lg p-5 sm:p-6 border border-white/10 hover:bg-white/8 hover:border-white/20 transition-all duration-300 text-center">
+                <div className="flex-1 bg-white/5 backdrop-blur-sm rounded-lg p-5 sm:p-6 border border-white/10 hover:bg-white/8 hover:border-white/20 transition-all duration-300 text-center">
                   <div className="w-12 h-12 sm:w-14 sm:h-14 mx-auto mb-4 rounded-lg bg-white/10 flex items-center justify-center">
                     <i className="fas fa-cloud text-xl sm:text-2xl text-white/70"></i>
                   </div>
