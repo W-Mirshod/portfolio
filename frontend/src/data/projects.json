@@ -9,7 +9,7 @@
       "iOT Backend",
       "AI/ML"
     ],
-    "url": "https://github.com/W-Mirshod/yaklabs-platform"
+    "url": "https://yaklabs.tech/"
   },
   {
     "id": 2,
@@ -22,6 +22,67 @@
       "Backend API",
       "B2B SaaS"
     ],
-    "url": "#"
+    "url": "https://taffi.ai/"
+  },
+  {
+    "id": 3,
+    "title": "Mini CRM",
+    "description": "Intelligent CRM for distributing leads to operators based on workload and source-specific weights.",
+    "icon": "fas fa-users-cog",
+    "technologies": [
+      "Python",
+      "FastAPI",
+      "PostgreSQL",
+      "Redis",
+      "REST API",
+      "Real-time Updates"
+    ],
+    "url": "https://mini-crm.w-mirshod.com/"
+  },
+  {
+    "id": 4,
+    "title": "AI Assistant Platform",
+    "description": "Full-featured AI application with authentication and user management.",
+    "icon": "fas fa-brain",
+    "technologies": [
+      "Python",
+      "OpenAI API",
+      "PostgreSQL",
+      "AI Integration",
+      "User Auth",
+      "Dashboard"
+    ],
+    "url": "https://ai.w-mirshod.com/"
+  },
+  {
+    "id": 5,
+    "title": "E-Commerce Marketplace",
+    "description": "Multi-vendor marketplace with product management and order processing.",
+    "icon": "fas fa-shopping-cart",
+    "technologies": [
+      "Django",
+      "PostgreSQL",
+      "Redis",
+      "Stripe",
+      "Payment Integration",
+      "Admin Panel",
+      "Scalable"
+    ],
+    "url": "https://marketplace.w-mirshod.com/"
+  },
+  {
+    "id": 6,
+    "title": "Smart School Management System",
+    "description": "Complete school administration platform with API-first architecture.",
+    "icon": "fas fa-school",
+    "technologies": [
+      "Django",
+      "PostgreSQL",
+      "Swagger/OpenAPI",
+      "API Documentation",
+      "Multi-role System",
+      "RESTful"
+    ],
+    "url": "https://aqilli-maktab.w-mirshod.com/"
   }
 ]
