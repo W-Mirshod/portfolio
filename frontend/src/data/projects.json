@@ -2,86 +2,88 @@
   {
     "id": 1,
     "title": "Yaklabs IoT Platform",
-    "description": "Innovative platform for IoT device management and data analytics with real-time capabilities.",
+    "description": "IoT backend for device provisioning, telemetry ingestion, and real-time analytics. Built core architecture, Flask services, and PyTorch models.",
     "icon": "fas fa-flask",
     "technologies": [
-      "Full-Stack Developer",
-      "iOT Backend",
-      "AI/ML"
+      "Flask",
+      "Python",
+      "PyTorch",
+      "Redis",
+      "PostgreSQL",
+      "IoT integrations"
     ],
     "url": "https://yaklabs.tech/"
   },
   {
     "id": 2,
     "title": "Taffi",
-    "description": "Professional project developed for Taffi company.",
+    "description": "AI cosmetics platform using a YOLO face-analysis pipeline. Built and deployed the CV model and full FastAPI inference workflow.",
     "icon": "fas fa-code",
     "technologies": [
-      "CTO",
-      "AI Computer Vision",
-      "Backend API",
-      "B2B SaaS"
+      "YOLO",
+      "FastAPI",
+      "Python",
+      "Docker",
+      "GPU inference stack"
     ],
     "url": "https://taffi.ai/"
   },
   {
     "id": 3,
     "title": "Mini CRM",
-    "description": "Intelligent CRM for distributing leads to operators based on workload and source-specific weights.",
+    "description": "Lead-routing CRM with operator load balancing and real-time updates. Designed routing logic and built the FastAPI + PostgreSQL backend.",
     "icon": "fas fa-users-cog",
     "technologies": [
-      "Python",
       "FastAPI",
+      "Python",
       "PostgreSQL",
       "Redis",
-      "REST API",
-      "Real-time Updates"
+      "REST",
+      "WebSockets"
     ],
     "url": "https://mini-crm.w-mirshod.com/"
   },
   {
     "id": 4,
     "title": "AI Assistant Platform",
-    "description": "Full-featured AI application with authentication and user management.",
+    "description": "AI assistant system with authentication, prompt pipeline, and dashboard. Built backend, OpenAI integration, and message routing.",
     "icon": "fas fa-brain",
     "technologies": [
       "Python",
       "OpenAI API",
       "PostgreSQL",
-      "AI Integration",
-      "User Auth",
-      "Dashboard"
+      "FastAPI",
+      "Authentication",
+      "Admin dashboard"
     ],
     "url": "https://ai.w-mirshod.com/"
   },
   {
     "id": 5,
     "title": "E-Commerce Marketplace",
-    "description": "Multi-vendor marketplace with product management and order processing.",
+    "description": "Multi-vendor marketplace with product management and order workflows. Developed backend architecture and payment integration.",
     "icon": "fas fa-shopping-cart",
     "technologies": [
       "Django",
+      "Python",
       "PostgreSQL",
       "Redis",
-      "Stripe",
-      "Payment Integration",
-      "Admin Panel",
-      "Scalable"
+      "Payment APIs"
     ],
     "url": "https://marketplace.w-mirshod.com/"
   },
   {
     "id": 6,
     "title": "Smart School Management System",
-    "description": "Complete school administration platform with API-first architecture.",
+    "description": "API-first school management platform with multi-role access and admin tools. Built core Django modules and REST endpoints.",
     "icon": "fas fa-school",
     "technologies": [
       "Django",
+      "Python",
       "PostgreSQL",
-      "Swagger/OpenAPI",
-      "API Documentation",
-      "Multi-role System",
-      "RESTful"
+      "REST API",
+      "RBAC",
+      "API documentation"
     ],
     "url": "https://aqilli-maktab.w-mirshod.com/"
   }
