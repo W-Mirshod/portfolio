@@ -25,6 +25,29 @@
     "projects": "Loyihalar",
     "contact": "Aloqa"
   },
+  "home": {
+    "subtitle": "Backend Muhandis + AI Integratsiyasi",
+    "descriptionPart1": "AI-mahsulot prototipini yaratish",
+    "descriptionPart2": "Ishlab chiqarishga tayyor",
+    "buttons": {
+      "viewProjects": "Loyihalarni ko'rish",
+      "letsTalk": "Keling suhbatlashamiz"
+    },
+    "stats": {
+      "uptime": "Ish vaqti",
+      "uptimeSubtitle": "Tizim ish vaqti",
+      "projects": "Loyihalar",
+      "projectsSubtitle": "Bajarilgan loyihalar",
+      "speed": "Tezlik ↑",
+      "speedSubtitle": "Samaradorlik yaxshilanishi"
+    },
+    "sections": {
+      "whatIDo": "Men nima qilaman",
+      "backendAPIs": "Backend API",
+      "aiMLSystems": "AI/ML Tizimlar",
+      "devops": "DevOps"
+    }
+  },
   "footer": {
     "quickLinks": {
       "title": "Tezkor havolalar",
@@ -46,10 +69,12 @@
       "api": "API"
     },
     "connect": {
-      "title": "Aloqa",
+      "title": "Men bilan bog'lanish",
+      "contactInfo": "Aloqa ma'lumotlari",
       "email": "Email",
       "phone": "Telefon",
       "location": "Manzil",
+      "socialMedia": "Ijtimoiy tarmoqlar",
       "country": "O'zbekiston"
     },
     "copyright": "© 2023-{{year}} Mirshod Qayimov. Barcha huquqlar himoyalangan.",
@@ -61,6 +86,37 @@
     "subtitle": "O'sish va ekspertiza yo'li",
     "timelineLabel": "Tajriba vaqti",
     "technologiesLabel": "Ishlatilgan texnologiyalar",
+    "data": {
+      "1": {
+        "period": "Mart 2025 - Iyun 2025",
+        "title": "Senior Software Engineer",
+        "company": "Yaklabs · To'liq ish vaqti",
+        "description": "IoT platforma rivojlantirishni boshqarish. 8K+ foydalanuvchilar uchun 99.7% ish vaqti bilan mikroservislar, real vaqtli WebSocket tizimlari va PyTorch anomaliya aniqlash (73% noto'g'ri ogohlantirishni kamaytirish) qurildi. Ko'p mintaqali AWS infratuzilmasi joylashtirildi."
+      },
+      "2": {
+        "period": "Oktyabr 2024 - Aprel 2025",
+        "title": "Software Engineer",
+        "company": "MegaDevs (Germaniya kompaniyasi) · To'liq ish vaqti",
+        "description": "Kengaytiriladigan veb-ilovalar va mikroservislarni ishlab chiqish. 15K+ kunlik foydalanuvchilar uchun backend boshqarildi, CI/CD amalga oshirildi (60% tezroq joylashtirish) va Kubernetes infratuzilmasi qurildi (99.5% ish vaqti). TypeScript/Node.js API oyiga 2M+ so'rovlarni boshqaradi."
+      },
+      "3": {
+        "period": "Iyun 2022 - Oktyabr 2024",
+        "title": "Backend Dasturchi & AI Muhandis",
+        "company": "Freelance / Mustaqil loyihalar · Qisman ish vaqti",
+        "description": "Mikroservislar va AI integratsiyasida ixtisoslashgan. 5K+ foydalanuvchilar uchun Python/Django API, 95% test qamrovi bilan FastAPI xizmatlari va oyiga 10K+ suhbatlarni boshqaradigan AI chatbotlar qurildi. 100K+ yozuvlar uchun PostgreSQL optimallashtirildi."
+      },
+      "4": {
+        "period": "Iyul 2025 - Hozirgi vaqt",
+        "title": "Software Engineer",
+        "company": "Taffi · To'liq ish vaqti",
+        "description": "Foydalanuvchilarning yuzi va millatiga qarab kosmetika tavsiya qilish uchun YOLO bilan 50k+ rasmlar bo'yicha o'qitilgan AI modelini ishlab chiqish. Aqlli tavsiya tizimlari va ma'lumotlar tahlili orqali sotuv konversiyasini va mijozlarni saqlashni oshiradigan kengaytiriladigan tizimlarni qurish."
+      }
+    },
+    "linkedIn": {
+      "profile": "LinkedIn Profil",
+      "connections": "Aloqalar",
+      "visit": "LinkedIn profilini tashrif buyuring"
+    },
     "job1": {
       "period": "Mart 2025 - Hozirgi vaqt",
       "title": "Senior Backend Dasturchi",
@@ -86,8 +142,71 @@
     "ctaButton": "LinkedIn'ni tashrif buyuring"
   },
   "skills": {
-    "title": "Ko'nikmalar",
+    "title": "Ko'nikmalar va Mutaxassislik",
     "subtitle": "Men ishlatadigan texnologiyalar",
+    "categories": {
+      "1": {
+        "title": "Backend Dasturlash",
+        "skills": [
+          "Python",
+          "Django",
+          "Django ORM",
+          "Flask",
+          "FastAPI",
+          "REST APIs",
+          "WebSockets",
+          "WebRTC",
+          "Celery",
+          "Python Telegram Bot",
+          "Swagger",
+          "Pytest"
+        ]
+      },
+      "4": {
+        "title": "DevOps & Cloud",
+        "skills": [
+          "AWS (EC2, S3, CodePipeline, CodeDeploy)",
+          "Docker",
+          "Docker Compose",
+          "Linux",
+          "Git",
+          "GitHub",
+          "GitHub Actions",
+          "CI/CD",
+          "Avtomatlashtirish",
+          "Nginx",
+          "Apache",
+          "Grafana",
+          "Prometheus"
+        ]
+      },
+      "5": {
+        "title": "Ma'lumotlar & Frontend",
+        "skills": [
+          "PostgreSQL",
+          "MySQL",
+          "Redis",
+          "Kesh",
+          "React",
+          "Tailwind",
+          "HTML",
+          "CSS"
+        ]
+      },
+      "6": {
+        "title": "AI & Mashinani o'rganish",
+        "skills": [
+          "PyTorch",
+          "LangChain",
+          "Jupyter",
+          "YoloV8",
+          "Azure APIs",
+          "AWS Bedrock",
+          "AI APIs",
+          "GPT-Neo"
+        ]
+      }
+    },
     "backend": {
       "title": "Backend",
       "items": ["Python", "Django", "Node.js"]
@@ -118,6 +237,81 @@
     "subtitle": "Mening ishlarimdan ba'zilari",
     "viewProject": "Loyihani ko'rish",
     "viewAll": "Barcha loyihalarni ko'rish",
+    "view": "Ko'rish",
+    "noProjects": "Loyihalar topilmadi",
+    "noProjectsSubtitle": "Hozircha loyihalar mavjud emas",
+    "data": {
+      "1": {
+        "title": "Yaklabs IoT Platformasi",
+        "description": "Qurilma ta'minlash, telemetriya yig'ish va real vaqtli tahlil uchun IoT backend. Asosiy arxitektura, Flask xizmatlari va PyTorch modellari qurildi.",
+        "technologies": [
+          "Flask",
+          "Python",
+          "PyTorch",
+          "Redis",
+          "PostgreSQL",
+          "IoT integratsiyalari"
+        ]
+      },
+      "2": {
+        "title": "Taffi",
+        "description": "YOLO yuz tahlili pipeline yordamida AI kosmetika platformasi. CV modeli va to'liq FastAPI inference workflow qurildi va joylashtirildi.",
+        "technologies": [
+          "YOLO",
+          "FastAPI",
+          "Python",
+          "Docker",
+          "GPU inference stack"
+        ]
+      },
+      "3": {
+        "title": "Mini CRM",
+        "description": "Operator yuk balanslash va real vaqtli yangilanishlar bilan lead-routing CRM. Routing mantig'i loyihalashtirildi va FastAPI + PostgreSQL backend qurildi.",
+        "technologies": [
+          "FastAPI",
+          "Python",
+          "PostgreSQL",
+          "Redis",
+          "REST",
+          "WebSockets"
+        ]
+      },
+      "4": {
+        "title": "AI Yordamchi Platformasi",
+        "description": "Autentifikatsiya, prompt pipeline va dashboard bilan AI yordamchi tizimi. Backend, OpenAI integratsiyasi va xabar routing qurildi.",
+        "technologies": [
+          "Python",
+          "OpenAI API",
+          "PostgreSQL",
+          "FastAPI",
+          "Autentifikatsiya",
+          "Admin dashboard"
+        ]
+      },
+      "5": {
+        "title": "E-Commerce Marketplace",
+        "description": "Mahsulot boshqaruvi va buyurtma workflow'lari bilan ko'p sotuvchi marketplace. Backend arxitektura va to'lov integratsiyasi ishlab chiqildi.",
+        "technologies": [
+          "Django",
+          "Python",
+          "PostgreSQL",
+          "Redis",
+          "To'lov API'lari"
+        ]
+      },
+      "6": {
+        "title": "Aqlli Maktab Boshqaruvi Tizimi",
+        "description": "Ko'p rol kirish va admin vositalari bilan API-first maktab boshqaruvi platformasi. Asosiy Django modullari va REST endpoint'lar qurildi.",
+        "technologies": [
+          "Django",
+          "Python",
+          "PostgreSQL",
+          "REST API",
+          "RBAC",
+          "API hujjatlari"
+        ]
+      }
+    },
     "project1": {
       "title": "YakLabs Platformasi",
       "description": "Python, Django va WebSocket yordamida real vaqtda hamkorlik platformasi.",
@@ -157,6 +351,57 @@
       "title": "Medius Analytics",
       "description": "Biznes tahlili uchun analitika paneli.",
       "tags": ["React", "D3.js", "Analytics"]
+    }
+  },
+  "achievements": {
+    "title": "GitHub Yutuqlari",
+    "achievements": "Yutuqlar",
+    "highlights": "Yoritilganlar",
+    "items": {
+      "arcticCodeVault": {
+        "label": "Arctic Code Vault Contributor",
+        "description": "Kod Arctic omborida saqlangan"
+      },
+      "pullShark": {
+        "label": "Pull Shark",
+        "description": "Ekspert pull request ko'rib chiqish"
+      },
+      "quickdraw": {
+        "label": "Quickdraw",
+        "description": "Tez muammo hal qilish"
+      },
+      "githubPro": {
+        "label": "PRO",
+        "description": "GitHub Pro obunachisi"
+      }
+    }
+  },
+  "certificate": {
+    "title": "Professional Sertifikat",
+    "institution": "Najot Ta'lim",
+    "location": "Toshkent, O'zbekiston",
+    "course": "Backend Python Django (Standard)",
+    "duration": "8 oylik intensiv dastur",
+    "description": "Python va Django framework'ida ixtisoslashgan 8 oylik intensiv Backend Development bootcamp'ini muvaffaqiyatli yakunladim. Dastur quyidagilarni o'z ichiga olgan keng qamrovli backend dasturlash ko'nikmalarini qamrab oldi:",
+    "skillsCovered": {
+      "python": "Python Dasturlash",
+      "django": "Django Framework",
+      "rest": "REST API Dasturlash",
+      "database": "Ma'lumotlar bazasi dizayni",
+      "auth": "Autentifikatsiya va xavfsizlik",
+      "devops": "Joylashtirish va DevOps"
+    },
+    "badges": {
+      "hours": "240+ Soat",
+      "projects": "15+ Loyihalar",
+      "certified": "Sertifikatlangan",
+      "graduated": "Muvaffaqiyatli bitirildi",
+      "date": "Avgust 2024"
+    },
+    "buttons": {
+      "verify": "Sertifikatni tekshirish",
+      "view": "Sertifikatni ko'rish",
+      "visit": "Muassasani tashrif buyurish"
     }
   },
   "About Me": "Men haqimda",

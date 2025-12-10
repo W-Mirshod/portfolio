@@ -24,8 +24,8 @@ const Projects = () => {
               <div className="text-gray-400 text-6xl mb-4">
                 <i className="fas fa-search"></i>
               </div>
-              <h3 className="text-xl font-semibold text-white mb-2">No projects found</h3>
-              <p className="text-gray-400 mb-4">No projects available at the moment</p>
+              <h3 className="text-xl font-semibold text-white mb-2">{t('projects.noProjects')}</h3>
+              <p className="text-gray-400 mb-4">{t('projects.noProjectsSubtitle')}</p>
             </div>
           </div>
         ) : (
@@ -45,7 +45,7 @@ const Projects = () => {
                     </div>
                     <div>
                       <h3 className="text-base font-semibold text-white">
-                        {project.title}
+                        {t(`projects.data.${project.id}.title`, { defaultValue: project.title })}
                       </h3>
                     </div>
                   </div>
@@ -57,24 +57,28 @@ const Projects = () => {
                       className="inline-flex items-center gap-1 px-3 py-1.5 rounded-md bg-white/10 text-white text-xs font-medium border border-white/20 hover:bg-white/20 hover:border-white/30 transition-all duration-200"
                     >
                       <i className="fas fa-external-link-alt"></i>
-                      View
+                      {t('projects.view')}
                     </a>
                   )}
                 </div>
                 
                 <p className="text-xs text-gray-300 mb-3 leading-relaxed">
-                  {project.description}
+                  {t(`projects.data.${project.id}.description`, { defaultValue: project.description })}
                 </p>
 
                 <div className="flex flex-wrap gap-1.5">
-                  {project.technologies.map((tech, idx) => (
-                    <span
-                      key={idx}
-                      className="text-[10px] text-gray-300 bg-gray-900/50 px-2.5 py-1 rounded border border-gray-800 hover:bg-gray-800/50 hover:border-gray-700 transition-all duration-200"
-                    >
-                      {tech}
-                    </span>
-                  ))}
+                  {project.technologies.map((tech, idx) => {
+                    const techKey = `projects.data.${project.id}.technologies.${idx}`;
+                    const translatedTech = t(techKey, { defaultValue: tech });
+                    return (
+                      <span
+                        key={idx}
+                        className="text-[10px] text-gray-300 bg-gray-900/50 px-2.5 py-1 rounded border border-gray-800 hover:bg-gray-800/50 hover:border-gray-700 transition-all duration-200"
+                      >
+                        {translatedTech}
+                      </span>
+                    );
+                  })}
                 </div>
               </div>
             ))}

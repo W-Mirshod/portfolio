@@ -16,7 +16,7 @@ const Skills = () => {
     <section id="skills" className="py-20 px-4 bg-bg-secondary/30">
       <div className="max-w-6xl mx-auto">
         <header className="text-center mb-16">
-          <h2 className="text-3xl font-light text-white mb-3 tracking-wide animate-fadeInUp">{t("Skills & Expertise")}</h2>
+          <h2 className="text-3xl font-light text-white mb-3 tracking-wide animate-fadeInUp">{t("skills.title")}</h2>
           <div className="w-16 h-px bg-gradient-to-r from-transparent via-white/30 to-transparent mx-auto animate-fadeInUp delay-100"></div>
         </header>
 
@@ -27,12 +27,14 @@ const Skills = () => {
                 <div className="w-8 h-8 rounded-lg bg-white/10 flex items-center justify-center">
                   <i className="fas fa-code text-sm text-white/70"></i>
                 </div>
-                <h3 className="text-lg font-semibold text-white">{t(category.title)}</h3>
+                <h3 className="text-lg font-semibold text-white">{t(`skills.categories.${category.id}.title`, { defaultValue: category.title })}</h3>
               </div>
               
               <div className="flex flex-wrap gap-2">
                 {Array.isArray(category.skills) && category.skills.map((skill, skillIndex) => {
                   const iconUrl = getSkillIcon(skill);
+                  const skillKey = `skills.categories.${category.id}.skills.${skillIndex}`;
+                  const translatedSkill = t(skillKey, { defaultValue: skill });
                   return (
                     <span
                       key={skillIndex}
@@ -50,7 +52,7 @@ const Skills = () => {
                       ) : (
                         <i className="fas fa-code text-[10px] text-gray-400 flex-shrink-0"></i>
                       )}
-                      <span className="whitespace-nowrap">{t(skill)}</span>
+                      <span className="whitespace-nowrap">{translatedSkill}</span>
                     </span>
                   );
                 })}

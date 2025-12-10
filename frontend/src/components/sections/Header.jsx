@@ -223,7 +223,7 @@ const Header = () => {
                   {getLanguageDisplay(currentLanguage)}
                 </button>
                 {isLanguageOpen && (
-                  <div className="absolute top-full right-0 mt-2 bg-black/90 backdrop-blur-[20px] border border-white/30 rounded overflow-hidden min-w-[110px] z-50" role="menu" aria-label="Language selection">
+                  <div className="absolute bottom-full left-full ml-2 mb-2 bg-black/90 backdrop-blur-[20px] border border-white/30 rounded overflow-hidden min-w-[110px] z-[100]" role="menu" aria-label="Language selection">
                     {languages.map((language) => (
                       <button
                         key={language.code}

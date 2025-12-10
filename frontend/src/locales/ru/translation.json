@@ -25,6 +25,29 @@
     "projects": "Проекты",
     "contact": "Контакты"
   },
+  "home": {
+    "subtitle": "Backend Инженер + AI Интеграция",
+    "descriptionPart1": "Создание AI-прототипа продукта",
+    "descriptionPart2": "Готово к продакшену",
+    "buttons": {
+      "viewProjects": "Посмотреть проекты",
+      "letsTalk": "Давайте поговорим"
+    },
+    "stats": {
+      "uptime": "Время работы",
+      "uptimeSubtitle": "Время работы системы",
+      "projects": "Проекты",
+      "projectsSubtitle": "Выполнено проектов",
+      "speed": "Скорость ↑",
+      "speedSubtitle": "Улучшение производительности"
+    },
+    "sections": {
+      "whatIDo": "Что я делаю",
+      "backendAPIs": "Backend API",
+      "aiMLSystems": "AI/ML Системы",
+      "devops": "DevOps"
+    }
+  },
   "footer": {
     "quickLinks": {
       "title": "Быстрые ссылки",
@@ -46,10 +69,12 @@
       "api": "API"
     },
     "connect": {
-      "title": "Связь",
+      "title": "Связаться со мной",
+      "contactInfo": "Контактная информация",
       "email": "Email",
       "phone": "Телефон",
       "location": "Местоположение",
+      "socialMedia": "Социальные сети",
       "country": "Узбекистан"
     },
     "copyright": "© 2023-{{year}} Миршод Каюмов. Все права защищены.",
@@ -61,6 +86,37 @@
     "subtitle": "Путь роста и экспертизы",
     "timelineLabel": "Временная шкала опыта",
     "technologiesLabel": "Используемые технологии",
+    "data": {
+      "1": {
+        "period": "Март 2025 - Июнь 2025",
+        "title": "Senior Software Engineer",
+        "company": "Yaklabs · Полная занятость",
+        "description": "Руководство разработкой IoT платформы. Построены микросервисы для 8K+ пользователей с 99.7% временем работы, системы реального времени WebSocket и обнаружение аномалий PyTorch (снижение ложных предупреждений на 73%). Развернута мультирегиональная AWS инфраструктура."
+      },
+      "2": {
+        "period": "Октябрь 2024 - Апрель 2025",
+        "title": "Software Engineer",
+        "company": "MegaDevs (Немецкая компания) · Полная занятость",
+        "description": "Разработка масштабируемых веб-приложений и микросервисов. Руководство backend для 15K+ ежедневных пользователей, внедрение CI/CD (на 60% быстрее развертывание) и построение Kubernetes инфраструктуры (99.5% время работы). TypeScript/Node.js API обрабатывают 2M+ запросов в месяц."
+      },
+      "3": {
+        "period": "Июнь 2022 - Октябрь 2024",
+        "title": "Backend Разработчик & AI Инженер",
+        "company": "Фриланс / Независимые проекты · Частичная занятость",
+        "description": "Специализация на микросервисах и интеграции AI. Построены Python/Django API для 5K+ пользователей, сервисы FastAPI с 95% покрытием тестами и AI чатботы, обрабатывающие 10K+ разговоров в месяц. Оптимизирован PostgreSQL для 100K+ записей."
+      },
+      "4": {
+        "period": "Июль 2025 - Настоящее время",
+        "title": "Software Engineer",
+        "company": "Taffi · Полная занятость",
+        "description": "Разработка AI модели, обученной на 50k+ изображениях с YOLO для предложения косметики на основе лица пользователя и его национальности. Построение масштабируемых систем, которые увеличивают конверсию продаж и удержание клиентов через интеллектуальные системы рекомендаций и аналитику данных."
+      }
+    },
+    "linkedIn": {
+      "profile": "LinkedIn Профиль",
+      "connections": "Связи",
+      "visit": "Посетить LinkedIn профиль"
+    },
     "job1": {
       "period": "Март 2025 - Настоящее время",
       "title": "Senior Backend Разработчик",
@@ -86,8 +142,71 @@
     "ctaButton": "Посетить LinkedIn"
   },
   "skills": {
-    "title": "Навыки",
+    "title": "Навыки и Экспертиза",
     "subtitle": "Технологии, которые я использую",
+    "categories": {
+      "1": {
+        "title": "Backend Разработка",
+        "skills": [
+          "Python",
+          "Django",
+          "Django ORM",
+          "Flask",
+          "FastAPI",
+          "REST APIs",
+          "WebSockets",
+          "WebRTC",
+          "Celery",
+          "Python Telegram Bot",
+          "Swagger",
+          "Pytest"
+        ]
+      },
+      "4": {
+        "title": "DevOps & Cloud",
+        "skills": [
+          "AWS (EC2, S3, CodePipeline, CodeDeploy)",
+          "Docker",
+          "Docker Compose",
+          "Linux",
+          "Git",
+          "GitHub",
+          "GitHub Actions",
+          "CI/CD",
+          "Автоматизация",
+          "Nginx",
+          "Apache",
+          "Grafana",
+          "Prometheus"
+        ]
+      },
+      "5": {
+        "title": "Данные & Frontend",
+        "skills": [
+          "PostgreSQL",
+          "MySQL",
+          "Redis",
+          "Кэширование",
+          "React",
+          "Tailwind",
+          "HTML",
+          "CSS"
+        ]
+      },
+      "6": {
+        "title": "AI & Машинное обучение",
+        "skills": [
+          "PyTorch",
+          "LangChain",
+          "Jupyter",
+          "YoloV8",
+          "Azure APIs",
+          "AWS Bedrock",
+          "AI APIs",
+          "GPT-Neo"
+        ]
+      }
+    },
     "backend": {
       "title": "Backend",
       "items": ["Python", "Django", "Node.js"]
@@ -118,6 +237,81 @@
     "subtitle": "Некоторые из моих работ",
     "viewProject": "Посмотреть проект",
     "viewAll": "Посмотреть все проекты",
+    "view": "Посмотреть",
+    "noProjects": "Проекты не найдены",
+    "noProjectsSubtitle": "В данный момент проекты недоступны",
+    "data": {
+      "1": {
+        "title": "Yaklabs IoT Платформа",
+        "description": "IoT backend для подготовки устройств, приема телеметрии и аналитики в реальном времени. Построена основная архитектура, сервисы Flask и модели PyTorch.",
+        "technologies": [
+          "Flask",
+          "Python",
+          "PyTorch",
+          "Redis",
+          "PostgreSQL",
+          "IoT интеграции"
+        ]
+      },
+      "2": {
+        "title": "Taffi",
+        "description": "AI платформа косметики с использованием pipeline анализа лица YOLO. Построена и развернута CV модель и полный workflow вывода FastAPI.",
+        "technologies": [
+          "YOLO",
+          "FastAPI",
+          "Python",
+          "Docker",
+          "GPU inference stack"
+        ]
+      },
+      "3": {
+        "title": "Mini CRM",
+        "description": "CRM маршрутизации лидов с балансировкой нагрузки операторов и обновлениями в реальном времени. Разработана логика маршрутизации и построен backend FastAPI + PostgreSQL.",
+        "technologies": [
+          "FastAPI",
+          "Python",
+          "PostgreSQL",
+          "Redis",
+          "REST",
+          "WebSockets"
+        ]
+      },
+      "4": {
+        "title": "AI Платформа Помощника",
+        "description": "Система AI помощника с аутентификацией, pipeline промптов и панелью управления. Построен backend, интеграция OpenAI и маршрутизация сообщений.",
+        "technologies": [
+          "Python",
+          "OpenAI API",
+          "PostgreSQL",
+          "FastAPI",
+          "Аутентификация",
+          "Admin панель"
+        ]
+      },
+      "5": {
+        "title": "E-Commerce Маркетплейс",
+        "description": "Мультивендорный маркетплейс с управлением продуктами и рабочими процессами заказов. Разработана архитектура backend и интеграция платежей.",
+        "technologies": [
+          "Django",
+          "Python",
+          "PostgreSQL",
+          "Redis",
+          "Платежные API"
+        ]
+      },
+      "6": {
+        "title": "Система Управления Умной Школой",
+        "description": "API-first платформа управления школой с многоролевым доступом и административными инструментами. Построены основные модули Django и REST endpoints.",
+        "technologies": [
+          "Django",
+          "Python",
+          "PostgreSQL",
+          "REST API",
+          "RBAC",
+          "API документация"
+        ]
+      }
+    },
     "project1": {
       "title": "YakLabs Платформа",
       "description": "Платформа для реального времени сотрудничества с использованием Python, Django и WebSocket.",
@@ -157,6 +351,57 @@
       "title": "Medius Analytics",
       "description": "Панель аналитики для бизнес-аналитики.",
       "tags": ["React", "D3.js", "Analytics"]
+    }
+  },
+  "achievements": {
+    "title": "GitHub Достижения",
+    "achievements": "Достижения",
+    "highlights": "Выделенное",
+    "items": {
+      "arcticCodeVault": {
+        "label": "Arctic Code Vault Contributor",
+        "description": "Код сохранен в Arctic хранилище"
+      },
+      "pullShark": {
+        "label": "Pull Shark",
+        "description": "Эксперт по проверке pull request"
+      },
+      "quickdraw": {
+        "label": "Quickdraw",
+        "description": "Быстрое решение проблем"
+      },
+      "githubPro": {
+        "label": "PRO",
+        "description": "Подписчик GitHub Pro"
+      }
+    }
+  },
+  "certificate": {
+    "title": "Профессиональная Сертификация",
+    "institution": "Najot Ta'lim",
+    "location": "Ташкент, Узбекистан",
+    "course": "Backend Python Django (Standard)",
+    "duration": "8-месячная интенсивная программа",
+    "description": "Успешно завершил интенсивный 8-месячный буткемп Backend Development, специализирующийся на Python и фреймворке Django. Программа охватила комплексные навыки backend разработки, включая:",
+    "skillsCovered": {
+      "python": "Программирование на Python",
+      "django": "Фреймворк Django",
+      "rest": "Разработка REST API",
+      "database": "Дизайн базы данных",
+      "auth": "Аутентификация и безопасность",
+      "devops": "Развертывание и DevOps"
+    },
+    "badges": {
+      "hours": "240+ Часов",
+      "projects": "15+ Проектов",
+      "certified": "Сертифицирован",
+      "graduated": "Успешно завершен",
+      "date": "Август 2024"
+    },
+    "buttons": {
+      "verify": "Проверить сертификат",
+      "view": "Посмотреть сертификат",
+      "visit": "Посетить учреждение"
     }
   },
   "About Me": "Обо мне",

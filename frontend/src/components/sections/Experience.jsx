@@ -54,14 +54,14 @@ const Experience = () => {
               <div className="flex flex-col space-y-4">
                 <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-3">
                   <div className="flex flex-col space-y-1">
-                    <h3 className="text-xl font-semibold text-white tracking-tight">{exp.title}</h3>
-                    <h4 className="text-sm font-medium text-gray-400">{exp.company}</h4>
+                    <h3 className="text-xl font-semibold text-white tracking-tight">{t(`experience.data.${exp.id}.title`, { defaultValue: exp.title })}</h3>
+                    <h4 className="text-sm font-medium text-gray-400">{t(`experience.data.${exp.id}.company`, { defaultValue: exp.company })}</h4>
                   </div>
                   <time className="text-xs font-mono text-cyan-400 bg-gray-900/50 px-3 py-1 rounded-md border border-cyan-400/30 self-start sm:self-center" dateTime={exp.period.split(' - ')[0]}>
-                    {exp.period}
+                    {t(`experience.data.${exp.id}.period`, { defaultValue: exp.period })}
                   </time>
                 </div>
-                <p className="text-sm text-gray-300 leading-relaxed max-w-3xl">{exp.description}</p>
+                <p className="text-sm text-gray-300 leading-relaxed max-w-3xl">{t(`experience.data.${exp.id}.description`, { defaultValue: exp.description })}</p>
               </div>
             </article>
           ))}
@@ -80,14 +80,14 @@ const Experience = () => {
             <div className="absolute inset-0 bg-gradient-to-r from-transparent via-white/10 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
             <span className="flex items-center gap-3 relative z-10">
               <i className="fab fa-linkedin text-2xl group-hover:scale-110 transition-transform duration-300" />
-              <span className="text-lg font-bold">LinkedIn Profile</span>
+              <span className="text-lg font-bold">{t('experience.linkedIn.profile')}</span>
               <div className="flex items-center gap-2 bg-white/20 text-blue-100 font-bold text-sm px-4 py-2 rounded-full border border-blue-300/50 backdrop-blur-sm">
                 <svg className="w-4 h-4" fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" d="M17 20h5v-2a4 4 0 00-3-3.87M9 20H4v-2a4 4 0 013-3.87m6 0A4 4 0 0012 4a4 4 0 00-1 7.87" /></svg>
                 1,300+
-                <span className="text-xs font-medium">Connections</span>
+                <span className="text-xs font-medium">{t('experience.linkedIn.connections')}</span>
               </div>
             </span>
-            <span className="text-blue-200 font-medium text-sm relative z-10 group-hover:text-white transition-colors duration-300">Visit LinkedIn profile</span>
+            <span className="text-blue-200 font-medium text-sm relative z-10 group-hover:text-white transition-colors duration-300">{t('experience.linkedIn.visit')}</span>
           </a>
         </aside>
       </div>
