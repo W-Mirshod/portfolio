@@ -29,8 +29,9 @@ i18n
       escapeValue: false
     },
     detection: {
-      order: ['localStorage', 'navigator', 'htmlTag'],
-      caches: ['localStorage']
+      order: ['localStorage', 'navigator'],
+      caches: ['localStorage'],
+      lookupLocalStorage: 'i18nextLng'
     },
     missingKeyHandler: (lng, ns, key) => {
       console.warn(`Missing translation for key: ${key} in language: ${lng}`);

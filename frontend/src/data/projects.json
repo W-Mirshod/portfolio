@@ -2,127 +2,89 @@
   {
     "id": 1,
     "title": "Yaklabs IoT Platform",
-    "description": "Innovative platform for IoT device management and data analytics with real-time capabilities.",
+    "description": "IoT backend for device provisioning, telemetry ingestion, and real-time analytics. Built core architecture, Flask services, and PyTorch models.",
     "icon": "fas fa-flask",
     "technologies": [
+      "Flask",
       "Python",
-      "Django",
-      "WebSocket",
-      "WebRTC",
-      "Yaklabs"
+      "PyTorch",
+      "Redis",
+      "PostgreSQL",
+      "IoT integrations"
     ],
-    "url": "https://github.com/W-Mirshod/yaklabs-platform"
+    "url": "https://yaklabs.tech/"
   },
   {
     "id": 2,
-    "title": "AI-Powered Mobile App",
-    "description": "Cross-platform mobile application with AI integration using React Native and PyTorch.",
-    "icon": "fas fa-mobile-alt",
+    "title": "Taffi",
+    "description": "AI cosmetics platform using a YOLO face-analysis pipeline. Built and deployed the CV model and full FastAPI inference workflow.",
+    "icon": "fas fa-code",
     "technologies": [
-      "React Native",
-      "PyTorch",
+      "YOLO",
+      "FastAPI",
       "Python",
-      "AI/ML"
+      "Docker",
+      "GPU inference stack"
     ],
-    "url": "https://github.com/W-Mirshod/ai-mobile-app"
+    "url": "https://taffi.ai/"
   },
   {
     "id": 3,
-    "title": "Telegram Bot Platform",
-    "description": "Advanced Telegram bot with AI capabilities using python-telegram-bot and langchain.",
-    "icon": "fas fa-robot",
+    "title": "Mini CRM",
+    "description": "Lead-routing CRM with operator load balancing and real-time updates. Designed routing logic and built the FastAPI + PostgreSQL backend.",
+    "icon": "fas fa-users-cog",
     "technologies": [
+      "FastAPI",
       "Python",
-      "python-telegram-bot",
-      "langchain-community",
-      "AI"
+      "PostgreSQL",
+      "Redis",
+      "REST",
+      "WebSockets"
     ],
-    "url": "https://github.com/W-Mirshod/telegram-ai-bot"
+    "url": "https://mini-crm.w-mirshod.com/"
   },
   {
     "id": 4,
-    "title": "Computer Vision System",
-    "description": "YOLOv8-based object detection system with real-time processing capabilities.",
-    "icon": "fas fa-eye",
+    "title": "AI Assistant Platform",
+    "description": "AI assistant system with authentication, prompt pipeline, and dashboard. Built backend, OpenAI integration, and message routing.",
+    "icon": "fas fa-brain",
     "technologies": [
       "Python",
-      "YOLOv8",
-      "OpenCV",
-      "Computer Vision"
+      "OpenAI API",
+      "PostgreSQL",
+      "FastAPI",
+      "Authentication",
+      "Admin dashboard"
     ],
-    "url": "https://github.com/W-Mirshod/yolo-detection"
+    "url": "https://ai.w-mirshod.com/"
   },
   {
     "id": 5,
-    "title": "Monitoring Dashboard",
-    "description": "Comprehensive monitoring solution using Grafana and Prometheus for system metrics.",
-    "icon": "fas fa-chart-line",
+    "title": "E-Commerce Marketplace",
+    "description": "Multi-vendor marketplace with product management and order workflows. Developed backend architecture and payment integration.",
+    "icon": "fas fa-shopping-cart",
     "technologies": [
-      "Grafana",
-      "Prometheus",
-      "Docker",
-      "Monitoring"
+      "Django",
+      "Python",
+      "PostgreSQL",
+      "Redis",
+      "Payment APIs"
     ],
-    "url": "https://github.com/W-Mirshod/monitoring-dashboard"
+    "url": "https://marketplace.w-mirshod.com/"
   },
   {
     "id": 6,
-    "title": "Texnomart API",
-    "description": "Comprehensive API for online shopping website with full e-commerce functionality.",
-    "icon": "fas fa-shopping-cart",
+    "title": "Smart School Management System",
+    "description": "API-first school management platform with multi-role access and admin tools. Built core Django modules and REST endpoints.",
+    "icon": "fas fa-school",
     "technologies": [
+      "Django",
       "Python",
+      "PostgreSQL",
       "REST API",
-      "E-commerce"
+      "RBAC",
+      "API documentation"
     ],
-    "url": "https://github.com/W-Mirshod/texnomart-api"
-  },
-  {
-    "id": 7,
-    "title": "Online Shopping Platform",
-    "description": "Micro-service architecture e-shopping platform with modern design and scalable backend.",
-    "icon": "fas fa-store",
-    "technologies": [
-      "CSS",
-      "Microservices",
-      "E-commerce"
-    ],
-    "url": "https://github.com/W-Mirshod/online-shopping"
-  },
-  {
-    "id": 8,
-    "title": "Online Course Platform",
-    "description": "E-Courses platform including teacher's and blog's own section with comprehensive features.",
-    "icon": "fas fa-graduation-cap",
-    "technologies": [
-      "SCSS",
-      "Education",
-      "Platform"
-    ],
-    "url": "https://github.com/W-Mirshod/online-course"
-  },
-  {
-    "id": 9,
-    "title": "Hospital Management System",
-    "description": "Platform for hospitals where patients and doctors have their pages with patient records and departments.",
-    "icon": "fas fa-hospital",
-    "technologies": [
-      "Python",
-      "Healthcare",
-      "Management"
-    ],
-    "url": "https://github.com/W-Mirshod/For-Grey_Scientific_Labs"
-  },
-  {
-    "id": 10,
-    "title": "GPT-Neo AI",
-    "description": "Basic Artificial Intelligence implementation running on local machine with advanced capabilities.",
-    "icon": "fas fa-robot",
-    "technologies": [
-      "Python",
-      "AI",
-      "Machine Learning"
-    ],
-    "url": "https://github.com/W-Mirshod/GPT-Neo "
+    "url": "https://aqilli-maktab.w-mirshod.com/"
   }
 ]

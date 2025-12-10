@@ -4,21 +4,20 @@ import CertificateImg from '/Certification-optimized.webp';
 
 const Certificate = () => {
   const { t } = useTranslation();
-
   const skillsCovered = [
-    "Python Programming",
-    "Django Framework",
-    "REST API Development",
-    "Database Design",
-    "Authentication & Security",
-    "Deployment & DevOps"
+    t('certificate.skillsCovered.python'),
+    t('certificate.skillsCovered.django'),
+    t('certificate.skillsCovered.rest'),
+    t('certificate.skillsCovered.database'),
+    t('certificate.skillsCovered.auth'),
+    t('certificate.skillsCovered.devops')
   ];
 
   return (
     <section id="certificate" className="py-20 px-4 bg-bg-secondary/30">
       <div className="max-w-5xl mx-auto">
         <header className="text-center mb-16">
-          <h2 className="text-3xl font-light text-white mb-3 tracking-wide animate-fadeInUp">Professional Certification</h2>
+          <h2 className="text-3xl font-light text-white mb-3 tracking-wide animate-fadeInUp">{t('certificate.title')}</h2>
           <div className="w-16 h-px bg-gradient-to-r from-transparent via-white/30 to-transparent mx-auto animate-fadeInUp delay-100"></div>
         </header>
         <div className="flex flex-col items-center animate-fadeInUp delay-200">
@@ -29,8 +28,8 @@ const Certificate = () => {
                   <i className="fas fa-graduation-cap" />
                 </div>
                 <div className="text-left">
-                  <h3 className="text-lg font-semibold text-white leading-tight">Najot Ta'lim</h3>
-                  <p className="text-xs sm:text-sm text-gray-400">Tashkent, Uzbekistan</p>
+                  <h3 className="text-lg font-semibold text-white leading-tight">{t('certificate.institution')}</h3>
+                  <p className="text-xs sm:text-sm text-gray-400">{t('certificate.location')}</p>
                 </div>
               </div>
               <div className="relative flex flex-col items-center mt-4 md:mt-0">
@@ -54,7 +53,7 @@ const Certificate = () => {
                       className="inline-flex items-center gap-2 px-4 py-2 rounded-lg bg-primary text-white font-semibold text-xs shadow hover:bg-primary-dark transition"
                     >
                       <i className="fas fa-external-link-alt" />
-                      Verify Certificate
+                      {t('certificate.buttons.verify')}
                     </a>
                   </div>
                 </div>
@@ -62,13 +61,13 @@ const Certificate = () => {
             </div>
             <div className="space-y-4 animate-fadeInUp delay-200">
               <div className="text-center">
-                <h4 className="text-lg font-semibold text-white mb-2">Backend Python Django (Standard)</h4>
-                <span className="inline-block px-3 py-1 rounded-md bg-gray-900/50 text-gray-300 text-xs font-medium border border-gray-800">8 Months Intensive Program</span>
+                <h4 className="text-lg font-semibold text-white mb-2">{t('certificate.course')}</h4>
+                <span className="inline-block px-3 py-1 rounded-md bg-gray-900/50 text-gray-300 text-xs font-medium border border-gray-800">{t('certificate.duration')}</span>
               </div>
               
               <div className="text-gray-300 text-sm leading-relaxed">
                 <p className="mb-3">
-                  Successfully completed an intensive 8-month Backend Development bootcamp specializing in Python and Django framework. The program covered comprehensive backend development skills including:
+                  {t('certificate.description')}
                 </p>
                 <div className="grid grid-cols-1 sm:grid-cols-2 gap-2 mb-4">
                   {skillsCovered.map((skill, index) => (
@@ -83,23 +82,23 @@ const Certificate = () => {
               <div className="flex flex-wrap gap-2 justify-center">
                 <div className="flex items-center gap-2 bg-gray-900/50 text-gray-300 px-3 py-1 rounded-md text-xs font-medium border border-gray-800">
                   <i className="fas fa-clock" />
-                  <span>240+ Hours</span>
+                  <span>{t('certificate.badges.hours')}</span>
                 </div>
                 <div className="flex items-center gap-2 bg-gray-900/50 text-gray-300 px-3 py-1 rounded-md text-xs font-medium border border-gray-800">
                   <i className="fas fa-project-diagram" />
-                  <span>15+ Projects</span>
+                  <span>{t('certificate.badges.projects')}</span>
                 </div>
                 <div className="flex items-center gap-2 bg-gray-900/50 text-gray-300 px-3 py-1 rounded-md text-xs font-medium border border-gray-800">
                   <i className="fas fa-certificate" />
-                  <span>Certified</span>
+                  <span>{t('certificate.badges.certified')}</span>
                 </div>
                 <div className="flex items-center gap-2 bg-gray-900/50 text-gray-300 px-3 py-1 rounded-md text-xs font-medium border border-gray-800">
                   <i className="fas fa-star" />
-                  <span>Successfully Graduated</span>
+                  <span>{t('certificate.badges.graduated')}</span>
                 </div>
                 <div className="flex items-center gap-2 bg-gray-900/50 text-gray-300 px-3 py-1 rounded-md text-xs font-medium border border-gray-800">
                   <i className="fas fa-calendar-alt" />
-                  <span>August 2024</span>
+                  <span>{t('certificate.badges.date')}</span>
                 </div>
               </div>
 
@@ -111,7 +110,7 @@ const Certificate = () => {
                   className="inline-flex items-center gap-2 px-4 py-2 rounded-lg bg-white/10 text-white font-semibold text-sm border border-white/20 hover:bg-white/20 hover:border-white/30 transition-all duration-300"
                 >
                   <i className="fas fa-certificate" />
-                  View Certificate
+                  {t('certificate.buttons.view')}
                 </a>
                 <a 
                   href="https://najottalim.uz" 
@@ -120,7 +119,7 @@ const Certificate = () => {
                   className="inline-flex items-center gap-2 px-4 py-2 rounded-lg border border-white/20 text-white font-semibold text-sm bg-transparent hover:bg-white/10 hover:border-white/30 transition-all duration-300"
                 >
                   <i className="fas fa-school" />
-                  Visit Institution
+                  {t('certificate.buttons.visit')}
                 </a>
               </div>
             </div>

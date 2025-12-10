@@ -2,7 +2,7 @@
   "hero": {
     "title": "Hi, I'm <1>Mirshod Qayimov</1><br/>Building Digital Solutions",
     "badge": "Software Engineer",
-    "subtitle": "Building robust microservices, scalable APIs, and intelligent AI solutions for modern businesses.",
+    "subtitle": "Building AI-powered products from zero to production",
     "typingTexts": [
       "Backend Developer & AI Engineer",
       "Microservices & APIs Specialist",
@@ -25,6 +25,29 @@
     "projects": "Projects",
     "contact": "Contact"
   },
+  "home": {
+    "subtitle": "Backend Engineer + AI Integration",
+    "descriptionPart1": "Building AI-powered product prototype",
+    "descriptionPart2": "Production-Ready",
+    "buttons": {
+      "viewProjects": "View Projects",
+      "letsTalk": "Let's Talk"
+    },
+    "stats": {
+      "uptime": "Uptime",
+      "uptimeSubtitle": "System uptime",
+      "projects": "Projects",
+      "projectsSubtitle": "Projects delivered",
+      "speed": "Speed ↑",
+      "speedSubtitle": "Performance gains"
+    },
+    "sections": {
+      "whatIDo": "What I Do",
+      "backendAPIs": "Backend APIs",
+      "aiMLSystems": "AI/ML Systems",
+      "devops": "DevOps"
+    }
+  },
   "footer": {
     "quickLinks": {
       "title": "Quick Links",
@@ -46,10 +69,12 @@
       "api": "API"
     },
     "connect": {
-      "title": "Connect",
+      "title": "Connect With Me",
+      "contactInfo": "Contact Information",
       "email": "Email",
       "phone": "Phone",
       "location": "Location",
+      "socialMedia": "Social Media",
       "country": "Uzbekistan"
     },
     "copyright": "© 2023-{{year}} Mirshod Qayimov. All rights reserved.",
@@ -61,6 +86,37 @@
     "subtitle": "A journey of growth and expertise",
     "timelineLabel": "Experience Timeline",
     "technologiesLabel": "Technologies Used",
+    "data": {
+      "1": {
+        "period": "Mar 2025 - Jun 2025",
+        "title": "Senior Software Engineer",
+        "company": "Yaklabs · Full-time",
+        "description": "Leading IoT platform development. Built microservices for 8K+ users with 99.7% uptime, real-time WebSocket systems, and PyTorch anomaly detection (73% false alert reduction). Deployed multi-region AWS infrastructure."
+      },
+      "2": {
+        "period": "Oct 2024 - Apr 2025",
+        "title": "Software Engineer",
+        "company": "MegaDevs (Germany Company) · Full-time",
+        "description": "Developed scalable web apps and microservices. Led backend for 15K+ daily users, implemented CI/CD (60% faster deployments), and built Kubernetes infrastructure (99.5% uptime). TypeScript/Node.js APIs handling 2M+ monthly requests."
+      },
+      "3": {
+        "period": "June 2022 - Oct 2024",
+        "title": "Backend Developer & AI Engineer",
+        "company": "Freelance / Independent Projects · Part-time",
+        "description": "Specialized in microservices and AI integration. Built Python/Django APIs for 5K+ users, FastAPI services with 95% test coverage, and AI chatbots handling 10K+ monthly conversations. Optimized PostgreSQL for 100K+ records."
+      },
+      "4": {
+        "period": "Jul 2025 - Present",
+        "title": "Software Engineer",
+        "company": "Taffi · Full-time",
+        "description": "Developing AI model trained on 50k+ images with YOLO to suggest cosmetics based on users' face and their nationality. Building scalable systems that increase sales conversions and customer retention through intelligent recommendation engines and data analytics."
+      }
+    },
+    "linkedIn": {
+      "profile": "LinkedIn Profile",
+      "connections": "Connections",
+      "visit": "Visit LinkedIn profile"
+    },
     "job1": {
       "period": "March 2025 - Present",
       "title": "Senior Backend Developer",
@@ -86,8 +142,71 @@
     "ctaButton": "Visit LinkedIn"
   },
   "skills": {
-    "title": "Skills",
+    "title": "Skills & Expertise",
     "subtitle": "Technologies I use",
+    "categories": {
+      "1": {
+        "title": "Backend Development",
+        "skills": [
+          "Python",
+          "Django",
+          "Django ORM",
+          "Flask",
+          "FastAPI",
+          "REST APIs",
+          "WebSockets",
+          "WebRTC",
+          "Celery",
+          "Python Telegram Bot",
+          "Swagger",
+          "Pytest"
+        ]
+      },
+      "4": {
+        "title": "DevOps & Cloud",
+        "skills": [
+          "AWS (EC2, S3, CodePipeline, CodeDeploy)",
+          "Docker",
+          "Docker Compose",
+          "Linux",
+          "Git",
+          "GitHub",
+          "GitHub Actions",
+          "CI/CD",
+          "Automation",
+          "Nginx",
+          "Apache",
+          "Grafana",
+          "Prometheus"
+        ]
+      },
+      "5": {
+        "title": "Data & Frontend",
+        "skills": [
+          "PostgreSQL",
+          "MySQL",
+          "Redis",
+          "Caching",
+          "React",
+          "Tailwind",
+          "HTML",
+          "CSS"
+        ]
+      },
+      "6": {
+        "title": "AI & Machine Learning",
+        "skills": [
+          "PyTorch",
+          "LangChain",
+          "Jupyter",
+          "YoloV8",
+          "Azure APIs",
+          "AWS Bedrock",
+          "AI APIs",
+          "GPT-Neo"
+        ]
+      }
+    },
     "backend": {
       "title": "Backend",
       "items": ["Python", "Django", "Node.js"]
@@ -118,10 +237,85 @@
     "subtitle": "Some of my work",
     "viewProject": "View Project",
     "viewAll": "View All Projects",
+    "view": "View",
+    "noProjects": "No projects found",
+    "noProjectsSubtitle": "No projects available at the moment",
+    "data": {
+      "1": {
+        "title": "Yaklabs IoT Platform",
+        "description": "IoT backend for device provisioning, telemetry ingestion, and real-time analytics. Built core architecture, Flask services, and PyTorch models.",
+        "technologies": [
+          "Flask",
+          "Python",
+          "PyTorch",
+          "Redis",
+          "PostgreSQL",
+          "IoT integrations"
+        ]
+      },
+      "2": {
+        "title": "Taffi",
+        "description": "AI cosmetics platform using a YOLO face-analysis pipeline. Built and deployed the CV model and full FastAPI inference workflow.",
+        "technologies": [
+          "YOLO",
+          "FastAPI",
+          "Python",
+          "Docker",
+          "GPU inference stack"
+        ]
+      },
+      "3": {
+        "title": "Mini CRM",
+        "description": "Lead-routing CRM with operator load balancing and real-time updates. Designed routing logic and built the FastAPI + PostgreSQL backend.",
+        "technologies": [
+          "FastAPI",
+          "Python",
+          "PostgreSQL",
+          "Redis",
+          "REST",
+          "WebSockets"
+        ]
+      },
+      "4": {
+        "title": "AI Assistant Platform",
+        "description": "AI assistant system with authentication, prompt pipeline, and dashboard. Built backend, OpenAI integration, and message routing.",
+        "technologies": [
+          "Python",
+          "OpenAI API",
+          "PostgreSQL",
+          "FastAPI",
+          "Authentication",
+          "Admin dashboard"
+        ]
+      },
+      "5": {
+        "title": "E-Commerce Marketplace",
+        "description": "Multi-vendor marketplace with product management and order workflows. Developed backend architecture and payment integration.",
+        "technologies": [
+          "Django",
+          "Python",
+          "PostgreSQL",
+          "Redis",
+          "Payment APIs"
+        ]
+      },
+      "6": {
+        "title": "Smart School Management System",
+        "description": "API-first school management platform with multi-role access and admin tools. Built core Django modules and REST endpoints.",
+        "technologies": [
+          "Django",
+          "Python",
+          "PostgreSQL",
+          "REST API",
+          "RBAC",
+          "API documentation"
+        ]
+      }
+    },
     "project1": {
       "title": "YakLabs Platform",
-      "description": "A real-time collaboration platform using Python, Django, WebSocket, and WebRTC.",
-      "tags": ["Python", "Django", "WebSocket", "WebRTC"]
+      "description": "A real-time collaboration platform using Python, Django, and WebSocket.",
+      "tags": ["Full-Stack Developer", "iOT Backend", "AI/ML"]
     },
     "project2": {
       "title": "Texnomart API",
@@ -157,6 +351,57 @@
       "title": "Medius Analytics",
       "description": "Analytics dashboard for business intelligence.",
       "tags": ["React", "D3.js", "Analytics"]
+    }
+  },
+  "achievements": {
+    "title": "GitHub Achievements",
+    "achievements": "Achievements",
+    "highlights": "Highlights",
+    "items": {
+      "arcticCodeVault": {
+        "label": "Arctic Code Vault Contributor",
+        "description": "Code preserved in Arctic vault"
+      },
+      "pullShark": {
+        "label": "Pull Shark",
+        "description": "Expert pull request reviewer"
+      },
+      "quickdraw": {
+        "label": "Quickdraw",
+        "description": "Fast issue resolution"
+      },
+      "githubPro": {
+        "label": "PRO",
+        "description": "GitHub Pro subscriber"
+      }
+    }
+  },
+  "certificate": {
+    "title": "Professional Certification",
+    "institution": "Najot Ta'lim",
+    "location": "Tashkent, Uzbekistan",
+    "course": "Backend Python Django (Standard)",
+    "duration": "8 Months Intensive Program",
+    "description": "Successfully completed an intensive 8-month Backend Development bootcamp specializing in Python and Django framework. The program covered comprehensive backend development skills including:",
+    "skillsCovered": {
+      "python": "Python Programming",
+      "django": "Django Framework",
+      "rest": "REST API Development",
+      "database": "Database Design",
+      "auth": "Authentication & Security",
+      "devops": "Deployment & DevOps"
+    },
+    "badges": {
+      "hours": "240+ Hours",
+      "projects": "15+ Projects",
+      "certified": "Certified",
+      "graduated": "Successfully Graduated",
+      "date": "August 2024"
+    },
+    "buttons": {
+      "verify": "Verify Certificate",
+      "view": "View Certificate",
+      "visit": "Visit Institution"
     }
   },
   "About Me": "About Me",

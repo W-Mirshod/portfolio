@@ -4,13 +4,11 @@ name,img,order
 "Flask","https://cdn.jsdelivr.net/gh/devicons/devicon/icons/flask/flask-original.svg",3
 "FastAPI","https://cdn.jsdelivr.net/gh/devicons/devicon/icons/fastapi/fastapi-original.svg",4
 "React","https://cdn.jsdelivr.net/gh/devicons/devicon/icons/react/react-original.svg",5
-"React Native","https://www.quadrilite.com/wp-content/uploads/2024/04/React-natived-1.png",6
 "Vite","https://cdn.jsdelivr.net/gh/devicons/devicon/icons/vitejs/vitejs-original.svg",7
 "Tailwind","https://icon.icepanel.io/Technology/svg/Tailwind-CSS.svg",8
 "HTML5","https://cdn.jsdelivr.net/gh/devicons/devicon/icons/html5/html5-original.svg",9
 "CSS3","https://cdn.jsdelivr.net/gh/devicons/devicon/icons/css3/css3-original.svg",10
 "SCSS","https://cdn.jsdelivr.net/gh/devicons/devicon/icons/sass/sass-original.svg",11
-"PyGame","https://www.pygame.org/docs/_static/pygame_logo.png",12
 "Swagger/OpenAPI","https://icon.icepanel.io/Technology/svg/Swagger.svg",13
 "AWS","https://icon.icepanel.io/Technology/png-shadow-512/AWS.png",14
 "Docker","https://cdn.jsdelivr.net/gh/devicons/devicon/icons/docker/docker-original.svg",15

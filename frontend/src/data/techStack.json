@@ -30,12 +30,6 @@
     "order": 5
   },
   {
-    "id": 6,
-    "name": "React Native",
-    "img": "https://www.quadrilite.com/wp-content/uploads/2024/04/React-natived-1.png",
-    "order": 6
-  },
-  {
     "id": 7,
     "name": "Vite",
     "img": "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/vitejs/vitejs-original.svg",
@@ -64,12 +58,6 @@
     "name": "SCSS",
     "img": "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/sass/sass-original.svg",
     "order": 11
-  },
-  {
-    "id": 12,
-    "name": "PyGame",
-    "img": "https://www.pygame.org/docs/_static/pygame_logo.png",
-    "order": 12
   },
   {
     "id": 13,

@@ -11,38 +11,10 @@
       "REST APIs",
       "WebSockets",
       "WebRTC",
-      "Monolithic/Microservices",
-      "API Integration",
       "Celery",
-      "Flower",
-      "Python-telegram-bot",
-      "Aiogram",
-      "Telethon",
-      "Performance Optimization",
-      "PyGame"
-    ]
-  },
-  {
-    "id": 2,
-    "title": "Frontend Technologies",
-    "skills": [
-      "JavaScript",
-      "React",
-      "Vite",
-      "Tailwind",
-      "HTML5",
-      "CSS3",
-      "SCSS"
-    ]
-  },
-  {
-    "id": 3,
-    "title": "Mobile Development",
-    "skills": [
-      "React Native (iOS & Android)",
-      "Android Studio",
-      "Expo",
-      "Expo Go"
+      "Python Telegram Bot",
+      "Swagger",
+      "Pytest"
     ]
   },
   {
@@ -66,13 +38,16 @@
   },
   {
     "id": 5,
-    "title": "Databases",
+    "title": "Data & Frontend",
     "skills": [
       "PostgreSQL",
       "MySQL",
-      "SQLite",
       "Redis",
-      "Caching"
+      "Caching",
+      "React",
+      "Tailwind",
+      "HTML",
+      "CSS"
     ]
   },
   {
@@ -80,26 +55,13 @@
     "title": "AI & Machine Learning",
     "skills": [
       "PyTorch",
-      "langchain-community",
+      "LangChain",
       "Jupyter",
       "YoloV8",
       "Azure APIs",
       "AWS Bedrock",
       "AI APIs",
-      "Personal AI Model (GPT-Neo)"
-    ]
-  },
-  {
-    "id": 7,
-    "title": "Tools & Utilities",
-    "skills": [
-      "Swagger/OpenAPI",
-      "Postman",
-      "Pytest",
-      "Excel/CSV Analysis",
-      "Jira",
-      "Stripe",
-      "Trello"
+      "GPT-Neo"
     ]
   }
 ]

@@ -1,53 +1,67 @@
+import { useEffect, useRef } from 'react';
 import { useTranslation } from 'react-i18next';
-import { useHolographicTransition } from '../../utils/parallax';
+import { gsap } from 'gsap';
+import { ScrollTrigger } from 'gsap/ScrollTrigger';
 import experienceData from '../../data/experience.json';
-import '../styles/HolographicTransition.css';
 
 const Experience = () => {
   const { t } = useTranslation();
-  const { elementRef, isVisible, scrollProgress } = useHolographicTransition(0.2);
+  const sectionRef = useRef(null);
+  const contentRef = useRef(null);
+
+  useEffect(() => {
+    if (!sectionRef.current || !contentRef.current) return;
+
+    gsap.set(contentRef.current, { opacity: 0 });
+
+    ScrollTrigger.create({
+      trigger: sectionRef.current,
+      start: 'top 85%',
+      onEnter: () => {
+        gsap.set(contentRef.current, { opacity: 1, y: 0 });
+      },
+    });
+
+    return () => {
+      ScrollTrigger.getAll().forEach(trigger => {
+        if (trigger.vars.trigger === sectionRef.current) {
+          trigger.kill();
+        }
+      });
+    };
+  }, []);
 
   return (
     <section 
       id="experience" 
-      ref={elementRef}
-      className="holographic-section bg-bg-secondary/30 py-14 px-2 sm:px-4" 
+      ref={sectionRef}
+      className="bg-bg-secondary/30 py-14 px-2 sm:px-4" 
       role="main" 
       aria-labelledby="experience-title"
     >
-      {/* Hologram Shimmer Overlay */}
-      <div className="hologram-shimmer" />
-      
-      {/* Scanline Overlay */}
-      <div className="scanline-overlay" />
-
-      {/* Particle Effect Overlay */}
-      <div className="holographic-particles" />
-
-      {/* Content Container */}
-      <div className="holographic-content max-w-6xl mx-auto">
+      <div ref={contentRef} className="max-w-6xl mx-auto">
         <header className="text-center mb-16">
           <h2 id="experience-title" className="text-3xl font-light text-white mb-3 tracking-wide">{t('experience.title')}</h2>
           <div className="w-16 h-px bg-gradient-to-r from-transparent via-cyan-400 to-transparent mx-auto"></div>
         </header>
-        <div className="flex flex-col gap-6 max-w-4xl mx-auto" role="list" aria-label="Professional experience timeline">
+        <div className="flex flex-col gap-8 sm:gap-6 max-w-4xl mx-auto" role="list" aria-label="Professional experience timeline">
           {experienceData.map((exp, index) => (
             <article 
               key={index} 
-              className="holographic-border group relative bg-white/5 backdrop-blur-sm rounded-xl p-6 border border-cyan-400/20 transition-all duration-500 hover:bg-white/8 hover:border-cyan-400/40 hover:shadow-[0_0_30px_rgba(6,182,212,0.3)]" 
+              className="group relative bg-white/5 backdrop-blur-sm rounded-xl p-6 border border-cyan-400/20 transition-all duration-500 hover:bg-white/8 hover:border-cyan-400/40 hover:shadow-[0_0_30px_rgba(6,182,212,0.3)]" 
               role="listitem"
             >
               <div className="flex flex-col space-y-4">
                 <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-3">
                   <div className="flex flex-col space-y-1">
-                    <h3 className="text-xl font-semibold text-white tracking-tight">{exp.title}</h3>
-                    <h4 className="text-sm font-medium text-gray-400">{exp.company}</h4>
+                    <h3 className="text-xl font-semibold text-white tracking-tight">{t(`experience.data.${exp.id}.title`, { defaultValue: exp.title })}</h3>
+                    <h4 className="text-sm font-medium text-gray-400">{t(`experience.data.${exp.id}.company`, { defaultValue: exp.company })}</h4>
                   </div>
                   <time className="text-xs font-mono text-cyan-400 bg-gray-900/50 px-3 py-1 rounded-md border border-cyan-400/30 self-start sm:self-center" dateTime={exp.period.split(' - ')[0]}>
-                    {exp.period}
+                    {t(`experience.data.${exp.id}.period`, { defaultValue: exp.period })}
                   </time>
                 </div>
-                <p className="text-sm text-gray-300 leading-relaxed max-w-3xl">{exp.description}</p>
+                <p className="text-sm text-gray-300 leading-relaxed max-w-3xl">{t(`experience.data.${exp.id}.description`, { defaultValue: exp.description })}</p>
               </div>
             </article>
           ))}
@@ -66,14 +80,14 @@ const Experience = () => {
             <div className="absolute inset-0 bg-gradient-to-r from-transparent via-white/10 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
             <span className="flex items-center gap-3 relative z-10">
               <i className="fab fa-linkedin text-2xl group-hover:scale-110 transition-transform duration-300" />
-              <span className="text-lg font-bold">LinkedIn Profile</span>
+              <span className="text-lg font-bold">{t('experience.linkedIn.profile')}</span>
               <div className="flex items-center gap-2 bg-white/20 text-blue-100 font-bold text-sm px-4 py-2 rounded-full border border-blue-300/50 backdrop-blur-sm">
                 <svg className="w-4 h-4" fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" d="M17 20h5v-2a4 4 0 00-3-3.87M9 20H4v-2a4 4 0 013-3.87m6 0A4 4 0 0012 4a4 4 0 00-1 7.87" /></svg>
-                1,100+
-                <span className="text-xs font-medium">Connections</span>
+                1,300+
+                <span className="text-xs font-medium">{t('experience.linkedIn.connections')}</span>
               </div>
             </span>
-            <span className="text-blue-200 font-medium text-sm relative z-10 group-hover:text-white transition-colors duration-300">Visit LinkedIn profile</span>
+            <span className="text-blue-200 font-medium text-sm relative z-10 group-hover:text-white transition-colors duration-300">{t('experience.linkedIn.visit')}</span>
           </a>
         </aside>
       </div>

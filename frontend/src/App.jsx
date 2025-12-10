@@ -5,6 +5,11 @@ import './utils/i18n';
 import { Routes, Route } from "react-router-dom";
 import LazySection from './components/ui/LazySection';
 import GoToTop from './components/ui/GoToTop';
+import Lenis from 'lenis';
+import { gsap } from 'gsap';
+import { ScrollTrigger } from 'gsap/ScrollTrigger';
+
+gsap.registerPlugin(ScrollTrigger);
 
 // Import critical components immediately
 import Header from './components/sections/Header';
@@ -45,8 +50,34 @@ const SectionSkeleton = ({ height = 'h-64' }) => (
 
 function App() {
   useEffect(() => {
-    // Load Font Awesome after initial render (idle callback)
     loadFontAwesome();
+
+    const lenis = new Lenis({
+      duration: 1.2,
+      easing: (t) => Math.min(1, 1.001 - Math.pow(2, -10 * t)),
+      orientation: 'vertical',
+      gestureOrientation: 'vertical',
+      smoothWheel: true,
+      wheelMultiplier: 1,
+      smoothTouch: false,
+      touchMultiplier: 2,
+      infinite: false,
+    });
+
+    window.lenis = lenis;
+
+    lenis.on('scroll', ScrollTrigger.update);
+
+    gsap.ticker.add((time) => {
+      lenis.raf(time * 1000);
+    });
+
+    gsap.ticker.lagSmoothing(0);
+
+    return () => {
+      lenis.destroy();
+      delete window.lenis;
+    };
   }, []);
 
   return (

@@ -19,7 +19,7 @@ const Footer = () => {
     },
     {
       icon: 'fab fa-telegram',
-      url: 'https://t.me/wmirshod',
+      url: 'https://t.me/w_mirshod',
       label: 'Telegram',
       color: 'hover:text-cyan-400'
     },
@@ -35,7 +35,7 @@ const Footer = () => {
     <footer id="contact" className="py-16 px-4 bg-bg-secondary/30 border-t border-white/10">
       <div className="max-w-4xl mx-auto">
         <header className="text-center mb-12">
-          <h2 className="text-3xl font-light text-white mb-3 tracking-wide animate-fadeInUp">Connect With Me</h2>
+          <h2 className="text-3xl font-light text-white mb-3 tracking-wide animate-fadeInUp">{t('footer.connect.title')}</h2>
           <div className="w-16 h-px bg-gradient-to-r from-transparent via-white/30 to-transparent mx-auto animate-fadeInUp delay-100"></div>
         </header>
 
@@ -46,7 +46,7 @@ const Footer = () => {
               <div className="w-8 h-8 rounded-lg bg-white/10 flex items-center justify-center">
                 <i className="fas fa-envelope text-sm text-white/70"></i>
               </div>
-              <h3 className="text-lg font-semibold text-white">Contact Information</h3>
+              <h3 className="text-lg font-semibold text-white">{t('footer.connect.contactInfo')}</h3>
             </div>
             
             <div className="space-y-3">
@@ -58,7 +58,7 @@ const Footer = () => {
                   <i className="fas fa-envelope text-red-400 text-sm"></i>
                 </div>
                 <div>
-                  <div className="text-sm font-medium text-white">Email</div>
+                  <div className="text-sm font-medium text-white">{t('footer.connect.email')}</div>
                   <div className="text-xs text-gray-400">wmirshod@gmail.com</div>
                 </div>
               </a>
@@ -71,7 +71,7 @@ const Footer = () => {
                   <i className="fas fa-phone text-green-400 text-sm"></i>
                 </div>
                 <div>
-                  <div className="text-sm font-medium text-white">Phone</div>
+                  <div className="text-sm font-medium text-white">{t('footer.connect.phone')}</div>
                   <div className="text-xs text-gray-400">+998 90 712 64 37</div>
                 </div>
               </a>
@@ -86,7 +86,7 @@ const Footer = () => {
                   <i className="fas fa-map-marker-alt text-blue-400 text-sm"></i>
                 </div>
                 <div>
-                  <div className="text-sm font-medium text-white">Location</div>
+                  <div className="text-sm font-medium text-white">{t('footer.connect.location')}</div>
                   <div className="text-xs text-gray-400">Tashkent, Uzbekistan</div>
                 </div>
               </a>
@@ -99,7 +99,7 @@ const Footer = () => {
               <div className="w-8 h-8 rounded-lg bg-white/10 flex items-center justify-center">
                 <i className="fas fa-share-alt text-sm text-white/70"></i>
               </div>
-              <h3 className="text-lg font-semibold text-white">Social Media</h3>
+              <h3 className="text-lg font-semibold text-white">{t('footer.connect.socialMedia')}</h3>
             </div>
             
             <div className="grid grid-cols-2 gap-3">
