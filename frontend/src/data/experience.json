@@ -25,9 +25,9 @@
   },
   {
     "id": 3,
-    "period": "2022 - Oct 2024",
+    "period": "June 2022 - Oct 2024",
     "title": "Backend Developer & AI Engineer",
-    "company": "Freelance / Independent Projects",
+    "company": "Freelance / Independent Projects · Part-time",
     "description": "Specialized in microservices and AI integration. Built Python/Django APIs for 5K+ users, FastAPI services with 95% test coverage, and AI chatbots handling 10K+ monthly conversations. Optimized PostgreSQL for 100K+ records.",
     "order": 0
   }
