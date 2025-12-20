@@ -41,7 +41,7 @@
       "REST",
       "WebSockets"
     ],
-    "url": "https://mini-crm.w-mirshod.com/"
+    "url": "https://mini-crm.w-mirshod.com/docs"
   },
   {
     "id": 4,
@@ -56,7 +56,7 @@
       "Authentication",
       "Admin dashboard"
     ],
-    "url": "https://ai.w-mirshod.com/"
+    "url": "https://typescript-chat.w-mirshod.com/"
   },
   {
     "id": 5,
@@ -82,9 +82,8 @@
       "Python",
       "PostgreSQL",
       "REST API",
-      "RBAC",
-      "API documentation"
+      "API Swagger"
     ],
-    "url": "https://aqilli-maktab.w-mirshod.com/"
+    "url": "https://aqilli-maktab.w-mirshod.com/swagger/"
   }
 ]
