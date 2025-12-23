@@ -50,7 +50,6 @@ const Projects = () => {
                   key={project.id || project.title}
                   className={`group bg-white/5 glass-blur-strong rounded-lg p-5 glass-border transition-all duration-300 hover:bg-white/8 hover:border-white/20 flex flex-col ${getBentoClasses(index)}`}
                 >
-              );
                 <div className="flex items-center justify-between mb-3">
                   <div className="flex items-center gap-3">
                     <div className="w-9 h-9 rounded-md bg-white/10 flex items-center justify-center">
