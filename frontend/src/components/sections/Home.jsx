@@ -2,6 +2,7 @@ import { useEffect } from 'react';
 import { useTranslation } from 'react-i18next';
 import { initializeAudio } from '../../utils/audio';
 import ParallaxBackground from '../ui/ParallaxBackground';
+import MagneticButton from '../ui/MagneticButton';
 
 const Home = () => {
   const { t } = useTranslation();
@@ -42,11 +43,15 @@ const Home = () => {
       {enableEffects && (
         <ParallaxBackground className="absolute inset-0">
           <div className="absolute inset-0 w-full h-full bg-bg-secondary/30" />
+          <div className="mesh-gradient-bg" />
           <div className="absolute inset-0 w-full h-full bg-gradient-to-t from-transparent via-transparent to-bg-secondary/20" />
         </ParallaxBackground>
       )}
       {!enableEffects && (
-        <div className="absolute inset-0 w-full h-full bg-bg-secondary/30" />
+        <>
+          <div className="absolute inset-0 w-full h-full bg-bg-secondary/30" />
+          <div className="mesh-gradient-bg" />
+        </>
       )}
 
       <div className="relative flex flex-col justify-center items-center w-full h-full max-w-7xl mx-auto z-10 py-4 sm:py-6 md:py-8 lg:py-12">
@@ -67,7 +72,7 @@ const Home = () => {
                   loading="eager"
                 />
               </div>
-              <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl xl:text-7xl 2xl:text-8xl font-bold leading-tight bg-gradient-to-r from-white via-white to-gray-300 bg-clip-text text-transparent lg:text-left">
+              <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl xl:text-7xl 2xl:text-8xl font-bold leading-tight text-gradient-metallic lg:text-left">
                 Mirshod Qayimov
               </h1>
             </div>
@@ -81,39 +86,41 @@ const Home = () => {
             </p>
 
             <div className="flex flex-wrap items-center justify-center gap-3 sm:gap-4 mt-6 sm:mt-8 layered-entrance lg:justify-start" style={{ animationDelay: '0.3s' }}>
-              <button
+              <MagneticButton
                 onClick={() => handleNavigation('#projects')}
                 className="px-6 sm:px-8 lg:px-10 py-3 sm:py-3.5 lg:py-4 bg-white/10 backdrop-blur-sm border border-white/20 rounded-lg text-white font-medium text-sm sm:text-base lg:text-lg hover:bg-white/20 hover:border-white/30 transition-all duration-300 shadow-lg hover:shadow-xl"
               >
                 {t('home.buttons.viewProjects')}
-              </button>
-              <button
+              </MagneticButton>
+              <MagneticButton
                 onClick={() => handleNavigation('#contact')}
                 className="px-6 sm:px-8 lg:px-10 py-3 sm:py-3.5 lg:py-4 bg-gradient-to-r from-cyan-500/20 to-blue-500/20 backdrop-blur-sm border border-cyan-400/30 rounded-lg text-white font-medium text-sm sm:text-base lg:text-lg hover:from-cyan-500/30 hover:to-blue-500/30 hover:border-cyan-400/50 transition-all duration-300 shadow-lg hover:shadow-xl"
               >
                 {t('home.buttons.letsTalk')}
-              </button>
+              </MagneticButton>
             </div>
           </div>
 
           <div className="w-full max-w-6xl mx-auto layered-entrance mt-8" style={{ animationDelay: '0.4s' }}>
-            <div className="flex flex-col gap-4 lg:flex-row lg:items-stretch lg:gap-6">
-              <div className="flex-1">
-                <div className="bg-white/5 backdrop-blur-sm border border-white/10 rounded-xl p-6 lg:p-8 xl:p-10 text-center lg:text-left h-full flex flex-col justify-center">
-                  <div className="text-5xl sm:text-6xl lg:text-7xl xl:text-8xl font-extrabold text-white mb-2">99.7%</div>
-                  <div className="text-lg sm:text-xl lg:text-2xl text-gray-300 mb-1">{t('home.stats.uptime')}</div>
+            <div className="grid grid-cols-1 md:grid-cols-4 gap-4 lg:gap-6">
+              <div className="md:col-span-2 md:row-span-2">
+                <div className="bg-white/5 glass-blur-strong glass-border rounded-xl p-6 lg:p-8 xl:p-10 text-center lg:text-left h-full flex flex-col justify-center">
+                  <div className="text-5xl sm:text-6xl lg:text-7xl xl:text-8xl font-extrabold text-white mb-2 font-mono">99.7%</div>
+                  <div className="text-lg sm:text-xl lg:text-2xl text-gray-300 mb-1 font-mono">{t('home.stats.uptime')}</div>
                   <div className="text-sm sm:text-base text-gray-400/70">{t('home.stats.uptimeSubtitle')}</div>
                 </div>
               </div>
-              <div className="flex-1 flex flex-col gap-4 lg:gap-6">
-                <div className="bg-white/5 backdrop-blur-sm border border-white/10 rounded-xl p-4 sm:p-6 lg:p-8 text-center hover:bg-white/8 hover:border-white/20 transition-all duration-300 flex flex-col justify-center">
-                  <div className="text-3xl sm:text-4xl lg:text-5xl xl:text-6xl font-bold text-white mb-2">15+</div>
-                  <div className="text-base sm:text-lg lg:text-xl text-gray-300 mb-1">{t('home.stats.projects')}</div>
+              <div className="md:col-span-2">
+                <div className="bg-white/5 glass-blur-strong glass-border rounded-xl p-4 sm:p-6 lg:p-8 text-center hover:bg-white/8 hover:border-white/20 transition-all duration-300 h-full flex flex-col justify-center">
+                  <div className="text-3xl sm:text-4xl lg:text-5xl xl:text-6xl font-bold text-white mb-2 font-mono">15+</div>
+                  <div className="text-base sm:text-lg lg:text-xl text-gray-300 mb-1 font-mono">{t('home.stats.projects')}</div>
                   <div className="text-sm sm:text-base text-gray-400/70">{t('home.stats.projectsSubtitle')}</div>
                 </div>
-                <div className="bg-white/5 backdrop-blur-sm border border-white/10 rounded-xl p-4 sm:p-6 lg:p-8 text-center hover:bg-white/8 hover:border-white/20 transition-all duration-300 flex flex-col justify-center">
-                  <div className="text-3xl sm:text-4xl lg:text-5xl xl:text-6xl font-bold text-white mb-2">91%</div>
-                  <div className="text-base sm:text-lg lg:text-xl text-gray-300 mb-1">{t('home.stats.speed')}</div>
+              </div>
+              <div className="md:col-span-2">
+                <div className="bg-white/5 glass-blur-strong glass-border rounded-xl p-4 sm:p-6 lg:p-8 text-center hover:bg-white/8 hover:border-white/20 transition-all duration-300 h-full flex flex-col justify-center">
+                  <div className="text-3xl sm:text-4xl lg:text-5xl xl:text-6xl font-bold text-white mb-2 font-mono">91%</div>
+                  <div className="text-base sm:text-lg lg:text-xl text-gray-300 mb-1 font-mono">{t('home.stats.speed')}</div>
                   <div className="text-sm sm:text-base text-gray-400/70">{t('home.stats.speedSubtitle')}</div>
                 </div>
               </div>
@@ -121,7 +128,7 @@ const Home = () => {
           </div>
 
           <div className="w-full max-w-6xl mx-auto layered-entrance mt-6 lg:mt-8" style={{ animationDelay: '0.5s' }}>
-            <div className="bg-white/5 backdrop-blur-sm border border-white/10 rounded-xl p-6 sm:p-8 lg:p-10">
+            <div className="bg-white/5 glass-blur-strong glass-border rounded-xl p-6 sm:p-8 lg:p-10">
               <h3 className="text-xl sm:text-2xl lg:text-3xl xl:text-4xl font-semibold text-white mb-6 lg:mb-8 text-center lg:text-left">{t('home.sections.whatIDo')}</h3>
               <div className="flex flex-col sm:flex-row gap-4 sm:gap-6 lg:gap-8">
                 <div className="flex-1 bg-white/5 backdrop-blur-sm rounded-lg p-5 sm:p-6 lg:p-8 border border-white/10 hover:bg-white/8 hover:border-white/20 transition-all duration-300 text-center">

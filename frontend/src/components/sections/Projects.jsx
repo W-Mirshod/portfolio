@@ -2,6 +2,7 @@ import React from 'react';
 import { useTranslation } from 'react-i18next';
 import { useScrollReveal } from '../../utils/parallax';
 import projectsData from '../../data/projects.json';
+import SpotlightCard from '../ui/SpotlightCard';
 
 const Projects = () => {
   const { t } = useTranslation();
@@ -31,20 +32,32 @@ const Projects = () => {
         ) : (
           <div
             ref={revealRef}
-            className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-4 mb-8"
+            className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-4 gap-4 mb-8 auto-rows-fr"
           >
-            {projects.map((project) => (
-              <div
-                key={project.id || project.title}
-                className="group bg-white/5 backdrop-blur-sm rounded-lg p-5 border border-white/10 transition-all duration-300 hover:bg-white/8 hover:border-white/20"
-              >
+            {projects.map((project, index) => {
+              const getBentoClasses = (idx) => {
+                if (idx === 0) return 'md:col-span-2 xl:col-span-2 xl:row-span-2';
+                if (idx === 1) return 'md:col-span-1 xl:col-span-2';
+                if (idx === 2) return 'md:col-span-1 xl:col-span-2';
+                if (idx === 3) return 'md:col-span-2 xl:col-span-2';
+                if (idx === 4) return 'md:col-span-1 xl:col-span-1';
+                if (idx === 5) return 'md:col-span-1 xl:col-span-1';
+                return 'md:col-span-1 xl:col-span-2';
+              };
+              
+              return (
+                <SpotlightCard
+                  key={project.id || project.title}
+                  className={`group bg-white/5 glass-blur-strong rounded-lg p-5 glass-border transition-all duration-300 hover:bg-white/8 hover:border-white/20 flex flex-col ${getBentoClasses(index)}`}
+                >
+              );
                 <div className="flex items-center justify-between mb-3">
                   <div className="flex items-center gap-3">
                     <div className="w-9 h-9 rounded-md bg-white/10 flex items-center justify-center">
                       <i className={`${project.icon} text-white text-base`}></i>
                     </div>
                     <div>
-                      <h3 className="text-base font-semibold text-white">
+                      <h3 className={`${index === 0 ? 'text-lg md:text-xl' : 'text-base'} font-semibold text-white`}>
                         {t(`projects.data.${project.id}.title`, { defaultValue: project.title })}
                       </h3>
                     </div>
@@ -62,7 +75,7 @@ const Projects = () => {
                   )}
                 </div>
                 
-                <p className="text-xs text-gray-300 mb-3 leading-relaxed">
+                <p className={`${index === 0 ? 'text-sm md:text-base' : 'text-xs'} text-gray-300 mb-3 leading-relaxed`}>
                   {t(`projects.data.${project.id}.description`, { defaultValue: project.description })}
                 </p>
 
@@ -80,8 +93,9 @@ const Projects = () => {
                     );
                   })}
                 </div>
-              </div>
-            ))}
+                </SpotlightCard>
+              );
+            })}
           </div>
         )}
       </div>
