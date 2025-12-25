@@ -254,7 +254,7 @@
         ]
       },
       "2": {
-        "title": "Taffi",
+        "title": "Taffi AI",
         "description": "YOLO yuz tahlili pipeline yordamida AI kosmetika platformasi. CV modeli va to'liq FastAPI inference workflow qurildi va joylashtirildi.",
         "technologies": [
           "YOLO",

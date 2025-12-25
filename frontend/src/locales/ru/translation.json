@@ -254,7 +254,7 @@
         ]
       },
       "2": {
-        "title": "Taffi",
+        "title": "Taffi AI",
         "description": "AI платформа косметики с использованием pipeline анализа лица YOLO. Построена и развернута CV модель и полный workflow вывода FastAPI.",
         "technologies": [
           "YOLO",
