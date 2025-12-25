@@ -11,7 +11,6 @@ const Header = () => {
   const [activeSection, setActiveSection] = useState('home');
   const [isLanguageOpen, setIsLanguageOpen] = useState(false);
   const [theme, setTheme] = useState(null);
-  const [isSidebarCollapsed, setIsSidebarCollapsed] = useState(false);
   const currentLanguage = i18n.language;
   const languages = [
     { code: 'en', name: 'English' },
@@ -159,30 +158,23 @@ const Header = () => {
 
   return (
     <>
-      <aside className={`hidden xl:fixed xl:flex flex-col items-center top-0 right-0 h-full z-30 desktop-sidebar transition-all duration-300 ${isSidebarCollapsed ? 'w-20' : 'w-28 sm:w-32'}`} style={{fontFamily:'Poppins,sans-serif',letterSpacing:'0.03em'}} aria-label="Main navigation">
+      <aside className="hidden xl:fixed xl:flex flex-col items-center top-0 right-0 h-full z-30 desktop-sidebar transition-all duration-300 w-28 sm:w-32" style={{fontFamily:'Poppins,sans-serif',letterSpacing:'0.03em'}} aria-label="Main navigation">
         <div className="w-full h-full bg-white/5 backdrop-blur-[20px] border-l border-white/10 flex flex-col items-center relative" style={{transform: 'translateZ(0)', willChange: 'backdrop-filter'}}>
-          <button
-            onClick={() => setIsSidebarCollapsed(!isSidebarCollapsed)}
-            className="absolute top-2 left-2 w-8 h-8 flex items-center justify-center rounded bg-white/10 hover:bg-white/20 transition-all duration-300 z-50"
-            aria-label={isSidebarCollapsed ? 'Expand sidebar' : 'Collapse sidebar'}
-          >
-            <i className={`fas ${isSidebarCollapsed ? 'fa-chevron-left' : 'fa-chevron-right'} text-white/70 text-xs`}></i>
-          </button>
           <div className="relative z-10 flex flex-col h-full w-full items-center">
             <a href="#home" className="flex flex-col items-center gap-2 mt-12 mb-4 group" onClick={(e) => {
               e.preventDefault();
               handleNavigation('#home');
             }} aria-label="Go to home section">
-              <div className={`rounded bg-white/10 backdrop-blur-sm border border-white/20 p-1 transition-all duration-300 group-hover:scale-105 group-hover:bg-white/15 ${isSidebarCollapsed ? 'w-12 h-12' : 'w-14 h-14 sm:w-16 sm:h-16'}`}>
+              <div className="rounded bg-white/10 backdrop-blur-sm border border-white/20 p-1 transition-all duration-300 group-hover:scale-105 group-hover:bg-white/15 w-14 h-14 sm:w-16 sm:h-16">
                 <img src={MirshodImg} alt="W" className="w-full h-full rounded object-cover" />
               </div>
-              {!isSidebarCollapsed && <span className="text-sm font-bold text-white/90 tracking-wider">Mirshod</span>}
+              <span className="text-sm font-bold text-white/90 tracking-wider">Mirshod</span>
             </a>
             <nav className="flex flex-col gap-1 sm:gap-2 w-full items-center px-2" aria-label="Navigation menu">
               {navItems.map((item) => (
                 <a
                   key={item.key}
-                  className={`${isSidebarCollapsed ? 'w-14 h-14' : 'w-20 h-12 sm:w-24 sm:h-14'} flex flex-col items-center justify-center rounded font-semibold text-sm transition-all duration-300 backdrop-blur-sm border ${activeSection === item.key ? 'bg-white/15 text-white border-white/30 nav-item-active-indicator' : 'text-white/70 hover:text-white hover:bg-white/10 hover:border-white/20'}`}
+                  className={`w-20 h-12 sm:w-24 sm:h-14 flex flex-col items-center justify-center rounded font-semibold text-sm transition-all duration-300 backdrop-blur-sm border ${activeSection === item.key ? 'bg-white/15 text-white border-white/30 nav-item-active-indicator' : 'text-white/70 hover:text-white hover:bg-white/10 hover:border-white/20'}`}
                   href={item.href}
                   onClick={(e) => {
                     e.preventDefault();
@@ -190,10 +182,9 @@ const Header = () => {
                   }}
                   aria-label={`Navigate to ${item.label} section`}
                   aria-current={activeSection === item.key ? 'page' : undefined}
-                  title={isSidebarCollapsed ? item.label : ''}
                 >
-                  <span className={`${isSidebarCollapsed ? '' : 'mb-1'}`} aria-hidden="true">{item.icon}</span>
-                  {!isSidebarCollapsed && <span className="tracking-wide hidden sm:block text-xs font-semibold">{item.label}</span>}
+                  <span className="mb-1" aria-hidden="true">{item.icon}</span>
+                  <span className="tracking-wide hidden sm:block text-xs font-semibold">{item.label}</span>
                 </a>
               ))}
             </nav>
@@ -201,7 +192,7 @@ const Header = () => {
               {/* Theme Toggle */}
               <button
                 onClick={toggleTheme}
-                className={`theme-toggle-btn ${isSidebarCollapsed ? 'w-14 h-14' : 'w-20 h-12 sm:w-24 sm:h-14'} flex items-center justify-center rounded bg-white/10 backdrop-blur-sm border border-white/20 hover:bg-white/15 hover:border-white/30 transition-all duration-300 group`}
+                className="theme-toggle-btn w-20 h-12 sm:w-24 sm:h-14 flex items-center justify-center rounded bg-white/10 backdrop-blur-sm border border-white/20 hover:bg-white/15 hover:border-white/30 transition-all duration-300 group"
                 aria-label={`Switch to ${(theme || 'dark') === 'dark' ? 'light' : 'dark'} mode`}
                 title={`Switch to ${(theme || 'dark') === 'dark' ? 'light' : 'dark'} mode`}
               >
@@ -223,14 +214,13 @@ const Header = () => {
 
               <div className="relative language-dropdown-container">
                 <button
-                  className={`${isSidebarCollapsed ? 'w-14 h-14' : 'w-20 h-12 sm:w-24 sm:h-14'} flex items-center justify-center bg-white/10 backdrop-blur-sm border border-white/20 rounded font-semibold text-sm text-white/90 hover:bg-white/15 hover:border-white/30 transition-all duration-300`}
+                  className="w-20 h-12 sm:w-24 sm:h-14 flex items-center justify-center bg-white/10 backdrop-blur-sm border border-white/20 rounded font-semibold text-sm text-white/90 hover:bg-white/15 hover:border-white/30 transition-all duration-300"
                   aria-haspopup="true"
                   aria-expanded={isLanguageOpen}
                   aria-label={`Current language: ${getLanguageDisplay(currentLanguage)}. Click to change language`}
                   onClick={() => setIsLanguageOpen(!isLanguageOpen)}
-                  title={isSidebarCollapsed ? `Language: ${getLanguageDisplay(currentLanguage)}` : ''}
                 >
-                  {isSidebarCollapsed ? getLanguageDisplay(currentLanguage).substring(0, 1) : getLanguageDisplay(currentLanguage)}
+                  {getLanguageDisplay(currentLanguage)}
                 </button>
                 {isLanguageOpen && (
                   <div className="absolute bottom-full left-full ml-2 mb-2 bg-black/90 backdrop-blur-[20px] border border-white/30 rounded overflow-hidden min-w-[110px] z-[100]" role="menu" aria-label="Language selection">

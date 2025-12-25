@@ -238,6 +238,8 @@
     "viewProject": "View Project",
     "viewAll": "View All Projects",
     "view": "View",
+    "viewWebsite": "View Website",
+    "viewInGithub": "View in GitHub",
     "noProjects": "No projects found",
     "noProjectsSubtitle": "No projects available at the moment"
   },

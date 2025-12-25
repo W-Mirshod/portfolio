@@ -277,18 +277,6 @@
         ]
       },
       "4": {
-        "title": "AI Yordamchi Platformasi",
-        "description": "Autentifikatsiya, prompt pipeline va dashboard bilan AI yordamchi tizimi. Backend, OpenAI integratsiyasi va xabar routing qurildi.",
-        "technologies": [
-          "Python",
-          "OpenAI API",
-          "PostgreSQL",
-          "FastAPI",
-          "Autentifikatsiya",
-          "Admin dashboard"
-        ]
-      },
-      "5": {
         "title": "E-Commerce Marketplace",
         "description": "Mahsulot boshqaruvi va buyurtma workflow'lari bilan ko'p sotuvchi marketplace. Backend arxitektura va to'lov integratsiyasi ishlab chiqildi.",
         "technologies": [
@@ -297,6 +285,15 @@
           "PostgreSQL",
           "Redis",
           "To'lov API'lari"
+        ]
+      },
+      "5": {
+        "title": "AI Yordamchi Platformasi",
+        "description": "Autentifikatsiya, prompt pipeline va dashboard bilan AI yordamchi tizimi. Backend, OpenAI integratsiyasi va xabar routing qurildi.",
+        "technologies": [
+          "TypeScript",
+          "OpenAI API",
+          "PostgreSQL"
         ]
       },
       "6": {

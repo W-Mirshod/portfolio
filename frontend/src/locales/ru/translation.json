@@ -238,6 +238,8 @@
     "viewProject": "Посмотреть проект",
     "viewAll": "Посмотреть все проекты",
     "view": "Посмотреть",
+    "viewWebsite": "Посмотреть сайт",
+    "viewInGithub": "Посмотреть в GitHub",
     "noProjects": "Проекты не найдены",
     "noProjectsSubtitle": "В данный момент проекты недоступны",
     "data": {
@@ -277,18 +279,6 @@
         ]
       },
       "4": {
-        "title": "AI Платформа Помощника",
-        "description": "Система AI помощника с аутентификацией, pipeline промптов и панелью управления. Построен backend, интеграция OpenAI и маршрутизация сообщений.",
-        "technologies": [
-          "Python",
-          "OpenAI API",
-          "PostgreSQL",
-          "FastAPI",
-          "Аутентификация",
-          "Admin панель"
-        ]
-      },
-      "5": {
         "title": "E-Commerce Маркетплейс",
         "description": "Мультивендорный маркетплейс с управлением продуктами и рабочими процессами заказов. Разработана архитектура backend и интеграция платежей.",
         "technologies": [
@@ -297,6 +287,15 @@
           "PostgreSQL",
           "Redis",
           "Платежные API"
+        ]
+      },
+      "5": {
+        "title": "AI Чатбот",
+        "description": "Система AI помощника с pipeline промптов и панелью управления. Построен backend, интеграция OpenAI и маршрутизация сообщений.",
+        "technologies": [
+          "TypeScript",
+          "OpenAI API",
+          "PostgreSQL"
         ]
       },
       "6": {
@@ -309,6 +308,31 @@
           "REST API",
           "RBAC",
           "API документация"
+        ]
+      },
+      "7": {
+        "title": "Система Кастомной Аутентификации",
+        "description": "Кастомная система аутентификации и авторизации, построенная на Django REST Framework и PostgreSQL, реализующая сессионную аутентификацию и контроль доступа на основе ролей (RBAC).",
+        "technologies": [
+          "Django",
+          "Django REST Framework",
+          "PostgreSQL",
+          "Сессионная аутентификация",
+          "RBAC",
+          "Python"
+        ]
+      },
+      "8": {
+        "title": "Платформа Чат в Реальном Времени",
+        "description": "Full-stack приложение для чата в реальном времени, построенное на FastAPI и Next.js, с WebSocket соединениями, Redis pub/sub и PostgreSQL.",
+        "technologies": [
+          "FastAPI",
+          "Next.js",
+          "WebSocket",
+          "Redis",
+          "PostgreSQL",
+          "TypeScript",
+          "Python"
         ]
       }
     },

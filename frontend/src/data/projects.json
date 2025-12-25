@@ -26,7 +26,8 @@
       "PostgreSQL",
       "IoT integrations"
     ],
-    "url": "https://yaklabs.tech/"
+    "url": "https://yaklabs.tech/",
+    "githubUrl": "https://github.com/Yaklabs-Organization/backend"
   },
   {
     "id": 3,
@@ -41,25 +42,11 @@
       "REST",
       "WebSockets"
     ],
-    "url": "https://mini-crm.w-mirshod.com/docs"
+    "url": "https://mini-crm.w-mirshod.com/docs",
+    "githubUrl": "https://github.com/W-Mirshod/Mini_CRM"
   },
   {
     "id": 4,
-    "title": "AI Assistant Platform",
-    "description": "AI assistant system with authentication, prompt pipeline, and dashboard. Built backend, OpenAI integration, and message routing.",
-    "icon": "fas fa-brain",
-    "technologies": [
-      "Python",
-      "OpenAI API",
-      "PostgreSQL",
-      "FastAPI",
-      "Authentication",
-      "Admin dashboard"
-    ],
-    "url": "https://typescript-chat.w-mirshod.com/"
-  },
-  {
-    "id": 5,
     "title": "E-Commerce Marketplace",
     "description": "Multi-vendor marketplace with product management and order workflows. Developed backend architecture and payment integration.",
     "icon": "fas fa-shopping-cart",
@@ -67,10 +54,23 @@
       "Django",
       "Python",
       "PostgreSQL",
-      "Redis",
-      "Payment APIs"
+      "Redis"
     ],
-    "url": "https://marketplace.w-mirshod.com/"
+    "url": "https://marketplace.w-mirshod.com/",
+    "githubUrl": "https://github.com/W-Mirshod/MarketPlace"
+  },
+  {
+    "id": 5,
+    "title": "AI Chatbot",
+    "description": "AI assistant system with prompt pipeline and dashboard. Built backend, OpenAI integration, and message routing.",
+    "icon": "fas fa-brain",
+    "technologies": [
+      "TypeScript",
+      "OpenAI API",
+      "SQLite"
+    ],
+    "url": "https://typescript-chat.w-mirshod.com/",
+    "githubUrl": "https://github.com/W-Mirshod/typescript-chat"
   },
   {
     "id": 6,
@@ -84,6 +84,37 @@
       "REST API",
       "API Swagger"
     ],
-    "url": "https://aqilli-maktab.w-mirshod.com/swagger/"
+    "githubUrl": "https://github.com/W-Mirshod/school-crm"
+  },
+  {
+    "id": 7,
+    "title": "Custom Auth System",
+    "description": "Custom authentication and authorization system built with Django REST Framework and PostgreSQL, implementing session-based authentication and role-based access control (RBAC).",
+    "icon": "fas fa-shield-alt",
+    "technologies": [
+      "Django",
+      "Django REST Framework",
+      "PostgreSQL",
+      "Session Auth",
+      "RBAC",
+      "Python"
+    ],
+    "githubUrl": "https://github.com/W-Mirshod/custom-auth"
+  },
+  {
+    "id": 8,
+    "title": "Realtime Chat Platform",
+    "description": "Full-stack real-time chat application built with FastAPI and Next.js, featuring WebSocket connections, Redis pub/sub, and PostgreSQL.",
+    "icon": "fas fa-comments",
+    "technologies": [
+      "FastAPI",
+      "Next.js",
+      "WebSocket",
+      "Redis",
+      "PostgreSQL",
+      "TypeScript",
+      "Python"
+    ],
+    "githubUrl": "https://github.com/W-Mirshod/realtime-chat-platform"
   }
 ]

@@ -180,12 +180,12 @@ const GoToTop = () => {
       className="fixed bottom-6 right-6 z-50 flex items-center justify-center
                  w-12 h-12 rounded-2xl
                  bg-white/10 backdrop-blur-xl border border-white/20
-                 shadow-2xl shadow-cyan-500/20
                  hover:bg-white/20 hover:border-cyan-400/50
                  transition-all duration-300
                  cursor-pointer
                  overflow-hidden
                  group"
+      style={{ boxShadow: '0 15px 50px -12px rgba(6, 182, 212, 0.2)' }}
       aria-label="Scroll to top"
     >
       <svg
