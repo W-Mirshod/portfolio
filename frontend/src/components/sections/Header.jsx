@@ -19,13 +19,9 @@ const Header = () => {
   ];
 
 
-  // Theme management - RESPECT USER PREFERENCES
   useEffect(() => {
-    // Check for saved theme preference or default to system preference
     const savedTheme = localStorage.getItem('theme');
-    const systemPrefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
-
-    const initialTheme = savedTheme || (systemPrefersDark ? 'dark' : 'light');
+    const initialTheme = savedTheme || 'dark';
     setTheme(initialTheme);
     document.documentElement.setAttribute('data-theme', initialTheme);
   }, []);

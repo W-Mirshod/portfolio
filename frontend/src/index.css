@@ -55,20 +55,6 @@
   --border-light: #1e40af;     /* Blue-800 - lighter blue border */
 }
 
-/* System preference detection */
-@media (prefers-color-scheme: light) {
-  :root:not([data-theme]) {
-    --surface: #1d4ed8;
-    --surface-elevated: #1e40af;
-    --surface-hover: #1e3a8a;
-    --text-primary: #1e3a8a;
-    --text-secondary: #1e40af;
-    --text-muted: #1e3a8a;
-    --border: #1d4ed8;
-    --border-light: #1e40af;
-  }
-}
-
 body {
   background-color: var(--surface);
   color: var(--text-primary);
