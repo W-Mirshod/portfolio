@@ -8,56 +8,45 @@ module.exports = {
   theme: {
     extend: {
       colors: {
-        // Modern 2025 Color Palette
         primary: {
-          DEFAULT: '#6366f1',
-          dark: '#4f46e5',
-          light: '#818cf8',
+          DEFAULT: '#8fb5ff',
+          dark: '#6e94f0',
+          light: '#bdd4ff',
         },
-        secondary: '#8b5cf6',
-        accent: '#06b6d4',
-        success: '#10b981',
-        warning: '#f59e0b',
-        error: '#ef4444',
-        
-        // Surface colors - Modern Dark Theme
+        secondary: '#9bc8ff',
+        accent: '#9ce9ff',
+        success: '#4ade80',
+        warning: '#facc15',
+        error: '#fb7185',
         surface: {
-          DEFAULT: '#0a0a0a',
-          elevated: '#111111',
-          hover: '#1a1a1a',
+          DEFAULT: '#060d1f',
+          elevated: '#0f1a33',
+          hover: '#152647',
         },
-        
-        // Text colors - Modern Dark Theme
         text: {
-          primary: '#ffffff',
-          secondary: '#e5e5e5',
-          muted: '#a3a3a3',
+          primary: '#f4f8ff',
+          secondary: '#d2def6',
+          muted: '#9cb0d4',
         },
-        
-        // Border colors - Modern Dark Theme
         border: {
-          DEFAULT: '#262626',
-          light: '#404040',
+          DEFAULT: 'rgba(255, 255, 255, 0.20)',
+          light: 'rgba(255, 255, 255, 0.36)',
         },
-        
-        // Legacy compatibility
-        'bg-primary': '#0a0a0a',
-        'bg-secondary': '#111111', 
-        'bg-tertiary': '#1a1a1a',
-        'text-primary': '#ffffff',
-        'text-secondary': '#e5e5e5',
-        'text-muted': '#a3a3a3',
-        'border-color': '#262626',
-        
-        // Light theme colors (ULTRA DARK BLUE)
-        'light-surface': '#1d4ed8',        /* Blue-700 - ultra dark background */
-        'light-surface-elevated': '#1e40af', /* Blue-800 - deeper blue cards */
-        'light-surface-hover': '#1e3a8a',   /* Blue-900 - even deeper blue */
-        'light-text-primary': '#1e3a8a',    /* Blue-900 - dark blue text */
-        'light-text-secondary': '#1e40af',  /* Blue-800 - medium blue */
-        'light-text-muted': '#1e3a8a',      /* Blue-900 - darkest accent blue */
-        'light-border': '#1d4ed8',          /* Blue-700 - strong blue border */
-        'light-border-light': '#1e40af',   /* Blue-800 - lighter border */
+        'bg-primary': '#060d1f',
+        'bg-secondary': '#0f1a33',
+        'bg-tertiary': '#152647',
+        'text-primary': '#f4f8ff',
+        'text-secondary': '#d2def6',
+        'text-muted': '#9cb0d4',
+        'border-color': 'rgba(255, 255, 255, 0.20)',
+        'light-surface': '#d7e4ff',
+        'light-surface-elevated': '#e9f0ff',
+        'light-surface-hover': '#f2f6ff',
+        'light-text-primary': '#16203b',
+        'light-text-secondary': '#2e426f',
+        'light-text-muted': '#4d6291',
+        'light-border': 'rgba(255, 255, 255, 0.65)',
+        'light-border-light': 'rgba(255, 255, 255, 0.88)',
       },
       fontFamily: {
         sans: ['Inter', 'SF Pro Display', '-apple-system', 'BlinkMacSystemFont', 'Segoe UI', 'Roboto', 'sans-serif'],
@@ -79,14 +68,16 @@ module.exports = {
         '9xl': ['8rem', { lineHeight: '1' }],
       },
       boxShadow: {
-        'neumorphism': '8px 8px 16px rgba(0, 0, 0, 0.4), -8px -8px 16px rgba(255, 255, 255, 0.02)',
-        'neumorphism-inset': 'inset 8px 8px 16px rgba(0, 0, 0, 0.4), inset -8px -8px 16px rgba(255, 255, 255, 0.02)',
-        'neumorphism-hover': '12px 12px 24px rgba(0, 0, 0, 0.5), -12px -12px 24px rgba(255, 255, 255, 0.03)',
+        'neumorphism': '0 20px 45px rgba(4, 12, 30, 0.46), 0 6px 18px rgba(4, 12, 30, 0.24), inset 0 1px 0 rgba(255, 255, 255, 0.32)',
+        'neumorphism-inset': 'inset 0 1px 0 rgba(255, 255, 255, 0.35), inset 0 -1px 0 rgba(8, 20, 45, 0.35)',
+        'neumorphism-hover': '0 26px 55px rgba(4, 12, 30, 0.52), 0 10px 22px rgba(4, 12, 30, 0.28), inset 0 1px 0 rgba(255, 255, 255, 0.45)',
         'modern': '0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06)',
         'modern-lg': '0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05)',
       },
       backdropBlur: {
         'xs': '2px',
+        'glass': '24px',
+        'glass-strong': '36px',
       }
     },
   },
