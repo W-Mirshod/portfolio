@@ -138,57 +138,40 @@ body.mobile-menu-open {
 }
 
 :root {
-  --primary-color: #8fb5ff;
-  --primary-dark: #6e94f0;
-  --primary-light: #bdd4ff;
-  --primary-rgb: 143, 181, 255;
-  --bg-primary: #060d1f;
-  --bg-secondary: #0f1a33;
-  --bg-tertiary: #152647;
-  --text-primary: #f4f8ff;
-  --text-secondary: #d2def6;
-  --text-muted: #9cb0d4;
-  --border-color: rgba(255, 255, 255, 0.2);
-  --shadow-light: rgba(125, 168, 255, 0.16);
-  --shadow-medium: rgba(5, 12, 30, 0.35);
-  --shadow-heavy: rgba(3, 8, 20, 0.58);
-  --gradient-primary: linear-gradient(140deg, rgba(214, 229, 255, 0.92) 0%, rgba(160, 192, 255, 0.85) 55%, rgba(148, 235, 255, 0.78) 100%);
+  --primary-color: #0a84ff;
+  --primary-dark: #0066cc;
+  --primary-light: #5eabff;
+  --primary-rgb: 10, 132, 255;
+  --bg-primary: #000000;
+  --bg-secondary: #1c1c1e;
+  --bg-tertiary: #2c2c2e;
+  --text-primary: #ffffff;
+  --text-secondary: #ebebf5;
+  --text-muted: rgba(235, 235, 245, 0.6);
+  --border-color: rgba(255, 255, 255, 0.15);
+  --shadow-light: rgba(0, 0, 0, 0.16);
+  --shadow-medium: rgba(0, 0, 0, 0.35);
+  --shadow-heavy: rgba(0, 0, 0, 0.58);
+  --gradient-primary: linear-gradient(140deg, #0a84ff 0%, #5e5ce6 100%);
   --gradient-bg: linear-gradient(160deg, var(--bg-primary) 0%, var(--bg-secondary) 100%);
-  --depth-shadow-1: 0 6px 16px rgba(4, 12, 30, 0.22), 0 2px 8px rgba(4, 12, 30, 0.16);
-  --depth-shadow-2: 0 14px 30px rgba(4, 12, 30, 0.3), 0 4px 12px rgba(4, 12, 30, 0.2);
-  --depth-shadow-3: 0 20px 42px rgba(4, 12, 30, 0.4), 0 8px 18px rgba(4, 12, 30, 0.24);
-  --depth-shadow-4: 0 28px 58px rgba(4, 12, 30, 0.48), 0 12px 26px rgba(4, 12, 30, 0.28);
-  --depth-shadow-5: 0 35px 70px rgba(4, 12, 30, 0.54), 0 0 42px rgba(162, 200, 255, 0.22);
-  --gradient-depth-1: linear-gradient(140deg, rgba(255, 255, 255, 0.14) 0%, rgba(193, 218, 255, 0.07) 100%);
-  --gradient-depth-2: linear-gradient(140deg, rgba(255, 255, 255, 0.2) 0%, rgba(169, 205, 255, 0.1) 52%, rgba(141, 231, 255, 0.08) 100%);
-  --gradient-depth-3: radial-gradient(ellipse at center, rgba(198, 221, 255, 0.22) 0%, transparent 70%);
-  --gradient-mesh: radial-gradient(at 18% 22%, rgba(196, 219, 255, 0.22) 0%, transparent 52%),
-                    radial-gradient(at 82% 12%, rgba(150, 236, 255, 0.2) 0%, transparent 48%),
-                    radial-gradient(at 44% 84%, rgba(167, 196, 255, 0.19) 0%, transparent 54%),
-                    radial-gradient(at 90% 72%, rgba(156, 183, 255, 0.16) 0%, transparent 56%);
+  --depth-shadow-1: 0 6px 16px rgba(0, 0, 0, 0.22), 0 2px 8px rgba(0, 0, 0, 0.16);
+  --depth-shadow-2: 0 14px 30px rgba(0, 0, 0, 0.3), 0 4px 12px rgba(0, 0, 0, 0.2);
+  --depth-shadow-3: 0 20px 42px rgba(0, 0, 0, 0.4), 0 8px 18px rgba(0, 0, 0, 0.24);
+  --depth-shadow-4: 0 28px 58px rgba(0, 0, 0, 0.48), 0 12px 26px rgba(0, 0, 0, 0.28);
+  --depth-shadow-5: 0 35px 70px rgba(0, 0, 0, 0.54), 0 0 42px rgba(0, 0, 0, 0.22);
+  --gradient-depth-1: linear-gradient(140deg, rgba(255, 255, 255, 0.08) 0%, rgba(255, 255, 255, 0.02) 100%);
+  --gradient-depth-2: linear-gradient(140deg, rgba(255, 255, 255, 0.12) 0%, rgba(255, 255, 255, 0.05) 52%, rgba(255, 255, 255, 0.02) 100%);
+  --gradient-depth-3: radial-gradient(ellipse at center, rgba(255, 255, 255, 0.1) 0%, transparent 70%);
+  --gradient-mesh: radial-gradient(at 18% 22%, rgba(10, 132, 255, 0.15) 0%, transparent 52%),
+                    radial-gradient(at 82% 12%, rgba(94, 92, 230, 0.15) 0%, transparent 48%),
+                    radial-gradient(at 44% 84%, rgba(50, 173, 230, 0.15) 0%, transparent 54%),
+                    radial-gradient(at 90% 72%, rgba(10, 132, 255, 0.1) 0%, transparent 56%);
   --mesh-gradient-modern:
-    radial-gradient(ellipse at 20% 30%, rgba(178, 206, 255, 0.2) 0%, transparent 50%),
-    radial-gradient(ellipse at 80% 20%, rgba(144, 232, 255, 0.18) 0%, transparent 52%),
-    radial-gradient(ellipse at 40% 70%, rgba(171, 194, 255, 0.16) 0%, transparent 55%),
-    radial-gradient(ellipse at 90% 80%, rgba(143, 183, 255, 0.14) 0%, transparent 56%),
-    radial-gradient(ellipse at 10% 90%, rgba(188, 214, 255, 0.18) 0%, transparent 54%);
-}
-
-[data-theme="light"] {
-  --primary-color: #4c75de;
-  --primary-dark: #385cc0;
-  --primary-light: #6991f0;
-  --primary-rgb: 76, 117, 222;
-  --bg-primary: #d7e4ff;
-  --bg-secondary: #e9f0ff;
-  --bg-tertiary: #f2f6ff;
-  --text-primary: #16203b;
-  --text-secondary: #2e426f;
-  --text-muted: #4d6291;
-  --border-color: rgba(255, 255, 255, 0.65);
-  --shadow-light: rgba(76, 117, 222, 0.12);
-  --shadow-medium: rgba(42, 62, 115, 0.14);
-  --shadow-heavy: rgba(31, 47, 88, 0.22);
+    radial-gradient(ellipse at 20% 30%, rgba(10, 132, 255, 0.15) 0%, transparent 50%),
+    radial-gradient(ellipse at 80% 20%, rgba(94, 92, 230, 0.15) 0%, transparent 52%),
+    radial-gradient(ellipse at 40% 70%, rgba(50, 173, 230, 0.15) 0%, transparent 55%),
+    radial-gradient(ellipse at 90% 80%, rgba(10, 132, 255, 0.1) 0%, transparent 56%),
+    radial-gradient(ellipse at 10% 90%, rgba(94, 92, 230, 0.15) 0%, transparent 54%);
 }
 
 .section {

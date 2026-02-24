@@ -19,56 +19,11 @@ button {
 @keyframes liquidGlowPulse {
   0%,
   100% {
-    box-shadow: 0 0 0 1px rgba(255, 255, 255, 0.25), 0 10px 24px rgba(4, 12, 30, 0.28);
+    box-shadow: 0 0 0 1px rgba(255, 255, 255, 0.15), 0 10px 24px rgba(0, 0, 0, 0.28);
   }
   50% {
-    box-shadow: 0 0 0 1px rgba(255, 255, 255, 0.42), 0 14px 30px rgba(4, 12, 30, 0.35), 0 0 24px rgba(168, 208, 255, 0.34);
+    box-shadow: 0 0 0 1px rgba(255, 255, 255, 0.25), 0 14px 30px rgba(0, 0, 0, 0.35), 0 0 24px rgba(10, 132, 255, 0.2);
   }
-}
-
-.theme-toggle-btn {
-  position: relative;
-  overflow: hidden;
-}
-
-.theme-toggle-btn::after {
-  content: "";
-  position: absolute;
-  inset: 0;
-  border-radius: inherit;
-  pointer-events: none;
-  background: linear-gradient(120deg, transparent 0%, rgba(255, 255, 255, 0.22) 48%, transparent 100%);
-  opacity: 0;
-  transform: translateX(-70%);
-  transition: opacity 0.3s ease, transform 0.4s ease;
-}
-
-.theme-toggle-btn:hover::after {
-  opacity: 1;
-  transform: translateX(70%);
-}
-
-[data-theme="light"] .theme-toggle-btn {
-  background-color: rgba(255, 255, 255, 0.68) !important;
-  border-color: rgba(255, 255, 255, 0.82) !important;
-  color: var(--text-primary) !important;
-}
-
-[data-theme="light"] .theme-toggle-btn:hover {
-  background-color: rgba(255, 255, 255, 0.86) !important;
-  border-color: rgba(255, 255, 255, 0.95) !important;
-  box-shadow: 0 16px 36px rgba(68, 102, 180, 0.24) !important;
-}
-
-[data-theme="dark"] .theme-toggle-btn {
-  background-color: var(--liquid-panel) !important;
-  border-color: var(--liquid-border) !important;
-}
-
-[data-theme="dark"] .theme-toggle-btn:hover {
-  background-color: var(--liquid-panel-hover) !important;
-  border-color: var(--liquid-border-strong) !important;
-  box-shadow: var(--liquid-shadow-hover) !important;
 }
 
 .ripple {
