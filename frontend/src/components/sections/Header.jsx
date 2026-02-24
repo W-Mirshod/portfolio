@@ -172,9 +172,9 @@ const Header = () => {
               handleNavigation('#home');
             }} aria-label="Go to home section">
               <div className="rounded-xl liquid-panel border border-white/15 p-1 transition-all duration-300 group-hover:scale-105 w-14 h-14 sm:w-16 sm:h-16">
-                <img src={MirshodImg} alt="W" className="w-full h-full rounded object-cover" />
+                <img src={MirshodImg} alt="W" className="w-full h-full rounded object-cover img-shimmer-load" />
               </div>
-              <span className="text-sm font-bold text-white tracking-wider">Mirshod</span>
+              <span className="text-sm font-bold text-white tracking-wider nav-logo-display">Mirshod</span>
             </a>
             <nav className="flex flex-col gap-1 sm:gap-2 w-full items-center px-2" aria-label="Navigation menu">
               {navItems.map((item) => (
@@ -190,7 +190,7 @@ const Header = () => {
                   aria-current={activeSection === item.key ? 'page' : undefined}
                 >
                   <span className="mb-1" aria-hidden="true">{item.icon}</span>
-                  <span className="tracking-wide hidden sm:block text-xs font-semibold">{item.label}</span>
+                  <span className="tracking-wide hidden sm:block text-xs font-semibold link-draw">{item.label}</span>
                 </a>
               ))}
             </nav>
@@ -233,9 +233,9 @@ const Header = () => {
             <div className="flex items-center gap-2 sm:gap-3">
               <a href="#home" className="flex items-center gap-2 sm:gap-3 group" aria-label="Go to home section">
                 <div className="w-8 h-8 sm:w-10 sm:h-10 rounded-lg liquid-panel border border-white/15 p-1 transition-all duration-300 group-hover:scale-105">
-                  <img src={MirshodImg} alt="W" className="w-full h-full rounded object-cover" />
+                  <img src={MirshodImg} alt="W" className="w-full h-full rounded object-cover img-shimmer-load" />
                 </div>
-                <span className="text-base sm:text-lg font-bold text-white tracking-wide">Mirshod</span>
+                <span className="text-base sm:text-lg font-bold text-white tracking-wide nav-logo-display">Mirshod</span>
               </a>
             </div>
             <div className="relative flex items-center gap-2 sm:gap-3">
@@ -293,9 +293,9 @@ const Header = () => {
                   handleNavigation('#home');
                 }} aria-label="Go to home section">
                   <div className="w-10 h-10 sm:w-12 sm:h-12 rounded-lg liquid-panel border border-white/15 p-1 transition-all duration-300 group-hover:scale-105">
-                    <img src={MirshodImg} alt="W" className="w-full h-full rounded object-cover" />
+                    <img src={MirshodImg} alt="W" className="w-full h-full rounded object-cover img-shimmer-load" />
                   </div>
-                  <span className="text-base sm:text-lg font-bold text-white tracking-wider">Mirshod</span>
+                  <span className="text-base sm:text-lg font-bold text-white tracking-wider nav-logo-display">Mirshod</span>
                 </a>
                 {navItems.map((item) => (
                   <a
@@ -310,7 +310,7 @@ const Header = () => {
                     aria-current={activeSection === item.key ? 'page' : undefined}
                   >
                     <span className="flex-shrink-0" aria-hidden="true">{item.icon}</span>
-                    <span className="tracking-wide font-semibold">{item.label}</span>
+                    <span className="tracking-wide font-semibold link-draw">{item.label}</span>
                   </a>
                 ))}
               </div>

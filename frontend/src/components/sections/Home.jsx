@@ -1,5 +1,6 @@
 import { useEffect } from 'react';
 import { useTranslation } from 'react-i18next';
+import { FaArrowRight, FaServer, FaBrain, FaCloud } from 'react-icons/fa';
 import { initializeAudio } from '../../utils/audio';
 import ParallaxBackground from '../ui/ParallaxBackground';
 import MagneticButton from '../ui/MagneticButton';
@@ -39,7 +40,7 @@ const Home = () => {
   };
 
   return (
-    <section id="home" className="liquid-section relative flex flex-col items-center justify-center min-h-screen w-full overflow-hidden pt-16 sm:pt-20 md:pt-24 lg:pt-10 px-3 sm:px-4 md:px-6 lg:px-8 xl:px-20">
+    <section id="home" className="liquid-section section-accent-glow relative flex flex-col items-center justify-center min-h-screen w-full overflow-hidden pt-16 sm:pt-20 md:pt-24 lg:pt-10 px-3 sm:px-4 md:px-6 lg:px-8 xl:px-20">
       {enableEffects && (
         <ParallaxBackground className="absolute inset-0">
           <div className="absolute inset-0 w-full h-full bg-bg-secondary/20" />
@@ -68,7 +69,7 @@ const Home = () => {
                 <img
                   src="/Mirshod-optimized.webp"
                   alt="Mirshod Qayimov"
-                  className="relative w-20 h-20 sm:w-24 sm:h-24 md:w-28 md:h-28 lg:w-32 lg:h-32 xl:w-36 xl:h-36 rounded-full object-cover border-4 border-white/35 shadow-2xl ring-2 ring-white/40"
+                  className="relative w-20 h-20 sm:w-24 sm:h-24 md:w-28 md:h-28 lg:w-32 lg:h-32 xl:w-36 xl:h-36 rounded-full object-cover border-4 border-white/35 shadow-2xl ring-2 ring-white/40 img-shimmer-load"
                   loading="eager"
                 />
               </div>
@@ -82,7 +83,7 @@ const Home = () => {
             </h2>
 
             <p className="text-sm sm:text-base md:text-lg lg:text-xl xl:text-2xl text-blue-100/90 max-w-4xl leading-relaxed layered-entrance flex items-center justify-center gap-2 sm:gap-3 lg:justify-start" style={{ animationDelay: '0.2s' }}>
-              {t('home.descriptionPart1')} <i className="fas fa-arrow-right-long text-blue-200"></i> {t('home.descriptionPart2')}
+              {t('home.descriptionPart1')} <FaArrowRight className="text-blue-200" /> {t('home.descriptionPart2')}
             </p>
 
             <div className="flex flex-wrap items-center justify-center gap-3 sm:gap-4 mt-6 sm:mt-8 layered-entrance lg:justify-start" style={{ animationDelay: '0.3s' }}>
@@ -133,19 +134,19 @@ const Home = () => {
               <div className="flex flex-col sm:flex-row gap-4 sm:gap-6 lg:gap-8">
                 <div className="flex-1 liquid-panel rounded-lg p-5 sm:p-6 lg:p-8 border border-white/20 hover:bg-white/20 hover:border-white/40 transition-all duration-300 text-center">
                   <div className="w-12 h-12 sm:w-14 sm:h-14 lg:w-16 lg:h-16 mx-auto mb-4 lg:mb-6 liquid-icon-shell rounded-lg flex items-center justify-center">
-                    <i className="fas fa-server text-xl sm:text-2xl lg:text-3xl text-blue-400"></i>
+                    <FaServer className="text-xl sm:text-2xl lg:text-3xl text-blue-400" />
                   </div>
                   <h4 className="text-lg sm:text-xl lg:text-2xl xl:text-3xl font-semibold text-blue-100 mb-2">{t('home.sections.backendAPIs')}</h4>
                 </div>
                 <div className="flex-1 liquid-panel rounded-lg p-5 sm:p-6 lg:p-8 border border-white/20 hover:bg-white/20 hover:border-white/40 transition-all duration-300 text-center">
                   <div className="w-12 h-12 sm:w-14 sm:h-14 lg:w-16 lg:h-16 mx-auto mb-4 lg:mb-6 liquid-icon-shell rounded-lg flex items-center justify-center">
-                    <i className="fas fa-brain text-xl sm:text-2xl lg:text-3xl text-blue-400"></i>
+                    <FaBrain className="text-xl sm:text-2xl lg:text-3xl text-blue-400" />
                   </div>
                   <h4 className="text-lg sm:text-xl lg:text-2xl xl:text-3xl font-semibold text-blue-100 mb-2">{t('home.sections.aiMLSystems')}</h4>
                 </div>
                 <div className="flex-1 liquid-panel rounded-lg p-5 sm:p-6 lg:p-8 border border-white/20 hover:bg-white/20 hover:border-white/40 transition-all duration-300 text-center">
                   <div className="w-12 h-12 sm:w-14 sm:h-14 lg:w-16 lg:h-16 mx-auto mb-4 lg:mb-6 liquid-icon-shell rounded-lg flex items-center justify-center">
-                    <i className="fas fa-cloud text-xl sm:text-2xl lg:text-3xl text-blue-400"></i>
+                    <FaCloud className="text-xl sm:text-2xl lg:text-3xl text-blue-400" />
                   </div>
                   <h4 className="text-lg sm:text-xl lg:text-2xl xl:text-3xl font-semibold text-blue-100 mb-2">{t('home.sections.devops')}</h4>
                 </div>

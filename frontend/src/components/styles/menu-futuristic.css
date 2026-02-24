@@ -3,7 +3,7 @@
 aside,
 nav,
 header {
-  font-family: 'Poppins', sans-serif;
+  font-family: var(--font-display, 'Space Grotesk'), 'Poppins', sans-serif;
 }
 
 a,

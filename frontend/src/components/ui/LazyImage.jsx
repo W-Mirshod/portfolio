@@ -73,7 +73,7 @@ const LazyImage = ({
           onLoad={handleLoad}
           onError={handleError}
           className={`transition-opacity duration-300 ${
-            isLoaded ? 'opacity-100' : 'opacity-0'
+            isLoaded ? 'opacity-100 img-shimmer-load' : 'opacity-0'
           } ${className}`}
           loading="lazy"
           decoding="async"

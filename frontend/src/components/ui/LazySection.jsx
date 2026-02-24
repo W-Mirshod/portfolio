@@ -26,8 +26,26 @@ export default function LazySection({
     return () => obs.disconnect();
   }, [loader, rootMargin]);
 
+  /* Section-reveal visibility trigger */
+  useEffect(() => {
+    if (!Comp) return;
+    const el = ref.current;
+    if (!el) return;
+    const obs = new IntersectionObserver(
+      ([entry]) => {
+        if (entry.isIntersecting) {
+          el.classList.add('is-visible');
+          obs.disconnect();
+        }
+      },
+      { threshold: 0.08 }
+    );
+    obs.observe(el);
+    return () => obs.disconnect();
+  }, [Comp]);
+
   return (
-    <section ref={ref} style={{ minHeight }}>
+    <section ref={ref} className={Comp ? 'section-reveal' : ''} style={{ minHeight }}>
       {Comp ? <Comp /> : (fallback || null)}
     </section>
   );

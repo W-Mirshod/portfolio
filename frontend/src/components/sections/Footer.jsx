@@ -1,4 +1,5 @@
 import { useTranslation } from 'react-i18next';
+import { FaGithub, FaLinkedin, FaTelegram, FaInstagram, FaEnvelope, FaPhone, FaMapMarkerAlt, FaShareAlt } from 'react-icons/fa';
 
 const Footer = () => {
   const { t } = useTranslation();
@@ -6,25 +7,25 @@ const Footer = () => {
 
   const socialLinks = [
     {
-      icon: 'fab fa-github',
+      icon: <FaGithub className="text-blue-300 text-sm" />,
       url: 'https://github.com/W-Mirshod',
       label: 'GitHub',
       color: 'hover:text-white'
     },
     {
-      icon: 'fab fa-linkedin',
+      icon: <FaLinkedin className="text-blue-300 text-sm" />,
       url: 'https://linkedin.com/in/wmirshod',
       label: 'LinkedIn',
       color: 'hover:text-blue-200'
     },
     {
-      icon: 'fab fa-telegram',
+      icon: <FaTelegram className="text-blue-300 text-sm" />,
       url: 'https://t.me/w_mirshod',
       label: 'Telegram',
       color: 'hover:text-sky-200'
     },
     {
-      icon: 'fab fa-instagram',
+      icon: <FaInstagram className="text-blue-300 text-sm" />,
       url: 'https://www.instagram.com/wmirshod/?igsh=czRpZ3d5dzBxa2o3&utm_source=qr',
       label: 'Instagram',
       color: 'hover:text-pink-200'
@@ -32,7 +33,7 @@ const Footer = () => {
   ];
 
   return (
-    <footer id="contact" className="liquid-section py-16 px-4 bg-bg-secondary/20 border-t border-white/20">
+    <footer id="contact" className="liquid-section section-accent-glow py-16 px-4 bg-bg-secondary/20 border-t border-white/20">
       <div className="max-w-4xl mx-auto">
         <header className="text-center mb-12">
           <h2 className="text-3xl font-light liquid-title mb-3 tracking-wide animate-fadeInUp">{t('footer.connect.title')}</h2>
@@ -43,7 +44,7 @@ const Footer = () => {
           <div className="liquid-panel rounded-xl p-6 border border-white/20">
             <div className="flex items-center gap-3 mb-6">
               <div className="w-8 h-8 rounded-lg liquid-icon-shell flex items-center justify-center">
-                <i className="fas fa-envelope text-sm text-blue-300"></i>
+                <FaEnvelope className="text-sm text-blue-300" />
               </div>
               <h3 className="text-lg font-semibold text-blue-100">{t('footer.connect.contactInfo')}</h3>
             </div>
@@ -54,7 +55,7 @@ const Footer = () => {
                 className="flex items-center gap-3 p-3 rounded-lg bg-white/10 border border-white/20 hover:bg-white/20 hover:border-white/35 transition-all duration-300"
               >
                 <div className="w-8 h-8 rounded-md bg-red-600/20 flex items-center justify-center">
-                  <i className="fas fa-envelope text-red-400 text-sm"></i>
+                  <FaEnvelope className="text-red-400 text-sm" />
                 </div>
                 <div>
                   <div className="text-sm font-medium text-blue-100">{t('footer.connect.email')}</div>
@@ -67,7 +68,7 @@ const Footer = () => {
                 className="flex items-center gap-3 p-3 rounded-lg bg-white/10 border border-white/20 hover:bg-white/20 hover:border-white/35 transition-all duration-300"
               >
                 <div className="w-8 h-8 rounded-md bg-green-600/20 flex items-center justify-center">
-                  <i className="fas fa-phone text-green-400 text-sm"></i>
+                  <FaPhone className="text-green-400 text-sm" />
                 </div>
                 <div>
                   <div className="text-sm font-medium text-blue-100">{t('footer.connect.phone')}</div>
@@ -82,7 +83,7 @@ const Footer = () => {
                 className="flex items-center gap-3 p-3 rounded-lg bg-white/10 border border-white/20 hover:bg-white/20 hover:border-white/35 transition-all duration-300"
               >
                 <div className="w-8 h-8 rounded-md bg-blue-600/20 flex items-center justify-center">
-                  <i className="fas fa-map-marker-alt text-blue-400 text-sm"></i>
+                  <FaMapMarkerAlt className="text-blue-400 text-sm" />
                 </div>
                 <div>
                   <div className="text-sm font-medium text-blue-100">{t('footer.connect.location')}</div>
@@ -95,7 +96,7 @@ const Footer = () => {
           <div className="liquid-panel rounded-xl p-6 border border-white/20">
             <div className="flex items-center gap-3 mb-6">
               <div className="w-8 h-8 rounded-lg liquid-icon-shell flex items-center justify-center">
-                <i className="fas fa-share-alt text-sm text-blue-300"></i>
+                <FaShareAlt className="text-sm text-blue-300" />
               </div>
               <h3 className="text-lg font-semibold text-blue-100">{t('footer.connect.socialMedia')}</h3>
             </div>
@@ -110,7 +111,7 @@ const Footer = () => {
                   className={`flex items-center gap-3 p-3 rounded-lg bg-white/10 border border-white/20 hover:bg-white/20 hover:border-white/35 transition-all duration-300 ${link.color}`}
                 >
                   <div className="w-8 h-8 rounded-md liquid-icon-shell flex items-center justify-center">
-                    <i className={`${link.icon} text-blue-300 text-sm`}></i>
+                    {link.icon}
                   </div>
                   <div className="text-sm font-medium text-blue-100">{link.label}</div>
                 </a>
