@@ -179,13 +179,13 @@ const GoToTop = () => {
       onMouseLeave={handleMouseLeave}
       className="fixed bottom-6 right-6 z-50 flex items-center justify-center
                  w-12 h-12 rounded-2xl
-                 bg-white/10 backdrop-blur-xl border border-white/20
-                 hover:bg-white/20 hover:border-cyan-400/50
+                 liquid-panel border border-white/25
+                 hover:bg-white/20 hover:border-white/45
                  transition-all duration-300
                  cursor-pointer
                  overflow-hidden
                  group"
-      style={{ boxShadow: '0 15px 50px -12px rgba(6, 182, 212, 0.2)' }}
+      style={{ boxShadow: 'var(--liquid-shadow)' }}
       aria-label="Scroll to top"
     >
       <svg
@@ -198,14 +198,14 @@ const GoToTop = () => {
         strokeWidth="2.5"
         strokeLinecap="round"
         strokeLinejoin="round"
-        className="text-cyan-300 absolute z-10 transition-colors duration-300 group-hover:text-cyan-200"
+        className="text-white/90 absolute z-10 transition-colors duration-300 group-hover:text-white"
       >
         <path d="M12 19V5M5 12l7-7 7 7" />
       </svg>
       
       <span
         ref={wRef}
-        className="text-xl font-bold text-cyan-300 absolute z-10 transition-colors duration-300 group-hover:text-cyan-200"
+        className="text-xl font-bold text-white/90 absolute z-10 transition-colors duration-300 group-hover:text-white"
         style={{ visibility: 'hidden', opacity: 0 }}
       >
         W

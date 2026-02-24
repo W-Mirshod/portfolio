@@ -15,8 +15,8 @@ const ParallaxBackground = ({ children, className = "", particleCount = 15 }) =>
         ref={layer1Ref}
         className="absolute inset-0 parallax-layer-1 opacity-30"
         style={{
-          background: `radial-gradient(ellipse at 20% 30%, rgba(63, 162, 246, 0.15) 0%, transparent 50%),
-                       radial-gradient(ellipse at 80% 70%, rgba(37, 99, 235, 0.1) 0%, transparent 50%)`,
+          background: `radial-gradient(ellipse at 20% 30%, rgba(194, 218, 255, 0.2) 0%, transparent 50%),
+                       radial-gradient(ellipse at 80% 70%, rgba(146, 233, 255, 0.16) 0%, transparent 50%)`,
         }}
       />
 
@@ -24,8 +24,8 @@ const ParallaxBackground = ({ children, className = "", particleCount = 15 }) =>
         ref={layer2Ref}
         className="absolute inset-0 parallax-layer-2 opacity-20"
         style={{
-          background: `radial-gradient(ellipse at 60% 20%, rgba(63, 162, 246, 0.12) 0%, transparent 60%),
-                       radial-gradient(ellipse at 30% 80%, rgba(37, 99, 235, 0.08) 0%, transparent 60%)`,
+          background: `radial-gradient(ellipse at 60% 20%, rgba(178, 207, 255, 0.18) 0%, transparent 60%),
+                       radial-gradient(ellipse at 30% 80%, rgba(151, 181, 255, 0.13) 0%, transparent 60%)`,
         }}
       />
 
@@ -33,7 +33,7 @@ const ParallaxBackground = ({ children, className = "", particleCount = 15 }) =>
         ref={layer3Ref}
         className="absolute inset-0 parallax-layer-3 opacity-10"
         style={{
-          background: `linear-gradient(135deg, rgba(63, 162, 246, 0.05) 0%, rgba(37, 99, 235, 0.03) 100%)`,
+          background: `linear-gradient(135deg, rgba(192, 214, 255, 0.08) 0%, rgba(144, 228, 255, 0.06) 100%)`,
         }}
       />
 

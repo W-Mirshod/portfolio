@@ -43,9 +43,9 @@ const loadFontAwesome = () => {
 
 // Skeleton loading component
 const SectionSkeleton = ({ height = 'h-64' }) => (
-  <div className={`bg-gray-800/50 rounded-lg ${height} flex items-center justify-center relative overflow-hidden`}>
+  <div className={`liquid-panel rounded-lg ${height} flex items-center justify-center relative overflow-hidden`}>
     <div className="absolute inset-0 shimmer"></div>
-    <div className="text-gray-600 text-sm relative z-10">Loading...</div>
+    <div className="text-blue-100/70 text-sm relative z-10">Loading...</div>
   </div>
 );
 
