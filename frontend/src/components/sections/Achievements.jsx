@@ -44,9 +44,9 @@ const Achievements = () => {
           <div className="liquid-panel rounded-xl p-8 border border-white/20">
             <div className="flex items-center gap-3 mb-6">
               <div className="w-8 h-8 rounded-lg liquid-icon-shell flex items-center justify-center">
-                <i className="fas fa-trophy text-sm text-white/90"></i>
+                <i className="fas fa-trophy text-sm text-blue-300"></i>
               </div>
-              <h3 className="text-lg font-semibold text-white">{t('achievements.achievements')}</h3>
+              <h3 className="text-lg font-semibold text-blue-100">{t('achievements.achievements')}</h3>
             </div>
             
             <div className="grid grid-cols-1 gap-4">
@@ -65,7 +65,7 @@ const Achievements = () => {
                     )}
                   </div>
                   <div className="flex-1">
-                    <h4 className="text-sm font-semibold text-white mb-1">{achievement.label}</h4>
+                    <h4 className="text-sm font-semibold text-blue-100 mb-1">{achievement.label}</h4>
                     <p className="text-xs text-blue-100/75">{achievement.description}</p>
                   </div>
                 </div>
@@ -76,19 +76,19 @@ const Achievements = () => {
           <div className="liquid-panel rounded-xl p-8 border border-white/20">
             <div className="flex items-center gap-3 mb-6">
               <div className="w-8 h-8 rounded-lg liquid-icon-shell flex items-center justify-center">
-                <i className="fas fa-star text-sm text-white/90"></i>
+                <i className="fas fa-star text-sm text-blue-300"></i>
               </div>
-              <h3 className="text-lg font-semibold text-white">{t('achievements.highlights')}</h3>
+              <h3 className="text-lg font-semibold text-blue-100">{t('achievements.highlights')}</h3>
             </div>
             
             <div className="space-y-4">
               {githubHighlights.map((highlight, index) => (
                 <div key={highlight.label} className="group flex items-center gap-4 p-4 rounded-lg bg-white/10 border border-white/20 hover:bg-white/20 hover:border-white/35 transition-all duration-300">
                   <div className="w-12 h-12 rounded-lg bg-gradient-to-br from-white/55 to-white/35 border border-white/30 flex items-center justify-center">
-                    <i className={`${highlight.icon} text-white text-lg`}></i>
+                    <i className={`${highlight.icon} text-blue-200 text-lg`}></i>
                   </div>
                   <div className="flex-1">
-                    <h4 className="text-sm font-semibold text-white mb-1">{highlight.label}</h4>
+                    <h4 className="text-sm font-semibold text-blue-100 mb-1">{highlight.label}</h4>
                     <p className="text-xs text-blue-100/75">{highlight.description}</p>
                   </div>
                 </div>

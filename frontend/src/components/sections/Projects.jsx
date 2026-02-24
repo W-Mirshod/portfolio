@@ -80,10 +80,10 @@ const Projects = () => {
                 >
                 <div className="flex items-center gap-3 mb-3">
                   <div className="w-9 h-9 rounded-md liquid-icon-shell flex items-center justify-center">
-                    <i className={`${project.icon} text-white text-base`}></i>
+                    <i className={`${project.icon} text-blue-300 text-base`}></i>
                   </div>
                   <div className="flex-1">
-                    <h3 className="text-base font-semibold text-white">
+                    <h3 className="text-base font-semibold text-blue-100">
                       {t(`projects.data.${project.id}.title`, { defaultValue: project.title })}
                     </h3>
                   </div>
@@ -114,7 +114,7 @@ const Projects = () => {
                       href={project.githubUrl}
                       target="_blank"
                       rel="noopener noreferrer"
-                      className="group/btn inline-flex items-center gap-1.5 px-3 py-1.5 rounded-md liquid-btn text-blue-100 text-xs font-medium border border-white/20 hover:text-white transition-all duration-200"
+                      className="group/btn inline-flex items-center gap-1.5 px-3 py-1.5 rounded-md liquid-btn text-blue-200 text-xs font-medium border border-white/20 hover:text-white transition-all duration-200"
                     >
                       <i className="fab fa-github text-sm"></i>
                       <span>{t('projects.viewInGithub')}</span>
@@ -125,7 +125,7 @@ const Projects = () => {
                       href={project.url}
                       target="_blank"
                       rel="noopener noreferrer"
-                      className="group/btn inline-flex items-center gap-1.5 px-3 py-1.5 rounded-md liquid-btn text-blue-100 text-xs font-medium border border-white/20 hover:text-white transition-all duration-200"
+                      className="group/btn inline-flex items-center gap-1.5 px-3 py-1.5 rounded-md liquid-btn text-blue-200 text-xs font-medium border border-white/20 hover:text-white transition-all duration-200"
                     >
                       <i className="fas fa-external-link-alt text-xs"></i>
                       <span>{t('projects.viewWebsite')}</span>

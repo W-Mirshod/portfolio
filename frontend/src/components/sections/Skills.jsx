@@ -25,9 +25,9 @@ const Skills = () => {
             <div key={category.id} className="group liquid-panel liquid-panel-interactive rounded-xl p-6 border border-white/20 transition-all duration-500">
               <div className="flex items-center gap-3 mb-6">
                 <div className="w-8 h-8 rounded-lg liquid-icon-shell flex items-center justify-center">
-                  <i className="fas fa-code text-sm text-white/90"></i>
+                  <i className="fas fa-code text-sm text-blue-300"></i>
                 </div>
-                <h3 className="text-lg font-semibold text-white">{t(`skills.categories.${category.id}.title`, { defaultValue: category.title })}</h3>
+                <h3 className="text-lg font-semibold text-blue-100">{t(`skills.categories.${category.id}.title`, { defaultValue: category.title })}</h3>
               </div>
               
               <div className="flex flex-wrap gap-2">
@@ -50,7 +50,7 @@ const Skills = () => {
                           blurDataURL="data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMTYiIGhlaWdodD0iMTYiIHZpZXdCb3g9IjAgMCAxNiAxNiIgZmlsbD0ibm9uZSIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj4KPHJlY3Qgd2lkdGg9IjE2IiBoZWlnaHQ9IjE2IiBmaWxsPSIjZjNmNGY2IiBmaWxsLW9wYWNpdHk9IjAuMDUiLz4KPC9zdmc+Cg=="
                         />
                       ) : (
-                        <i className="fas fa-code text-[10px] text-white/70 flex-shrink-0"></i>
+                        <i className="fas fa-code text-[10px] text-blue-300/80 flex-shrink-0"></i>
                       )}
                       <span className="whitespace-nowrap">{translatedSkill}</span>
                     </span>

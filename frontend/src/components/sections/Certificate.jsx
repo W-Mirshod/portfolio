@@ -23,11 +23,11 @@ const Certificate = () => {
           <div className="liquid-panel liquid-panel-interactive rounded-xl p-8 border border-white/20 text-center max-w-3xl w-full transition-all duration-500">
             <div className="flex flex-col md:flex-row items-center gap-6 md:gap-8 mb-6 justify-center">
               <div className="flex items-center gap-4 justify-center">
-                <div className="flex items-center justify-center w-12 h-12 sm:w-14 sm:h-14 rounded-full bg-gradient-to-br from-white/65 to-white/40 border border-white/35 text-white text-2xl">
+                <div className="flex items-center justify-center w-12 h-12 sm:w-14 sm:h-14 rounded-full bg-gradient-to-br from-white/65 to-white/40 border border-white/35 text-blue-200 text-2xl">
                   <i className="fas fa-graduation-cap" />
                 </div>
                 <div className="text-left">
-                  <h3 className="text-lg font-semibold text-white leading-tight">{t('certificate.institution')}</h3>
+                  <h3 className="text-lg font-semibold text-blue-100 leading-tight">{t('certificate.institution')}</h3>
                   <p className="text-xs sm:text-sm text-blue-100/75">{t('certificate.location')}</p>
                 </div>
               </div>
@@ -58,7 +58,7 @@ const Certificate = () => {
             </div>
             <div className="space-y-4 animate-fadeInUp delay-200">
               <div className="text-center">
-                <h4 className="text-lg font-semibold text-white mb-2">{t('certificate.course')}</h4>
+                <h4 className="text-lg font-semibold text-blue-100 mb-2">{t('certificate.course')}</h4>
                   <span className="inline-block px-3 py-1 rounded-md bg-white/15 text-blue-100 text-xs font-medium border border-white/30">{t('certificate.duration')}</span>
               </div>
               
@@ -69,7 +69,7 @@ const Certificate = () => {
                 <div className="grid grid-cols-1 sm:grid-cols-2 gap-2 mb-4">
                   {skillsCovered.map((skill, index) => (
                     <div key={index} className="flex items-center gap-2">
-                      <i className="fas fa-check-circle text-white/90 text-sm" />
+                      <i className="fas fa-check-circle text-blue-300 text-sm" />
                       <span className="text-xs">{skill}</span>
                     </div>
                   ))}

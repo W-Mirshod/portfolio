@@ -1,4 +1,4 @@
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useRef } from 'react';
 import { useTranslation } from 'react-i18next';
 import { createPortal } from 'react-dom';
 const MirshodImg = '/Mirshod-optimized.webp';
@@ -10,6 +10,8 @@ const Header = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [activeSection, setActiveSection] = useState('home');
   const [isLanguageOpen, setIsLanguageOpen] = useState(false);
+  const [isMenuButtonPressed, setIsMenuButtonPressed] = useState(false);
+  const menuPressTimeoutRef = useRef(null);
   const currentLanguage = i18n.language;
   const languages = [
     { code: 'en', name: 'English' },
@@ -21,7 +23,26 @@ const Header = () => {
   useEffect(() => {
     localStorage.removeItem('theme');
     document.documentElement.setAttribute('data-theme', 'dark');
+
+    return () => {
+      if (menuPressTimeoutRef.current) {
+        clearTimeout(menuPressTimeoutRef.current);
+      }
+    };
   }, []);
+
+  const toggleMobileMenu = () => {
+    if (menuPressTimeoutRef.current) {
+      clearTimeout(menuPressTimeoutRef.current);
+    }
+
+    setIsMenuButtonPressed(true);
+    setIsMenuOpen((prev) => !prev);
+
+    menuPressTimeoutRef.current = setTimeout(() => {
+      setIsMenuButtonPressed(false);
+    }, 380);
+  };
 
   useEffect(() => {
     const handleScroll = () => {
@@ -246,18 +267,18 @@ const Header = () => {
                 )}
               </div>
               <div
-                className="flex flex-col justify-center items-center w-8 h-8 sm:w-10 sm:h-10 liquid-panel border border-white/10 rounded-lg cursor-pointer transition-all duration-300 hover:scale-105 hover:bg-white/10"
+                className={`liquid-menu-toggle w-8 h-8 sm:w-10 sm:h-10 liquid-panel border border-white/10 rounded-lg cursor-pointer hover:bg-white/10 ${isMenuOpen ? 'is-open' : ''} ${isMenuButtonPressed ? 'is-pressed' : ''}`}
                 role="button"
                 tabIndex={0}
                 aria-expanded={isMenuOpen}
                 aria-controls="mobileNavMenu"
                 aria-label="Toggle navigation menu"
-                onClick={() => setIsMenuOpen(!isMenuOpen)}
-                onKeyDown={e => {if(e.key==='Enter'||e.key===' '){setIsMenuOpen(!isMenuOpen)}}}
+                onClick={toggleMobileMenu}
+                onKeyDown={e => {if(e.key==='Enter'||e.key===' '){e.preventDefault();toggleMobileMenu()}}}
               >
-                <span className={`block w-4 sm:w-5 h-0.5 bg-white/90 rounded transition-all duration-300 ${isMenuOpen ? 'translate-y-1 rotate-45' : ''}`}></span>
-                <span className={`block w-4 sm:w-5 h-0.5 bg-white/90 rounded transition-all duration-300 my-1 ${isMenuOpen ? 'opacity-0' : ''}`}></span>
-                <span className={`block w-4 sm:w-5 h-0.5 bg-white/90 rounded transition-all duration-300 ${isMenuOpen ? '-translate-y-1 -rotate-45' : ''}`}></span>
+                <span className={`liquid-menu-toggle-line line-1 bg-white/90 rounded ${isMenuOpen ? 'open' : ''}`}></span>
+                <span className={`liquid-menu-toggle-line line-2 bg-white/90 rounded ${isMenuOpen ? 'open' : ''}`}></span>
+                <span className={`liquid-menu-toggle-line line-3 bg-white/90 rounded ${isMenuOpen ? 'open' : ''}`}></span>
               </div>
             </div>
           </div>
@@ -265,7 +286,7 @@ const Header = () => {
           </div>
         {typeof window !== 'undefined' && isMenuOpen && createPortal(
           <>
-            <nav className="fixed top-0 left-0 h-screen w-[280px] sm:w-[320px] liquid-panel-strong border-r border-white/10 z-50 flex flex-col gap-2 sm:gap-3 px-4 sm:px-5 py-6 relative overflow-hidden animate-slideInLeft" id="mobileNavMenu" style={{letterSpacing:'0.03em', transform: 'translateZ(0)', willChange: 'backdrop-filter'}} aria-label="Mobile navigation menu">
+            <nav className="liquid-menu-sheet fixed top-0 left-0 h-screen w-[280px] sm:w-[320px] liquid-panel-strong border-r border-white/10 z-50 flex flex-col gap-2 sm:gap-3 px-4 sm:px-5 py-6 relative overflow-hidden" id="mobileNavMenu" style={{letterSpacing:'0.03em', transform: 'translateZ(0)', willChange: 'backdrop-filter'}} aria-label="Mobile navigation menu">
               <div className="relative z-10 flex flex-col h-full">
                 <a href="#home" className="flex flex-col items-center gap-2 sm:gap-3 mb-4 sm:mb-6 group" onClick={(e) => {
                   e.preventDefault();
@@ -295,7 +316,7 @@ const Header = () => {
               </div>
             </nav>
             <div
-              className="mobile-menu-backdrop fixed inset-0 bg-black/35 backdrop-blur-md z-40"
+              className="mobile-menu-backdrop liquid-menu-backdrop fixed inset-0 bg-black/35 backdrop-blur-md z-40"
               onClick={() => setIsMenuOpen(false)}
               aria-label="Close navigation menu"
               role="button"

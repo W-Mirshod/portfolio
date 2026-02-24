@@ -43,9 +43,9 @@ const Footer = () => {
           <div className="liquid-panel rounded-xl p-6 border border-white/20">
             <div className="flex items-center gap-3 mb-6">
               <div className="w-8 h-8 rounded-lg liquid-icon-shell flex items-center justify-center">
-                <i className="fas fa-envelope text-sm text-white/90"></i>
+                <i className="fas fa-envelope text-sm text-blue-300"></i>
               </div>
-              <h3 className="text-lg font-semibold text-white">{t('footer.connect.contactInfo')}</h3>
+              <h3 className="text-lg font-semibold text-blue-100">{t('footer.connect.contactInfo')}</h3>
             </div>
             
             <div className="space-y-3">
@@ -57,7 +57,7 @@ const Footer = () => {
                   <i className="fas fa-envelope text-red-400 text-sm"></i>
                 </div>
                 <div>
-                  <div className="text-sm font-medium text-white">{t('footer.connect.email')}</div>
+                  <div className="text-sm font-medium text-blue-100">{t('footer.connect.email')}</div>
                   <div className="text-xs text-blue-100/70">wmirshod@gmail.com</div>
                 </div>
               </a>
@@ -70,7 +70,7 @@ const Footer = () => {
                   <i className="fas fa-phone text-green-400 text-sm"></i>
                 </div>
                 <div>
-                  <div className="text-sm font-medium text-white">{t('footer.connect.phone')}</div>
+                  <div className="text-sm font-medium text-blue-100">{t('footer.connect.phone')}</div>
                   <div className="text-xs text-blue-100/70">+998 90 712 64 37</div>
                 </div>
               </a>
@@ -85,7 +85,7 @@ const Footer = () => {
                   <i className="fas fa-map-marker-alt text-blue-400 text-sm"></i>
                 </div>
                 <div>
-                  <div className="text-sm font-medium text-white">{t('footer.connect.location')}</div>
+                  <div className="text-sm font-medium text-blue-100">{t('footer.connect.location')}</div>
                   <div className="text-xs text-blue-100/70">Tashkent, Uzbekistan</div>
                 </div>
               </a>
@@ -95,9 +95,9 @@ const Footer = () => {
           <div className="liquid-panel rounded-xl p-6 border border-white/20">
             <div className="flex items-center gap-3 mb-6">
               <div className="w-8 h-8 rounded-lg liquid-icon-shell flex items-center justify-center">
-                <i className="fas fa-share-alt text-sm text-white/90"></i>
+                <i className="fas fa-share-alt text-sm text-blue-300"></i>
               </div>
-              <h3 className="text-lg font-semibold text-white">{t('footer.connect.socialMedia')}</h3>
+              <h3 className="text-lg font-semibold text-blue-100">{t('footer.connect.socialMedia')}</h3>
             </div>
             
             <div className="grid grid-cols-2 gap-3">
@@ -110,9 +110,9 @@ const Footer = () => {
                   className={`flex items-center gap-3 p-3 rounded-lg bg-white/10 border border-white/20 hover:bg-white/20 hover:border-white/35 transition-all duration-300 ${link.color}`}
                 >
                   <div className="w-8 h-8 rounded-md liquid-icon-shell flex items-center justify-center">
-                    <i className={`${link.icon} text-white text-sm`}></i>
+                    <i className={`${link.icon} text-blue-300 text-sm`}></i>
                   </div>
-                  <div className="text-sm font-medium text-white">{link.label}</div>
+                  <div className="text-sm font-medium text-blue-100">{link.label}</div>
                 </a>
               ))}
             </div>
