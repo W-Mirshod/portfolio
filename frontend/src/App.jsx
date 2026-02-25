@@ -98,7 +98,7 @@ function App() {
         };
 
         gsap.ticker.add(tickerCallback);
-        gsap.ticker.lagSmoothing(0);
+        gsap.ticker.lagSmoothing(1000, 16);
 
         lenisInstance = lenis;
         gsapInstance = gsap;

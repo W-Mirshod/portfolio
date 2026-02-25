@@ -1,6 +1,6 @@
 import { useEffect } from 'react';
 import { useTranslation } from 'react-i18next';
-import { FaArrowRight, FaServer, FaBrain, FaCloud } from 'react-icons/fa';
+import { FaArrowRight, FaServer, FaBrain, FaCloud } from '../ui/Icons';
 import { initializeAudio } from '../../utils/audio';
 import ParallaxBackground from '../ui/ParallaxBackground';
 import MagneticButton from '../ui/MagneticButton';

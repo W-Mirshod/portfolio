@@ -238,7 +238,6 @@ aside,
 header,
 nav[id="mobileNavMenu"],
 .language-dropdown-container .absolute {
-  will-change: backdrop-filter;
   transform: translateZ(0);
   backface-visibility: hidden;
   -webkit-backface-visibility: hidden;

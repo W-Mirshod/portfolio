@@ -181,6 +181,9 @@ body.mobile-menu-open {
   align-items: center;
   justify-content: center;
   position: relative;
+  /* Skip layout/paint for off-screen sections — huge perf win */
+  content-visibility: auto;
+  contain-intrinsic-size: auto 100vh;
 }
 
 /* Prevent content from stretching too wide on large screens */
@@ -507,8 +510,6 @@ body.mobile-menu-open {
 .section-visible {
   will-change: transform, opacity;
   backface-visibility: hidden;
-  perspective: 1000px;
-  transform-style: preserve-3d;
 }
 
 /* Remove will-change after animation completes to prevent memory leaks */
@@ -997,12 +998,17 @@ body.mobile-menu-open {
     animation: none !important;
   }
 
-  /* Lighten backdrop-filter on panels */
+  /* Lighten backdrop-filter on panels — blur is expensive on mobile GPU */
   .liquid-panel,
-  .glass-card,
-  .liquid-panel-strong {
+  .glass-card {
     backdrop-filter: blur(8px) !important;
     -webkit-backdrop-filter: blur(8px) !important;
+  }
+
+  .liquid-panel-strong,
+  .glass-blur-strong {
+    backdrop-filter: blur(12px) !important;
+    -webkit-backdrop-filter: blur(12px) !important;
   }
 
   /* Disable infinite glow/pulse loops */
@@ -1011,7 +1017,8 @@ body.mobile-menu-open {
   .modern-glow,
   .terminal-glow,
   .subtle-bounce,
-  .active-neon {
+  .active-neon,
+  .gradient-shift {
     animation: none !important;
   }
 
@@ -1031,6 +1038,23 @@ body.mobile-menu-open {
   /* Reduce layered-entrance to a lighter fade */
   .layered-entrance {
     animation: fadeInUp 0.5s ease-out forwards !important;
+  }
+
+  /* Remove will-change promotions to save compositor memory */
+  .terminal-glow,
+  .gradient-shift,
+  .tech-hover,
+  .animate-in,
+  .animate-fade-up,
+  .animate-slide-right,
+  .animate-slide-left,
+  .section-visible {
+    will-change: auto !important;
+  }
+
+  /* Reduce floating particles on mobile */
+  .floating-particles {
+    display: none !important;
   }
 }
 

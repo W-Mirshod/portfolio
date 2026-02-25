@@ -513,7 +513,7 @@
 }
 
 .holographic-section:not(.active) {
-  will-change: transform, opacity, filter;
+  will-change: auto;
 }
 
 .holographic-section.active {
@@ -580,32 +580,53 @@
 
 /* Mobile Optimizations */
 @media (max-width: 768px) {
+  /* Disable chromatic aberration pseudo-elements entirely on mobile */
   .holographic-section::before,
   .holographic-section::after {
-    opacity: 0.25;
-    animation-duration: 5s;
+    display: none !important;
   }
-  
+
   .hologram-shimmer {
-    opacity: 0.6;
-    animation-duration: 6s;
+    opacity: 0.4;
+    animation-duration: 8s;
   }
-  
+
   .holographic-content {
-    filter: blur(6px);
+    filter: none;
   }
-  
+
   .holographic-section.active .holographic-content {
-    filter: blur(0px);
-    animation-duration: 1.2s;
+    filter: none;
+    animation-duration: 0.8s;
   }
-  
+
   .holographic-content > * {
-    transition-duration: 0.6s;
+    transition-duration: 0.4s;
+    filter: none !important;
   }
-  
+
   .scanline-overlay {
-    height: 2px;
+    display: none !important;
+  }
+
+  /* Kill particles on mobile */
+  .holographic-particles {
+    display: none !important;
+  }
+
+  /* Remove will-change promotions */
+  .holographic-section,
+  .hologram-shimmer,
+  .scanline-overlay,
+  .holographic-content {
+    will-change: auto !important;
+  }
+
+  /* Disable holographic border glow animations */
+  .holographic-section.active .holographic-border::before,
+  .holographic-section.active .holographic-border::after {
+    animation: none !important;
+    opacity: 0.5;
   }
 }
 

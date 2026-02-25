@@ -1,5 +1,5 @@
 import { useTranslation } from 'react-i18next';
-import { FaGithub, FaLinkedin, FaTelegram, FaInstagram, FaEnvelope, FaPhone, FaMapMarkerAlt, FaShareAlt } from 'react-icons/fa';
+import { FaGithub, FaLinkedin, FaTelegram, FaInstagram, FaEnvelope, FaPhone, FaMapMarkerAlt, FaShareAlt } from '../ui/Icons';
 
 const Footer = () => {
   const { t } = useTranslation();

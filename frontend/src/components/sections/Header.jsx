@@ -2,7 +2,7 @@ import { useState, useEffect, useRef } from 'react';
 import { useTranslation } from 'react-i18next';
 import { createPortal } from 'react-dom';
 const MirshodImg = '/Mirshod-optimized.webp';
-import { FaHome, FaUser, FaBriefcase, FaCode, FaTrophy, FaCertificate, FaProjectDiagram, FaEnvelope } from 'react-icons/fa';
+import { FaHome, FaUser, FaBriefcase, FaCode, FaTrophy, FaCertificate, FaProjectDiagram, FaEnvelope } from '../ui/Icons';
 import '../styles/menu-futuristic.css';
 
 const Header = () => {

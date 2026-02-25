@@ -27,16 +27,6 @@ export default defineConfig({
             return 'router';
           }
           
-          // FontAwesome chunk (large library)
-          if (id.includes('@fortawesome')) {
-            return 'fontawesome';
-          }
-          
-          // Icons chunk
-          if (id.includes('react-icons') || id.includes('lucide-react')) {
-            return 'icons';
-          }
-          
           // Animation / smooth-scroll libs (dynamically imported)
           if (id.includes('gsap') || id.includes('lenis')) {
             return 'animation';
@@ -96,8 +86,7 @@ export default defineConfig({
   },
   // Optimize dependencies
   optimizeDeps: {
-    include: ['react', 'react-dom', 'react-router-dom'],
-    exclude: ['@fortawesome/free-brands-svg-icons', '@fortawesome/free-solid-svg-icons']
+    include: ['react', 'react-dom', 'react-router-dom']
   },
   // Tree-shake side effects for locale/icon modules
   esbuild: {

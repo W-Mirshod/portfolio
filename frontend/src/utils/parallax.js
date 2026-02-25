@@ -4,27 +4,33 @@ export const useParallax = (speed = 0.5) => {
   const elementRef = useRef(null);
 
   useEffect(() => {
+    // Disable parallax on mobile — saves scroll-bound RAF overhead
+    const isMobile = window.matchMedia('(max-width: 768px)').matches;
+    if (isMobile) return;
+
+    let rafId = null;
+
     const handleScroll = () => {
-      if (elementRef.current) {
-        const scrolled = window.pageYOffset;
-        const rate = scrolled * -speed;
-        elementRef.current.style.transform = `translate3d(0, ${rate}px, 0)`;
-      }
+      if (rafId) return;
+      rafId = requestAnimationFrame(() => {
+        rafId = null;
+        if (elementRef.current) {
+          const scrolled = window.pageYOffset;
+          const rate = scrolled * -speed;
+          elementRef.current.style.transform = `translate3d(0, ${rate}px, 0)`;
+        }
+      });
     };
 
-    const handleResize = () => {
-      handleScroll();
-    };
+    window.addEventListener('scroll', handleScroll, { passive: true });
+    window.addEventListener('resize', handleScroll, { passive: true });
 
-    window.addEventListener('scroll', handleScroll);
-    window.addEventListener('resize', handleResize);
-
-    // Initial call
     handleScroll();
 
     return () => {
+      if (rafId) cancelAnimationFrame(rafId);
       window.removeEventListener('scroll', handleScroll);
-      window.removeEventListener('resize', handleResize);
+      window.removeEventListener('resize', handleScroll);
     };
   }, [speed]);
 
@@ -37,23 +43,32 @@ export const useMultiLayerParallax = () => {
   const layer3Ref = useRef(null);
 
   useEffect(() => {
-    const handleScroll = () => {
-      if (layer1Ref.current && layer2Ref.current && layer3Ref.current) {
-        const scrolled = window.pageYOffset;
+    // Disable multi-layer parallax on mobile
+    const isMobile = window.matchMedia('(max-width: 768px)').matches;
+    if (isMobile) return;
 
-        // Different speeds for different layers create depth
-        layer1Ref.current.style.transform = `translate3d(0, ${scrolled * -0.3}px, 0)`;
-        layer2Ref.current.style.transform = `translate3d(0, ${scrolled * -0.15}px, 0)`;
-        layer3Ref.current.style.transform = `translate3d(0, ${scrolled * -0.05}px, 0)`;
-      }
+    let rafId = null;
+
+    const handleScroll = () => {
+      if (rafId) return;
+      rafId = requestAnimationFrame(() => {
+        rafId = null;
+        if (layer1Ref.current && layer2Ref.current && layer3Ref.current) {
+          const scrolled = window.pageYOffset;
+          layer1Ref.current.style.transform = `translate3d(0, ${scrolled * -0.3}px, 0)`;
+          layer2Ref.current.style.transform = `translate3d(0, ${scrolled * -0.15}px, 0)`;
+          layer3Ref.current.style.transform = `translate3d(0, ${scrolled * -0.05}px, 0)`;
+        }
+      });
     };
 
-    window.addEventListener('scroll', handleScroll);
-    window.addEventListener('resize', handleScroll);
+    window.addEventListener('scroll', handleScroll, { passive: true });
+    window.addEventListener('resize', handleScroll, { passive: true });
 
     handleScroll();
 
     return () => {
+      if (rafId) cancelAnimationFrame(rafId);
       window.removeEventListener('scroll', handleScroll);
       window.removeEventListener('resize', handleScroll);
     };
