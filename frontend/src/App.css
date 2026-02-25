@@ -8,7 +8,7 @@
   --accent-color-dark: var(--primary-dark);
   --accent-color-light: var(--primary-light);
   --border-color: var(--border);
-  --gradient-primary: linear-gradient(140deg, #c8dbff 0%, #95b6ff 55%, #8de6ff 100%);
+  --gradient-primary: linear-gradient(140deg, #b4c5ff 0%, #86a4ff 55%, #7fcfff 100%);
   --gradient-bg: linear-gradient(160deg, var(--surface) 0%, var(--surface-elevated) 100%);
   --gradient-accent: linear-gradient(140deg, var(--primary) 0%, var(--accent) 100%);
 }

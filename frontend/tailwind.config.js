@@ -8,13 +8,20 @@ module.exports = {
   theme: {
     extend: {
       colors: {
-        primary: {
-          DEFAULT: '#0a84ff',
-          dark: '#0066cc',
-          light: '#5eabff',
+        blue: {
+          100: '#c5d3fe',
+          200: '#acc5fe',
+          300: '#84b1fd',
+          400: '#5695fa',
+          600: '#2159eb',
         },
-        secondary: '#5e5ce6',
-        accent: '#32ade6',
+        primary: {
+          DEFAULT: '#0977ff',
+          dark: '#005ccc',
+          light: '#559aff',
+        },
+        secondary: '#5553e6',
+        accent: '#2d9ce6',
         success: '#30d158',
         warning: '#ffd60a',
         error: '#ff453a',
