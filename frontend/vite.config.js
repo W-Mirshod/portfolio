@@ -37,6 +37,16 @@ export default defineConfig({
             return 'icons';
           }
           
+          // Animation / smooth-scroll libs (dynamically imported)
+          if (id.includes('gsap') || id.includes('lenis')) {
+            return 'animation';
+          }
+          
+          // Three.js (heavy, rarely critical)
+          if (id.includes('three')) {
+            return 'three';
+          }
+          
           // i18n chunk
           if (id.includes('i18next') || id.includes('react-i18next')) {
             return 'i18n';
@@ -88,5 +98,9 @@ export default defineConfig({
   optimizeDeps: {
     include: ['react', 'react-dom', 'react-router-dom'],
     exclude: ['@fortawesome/free-brands-svg-icons', '@fortawesome/free-solid-svg-icons']
+  },
+  // Tree-shake side effects for locale/icon modules
+  esbuild: {
+    treeShaking: true
   }
 })

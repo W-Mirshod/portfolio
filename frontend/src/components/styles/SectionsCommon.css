@@ -981,3 +981,83 @@ body.mobile-menu-open {
 .animate-slideInLeft {
   animation: slideInLeft 0.3s ease-out forwards;
 }
+
+/* ── Mobile performance: disable expensive effects ── */
+@media (max-width: 768px) {
+  /* Stop perpetual background animations */
+  .mesh-gradient-bg,
+  .mesh-gradient-overlay {
+    animation: none !important;
+  }
+
+  /* Reduce parallax layers to static */
+  .parallax-layer-1,
+  .parallax-layer-2,
+  .parallax-layer-3 {
+    animation: none !important;
+  }
+
+  /* Lighten backdrop-filter on panels */
+  .liquid-panel,
+  .glass-card,
+  .liquid-panel-strong {
+    backdrop-filter: blur(8px) !important;
+    -webkit-backdrop-filter: blur(8px) !important;
+  }
+
+  /* Disable infinite glow/pulse loops */
+  .morphing-glow,
+  .depth-pulse,
+  .modern-glow,
+  .terminal-glow,
+  .subtle-bounce,
+  .active-neon {
+    animation: none !important;
+  }
+
+  /* Simplify depth-hover on touch (no 3D) */
+  .depth-hover-card,
+  .depth-hover-card:hover,
+  .depth-hover-card:not(:hover) {
+    animation: none !important;
+    transform: none !important;
+  }
+
+  /* Reduce glass-shimmer to static */
+  .glass-shimmer {
+    animation: none !important;
+  }
+
+  /* Reduce layered-entrance to a lighter fade */
+  .layered-entrance {
+    animation: fadeInUp 0.5s ease-out forwards !important;
+  }
+}
+
+/* ── Reduced-motion: full fallback ── */
+@media (prefers-reduced-motion: reduce) {
+  .mesh-gradient-bg,
+  .mesh-gradient-overlay,
+  .parallax-layer-1,
+  .parallax-layer-2,
+  .parallax-layer-3,
+  .morphing-glow,
+  .depth-pulse,
+  .modern-glow,
+  .terminal-glow,
+  .subtle-bounce,
+  .glass-shimmer,
+  .layered-entrance,
+  .depth-hover-card,
+  .depth-hover-card:hover,
+  .depth-hover-card:not(:hover),
+  .active-neon,
+  .animate-gradient-move,
+  .gradient-shift {
+    animation: none !important;
+    transition: none !important;
+    transform: none !important;
+    filter: none !important;
+    opacity: 1 !important;
+  }
+}

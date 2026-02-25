@@ -19,3 +19,10 @@ const RootTree = import.meta.env.DEV ? (
 );
 
 createRoot(root).render(RootTree);
+
+// Register service worker for offline caching (production only)
+if ('serviceWorker' in navigator && !import.meta.env.DEV) {
+  window.addEventListener('load', () => {
+    navigator.serviceWorker.register('/sw.js').catch(() => {});
+  });
+}

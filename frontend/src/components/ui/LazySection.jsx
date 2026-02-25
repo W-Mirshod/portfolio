@@ -3,12 +3,12 @@ import { useEffect, useRef, useState } from 'react';
 export default function LazySection({ 
   loader, 
   fallback = null, 
-  rootMargin = '600px 0px', 
+  rootMargin = '320px 0px', 
   minHeight = '16rem' 
 }) {
   const ref = useRef(null);
-  const [visible, setVisible] = useState(false);
   const [Comp, setComp] = useState(null);
+  const [revealed, setRevealed] = useState(false);
 
   useEffect(() => {
     const el = ref.current;
@@ -16,7 +16,6 @@ export default function LazySection({
 
     const obs = new IntersectionObserver(([entry]) => {
       if (entry.isIntersecting) {
-        setVisible(true);
         loader().then(mod => setComp(() => mod.default)).catch(() => {});
         obs.disconnect();
       }
@@ -26,26 +25,22 @@ export default function LazySection({
     return () => obs.disconnect();
   }, [loader, rootMargin]);
 
-  /* Section-reveal visibility trigger */
+  // Two-phase reveal: first render with section-reveal (opacity:0),
+  // then add is-visible on the next frame so the CSS transition plays properly
   useEffect(() => {
     if (!Comp) return;
-    const el = ref.current;
-    if (!el) return;
-    const obs = new IntersectionObserver(
-      ([entry]) => {
-        if (entry.isIntersecting) {
-          el.classList.add('is-visible');
-          obs.disconnect();
-        }
-      },
-      { threshold: 0.08 }
-    );
-    obs.observe(el);
-    return () => obs.disconnect();
+    const frame = requestAnimationFrame(() => {
+      setRevealed(true);
+    });
+    return () => cancelAnimationFrame(frame);
   }, [Comp]);
 
+  const className = Comp
+    ? `section-reveal${revealed ? ' is-visible' : ''}`
+    : '';
+
   return (
-    <section ref={ref} className={Comp ? 'section-reveal' : ''} style={{ minHeight }}>
+    <section ref={ref} className={className} style={{ minHeight }}>
       {Comp ? <Comp /> : (fallback || null)}
     </section>
   );

@@ -1,45 +1,17 @@
-import { useEffect, useRef } from 'react';
 import { useTranslation } from 'react-i18next';
-import { gsap } from 'gsap';
-import { ScrollTrigger } from 'gsap/ScrollTrigger';
 import experienceData from '../../data/experience.json';
 
 const Experience = () => {
   const { t } = useTranslation();
-  const sectionRef = useRef(null);
-  const contentRef = useRef(null);
-
-  useEffect(() => {
-    if (!sectionRef.current || !contentRef.current) return;
-
-    gsap.set(contentRef.current, { opacity: 0 });
-
-    ScrollTrigger.create({
-      trigger: sectionRef.current,
-      start: 'top 85%',
-      onEnter: () => {
-        gsap.set(contentRef.current, { opacity: 1, y: 0 });
-      },
-    });
-
-    return () => {
-      ScrollTrigger.getAll().forEach(trigger => {
-        if (trigger.vars.trigger === sectionRef.current) {
-          trigger.kill();
-        }
-      });
-    };
-  }, []);
 
   return (
     <section 
       id="experience" 
-      ref={sectionRef}
       className="liquid-section bg-bg-secondary/20 py-14 px-2 sm:px-4" 
       role="main" 
       aria-labelledby="experience-title"
     >
-      <div ref={contentRef} className="max-w-6xl mx-auto">
+      <div className="max-w-6xl mx-auto">
         <header className="text-center mb-16">
           <h2 id="experience-title" className="text-3xl font-light liquid-title mb-3 tracking-wide">{t('experience.title')}</h2>
           <div className="liquid-divider mx-auto"></div>

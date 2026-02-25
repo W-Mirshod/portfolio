@@ -5,11 +5,6 @@ import './utils/i18n';
 import { Routes, Route } from "react-router-dom";
 import LazySection from './components/ui/LazySection';
 import GoToTop from './components/ui/GoToTop';
-import Lenis from 'lenis';
-import { gsap } from 'gsap';
-import { ScrollTrigger } from 'gsap/ScrollTrigger';
-
-gsap.registerPlugin(ScrollTrigger);
 
 // Import critical components immediately
 import Header from './components/sections/Header';
@@ -23,23 +18,30 @@ const Achievements = () => import('./components/sections/Achievements');
 const Certificate = () => import('./components/sections/Certificate');
 const Projects = () => import('./components/sections/Projects');
 
-// Optimized Font Awesome loading with idle callback
+// Load Font Awesome CSS (much lighter than the JS bundle)
 const loadFontAwesome = () => {
-  if (!document.querySelector('script[src*="font-awesome"]')) {
+  if (!document.querySelector('link[href*="font-awesome"]')) {
     const inject = () => {
-      const script = document.createElement('script');
-      script.src = 'https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/js/all.min.js';
-      script.async = true;
-      script.defer = true;
-      document.body.appendChild(script);
+      const link = document.createElement('link');
+      link.rel = 'stylesheet';
+      link.href = 'https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css';
+      link.media = 'print';
+      link.onload = () => { link.media = 'all'; };
+      document.head.appendChild(link);
     };
     if ('requestIdleCallback' in window) {
-      requestIdleCallback(inject, { timeout: 3000 });
+      requestIdleCallback(inject, { timeout: 2000 });
     } else {
-      setTimeout(inject, 2000);
+      setTimeout(inject, 1500);
     }
   }
 };
+
+const shouldEnableSmoothScroll = () => (
+  typeof window !== 'undefined' &&
+  window.matchMedia('(prefers-reduced-motion: no-preference)').matches &&
+  window.matchMedia('(min-width: 1024px)').matches
+);
 
 // Skeleton loading component
 const SectionSkeleton = ({ height = 'h-64' }) => (
@@ -53,30 +55,68 @@ function App() {
   useEffect(() => {
     loadFontAwesome();
 
-    const lenis = new Lenis({
-      duration: 1.2,
-      easing: (t) => Math.min(1, 1.001 - Math.pow(2, -10 * t)),
-      orientation: 'vertical',
-      gestureOrientation: 'vertical',
-      smoothWheel: true,
-      wheelMultiplier: 1,
-      smoothTouch: false,
-      touchMultiplier: 2,
-      infinite: false,
-    });
+    if (!shouldEnableSmoothScroll()) {
+      return undefined;
+    }
 
-    window.lenis = lenis;
+    let isUnmounted = false;
+    let lenisInstance = null;
+    let gsapInstance = null;
+    let tickerCallback = null;
 
-    lenis.on('scroll', ScrollTrigger.update);
+    const setupSmoothScroll = async () => {
+      try {
+        const [{ default: Lenis }, { gsap }, { ScrollTrigger }] = await Promise.all([
+          import('lenis'),
+          import('gsap'),
+          import('gsap/ScrollTrigger'),
+        ]);
 
-    gsap.ticker.add((time) => {
-      lenis.raf(time * 1000);
-    });
+        if (isUnmounted) {
+          return;
+        }
 
-    gsap.ticker.lagSmoothing(0);
+        gsap.registerPlugin(ScrollTrigger);
+
+        const lenis = new Lenis({
+          duration: 1.2,
+          easing: (t) => Math.min(1, 1.001 - Math.pow(2, -10 * t)),
+          orientation: 'vertical',
+          gestureOrientation: 'vertical',
+          smoothWheel: true,
+          wheelMultiplier: 1,
+          smoothTouch: false,
+          touchMultiplier: 2,
+          infinite: false,
+        });
+
+        window.lenis = lenis;
+        lenis.on('scroll', ScrollTrigger.update);
+
+        tickerCallback = (time) => {
+          lenis.raf(time * 1000);
+        };
+
+        gsap.ticker.add(tickerCallback);
+        gsap.ticker.lagSmoothing(0);
+
+        lenisInstance = lenis;
+        gsapInstance = gsap;
+      } catch {
+        delete window.lenis;
+      }
+    };
+
+    setupSmoothScroll();
 
     return () => {
-      lenis.destroy();
+      isUnmounted = true;
+      if (gsapInstance && tickerCallback) {
+        gsapInstance.ticker.remove(tickerCallback);
+      }
+      if (lenisInstance) {
+        lenisInstance.destroy();
+      }
       delete window.lenis;
     };
   }, []);
