@@ -12,6 +12,116 @@ button {
   transition: transform 0.28s ease, background 0.28s ease, border-color 0.28s ease, box-shadow 0.28s ease, color 0.28s ease;
 }
 
+.nav-holo-toolbar {
+  background:
+    radial-gradient(140% 120% at 50% -30%, rgba(173, 215, 255, 0.17) 0%, rgba(122, 166, 255, 0.04) 34%, transparent 62%),
+    linear-gradient(160deg, rgba(7, 18, 45, 0.84) 0%, rgba(5, 15, 38, 0.78) 52%, rgba(4, 11, 30, 0.84) 100%);
+  border-bottom: 1px solid rgba(160, 193, 255, 0.18);
+  box-shadow:
+    0 14px 34px rgba(1, 8, 26, 0.42),
+    inset 0 1px 0 rgba(214, 230, 255, 0.15);
+}
+
+.nav-holo-button {
+  width: 2.7rem;
+  height: 2.7rem;
+  min-width: 2.7rem;
+  min-height: 2.7rem;
+  border-radius: 999px;
+  position: relative;
+  overflow: hidden;
+  isolation: isolate;
+  border: 1px solid transparent;
+  color: rgba(241, 247, 255, 0.96);
+  background:
+    radial-gradient(120% 105% at 50% -20%, rgba(244, 250, 255, 0.22) 0%, rgba(244, 250, 255, 0) 54%),
+    linear-gradient(160deg, rgba(15, 31, 68, 0.74) 0%, rgba(8, 20, 47, 0.68) 50%, rgba(4, 12, 32, 0.8) 100%) padding-box,
+    conic-gradient(from 210deg, rgba(184, 236, 255, 0.9), rgba(107, 152, 255, 0.76), rgba(127, 245, 255, 0.9), rgba(173, 145, 255, 0.78), rgba(255, 188, 217, 0.76), rgba(184, 236, 255, 0.9)) border-box;
+  backdrop-filter: blur(18px) saturate(1.2);
+  -webkit-backdrop-filter: blur(18px) saturate(1.2);
+  box-shadow:
+    0 8px 18px rgba(2, 8, 24, 0.5),
+    0 2px 8px rgba(2, 9, 26, 0.42),
+    0 0 0 0.5px rgba(206, 232, 255, 0.22),
+    0 0 14px rgba(114, 175, 255, 0.24),
+    inset 0 1px 0 rgba(235, 245, 255, 0.2),
+    inset 0 -9px 14px rgba(3, 11, 29, 0.4);
+  transition:
+    transform 320ms cubic-bezier(0.22, 1, 0.36, 1),
+    box-shadow 320ms cubic-bezier(0.22, 1, 0.36, 1),
+    filter 320ms cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+.nav-holo-button::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  border-radius: inherit;
+  pointer-events: none;
+  background:
+    linear-gradient(180deg, rgba(255, 255, 255, 0.22) 0%, rgba(255, 255, 255, 0.03) 35%, rgba(255, 255, 255, 0) 65%),
+    radial-gradient(90% 55% at 50% 0%, rgba(202, 228, 255, 0.2) 0%, rgba(202, 228, 255, 0) 72%);
+  opacity: 0.7;
+}
+
+.nav-holo-button:hover {
+  transform: translateY(-1px) scale(1.02);
+  box-shadow:
+    0 10px 24px rgba(1, 8, 26, 0.54),
+    0 2px 10px rgba(3, 10, 28, 0.45),
+    0 0 0 0.5px rgba(222, 241, 255, 0.26),
+    0 0 20px rgba(114, 175, 255, 0.34),
+    inset 0 1px 0 rgba(241, 247, 255, 0.23),
+    inset 0 -10px 16px rgba(3, 10, 28, 0.42);
+}
+
+.nav-holo-button:active {
+  transform: translateY(0) scale(0.96);
+}
+
+.nav-holo-button:focus-visible {
+  outline: none;
+  box-shadow:
+    0 0 0 2px rgba(193, 227, 255, 0.4),
+    0 10px 24px rgba(1, 8, 26, 0.54),
+    0 0 20px rgba(114, 175, 255, 0.34);
+}
+
+.nav-holo-lang {
+  font-family: var(--font-display, "Space Grotesk"), "Poppins", sans-serif;
+  font-size: 0.72rem;
+  font-weight: 400;
+  line-height: 1;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+}
+
+.liquid-menu-toggle.nav-holo-menu {
+  --menu-line-offset: 5px;
+}
+
+.liquid-menu-toggle-line.nav-holo-menu-line {
+  width: 0.92rem;
+  height: 1.6px;
+  border-radius: 999px;
+  background: linear-gradient(90deg, rgba(231, 242, 255, 0.92) 0%, rgba(198, 225, 255, 0.96) 100%);
+  box-shadow: 0 0 12px rgba(122, 191, 255, 0.28);
+}
+
+.liquid-menu-toggle.nav-holo-menu.is-open {
+  background:
+    radial-gradient(120% 105% at 50% -20%, rgba(244, 250, 255, 0.28) 0%, rgba(244, 250, 255, 0) 54%),
+    linear-gradient(160deg, rgba(20, 40, 82, 0.8) 0%, rgba(10, 24, 55, 0.74) 50%, rgba(5, 14, 36, 0.82) 100%) padding-box,
+    conic-gradient(from 190deg, rgba(201, 236, 255, 0.94), rgba(119, 168, 255, 0.86), rgba(143, 246, 255, 0.9), rgba(185, 158, 255, 0.84), rgba(255, 199, 225, 0.8), rgba(201, 236, 255, 0.94)) border-box !important;
+  border-color: transparent !important;
+  box-shadow:
+    0 12px 30px rgba(1, 8, 26, 0.58),
+    0 0 0 0.5px rgba(226, 243, 255, 0.3),
+    0 0 24px rgba(134, 197, 255, 0.38),
+    inset 0 1px 0 rgba(241, 247, 255, 0.24),
+    inset 0 -10px 16px rgba(3, 10, 28, 0.42);
+}
+
 .liquid-menu-toggle {
   overflow: hidden;
   isolation: isolate;
@@ -54,9 +164,28 @@ button {
   opacity: 0;
 }
 
+.liquid-menu-toggle.nav-holo-menu::before {
+  background:
+    linear-gradient(180deg, rgba(255, 255, 255, 0.22) 0%, rgba(255, 255, 255, 0.03) 35%, rgba(255, 255, 255, 0) 65%),
+    radial-gradient(90% 55% at 50% 0%, rgba(202, 228, 255, 0.2) 0%, rgba(202, 228, 255, 0) 72%);
+  opacity: 0.7;
+}
+
+.liquid-menu-toggle.nav-holo-menu::after {
+  background: radial-gradient(circle, rgba(190, 225, 255, 0.35) 0%, rgba(126, 188, 255, 0.14) 45%, transparent 72%);
+}
+
 .liquid-menu-toggle.is-pressed {
   transform: translateY(1px) scale(0.94);
   box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.12), 0 8px 18px rgba(0, 0, 0, 0.35);
+}
+
+.liquid-menu-toggle.nav-holo-menu.is-pressed {
+  box-shadow:
+    0 6px 14px rgba(1, 8, 22, 0.55),
+    0 0 0 0.5px rgba(215, 236, 255, 0.25),
+    inset 0 1px 0 rgba(230, 242, 255, 0.2),
+    inset 0 -8px 14px rgba(3, 9, 24, 0.42);
 }
 
 .liquid-menu-toggle.is-pressed::after {
@@ -112,8 +241,27 @@ button {
 }
 
 @media (min-width: 640px) {
+  .nav-holo-button {
+    width: 2.95rem;
+    height: 2.95rem;
+    min-width: 2.95rem;
+    min-height: 2.95rem;
+  }
+
+  .nav-holo-lang {
+    font-size: 0.78rem;
+  }
+
+  .liquid-menu-toggle-line.nav-holo-menu-line {
+    width: 1.1rem;
+  }
+
   .liquid-menu-toggle {
     --menu-line-offset: 7px;
+  }
+
+  .liquid-menu-toggle.nav-holo-menu {
+    --menu-line-offset: 6px;
   }
 
   .liquid-menu-toggle-line {
