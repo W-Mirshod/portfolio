@@ -1,11 +1,9 @@
 import { defineConfig } from 'vite'
-import react from '@vitejs/plugin-react'
 import compression from 'vite-plugin-compression'
 import { visualizer } from 'rollup-plugin-visualizer'
 
 export default defineConfig({
   plugins: [
-    react(),
     compression({ algorithm: 'brotliCompress' }),
     compression({ algorithm: 'gzip' }),
     visualizer({ filename: 'dist/stats.html', gzipSize: true, brotliSize: true })
@@ -17,43 +15,15 @@ export default defineConfig({
     rollupOptions: {
       output: {
         manualChunks: (id) => {
-          // Core React chunk
-          if (id.includes('react') || id.includes('react-dom')) {
-            return 'react-core';
-          }
-          
-          // Router chunk
-          if (id.includes('react-router')) {
-            return 'router';
-          }
-          
-          // Animation / smooth-scroll libs (dynamically imported)
           if (id.includes('gsap') || id.includes('lenis')) {
             return 'animation';
           }
-          
-          // Three.js (heavy, rarely critical)
-          if (id.includes('three')) {
-            return 'three';
-          }
-          
-          // i18n chunk
-          if (id.includes('i18next') || id.includes('react-i18next')) {
+          if (id.includes('i18next')) {
             return 'i18n';
           }
-          
-          // Component chunks for better caching
-          if (id.includes('/components/sections/')) {
-            const sectionName = id.split('/').pop().replace('.jsx', '');
-            return `section-${sectionName.toLowerCase()}`;
-          }
-          
-          // Utils chunk
           if (id.includes('/utils/')) {
             return 'utils';
           }
-          
-          // Vendor chunk for other dependencies
           if (id.includes('node_modules')) {
             return 'vendor';
           }
@@ -67,12 +37,7 @@ export default defineConfig({
     modulePreload: {
       polyfill: false
     },
-    // Optimize chunk size warnings
     chunkSizeWarningLimit: 1000,
-    // Enable tree shaking
-    treeshake: {
-      moduleSideEffects: false
-    }
   },
   server: {
     host: '0.0.0.0',
@@ -83,13 +48,5 @@ export default defineConfig({
     fs: {
       allow: ['..']
     }
-  },
-  // Optimize dependencies
-  optimizeDeps: {
-    include: ['react', 'react-dom', 'react-router-dom']
-  },
-  // Tree-shake side effects for locale/icon modules
-  esbuild: {
-    treeShaking: true
   }
 })
