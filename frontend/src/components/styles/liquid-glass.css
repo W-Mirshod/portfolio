@@ -1,0 +1,385 @@
+/*
+ * ─────────────────────────────────────────────────────────────────────────────
+ *  Apple iOS Liquid Glass — Design System
+ *  Specular · Noise · Spring · Depth
+ * ─────────────────────────────────────────────────────────────────────────────
+ */
+
+/* ── Spring easing (Apple HIG) ── */
+:root {
+  --spring:            cubic-bezier(0.32, 0.72, 0, 1);
+  --spring-snappy:     cubic-bezier(0.34, 1.56, 0.64, 1);
+  --spring-gentle:     cubic-bezier(0.26, 1.04, 0.54, 1);
+
+  /* Upgraded blur & saturation values */
+  --lg-blur-sm:        20px;
+  --lg-blur-md:        32px;
+  --lg-blur-lg:        48px;
+  --lg-blur-xl:        64px;
+  --lg-sat:            1.45;
+  --lg-sat-strong:     1.6;
+  --lg-bright:         1.06;
+
+  /* Glass base fills */
+  --lg-fill:           rgba(18, 18, 22, 0.52);
+  --lg-fill-strong:    rgba(24, 24, 30, 0.68);
+  --lg-fill-ultra:     rgba(14, 14, 18, 0.82);
+  --lg-fill-hover:     rgba(36, 36, 46, 0.72);
+
+  /* Specular / light tokens */
+  --lg-specular-top:   rgba(255, 255, 255, 0.18);
+  --lg-specular-tl:    rgba(255, 255, 255, 0.12);
+  --lg-inner-glow:     rgba(255, 255, 255, 0.06);
+  --lg-hairline:       rgba(255, 255, 255, 0.14);
+  --lg-hairline-strong:rgba(255, 255, 255, 0.24);
+
+  /* Border */
+  --lg-border:         rgba(255, 255, 255, 0.08);
+  --lg-border-hover:   rgba(255, 255, 255, 0.18);
+
+  /* Shadows (depth stack) */
+  --lg-shadow-sm:
+    0 2px 8px  rgba(0,0,0,.28),
+    0 1px 3px  rgba(0,0,0,.22);
+  --lg-shadow-md:
+    0 4px 16px rgba(0,0,0,.40),
+    0 1px 4px  rgba(0,0,0,.28),
+    inset 0 1px 0 var(--lg-hairline);
+  --lg-shadow-lg:
+    0 8px 32px rgba(0,0,0,.50),
+    0 2px 8px  rgba(0,0,0,.32),
+    inset 0 1px 0 var(--lg-hairline);
+  --lg-shadow-xl:
+    0 16px 56px rgba(0,0,0,.62),
+    0 4px 16px  rgba(0,0,0,.38),
+    inset 0 1.5px 0 var(--lg-hairline-strong);
+
+  /* Noise opacity */
+  --lg-noise-opacity: 0.028;
+}
+
+/* ─────────────────────────────────────────────────────────────────────────────
+   Core surface
+   ─────────────────────────────────────────────────────────────────────────── */
+.lg-surface {
+  position: relative;
+  isolation: isolate;
+  background: var(--lg-fill);
+  border: 1px solid var(--lg-border);
+  border-radius: 1rem;
+  box-shadow: var(--lg-shadow-md);
+  backdrop-filter:
+    blur(var(--lg-blur-md))
+    saturate(var(--lg-sat))
+    brightness(var(--lg-bright));
+  -webkit-backdrop-filter:
+    blur(var(--lg-blur-md))
+    saturate(var(--lg-sat))
+    brightness(var(--lg-bright));
+  overflow: hidden;
+}
+
+.lg-surface-strong {
+  position: relative;
+  isolation: isolate;
+  background: var(--lg-fill-strong);
+  border: 1px solid var(--lg-border);
+  border-radius: 1rem;
+  box-shadow: var(--lg-shadow-lg);
+  backdrop-filter:
+    blur(var(--lg-blur-lg))
+    saturate(var(--lg-sat-strong))
+    brightness(var(--lg-bright));
+  -webkit-backdrop-filter:
+    blur(var(--lg-blur-lg))
+    saturate(var(--lg-sat-strong))
+    brightness(var(--lg-bright));
+  overflow: hidden;
+}
+
+.lg-surface-ultra {
+  position: relative;
+  isolation: isolate;
+  background: var(--lg-fill-ultra);
+  border: 1px solid var(--lg-border-hover);
+  border-radius: 1.25rem;
+  box-shadow: var(--lg-shadow-xl);
+  backdrop-filter:
+    blur(var(--lg-blur-xl))
+    saturate(var(--lg-sat-strong))
+    brightness(var(--lg-bright));
+  -webkit-backdrop-filter:
+    blur(var(--lg-blur-xl))
+    saturate(var(--lg-sat-strong))
+    brightness(var(--lg-bright));
+  overflow: hidden;
+}
+
+/* ─────────────────────────────────────────────────────────────────────────────
+   Specular highlight layer (::before)
+   Mimics the top-left light catch of real frosted glass
+   ─────────────────────────────────────────────────────────────────────────── */
+.lg-specular::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  border-radius: inherit;
+  pointer-events: none;
+  z-index: 1;
+  background:
+    /* Specular hot-spot top-left */
+    radial-gradient(
+      ellipse 75% 55% at 18% -10%,
+      rgba(255, 255, 255, 0.20) 0%,
+      rgba(255, 255, 255, 0.06) 40%,
+      transparent 70%
+    ),
+    /* Soft rim along top edge */
+    linear-gradient(
+      to bottom,
+      rgba(255, 255, 255, 0.13) 0px,
+      rgba(255, 255, 255, 0.04) 3px,
+      transparent 22px
+    );
+  mix-blend-mode: screen;
+  transition: opacity 380ms var(--spring);
+}
+
+/* Brighten specular on hover */
+.lg-specular:hover::before {
+  opacity: 1.25; /* clamped to 1 by browser, just ensures no fade-out */
+  background:
+    radial-gradient(
+      ellipse 75% 55% at 22% -12%,
+      rgba(255, 255, 255, 0.28) 0%,
+      rgba(255, 255, 255, 0.09) 40%,
+      transparent 70%
+    ),
+    linear-gradient(
+      to bottom,
+      rgba(255, 255, 255, 0.18) 0px,
+      rgba(255, 255, 255, 0.06) 3px,
+      transparent 22px
+    );
+}
+
+/* ─────────────────────────────────────────────────────────────────────────────
+   Noise / grain texture overlay (::after)
+   SVG fractalNoise rendered as a background — zero DOM cost
+   ─────────────────────────────────────────────────────────────────────────── */
+.lg-noise::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  border-radius: inherit;
+  pointer-events: none;
+  z-index: 2;
+  opacity: var(--lg-noise-opacity);
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='220' height='220'%3E%3Cfilter id='f'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.72' numOctaves='4' stitchTiles='stitch'/%3E%3CfeColorMatrix type='saturate' values='0'/%3E%3C/filter%3E%3Crect width='220' height='220' filter='url(%23f)' opacity='1'/%3E%3C/svg%3E");
+  background-repeat: repeat;
+  background-size: 220px 220px;
+  mix-blend-mode: soft-light;
+}
+
+/* ─────────────────────────────────────────────────────────────────────────────
+   Inner glow (ambient light trapped inside the glass)
+   ─────────────────────────────────────────────────────────────────────────── */
+.lg-inner-glow {
+  box-shadow:
+    var(--lg-shadow-md),
+    inset 0 0 18px rgba(255,255,255,0.035),
+    inset 0 1px 0 var(--lg-hairline);
+}
+
+.lg-inner-glow-strong {
+  box-shadow:
+    var(--lg-shadow-lg),
+    inset 0 0 28px rgba(255,255,255,0.05),
+    inset 0 1.5px 0 var(--lg-hairline-strong);
+}
+
+/* ─────────────────────────────────────────────────────────────────────────────
+   Spring-eased interactions
+   ─────────────────────────────────────────────────────────────────────────── */
+.lg-spring {
+  transition:
+    transform       400ms var(--spring),
+    box-shadow      400ms var(--spring),
+    background      360ms var(--spring),
+    border-color    360ms var(--spring),
+    backdrop-filter 360ms var(--spring),
+    opacity         260ms var(--spring);
+}
+
+.lg-spring:hover {
+  transform: translateY(-3px) scale(1.012);
+  background: var(--lg-fill-hover);
+  border-color: var(--lg-border-hover);
+  box-shadow: var(--lg-shadow-xl);
+}
+
+.lg-spring:active {
+  transform: translateY(1px) scale(0.981);
+  box-shadow: var(--lg-shadow-sm),
+    inset 0 2px 8px rgba(0,0,0,0.45);
+  transition-duration: 80ms;
+}
+
+/* Snappy press variant (buttons) */
+.lg-spring-snap {
+  transition:
+    transform       280ms var(--spring-snappy),
+    box-shadow      280ms var(--spring-snappy),
+    background      240ms var(--spring-snappy),
+    border-color    240ms var(--spring-snappy);
+}
+
+.lg-spring-snap:hover {
+  transform: translateY(-2px) scale(1.018);
+}
+
+.lg-spring-snap:active {
+  transform: translateY(1px) scale(0.975);
+  transition-duration: 70ms;
+}
+
+/* ─────────────────────────────────────────────────────────────────────────────
+   Accent-tinted glass variants
+   ─────────────────────────────────────────────────────────────────────────── */
+.lg-tint-blue {
+  background:
+    linear-gradient(
+      145deg,
+      rgba(10, 132, 255, 0.28) 0%,
+      rgba(10, 100, 220, 0.16) 55%,
+      rgba(0, 50, 140, 0.09) 100%
+    );
+  border-color: rgba(10, 132, 255, 0.36);
+}
+
+.lg-tint-blue:hover {
+  background:
+    linear-gradient(
+      145deg,
+      rgba(10, 132, 255, 0.36) 0%,
+      rgba(10, 100, 220, 0.22) 55%,
+      rgba(0, 50, 140, 0.14) 100%
+    );
+  border-color: rgba(10, 132, 255, 0.52);
+}
+
+.lg-tint-purple {
+  background:
+    linear-gradient(
+      145deg,
+      rgba(94, 92, 230, 0.28) 0%,
+      rgba(60, 55, 200, 0.16) 55%,
+      rgba(30, 20, 140, 0.09) 100%
+    );
+  border-color: rgba(94, 92, 230, 0.36);
+}
+
+/* ─────────────────────────────────────────────────────────────────────────────
+   Section glow chip
+   ─────────────────────────────────────────────────────────────────────────── */
+.lg-chip {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+  padding: 0.3rem 0.75rem;
+  border-radius: 999px;
+  background:
+    linear-gradient(
+      145deg,
+      rgba(255,255,255,0.10) 0%,
+      rgba(255,255,255,0.04) 100%
+    );
+  border: 1px solid rgba(255,255,255,0.12);
+  color: rgba(255,255,255,0.85);
+  font-size: 0.75rem;
+  font-weight: 600;
+  letter-spacing: 0.04em;
+  backdrop-filter: blur(14px) saturate(1.3);
+  -webkit-backdrop-filter: blur(14px) saturate(1.3);
+  box-shadow:
+    inset 0 1px 0 rgba(255,255,255,0.14),
+    0 2px 8px rgba(0,0,0,0.30);
+}
+
+/* ─────────────────────────────────────────────────────────────────────────────
+   Mount shimmer (single-pass reveal effect — runs once on appearance)
+   ─────────────────────────────────────────────────────────────────────────── */
+@keyframes lg-shimmer-pass {
+  0% {
+    opacity: 0;
+    background-position: -120% 0;
+  }
+  20% {
+    opacity: 1;
+  }
+  80% {
+    opacity: 1;
+  }
+  100% {
+    opacity: 0;
+    background-position: 120% 0;
+  }
+}
+
+.lg-shimmer-on-mount::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  z-index: 10;
+  pointer-events: none;
+  border-radius: inherit;
+  background: linear-gradient(
+    105deg,
+    transparent        0%,
+    rgba(255,255,255,0.0)  35%,
+    rgba(255,255,255,0.18) 50%,
+    rgba(255,255,255,0.0)  65%,
+    transparent        100%
+  );
+  background-size: 200% 100%;
+  animation: lg-shimmer-pass 1.1s var(--spring) both;
+}
+
+/* ─────────────────────────────────────────────────────────────────────────────
+   Ambient breathe (used on always-visible panels like sidebar)
+   ─────────────────────────────────────────────────────────────────────────── */
+@keyframes lg-breathe {
+  0%, 100% { box-shadow: var(--lg-shadow-md), inset 0 1px 0 rgba(255,255,255,0.10); }
+  50%       { box-shadow: var(--lg-shadow-lg), inset 0 1px 0 rgba(255,255,255,0.16); }
+}
+
+.lg-breathe {
+  animation: lg-breathe 5s ease-in-out infinite;
+}
+
+/* ─────────────────────────────────────────────────────────────────────────────
+   Utility: scroll-optimised GPU composite during scroll
+   Add .lg-scrolling via JS on scroll start, remove on idle
+   ─────────────────────────────────────────────────────────────────────────── */
+.lg-gpu {
+  transform: translateZ(0);
+  backface-visibility: hidden;
+  -webkit-backface-visibility: hidden;
+}
+
+/* ─────────────────────────────────────────────────────────────────────────────
+   Reduced motion
+   ─────────────────────────────────────────────────────────────────────────── */
+@media (prefers-reduced-motion: reduce) {
+  .lg-spring,
+  .lg-spring-snap {
+    transition: none !important;
+  }
+  .lg-shimmer-on-mount::before {
+    animation: none !important;
+    opacity: 0 !important;
+  }
+  .lg-breathe {
+    animation: none !important;
+  }
+}
