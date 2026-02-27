@@ -15,6 +15,9 @@ export default defineConfig({
     rollupOptions: {
       output: {
         manualChunks: (id) => {
+          if (id.includes('three')) {
+            return 'three';
+          }
           if (id.includes('gsap') || id.includes('lenis')) {
             return 'animation';
           }

@@ -693,3 +693,77 @@ h3,
     animation: none !important;
   }
 }
+
+/* ── 3D W Icon ── */
+.w-icon-3d-container {
+  width: 220px;
+  height: 220px;
+  border-radius: 1.25rem;
+  overflow: hidden;
+  position: relative;
+  cursor: grab;
+}
+
+.w-icon-3d-container:active {
+  cursor: grabbing;
+}
+
+.w-icon-3d-container canvas {
+  display: block;
+  width: 100% !important;
+  height: 100% !important;
+  border-radius: inherit;
+}
+
+/* Glow ring behind the 3D icon */
+.w-icon-3d-mount {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.w-icon-3d-mount::before {
+  content: '';
+  position: absolute;
+  inset: -12px;
+  border-radius: 1.75rem;
+  background: radial-gradient(ellipse at center, rgba(138, 180, 248, 0.15) 0%, transparent 70%);
+  pointer-events: none;
+  z-index: -1;
+  animation: w-icon-glow 4s ease-in-out infinite;
+}
+
+@keyframes w-icon-glow {
+  0%, 100% { opacity: 0.6; transform: scale(1); }
+  50% { opacity: 1; transform: scale(1.05); }
+}
+
+/* Responsive sizes */
+@media (min-width: 768px) {
+  .w-icon-3d-container {
+    width: 280px;
+    height: 280px;
+  }
+}
+
+@media (min-width: 1024px) {
+  .w-icon-3d-container {
+    width: 320px;
+    height: 320px;
+  }
+}
+
+@media (min-width: 1280px) {
+  .w-icon-3d-container {
+    width: 360px;
+    height: 360px;
+  }
+}
+
+@media (max-width: 767px) {
+  .w-icon-3d-container {
+    width: 180px;
+    height: 180px;
+  }
+}

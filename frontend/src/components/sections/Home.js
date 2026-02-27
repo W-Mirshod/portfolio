@@ -3,6 +3,7 @@ import { iconArrowRight, iconServer, iconBrain, iconCloud } from '../ui/Icons.js
 import { initializeAudio } from '../../utils/audio.js';
 import createParallaxBackground from '../ui/ParallaxBackground.js';
 import createMagneticButton from '../ui/MagneticButton.js';
+import createWIcon3D from '../ui/WIcon3D.js';
 
 export default function createHome() {
   const enableEffects = window.matchMedia('(prefers-reduced-motion: no-preference)').matches &&
@@ -28,19 +29,22 @@ export default function createHome() {
           <div class="absolute bottom-1/4 right-1/4 w-56 h-56 sm:w-80 sm:h-80 bg-sky-200/10 rounded-full blur-2xl"></div>
         </div>
         <div class="flex flex-col items-center justify-center text-center w-full max-w-7xl mx-auto relative space-y-8 sm:space-y-10 md:space-y-12">
-          <div class="flex flex-col items-center justify-center text-center w-full space-y-4 sm:space-y-5 md:space-y-6 px-4 sm:px-6 md:px-8 lg:px-12 xl:px-16 lg:items-start lg:text-left">
-            <div class="flex flex-col sm:flex-row items-center justify-center gap-4 sm:gap-6 layered-entrance lg:justify-start">
-              <div class="relative">
-                <div class="absolute inset-0 bg-gradient-to-r from-blue-200/60 to-sky-200/60 rounded-full blur-xl"></div>
-                <img src="/Mirshod-optimized.webp" alt="Mirshod Qayimov" width="144" height="144" class="relative w-20 h-20 sm:w-24 sm:h-24 md:w-28 md:h-28 lg:w-32 lg:h-32 xl:w-36 xl:h-36 rounded-full object-cover border-4 border-white/35 shadow-2xl ring-2 ring-white/40 img-shimmer-load" loading="eager" fetchpriority="high" decoding="async"/>
+          <div class="flex flex-col lg:flex-row items-center justify-center w-full gap-6 lg:gap-10 px-4 sm:px-6 md:px-8 lg:px-12 xl:px-16">
+            <div class="flex flex-col items-center justify-center text-center w-full lg:flex-1 space-y-4 sm:space-y-5 md:space-y-6 lg:items-start lg:text-left">
+              <div class="flex flex-col sm:flex-row items-center justify-center gap-4 sm:gap-6 layered-entrance lg:justify-start">
+                <div class="relative">
+                  <div class="absolute inset-0 bg-gradient-to-r from-blue-200/60 to-sky-200/60 rounded-full blur-xl"></div>
+                  <img src="/Mirshod-optimized.webp" alt="Mirshod Qayimov" width="144" height="144" class="relative w-20 h-20 sm:w-24 sm:h-24 md:w-28 md:h-28 lg:w-32 lg:h-32 xl:w-36 xl:h-36 rounded-full object-cover border-4 border-white/35 shadow-2xl ring-2 ring-white/40 img-shimmer-load" loading="eager" fetchpriority="high" decoding="async"/>
+                </div>
+                <h1 class="text-3xl sm:text-4xl md:text-5xl lg:text-6xl xl:text-7xl 2xl:text-8xl font-bold leading-tight text-gradient-metallic lg:text-left">Mirshod Qayimov</h1>
               </div>
-              <h1 class="text-3xl sm:text-4xl md:text-5xl lg:text-6xl xl:text-7xl 2xl:text-8xl font-bold leading-tight text-gradient-metallic lg:text-left">Mirshod Qayimov</h1>
+              <h2 class="text-lg sm:text-xl md:text-2xl lg:text-3xl xl:text-4xl text-blue-100 font-semibold layered-entrance" style="animation-delay:0.1s" data-i18n="home.subtitle">${t('home.subtitle')}</h2>
+              <p class="text-sm sm:text-base md:text-lg lg:text-xl xl:text-2xl text-blue-100/90 max-w-4xl leading-relaxed layered-entrance flex items-center justify-center gap-2 sm:gap-3 lg:justify-start" style="animation-delay:0.2s">
+                <span data-i18n="home.descriptionPart1">${t('home.descriptionPart1')}</span> ${iconArrowRight('1em', 'text-blue-200')} <span data-i18n="home.descriptionPart2">${t('home.descriptionPart2')}</span>
+              </p>
+              <div class="home-buttons flex flex-wrap items-center justify-center gap-3 sm:gap-4 mt-6 sm:mt-8 layered-entrance lg:justify-start" style="animation-delay:0.3s"></div>
             </div>
-            <h2 class="text-lg sm:text-xl md:text-2xl lg:text-3xl xl:text-4xl text-blue-100 font-semibold layered-entrance" style="animation-delay:0.1s" data-i18n="home.subtitle">${t('home.subtitle')}</h2>
-            <p class="text-sm sm:text-base md:text-lg lg:text-xl xl:text-2xl text-blue-100/90 max-w-4xl leading-relaxed layered-entrance flex items-center justify-center gap-2 sm:gap-3 lg:justify-start" style="animation-delay:0.2s">
-              <span data-i18n="home.descriptionPart1">${t('home.descriptionPart1')}</span> ${iconArrowRight('1em', 'text-blue-200')} <span data-i18n="home.descriptionPart2">${t('home.descriptionPart2')}</span>
-            </p>
-            <div class="home-buttons flex flex-wrap items-center justify-center gap-3 sm:gap-4 mt-6 sm:mt-8 layered-entrance lg:justify-start" style="animation-delay:0.3s"></div>
+            <div class="w-icon-3d-mount layered-entrance flex-shrink-0" style="animation-delay:0.15s"></div>
           </div>
           <div class="w-full max-w-6xl mx-auto layered-entrance mt-8" style="animation-delay:0.4s">
             <div class="grid grid-cols-1 md:grid-cols-4 gap-4 lg:gap-6">
@@ -108,6 +112,15 @@ export default function createHome() {
   const contentDiv = document.createElement('div');
   contentDiv.innerHTML = buildContent();
   while (contentDiv.firstChild) section.appendChild(contentDiv.firstChild);
+
+  // Mount 3D W icon
+  if (enableEffects) {
+    const mountPoint = section.querySelector('.w-icon-3d-mount');
+    if (mountPoint) {
+      const wIcon = createWIcon3D();
+      mountPoint.appendChild(wIcon.element);
+    }
+  }
 
   // Magnetic buttons
   const buttonsContainer = section.querySelector('.home-buttons');
