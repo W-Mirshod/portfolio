@@ -1,8 +1,4 @@
 import * as THREE from 'three';
-import { EffectComposer } from 'three/examples/jsm/postprocessing/EffectComposer.js';
-import { RenderPass } from 'three/examples/jsm/postprocessing/RenderPass.js';
-import { UnrealBloomPass } from 'three/examples/jsm/postprocessing/UnrealBloomPass.js';
-import { OutputPass } from 'three/examples/jsm/postprocessing/OutputPass.js';
 
 const NOISE_GLSL = `
   vec4 permute(vec4 x){return mod(((x*34.0)+1.0)*x,289.0);}
@@ -153,7 +149,7 @@ function createParticleSystem(count = 60) {
         vec4 mvPos = modelViewMatrix * vec4(pos, 1.0);
         gl_Position = projectionMatrix * mvPos;
         gl_PointSize = aSize * uPixelRatio * (150.0 / -mvPos.z);
-        vAlpha = 0.25 + 0.35 * sin(t * 2.0);
+        vAlpha = 0.35 + 0.45 * sin(t * 2.0);
       }
     `,
     fragmentShader: `
@@ -176,13 +172,12 @@ function createParticleSystem(count = 60) {
 
 export function createW3DScene(container, options = {}) {
   const {
-    enableBloom = true,
     enableMouseTracking = true,
     enableLiquidMorph = true,
     enableParticles = true,
     autoRotateSpeed = 0.15,
     floatAmplitude = 0.08,
-    cameraDistance = 4.2,
+    cameraDistance = 3.6,
     pixelRatio = Math.min(window.devicePixelRatio, 2),
     bevelSegments = 8,
   } = options;
@@ -203,7 +198,7 @@ export function createW3DScene(container, options = {}) {
   renderer.setSize(width, height);
   renderer.setPixelRatio(pixelRatio);
   renderer.toneMapping = THREE.ACESFilmicToneMapping;
-  renderer.toneMappingExposure = 1.4;
+  renderer.toneMappingExposure = 1.6;
   renderer.outputColorSpace = THREE.SRGBColorSpace;
   renderer.setClearColor(0x000000, 0);
 
@@ -218,10 +213,10 @@ export function createW3DScene(container, options = {}) {
 
   const wShape = createWShape();
   const geometry = new THREE.ExtrudeGeometry(wShape, {
-    depth: 0.55,
+    depth: 0.6,
     bevelEnabled: true,
-    bevelThickness: 0.08,
-    bevelSize: 0.06,
+    bevelThickness: 0.1,
+    bevelSize: 0.08,
     bevelOffset: 0,
     bevelSegments,
     curveSegments: 1,
@@ -231,21 +226,21 @@ export function createW3DScene(container, options = {}) {
 
   const timeUniform = { value: 0 };
   const material = new THREE.MeshPhysicalMaterial({
-    color: new THREE.Color(0x0a0a2e),
+    color: new THREE.Color(0x080828),
     metalness: 1.0,
-    roughness: 0.05,
+    roughness: 0.03,
     clearcoat: 1.0,
-    clearcoatRoughness: 0.02,
+    clearcoatRoughness: 0.01,
     iridescence: 1.0,
-    iridescenceIOR: 1.3,
-    iridescenceThicknessRange: [100, 800],
-    envMapIntensity: 2.8,
+    iridescenceIOR: 1.4,
+    iridescenceThicknessRange: [100, 900],
+    envMapIntensity: 3.2,
     reflectivity: 1.0,
-    sheen: 0.3,
-    sheenRoughness: 0.2,
-    sheenColor: new THREE.Color(0x4488ff),
-    emissive: new THREE.Color(0x060620),
-    emissiveIntensity: 0.4,
+    sheen: 0.5,
+    sheenRoughness: 0.15,
+    sheenColor: new THREE.Color(0x6699ff),
+    emissive: new THREE.Color(0x0a0a40),
+    emissiveIntensity: 0.5,
   });
 
   if (enableLiquidMorph) {
@@ -270,7 +265,7 @@ export function createW3DScene(container, options = {}) {
 
   let particles = null;
   if (enableParticles) {
-    particles = createParticleSystem(60);
+    particles = createParticleSystem(80);
     scene.add(particles);
   }
 
@@ -297,24 +292,6 @@ export function createW3DScene(container, options = {}) {
   topLight.position.set(1, 3, 2);
   scene.add(topLight);
 
-  let composer = null;
-  if (enableBloom) {
-    const renderTarget = new THREE.WebGLRenderTarget(width, height, {
-      type: THREE.HalfFloatType,
-      samples: pixelRatio > 1 ? 0 : 4,
-    });
-    composer = new EffectComposer(renderer, renderTarget);
-    composer.addPass(new RenderPass(scene, camera));
-    const bloomPass = new UnrealBloomPass(
-      new THREE.Vector2(width, height),
-      0.5,
-      0.4,
-      0.85
-    );
-    composer.addPass(bloomPass);
-    composer.addPass(new OutputPass());
-  }
-
   let mouseX = 0, mouseY = 0;
   const onMouseMove = (e) => {
     mouseX = (e.clientX / window.innerWidth) * 2 - 1;
@@ -325,7 +302,7 @@ export function createW3DScene(container, options = {}) {
     window.addEventListener('mousemove', onMouseMove, { passive: true });
   }
 
-  const clock = new THREE.Clock();
+  const startTime = performance.now();
   let animationId;
   let isVisible = true;
 
@@ -333,7 +310,7 @@ export function createW3DScene(container, options = {}) {
     animationId = requestAnimationFrame(animate);
     if (!isVisible) return;
 
-    const time = clock.getElapsedTime();
+    const time = (performance.now() - startTime) * 0.001;
     timeUniform.value = time;
 
     const targetRotY = time * autoRotateSpeed + (enableMouseTracking ? mouseX * 0.4 : 0);
@@ -348,11 +325,7 @@ export function createW3DScene(container, options = {}) {
       particles.rotation.y = time * 0.05;
     }
 
-    if (composer) {
-      composer.render();
-    } else {
-      renderer.render(scene, camera);
-    }
+    renderer.render(scene, camera);
   }
 
   animate();
@@ -371,7 +344,6 @@ export function createW3DScene(container, options = {}) {
     camera.aspect = w / h;
     camera.updateProjectionMatrix();
     renderer.setSize(w, h);
-    if (composer) composer.setSize(w, h);
   });
   resizeObserver.observe(container);
 
@@ -380,7 +352,6 @@ export function createW3DScene(container, options = {}) {
     resizeObserver.disconnect();
     visibilityObserver.disconnect();
     if (enableMouseTracking) window.removeEventListener('mousemove', onMouseMove);
-    if (composer) composer.dispose();
     renderer.dispose();
     geometry.dispose();
     material.dispose();
@@ -397,26 +368,24 @@ export function createW3DScene(container, options = {}) {
 
 export function initHomeW3D(containerElement) {
   return createW3DScene(containerElement, {
-    enableBloom: true,
     enableMouseTracking: true,
     enableLiquidMorph: true,
     enableParticles: true,
     autoRotateSpeed: 0.15,
     floatAmplitude: 0.08,
-    cameraDistance: 4.2,
+    cameraDistance: 3.6,
     bevelSegments: 8,
   });
 }
 
 export function initLogoW3D(containerElement) {
   return createW3DScene(containerElement, {
-    enableBloom: false,
     enableMouseTracking: false,
     enableLiquidMorph: true,
     enableParticles: false,
     autoRotateSpeed: 0.3,
     floatAmplitude: 0.03,
-    cameraDistance: 4.5,
+    cameraDistance: 4.0,
     pixelRatio: Math.min(window.devicePixelRatio, 1.5),
     bevelSegments: 4,
   });
