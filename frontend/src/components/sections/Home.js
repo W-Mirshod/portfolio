@@ -3,6 +3,7 @@ import { iconArrowRight, iconServer, iconBrain, iconCloud } from '../ui/Icons.js
 import { initializeAudio } from '../../utils/audio.js';
 import createParallaxBackground from '../ui/ParallaxBackground.js';
 import createMagneticButton from '../ui/MagneticButton.js';
+import '../styles/w3d-icon.css';
 
 export default function createHome() {
   const enableEffects = window.matchMedia('(prefers-reduced-motion: no-preference)').matches &&
@@ -30,9 +31,10 @@ export default function createHome() {
         <div class="flex flex-col items-center justify-center text-center w-full max-w-7xl mx-auto relative space-y-8 sm:space-y-10 md:space-y-12">
           <div class="flex flex-col items-center justify-center text-center w-full space-y-4 sm:space-y-5 md:space-y-6 px-4 sm:px-6 md:px-8 lg:px-12 xl:px-16 lg:items-start lg:text-left">
             <div class="flex flex-col sm:flex-row items-center justify-center gap-4 sm:gap-6 layered-entrance lg:justify-start">
-              <div class="relative">
-                <div class="absolute inset-0 bg-gradient-to-r from-blue-200/60 to-sky-200/60 rounded-full blur-xl"></div>
-                <img src="/Mirshod-optimized.webp" alt="Mirshod Qayimov" width="144" height="144" class="relative w-20 h-20 sm:w-24 sm:h-24 md:w-28 md:h-28 lg:w-32 lg:h-32 xl:w-36 xl:h-36 rounded-full object-cover border-4 border-white/35 shadow-2xl ring-2 ring-white/40 img-shimmer-load" loading="eager" fetchpriority="high" decoding="async"/>
+              <div class="w3d-hero-wrapper">
+                <div class="w3d-hero-glow"></div>
+                <div class="w3d-hero-canvas" data-w3d-hero></div>
+                <div class="w3d-hero-ring"></div>
               </div>
               <h1 class="text-3xl sm:text-4xl md:text-5xl lg:text-6xl xl:text-7xl 2xl:text-8xl font-bold leading-tight text-gradient-metallic lg:text-left">Mirshod Qayimov</h1>
             </div>
@@ -125,6 +127,18 @@ export default function createHome() {
     buttonsContainer.appendChild(viewBtn);
     buttonsContainer.appendChild(talkBtn);
   }
+
+  // 3D W Icon (lazy loaded)
+  setTimeout(async () => {
+    const w3dContainer = section.querySelector('[data-w3d-hero]');
+    if (!w3dContainer || w3dContainer.offsetWidth === 0) return;
+    try {
+      const { initHomeW3D } = await import('../ui/W3DIcon.js');
+      initHomeW3D(w3dContainer);
+    } catch (e) {
+      w3dContainer.innerHTML = `<img src="/Mirshod-optimized.webp" alt="W" class="w-full h-full rounded-full object-cover border-4 border-white/35 shadow-2xl ring-2 ring-white/40 img-shimmer-load"/>`;
+    }
+  }, 100);
 
   // Audio
   let audioStarted = false;
