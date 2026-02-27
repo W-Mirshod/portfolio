@@ -74,15 +74,20 @@ export default function createGoToTop() {
     );
   };
 
+  let checkRafId = null;
   const checkScroll = () => {
-    const scrollY = window.lenis?.scroll || window.pageYOffset || 0;
-    if (scrollY > 800) show();
-    else hide();
+    if (checkRafId) return;
+    checkRafId = requestAnimationFrame(() => {
+      checkRafId = null;
+      const scrollY = window.lenis?.scroll || window.pageYOffset || 0;
+      if (scrollY > 800) show();
+      else hide();
 
-    if (isScrollingToTop && scrollY < 50) {
-      isScrollingToTop = false;
-      transformToArrow();
-    }
+      if (isScrollingToTop && scrollY < 50) {
+        isScrollingToTop = false;
+        transformToArrow();
+      }
+    });
   };
 
   const lenisInstance = window.lenis;

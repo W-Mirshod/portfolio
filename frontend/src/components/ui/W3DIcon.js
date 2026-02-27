@@ -180,7 +180,11 @@ export function createW3DScene(container, options = {}) {
     cameraDistance = 3.6,
     pixelRatio = Math.min(window.devicePixelRatio, 2),
     bevelSegments = 8,
+    antialias = true,
+    targetFPS = 60,
   } = options;
+
+  const frameDuration = 1000 / targetFPS;
 
   let width = container.offsetWidth || 300;
   let height = container.offsetHeight || 300;
@@ -191,7 +195,7 @@ export function createW3DScene(container, options = {}) {
   camera.position.set(0, 0, cameraDistance);
 
   const renderer = new THREE.WebGLRenderer({
-    antialias: true,
+    antialias,
     alpha: true,
     powerPreference: 'high-performance',
   });
@@ -305,12 +309,17 @@ export function createW3DScene(container, options = {}) {
   const startTime = performance.now();
   let animationId;
   let isVisible = true;
+  let lastFrameTime = 0;
 
-  function animate() {
+  function animate(now) {
     animationId = requestAnimationFrame(animate);
     if (!isVisible) return;
 
-    const time = (performance.now() - startTime) * 0.001;
+    // Frame-rate throttle
+    if (now - lastFrameTime < frameDuration) return;
+    lastFrameTime = now;
+
+    const time = (now - startTime) * 0.001;
     timeUniform.value = time;
 
     const targetRotY = time * autoRotateSpeed + (enableMouseTracking ? mouseX * 0.4 : 0);
@@ -328,27 +337,32 @@ export function createW3DScene(container, options = {}) {
     renderer.render(scene, camera);
   }
 
-  animate();
+  animate(performance.now());
 
   const visibilityObserver = new IntersectionObserver((entries) => {
     isVisible = entries[0].isIntersecting;
   }, { threshold: 0.05 });
   visibilityObserver.observe(container);
 
+  let resizeTimer;
   const resizeObserver = new ResizeObserver(() => {
-    const w = container.offsetWidth;
-    const h = container.offsetHeight;
-    if (w === 0 || h === 0) return;
-    width = w;
-    height = h;
-    camera.aspect = w / h;
-    camera.updateProjectionMatrix();
-    renderer.setSize(w, h);
+    clearTimeout(resizeTimer);
+    resizeTimer = setTimeout(() => {
+      const w = container.offsetWidth;
+      const h = container.offsetHeight;
+      if (w === 0 || h === 0) return;
+      width = w;
+      height = h;
+      camera.aspect = w / h;
+      camera.updateProjectionMatrix();
+      renderer.setSize(w, h);
+    }, 150);
   });
   resizeObserver.observe(container);
 
   const dispose = () => {
     cancelAnimationFrame(animationId);
+    clearTimeout(resizeTimer);
     resizeObserver.disconnect();
     visibilityObserver.disconnect();
     if (enableMouseTracking) window.removeEventListener('mousemove', onMouseMove);
@@ -366,15 +380,30 @@ export function createW3DScene(container, options = {}) {
   return { dispose, canvas };
 }
 
-export function initHomeW3D(containerElement) {
-  return createW3DScene(containerElement, {
+export function initHomeW3D(containerElement, { isMobile = false } = {}) {
+  return createW3DScene(containerElement, isMobile ? {
+    // Mobile-optimised preset
+    enableMouseTracking: false,
+    enableLiquidMorph: false,
+    enableParticles: false,
+    autoRotateSpeed: 0.15,
+    floatAmplitude: 0.06,
+    cameraDistance: 3.6,
+    pixelRatio: Math.min(window.devicePixelRatio, 1.5),
+    bevelSegments: 3,
+    antialias: false,
+    targetFPS: 30,
+  } : {
+    // Desktop preset
     enableMouseTracking: true,
     enableLiquidMorph: true,
-    enableParticles: true,
+    enableParticles: false,
     autoRotateSpeed: 0.15,
     floatAmplitude: 0.08,
     cameraDistance: 3.6,
     bevelSegments: 8,
+    antialias: true,
+    targetFPS: 60,
   });
 }
 

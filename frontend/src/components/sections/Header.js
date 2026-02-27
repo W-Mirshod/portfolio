@@ -270,28 +270,59 @@ export default function createHeader() {
   }
 
   // ─── Scroll tracking ───
+  let scrollRafId = null;
   const handleScroll = () => {
-    const sections = ['home', 'experience', 'skills', 'achievements', 'certificate', 'projects', 'contact'];
-    const scrollPosition = window.scrollY + 150;
-    if (scrollPosition < 100) { updateActive('home'); return; }
-    for (let i = sections.length - 1; i >= 0; i--) {
-      const el = document.getElementById(sections[i]);
-      if (el && scrollPosition >= el.offsetTop) {
-        updateActive(sections[i]);
-        return;
+    if (scrollRafId) return;
+    scrollRafId = requestAnimationFrame(() => {
+      scrollRafId = null;
+      const sections = ['home', 'experience', 'skills', 'achievements', 'certificate', 'projects', 'contact'];
+      const scrollPosition = window.scrollY + 150;
+      if (scrollPosition < 100) { updateActive('home'); return; }
+      for (let i = sections.length - 1; i >= 0; i--) {
+        const el = document.getElementById(sections[i]);
+        if (el && scrollPosition >= el.offsetTop) {
+          updateActive(sections[i]);
+          return;
+        }
       }
-    }
+    });
   };
 
   function updateActive(key) {
     if (activeSection === key) return;
     activeSection = key;
-    renderDesktopSidebar();
-    attachDesktopEvents();
-    // Don't re-render mobile header while menu is open (it would disrupt it)
-    if (!isMenuOpen) {
-      renderMobileHeader();
-      attachMobileHeaderEvents();
+
+    // Surgical class swap on desktop sidebar links (avoid full re-render)
+    aside.querySelectorAll('.sidebar-nav-link').forEach(link => {
+      const isActive = link.dataset.key === key;
+      link.classList.toggle('liquid-panel-strong', isActive);
+      link.classList.toggle('liquid-panel', !isActive);
+      link.classList.toggle('text-white', isActive);
+      link.classList.toggle('text-white/80', !isActive);
+      link.classList.toggle('border-white/20', isActive);
+      link.classList.toggle('border-white/10', !isActive);
+      link.classList.toggle('nav-item-active-indicator', isActive);
+      link.classList.toggle('hover:text-white', !isActive);
+      link.classList.toggle('hover:bg-white/10', !isActive);
+      link.classList.toggle('hover:border-white/20', !isActive);
+      if (isActive) link.setAttribute('aria-current', 'page');
+      else link.removeAttribute('aria-current');
+    });
+
+    // Update mobile menu links if menu is open
+    if (mobileMenuContainer) {
+      mobileMenuContainer.querySelectorAll('.mobile-nav-link').forEach(link => {
+        const isActive = link.dataset.key === key;
+        link.classList.toggle('liquid-panel-strong', isActive);
+        link.classList.toggle('liquid-panel', !isActive);
+        link.classList.toggle('text-white', isActive);
+        link.classList.toggle('text-white/80', !isActive);
+        link.classList.toggle('border-white/20', isActive);
+        link.classList.toggle('border-white/10', !isActive);
+        link.classList.toggle('nav-item-active-indicator', isActive);
+        if (isActive) link.setAttribute('aria-current', 'page');
+        else link.removeAttribute('aria-current');
+      });
     }
   }
 

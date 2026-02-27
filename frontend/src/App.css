@@ -20,7 +20,7 @@
 }
 
 html {
-  scroll-behavior: smooth;
+  /* scroll-behavior handled by Lenis — CSS smooth conflicts with it */
 }
 
 body {

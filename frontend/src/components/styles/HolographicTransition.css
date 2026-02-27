@@ -660,9 +660,4 @@
   }
 }
 
-/* Smooth scrolling enhancement */
-@media (prefers-reduced-motion: no-preference) {
-  .holographic-section {
-    scroll-behavior: smooth;
-  }
-}
+/* Smooth scrolling handled by Lenis */

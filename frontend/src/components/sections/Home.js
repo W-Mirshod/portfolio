@@ -32,9 +32,7 @@ export default function createHome() {
           <div class="flex flex-col items-center justify-center text-center w-full space-y-4 sm:space-y-5 md:space-y-6 px-4 sm:px-6 md:px-8 lg:px-12 xl:px-16 lg:items-start lg:text-left">
             <div class="flex flex-col sm:flex-row items-center justify-center gap-4 sm:gap-6 layered-entrance lg:justify-start">
               <div class="w3d-hero-wrapper">
-                <div class="w3d-hero-glow"></div>
                 <div class="w3d-hero-canvas" data-w3d-hero></div>
-                <div class="w3d-hero-ring"></div>
               </div>
               <h1 class="text-3xl sm:text-4xl md:text-5xl lg:text-6xl xl:text-7xl 2xl:text-8xl font-bold leading-tight text-gradient-metallic lg:text-left">Mirshod Qayimov</h1>
             </div>
@@ -128,13 +126,24 @@ export default function createHome() {
     buttonsContainer.appendChild(talkBtn);
   }
 
-  // 3D W Icon (lazy loaded)
+  // 3D W Icon (lazy loaded — skip on low-end / small-screen devices)
+  const isMobile = window.innerWidth < 768 || /Mobi|Android/i.test(navigator.userAgent);
+  const hasWebGL = (() => { try { const c = document.createElement('canvas'); return !!(c.getContext('webgl2') || c.getContext('webgl')); } catch { return false; } })();
+  const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
   setTimeout(async () => {
     const w3dContainer = section.querySelector('[data-w3d-hero]');
     if (!w3dContainer || w3dContainer.offsetWidth === 0) return;
+
+    // Fall back to static image when GPU is unavailable or user prefers reduced motion
+    if (!hasWebGL || prefersReducedMotion) {
+      w3dContainer.innerHTML = `<img src="/Mirshod-optimized.webp" alt="W" class="w-full h-full rounded-full object-cover border-4 border-white/35 shadow-2xl ring-2 ring-white/40 img-shimmer-load"/>`;
+      return;
+    }
+
     try {
       const { initHomeW3D } = await import('../ui/W3DIcon.js');
-      initHomeW3D(w3dContainer);
+      initHomeW3D(w3dContainer, { isMobile });
     } catch (e) {
       w3dContainer.innerHTML = `<img src="/Mirshod-optimized.webp" alt="W" class="w-full h-full rounded-full object-cover border-4 border-white/35 shadow-2xl ring-2 ring-white/40 img-shimmer-load"/>`;
     }
