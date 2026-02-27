@@ -64,11 +64,11 @@ export default function createHeader() {
             </div>
             <span class="text-sm font-bold text-white tracking-wider nav-logo-display">Mirshod</span>
           </a>
-          <nav class="flex flex-col gap-1 sm:gap-2 w-full items-center px-2" aria-label="Navigation menu">
+          <nav class="sidebar-nav-stack flex flex-col gap-1 sm:gap-2 w-full items-center px-2" aria-label="Navigation menu">
             ${navItems.map(item => `
-              <a class="sidebar-nav-link w-20 h-12 sm:w-24 sm:h-14 flex flex-col items-center justify-center rounded-xl font-semibold text-sm transition-all duration-300 border ${activeSection === item.key ? 'liquid-panel-strong text-white border-white/20 nav-item-active-indicator' : 'liquid-panel text-white/80 border-white/10 hover:text-white hover:bg-white/10 hover:border-white/20'}" href="${item.href}" data-key="${item.key}" aria-label="Navigate to ${item.label} section" ${activeSection === item.key ? 'aria-current="page"' : ''}>
-                <span class="mb-1" aria-hidden="true">${item.icon}</span>
-                <span class="tracking-wide hidden sm:block text-xs font-semibold link-draw">${item.label}</span>
+              <a class="sidebar-nav-link sidebar-nav-item w-20 h-12 sm:w-24 sm:h-14 flex flex-col items-center justify-center rounded-xl font-semibold text-sm transition-all duration-300 border ${activeSection === item.key ? 'liquid-panel-strong text-white border-white/20 nav-item-active-indicator' : 'liquid-panel text-white/80 border-white/10 hover:text-white hover:bg-white/10 hover:border-white/20'}" href="${item.href}" data-key="${item.key}" aria-label="Navigate to ${item.label} section" ${activeSection === item.key ? 'aria-current="page"' : ''}>
+                <span class="sidebar-nav-icon mb-1" aria-hidden="true">${item.icon}</span>
+                <span class="sidebar-nav-label tracking-wide hidden sm:block text-xs font-semibold link-draw">${item.label}</span>
               </a>
             `).join('')}
           </nav>
@@ -168,9 +168,9 @@ export default function createHeader() {
             <span class="text-base sm:text-lg font-bold text-white tracking-wider nav-logo-display">Mirshod</span>
           </a>
           ${navItems.map(item => `
-            <a class="mobile-nav-link mobile-nav-item w-full px-3 sm:px-4 py-3 sm:py-4 rounded-xl font-semibold text-sm sm:text-base flex items-center gap-3 sm:gap-4 transition-all duration-300 border ${activeSection === item.key ? 'liquid-panel-strong text-white border-white/20 nav-item-active-indicator nav-item-active-dot' : 'liquid-panel text-white/80 hover:text-white hover:bg-white/10 hover:border-white/20'}" href="${item.href}" data-key="${item.key}" aria-label="Navigate to ${item.label} section" ${activeSection === item.key ? 'aria-current="page"' : ''}>
-              <span class="flex-shrink-0" aria-hidden="true">${item.icon}</span>
-              <span class="tracking-wide font-semibold link-draw">${item.label}</span>
+            <a class="mobile-nav-link mobile-nav-item mobile-nav-item-shell w-full px-3 sm:px-4 py-3 sm:py-4 rounded-xl font-semibold text-sm sm:text-base flex items-center gap-3 sm:gap-4 transition-all duration-300 border ${activeSection === item.key ? 'liquid-panel-strong text-white border-white/20 nav-item-active-indicator' : 'liquid-panel text-white/80 hover:text-white hover:bg-white/10 hover:border-white/20'}" href="${item.href}" data-key="${item.key}" aria-label="Navigate to ${item.label} section" ${activeSection === item.key ? 'aria-current="page"' : ''}>
+              <span class="mobile-nav-icon flex-shrink-0" aria-hidden="true">${item.icon}</span>
+              <span class="mobile-nav-label tracking-wide font-semibold link-draw">${item.label}</span>
             </a>
           `).join('')}
         </div>

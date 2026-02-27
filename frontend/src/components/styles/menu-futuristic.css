@@ -4,8 +4,96 @@ header {
   font-family: var(--font-display, 'Space Grotesk'), 'Poppins', sans-serif;
 }
 
+.sidebar-nav-stack {
+  margin-top: 0.25rem;
+}
+
+.sidebar-nav-item,
+.mobile-nav-item-shell {
+  position: relative;
+  overflow: hidden;
+  backdrop-filter: blur(var(--liquid-blur));
+  -webkit-backdrop-filter: blur(var(--liquid-blur));
+}
+
+.sidebar-nav-item {
+  box-shadow: 0 8px 18px rgba(0, 0, 0, 0.2);
+}
+
+.sidebar-nav-item:hover {
+  transform: translateY(-1px);
+  box-shadow: var(--liquid-shadow-hover);
+}
+
+.sidebar-nav-icon,
+.mobile-nav-icon {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  color: currentColor;
+}
+
+.mobile-nav-icon {
+  width: 1.9rem;
+  height: 1.9rem;
+  border-radius: 0.65rem;
+  background: rgba(255, 255, 255, 0.06);
+  border: 1px solid rgba(255, 255, 255, 0.12);
+}
+
+.sidebar-nav-label,
+.mobile-nav-label {
+  letter-spacing: 0.025em;
+}
+
+.mobile-nav-item-shell::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  border-radius: inherit;
+  pointer-events: none;
+  background: linear-gradient(to bottom, rgba(255, 255, 255, 0.17), rgba(255, 255, 255, 0.04) 16%, transparent 46%);
+  opacity: 0.55;
+  transition: opacity 260ms var(--spring);
+}
+
+.mobile-nav-item-shell:hover {
+  transform: translateX(3px);
+}
+
+.mobile-nav-item-shell:hover::before {
+  opacity: 0.8;
+}
+
+#mobileNavMenu .nav-item-active-indicator {
+  box-shadow: inset 0 0 0 1px rgba(255, 255, 255, 0.18), 0 12px 24px rgba(0, 0, 0, 0.33);
+}
+
+#mobileNavMenu .nav-item-active-indicator::after {
+  left: 3.2rem;
+  right: 1rem;
+  bottom: 0.42rem;
+  height: 2px;
+}
+
+.sidebar-nav-link.nav-item-active-indicator::after {
+  left: 0.6rem;
+  right: 0.6rem;
+}
+
+#mobileNavMenu .mobile-nav-link[aria-current="page"] .mobile-nav-icon {
+  background: rgba(10, 132, 255, 0.22);
+  border-color: rgba(116, 190, 255, 0.55);
+}
+
+#mobileNavMenu .nav-item-active-dot::before {
+  display: none;
+}
+
 a,
-button {
+.sidebar-nav-item button,
+.mobile-nav-item-shell button,
+.language-dropdown-container button {
   position: relative;
   transition:
     transform 320ms var(--spring),
@@ -13,6 +101,11 @@ button {
     border-color 280ms var(--spring),
     box-shadow 280ms var(--spring),
     color 220ms var(--spring);
+}
+
+.go-to-top-button {
+  position: fixed !important;
+  z-index: 10000 !important;
 }
 
 .liquid-menu-toggle {

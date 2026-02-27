@@ -6,7 +6,7 @@ import { gsap } from 'gsap';
  */
 export default function createGoToTop() {
   const button = document.createElement('button');
-  button.className = `fixed bottom-6 right-6 z-50 flex items-center justify-center
+  button.className = `go-to-top-button fixed bottom-6 right-6 xl:right-36 z-50 flex items-center justify-center
                  w-12 h-12 rounded-2xl
                  liquid-panel border border-white/25
                  hover:bg-white/20 hover:border-white/45

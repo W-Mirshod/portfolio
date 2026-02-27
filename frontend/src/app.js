@@ -43,16 +43,16 @@ export function initApp() {
 
   // ─── Lazy-loaded sections ───
   const lazySections = [
-    { loader: () => import('./components/sections/Experience.js'), minHeight: '600px' },
-    { loader: () => import('./components/sections/Skills.js'), minHeight: '500px' },
-    { loader: () => import('./components/sections/Achievements.js'), minHeight: '400px' },
-    { loader: () => import('./components/sections/Certificate.js'), minHeight: '500px' },
-    { loader: () => import('./components/sections/Projects.js'), minHeight: '600px' },
-    { loader: () => import('./components/sections/Footer.js'), minHeight: '400px' },
+    { id: 'experience', loader: () => import('./components/sections/Experience.js'), minHeight: '600px' },
+    { id: 'skills', loader: () => import('./components/sections/Skills.js'), minHeight: '500px' },
+    { id: 'achievements', loader: () => import('./components/sections/Achievements.js'), minHeight: '400px' },
+    { id: 'certificate', loader: () => import('./components/sections/Certificate.js'), minHeight: '500px' },
+    { id: 'projects', loader: () => import('./components/sections/Projects.js'), minHeight: '600px' },
+    { id: 'contact', loader: () => import('./components/sections/Footer.js'), minHeight: '400px' },
   ];
 
-  lazySections.forEach(({ loader, minHeight }) => {
-    const lazySection = createLazySection(loader, '', minHeight);
+  lazySections.forEach(({ id, loader, minHeight }) => {
+    const lazySection = createLazySection(loader, '', minHeight, id);
     main.appendChild(lazySection);
   });
 

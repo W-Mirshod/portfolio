@@ -27,9 +27,19 @@
   will-change: auto !important;
   position: fixed !important;
   top: 0 !important;
+  z-index: 9999 !important;
+}
+
+/* Mobile header spans full width */
+.mobile-header {
   left: 0 !important;
   right: 0 !important;
-  z-index: 9999 !important;
+}
+
+/* Desktop sidebar is right-aligned — must NOT have left: 0 */
+.desktop-sidebar {
+  left: auto !important;
+  right: 0 !important;
 }
 
 /* Lock mobile header container padding */
@@ -100,14 +110,14 @@ section h2.animate-fadeInUp {
 
 /* Mobile Menu Item Spacing */
 #mobileNavMenu .mobile-nav-item {
-  margin-bottom: 1rem !important;
-  padding: 1rem 1.25rem !important;
+  margin-bottom: 0.6rem !important;
+  padding: 0.85rem 1rem !important;
 }
 
 @media (min-width: 640px) {
   #mobileNavMenu .mobile-nav-item {
-    margin-bottom: 1.25rem !important;
-    padding: 1.25rem 1.5rem !important;
+    margin-bottom: 0.75rem !important;
+    padding: 0.95rem 1.15rem !important;
   }
 }
 

@@ -3,10 +3,12 @@
  * @param {Function} loader - () => import('./SomeSection.js')
  * @param {string} fallbackHTML - HTML string for the skeleton placeholder
  * @param {string} minHeight - CSS minHeight value
+ * @param {string} sectionId - Stable section id for navigation/scroll tracking
  * @returns {HTMLElement}
  */
-export default function createLazySection(loader, fallbackHTML = '', minHeight = '16rem') {
+export default function createLazySection(loader, fallbackHTML = '', minHeight = '16rem', sectionId = '') {
   const wrapper = document.createElement('section');
+  if (sectionId) wrapper.id = sectionId;
   wrapper.style.minHeight = minHeight;
   if (fallbackHTML) wrapper.innerHTML = fallbackHTML;
 
@@ -21,6 +23,9 @@ export default function createLazySection(loader, fallbackHTML = '', minHeight =
 
         // If content is an HTMLElement, append it; if string, set innerHTML
         if (content instanceof HTMLElement) {
+          if (sectionId && content.id === sectionId) {
+            content.removeAttribute('id');
+          }
           wrapper.appendChild(content);
         } else if (typeof content === 'string') {
           wrapper.innerHTML = content;
