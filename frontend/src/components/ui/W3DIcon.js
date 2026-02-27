@@ -111,11 +111,11 @@ function createParticleSystem(count = 60) {
   for (let i = 0; i < count; i++) {
     const theta = Math.random() * Math.PI * 2;
     const phi = Math.random() * Math.PI;
-    const r = 1.5 + Math.random() * 1.5;
+    const r = 2.0 + Math.random() * 1.0;
     positions[i * 3] = r * Math.sin(phi) * Math.cos(theta);
     positions[i * 3 + 1] = r * Math.sin(phi) * Math.sin(theta);
     positions[i * 3 + 2] = r * Math.cos(phi);
-    sizes[i] = 0.5 + Math.random() * 2.0;
+    sizes[i] = 1.0 + Math.random() * 2.5;
     speeds[i] = 0.15 + Math.random() * 0.4;
     offsets[i] = Math.random() * Math.PI * 2;
   }
@@ -148,8 +148,8 @@ function createParticleSystem(count = 60) {
         pos.y += sin(t * 1.5) * 0.15;
         vec4 mvPos = modelViewMatrix * vec4(pos, 1.0);
         gl_Position = projectionMatrix * mvPos;
-        gl_PointSize = aSize * uPixelRatio * (150.0 / -mvPos.z);
-        vAlpha = 0.35 + 0.45 * sin(t * 2.0);
+        gl_PointSize = aSize * uPixelRatio * (160.0 / -mvPos.z);
+        vAlpha = 0.3 + 0.35 * sin(t * 2.0);
       }
     `,
     fragmentShader: `
@@ -158,7 +158,7 @@ function createParticleSystem(count = 60) {
         float d = length(gl_PointCoord - 0.5);
         if (d > 0.5) discard;
         float alpha = smoothstep(0.5, 0.05, d) * vAlpha;
-        vec3 color = mix(vec3(0.3, 0.5, 1.0), vec3(0.6, 0.3, 1.0), gl_PointCoord.y);
+        vec3 color = mix(vec3(0.4, 0.6, 1.0), vec3(0.7, 0.4, 1.0), gl_PointCoord.y);
         gl_FragColor = vec4(color, alpha);
       }
     `,
@@ -265,7 +265,7 @@ export function createW3DScene(container, options = {}) {
 
   let particles = null;
   if (enableParticles) {
-    particles = createParticleSystem(80);
+    particles = createParticleSystem(50);
     scene.add(particles);
   }
 
