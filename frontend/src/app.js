@@ -3,8 +3,13 @@ import 'lenis/dist/lenis.css';
 
 import createHeader from './components/sections/Header.js';
 import createHome from './components/sections/Home.js';
+import createExperience from './components/sections/Experience.js';
+import createSkills from './components/sections/Skills.js';
+import createAchievements from './components/sections/Achievements.js';
+import createCertificate from './components/sections/Certificate.js';
+import createProjects from './components/sections/Projects.js';
+import createFooter from './components/sections/Footer.js';
 import createGoToTop from './components/ui/GoToTop.js';
-import createLazySection from './components/ui/LazySection.js';
 
 export function initApp() {
   const root = document.getElementById('root');
@@ -37,24 +42,14 @@ export function initApp() {
   main.className = 'xl:ml-32';
   main.setAttribute('role', 'main');
 
-  // ─── Home section (loaded immediately) ───
-  const homeSection = createHome();
-  main.appendChild(homeSection);
-
-  // ─── Lazy-loaded sections ───
-  const lazySections = [
-    { id: 'experience', loader: () => import('./components/sections/Experience.js'), minHeight: '600px' },
-    { id: 'skills', loader: () => import('./components/sections/Skills.js'), minHeight: '500px' },
-    { id: 'achievements', loader: () => import('./components/sections/Achievements.js'), minHeight: '400px' },
-    { id: 'certificate', loader: () => import('./components/sections/Certificate.js'), minHeight: '500px' },
-    { id: 'projects', loader: () => import('./components/sections/Projects.js'), minHeight: '600px' },
-    { id: 'contact', loader: () => import('./components/sections/Footer.js'), minHeight: '400px' },
-  ];
-
-  lazySections.forEach(({ id, loader, minHeight }) => {
-    const lazySection = createLazySection(loader, '', minHeight, id);
-    main.appendChild(lazySection);
-  });
+  // ─── All sections loaded eagerly ───
+  main.appendChild(createHome());
+  main.appendChild(createExperience());
+  main.appendChild(createSkills());
+  main.appendChild(createAchievements());
+  main.appendChild(createCertificate());
+  main.appendChild(createProjects());
+  main.appendChild(createFooter());
 
   root.appendChild(main);
 
@@ -62,3 +57,4 @@ export function initApp() {
   const goToTop = createGoToTop();
   document.body.appendChild(goToTop);
 }
+
