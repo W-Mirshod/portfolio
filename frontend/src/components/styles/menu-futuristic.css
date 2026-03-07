@@ -106,6 +106,31 @@ a,
 .go-to-top-button {
   position: fixed !important;
   z-index: 10000 !important;
+  background: rgba(18, 24, 34, 0.84);
+  transform: translate3d(0, 0, 0);
+  right: max(1rem, env(safe-area-inset-right));
+  bottom: calc(max(1rem, env(safe-area-inset-bottom)) + 0.25rem);
+  will-change: transform, opacity;
+  backface-visibility: hidden;
+  -webkit-backface-visibility: hidden;
+  contain: paint;
+  backdrop-filter: none !important;
+  -webkit-backdrop-filter: none !important;
+  touch-action: manipulation;
+  -webkit-tap-highlight-color: transparent;
+  user-select: none;
+}
+
+@media (hover: none), (pointer: coarse) {
+  .go-to-top-button {
+    right: calc(max(1rem, env(safe-area-inset-right)) + 0.2rem);
+    bottom: calc(max(1rem, env(safe-area-inset-bottom)) + 1.25rem);
+  }
+}
+
+.go-to-top-button::before,
+.go-to-top-button::after {
+  content: none !important;
 }
 
 .liquid-menu-toggle {
