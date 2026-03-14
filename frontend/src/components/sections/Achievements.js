@@ -32,7 +32,7 @@ export default function createAchievements() {
               ${githubAchievements.map(a => `
                 <div class="group flex items-center gap-4 p-4 rounded-lg bg-white/10 border border-white/20 hover:bg-white/20 hover:border-white/35 transition-all duration-300">
                   <div class="relative">
-                    <img src="${a.icon}" alt="${a.label}" class="w-12 h-12 rounded-lg border border-white/25 group-hover:border-white/45 transition-colors duration-300"/>
+                    <img src="${a.icon}" alt="${a.label}" loading="lazy" decoding="async" class="w-12 h-12 rounded-lg border border-white/25 group-hover:border-white/45 transition-colors duration-300"/>
                     ${a.count ? `<div class="absolute -top-2 -right-2 w-6 h-6 bg-white/90 text-slate-900 text-xs font-bold rounded-full flex items-center justify-center border-2 border-white/60">${a.count}</div>` : ''}
                   </div>
                   <div class="flex-1">

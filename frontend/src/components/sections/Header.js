@@ -28,14 +28,20 @@ export default function createHeader() {
     { href: '#contact', key: 'contact', label: i18n.t('navigation.contact'), icon: iconEnvelope('20') }
   ];
 
-  const handleNavigation = (href) => {
-    const element = document.querySelector(href);
+  const handleNavigation = async (href) => {
+    const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    let element = document.querySelector(href);
+
+    if (!element && typeof window.ensureSectionReady === 'function') {
+      element = await window.ensureSectionReady(href.slice(1));
+    }
+
     if (element) {
-      if (window.lenis) {
-        window.lenis.scrollTo(href, { duration: 1.2, offset: -80 });
+      if (window.lenis && !prefersReducedMotion) {
+        window.lenis.scrollTo(element, { duration: 0.9, offset: -80 });
       } else {
         const elementTop = element.getBoundingClientRect().top + window.pageYOffset;
-        window.scrollTo({ top: elementTop - 80, behavior: 'smooth' });
+        window.scrollTo({ top: elementTop - 80, behavior: prefersReducedMotion ? 'auto' : 'smooth' });
       }
     }
     closeMobileMenu();

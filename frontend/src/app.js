@@ -3,12 +3,6 @@ import 'lenis/dist/lenis.css';
 
 import createHeader from './components/sections/Header.js';
 import createHome from './components/sections/Home.js';
-import createExperience from './components/sections/Experience.js';
-import createSkills from './components/sections/Skills.js';
-import createAchievements from './components/sections/Achievements.js';
-import createCertificate from './components/sections/Certificate.js';
-import createProjects from './components/sections/Projects.js';
-import createFooter from './components/sections/Footer.js';
 import createGoToTop from './components/ui/GoToTop.js';
 
 export function initApp() {
@@ -64,18 +58,77 @@ export function initApp() {
   main.className = 'xl:ml-32';
   main.setAttribute('role', 'main');
 
-  // ─── All sections loaded eagerly ───
   main.appendChild(createHome());
-  main.appendChild(createExperience());
-  main.appendChild(createSkills());
-  main.appendChild(createAchievements());
-  main.appendChild(createCertificate());
-  main.appendChild(createProjects());
-  main.appendChild(createFooter());
 
   root.appendChild(main);
 
-  // ─── Go-to-top button ───
+  const sectionLoaders = {
+    experience: () => import('./components/sections/Experience.js'),
+    skills: () => import('./components/sections/Skills.js'),
+    achievements: () => import('./components/sections/Achievements.js'),
+    certificate: () => import('./components/sections/Certificate.js'),
+    projects: () => import('./components/sections/Projects.js'),
+    contact: () => import('./components/sections/Footer.js'),
+  };
+  const sectionOrder = Object.keys(sectionLoaders);
+  const loadedSections = new Set(['home']);
+  const pendingLoads = new Map();
+
+  const loadSection = async (sectionId) => {
+    if (loadedSections.has(sectionId)) {
+      return document.getElementById(sectionId);
+    }
+
+    if (pendingLoads.has(sectionId)) {
+      return pendingLoads.get(sectionId);
+    }
+
+    const promise = sectionLoaders[sectionId]().then((module) => {
+      const section = module.default();
+      main.appendChild(section);
+      loadedSections.add(sectionId);
+      return section;
+    }).finally(() => {
+      pendingLoads.delete(sectionId);
+    });
+
+    pendingLoads.set(sectionId, promise);
+    return promise;
+  };
+
+  const ensureSectionReady = async (sectionId) => {
+    const targetIndex = sectionOrder.indexOf(sectionId);
+    if (targetIndex === -1) {
+      return document.getElementById(sectionId);
+    }
+
+    for (const id of sectionOrder.slice(0, targetIndex + 1)) {
+      await loadSection(id);
+    }
+
+    return document.getElementById(sectionId);
+  };
+
+  window.ensureSectionReady = ensureSectionReady;
+
+  const prefetchSections = (index = 0) => {
+    if (index >= sectionOrder.length) return;
+
+    const callback = async () => {
+      await loadSection(sectionOrder[index]);
+      prefetchSections(index + 1);
+    };
+
+    if ('requestIdleCallback' in window) {
+      window.requestIdleCallback(callback, { timeout: 1200 });
+      return;
+    }
+
+    window.setTimeout(callback, 180);
+  };
+
+  prefetchSections();
+
   const goToTop = createGoToTop();
   document.body.appendChild(goToTop);
 }

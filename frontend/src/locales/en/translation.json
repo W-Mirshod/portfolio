@@ -26,12 +26,15 @@
     "contact": "Contact"
   },
   "home": {
-    "subtitle": "Backend Engineer + AI Integration",
+    "subtitle": "Fast Python and AI backend systems",
+    "valueProp": "I build fast Python and AI backend systems for products that need scale, automation, and clean architecture.",
+    "supportingText": "FastAPI, Django, async workers, and production delivery focused on reliable growth.",
     "descriptionPart1": "Building AI-powered product prototype",
     "descriptionPart2": "Production-Ready",
     "buttons": {
       "viewProjects": "View Projects",
-      "letsTalk": "Let's Talk"
+      "letsTalk": "Let's Talk",
+      "contactResume": "Contact / Resume"
     },
     "stats": {
       "uptime": "Uptime",
@@ -42,10 +45,10 @@
       "speedSubtitle": "Performance gains"
     },
     "sections": {
-      "whatIDo": "What I Do",
-      "backendAPIs": "Backend APIs",
-      "aiMLSystems": "AI/ML Systems",
-      "devops": "DevOps"
+      "whatIDo": "Built for growth",
+      "backendAPIs": "Scale-ready APIs",
+      "aiMLSystems": "Automation systems",
+      "devops": "Clean architecture"
     }
   },
   "footer": {
