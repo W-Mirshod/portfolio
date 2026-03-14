@@ -28,7 +28,7 @@ export default function createCertificate() {
               </div>
               <div class="relative flex flex-col items-center mt-4 md:mt-0">
                 <div class="w-32 h-32 sm:w-40 sm:h-40 rounded-xl liquid-panel-strong flex items-center justify-center mb-4 overflow-hidden shadow-lg border border-white/30">
-                  <img src="${CertificateImg}" alt="Backend Python Django Bootcamp Certificate" loading="eager" decoding="async" class="w-full h-full object-contain rounded-xl" onerror="this.style.display='none'"/>
+                  <img src="${CertificateImg}" alt="Backend Python Django Bootcamp Certificate" loading="lazy" decoding="async" class="w-full h-full object-contain rounded-xl" onerror="this.style.display='none'"/>
                   <div class="absolute inset-0 flex items-center justify-center bg-black/60 opacity-0 hover:opacity-100 transition-opacity">
                     <a href="https://erp.student.najottalim.uz/public/certificate/9d153d70-07b5-4dd9-ae1d-3ff0ea50f531" target="_blank" rel="noopener noreferrer" class="inline-flex items-center gap-2 px-4 py-2 rounded-lg liquid-btn liquid-btn-primary text-white font-semibold text-xs">
                       <i class="fas fa-external-link-alt"></i> ${t('certificate.buttons.verify')}

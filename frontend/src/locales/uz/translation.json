@@ -26,12 +26,15 @@
     "contact": "Aloqa"
   },
   "home": {
-    "subtitle": "Backend Muhandis + AI Integratsiyasi",
+    "subtitle": "Tez Python va AI backend tizimlari",
+    "valueProp": "Men masshtab, avtomatlashtirish va toza arxitektura kerak bo'ladigan mahsulotlar uchun tez Python va AI backend tizimlarini quraman.",
+    "supportingText": "FastAPI, Django, async worker'lar va barqaror o'sishga qaratilgan production delivery.",
     "descriptionPart1": "AI-mahsulot prototipini yaratish",
     "descriptionPart2": "Ishlab chiqarishga tayyor",
     "buttons": {
       "viewProjects": "Loyihalarni ko'rish",
-      "letsTalk": "Keling suhbatlashamiz"
+      "letsTalk": "Keling suhbatlashamiz",
+      "contactResume": "Aloqa / Rezyume"
     },
     "stats": {
       "uptime": "Ish vaqti",
@@ -42,10 +45,10 @@
       "speedSubtitle": "Samaradorlik yaxshilanishi"
     },
     "sections": {
-      "whatIDo": "Men nima qilaman",
-      "backendAPIs": "Backend API",
-      "aiMLSystems": "AI/ML Tizimlar",
-      "devops": "DevOps"
+      "whatIDo": "O'sish uchun qurilgan",
+      "backendAPIs": "Masshtabga tayyor API'lar",
+      "aiMLSystems": "Avtomatlashtirish tizimlari",
+      "devops": "Toza arxitektura"
     }
   },
   "footer": {

@@ -26,12 +26,15 @@
     "contact": "Контакты"
   },
   "home": {
-    "subtitle": "Backend Инженер + AI Интеграция",
+    "subtitle": "Быстрые Python и AI backend системы",
+    "valueProp": "Я создаю быстрые Python и AI backend системы для продуктов, которым нужны масштабируемость, автоматизация и чистая архитектура.",
+    "supportingText": "FastAPI, Django, асинхронные воркеры и production delivery с фокусом на надежный рост.",
     "descriptionPart1": "Создание AI-прототипа продукта",
     "descriptionPart2": "Готово к продакшену",
     "buttons": {
       "viewProjects": "Посмотреть проекты",
-      "letsTalk": "Давайте поговорим"
+      "letsTalk": "Давайте поговорим",
+      "contactResume": "Контакты / Резюме"
     },
     "stats": {
       "uptime": "Время работы",
@@ -42,10 +45,10 @@
       "speedSubtitle": "Улучшение производительности"
     },
     "sections": {
-      "whatIDo": "Что я делаю",
-      "backendAPIs": "Backend API",
-      "aiMLSystems": "AI/ML Системы",
-      "devops": "DevOps"
+      "whatIDo": "Основа для роста",
+      "backendAPIs": "API для масштаба",
+      "aiMLSystems": "Системы автоматизации",
+      "devops": "Чистая архитектура"
     }
   },
   "footer": {

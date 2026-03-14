@@ -33,7 +33,7 @@ export default function createSkills() {
                   const translatedSkill = t(`skills.categories.${category.id}.skills.${idx}`, { defaultValue: skill });
                   return `
                     <span class="inline-flex items-center gap-1.5 sm:gap-2 text-xs text-blue-100/90 bg-white/10 px-2.5 sm:px-3 py-1.5 sm:py-2 rounded-md border border-white/20 hover:bg-white/20 hover:border-white/35 hover:text-white transition-all duration-300">
-                      ${iconUrl ? `<img src="${iconUrl}" alt="${skill}" width="16" height="16" loading="eager" decoding="async" class="w-4 h-4 object-contain flex-shrink-0"/>` : '<i class="fas fa-code text-[10px] text-blue-300/80 flex-shrink-0"></i>'}
+                      ${iconUrl ? `<img src="${iconUrl}" alt="${skill}" width="16" height="16" loading="lazy" decoding="async" class="w-4 h-4 object-contain flex-shrink-0"/>` : '<i class="fas fa-code text-[10px] text-blue-300/80 flex-shrink-0"></i>'}
                       <span class="whitespace-nowrap">${translatedSkill}</span>
                     </span>
                   `;
