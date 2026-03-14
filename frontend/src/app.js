@@ -15,23 +15,45 @@ export function initApp() {
   const root = document.getElementById('root');
   if (!root) return;
 
-  // ─── Lenis smooth scroll ───
-  const lenis = new Lenis({
-    duration: 1.2,
-    easing: (t) => Math.min(1, 1.001 - Math.pow(2, -10 * t)),
-    orientation: 'vertical',
-    gestureOrientation: 'vertical',
-    smoothWheel: true,
-    touchMultiplier: 2,
-  });
+  const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  const connection = navigator.connection || navigator.mozConnection || navigator.webkitConnection;
+  const isConstrainedDevice =
+    Boolean(connection?.saveData) ||
+    (typeof navigator.hardwareConcurrency === 'number' && navigator.hardwareConcurrency <= 4) ||
+    (typeof navigator.deviceMemory === 'number' && navigator.deviceMemory <= 4);
 
-  window.lenis = lenis;
+  if (!prefersReducedMotion) {
+    const lenis = new Lenis({
+      duration: isConstrainedDevice ? 0.9 : 1,
+      easing: (t) => Math.min(1, 1.001 - Math.pow(2, -10 * t)),
+      orientation: 'vertical',
+      gestureOrientation: 'vertical',
+      smoothWheel: true,
+      syncTouch: true,
+      syncTouchLerp: isConstrainedDevice ? 0.18 : 0.12,
+      touchMultiplier: isConstrainedDevice ? 1.2 : 1.4,
+    });
 
-  function raf(time) {
-    lenis.raf(time);
-    requestAnimationFrame(raf);
+    window.lenis = lenis;
+
+    let rafId = null;
+    const raf = (time) => {
+      lenis.raf(time);
+      rafId = requestAnimationFrame(raf);
+    };
+
+    rafId = requestAnimationFrame(raf);
+    document.addEventListener('visibilitychange', () => {
+      if (document.hidden && rafId) {
+        cancelAnimationFrame(rafId);
+        rafId = null;
+      } else if (!document.hidden && !rafId) {
+        rafId = requestAnimationFrame(raf);
+      }
+    });
+  } else {
+    window.lenis = null;
   }
-  requestAnimationFrame(raf);
 
   // ─── Header (fixed navigation) ───
   const headerFragment = createHeader();

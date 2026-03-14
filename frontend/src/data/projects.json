@@ -42,8 +42,8 @@
       "REST",
       "WebSockets"
     ],
-    "url": "https://mini-crm.w-mirshod.com/docs",
-    "githubUrl": "https://github.com/W-Mirshod/Mini_CRM"
+    "url": "https://mini-crm.mirshod.com/docs",
+    "githubUrl": "https://github.com/Mirshod/Mini_CRM"
   },
   {
     "id": 4,
@@ -56,8 +56,8 @@
       "PostgreSQL",
       "Redis"
     ],
-    "url": "https://marketplace.w-mirshod.com/",
-    "githubUrl": "https://github.com/W-Mirshod/MarketPlace"
+    "url": "https://marketplace.mirshod.com/",
+    "githubUrl": "https://github.com/Mirshod/MarketPlace"
   },
   {
     "id": 5,
@@ -69,8 +69,8 @@
       "OpenAI API",
       "SQLite"
     ],
-    "url": "https://typescript-chat.w-mirshod.com/",
-    "githubUrl": "https://github.com/W-Mirshod/typescript-chat"
+    "url": "https://typescript-chat.mirshod.com/",
+    "githubUrl": "https://github.com/Mirshod/typescript-chat"
   },
   {
     "id": 6,
@@ -84,7 +84,7 @@
       "REST API",
       "API Swagger"
     ],
-    "githubUrl": "https://github.com/W-Mirshod/school-crm"
+    "githubUrl": "https://github.com/Mirshod/school-crm"
   },
   {
     "id": 7,
@@ -99,7 +99,7 @@
       "RBAC",
       "Python"
     ],
-    "githubUrl": "https://github.com/W-Mirshod/custom-auth"
+    "githubUrl": "https://github.com/Mirshod/custom-auth"
   },
   {
     "id": 8,
@@ -115,6 +115,6 @@
       "TypeScript",
       "Python"
     ],
-    "githubUrl": "https://github.com/W-Mirshod/realtime-chat-platform"
+    "githubUrl": "https://github.com/Mirshod/realtime-chat-platform"
   }
 ]

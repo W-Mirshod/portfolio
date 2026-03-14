@@ -3,6 +3,7 @@ import { iconArrowRight, iconServer, iconBrain, iconCloud } from '../ui/Icons.js
 import { initializeAudio } from '../../utils/audio.js';
 import createParallaxBackground from '../ui/ParallaxBackground.js';
 import createMagneticButton from '../ui/MagneticButton.js';
+import { initHomeW3D } from '../ui/W3DIcon.js';
 import '../styles/w3d-icon.css';
 
 export default function createHome() {
@@ -126,28 +127,26 @@ export default function createHome() {
     buttonsContainer.appendChild(talkBtn);
   }
 
-  // 3D W Icon (lazy loaded — skip on low-end / small-screen devices)
+  // 3D hero icon
   const isMobile = window.innerWidth < 768 || /Mobi|Android/i.test(navigator.userAgent);
+  const connection = navigator.connection || navigator.mozConnection || navigator.webkitConnection;
+  const isConstrainedDevice =
+    Boolean(connection?.saveData) ||
+    (typeof navigator.hardwareConcurrency === 'number' && navigator.hardwareConcurrency <= 4) ||
+    (typeof navigator.deviceMemory === 'number' && navigator.deviceMemory <= 4);
   const hasWebGL = (() => { try { const c = document.createElement('canvas'); return !!(c.getContext('webgl2') || c.getContext('webgl')); } catch { return false; } })();
   const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  const w3dContainer = section.querySelector('[data-w3d-hero]');
 
-  setTimeout(async () => {
-    const w3dContainer = section.querySelector('[data-w3d-hero]');
-    if (!w3dContainer || w3dContainer.offsetWidth === 0) return;
-
-    // Fall back to static image when GPU is unavailable or user prefers reduced motion
-    if (!hasWebGL || prefersReducedMotion) {
-      w3dContainer.innerHTML = `<img src="/Mirshod-optimized.webp" alt="W" class="w-full h-full rounded-full object-cover border-4 border-white/35 shadow-2xl ring-2 ring-white/40 img-shimmer-load"/>`;
-      return;
-    }
-
+  if (w3dContainer && w3dContainer.offsetWidth > 0 && hasWebGL && !prefersReducedMotion) {
     try {
-      const { initHomeW3D } = await import('../ui/W3DIcon.js');
-      initHomeW3D(w3dContainer, { isMobile });
+      initHomeW3D(w3dContainer, { isMobile, isConstrainedDevice });
     } catch (e) {
-      w3dContainer.innerHTML = `<img src="/Mirshod-optimized.webp" alt="W" class="w-full h-full rounded-full object-cover border-4 border-white/35 shadow-2xl ring-2 ring-white/40 img-shimmer-load"/>`;
+      w3dContainer.innerHTML = `<img src="/Mirshod-optimized.webp" alt="Mirshod" class="w-full h-full rounded-full object-cover border-4 border-white/35 shadow-2xl ring-2 ring-white/40 img-shimmer-load"/>`;
     }
-  }, 100);
+  } else if (w3dContainer) {
+    w3dContainer.innerHTML = `<img src="/Mirshod-optimized.webp" alt="Mirshod" class="w-full h-full rounded-full object-cover border-4 border-white/35 shadow-2xl ring-2 ring-white/40 img-shimmer-load"/>`;
+  }
 
   // Audio
   let audioStarted = false;

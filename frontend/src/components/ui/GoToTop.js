@@ -26,11 +26,9 @@ export default function createGoToTop() {
     <svg class="go-top-arrow text-white/90 absolute z-10 transition-colors duration-300 group-hover:text-white" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
       <path d="M12 19V5M5 12l7-7 7 7"/>
     </svg>
-    <span class="go-top-w text-xl font-bold text-white/90 absolute z-10 transition-colors duration-300 group-hover:text-white" style="visibility:hidden;opacity:0">W</span>
   `;
 
   const arrowEl = button.querySelector('.go-top-arrow');
-  const wEl = button.querySelector('.go-top-w');
 
   let isVisible = false;
   let isScrollingToTop = false;
@@ -61,30 +59,11 @@ export default function createGoToTop() {
     });
   };
 
-  const transformToW = () => {
-    gsap.killTweensOf([arrowEl, wEl]);
-    gsap.to(arrowEl, {
-      opacity: 0, scale: 0.5, rotation: -180, duration: 0.3, ease: 'power2.in',
-      onComplete: () => { arrowEl.style.visibility = 'hidden'; }
-    });
-    wEl.style.visibility = 'visible';
-    wEl.style.display = 'block';
-    gsap.fromTo(wEl,
-      { opacity: 0, scale: 0.5, rotation: 180 },
-      { opacity: 1, scale: 1, rotation: 0, duration: 0.4, ease: 'back.out(1.7)' }
-    );
-  };
-
-  const transformToArrow = () => {
-    gsap.killTweensOf([arrowEl, wEl]);
-    gsap.to(wEl, {
-      opacity: 0, scale: 0.5, rotation: 180, duration: 0.3, ease: 'power2.in',
-      onComplete: () => { wEl.style.visibility = 'hidden'; wEl.style.display = 'none'; }
-    });
-    arrowEl.style.visibility = 'visible';
+  const pulseArrow = () => {
+    gsap.killTweensOf(arrowEl);
     gsap.fromTo(arrowEl,
-      { opacity: 0, scale: 0.5, rotation: -180 },
-      { opacity: 1, scale: 1, rotation: 0, duration: 0.4, ease: 'back.out(1.7)' }
+      { y: 0, scale: 1, opacity: 1 },
+      { y: -2, scale: 1.08, opacity: 1, duration: 0.12, yoyo: true, repeat: 1, ease: 'power2.inOut' }
     );
   };
 
@@ -106,7 +85,6 @@ export default function createGoToTop() {
   const finishScrollToTop = () => {
     if (!isScrollingToTop) return;
     isScrollingToTop = false;
-    if (!isTouchOptimized) transformToArrow();
     checkScroll();
   };
 
@@ -150,7 +128,7 @@ export default function createGoToTop() {
     }
     isScrollingToTop = true;
     show();
-    if (!isTouchOptimized) transformToW();
+    if (!isTouchOptimized) pulseArrow();
     const lenis = window.lenis;
     if (lenis) {
       if (isTouchOptimized) {

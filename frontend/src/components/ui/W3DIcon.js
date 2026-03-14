@@ -380,28 +380,31 @@ export function createW3DScene(container, options = {}) {
   return { dispose, canvas };
 }
 
-export function initHomeW3D(containerElement, { isMobile = false } = {}) {
-  return createW3DScene(containerElement, isMobile ? {
-    // Mobile-optimised preset
-    enableMouseTracking: false,
-    enableLiquidMorph: false,
-    enableParticles: false,
-    autoRotateSpeed: 0.15,
-    floatAmplitude: 0.06,
-    cameraDistance: 3.6,
-    pixelRatio: Math.min(window.devicePixelRatio, 1.5),
-    bevelSegments: 3,
-    antialias: false,
-    targetFPS: 30,
-  } : {
-    // Desktop preset
+export function initHomeW3D(containerElement, { isMobile = false, isConstrainedDevice = false } = {}) {
+  if (isMobile || isConstrainedDevice) {
+    return createW3DScene(containerElement, {
+      enableMouseTracking: false,
+      enableLiquidMorph: false,
+      enableParticles: false,
+      autoRotateSpeed: 0.14,
+      floatAmplitude: 0.05,
+      cameraDistance: 3.6,
+      pixelRatio: Math.min(window.devicePixelRatio, 1.25),
+      bevelSegments: 3,
+      antialias: false,
+      targetFPS: 40,
+    });
+  }
+
+  return createW3DScene(containerElement, {
     enableMouseTracking: true,
     enableLiquidMorph: true,
     enableParticles: false,
     autoRotateSpeed: 0.15,
     floatAmplitude: 0.08,
     cameraDistance: 3.6,
-    bevelSegments: 8,
+    pixelRatio: Math.min(window.devicePixelRatio, 1.75),
+    bevelSegments: 6,
     antialias: true,
     targetFPS: 60,
   });
