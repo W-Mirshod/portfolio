@@ -18,7 +18,7 @@ const heroImageMarkup = `
 export default function createHome() {
   const section = document.createElement('section');
   section.id = 'home';
-  section.className = 'liquid-section section-accent-glow relative flex flex-col items-center justify-center min-h-screen w-full overflow-hidden pt-16 sm:pt-20 md:pt-24 lg:pt-10 px-3 sm:px-4 md:px-6 lg:px-8 xl:px-20';
+  section.className = 'liquid-section relative flex flex-col items-center justify-center min-h-screen w-full overflow-hidden pt-16 sm:pt-20 md:pt-24 lg:pt-10 px-3 sm:px-4 md:px-6 lg:px-8 xl:px-20';
 
   const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
   const t = (k) => i18n.t(k);
@@ -42,11 +42,11 @@ export default function createHome() {
   function buildContent() {
     return `
       <div class="absolute inset-0 pointer-events-none">
-        <div class="absolute inset-0 w-full h-full bg-bg-secondary/20"></div>
-        <div class="mesh-gradient-bg opacity-80"></div>
-        <div class="absolute inset-0 bg-gradient-to-b from-white/5 via-transparent to-transparent opacity-80"></div>
-        <div class="absolute top-20 left-1/2 h-72 w-72 -translate-x-1/2 rounded-full bg-blue-200/10 blur-3xl"></div>
-        <div class="absolute bottom-10 right-10 h-56 w-56 rounded-full bg-sky-200/10 blur-3xl"></div>
+        <div class="absolute inset-0 bg-[#020202]"></div>
+        <div class="absolute inset-0 bg-gradient-to-b from-[#050505] via-[#030303] to-[#0a0a0c]"></div>
+        <div class="absolute inset-0 opacity-70" style="background:radial-gradient(circle at 50% 0%, rgba(255,255,255,0.045) 0%, transparent 34%), radial-gradient(circle at 80% 80%, rgba(255,255,255,0.02) 0%, transparent 28%);"></div>
+        <div class="absolute top-20 left-1/2 h-72 w-72 -translate-x-1/2 rounded-full bg-white/[0.03] blur-3xl"></div>
+        <div class="absolute bottom-10 right-10 h-56 w-56 rounded-full bg-white/[0.02] blur-3xl"></div>
       </div>
       <div class="relative flex flex-col justify-center items-center w-full h-full max-w-7xl mx-auto z-10 py-4 sm:py-6 md:py-8 lg:py-12">
         <div class="flex flex-col items-center justify-center text-center w-full max-w-7xl mx-auto relative space-y-8 sm:space-y-10 md:space-y-12">
