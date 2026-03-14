@@ -1,7 +1,6 @@
 import i18n from '../../utils/i18n.js';
 import skillCategoriesData from '../../data/skills.json';
 import { getSkillIcon } from '../../utils/skillIconMapper.js';
-import createLazyImage from '../ui/LazyImage.js';
 
 export default function createSkills() {
   const section = document.createElement('section');
@@ -34,7 +33,7 @@ export default function createSkills() {
                   const translatedSkill = t(`skills.categories.${category.id}.skills.${idx}`, { defaultValue: skill });
                   return `
                     <span class="inline-flex items-center gap-1.5 sm:gap-2 text-xs text-blue-100/90 bg-white/10 px-2.5 sm:px-3 py-1.5 sm:py-2 rounded-md border border-white/20 hover:bg-white/20 hover:border-white/35 hover:text-white transition-all duration-300">
-                      ${iconUrl ? `<span class="skill-icon-placeholder w-4 h-4 flex-shrink-0" data-src="${iconUrl}" data-alt="${skill}"></span>` : '<i class="fas fa-code text-[10px] text-blue-300/80 flex-shrink-0"></i>'}
+                      ${iconUrl ? `<img src="${iconUrl}" alt="${skill}" width="16" height="16" loading="eager" decoding="async" class="w-4 h-4 object-contain flex-shrink-0"/>` : '<i class="fas fa-code text-[10px] text-blue-300/80 flex-shrink-0"></i>'}
                       <span class="whitespace-nowrap">${translatedSkill}</span>
                     </span>
                   `;
@@ -45,18 +44,6 @@ export default function createSkills() {
         </div>
       </div>
     `;
-
-    // Replace skill icon placeholders with lazy images
-    section.querySelectorAll('.skill-icon-placeholder').forEach(placeholder => {
-      const img = createLazyImage({
-        src: placeholder.dataset.src,
-        alt: placeholder.dataset.alt,
-        width: '16',
-        height: '16',
-        className: 'w-4 h-4 object-contain flex-shrink-0'
-      });
-      placeholder.replaceWith(img);
-    });
   }
 
   render();
