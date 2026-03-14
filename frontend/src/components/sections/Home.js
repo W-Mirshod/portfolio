@@ -126,7 +126,7 @@ export default function createHome() {
     buttonsContainer.appendChild(talkBtn);
   }
 
-  // 3D W Icon (lazy loaded — skip on low-end / small-screen devices)
+  // 3D hero icon (lazy loaded — skip on low-end / small-screen devices)
   const isMobile = window.innerWidth < 768 || /Mobi|Android/i.test(navigator.userAgent);
   const hasWebGL = (() => { try { const c = document.createElement('canvas'); return !!(c.getContext('webgl2') || c.getContext('webgl')); } catch { return false; } })();
   const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
@@ -137,7 +137,7 @@ export default function createHome() {
 
     // Fall back to static image when GPU is unavailable or user prefers reduced motion
     if (!hasWebGL || prefersReducedMotion) {
-      w3dContainer.innerHTML = `<img src="/Mirshod-optimized.webp" alt="W" class="w-full h-full rounded-full object-cover border-4 border-white/35 shadow-2xl ring-2 ring-white/40 img-shimmer-load"/>`;
+      w3dContainer.innerHTML = `<img src="/Mirshod-optimized.webp" alt="Mirshod" class="w-full h-full rounded-full object-cover border-4 border-white/35 shadow-2xl ring-2 ring-white/40 img-shimmer-load"/>`;
       return;
     }
 
@@ -145,7 +145,7 @@ export default function createHome() {
       const { initHomeW3D } = await import('../ui/W3DIcon.js');
       initHomeW3D(w3dContainer, { isMobile });
     } catch (e) {
-      w3dContainer.innerHTML = `<img src="/Mirshod-optimized.webp" alt="W" class="w-full h-full rounded-full object-cover border-4 border-white/35 shadow-2xl ring-2 ring-white/40 img-shimmer-load"/>`;
+      w3dContainer.innerHTML = `<img src="/Mirshod-optimized.webp" alt="Mirshod" class="w-full h-full rounded-full object-cover border-4 border-white/35 shadow-2xl ring-2 ring-white/40 img-shimmer-load"/>`;
     }
   }, 100);
 

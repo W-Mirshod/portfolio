@@ -11,7 +11,7 @@ export default function createFooter() {
     const currentYear = new Date().getFullYear();
 
     const socialLinks = [
-      { icon: iconGithub('14', 'text-blue-300'), url: 'https://github.com/W-Mirshod', label: 'GitHub', color: 'hover:text-white' },
+      { icon: iconGithub('14', 'text-blue-300'), url: 'https://github.com/Mirshod', label: 'GitHub', color: 'hover:text-white' },
       { icon: iconLinkedin('14', 'text-blue-300'), url: 'https://linkedin.com/in/wmirshod', label: 'LinkedIn', color: 'hover:text-blue-200' },
       { icon: iconTelegram('14', 'text-blue-300'), url: 'https://t.me/w_mirshod', label: 'Telegram', color: 'hover:text-sky-200' },
       { icon: iconInstagram('14', 'text-blue-300'), url: 'https://www.instagram.com/wmirshod/?igsh=czRpZ3d5dzBxa2o3&utm_source=qr', label: 'Instagram', color: 'hover:text-pink-200' }
@@ -60,7 +60,7 @@ export default function createFooter() {
           </div>
         </div>
         <div class="text-center pt-8 border-t border-white/20">
-          <p class="text-sm text-blue-100/70">© 2023-${currentYear} W-Mirshod. All rights reserved.</p>
+          <p class="text-sm text-blue-100/70">© 2023-${currentYear} Mirshod. All rights reserved.</p>
         </div>
       </div>
     `;
