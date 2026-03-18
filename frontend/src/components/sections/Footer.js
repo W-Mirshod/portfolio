@@ -1,5 +1,7 @@
 import i18n from '../../utils/i18n.js';
 import { iconGithub, iconLinkedin, iconTelegram, iconInstagram, iconEnvelope, iconPhone, iconMapMarkerAlt, iconShareAlt } from '../ui/Icons.js';
+import { renderDotVersionLabel } from '../ui/dotVersionLabel.js';
+import '../styles/menu-futuristic.css';
 
 export default function createFooter() {
   const footer = document.createElement('footer');
@@ -60,6 +62,9 @@ export default function createFooter() {
           </div>
         </div>
         <div class="text-center pt-8 border-t border-white/20">
+          <div class="page-version-mark mb-5" aria-label="Version 4.3">
+            ${renderDotVersionLabel('VERSION 4.3')}
+          </div>
           <p class="text-sm text-blue-100/70">© 2023-${currentYear} W-Mirshod. All rights reserved.</p>
         </div>
       </div>
