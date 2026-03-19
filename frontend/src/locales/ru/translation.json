@@ -20,8 +20,7 @@
     "home": "Главная",
     "experience": "Опыт",
     "skills": "Навыки",
-    "achievements": "Достижения",
-    "certificate": "Сертификаты",
+    "proof": "Доказательства",
     "projects": "Проекты",
     "contact": "Контакты"
   },
@@ -40,34 +39,9 @@
       "projectsSubtitle": "Выполнено проектов",
       "speed": "Скорость ↑",
       "speedSubtitle": "Улучшение производительности"
-    },
-    "sections": {
-      "whatIDo": "Что я делаю",
-      "backendAPIs": "Backend API",
-      "aiMLSystems": "AI/ML Системы",
-      "devops": "DevOps"
     }
   },
   "footer": {
-    "quickLinks": {
-      "title": "Быстрые ссылки",
-      "home": "Главная",
-      "experience": "Опыт",
-      "skills": "Навыки",
-      "achievements": "Достижения",
-      "certificate": "Сертификаты",
-      "projects": "Проекты",
-      "contact": "Контакты"
-    },
-    "specializations": {
-      "title": "Специализации",
-      "backend": "Backend",
-      "frontend": "Frontend",
-      "devops": "DevOps",
-      "ai": "AI",
-      "database": "База данных",
-      "api": "API"
-    },
     "connect": {
       "title": "Связаться со мной",
       "contactInfo": "Контактная информация",
@@ -116,30 +90,7 @@
       "profile": "LinkedIn Профиль",
       "connections": "Связи",
       "visit": "Посетить LinkedIn профиль"
-    },
-    "job1": {
-      "period": "Март 2025 - Настоящее время",
-      "title": "Senior Backend Разработчик",
-      "company": "Tech Solutions Inc.",
-      "description": "Руководство backend разработкой и интеграцией API.",
-      "skills": ["Python", "Django", "REST APIs", "PostgreSQL"]
-    },
-    "job2": {
-      "period": "Октябрь 2024 - Март 2025",
-      "title": "Full Stack Разработчик",
-      "company": "Innovatech",
-      "description": "Разработка full-stack приложений и оптимизация производительности.",
-      "skills": ["React", "Node.js", "MongoDB", "Docker"]
-    },
-    "job3": {
-      "period": "2022 - 2024",
-      "title": "Junior Разработчик",
-      "company": "Startup Hub",
-      "description": "Участие в различных проектах и изучение новых технологий.",
-      "skills": ["HTML", "CSS", "JavaScript", "Git"]
-    },
-    "ctaText": "Узнать больше на LinkedIn",
-    "ctaButton": "Посетить LinkedIn"
+    }
   },
   "skills": {
     "title": "Навыки и Экспертиза",
@@ -206,30 +157,6 @@
           "GPT-Neo"
         ]
       }
-    },
-    "backend": {
-      "title": "Backend",
-      "items": ["Python", "Django", "Node.js"]
-    },
-    "frontend": {
-      "title": "Frontend",
-      "items": ["React", "HTML", "CSS"]
-    },
-    "devops": {
-      "title": "DevOps",
-      "items": ["Docker", "Nginx"]
-    },
-    "databases": {
-      "title": "Базы данных",
-      "items": ["PostgreSQL", "MongoDB"]
-    },
-    "ai": {
-      "title": "AI",
-      "items": ["TensorFlow", "PyTorch"]
-    },
-    "tools": {
-      "title": "Инструменты",
-      "items": ["Git", "VS Code"]
     }
   },
   "projects": {
@@ -335,47 +262,10 @@
           "Python"
         ]
       }
-    },
-    "project1": {
-      "title": "YakLabs Платформа",
-      "description": "Платформа для реального времени сотрудничества с использованием Python, Django и WebSocket.",
-      "tags": ["Full-Stack Developer", "iOT Backend", "AI/ML"]
-    },
-    "project2": {
-      "title": "Texnomart API",
-      "description": "RESTful API для электронной коммерции с использованием Node.js и MongoDB.",
-      "tags": ["Node.js", "MongoDB", "REST API"]
-    },
-    "project3": {
-      "title": "Онлайн магазин",
-      "description": "Full-stack веб-приложение для онлайн покупок.",
-      "tags": ["React", "Node.js", "Express"]
-    },
-    "project4": {
-      "title": "Онлайн курсы",
-      "description": "Платформа для онлайн курсов и обучения.",
-      "tags": ["React", "Django", "PostgreSQL"]
-    },
-    "project5": {
-      "title": "Управление больницей",
-      "description": "Система для управления операциями больницы.",
-      "tags": ["Python", "Flask", "MySQL"]
-    },
-    "project6": {
-      "title": "GPT-Neo",
-      "description": "Реализация пользовательской AI языковой модели.",
-      "tags": ["Python", "AI", "NLP"]
-    },
-    "project7": {
-      "title": "Gemina App",
-      "description": "Многоязычное приложение для перевода и общения.",
-      "tags": ["React Native", "Translation", "Mobile"]
-    },
-    "project8": {
-      "title": "Medius Analytics",
-      "description": "Панель аналитики для бизнес-аналитики.",
-      "tags": ["React", "D3.js", "Analytics"]
     }
+  },
+  "proof": {
+    "title": "Доказательства"
   },
   "achievements": {
     "title": "GitHub Достижения",
@@ -427,34 +317,5 @@
       "view": "Посмотреть сертификат",
       "visit": "Посетить учреждение"
     }
-  },
-  "About Me": "Обо мне",
-  "Your Complete Digital Solution Partner": "Ваш технический партнер по цифровым решениям",
-  "Senior Software Engineer specializing in scalable backend systems, AI integration, and cloud infrastructure. I build production-grade platforms that handle real-world traffic with enterprise-level reliability.": "Senior Software Engineer, специализирующийся на масштабируемых backend системах, интеграции AI и облачной инфраструктуре. Создаю продакшн-платформы, которые обрабатывают реальный трафик с корпоративным уровнем надежности.",
-  "Backend Architecture": "Backend Архитектура",
-  "Microservices, APIs, Database Design": "Микросервисы, API, Дизайн БД",
-  "AI & Machine Learning": "AI & Машинное обучение",
-  "Computer Vision, NLP, Model Optimization": "Компьютерное зрение, NLP, Оптимизация моделей",
-  "Cloud & DevOps": "Облако & DevOps",
-  "Infrastructure, Monitoring, Deployment": "Инфраструктура, Мониторинг, Развертывание",
-  "Performance Engineering": "Инжиниринг производительности",
-  "Optimization, Scalability, Real-time Systems": "Оптимизация, Масштабируемость, Real-time системы",
-  "Track Record": "Достижения",
-  "Projects Delivered": "Проектов выполнено",
-  "Production Ready": "Готово к продакшну",
-  "Concurrent Users": "Одновременных пользователей",
-  "Peak Load": "Пиковая нагрузка",
-  "System Uptime": "Время работы системы",
-  "Enterprise SLA": "Корпоративный SLA",
-  "Years Experience": "Лет опыта",
-  "Full Stack": "Full Stack",
-  "Get In Touch": "Связаться",
-  "Featured Projects": "Избранные проекты",
-  "Some of my recent work": "Некоторые из моих недавних работ",
-  "View Project": "Посмотреть проект",
-  "View All Projects": "Посмотреть все проекты",
-  "Quick Links": "Быстрые ссылки",
-  "Specializations": "Специализации",
-  "Connect With Me": "Связаться со мной",
-  "All Rights Reserved.": "Все права защищены."
+  }
 }

@@ -34,21 +34,6 @@ export default function createExperience() {
             </article>
           `).join('')}
         </div>
-        <aside class="mt-20 flex flex-col items-center justify-center">
-          <a href="https://linkedin.com/in/wmirshod" target="_blank" rel="noopener noreferrer" class="group relative inline-flex flex-col items-center gap-2 px-8 py-6 rounded-2xl liquid-btn liquid-btn-primary text-white font-semibold text-base transition-all duration-500 hover:scale-105 overflow-hidden">
-            <div class="absolute inset-0 bg-gradient-to-r from-transparent via-white/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
-            <span class="flex items-center gap-3 relative z-10">
-              <i class="fab fa-linkedin text-2xl group-hover:scale-110 transition-transform duration-300"></i>
-              <span class="text-lg font-bold">${t('experience.linkedIn.profile')}</span>
-              <div class="flex items-center gap-2 bg-white/25 text-white font-bold text-sm px-4 py-2 rounded-full border border-white/45 backdrop-blur-sm">
-                <svg class="w-4 h-4" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M17 20h5v-2a4 4 0 00-3-3.87M9 20H4v-2a4 4 0 013-3.87m6 0A4 4 0 0012 4a4 4 0 00-1 7.87"/></svg>
-                1,800+
-                <span class="text-xs font-medium">${t('experience.linkedIn.connections')}</span>
-              </div>
-            </span>
-            <span class="text-white/85 font-medium text-sm relative z-10 group-hover:text-white transition-colors duration-300">${t('experience.linkedIn.visit')}</span>
-          </a>
-        </aside>
       </div>
     `;
   }

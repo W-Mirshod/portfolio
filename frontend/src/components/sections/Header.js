@@ -1,5 +1,5 @@
 import i18n from '../../utils/i18n.js';
-import { iconHome, iconBriefcase, iconCode, iconTrophy, iconCertificate, iconProjectDiagram, iconEnvelope } from '../ui/Icons.js';
+import { iconHome, iconBriefcase, iconCode, iconTrophy, iconProjectDiagram, iconEnvelope } from '../ui/Icons.js';
 import '../styles/menu-futuristic.css';
 
 const MirshodImg = '/Mirshod-optimized.webp';
@@ -22,8 +22,7 @@ export default function createHeader() {
     { href: '#home', key: 'home', label: i18n.t('navigation.home'), icon: iconHome('20') },
     { href: '#experience', key: 'experience', label: i18n.t('navigation.experience'), icon: iconBriefcase('20') },
     { href: '#skills', key: 'skills', label: i18n.t('navigation.skills'), icon: iconCode('20') },
-    { href: '#achievements', key: 'achievements', label: i18n.t('navigation.achievements'), icon: iconTrophy('20') },
-    { href: '#certificate', key: 'certificate', label: i18n.t('navigation.certificate'), icon: iconCertificate('20') },
+    { href: '#proof', key: 'proof', label: i18n.t('navigation.proof'), icon: iconTrophy('20') },
     { href: '#projects', key: 'projects', label: i18n.t('navigation.projects'), icon: iconProjectDiagram('20') },
     { href: '#contact', key: 'contact', label: i18n.t('navigation.contact'), icon: iconEnvelope('20') }
   ];
@@ -275,7 +274,7 @@ export default function createHeader() {
     if (scrollRafId) return;
     scrollRafId = requestAnimationFrame(() => {
       scrollRafId = null;
-      const sections = ['home', 'experience', 'skills', 'achievements', 'certificate', 'projects', 'contact'];
+      const sections = ['home', 'experience', 'skills', 'proof', 'projects', 'contact'];
       const scrollPosition = window.scrollY + 150;
       if (scrollPosition < 100) { updateActive('home'); return; }
       for (let i = sections.length - 1; i >= 0; i--) {

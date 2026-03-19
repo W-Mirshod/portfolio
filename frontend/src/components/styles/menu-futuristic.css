@@ -172,6 +172,12 @@ a,
   user-select: none;
 }
 
+@media (min-width: 1280px) {
+  .go-to-top-button {
+    right: calc(8rem + 1rem) !important;
+  }
+}
+
 @media (hover: none), (pointer: coarse) {
   .go-to-top-button {
     right: calc(max(1rem, env(safe-area-inset-right)) + 0.2rem);

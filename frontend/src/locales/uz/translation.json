@@ -20,8 +20,7 @@
     "home": "Bosh sahifa",
     "experience": "Tajriba",
     "skills": "Ko'nikmalar",
-    "achievements": "Yutuqlar",
-    "certificate": "Sertifikatlar",
+    "proof": "Ishonch va natijalar",
     "projects": "Loyihalar",
     "contact": "Aloqa"
   },
@@ -40,34 +39,9 @@
       "projectsSubtitle": "Bajarilgan loyihalar",
       "speed": "Tezlik ↑",
       "speedSubtitle": "Samaradorlik yaxshilanishi"
-    },
-    "sections": {
-      "whatIDo": "Men nima qilaman",
-      "backendAPIs": "Backend API",
-      "aiMLSystems": "AI/ML Tizimlar",
-      "devops": "DevOps"
     }
   },
   "footer": {
-    "quickLinks": {
-      "title": "Tezkor havolalar",
-      "home": "Bosh sahifa",
-      "experience": "Tajriba",
-      "skills": "Ko'nikmalar",
-      "achievements": "Yutuqlar",
-      "certificate": "Sertifikatlar",
-      "projects": "Loyihalar",
-      "contact": "Aloqa"
-    },
-    "specializations": {
-      "title": "Mutaxassisliklar",
-      "backend": "Backend",
-      "frontend": "Frontend",
-      "devops": "DevOps",
-      "ai": "AI",
-      "database": "Ma'lumotlar bazasi",
-      "api": "API"
-    },
     "connect": {
       "title": "Men bilan bog'lanish",
       "contactInfo": "Aloqa ma'lumotlari",
@@ -116,30 +90,7 @@
       "profile": "LinkedIn Profil",
       "connections": "Aloqalar",
       "visit": "LinkedIn profilini tashrif buyuring"
-    },
-    "job1": {
-      "period": "Mart 2025 - Hozirgi vaqt",
-      "title": "Senior Backend Dasturchi",
-      "company": "Tech Solutions Inc.",
-      "description": "Backend dasturlash va API integratsiyalarini boshqarish.",
-      "skills": ["Python", "Django", "REST APIs", "PostgreSQL"]
-    },
-    "job2": {
-      "period": "Oktyabr 2024 - Mart 2025",
-      "title": "Full Stack Dasturchi",
-      "company": "Innovatech",
-      "description": "Full-stack ilovalarni ishlab chiqish va samaradorlikni optimallashtirish.",
-      "skills": ["React", "Node.js", "MongoDB", "Docker"]
-    },
-    "job3": {
-      "period": "2022 - 2024",
-      "title": "Junior Dasturchi",
-      "company": "Startup Hub",
-      "description": "Turli loyihalarda ishtirok etish va yangi texnologiyalarni o'rganish.",
-      "skills": ["HTML", "CSS", "JavaScript", "Git"]
-    },
-    "ctaText": "LinkedIn'da ko'proq ma'lumot",
-    "ctaButton": "LinkedIn'ni tashrif buyuring"
+    }
   },
   "skills": {
     "title": "Ko'nikmalar va Mutaxassislik",
@@ -206,30 +157,6 @@
           "GPT-Neo"
         ]
       }
-    },
-    "backend": {
-      "title": "Backend",
-      "items": ["Python", "Django", "Node.js"]
-    },
-    "frontend": {
-      "title": "Frontend",
-      "items": ["React", "HTML", "CSS"]
-    },
-    "devops": {
-      "title": "DevOps",
-      "items": ["Docker", "Nginx"]
-    },
-    "databases": {
-      "title": "Ma'lumotlar bazasi",
-      "items": ["PostgreSQL", "MongoDB"]
-    },
-    "ai": {
-      "title": "AI",
-      "items": ["TensorFlow", "PyTorch"]
-    },
-    "tools": {
-      "title": "Asboblar",
-      "items": ["Git", "VS Code"]
     }
   },
   "projects": {
@@ -238,6 +165,8 @@
     "viewProject": "Loyihani ko'rish",
     "viewAll": "Barcha loyihalarni ko'rish",
     "view": "Ko'rish",
+    "viewWebsite": "Saytni ko'rish",
+    "viewInGithub": "GitHub'da ko'rish",
     "noProjects": "Loyihalar topilmadi",
     "noProjectsSubtitle": "Hozircha loyihalar mavjud emas",
     "data": {
@@ -308,47 +237,10 @@
           "API hujjatlari"
         ]
       }
-    },
-    "project1": {
-      "title": "YakLabs Platformasi",
-      "description": "Python, Django va WebSocket yordamida real vaqtda hamkorlik platformasi.",
-      "tags": ["Full-Stack Developer", "iOT Backend", "AI/ML"]
-    },
-    "project2": {
-      "title": "Texnomart API",
-      "description": "Node.js va MongoDB yordamida elektron tijorat uchun RESTful API.",
-      "tags": ["Node.js", "MongoDB", "REST API"]
-    },
-    "project3": {
-      "title": "Onlayn do'kon",
-      "description": "Onlayn xaridlar uchun full-stack veb-ilova.",
-      "tags": ["React", "Node.js", "Express"]
-    },
-    "project4": {
-      "title": "Onlayn kurslar",
-      "description": "Onlayn kurslar va o'qitish uchun platforma.",
-      "tags": ["React", "Django", "PostgreSQL"]
-    },
-    "project5": {
-      "title": "Kasallixona boshqaruvi",
-      "description": "Kasallixona operatsiyalarini boshqarish tizimi.",
-      "tags": ["Python", "Flask", "MySQL"]
-    },
-    "project6": {
-      "title": "GPT-Neo",
-      "description": "Maxsus AI til modelini amalga oshirish.",
-      "tags": ["Python", "AI", "NLP"]
-    },
-    "project7": {
-      "title": "Gemina App",
-      "description": "Ko'p tilli tarjima va muloqot ilovasi.",
-      "tags": ["React Native", "Translation", "Mobile"]
-    },
-    "project8": {
-      "title": "Medius Analytics",
-      "description": "Biznes tahlili uchun analitika paneli.",
-      "tags": ["React", "D3.js", "Analytics"]
     }
+  },
+  "proof": {
+    "title": "Ishonch va natijalar"
   },
   "achievements": {
     "title": "GitHub Yutuqlari",
@@ -400,34 +292,5 @@
       "view": "Sertifikatni ko'rish",
       "visit": "Muassasani tashrif buyurish"
     }
-  },
-  "About Me": "Men haqimda",
-  "Your Complete Digital Solution Partner": "Sizning raqamli yechimlar bo'yicha texnik hamkoringiz",
-  "Senior Software Engineer specializing in scalable backend systems, AI integration, and cloud infrastructure. I build production-grade platforms that handle real-world traffic with enterprise-level reliability.": "Kengaytiriladigan backend tizimlar, AI integratsiyasi va bulut infratuzilmasi bo'yicha ixtisoslashgan Senior Software Engineer. Haqiqiy trafikni korporativ darajadagi ishonchlilik bilan boshqaradigan ishlab chiqarish darajasidagi platformalarni yarataman.",
-  "Backend Architecture": "Backend Arxitektura",
-  "Microservices, APIs, Database Design": "Mikroservislar, API, Ma'lumotlar bazasi dizayni",
-  "AI & Machine Learning": "AI & Mashinani o'rganish",
-  "Computer Vision, NLP, Model Optimization": "Kompyuter ko'rish, NLP, Model optimallashtirish",
-  "Cloud & DevOps": "Bulut & DevOps",
-  "Infrastructure, Monitoring, Deployment": "Infratuzilma, Monitoring, Joylashtirish",
-  "Performance Engineering": "Samaradorlik muhandisligi",
-  "Optimization, Scalability, Real-time Systems": "Optimallashtirish, Kengaytirish, Real-time tizimlar",
-  "Track Record": "Natijalar",
-  "Projects Delivered": "Loyihalar bajarildi",
-  "Production Ready": "Ishlab chiqarishga tayyor",
-  "Concurrent Users": "Bir vaqtda foydalanuvchilar",
-  "Peak Load": "Maksimal yuk",
-  "System Uptime": "Tizim ish vaqti",
-  "Enterprise SLA": "Korporativ SLA",
-  "Years Experience": "Yil tajriba",
-  "Full Stack": "Full Stack",
-  "Get In Touch": "Bog'lanish",
-  "Featured Projects": "Tanlangan loyihalar",
-  "Some of my recent work": "Mening so'nggi ishlarimdan ba'zilari",
-  "View Project": "Loyihani ko'rish",
-  "View All Projects": "Barcha loyihalarni ko'rish",
-  "Quick Links": "Tezkor havolalar",
-  "Specializations": "Mutaxassisliklar",
-  "Connect With Me": "Men bilan bog'lanish",
-  "All Rights Reserved.": "Barcha huquqlar himoyalangan."
+  }
 }

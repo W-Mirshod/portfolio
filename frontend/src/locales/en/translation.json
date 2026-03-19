@@ -20,8 +20,7 @@
     "home": "Home",
     "experience": "Experience",
     "skills": "Skills",
-    "achievements": "Achievements",
-    "certificate": "Certificate",
+    "proof": "Proof",
     "projects": "Projects",
     "contact": "Contact"
   },
@@ -40,34 +39,9 @@
       "projectsSubtitle": "Projects delivered",
       "speed": "Speed ↑",
       "speedSubtitle": "Performance gains"
-    },
-    "sections": {
-      "whatIDo": "What I Do",
-      "backendAPIs": "Backend APIs",
-      "aiMLSystems": "AI/ML Systems",
-      "devops": "DevOps"
     }
   },
   "footer": {
-    "quickLinks": {
-      "title": "Quick Links",
-      "home": "Home",
-      "experience": "Experience",
-      "skills": "Skills",
-      "achievements": "Achievements",
-      "certificate": "Certificate",
-      "projects": "Projects",
-      "contact": "Contact"
-    },
-    "specializations": {
-      "title": "Specializations",
-      "backend": "Backend",
-      "frontend": "Frontend",
-      "devops": "DevOps",
-      "ai": "AI",
-      "database": "Database",
-      "api": "API"
-    },
     "connect": {
       "title": "Connect With Me",
       "contactInfo": "Contact Information",
@@ -116,30 +90,7 @@
       "profile": "LinkedIn Profile",
       "connections": "Connections",
       "visit": "Visit LinkedIn profile"
-    },
-    "job1": {
-      "period": "March 2025 - Present",
-      "title": "Senior Backend Developer",
-      "company": "Tech Solutions Inc.",
-      "description": "Leading backend development and API integrations.",
-      "skills": ["Python", "Django", "REST APIs", "PostgreSQL"]
-    },
-    "job2": {
-      "period": "October 2024 - March 2025",
-      "title": "Full Stack Developer",
-      "company": "Innovatech",
-      "description": "Developed full-stack applications and optimized performance.",
-      "skills": ["React", "Node.js", "MongoDB", "Docker"]
-    },
-    "job3": {
-      "period": "2022 - 2024",
-      "title": "Junior Developer",
-      "company": "Startup Hub",
-      "description": "Contributed to various projects and learned new technologies.",
-      "skills": ["HTML", "CSS", "JavaScript", "Git"]
-    },
-    "ctaText": "Explore more on LinkedIn",
-    "ctaButton": "Visit LinkedIn"
+    }
   },
   "skills": {
     "title": "Skills & Expertise",
@@ -206,30 +157,6 @@
           "GPT-Neo"
         ]
       }
-    },
-    "backend": {
-      "title": "Backend",
-      "items": ["Python", "Django", "Node.js"]
-    },
-    "frontend": {
-      "title": "Frontend",
-      "items": ["React", "HTML", "CSS"]
-    },
-    "devops": {
-      "title": "DevOps",
-      "items": ["Docker", "Nginx"]
-    },
-    "databases": {
-      "title": "Databases",
-      "items": ["PostgreSQL", "MongoDB"]
-    },
-    "ai": {
-      "title": "AI",
-      "items": ["TensorFlow", "PyTorch"]
-    },
-    "tools": {
-      "title": "Tools",
-      "items": ["Git", "VS Code"]
     }
   },
   "projects": {
@@ -242,6 +169,9 @@
     "viewInGithub": "View in GitHub",
     "noProjects": "No projects found",
     "noProjectsSubtitle": "No projects available at the moment"
+  },
+  "proof": {
+    "title": "Proof"
   },
   "achievements": {
     "title": "GitHub Achievements",
@@ -293,34 +223,5 @@
       "view": "View Certificate",
       "visit": "Visit Institution"
     }
-  },
-  "About Me": "About Me",
-  "Your Complete Digital Solution Partner": "Your Complete Digital Solution Partner",
-  "Senior Software Engineer specializing in scalable backend systems, AI integration, and cloud infrastructure. I build production-grade platforms that handle real-world traffic with enterprise-level reliability.": "Senior Software Engineer specializing in scalable backend systems, AI integration, and cloud infrastructure. I build production-grade platforms that handle real-world traffic with enterprise-level reliability.",
-  "Backend Architecture": "Backend Architecture",
-  "Microservices, APIs, Database Design": "Microservices, APIs, Database Design",
-  "AI & Machine Learning": "AI & Machine Learning",
-  "Computer Vision, NLP, Model Optimization": "Computer Vision, NLP, Model Optimization",
-  "Cloud & DevOps": "Cloud & DevOps",
-  "Infrastructure, Monitoring, Deployment": "Infrastructure, Monitoring, Deployment",
-  "Performance Engineering": "Performance Engineering",
-  "Optimization, Scalability, Real-time Systems": "Optimization, Scalability, Real-time Systems",
-  "Track Record": "Track Record",
-  "Projects Delivered": "Projects Delivered",
-  "Production Ready": "Production Ready",
-  "Concurrent Users": "Concurrent Users",
-  "Peak Load": "Peak Load",
-  "System Uptime": "System Uptime",
-  "Enterprise SLA": "Enterprise SLA",
-  "Years Experience": "Years Experience",
-  "Full Stack": "Full Stack",
-  "Get In Touch": "Get In Touch",
-  "Featured Projects": "Featured Projects",
-  "Some of my recent work": "Some of my recent work",
-  "View Project": "View Project",
-  "View All Projects": "View All Projects",
-  "Quick Links": "Quick Links",
-  "Specializations": "Specializations",
-  "Connect With Me": "Connect With Me",
-  "All Rights Reserved.": "All Rights Reserved."
+  }
 }

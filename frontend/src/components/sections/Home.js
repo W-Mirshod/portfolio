@@ -1,5 +1,5 @@
 import i18n from '../../utils/i18n.js';
-import { iconArrowRight, iconServer, iconBrain, iconCloud } from '../ui/Icons.js';
+import { iconArrowRight } from '../ui/Icons.js';
 import { initializeAudio } from '../../utils/audio.js';
 import createParallaxBackground from '../ui/ParallaxBackground.js';
 import createMagneticButton from '../ui/MagneticButton.js';
@@ -63,25 +63,6 @@ export default function createHome() {
                   <div class="text-3xl sm:text-4xl lg:text-5xl xl:text-6xl font-bold text-white mb-2 font-mono">91%</div>
                   <div class="text-base sm:text-lg lg:text-xl text-blue-100/90 mb-1 font-mono" data-i18n="home.stats.speed">${t('home.stats.speed')}</div>
                   <div class="text-sm sm:text-base text-blue-100/70" data-i18n="home.stats.speedSubtitle">${t('home.stats.speedSubtitle')}</div>
-                </div>
-              </div>
-            </div>
-          </div>
-          <div class="w-full max-w-6xl mx-auto layered-entrance mt-6 lg:mt-8" style="animation-delay:0.5s">
-            <div class="liquid-panel-strong glass-blur-strong glass-border rounded-xl p-6 sm:p-8 lg:p-10">
-              <h3 class="text-xl sm:text-2xl lg:text-3xl xl:text-4xl font-semibold text-blue-100 mb-6 lg:mb-8 text-center lg:text-left" data-i18n="home.sections.whatIDo">${t('home.sections.whatIDo')}</h3>
-              <div class="flex flex-col sm:flex-row gap-4 sm:gap-6 lg:gap-8">
-                <div class="flex-1 liquid-panel rounded-lg p-5 sm:p-6 lg:p-8 border border-white/20 hover:bg-white/20 hover:border-white/40 transition-all duration-300 text-center">
-                  <div class="w-12 h-12 sm:w-14 sm:h-14 lg:w-16 lg:h-16 mx-auto mb-4 lg:mb-6 liquid-icon-shell rounded-lg flex items-center justify-center">${iconServer('1.5em', 'text-blue-400')}</div>
-                  <h4 class="text-lg sm:text-xl lg:text-2xl xl:text-3xl font-semibold text-blue-100 mb-2" data-i18n="home.sections.backendAPIs">${t('home.sections.backendAPIs')}</h4>
-                </div>
-                <div class="flex-1 liquid-panel rounded-lg p-5 sm:p-6 lg:p-8 border border-white/20 hover:bg-white/20 hover:border-white/40 transition-all duration-300 text-center">
-                  <div class="w-12 h-12 sm:w-14 sm:h-14 lg:w-16 lg:h-16 mx-auto mb-4 lg:mb-6 liquid-icon-shell rounded-lg flex items-center justify-center">${iconBrain('1.5em', 'text-blue-400')}</div>
-                  <h4 class="text-lg sm:text-xl lg:text-2xl xl:text-3xl font-semibold text-blue-100 mb-2" data-i18n="home.sections.aiMLSystems">${t('home.sections.aiMLSystems')}</h4>
-                </div>
-                <div class="flex-1 liquid-panel rounded-lg p-5 sm:p-6 lg:p-8 border border-white/20 hover:bg-white/20 hover:border-white/40 transition-all duration-300 text-center">
-                  <div class="w-12 h-12 sm:w-14 sm:h-14 lg:w-16 lg:h-16 mx-auto mb-4 lg:mb-6 liquid-icon-shell rounded-lg flex items-center justify-center">${iconCloud('1.5em', 'text-blue-400')}</div>
-                  <h4 class="text-lg sm:text-xl lg:text-2xl xl:text-3xl font-semibold text-blue-100 mb-2" data-i18n="home.sections.devops">${t('home.sections.devops')}</h4>
                 </div>
               </div>
             </div>
