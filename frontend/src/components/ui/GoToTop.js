@@ -7,11 +7,11 @@ import { gsap } from 'gsap';
 export default function createGoToTop() {
   const canHover = window.matchMedia('(hover: hover) and (pointer: fine)').matches;
   const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
-  const isTouchOptimized = !canHover || prefersReducedMotion;
+  const isTouch = !canHover;
 
   const button = document.createElement('button');
-  button.className = `go-to-top-button fixed bottom-6 right-6 xl:right-36 z-50 flex items-center justify-center
-                 w-14 h-14 rounded-2xl
+  button.className = `go-to-top-button fixed bottom-4 right-4 sm:bottom-6 sm:right-6 xl:right-36 z-50 flex items-center justify-center
+                 w-11 h-11 sm:w-14 sm:h-14 rounded-2xl
                  border border-white/25
                  hover:bg-white/20 hover:border-white/45
                  transition-all duration-300
@@ -23,10 +23,10 @@ export default function createGoToTop() {
   button.setAttribute('aria-label', 'Scroll to top');
 
   button.innerHTML = `
-    <svg class="go-top-arrow text-white/90 absolute z-10 transition-colors duration-300 group-hover:text-white" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+    <svg class="go-top-arrow w-4 h-4 sm:w-5 sm:h-5 text-white/90 absolute z-10 transition-colors duration-300 group-hover:text-white" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
       <path d="M12 19V5M5 12l7-7 7 7"/>
     </svg>
-    <span class="go-top-w text-xl font-bold text-white/90 absolute z-10 transition-colors duration-300 group-hover:text-white" style="visibility:hidden;opacity:0">W</span>
+    <span class="go-top-w text-lg sm:text-xl font-bold text-white/90 absolute z-10 transition-colors duration-300 group-hover:text-white" style="visibility:hidden;opacity:0">W</span>
   `;
 
   const arrowEl = button.querySelector('.go-top-arrow');
@@ -47,7 +47,7 @@ export default function createGoToTop() {
     button.style.pointerEvents = 'auto';
     gsap.fromTo(button,
       { opacity: 0, scale: 0.88, y: 14 },
-      { opacity: 1, scale: 1, y: 0, duration: isTouchOptimized ? 0.2 : 0.28, ease: 'power2.out', force3D: true }
+      { opacity: 1, scale: 1, y: 0, duration: isTouch ? 0.2 : 0.28, ease: 'power2.out', force3D: true }
     );
   };
 
@@ -56,7 +56,7 @@ export default function createGoToTop() {
     isVisible = false;
     gsap.killTweensOf(button);
     gsap.to(button, {
-      opacity: 0, scale: 0.88, duration: isTouchOptimized ? 0.16 : 0.2, ease: 'power2.in', force3D: true,
+      opacity: 0, scale: 0.88, duration: isTouch ? 0.16 : 0.2, ease: 'power2.in', force3D: true,
       onComplete: () => { button.style.pointerEvents = 'none'; }
     });
   };
@@ -106,7 +106,7 @@ export default function createGoToTop() {
   const finishScrollToTop = () => {
     if (!isScrollingToTop) return;
     isScrollingToTop = false;
-    if (!isTouchOptimized) transformToArrow();
+    if (!isTouch) transformToArrow();
     checkScroll();
   };
 
@@ -145,15 +145,15 @@ export default function createGoToTop() {
     if (e?.cancelable) e.preventDefault();
     if (isScrollingToTop) return;
     gsap.killTweensOf(button, 'scale');
-    if (!isTouchOptimized) {
+    if (!isTouch) {
       gsap.to(button, { scale: 0.95, duration: 0.08, yoyo: true, repeat: 1, ease: 'power2.inOut' });
     }
     isScrollingToTop = true;
     show();
-    if (!isTouchOptimized) transformToW();
+    if (!isTouch) transformToW();
     const lenis = window.lenis;
     if (lenis) {
-      if (isTouchOptimized) {
+      if (prefersReducedMotion) {
         lenis.scrollTo(0, {
           immediate: true,
           lock: true,
@@ -163,7 +163,7 @@ export default function createGoToTop() {
       } else {
         lenis.scrollTo(0, {
           immediate: false,
-          duration: 0.72,
+          duration: isTouch ? 1 : 0.72,
           easing: (t) => 1 - Math.pow(1 - t, 3),
           lock: true,
           force: true,
@@ -171,8 +171,8 @@ export default function createGoToTop() {
         });
       }
     } else {
-      window.scrollTo({ top: 0, behavior: isTouchOptimized ? 'auto' : 'smooth' });
-      if (isTouchOptimized) finishScrollToTop();
+      window.scrollTo({ top: 0, behavior: prefersReducedMotion ? 'auto' : 'smooth' });
+      if (prefersReducedMotion) finishScrollToTop();
       else waitUntilTopNative();
     }
   };
