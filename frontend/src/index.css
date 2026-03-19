@@ -107,6 +107,12 @@
   --accent-l: 58%;
 }
 
+#proof {
+  --accent-h: 38;
+  --accent-s: 92%;
+  --accent-l: 55%;
+}
+
 #achievements {
   --accent-h: 38;
   --accent-s: 92%;
@@ -218,6 +224,185 @@ body::after {
 
 .liquid-section {
   background: linear-gradient(160deg, rgba(255, 255, 255, 0.015) 0%, rgba(255, 255, 255, 0.005) 100%);
+}
+
+.section-kicker {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.45rem;
+  padding: 0.35rem 0.85rem;
+  border-radius: 999px;
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  background: linear-gradient(145deg, rgba(255, 255, 255, 0.1) 0%, rgba(255, 255, 255, 0.03) 100%);
+  color: rgba(235, 235, 245, 0.82);
+  font-size: 0.72rem;
+  font-weight: 700;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  backdrop-filter: blur(18px) saturate(1.3);
+  -webkit-backdrop-filter: blur(18px) saturate(1.3);
+}
+
+.section-kicker::before {
+  content: '';
+  width: 0.45rem;
+  height: 0.45rem;
+  border-radius: 999px;
+  background: var(--section-accent);
+  box-shadow: 0 0 14px var(--section-accent);
+}
+
+.editorial-panel {
+  position: relative;
+  overflow: hidden;
+  isolation: isolate;
+}
+
+.editorial-panel::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  border-radius: inherit;
+  pointer-events: none;
+  background: linear-gradient(120deg, rgba(255, 255, 255, 0.1) 0%, transparent 38%, transparent 62%, rgba(255, 255, 255, 0.06) 100%);
+  opacity: 0.6;
+  z-index: 0;
+}
+
+.editorial-panel > * {
+  position: relative;
+  z-index: 1;
+}
+
+.blueprint-grid {
+  position: relative;
+  isolation: isolate;
+}
+
+.blueprint-grid::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  border-radius: inherit;
+  pointer-events: none;
+  background-image:
+    linear-gradient(rgba(141, 232, 255, 0.07) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(141, 232, 255, 0.07) 1px, transparent 1px);
+  background-size: 28px 28px;
+  mask-image: linear-gradient(180deg, rgba(0, 0, 0, 0.5), transparent 90%);
+  opacity: 0.3;
+  z-index: 0;
+}
+
+.timeline-rail {
+  position: relative;
+}
+
+.timeline-rail::before {
+  content: '';
+  position: absolute;
+  left: 0.8rem;
+  top: 0;
+  bottom: 0;
+  width: 1px;
+  background: linear-gradient(180deg, rgba(255, 255, 255, 0.32) 0%, rgba(255, 255, 255, 0.08) 100%);
+}
+
+.timeline-pin {
+  position: absolute;
+  left: 0;
+  top: 1.8rem;
+  width: 1.6rem;
+  height: 1.6rem;
+  border-radius: 999px;
+  border: 1px solid rgba(255, 255, 255, 0.28);
+  background: radial-gradient(circle at 30% 30%, rgba(255, 255, 255, 0.95) 0%, var(--section-accent) 40%, rgba(15, 23, 42, 0.7) 100%);
+  box-shadow: 0 0 22px var(--section-accent-25), inset 0 0 0 3px rgba(9, 13, 20, 0.65);
+}
+
+.metric-ribbon {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.6rem;
+}
+
+.metric-ribbon span {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.35rem;
+  padding: 0.4rem 0.7rem;
+  border-radius: 999px;
+  background: rgba(255, 255, 255, 0.06);
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  color: rgba(235, 235, 245, 0.85);
+  font-size: 0.75rem;
+}
+
+.metric-ribbon span::before {
+  content: '';
+  width: 0.4rem;
+  height: 0.4rem;
+  border-radius: 999px;
+  background: var(--section-accent);
+  box-shadow: 0 0 10px var(--section-accent);
+}
+
+.system-map {
+  position: relative;
+  display: grid;
+  gap: 1rem;
+}
+
+.system-map::before {
+  content: '';
+  position: absolute;
+  left: 1rem;
+  right: 1rem;
+  top: 1rem;
+  bottom: 1rem;
+  border-radius: 1.25rem;
+  border: 1px dashed rgba(255, 255, 255, 0.12);
+  opacity: 0.6;
+}
+
+.system-node {
+  position: relative;
+  display: flex;
+  align-items: center;
+  gap: 0.7rem;
+  min-height: 3.5rem;
+  padding: 0.85rem 1rem;
+  border-radius: 1rem;
+  background: rgba(5, 10, 18, 0.55);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.08);
+}
+
+.system-node::before {
+  content: '';
+  flex: 0 0 0.6rem;
+  width: 0.6rem;
+  height: 0.6rem;
+  border-radius: 999px;
+  background: var(--section-accent);
+  box-shadow: 0 0 14px var(--section-accent);
+}
+
+.signal-pulse {
+  animation: signalPulse 2.2s ease-in-out infinite;
+}
+
+@keyframes signalPulse {
+  0%,
+  100% {
+    box-shadow: 0 0 0 0 rgba(255, 255, 255, 0.06);
+    transform: translateY(0);
+  }
+
+  50% {
+    box-shadow: 0 0 0 6px rgba(255, 255, 255, 0.02);
+    transform: translateY(-1px);
+  }
 }
 
 /* ── Base glass panel — Apple specular composite ── */
