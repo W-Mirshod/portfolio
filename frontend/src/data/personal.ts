@@ -1,0 +1,40 @@
+export const personal = {
+  name: "Mirshod Qayimov",
+  handle: "W-Mirshod",
+  title: "Software Engineer",
+  subtitle: "Backend Engineer + AI Integration",
+  tagline: "Building AI-powered products from zero to production",
+  email: "wmirshod@gmail.com",
+  phone: "+998 90 712 64 37",
+  location: "Tashkent, Uzbekistan",
+  site: "https://w-mirshod.com",
+  status: "Available for new opportunities",
+  social: {
+    github: "https://github.com/W-Mirshod",
+    linkedin: "https://linkedin.com/in/wmirshod",
+    telegram: "https://t.me/w_mirshod",
+    instagram:
+      "https://www.instagram.com/wmirshod/?igsh=czRpZ3d5dzBxa2o3&utm_source=qr",
+  },
+  stats: [
+    { value: "99.7%", label: "Uptime", sublabel: "System uptime" },
+    { value: "15+", label: "Projects", sublabel: "Projects delivered" },
+    { value: "91%", label: "Speed ↑", sublabel: "Performance gains" },
+  ],
+  roles: [
+    "Backend Developer & AI Engineer",
+    "Microservices & APIs Specialist",
+    "DevOps & Cloud Expert",
+    "AI APIs Enthusiast",
+    "Performance Optimization Expert",
+    "Full-Stack Python Developer",
+  ],
+  navigation: [
+    { label: "Home", href: "#home" },
+    { label: "Experience", href: "#experience" },
+    { label: "Skills", href: "#skills" },
+    { label: "Proof", href: "#proof" },
+    { label: "Projects", href: "#projects" },
+    { label: "Contact", href: "#contact" },
+  ],
+};

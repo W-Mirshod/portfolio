@@ -1,0 +1,107 @@
+export const projects = [
+  {
+    id: 2,
+    title: "Taffi AI",
+    description:
+      "AI cosmetics platform using a YOLO face-analysis pipeline. Built and deployed the CV model and full FastAPI inference workflow.",
+    technologies: ["YOLO", "FastAPI", "Python", "Docker", "GPU inference stack"],
+    url: "https://taffi.ai/",
+    featured: true,
+  },
+  {
+    id: 1,
+    title: "Yaklabs IoT Platform",
+    description:
+      "IoT backend for device provisioning, telemetry ingestion, and real-time analytics. Built core architecture, Flask services, and PyTorch models.",
+    technologies: [
+      "Flask",
+      "Python",
+      "PyTorch",
+      "Redis",
+      "PostgreSQL",
+      "IoT integrations",
+    ],
+    url: "https://yaklabs.tech/",
+    githubUrl: "https://github.com/Yaklabs-Organization/backend",
+    featured: true,
+  },
+  {
+    id: 3,
+    title: "Mini CRM",
+    description:
+      "Lead-routing CRM with operator load balancing and real-time updates. Designed routing logic and built the FastAPI + PostgreSQL backend.",
+    technologies: [
+      "FastAPI",
+      "Python",
+      "PostgreSQL",
+      "Redis",
+      "REST",
+      "WebSockets",
+    ],
+    url: "https://mini-crm.w-mirshod.com/docs",
+    githubUrl: "https://github.com/W-Mirshod/Mini_CRM",
+  },
+  {
+    id: 4,
+    title: "E-Commerce Marketplace",
+    description:
+      "Multi-vendor marketplace with product management and order workflows. Developed backend architecture and payment integration.",
+    technologies: ["Django", "Python", "PostgreSQL", "Redis"],
+    url: "https://marketplace.w-mirshod.com/",
+    githubUrl: "https://github.com/W-Mirshod/MarketPlace",
+  },
+  {
+    id: 5,
+    title: "AI Chatbot",
+    description:
+      "AI assistant system with prompt pipeline and dashboard. Built backend, OpenAI integration, and message routing.",
+    technologies: ["TypeScript", "OpenAI API", "SQLite"],
+    url: "https://typescript-chat.w-mirshod.com/",
+    githubUrl: "https://github.com/W-Mirshod/typescript-chat",
+  },
+  {
+    id: 6,
+    title: "Smart School Management System",
+    description:
+      "API-first school management platform with multi-role access and admin tools. Built core Django modules and REST endpoints.",
+    technologies: [
+      "Django",
+      "Python",
+      "PostgreSQL",
+      "REST API",
+      "API Swagger",
+    ],
+    githubUrl: "https://github.com/W-Mirshod/school-crm",
+  },
+  {
+    id: 7,
+    title: "Custom Auth System",
+    description:
+      "Custom authentication and authorization system built with Django REST Framework and PostgreSQL, implementing session-based authentication and role-based access control (RBAC).",
+    technologies: [
+      "Django",
+      "Django REST Framework",
+      "PostgreSQL",
+      "Session Auth",
+      "RBAC",
+      "Python",
+    ],
+    githubUrl: "https://github.com/W-Mirshod/custom-auth",
+  },
+  {
+    id: 8,
+    title: "Realtime Chat Platform",
+    description:
+      "Full-stack real-time chat application built with FastAPI and Next.js, featuring WebSocket connections, Redis pub/sub, and PostgreSQL.",
+    technologies: [
+      "FastAPI",
+      "Next.js",
+      "WebSocket",
+      "Redis",
+      "PostgreSQL",
+      "TypeScript",
+      "Python",
+    ],
+    githubUrl: "https://github.com/W-Mirshod/realtime-chat-platform",
+  },
+];
