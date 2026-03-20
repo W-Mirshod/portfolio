@@ -2,8 +2,6 @@ import i18n from '../../utils/i18n.js';
 import { iconHome, iconBriefcase, iconCode, iconTrophy, iconProjectDiagram, iconEnvelope } from '../ui/Icons.js';
 import '../styles/menu-futuristic.css';
 
-const MirshodImg = '/Mirshod-optimized.webp';
-
 export default function createHeader() {
   let activeSection = 'home';
   let isMenuOpen = false;
@@ -59,7 +57,7 @@ export default function createHeader() {
         <div class="relative z-10 flex flex-col h-full w-full items-center">
           <a href="#home" class="sidebar-home-link flex flex-col items-center gap-2 mt-12 mb-4 group" aria-label="Go to home section">
             <div class="rounded-xl liquid-panel border border-white/15 p-1 transition-all duration-300 group-hover:scale-105 w-14 h-14 sm:w-16 sm:h-16">
-              <img src="${MirshodImg}" alt="W" class="w-full h-full rounded object-cover img-shimmer-load"/>
+              <div class="w-full h-full rounded flex items-center justify-center brand-wmark">M<span class="brand-wmark-dot">.</span></div>
             </div>
             <span class="text-sm font-bold text-white tracking-wider nav-logo-display">Mirshod</span>
           </a>
@@ -110,7 +108,7 @@ export default function createHeader() {
             <div class="flex items-center gap-2 sm:gap-3">
               <a href="#home" class="mobile-home-link flex items-center gap-2 sm:gap-3 group" aria-label="Go to home section">
                 <div class="w-8 h-8 sm:w-10 sm:h-10 rounded-lg liquid-panel border border-white/15 p-1 transition-all duration-300 group-hover:scale-105">
-                  <img src="${MirshodImg}" alt="W" class="w-full h-full rounded object-cover img-shimmer-load"/>
+                  <div class="w-full h-full rounded flex items-center justify-center brand-wmark">M<span class="brand-wmark-dot">.</span></div>
                 </div>
                 <span class="text-base sm:text-lg font-bold text-white tracking-wide nav-logo-display">Mirshod</span>
               </a>
@@ -162,7 +160,7 @@ export default function createHeader() {
         <div class="relative z-10 flex flex-col h-full">
           <a href="#home" class="mobile-menu-home flex flex-col items-center gap-2 sm:gap-3 mb-4 sm:mb-6 group" aria-label="Go to home section">
             <div class="w-10 h-10 sm:w-12 sm:h-12 rounded-lg liquid-panel border border-white/15 p-1 transition-all duration-300 group-hover:scale-105">
-              <img src="${MirshodImg}" alt="W" class="w-full h-full rounded object-cover img-shimmer-load"/>
+              <div class="w-full h-full rounded flex items-center justify-center brand-wmark">M<span class="brand-wmark-dot">.</span></div>
             </div>
             <span class="text-base sm:text-lg font-bold text-white tracking-wider nav-logo-display">Mirshod</span>
           </a>

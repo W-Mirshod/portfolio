@@ -1,6 +1,6 @@
 {
   "name": "Mirshod Qayimov – Portfolio",
-  "short_name": "W-Mirshod",
+  "short_name": "Mirshod",
   "description": "Senior Software Engineer specializing in Python/Django, AI/ML, and cloud infrastructure.",
   "start_url": "/",
   "display": "standalone",
@@ -10,9 +10,9 @@
   "icons": [
     {
       "src": "/Mirshod-optimized.png",
-      "sizes": "192x192",
+      "sizes": "512x512",
       "type": "image/png",
-      "purpose": "any maskable"
+      "purpose": "any"
     }
   ]
 }

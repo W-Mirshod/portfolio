@@ -107,7 +107,7 @@ export default function createHome() {
     buttonsContainer.appendChild(talkBtn);
   }
 
-  // 3D W Icon (lazy loaded — skip on low-end / small-screen devices)
+  // Hero W mark
   const isMobile = window.innerWidth < 768 || /Mobi|Android/i.test(navigator.userAgent);
   const hasWebGL = (() => { try { const c = document.createElement('canvas'); return !!(c.getContext('webgl2') || c.getContext('webgl')); } catch { return false; } })();
   const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
@@ -116,9 +116,9 @@ export default function createHome() {
     const w3dContainer = section.querySelector('[data-w3d-hero]');
     if (!w3dContainer || w3dContainer.offsetWidth === 0) return;
 
-    // Fall back to static image when GPU is unavailable or user prefers reduced motion
+    // Fall back to text mark when GPU is unavailable or user prefers reduced motion
     if (!hasWebGL || prefersReducedMotion) {
-      w3dContainer.innerHTML = `<img src="/Mirshod-optimized.webp" alt="W" class="w-full h-full rounded-full object-cover border-4 border-white/35 shadow-2xl ring-2 ring-white/40 img-shimmer-load"/>`;
+      w3dContainer.innerHTML = `<div class="w-full h-full rounded-full border-4 border-white/35 shadow-2xl ring-2 ring-white/40 liquid-panel-strong flex items-center justify-center brand-wmark brand-wmark-hero">M<span class="brand-wmark-dot">.</span></div>`;
       return;
     }
 
@@ -126,7 +126,7 @@ export default function createHome() {
       const { initHomeW3D } = await import('../ui/W3DIcon.js');
       initHomeW3D(w3dContainer, { isMobile });
     } catch (e) {
-      w3dContainer.innerHTML = `<img src="/Mirshod-optimized.webp" alt="W" class="w-full h-full rounded-full object-cover border-4 border-white/35 shadow-2xl ring-2 ring-white/40 img-shimmer-load"/>`;
+      w3dContainer.innerHTML = `<div class="w-full h-full rounded-full border-4 border-white/35 shadow-2xl ring-2 ring-white/40 liquid-panel-strong flex items-center justify-center brand-wmark brand-wmark-hero">M<span class="brand-wmark-dot">.</span></div>`;
     }
   }, 100);
 

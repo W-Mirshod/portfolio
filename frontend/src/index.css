@@ -844,6 +844,25 @@ h3,
   animation: img-shimmer-reveal 0.7s cubic-bezier(0.16, 1, 0.3, 1) both;
 }
 
+.brand-wmark {
+  font-family: var(--font-display);
+  font-weight: 800;
+  letter-spacing: -0.05em;
+  line-height: 1;
+  font-size: 1.35rem;
+  color: rgba(255, 255, 255, 0.98);
+  text-shadow: 0 0 20px rgba(255, 255, 255, 0.2);
+}
+
+.brand-wmark-dot {
+  color: rgba(147, 197, 253, 1);
+  margin-left: 0.01em;
+}
+
+.brand-wmark-hero {
+  font-size: clamp(3.25rem, 7vw, 6rem);
+}
+
 /* Magnetic hover glow ring (used on interactive icons) */
 .mag-glow {
   transition: box-shadow 0.3s ease, transform 0.3s ease;

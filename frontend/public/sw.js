@@ -1,8 +1,7 @@
 // Minimal service worker – cache-first for static assets, network-first for HTML
-const CACHE_NAME = 'portfolio-v1';
+const CACHE_NAME = 'portfolio-v3';
 const STATIC_ASSETS = [
   '/',
-  '/Mirshod-optimized.webp',
   '/Mirshod-optimized.png',
 ];
 
