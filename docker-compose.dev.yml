@@ -10,13 +10,12 @@ services:
       - /app/node_modules
     environment:
       - NODE_ENV=development
+      - VITE_HMR_CLIENT_PORT=3001
     restart: unless-stopped
     networks:
       - web
     stdin_open: true
     tty: true
-    privileged: true
-
 networks:
   web:
     driver: bridge

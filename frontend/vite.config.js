@@ -2,11 +2,19 @@ import { defineConfig } from 'vite'
 import compression from 'vite-plugin-compression'
 import { visualizer } from 'rollup-plugin-visualizer'
 
-export default defineConfig({
+const hmrClientPort = process.env.VITE_HMR_CLIENT_PORT
+  ? Number(process.env.VITE_HMR_CLIENT_PORT)
+  : undefined
+
+export default defineConfig(({ command }) => ({
   plugins: [
-    compression({ algorithm: 'brotliCompress' }),
-    compression({ algorithm: 'gzip' }),
-    visualizer({ filename: 'dist/stats.html', gzipSize: true, brotliSize: true })
+    ...(command === 'build'
+      ? [
+          compression({ algorithm: 'brotliCompress' }),
+          compression({ algorithm: 'gzip' }),
+          visualizer({ filename: 'dist/stats.html', gzipSize: true, brotliSize: true }),
+        ]
+      : []),
   ],
   build: {
     sourcemap: false,
@@ -45,11 +53,10 @@ export default defineConfig({
   server: {
     host: '0.0.0.0',
     port: 5173,
+    allowedHosts: true,
+    hmr: hmrClientPort ? { clientPort: hmrClientPort } : undefined,
     watch: {
       usePolling: true
     },
-    fs: {
-      allow: ['..']
-    }
   }
-})
+}))
