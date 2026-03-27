@@ -1,13 +1,9 @@
 import i18n from '../../utils/i18n.js';
 import { setupScrollReveal } from '../../utils/parallax.js';
 import projectsData from '../../data/projects.json';
-import createSpotlightCard from '../ui/SpotlightCard.js';
+import createSpotlightCard, { attachSpotlightBehavior } from '../ui/SpotlightCard.js';
 
-export default function createProjects() {
-  const section = document.createElement('section');
-  section.id = 'projects';
-  section.className = 'liquid-section py-20 px-4 bg-bg-secondary/20';
-
+export function mountProjectsSection(section) {
   function render() {
     const t = (k, opts) => i18n.t(k, opts);
     section.innerHTML = '';
@@ -67,7 +63,27 @@ export default function createProjects() {
     section.appendChild(container);
   }
 
-  render();
-  i18n.on('languageChanged', render);
+  function hydrateFromSsr() {
+    const grid = section.querySelector('.grid');
+    if (grid) {
+      setupScrollReveal(grid);
+      grid.querySelectorAll('.spotlight-card').forEach((card) => attachSpotlightBehavior(card));
+    }
+  }
+
+  if (section.hasAttribute('data-ssr-projects-grid')) {
+    hydrateFromSsr();
+    i18n.on('languageChanged', render);
+  } else {
+    render();
+    i18n.on('languageChanged', render);
+  }
+}
+
+export default function createProjects() {
+  const section = document.createElement('section');
+  section.id = 'projects';
+  section.className = 'liquid-section py-20 px-4 bg-bg-secondary/20';
+  mountProjectsSection(section);
   return section;
 }

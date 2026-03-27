@@ -1,22 +1,38 @@
-import './utils/i18n.js';
 import './index.css';
 import './App.css';
 import './components/styles/SectionsCommon.css';
 import './components/styles/HolographicTransition.css';
 import './components/styles/liquid-glass.css';
 
-import { initApp } from './app.js';
+import { initI18n } from './utils/i18n.js';
 
-// Register service worker
 if ('serviceWorker' in navigator && import.meta.env.PROD) {
   window.addEventListener('load', () => {
     navigator.serviceWorker.register('/sw.js').catch(() => { });
   });
 }
 
-// Initialize the app when DOM is ready
+function boot() {
+  initI18n()
+    .then(() => import('./app.js'))
+    .then(({ initApp, hydrateApp }) => {
+      const canHydrate =
+        typeof window !== 'undefined' &&
+        window.__INITIAL_STATE__?.ssr &&
+        document.getElementById('home');
+      if (canHydrate) {
+        hydrateApp();
+      } else {
+        initApp();
+      }
+    })
+    .catch((err) => {
+      console.error(err);
+    });
+}
+
 if (document.readyState === 'loading') {
-  document.addEventListener('DOMContentLoaded', initApp);
+  document.addEventListener('DOMContentLoaded', boot);
 } else {
-  initApp();
+  boot();
 }

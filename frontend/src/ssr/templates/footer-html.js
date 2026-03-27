@@ -1,21 +1,28 @@
-import i18n from '../../utils/i18n.js';
-import { iconGithub, iconLinkedin, iconTelegram, iconInstagram, iconEnvelope, iconPhone, iconMapMarkerAlt, iconShareAlt } from '../ui/Icons.js';
-import { renderDotVersionLabel } from '../ui/dotVersionLabel.js';
-import '../styles/menu-futuristic.css';
+import {
+  iconGithub,
+  iconLinkedin,
+  iconTelegram,
+  iconInstagram,
+  iconEnvelope,
+  iconPhone,
+  iconMapMarkerAlt,
+  iconShareAlt,
+} from '../../components/ui/Icons.js';
+import { renderDotVersionLabel } from '../../components/ui/dotVersionLabel.js';
 
-export function mountFooterSection(footer) {
-  function render() {
-    const t = (k) => i18n.t(k);
-    const currentYear = new Date().getFullYear();
+export function renderFooterHtml(i18n) {
+  const t = (k) => i18n.t(k);
+  const currentYear = new Date().getFullYear();
 
-    const socialLinks = [
-      { icon: iconGithub('14', 'text-blue-300'), url: 'https://github.com/W-Mirshod', label: 'GitHub', color: 'hover:text-white' },
-      { icon: iconLinkedin('14', 'text-blue-300'), url: 'https://linkedin.com/in/wmirshod', label: 'LinkedIn', color: 'hover:text-blue-200' },
-      { icon: iconTelegram('14', 'text-blue-300'), url: 'https://t.me/w_mirshod', label: 'Telegram', color: 'hover:text-sky-200' },
-      { icon: iconInstagram('14', 'text-blue-300'), url: 'https://www.instagram.com/wmirshod/?igsh=czRpZ3d5dzBxa2o3&utm_source=qr', label: 'Instagram', color: 'hover:text-pink-200' }
-    ];
+  const socialLinks = [
+    { icon: iconGithub('14', 'text-blue-300'), url: 'https://github.com/W-Mirshod', label: 'GitHub', color: 'hover:text-white' },
+    { icon: iconLinkedin('14', 'text-blue-300'), url: 'https://linkedin.com/in/wmirshod', label: 'LinkedIn', color: 'hover:text-blue-200' },
+    { icon: iconTelegram('14', 'text-blue-300'), url: 'https://t.me/w_mirshod', label: 'Telegram', color: 'hover:text-sky-200' },
+    { icon: iconInstagram('14', 'text-blue-300'), url: 'https://www.instagram.com/wmirshod/?igsh=czRpZ3d5dzBxa2o3&utm_source=qr', label: 'Instagram', color: 'hover:text-pink-200' },
+  ];
 
-    footer.innerHTML = `
+  return `
+    <footer id="contact" class="liquid-section section-accent-glow py-16 px-4 bg-bg-secondary/20 border-t border-white/20">
       <div class="max-w-4xl mx-auto">
         <header class="text-center mb-12">
           <h2 class="text-3xl font-light liquid-title mb-3 tracking-wide animate-fadeInUp">${t('footer.connect.title')}</h2>
@@ -48,12 +55,16 @@ export function mountFooterSection(footer) {
               <h3 class="text-lg font-semibold text-blue-100">${t('footer.connect.socialMedia')}</h3>
             </div>
             <div class="grid grid-cols-2 gap-3">
-              ${socialLinks.map(link => `
+              ${socialLinks
+                .map(
+                  (link) => `
                 <a href="${link.url}" target="_blank" rel="noopener noreferrer" class="flex items-center gap-3 p-3 rounded-lg bg-white/10 border border-white/20 hover:bg-white/20 hover:border-white/35 transition-all duration-300 ${link.color}">
                   <div class="w-8 h-8 rounded-md liquid-icon-shell flex items-center justify-center">${link.icon}</div>
                   <div class="text-sm font-medium text-blue-100">${link.label}</div>
                 </a>
-              `).join('')}
+              `
+                )
+                .join('')}
             </div>
           </div>
         </div>
@@ -64,19 +75,6 @@ export function mountFooterSection(footer) {
           <p class="text-sm text-blue-100/70">© 2023-${currentYear} W-Mirshod. All rights reserved.</p>
         </div>
       </div>
-    `;
-  }
-
-  if (typeof window !== 'undefined' && !window.__INITIAL_STATE__?.ssr) {
-    render();
-  }
-  i18n.on('languageChanged', render);
-}
-
-export default function createFooter() {
-  const footer = document.createElement('footer');
-  footer.id = 'contact';
-  footer.className = 'liquid-section section-accent-glow py-16 px-4 bg-bg-secondary/20 border-t border-white/20';
-  mountFooterSection(footer);
-  return footer;
+    </footer>
+  `;
 }

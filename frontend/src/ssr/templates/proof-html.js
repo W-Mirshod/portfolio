@@ -1,45 +1,43 @@
-import i18n from '../../utils/i18n.js';
-
 const CertificateImg = '/Certification-optimized.webp';
 
-export function mountProofSection(section) {
-  function render() {
-    const t = (k) => i18n.t(k);
-    const skillsCovered = [
-      t('certificate.skillsCovered.python'),
-      t('certificate.skillsCovered.django'),
-      t('certificate.skillsCovered.rest'),
-      t('certificate.skillsCovered.database'),
-      t('certificate.skillsCovered.auth'),
-      t('certificate.skillsCovered.devops')
-    ];
-    const githubAchievements = [
-      {
-        label: t('achievements.items.arcticCodeVault.label'),
-        icon: 'https://github.githubassets.com/images/modules/profile/achievements/arctic-code-vault-contributor-default.png',
-        count: 2,
-        description: t('achievements.items.arcticCodeVault.description')
-      },
-      {
-        label: t('achievements.items.pullShark.label'),
-        icon: 'https://github.githubassets.com/images/modules/profile/achievements/pull-shark-default.png',
-        description: t('achievements.items.pullShark.description')
-      },
-      {
-        label: t('achievements.items.quickdraw.label'),
-        icon: 'https://github.githubassets.com/images/modules/profile/achievements/quickdraw-default.png',
-        description: t('achievements.items.quickdraw.description')
-      }
-    ];
-    const githubHighlights = [
-      {
-        label: t('achievements.items.githubPro.label'),
-        icon: 'fas fa-star',
-        description: t('achievements.items.githubPro.description')
-      }
-    ];
+export function renderProofSectionHtml(i18n) {
+  const t = (k) => i18n.t(k);
+  const skillsCovered = [
+    t('certificate.skillsCovered.python'),
+    t('certificate.skillsCovered.django'),
+    t('certificate.skillsCovered.rest'),
+    t('certificate.skillsCovered.database'),
+    t('certificate.skillsCovered.auth'),
+    t('certificate.skillsCovered.devops'),
+  ];
+  const githubAchievements = [
+    {
+      label: t('achievements.items.arcticCodeVault.label'),
+      icon: 'https://github.githubassets.com/images/modules/profile/achievements/arctic-code-vault-contributor-default.png',
+      count: 2,
+      description: t('achievements.items.arcticCodeVault.description'),
+    },
+    {
+      label: t('achievements.items.pullShark.label'),
+      icon: 'https://github.githubassets.com/images/modules/profile/achievements/pull-shark-default.png',
+      description: t('achievements.items.pullShark.description'),
+    },
+    {
+      label: t('achievements.items.quickdraw.label'),
+      icon: 'https://github.githubassets.com/images/modules/profile/achievements/quickdraw-default.png',
+      description: t('achievements.items.quickdraw.description'),
+    },
+  ];
+  const githubHighlights = [
+    {
+      label: t('achievements.items.githubPro.label'),
+      icon: 'fas fa-star',
+      description: t('achievements.items.githubPro.description'),
+    },
+  ];
 
-    section.innerHTML = `
+  return `
+    <section id="proof" class="liquid-section py-20 px-4 bg-bg-secondary/20">
       <div class="max-w-6xl mx-auto">
         <header class="text-center mb-16">
           <h2 class="text-3xl font-light liquid-title mb-3 tracking-wide animate-fadeInUp">${t('proof.title')}</h2>
@@ -74,10 +72,12 @@ export function mountProofSection(section) {
                 ${skillsCovered.map((skill) => `<div class="flex items-center gap-2"><i class="fas fa-check-circle text-blue-300 text-sm"></i><span class="text-xs text-blue-100/85">${skill}</span></div>`).join('')}
               </div>
               <div class="flex flex-wrap gap-2 justify-center mb-6">
-                ${['hours', 'projects', 'certified', 'graduated', 'date'].map((badge) => {
-                  const icons = { hours: 'fa-clock', projects: 'fa-project-diagram', certified: 'fa-certificate', graduated: 'fa-star', date: 'fa-calendar-alt' };
-                  return `<div class="flex items-center gap-2 bg-white/10 text-blue-100 px-3 py-1 rounded-md text-xs font-medium border border-white/20"><i class="fas ${icons[badge]}"></i><span>${t(`certificate.badges.${badge}`)}</span></div>`;
-                }).join('')}
+                ${['hours', 'projects', 'certified', 'graduated', 'date']
+                  .map((badge) => {
+                    const icons = { hours: 'fa-clock', projects: 'fa-project-diagram', certified: 'fa-certificate', graduated: 'fa-star', date: 'fa-calendar-alt' };
+                    return `<div class="flex items-center gap-2 bg-white/10 text-blue-100 px-3 py-1 rounded-md text-xs font-medium border border-white/20"><i class="fas ${icons[badge]}"></i><span>${t(`certificate.badges.${badge}`)}</span></div>`;
+                  })
+                  .join('')}
               </div>
               <div class="flex flex-wrap gap-3 justify-center">
                 <a href="https://erp.student.najottalim.uz/public/certificate/9d153d70-07b5-4dd9-ae1d-3ff0ea50f531" target="_blank" rel="noopener noreferrer" class="inline-flex items-center gap-2 px-4 py-2 rounded-lg liquid-btn liquid-btn-primary text-white font-semibold text-sm"><i class="fas fa-certificate"></i> ${t('certificate.buttons.view')}</a>
@@ -91,7 +91,9 @@ export function mountProofSection(section) {
               <h3 class="text-lg font-semibold text-blue-100">${t('achievements.title')}</h3>
             </div>
             <div class="grid grid-cols-1 gap-4 mb-8">
-              ${githubAchievements.map((achievement) => `
+              ${githubAchievements
+                .map(
+                  (achievement) => `
                 <div class="group flex items-center gap-4 p-4 rounded-lg bg-white/10 border border-white/20 hover:bg-white/20 hover:border-white/35 transition-all duration-300">
                   <div class="relative">
                     <img src="${achievement.icon}" alt="${achievement.label}" class="w-12 h-12 rounded-lg border border-white/25 group-hover:border-white/45 transition-colors duration-300"/>
@@ -102,7 +104,9 @@ export function mountProofSection(section) {
                     <p class="text-xs text-blue-100/75">${achievement.description}</p>
                   </div>
                 </div>
-              `).join('')}
+              `
+                )
+                .join('')}
             </div>
             <div class="border-t border-white/20 pt-6">
               <div class="flex items-center gap-3 mb-4">
@@ -110,7 +114,9 @@ export function mountProofSection(section) {
                 <h4 class="text-base font-semibold text-blue-100">${t('achievements.highlights')}</h4>
               </div>
               <div class="space-y-4">
-                ${githubHighlights.map((highlight) => `
+                ${githubHighlights
+                  .map(
+                    (highlight) => `
                   <div class="group flex items-center gap-4 p-4 rounded-lg bg-white/10 border border-white/20 hover:bg-white/20 hover:border-white/35 transition-all duration-300">
                     <div class="w-12 h-12 rounded-lg bg-gradient-to-br from-white/55 to-white/35 border border-white/30 flex items-center justify-center">
                       <i class="${highlight.icon} text-blue-200 text-lg"></i>
@@ -120,25 +126,14 @@ export function mountProofSection(section) {
                       <p class="text-xs text-blue-100/75">${highlight.description}</p>
                     </div>
                   </div>
-                `).join('')}
+                `
+                  )
+                  .join('')}
               </div>
             </div>
           </article>
         </div>
       </div>
-    `;
-  }
-
-  if (typeof window !== 'undefined' && !window.__INITIAL_STATE__?.ssr) {
-    render();
-  }
-  i18n.on('languageChanged', render);
-}
-
-export default function createProof() {
-  const section = document.createElement('section');
-  section.id = 'proof';
-  section.className = 'liquid-section py-20 px-4 bg-bg-secondary/20';
-  mountProofSection(section);
-  return section;
+    </section>
+  `;
 }

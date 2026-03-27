@@ -5,6 +5,75 @@ import createParallaxBackground from '../ui/ParallaxBackground.js';
 import createMagneticButton from '../ui/MagneticButton.js';
 import '../styles/w3d-icon.css';
 
+export function hydrateHomeSection(section) {
+  const handleNavigation = (href) => {
+    const el = document.querySelector(href);
+    if (el) el.scrollIntoView({ behavior: 'smooth', block: 'start' });
+  };
+
+  const t = (k) => i18n.t(k);
+
+  const buttonsContainer = section.querySelector('.home-buttons');
+  if (buttonsContainer) {
+    buttonsContainer.querySelectorAll('button[data-hydrate-home-nav]').forEach((oldBtn) => {
+      const target = oldBtn.getAttribute('data-hydrate-home-nav');
+      const key = oldBtn.getAttribute('data-i18n-btn');
+      const isPrimary = oldBtn.classList.contains('liquid-btn-primary');
+      const className = isPrimary
+        ? 'liquid-btn liquid-btn-primary px-6 sm:px-8 lg:px-10 py-3 sm:py-3.5 lg:py-4 font-medium text-sm sm:text-base lg:text-lg'
+        : 'liquid-btn px-6 sm:px-8 lg:px-10 py-3 sm:py-3.5 lg:py-4 text-white font-medium text-sm sm:text-base lg:text-lg';
+      const nb = createMagneticButton(i18n.t(key), {
+        className,
+        onClick: () => handleNavigation(target),
+      });
+      nb.setAttribute('data-i18n-btn', key);
+      oldBtn.replaceWith(nb);
+    });
+  }
+
+  const isMobile = window.innerWidth < 768 || /Mobi|Android/i.test(navigator.userAgent);
+  const hasWebGL = (() => { try { const c = document.createElement('canvas'); return !!(c.getContext('webgl2') || c.getContext('webgl')); } catch { return false; } })();
+  const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+  setTimeout(async () => {
+    const w3dContainer = section.querySelector('[data-w3d-hero]');
+    if (!w3dContainer || w3dContainer.offsetWidth === 0) return;
+
+    if (!hasWebGL || prefersReducedMotion) {
+      w3dContainer.innerHTML = `<div class="w-full h-full rounded-full border-4 border-white/35 shadow-2xl ring-2 ring-white/40 liquid-panel-strong flex items-center justify-center brand-wmark brand-wmark-hero">M<span class="brand-wmark-dot">.</span></div>`;
+      return;
+    }
+
+    try {
+      const { initHomeW3D } = await import('../ui/W3DIcon.js');
+      w3dContainer.innerHTML = '';
+      initHomeW3D(w3dContainer, { isMobile });
+    } catch (e) {
+      w3dContainer.innerHTML = `<div class="w-full h-full rounded-full border-4 border-white/35 shadow-2xl ring-2 ring-white/40 liquid-panel-strong flex items-center justify-center brand-wmark brand-wmark-hero">M<span class="brand-wmark-dot">.</span></div>`;
+    }
+  }, 100);
+
+  let audioStarted = false;
+  const startAudio = () => {
+    if (audioStarted) return;
+    audioStarted = true;
+    initializeAudio('/warm-ambient-sound.mp3', 0.5);
+    window.removeEventListener('pointerdown', startAudio);
+    window.removeEventListener('keydown', startAudio);
+  };
+  window.addEventListener('pointerdown', startAudio, { once: true });
+  window.addEventListener('keydown', startAudio, { once: true });
+
+  i18n.on('languageChanged', () => {
+    section.querySelectorAll('[data-i18n]').forEach((el) => {
+      el.textContent = i18n.t(el.dataset.i18n);
+    });
+    section.querySelectorAll('[data-i18n-btn]').forEach((el) => {
+      el.textContent = i18n.t(el.dataset.i18nBtn);
+    });
+  });
+}
+
 export default function createHome() {
   const enableEffects = window.matchMedia('(prefers-reduced-motion: no-preference)').matches &&
     window.matchMedia('(min-width: 768px)').matches;

@@ -1,17 +1,19 @@
-import i18n from '../../utils/i18n.js';
 import experienceData from '../../data/experience.json';
 
-export function mountExperienceSection(section) {
-  function render() {
-    const t = (k, opts) => i18n.t(k, opts);
-    section.innerHTML = `
+export function renderExperienceSectionHtml(i18n) {
+  const t = (k, opts) => i18n.t(k, opts);
+
+  return `
+    <section id="experience" class="liquid-section bg-bg-secondary/20 py-14 px-2 sm:px-4" role="main" aria-labelledby="experience-title">
       <div class="max-w-6xl mx-auto">
         <header class="text-center mb-16">
           <h2 id="experience-title" class="text-3xl font-light liquid-title mb-3 tracking-wide">${t('experience.title')}</h2>
           <div class="liquid-divider mx-auto"></div>
         </header>
         <div class="flex flex-col gap-8 sm:gap-6 max-w-4xl mx-auto" role="list" aria-label="Professional experience timeline">
-          ${experienceData.map(exp => `
+          ${experienceData
+            .map(
+              (exp) => `
             <article class="group relative liquid-panel liquid-panel-interactive rounded-xl p-6 border border-white/25 transition-all duration-500" role="listitem">
               <div class="flex flex-col space-y-4">
                 <div class="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-3">
@@ -26,24 +28,11 @@ export function mountExperienceSection(section) {
                 <p class="text-sm text-blue-100/85 leading-relaxed max-w-3xl">${t(`experience.data.${exp.id}.description`, { defaultValue: exp.description })}</p>
               </div>
             </article>
-          `).join('')}
+          `
+            )
+            .join('')}
         </div>
       </div>
-    `;
-  }
-
-  if (typeof window !== 'undefined' && !window.__INITIAL_STATE__?.ssr) {
-    render();
-  }
-  i18n.on('languageChanged', render);
-}
-
-export default function createExperience() {
-  const section = document.createElement('section');
-  section.id = 'experience';
-  section.className = 'liquid-section bg-bg-secondary/20 py-14 px-2 sm:px-4';
-  section.setAttribute('role', 'main');
-  section.setAttribute('aria-labelledby', 'experience-title');
-  mountExperienceSection(section);
-  return section;
+    </section>
+  `;
 }

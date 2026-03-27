@@ -2,19 +2,15 @@ import Lenis from 'lenis';
 import 'lenis/dist/lenis.css';
 
 import createHeader from './components/sections/Header.js';
-import createHome from './components/sections/Home.js';
-import createExperience from './components/sections/Experience.js';
-import createSkills from './components/sections/Skills.js';
-import createProof from './components/sections/Proof.js';
-import createProjects from './components/sections/Projects.js';
-import createFooter from './components/sections/Footer.js';
+import createHome, { hydrateHomeSection } from './components/sections/Home.js';
+import createExperience, { mountExperienceSection } from './components/sections/Experience.js';
+import createSkills, { mountSkillsSection } from './components/sections/Skills.js';
+import createProof, { mountProofSection } from './components/sections/Proof.js';
+import createProjects, { mountProjectsSection } from './components/sections/Projects.js';
+import createFooter, { mountFooterSection } from './components/sections/Footer.js';
 import createGoToTop from './components/ui/GoToTop.js';
 
-export function initApp() {
-  const root = document.getElementById('root');
-  if (!root) return;
-
-  // ─── Lenis smooth scroll ───
+function startLenis() {
   const lenis = new Lenis({
     duration: 1.2,
     easing: (t) => Math.min(1, 1.001 - Math.pow(2, -10 * t)),
@@ -31,17 +27,28 @@ export function initApp() {
     requestAnimationFrame(raf);
   }
   requestAnimationFrame(raf);
+  return lenis;
+}
 
-  // ─── Header (fixed navigation) ───
+export function initApp() {
+  let root = document.getElementById('root');
+  if (!root) {
+    root = document.createElement('div');
+    root.id = 'root';
+    document.body.appendChild(root);
+  }
+
+  startLenis();
+
+  root.innerHTML = '';
+
   const headerFragment = createHeader();
   document.body.appendChild(headerFragment);
 
-  // ─── Main content container ───
   const main = document.createElement('main');
   main.className = 'xl:mr-32';
   main.setAttribute('role', 'main');
 
-  // ─── All sections loaded eagerly ───
   main.appendChild(createHome());
   main.appendChild(createExperience());
   main.appendChild(createSkills());
@@ -51,8 +58,35 @@ export function initApp() {
 
   root.appendChild(main);
 
-  // ─── Go-to-top button ───
   const goToTop = createGoToTop();
   document.body.appendChild(goToTop);
 }
 
+export function hydrateApp() {
+  let root = document.getElementById('root');
+  if (!root) {
+    root = document.createElement('div');
+    root.id = 'root';
+    document.body.appendChild(root);
+  }
+
+  startLenis();
+
+  document.getElementById('ssr-desktop-sidebar')?.remove();
+  document.getElementById('ssr-mobile-header')?.remove();
+  const headerFragment = createHeader();
+  document.body.insertBefore(headerFragment, root);
+
+  document.getElementById('ssr-go-to-top')?.remove();
+  document.body.appendChild(createGoToTop());
+
+  hydrateHomeSection(document.getElementById('home'));
+  mountExperienceSection(document.getElementById('experience'));
+  mountSkillsSection(document.getElementById('skills'));
+  mountProofSection(document.getElementById('proof'));
+  mountProjectsSection(document.getElementById('projects'));
+  mountFooterSection(document.getElementById('contact'));
+
+  localStorage.removeItem('theme');
+  document.documentElement.setAttribute('data-theme', 'dark');
+}

@@ -1,9 +1,5 @@
-// Minimal service worker – cache-first for static assets, network-first for HTML
-const CACHE_NAME = 'portfolio-v3';
-const STATIC_ASSETS = [
-  '/',
-  '/Mirshod-optimized.png',
-];
+const CACHE_NAME = 'portfolio-v4-ssr';
+const STATIC_ASSETS = ['/Mirshod-optimized.png'];
 
 self.addEventListener('install', (event) => {
   event.waitUntil(
@@ -24,21 +20,13 @@ self.addEventListener('activate', (event) => {
 self.addEventListener('fetch', (event) => {
   const { request } = event;
 
-  // Network-first for navigation (HTML)
   if (request.mode === 'navigate') {
     event.respondWith(
-      fetch(request)
-        .then((response) => {
-          const clone = response.clone();
-          caches.open(CACHE_NAME).then((cache) => cache.put(request, clone));
-          return response;
-        })
-        .catch(() => caches.match(request))
+      fetch(request).catch(() => caches.match(request))
     );
     return;
   }
 
-  // Cache-first for static assets
   if (
     request.destination === 'image' ||
     request.destination === 'font' ||
@@ -61,6 +49,5 @@ self.addEventListener('fetch', (event) => {
     return;
   }
 
-  // Default: network
   event.respondWith(fetch(request));
 });
