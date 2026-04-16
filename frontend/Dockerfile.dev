@@ -6,7 +6,7 @@ COPY package*.json ./
 
 RUN npm install
 
-EXPOSE 5173
+EXPOSE 8080
 
 # Install dependencies if node_modules doesn't exist, then start dev server
-CMD sh -c "if [ ! -d 'node_modules' ] || [ ! -f 'node_modules/.bin/vite' ]; then npm install; fi && npm run dev -- --host 0.0.0.0"
+CMD sh -c "if [ ! -d 'node_modules' ] || [ ! -f 'node_modules/.bin/vite' ] || [ ! -d 'node_modules/express' ]; then npm install; fi && npm run dev -- --host 0.0.0.0"
