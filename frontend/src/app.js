@@ -1,7 +1,7 @@
 import Lenis from 'lenis';
 import 'lenis/dist/lenis.css';
 
-import createHeader from './components/sections/Header.js';
+import createHeader, { hydrateHeader } from './components/sections/Header.js';
 import createHome, { hydrateHomeSection } from './components/sections/Home.js';
 import createExperience, { mountExperienceSection } from './components/sections/Experience.js';
 import createSkills, { mountSkillsSection } from './components/sections/Skills.js';
@@ -46,7 +46,6 @@ export function initApp() {
   document.body.appendChild(headerFragment);
 
   const main = document.createElement('main');
-  main.className = 'xl:mr-32';
   main.setAttribute('role', 'main');
 
   main.appendChild(createHome());
@@ -72,10 +71,15 @@ export function hydrateApp() {
 
   startLenis();
 
-  document.getElementById('ssr-desktop-sidebar')?.remove();
-  document.getElementById('ssr-mobile-header')?.remove();
-  const headerFragment = createHeader();
-  document.body.insertBefore(headerFragment, root);
+  const existingHeader = document.getElementById('top-nav');
+  if (existingHeader) {
+    hydrateHeader();
+  } else {
+    document.getElementById('ssr-desktop-sidebar')?.remove();
+    document.getElementById('ssr-mobile-header')?.remove();
+    const headerFragment = createHeader();
+    document.body.insertBefore(headerFragment, root);
+  }
 
   document.getElementById('ssr-go-to-top')?.remove();
   document.body.appendChild(createGoToTop());

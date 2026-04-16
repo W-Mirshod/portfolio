@@ -24,7 +24,7 @@ export function renderPageHtml(i18n) {
   const stateScript = `<script>window.__INITIAL_STATE__=${serializeState(initialState)}</script>`;
 
   const main = `
-    <main class="xl:mr-32" role="main">
+    <main role="main">
       ${renderHomeSectionHtml(i18n)}
       ${renderExperienceSectionHtml(i18n)}
       ${renderSkillsSectionHtml(i18n)}

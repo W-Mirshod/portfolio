@@ -1,6 +1,6 @@
 export function renderGoToTopHtml() {
   return `
-    <button type="button" id="ssr-go-to-top" class="go-to-top-button fixed bottom-4 right-4 sm:bottom-6 sm:right-6 xl:right-36 z-50 flex items-center justify-center
+    <button type="button" id="ssr-go-to-top" class="go-to-top-button fixed bottom-4 right-4 sm:bottom-6 sm:right-6 z-50 flex items-center justify-center
                  w-11 h-11 sm:w-14 sm:h-14 rounded-2xl
                  border border-white/25
                  hover:bg-white/20 hover:border-white/45
