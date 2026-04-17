@@ -12,7 +12,7 @@ export default function createGoToTop() {
   const button = document.createElement('button');
   button.type = 'button';
   button.className = `go-to-top-button fixed bottom-4 right-4 sm:bottom-6 sm:right-6 z-50 flex items-center justify-center
-                 w-11 h-11 sm:w-14 sm:h-14 rounded-2xl
+                 min-w-[48px] min-h-[48px] w-12 h-12 sm:w-14 sm:h-14 rounded-2xl
                  border border-white/25
                  hover:bg-white/20 hover:border-white/45
                  transition-colors duration-300
@@ -20,7 +20,7 @@ export default function createGoToTop() {
   button.style.boxShadow = 'var(--liquid-shadow)';
   button.style.opacity = '0';
   button.style.pointerEvents = 'none';
-  button.style.touchAction = 'none';
+  button.style.touchAction = 'manipulation';
   button.setAttribute('aria-label', 'Scroll to top');
 
   button.innerHTML = `
@@ -107,7 +107,7 @@ export default function createGoToTop() {
   const finishScrollToTop = () => {
     if (!isScrollingToTop) return;
     isScrollingToTop = false;
-    if (!isTouch) transformToArrow();
+    transformToArrow();
     checkScroll();
   };
 
@@ -163,7 +163,7 @@ export default function createGoToTop() {
   const activate = () => {
     if (isScrollingToTop) return;
     isScrollingToTop = true;
-    if (!isTouch) transformToW();
+    transformToW();
     show();
 
     const lenis = window.lenis;
@@ -191,40 +191,44 @@ export default function createGoToTop() {
     }
   };
 
-  let lastActivateTime = 0;
-  const ACTIVATE_GUARD_MS = 100;
+  let lastPointerDrivenActivateAt = 0;
+
   const tryActivate = () => {
-    const now = performance.now();
-    if (now - lastActivateTime < ACTIVATE_GUARD_MS) return;
-    lastActivateTime = now;
+    if (isScrollingToTop) return;
     activate();
   };
 
   let activePointerId = null;
+  let gestureArmed = false;
+
   button.addEventListener('pointerdown', (e) => {
     if (e.pointerType === 'mouse' && e.button !== 0) return;
+    gestureArmed = true;
     activePointerId = e.pointerId;
-    try { button.setPointerCapture(e.pointerId); } catch (_) {}
     pressIn();
   });
 
   button.addEventListener('pointerup', (e) => {
-    if (activePointerId !== e.pointerId) return;
+    if (!gestureArmed) return;
+    if (e.pointerType === 'mouse' && e.button !== 0) return;
+    if (e.pointerId !== activePointerId) return;
+    gestureArmed = false;
     activePointerId = null;
-    try { button.releasePointerCapture(e.pointerId); } catch (_) {}
     pressOut();
+    lastPointerDrivenActivateAt = performance.now();
     tryActivate();
   });
 
   button.addEventListener('pointercancel', (e) => {
-    if (activePointerId !== e.pointerId) return;
+    if (!gestureArmed) return;
+    if (e.pointerId !== activePointerId) return;
+    gestureArmed = false;
     activePointerId = null;
-    try { button.releasePointerCapture(e.pointerId); } catch (_) {}
     pressOut();
   });
 
-  button.addEventListener('click', (e) => {
-    if (e.detail !== 0) return;
+  button.addEventListener('click', () => {
+    if (performance.now() - lastPointerDrivenActivateAt < 450) return;
     tryActivate();
   });
 
