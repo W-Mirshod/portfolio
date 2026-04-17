@@ -1,7 +1,6 @@
 import './index.css';
 import './App.css';
 import './components/styles/SectionsCommon.css';
-import './components/styles/HolographicTransition.css';
 import './components/styles/liquid-glass.css';
 
 import { initI18n } from './utils/i18n.js';

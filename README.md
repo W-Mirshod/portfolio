@@ -55,7 +55,6 @@ portfolio/
 │   │   └── 📁 utils/            # Utility functions
 │   ├── 📁 public/               # Static assets
 │   └── 📄 Dockerfile            # Multi-stage build (Node → Nginx)
-├── 📁 archive/                  # Legacy CSV data files
 ├── 📄 docker-compose.yml        # Container orchestration
 └── 📄 README.md                 # This file
 ```
@@ -75,7 +74,6 @@ portfolio/
 
 - **`ui/`** - Reusable UI components
   - `LazyImage.jsx` - Optimized image loading
-  - `LazySection.jsx` - Intersection Observer wrapper
   - `ParallaxBackground.jsx` - Parallax effect component
   - `GoToTop.jsx` - Scroll to top button
 

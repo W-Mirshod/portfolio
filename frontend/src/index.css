@@ -720,61 +720,6 @@ body::after {
   z-index: 3;
 }
 
-/* ── Section reveal transition (reuses holographic keyframes) ── */
-.section-reveal {
-  opacity: 0;
-  transform: translate3d(0, 48px, 0) scale(0.97);
-  filter: blur(3px);
-  transition:
-    opacity 0.9s cubic-bezier(0.16, 1, 0.3, 1),
-    transform 0.9s cubic-bezier(0.16, 1, 0.3, 1),
-    filter 0.9s cubic-bezier(0.16, 1, 0.3, 1);
-}
-
-.section-reveal.is-visible {
-  opacity: 1;
-  transform: translate3d(0, 0, 0) scale(1);
-  filter: blur(0);
-}
-
-/* Staggered children inside revealed sections */
-.section-reveal>* {
-  opacity: 0;
-  transform: translateY(24px);
-  transition: opacity 0.7s cubic-bezier(0.16, 1, 0.3, 1),
-    transform 0.7s cubic-bezier(0.16, 1, 0.3, 1);
-}
-
-.section-reveal.is-visible>*:nth-child(1) {
-  opacity: 1;
-  transform: translateY(0);
-  transition-delay: 0.08s;
-}
-
-.section-reveal.is-visible>*:nth-child(2) {
-  opacity: 1;
-  transform: translateY(0);
-  transition-delay: 0.16s;
-}
-
-.section-reveal.is-visible>*:nth-child(3) {
-  opacity: 1;
-  transform: translateY(0);
-  transition-delay: 0.24s;
-}
-
-.section-reveal.is-visible>*:nth-child(4) {
-  opacity: 1;
-  transform: translateY(0);
-  transition-delay: 0.32s;
-}
-
-.section-reveal.is-visible>*:nth-child(n+5) {
-  opacity: 1;
-  transform: translateY(0);
-  transition-delay: 0.40s;
-}
-
 /* Section accent glow aura at top of each section */
 .section-accent-glow::before {
   content: '';
@@ -880,14 +825,6 @@ h3,
 }
 
 @media (prefers-reduced-motion: reduce) {
-
-  .section-reveal,
-  .section-reveal>* {
-    transition: none !important;
-    opacity: 1 !important;
-    transform: none !important;
-    filter: none !important;
-  }
 
   .link-draw::after {
     transition: none !important;
