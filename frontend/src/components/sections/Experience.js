@@ -16,14 +16,14 @@ export function mountExperienceSection(section) {
               <div class="flex flex-col space-y-4">
                 <div class="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-3">
                   <div class="flex flex-col space-y-1">
-                    <h3 class="text-xl font-semibold text-blue-100 tracking-tight">${t(`experience.data.${exp.id}.title`, { defaultValue: exp.title })}</h3>
-                    <h4 class="text-sm font-medium text-blue-100/75">${t(`experience.data.${exp.id}.company`, { defaultValue: exp.company })}</h4>
+                    <h3 class="text-xl font-semibold text-white tracking-tight">${t(`experience.data.${exp.id}.title`, { defaultValue: exp.title })}</h3>
+                    <h4 class="text-sm font-medium text-white/75">${t(`experience.data.${exp.id}.company`, { defaultValue: exp.company })}</h4>
                   </div>
-                  <time class="text-xs font-mono text-blue-100 bg-white/15 px-3 py-1 rounded-md border border-white/35 self-start sm:self-center backdrop-blur-sm" datetime="${exp.period.split(' - ')[0]}">
+                  <time class="text-xs font-mono text-white bg-white/15 px-3 py-1 rounded-md border border-white/35 self-start sm:self-center backdrop-blur-sm" datetime="${exp.period.split(' - ')[0]}">
                     ${t(`experience.data.${exp.id}.period`, { defaultValue: exp.period })}
                   </time>
                 </div>
-                <p class="text-sm text-blue-100/85 leading-relaxed max-w-3xl">${t(`experience.data.${exp.id}.description`, { defaultValue: exp.description })}</p>
+                <p class="text-sm text-white/90 leading-relaxed max-w-3xl">${t(`experience.data.${exp.id}.description`, { defaultValue: exp.description })}</p>
               </div>
             </article>
           `).join('')}

@@ -5,7 +5,7 @@ const isTouchDevice = () =>
 export function attachSpotlightBehavior(card) {
   if (!card || isTouchDevice()) {
     card?.style.setProperty('--spotlight-opacity', '0');
-    card?.style.setProperty('--spotlight-color', 'rgba(6, 182, 212, 0.4)');
+    card?.style.setProperty('--spotlight-color', 'rgba(57, 255, 20, 0.22)');
     return;
   }
 
@@ -29,7 +29,7 @@ export function attachSpotlightBehavior(card) {
   }, { passive: true });
 
   card.style.setProperty('--spotlight-opacity', '0');
-  card.style.setProperty('--spotlight-color', 'rgba(6, 182, 212, 0.4)');
+  card.style.setProperty('--spotlight-color', 'rgba(57, 255, 20, 0.22)');
 }
 
 /**

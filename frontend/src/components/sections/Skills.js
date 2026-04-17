@@ -21,17 +21,17 @@ export function mountSkillsSection(section) {
             <div class="group liquid-panel liquid-panel-interactive rounded-xl p-6 border border-white/20 transition-all duration-500">
               <div class="flex items-center gap-3 mb-6">
                 <div class="w-8 h-8 rounded-lg liquid-icon-shell flex items-center justify-center">
-                  <i class="fas fa-code text-sm text-blue-300"></i>
+                  <i class="fas fa-code text-sm text-neo"></i>
                 </div>
-                <h3 class="text-lg font-semibold text-blue-100">${t(`skills.categories.${category.id}.title`, { defaultValue: category.title })}</h3>
+                <h3 class="text-lg font-semibold text-white">${t(`skills.categories.${category.id}.title`, { defaultValue: category.title })}</h3>
               </div>
               <div class="flex flex-wrap gap-2 skill-tags" data-category-id="${category.id}">
                 ${(category.skills || []).map((skill, idx) => {
                   const iconUrl = getSkillIcon(skill);
                   const translatedSkill = t(`skills.categories.${category.id}.skills.${idx}`, { defaultValue: skill });
                   return `
-                    <span class="inline-flex items-center gap-1.5 sm:gap-2 text-xs text-blue-100/90 bg-white/10 px-2.5 sm:px-3 py-1.5 sm:py-2 rounded-md border border-white/20 hover:bg-white/20 hover:border-white/35 hover:text-white transition-all duration-300">
-                      ${iconUrl ? `<span class="skill-icon-placeholder w-4 h-4 flex-shrink-0" data-src="${iconUrl}" data-alt="${skill}"></span>` : '<i class="fas fa-code text-[10px] text-blue-300/80 flex-shrink-0"></i>'}
+                    <span class="inline-flex items-center gap-1.5 sm:gap-2 text-xs text-white/90 bg-white/10 px-2.5 sm:px-3 py-1.5 sm:py-2 rounded-md border border-white/20 hover:bg-white/20 hover:border-white/35 hover:text-white transition-all duration-300">
+                      ${iconUrl ? `<span class="skill-icon-placeholder w-4 h-4 flex-shrink-0" data-src="${iconUrl}" data-alt="${skill}"></span>` : '<i class="fas fa-code text-[10px] text-neo/80 flex-shrink-0"></i>'}
                       <span class="whitespace-nowrap">${translatedSkill}</span>
                     </span>
                   `;

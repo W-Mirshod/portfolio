@@ -59,6 +59,26 @@ export function setupScrollReveal(element, threshold = 0.1) {
   return () => observer.disconnect();
 }
 
+export function setupStaggerReveal(container, options = {}) {
+  const { threshold = 0.06, rootMargin = '0px 0px -36px 0px' } = options;
+  if (!container || typeof IntersectionObserver === 'undefined') {
+    return () => {};
+  }
+  const observer = new IntersectionObserver(
+    (entries) => {
+      entries.forEach((entry) => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('is-revealed');
+          observer.unobserve(entry.target);
+        }
+      });
+    },
+    { threshold, rootMargin }
+  );
+  observer.observe(container);
+  return () => observer.disconnect();
+}
+
 /**
  * Creates floating particles inside a container with class 'floating-particles'.
  * Returns a cleanup function.

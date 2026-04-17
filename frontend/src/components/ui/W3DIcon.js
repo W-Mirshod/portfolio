@@ -72,7 +72,7 @@ function createEnvironment(renderer) {
   const envScene = new THREE.Scene();
 
   const roomGeo = new THREE.BoxGeometry(10, 10, 10);
-  const roomMat = new THREE.MeshBasicMaterial({ color: 0x080818, side: THREE.BackSide });
+  const roomMat = new THREE.MeshBasicMaterial({ color: 0x020402, side: THREE.BackSide });
   envScene.add(new THREE.Mesh(roomGeo, roomMat));
 
   const panelGeo = new THREE.PlaneGeometry(4, 4);
@@ -84,11 +84,11 @@ function createEnvironment(renderer) {
     envScene.add(mesh);
   };
 
-  addPanel(0x2244ff, [0, 4, 0], [Math.PI / 2, 0, 0]);
-  addPanel(0xff2288, [-4, 0, 0], [0, Math.PI / 2, 0]);
-  addPanel(0x22ffaa, [4, 0, 0], [0, -Math.PI / 2, 0]);
-  addPanel(0x6622ff, [0, -4, 0], [-Math.PI / 2, 0, 0]);
-  addPanel(0x88ccff, [0, 0, -4], [0, 0, 0]);
+  addPanel(0x0d280d, [0, 4, 0], [Math.PI / 2, 0, 0]);
+  addPanel(0x39ff14, [-4, 0, 0], [0, Math.PI / 2, 0]);
+  addPanel(0x14532d, [4, 0, 0], [0, -Math.PI / 2, 0]);
+  addPanel(0x052208, [0, -4, 0], [-Math.PI / 2, 0, 0]);
+  addPanel(0x1faa0a, [0, 0, -4], [0, 0, 0]);
   addPanel(0xffffff, [0, 2, 4], [0.2, 0, 0]);
 
   const envMap = pmremGenerator.fromScene(envScene, 0.04).texture;
@@ -170,6 +170,10 @@ function createParticleSystem(count = 60) {
   return new THREE.Points(geometry, material);
 }
 
+function easeOutCubic(t) {
+  return 1 - (1 - t) ** 3;
+}
+
 export function createW3DScene(container, options = {}) {
   const {
     enableMouseTracking = true,
@@ -182,6 +186,11 @@ export function createW3DScene(container, options = {}) {
     bevelSegments = 8,
     antialias = true,
     targetFPS = 60,
+    enableIntro = false,
+    introDurationMs = 2300,
+    introStartFactor = 0.52,
+    introEnvMapIntensityStart = 1.35,
+    introEmissiveIntensityStart = 0.22,
   } = options;
 
   const frameDuration = 1000 / targetFPS;
@@ -192,7 +201,8 @@ export function createW3DScene(container, options = {}) {
   const scene = new THREE.Scene();
 
   const camera = new THREE.PerspectiveCamera(40, width / height, 0.1, 100);
-  camera.position.set(0, 0, cameraDistance);
+  const introStartZ = cameraDistance * introStartFactor;
+  camera.position.set(0, 0, enableIntro ? introStartZ : cameraDistance);
 
   const renderer = new THREE.WebGLRenderer({
     antialias,
@@ -229,8 +239,10 @@ export function createW3DScene(container, options = {}) {
   geometry.center();
 
   const timeUniform = { value: 0 };
+  const baseEnvMapIntensity = 3.2;
+  const baseEmissiveIntensity = 0.5;
   const material = new THREE.MeshPhysicalMaterial({
-    color: new THREE.Color(0x080828),
+    color: new THREE.Color(0x030806),
     metalness: 1.0,
     roughness: 0.03,
     clearcoat: 1.0,
@@ -238,13 +250,13 @@ export function createW3DScene(container, options = {}) {
     iridescence: 1.0,
     iridescenceIOR: 1.4,
     iridescenceThicknessRange: [100, 900],
-    envMapIntensity: 3.2,
+    envMapIntensity: enableIntro ? introEnvMapIntensityStart : baseEnvMapIntensity,
     reflectivity: 1.0,
     sheen: 0.5,
     sheenRoughness: 0.15,
-    sheenColor: new THREE.Color(0x6699ff),
-    emissive: new THREE.Color(0x0a0a40),
-    emissiveIntensity: 0.5,
+    sheenColor: new THREE.Color(0x44ff88),
+    emissive: new THREE.Color(0x021408),
+    emissiveIntensity: enableIntro ? introEmissiveIntensityStart : baseEmissiveIntensity,
   });
 
   if (enableLiquidMorph) {
@@ -273,26 +285,26 @@ export function createW3DScene(container, options = {}) {
     scene.add(particles);
   }
 
-  const ambientLight = new THREE.AmbientLight(0x303060, 0.5);
+  const ambientLight = new THREE.AmbientLight(0x102818, 0.55);
   scene.add(ambientLight);
 
   const mainLight = new THREE.DirectionalLight(0xffffff, 2.5);
   mainLight.position.set(3, 4, 5);
   scene.add(mainLight);
 
-  const fillLight = new THREE.DirectionalLight(0x4488ff, 1.2);
+  const fillLight = new THREE.DirectionalLight(0x22aa44, 1.15);
   fillLight.position.set(-3, -1, 3);
   scene.add(fillLight);
 
-  const rimLight = new THREE.DirectionalLight(0xcc44ff, 0.9);
+  const rimLight = new THREE.DirectionalLight(0x88ff99, 0.95);
   rimLight.position.set(0, 3, -3);
   scene.add(rimLight);
 
-  const bottomLight = new THREE.PointLight(0x0066ff, 4, 10);
+  const bottomLight = new THREE.PointLight(0x00aa33, 3.8, 10);
   bottomLight.position.set(0, -3, 2);
   scene.add(bottomLight);
 
-  const topLight = new THREE.PointLight(0x8844ff, 3, 10);
+  const topLight = new THREE.PointLight(0x39ff14, 3.2, 10);
   topLight.position.set(1, 3, 2);
   scene.add(topLight);
 
@@ -322,12 +334,39 @@ export function createW3DScene(container, options = {}) {
     const time = (now - startTime) * 0.001;
     timeUniform.value = time;
 
-    const targetRotY = time * autoRotateSpeed + (enableMouseTracking ? mouseX * 0.4 : 0);
-    const targetRotX = enableMouseTracking ? mouseY * 0.3 : Math.sin(time * 0.3) * 0.1;
+    let introEased = 1;
+    let introT = 1;
+    if (enableIntro) {
+      introT = Math.min(1, (now - startTime) / introDurationMs);
+      introEased = easeOutCubic(introT);
+      camera.position.z = THREE.MathUtils.lerp(introStartZ, cameraDistance, introEased);
+      material.envMapIntensity = THREE.MathUtils.lerp(
+        introEnvMapIntensityStart,
+        baseEnvMapIntensity,
+        introEased
+      );
+      material.emissiveIntensity = THREE.MathUtils.lerp(
+        introEmissiveIntensityStart,
+        baseEmissiveIntensity,
+        introEased
+      );
+    }
+
+    const introActive = enableIntro && introT < 1;
+    let targetRotY;
+    let targetRotX;
+    if (introActive) {
+      targetRotY = time * autoRotateSpeed * 0.25;
+      targetRotX = Math.sin(time * 0.35) * 0.06;
+    } else {
+      targetRotY = time * autoRotateSpeed + (enableMouseTracking ? mouseX * 0.4 : 0);
+      targetRotX = enableMouseTracking ? mouseY * 0.3 : Math.sin(time * 0.3) * 0.1;
+    }
 
     wMesh.rotation.x += (targetRotX - wMesh.rotation.x) * 0.04;
     wMesh.rotation.y += (targetRotY - wMesh.rotation.y) * 0.04;
-    wMesh.position.y = Math.sin(time * 0.7) * floatAmplitude;
+    const floatMul = enableIntro ? Math.max(0.15, introEased) : 1;
+    wMesh.position.y = Math.sin(time * 0.7) * floatAmplitude * floatMul;
 
     if (particles) {
       particles.material.uniforms.uTime.value = time;
@@ -393,6 +432,7 @@ export function initHomeW3D(containerElement, { isMobile = false } = {}) {
     bevelSegments: 3,
     antialias: false,
     targetFPS: 30,
+    enableIntro: false,
   } : {
     // Desktop preset
     enableMouseTracking: true,
@@ -404,6 +444,9 @@ export function initHomeW3D(containerElement, { isMobile = false } = {}) {
     bevelSegments: 8,
     antialias: true,
     targetFPS: 60,
+    enableIntro: true,
+    introDurationMs: 2300,
+    introStartFactor: 0.52,
   });
 }
 

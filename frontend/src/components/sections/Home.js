@@ -20,7 +20,7 @@ export function hydrateHomeSection(section) {
       const key = oldBtn.getAttribute('data-i18n-btn');
       const isPrimary = oldBtn.classList.contains('liquid-btn-primary');
       const className = isPrimary
-        ? 'liquid-btn liquid-btn-primary px-6 sm:px-8 lg:px-10 py-3 sm:py-3.5 lg:py-4 font-medium text-sm sm:text-base lg:text-lg'
+        ? 'liquid-btn liquid-btn-primary neo-pulse px-6 sm:px-8 lg:px-10 py-3 sm:py-3.5 lg:py-4 font-medium text-sm sm:text-base lg:text-lg'
         : 'liquid-btn px-6 sm:px-8 lg:px-10 py-3 sm:py-3.5 lg:py-4 text-white font-medium text-sm sm:text-base lg:text-lg';
       const nb = createMagneticButton(i18n.t(key), {
         className,
@@ -94,8 +94,8 @@ export default function createHome() {
     return `
       <div class="relative flex flex-col justify-center items-center w-full h-full max-w-7xl mx-auto z-10 py-4 sm:py-6 md:py-8 lg:py-12">
         <div class="absolute inset-0 overflow-hidden pointer-events-none">
-          <div class="absolute top-1/4 left-1/4 w-64 h-64 sm:w-96 sm:h-96 bg-blue-200/10 rounded-full blur-2xl"></div>
-          <div class="absolute bottom-1/4 right-1/4 w-56 h-56 sm:w-80 sm:h-80 bg-sky-200/10 rounded-full blur-2xl"></div>
+          <div class="absolute top-1/4 left-1/4 w-64 h-64 sm:w-96 sm:h-96 bg-neo/10 rounded-full blur-2xl"></div>
+          <div class="absolute bottom-1/4 right-1/4 w-56 h-56 sm:w-80 sm:h-80 bg-neo/8 rounded-full blur-2xl"></div>
         </div>
         <div class="flex flex-col items-center justify-center text-center w-full max-w-7xl mx-auto relative space-y-8 sm:space-y-10 md:space-y-12">
           <div class="flex flex-col items-center justify-center text-center w-full space-y-4 sm:space-y-5 md:space-y-6 px-4 sm:px-6 md:px-8 lg:px-12 xl:px-16 lg:items-start lg:text-left">
@@ -105,33 +105,33 @@ export default function createHome() {
               </div>
               <h1 class="text-3xl sm:text-4xl md:text-5xl lg:text-6xl xl:text-7xl 2xl:text-8xl font-bold leading-tight text-gradient-metallic lg:text-left">Mirshod Qayimov</h1>
             </div>
-            <h2 class="text-lg sm:text-xl md:text-2xl lg:text-3xl xl:text-4xl text-blue-100 font-semibold layered-entrance" style="animation-delay:0.1s" data-i18n="home.subtitle">${t('home.subtitle')}</h2>
-            <p class="text-sm sm:text-base md:text-lg lg:text-xl xl:text-2xl text-blue-100/90 max-w-4xl leading-relaxed layered-entrance flex items-center justify-center gap-2 sm:gap-3 lg:justify-start" style="animation-delay:0.2s">
-              <span data-i18n="home.descriptionPart1">${t('home.descriptionPart1')}</span> ${iconArrowRight('1em', 'text-blue-200')} <span data-i18n="home.descriptionPart2">${t('home.descriptionPart2')}</span>
+            <h2 class="text-lg sm:text-xl md:text-2xl lg:text-3xl xl:text-4xl text-white font-semibold layered-entrance" style="animation-delay:0.1s" data-i18n="home.subtitle">${t('home.subtitle')}</h2>
+            <p class="text-sm sm:text-base md:text-lg lg:text-xl xl:text-2xl text-white/90 max-w-4xl leading-relaxed layered-entrance flex items-center justify-center gap-2 sm:gap-3 lg:justify-start" style="animation-delay:0.2s">
+              <span data-i18n="home.descriptionPart1">${t('home.descriptionPart1')}</span> ${iconArrowRight('1em', 'text-neo')} <span data-i18n="home.descriptionPart2">${t('home.descriptionPart2')}</span>
             </p>
             <div class="home-buttons flex flex-wrap items-center justify-center gap-3 sm:gap-4 mt-6 sm:mt-8 layered-entrance lg:justify-start" style="animation-delay:0.3s"></div>
           </div>
           <div class="w-full max-w-6xl mx-auto layered-entrance mt-8" style="animation-delay:0.4s">
-            <div class="grid grid-cols-1 md:grid-cols-4 gap-4 lg:gap-6">
+            <div class="grid grid-cols-1 md:grid-cols-4 gap-2 sm:gap-3 md:gap-4">
               <div class="md:col-span-2 md:row-span-2">
-                <div class="liquid-panel-strong glass-blur-strong glass-border rounded-xl p-6 lg:p-8 xl:p-10 text-center lg:text-left h-full flex flex-col justify-center">
-                  <div class="text-5xl sm:text-6xl lg:text-7xl xl:text-8xl font-extrabold text-white mb-2 font-mono">99.7%</div>
-                  <div class="text-lg sm:text-xl lg:text-2xl text-blue-100/90 mb-1 font-mono" data-i18n="home.stats.uptime">${t('home.stats.uptime')}</div>
-                  <div class="text-sm sm:text-base text-blue-100/70" data-i18n="home.stats.uptimeSubtitle">${t('home.stats.uptimeSubtitle')}</div>
+                <div class="liquid-panel-strong glass-blur-strong glass-border rounded-lg p-4 sm:p-5 lg:p-6 text-center lg:text-left h-full flex flex-col justify-center leading-tight">
+                  <div class="text-4xl sm:text-5xl lg:text-6xl xl:text-7xl font-extrabold text-white mb-0.5 font-mono">99.7%</div>
+                  <div class="text-base sm:text-lg lg:text-xl text-white/90 mb-0 font-mono" data-i18n="home.stats.uptime">${t('home.stats.uptime')}</div>
+                  <div class="text-xs sm:text-sm text-white/70" data-i18n="home.stats.uptimeSubtitle">${t('home.stats.uptimeSubtitle')}</div>
                 </div>
               </div>
               <div class="md:col-span-2">
-                <div class="liquid-panel glass-blur-strong glass-border rounded-xl p-4 sm:p-6 lg:p-8 text-center hover:bg-white/20 hover:border-white/40 transition-all duration-300 h-full flex flex-col justify-center">
-                  <div class="text-3xl sm:text-4xl lg:text-5xl xl:text-6xl font-bold text-white mb-2 font-mono">15+</div>
-                  <div class="text-base sm:text-lg lg:text-xl text-blue-100/90 mb-1 font-mono" data-i18n="home.stats.projects">${t('home.stats.projects')}</div>
-                  <div class="text-sm sm:text-base text-blue-100/70" data-i18n="home.stats.projectsSubtitle">${t('home.stats.projectsSubtitle')}</div>
+                <div class="liquid-panel glass-blur-strong glass-border rounded-lg p-3 sm:p-4 lg:p-5 text-center hover:bg-zinc-600/25 hover:border-white/20 transition-all duration-300 h-full flex flex-col justify-center leading-tight">
+                  <div class="text-2xl sm:text-3xl lg:text-4xl xl:text-5xl font-bold text-white mb-0.5 font-mono">15+</div>
+                  <div class="text-sm sm:text-base lg:text-lg text-white/90 mb-0 font-mono" data-i18n="home.stats.projects">${t('home.stats.projects')}</div>
+                  <div class="text-xs sm:text-sm text-white/70" data-i18n="home.stats.projectsSubtitle">${t('home.stats.projectsSubtitle')}</div>
                 </div>
               </div>
               <div class="md:col-span-2">
-                <div class="liquid-panel glass-blur-strong glass-border rounded-xl p-4 sm:p-6 lg:p-8 text-center hover:bg-white/20 hover:border-white/40 transition-all duration-300 h-full flex flex-col justify-center">
-                  <div class="text-3xl sm:text-4xl lg:text-5xl xl:text-6xl font-bold text-white mb-2 font-mono">91%</div>
-                  <div class="text-base sm:text-lg lg:text-xl text-blue-100/90 mb-1 font-mono" data-i18n="home.stats.speed">${t('home.stats.speed')}</div>
-                  <div class="text-sm sm:text-base text-blue-100/70" data-i18n="home.stats.speedSubtitle">${t('home.stats.speedSubtitle')}</div>
+                <div class="liquid-panel glass-blur-strong glass-border rounded-lg p-3 sm:p-4 lg:p-5 text-center hover:bg-zinc-600/25 hover:border-white/20 transition-all duration-300 h-full flex flex-col justify-center leading-tight">
+                  <div class="text-2xl sm:text-3xl lg:text-4xl xl:text-5xl font-bold text-white mb-0.5 font-mono">91%</div>
+                  <div class="text-sm sm:text-base lg:text-lg text-white/90 mb-0 font-mono" data-i18n="home.stats.speed">${t('home.stats.speed')}</div>
+                  <div class="text-xs sm:text-sm text-white/70" data-i18n="home.stats.speedSubtitle">${t('home.stats.speedSubtitle')}</div>
                 </div>
               </div>
             </div>
@@ -144,13 +144,13 @@ export default function createHome() {
   // Background
   if (enableEffects) {
     const bg = createParallaxBackground(
-      `<div class="absolute inset-0 w-full h-full bg-bg-secondary/20"></div><div class="mesh-gradient-bg"></div><div class="absolute inset-0 w-full h-full bg-gradient-to-t from-transparent via-transparent to-bg-secondary/10"></div>`,
+      `<div class="absolute inset-0 w-full h-full bg-transparent"></div>`,
       'absolute inset-0'
     );
     section.appendChild(bg.element);
   } else {
     const staticBg = document.createElement('div');
-    staticBg.innerHTML = `<div class="absolute inset-0 w-full h-full bg-bg-secondary/20"></div><div class="mesh-gradient-bg"></div>`;
+    staticBg.innerHTML = `<div class="absolute inset-0 w-full h-full bg-transparent"></div>`;
     while (staticBg.firstChild) section.appendChild(staticBg.firstChild);
   }
 
@@ -168,7 +168,7 @@ export default function createHome() {
     });
     viewBtn.setAttribute('data-i18n-btn', 'home.buttons.viewProjects');
     const talkBtn = createMagneticButton(t('home.buttons.letsTalk'), {
-      className: 'liquid-btn liquid-btn-primary px-6 sm:px-8 lg:px-10 py-3 sm:py-3.5 lg:py-4 font-medium text-sm sm:text-base lg:text-lg',
+      className: 'liquid-btn liquid-btn-primary neo-pulse px-6 sm:px-8 lg:px-10 py-3 sm:py-3.5 lg:py-4 font-medium text-sm sm:text-base lg:text-lg',
       onClick: () => handleNavigation('#contact')
     });
     talkBtn.setAttribute('data-i18n-btn', 'home.buttons.letsTalk');

@@ -1,5 +1,5 @@
 import i18n from '../../utils/i18n.js';
-import { setupScrollReveal } from '../../utils/parallax.js';
+import { setupStaggerReveal } from '../../utils/parallax.js';
 import projectsData from '../../data/projects.json';
 import createSpotlightCard, { attachSpotlightBehavior } from '../ui/SpotlightCard.js';
 
@@ -23,33 +23,33 @@ export function mountProjectsSection(section) {
       container.innerHTML += `
         <div class="flex justify-center items-center py-20">
           <div class="text-center">
-            <div class="text-gray-400 text-6xl mb-4"><i class="fas fa-search"></i></div>
+            <div class="text-white/35 text-6xl mb-4"><i class="fas fa-search"></i></div>
             <h3 class="text-xl font-semibold text-white mb-2">${t('projects.noProjects')}</h3>
-            <p class="text-blue-100/70 mb-4">${t('projects.noProjectsSubtitle')}</p>
+            <p class="text-white/70 mb-4">${t('projects.noProjectsSubtitle')}</p>
           </div>
         </div>
       `;
     } else {
       const grid = document.createElement('div');
-      grid.className = 'grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-4 mb-8';
+      grid.className = 'grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-4 mb-8 reveal-stagger';
 
       projectsData.forEach(project => {
         const cardHTML = `
           <div class="flex items-center gap-3 mb-3">
             <div class="w-9 h-9 rounded-md liquid-icon-shell flex items-center justify-center">
-              <i class="${project.icon} text-blue-300 text-base"></i>
+              <i class="${project.icon} text-neo text-base"></i>
             </div>
             <div class="flex-1">
-              <h3 class="text-base font-semibold text-blue-100">${t(`projects.data.${project.id}.title`, { defaultValue: project.title })}</h3>
+              <h3 class="text-base font-semibold text-white">${t(`projects.data.${project.id}.title`, { defaultValue: project.title })}</h3>
             </div>
           </div>
-          <p class="text-xs text-blue-100/85 mb-4 leading-relaxed flex-grow">${t(`projects.data.${project.id}.description`, { defaultValue: project.description })}</p>
+          <p class="text-xs text-white/90 mb-4 leading-relaxed flex-grow">${t(`projects.data.${project.id}.description`, { defaultValue: project.description })}</p>
           <div class="flex flex-wrap gap-1.5 mb-3">
-            ${project.technologies.map((tech, idx) => `<span class="text-[10px] text-blue-100/90 bg-white/10 px-2.5 py-1 rounded border border-white/20 hover:bg-white/20 hover:border-white/35 transition-all duration-200">${t(`projects.data.${project.id}.technologies.${idx}`, { defaultValue: tech })}</span>`).join('')}
+            ${project.technologies.map((tech, idx) => `<span class="text-[10px] text-white/90 bg-white/10 px-2.5 py-1 rounded border border-white/20 hover:bg-white/20 hover:border-white/35 transition-all duration-200">${t(`projects.data.${project.id}.technologies.${idx}`, { defaultValue: tech })}</span>`).join('')}
           </div>
           <div class="flex items-center justify-end gap-2 mt-auto pt-3 border-t border-white/20">
-            ${project.githubUrl ? `<a href="${project.githubUrl}" target="_blank" rel="noopener noreferrer" class="group/btn inline-flex items-center gap-1.5 px-3 py-1.5 rounded-md liquid-btn text-blue-200 text-xs font-medium border border-white/20 hover:text-white transition-all duration-200"><i class="fab fa-github text-sm"></i><span>${t('projects.viewInGithub')}</span></a>` : ''}
-            ${project.url && project.url !== '#' ? `<a href="${project.url}" target="_blank" rel="noopener noreferrer" class="group/btn inline-flex items-center gap-1.5 px-3 py-1.5 rounded-md liquid-btn text-blue-200 text-xs font-medium border border-white/20 hover:text-white transition-all duration-200"><i class="fas fa-external-link-alt text-xs"></i><span>${t('projects.viewWebsite')}</span></a>` : ''}
+            ${project.githubUrl ? `<a href="${project.githubUrl}" target="_blank" rel="noopener noreferrer" class="group/btn inline-flex items-center gap-1.5 px-3 py-1.5 rounded-md liquid-btn text-neo text-xs font-medium border border-white/20 hover:text-white transition-all duration-200"><i class="fab fa-github text-sm"></i><span>${t('projects.viewInGithub')}</span></a>` : ''}
+            ${project.url && project.url !== '#' ? `<a href="${project.url}" target="_blank" rel="noopener noreferrer" class="group/btn inline-flex items-center gap-1.5 px-3 py-1.5 rounded-md liquid-btn text-neo text-xs font-medium border border-white/20 hover:text-white transition-all duration-200"><i class="fas fa-external-link-alt text-xs"></i><span>${t('projects.viewWebsite')}</span></a>` : ''}
           </div>
         `;
         const card = createSpotlightCard(cardHTML, 'group liquid-panel liquid-panel-interactive glass-blur-strong rounded-lg p-5 glass-border transition-all duration-300 flex flex-col h-full');
@@ -57,16 +57,16 @@ export function mountProjectsSection(section) {
       });
 
       container.appendChild(grid);
-      setupScrollReveal(grid);
+      setupStaggerReveal(grid);
     }
 
     section.appendChild(container);
   }
 
   function hydrateFromSsr() {
-    const grid = section.querySelector('.grid');
+    const grid = section.querySelector('.grid.reveal-stagger');
     if (grid) {
-      setupScrollReveal(grid);
+      setupStaggerReveal(grid);
       grid.querySelectorAll('.spotlight-card').forEach((card) => attachSpotlightBehavior(card));
     }
   }

@@ -13,9 +13,9 @@ export default function createParallaxBackground(innerHTMLContent = '', classNam
 
   container.innerHTML = `
     <div class="floating-particles"></div>
-    <div class="parallax-layer-1 absolute inset-0 opacity-30" style="background: radial-gradient(ellipse at 20% 30%, rgba(194, 218, 255, 0.2) 0%, transparent 50%), radial-gradient(ellipse at 80% 70%, rgba(146, 233, 255, 0.16) 0%, transparent 50%)"></div>
-    <div class="parallax-layer-2 absolute inset-0 opacity-20" style="background: radial-gradient(ellipse at 60% 20%, rgba(178, 207, 255, 0.18) 0%, transparent 60%), radial-gradient(ellipse at 30% 80%, rgba(151, 181, 255, 0.13) 0%, transparent 60%)"></div>
-    <div class="parallax-layer-3 absolute inset-0 opacity-10" style="background: linear-gradient(135deg, rgba(192, 214, 255, 0.08) 0%, rgba(144, 228, 255, 0.06) 100%)"></div>
+    <div class="parallax-layer-1 absolute inset-0 opacity-30" style="background: radial-gradient(ellipse at 20% 30%, rgba(57, 255, 20, 0.14) 0%, transparent 50%), radial-gradient(ellipse at 80% 70%, rgba(26, 170, 10, 0.12) 0%, transparent 50%)"></div>
+    <div class="parallax-layer-2 absolute inset-0 opacity-20" style="background: radial-gradient(ellipse at 60% 20%, rgba(57, 255, 20, 0.1) 0%, transparent 60%), radial-gradient(ellipse at 30% 80%, rgba(18, 90, 10, 0.1) 0%, transparent 60%)"></div>
+    <div class="parallax-layer-3 absolute inset-0 opacity-10" style="background: linear-gradient(135deg, rgba(57, 255, 20, 0.06) 0%, rgba(255, 255, 255, 0.03) 100%)"></div>
     <div class="relative z-10">${innerHTMLContent}</div>
   `;
 

@@ -48,12 +48,12 @@ export function mountProofSection(section) {
         <div class="grid grid-cols-1 xl:grid-cols-2 gap-8 animate-fadeInUp delay-200">
           <article class="liquid-panel liquid-panel-interactive rounded-xl p-8 border border-white/20 transition-all duration-500">
             <div class="flex items-center gap-3 mb-6">
-              <div class="flex items-center justify-center w-12 h-12 rounded-full bg-gradient-to-br from-white/65 to-white/40 border border-white/35 text-blue-200 text-2xl">
+              <div class="flex items-center justify-center w-12 h-12 rounded-full bg-gradient-to-br from-white/65 to-white/40 border border-white/35 text-neo text-2xl">
                 <i class="fas fa-graduation-cap"></i>
               </div>
               <div>
-                <h3 class="text-lg font-semibold text-blue-100 leading-tight">${t('certificate.title')}</h3>
-                <p class="text-xs sm:text-sm text-blue-100/75">${t('certificate.institution')}</p>
+                <h3 class="text-lg font-semibold text-white leading-tight">${t('certificate.title')}</h3>
+                <p class="text-xs sm:text-sm text-white/75">${t('certificate.institution')}</p>
               </div>
             </div>
             <div class="flex flex-col items-center text-center">
@@ -67,16 +67,16 @@ export function mountProofSection(section) {
                   </div>
                 </div>
               </div>
-              <h4 class="text-lg font-semibold text-blue-100 mb-2">${t('certificate.course')}</h4>
-              <span class="inline-block px-3 py-1 rounded-md bg-white/15 text-blue-100 text-xs font-medium border border-white/30 mb-4">${t('certificate.duration')}</span>
-              <p class="text-blue-100/85 text-sm leading-relaxed mb-4">${t('certificate.description')}</p>
+              <h4 class="text-lg font-semibold text-white mb-2">${t('certificate.course')}</h4>
+              <span class="inline-block px-3 py-1 rounded-md bg-white/15 text-white text-xs font-medium border border-white/30 mb-4">${t('certificate.duration')}</span>
+              <p class="text-white/90 text-sm leading-relaxed mb-4">${t('certificate.description')}</p>
               <div class="grid grid-cols-1 sm:grid-cols-2 gap-2 mb-6 w-full">
-                ${skillsCovered.map((skill) => `<div class="flex items-center gap-2"><i class="fas fa-check-circle text-blue-300 text-sm"></i><span class="text-xs text-blue-100/85">${skill}</span></div>`).join('')}
+                ${skillsCovered.map((skill) => `<div class="flex items-center gap-2"><i class="fas fa-check-circle text-neo text-sm"></i><span class="text-xs text-white/90">${skill}</span></div>`).join('')}
               </div>
               <div class="flex flex-wrap gap-2 justify-center mb-6">
                 ${['hours', 'projects', 'certified', 'graduated', 'date'].map((badge) => {
                   const icons = { hours: 'fa-clock', projects: 'fa-project-diagram', certified: 'fa-certificate', graduated: 'fa-star', date: 'fa-calendar-alt' };
-                  return `<div class="flex items-center gap-2 bg-white/10 text-blue-100 px-3 py-1 rounded-md text-xs font-medium border border-white/20"><i class="fas ${icons[badge]}"></i><span>${t(`certificate.badges.${badge}`)}</span></div>`;
+                  return `<div class="flex items-center gap-2 bg-white/10 text-white px-3 py-1 rounded-md text-xs font-medium border border-white/20"><i class="fas ${icons[badge]}"></i><span>${t(`certificate.badges.${badge}`)}</span></div>`;
                 }).join('')}
               </div>
               <div class="flex flex-wrap gap-3 justify-center">
@@ -87,37 +87,37 @@ export function mountProofSection(section) {
           </article>
           <article class="liquid-panel rounded-xl p-8 border border-white/20">
             <div class="flex items-center gap-3 mb-6">
-              <div class="w-8 h-8 rounded-lg liquid-icon-shell flex items-center justify-center"><i class="fas fa-trophy text-sm text-blue-300"></i></div>
-              <h3 class="text-lg font-semibold text-blue-100">${t('achievements.title')}</h3>
+              <div class="w-8 h-8 rounded-lg liquid-icon-shell flex items-center justify-center"><i class="fas fa-trophy text-sm text-neo"></i></div>
+              <h3 class="text-lg font-semibold text-white">${t('achievements.title')}</h3>
             </div>
             <div class="grid grid-cols-1 gap-4 mb-8">
               ${githubAchievements.map((achievement) => `
                 <div class="group flex items-center gap-4 p-4 rounded-lg bg-white/10 border border-white/20 hover:bg-white/20 hover:border-white/35 transition-all duration-300">
                   <div class="relative">
                     <img src="${achievement.icon}" alt="${achievement.label}" class="w-12 h-12 rounded-lg border border-white/25 group-hover:border-white/45 transition-colors duration-300"/>
-                    ${achievement.count ? `<div class="absolute -top-2 -right-2 w-6 h-6 bg-white/90 text-slate-900 text-xs font-bold rounded-full flex items-center justify-center border-2 border-white/60">${achievement.count}</div>` : ''}
+                    ${achievement.count ? `<div class="absolute -top-2 -right-2 w-6 h-6 bg-white/90 text-black text-xs font-bold rounded-full flex items-center justify-center border-2 border-white/60">${achievement.count}</div>` : ''}
                   </div>
                   <div class="flex-1">
-                    <h4 class="text-sm font-semibold text-blue-100 mb-1">${achievement.label}</h4>
-                    <p class="text-xs text-blue-100/75">${achievement.description}</p>
+                    <h4 class="text-sm font-semibold text-white mb-1">${achievement.label}</h4>
+                    <p class="text-xs text-white/75">${achievement.description}</p>
                   </div>
                 </div>
               `).join('')}
             </div>
             <div class="border-t border-white/20 pt-6">
               <div class="flex items-center gap-3 mb-4">
-                <div class="w-8 h-8 rounded-lg liquid-icon-shell flex items-center justify-center"><i class="fas fa-star text-sm text-blue-300"></i></div>
-                <h4 class="text-base font-semibold text-blue-100">${t('achievements.highlights')}</h4>
+                <div class="w-8 h-8 rounded-lg liquid-icon-shell flex items-center justify-center"><i class="fas fa-star text-sm text-neo"></i></div>
+                <h4 class="text-base font-semibold text-white">${t('achievements.highlights')}</h4>
               </div>
               <div class="space-y-4">
                 ${githubHighlights.map((highlight) => `
                   <div class="group flex items-center gap-4 p-4 rounded-lg bg-white/10 border border-white/20 hover:bg-white/20 hover:border-white/35 transition-all duration-300">
                     <div class="w-12 h-12 rounded-lg bg-gradient-to-br from-white/55 to-white/35 border border-white/30 flex items-center justify-center">
-                      <i class="${highlight.icon} text-blue-200 text-lg"></i>
+                      <i class="${highlight.icon} text-neo text-lg"></i>
                     </div>
                     <div class="flex-1">
-                      <h5 class="text-sm font-semibold text-blue-100 mb-1">${highlight.label}</h5>
-                      <p class="text-xs text-blue-100/75">${highlight.description}</p>
+                      <h5 class="text-sm font-semibold text-white mb-1">${highlight.label}</h5>
+                      <p class="text-xs text-white/75">${highlight.description}</p>
                     </div>
                   </div>
                 `).join('')}
