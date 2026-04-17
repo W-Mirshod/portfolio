@@ -10,23 +10,24 @@ export default function createGoToTop() {
   const isTouch = !canHover;
 
   const button = document.createElement('button');
+  button.type = 'button';
   button.className = `go-to-top-button fixed bottom-4 right-4 sm:bottom-6 sm:right-6 z-50 flex items-center justify-center
                  w-11 h-11 sm:w-14 sm:h-14 rounded-2xl
                  border border-white/25
                  hover:bg-white/20 hover:border-white/45
-                 transition-all duration-300
+                 transition-colors duration-300
                  cursor-pointer overflow-hidden group`;
   button.style.boxShadow = 'var(--liquid-shadow)';
   button.style.opacity = '0';
   button.style.pointerEvents = 'none';
-  button.style.willChange = 'transform, opacity';
+  button.style.touchAction = 'none';
   button.setAttribute('aria-label', 'Scroll to top');
 
   button.innerHTML = `
-    <svg class="go-top-arrow w-4 h-4 sm:w-5 sm:h-5 text-white/90 absolute z-10 transition-colors duration-300 group-hover:text-white" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+    <svg class="go-top-arrow w-4 h-4 sm:w-5 sm:h-5 text-white/90 absolute z-10 transition-colors duration-300 group-hover:text-white pointer-events-none" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
       <path d="M12 19V5M5 12l7-7 7 7"/>
     </svg>
-    <span class="go-top-w text-lg sm:text-xl font-bold text-white/90 absolute z-10 transition-colors duration-300 group-hover:text-white" style="visibility:hidden;opacity:0">W</span>
+    <span class="go-top-w text-lg sm:text-xl font-bold text-white/90 absolute z-10 transition-colors duration-300 group-hover:text-white pointer-events-none" style="visibility:hidden;opacity:0">W</span>
   `;
 
   const arrowEl = button.querySelector('.go-top-arrow');
@@ -38,7 +39,7 @@ export default function createGoToTop() {
   const SHOW_AT = 800;
   const HIDE_AT = 680;
 
-  const getScrollY = () => window.lenis?.scroll || window.pageYOffset || 0;
+  const getScrollY = () => window.lenis?.scroll ?? window.pageYOffset ?? 0;
 
   const show = () => {
     if (isVisible) return;
@@ -64,27 +65,27 @@ export default function createGoToTop() {
   const transformToW = () => {
     gsap.killTweensOf([arrowEl, wEl]);
     gsap.to(arrowEl, {
-      opacity: 0, scale: 0.5, rotation: -180, duration: 0.3, ease: 'power2.in',
+      opacity: 0, scale: 0.5, rotation: -180, duration: 0.18, ease: 'power2.in',
       onComplete: () => { arrowEl.style.visibility = 'hidden'; }
     });
     wEl.style.visibility = 'visible';
     wEl.style.display = 'block';
     gsap.fromTo(wEl,
       { opacity: 0, scale: 0.5, rotation: 180 },
-      { opacity: 1, scale: 1, rotation: 0, duration: 0.4, ease: 'back.out(1.7)' }
+      { opacity: 1, scale: 1, rotation: 0, duration: 0.26, ease: 'back.out(1.4)' }
     );
   };
 
   const transformToArrow = () => {
     gsap.killTweensOf([arrowEl, wEl]);
     gsap.to(wEl, {
-      opacity: 0, scale: 0.5, rotation: 180, duration: 0.3, ease: 'power2.in',
+      opacity: 0, scale: 0.5, rotation: 180, duration: 0.18, ease: 'power2.in',
       onComplete: () => { wEl.style.visibility = 'hidden'; wEl.style.display = 'none'; }
     });
     arrowEl.style.visibility = 'visible';
     gsap.fromTo(arrowEl,
       { opacity: 0, scale: 0.5, rotation: -180 },
-      { opacity: 1, scale: 1, rotation: 0, duration: 0.4, ease: 'back.out(1.7)' }
+      { opacity: 1, scale: 1, rotation: 0, duration: 0.26, ease: 'back.out(1.4)' }
     );
   };
 
@@ -114,7 +115,7 @@ export default function createGoToTop() {
     if (nativeTopRafId) cancelAnimationFrame(nativeTopRafId);
     const start = performance.now();
     const tick = () => {
-      if (window.pageYOffset < 6 || performance.now() - start > 1800) {
+      if (window.pageYOffset < 6 || performance.now() - start > 2200) {
         finishScrollToTop();
         nativeTopRafId = null;
         return;
@@ -134,37 +135,50 @@ export default function createGoToTop() {
 
   if (canHover) {
     button.addEventListener('mouseenter', () => {
-      if (!isScrollingToTop) gsap.to(button, { scale: 1.1, duration: 0.3, ease: 'power2.out' });
+      if (!isScrollingToTop) gsap.to(button, { scale: 1.1, duration: 0.2, ease: 'power2.out' });
     });
     button.addEventListener('mouseleave', () => {
-      gsap.to(button, { scale: 1, duration: 0.3, ease: 'power2.out' });
+      gsap.to(button, { scale: 1, duration: 0.2, ease: 'power2.out' });
     });
   }
 
-  const activate = (e) => {
-    if (e?.cancelable) e.preventDefault();
-    if (isScrollingToTop) return;
+  const pressIn = () => {
     gsap.killTweensOf(button, 'scale');
-    if (!isTouch) {
-      gsap.to(button, { scale: 0.95, duration: 0.08, yoyo: true, repeat: 1, ease: 'power2.inOut' });
-    }
+    gsap.to(button, { scale: isTouch ? 0.92 : 0.94, duration: 0.08, ease: 'power2.out', overwrite: true });
+  };
+  const pressOut = () => {
+    gsap.killTweensOf(button, 'scale');
+    gsap.to(button, { scale: canHover ? 1.1 : 1, duration: isTouch ? 0.1 : 0.16, ease: 'power2.out', overwrite: true });
+  };
+
+  const computeDuration = (distance) => {
+    const d = Math.abs(distance);
+    const cap = isTouch ? 0.5 : 0.46;
+    const floor = isTouch ? 0.24 : 0.2;
+    return Math.min(cap, floor + d / 22000);
+  };
+
+  const cubicOut = (t) => (t >= 1 ? 1 : 1 - Math.pow(1 - t, 3));
+
+  const activate = () => {
+    if (isScrollingToTop) return;
     isScrollingToTop = true;
-    show();
     if (!isTouch) transformToW();
+    show();
+
     const lenis = window.lenis;
+    const startY = getScrollY();
+    const duration = computeDuration(startY);
+
     if (lenis) {
       if (prefersReducedMotion) {
-        lenis.scrollTo(0, {
-          immediate: true,
-          lock: true,
-          force: true,
-        });
+        lenis.scrollTo(0, { immediate: true, lock: true, force: true });
         finishScrollToTop();
       } else {
         lenis.scrollTo(0, {
           immediate: false,
-          duration: isTouch ? 1 : 0.72,
-          easing: (t) => 1 - Math.pow(1 - t, 3),
+          duration,
+          easing: cubicOut,
           lock: true,
           force: true,
           onComplete: finishScrollToTop,
@@ -178,18 +192,40 @@ export default function createGoToTop() {
   };
 
   let lastActivateTime = 0;
-  const ACTIVATE_GUARD_MS = 180;
-  const tryActivate = (e) => {
+  const ACTIVATE_GUARD_MS = 100;
+  const tryActivate = () => {
     const now = performance.now();
     if (now - lastActivateTime < ACTIVATE_GUARD_MS) return;
     lastActivateTime = now;
-    activate(e);
+    activate();
   };
 
-  button.addEventListener('pointerup', tryActivate, { passive: false });
+  let activePointerId = null;
+  button.addEventListener('pointerdown', (e) => {
+    if (e.pointerType === 'mouse' && e.button !== 0) return;
+    activePointerId = e.pointerId;
+    try { button.setPointerCapture(e.pointerId); } catch (_) {}
+    pressIn();
+  });
+
+  button.addEventListener('pointerup', (e) => {
+    if (activePointerId !== e.pointerId) return;
+    activePointerId = null;
+    try { button.releasePointerCapture(e.pointerId); } catch (_) {}
+    pressOut();
+    tryActivate();
+  });
+
+  button.addEventListener('pointercancel', (e) => {
+    if (activePointerId !== e.pointerId) return;
+    activePointerId = null;
+    try { button.releasePointerCapture(e.pointerId); } catch (_) {}
+    pressOut();
+  });
+
   button.addEventListener('click', (e) => {
     if (e.detail !== 0) return;
-    tryActivate(e);
+    tryActivate();
   });
 
   return button;
