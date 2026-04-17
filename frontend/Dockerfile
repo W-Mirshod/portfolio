@@ -11,8 +11,5 @@ ENV NODE_ENV=production
 COPY package*.json ./
 RUN npm ci --omit=dev
 COPY --from=build /app/dist ./dist
-COPY --from=build /app/server.mjs ./
-COPY --from=build /app/src/ssr ./src/ssr
-COPY --from=build /app/src/locales ./src/locales
 EXPOSE 8080
-CMD ["node", "server.mjs"]
+CMD ["node", "dist/server/entry.mjs"]

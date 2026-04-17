@@ -1,0 +1,42 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import SiteHeader from '../components/ssr/SiteHeader.astro';
+import SiteGoToTop from '../components/ssr/SiteGoToTop.astro';
+import SectionHome from '../components/ssr/SectionHome.astro';
+import SectionExperience from '../components/ssr/SectionExperience.astro';
+import SectionSkills from '../components/ssr/SectionSkills.astro';
+import SectionProof from '../components/ssr/SectionProof.astro';
+import SectionProjects from '../components/ssr/SectionProjects.astro';
+import SectionFooter from '../components/ssr/SectionFooter.astro';
+import { createServerI18n, getAllResourcesForClient } from '../i18n/server-i18n.js';
+
+export const prerender = false;
+
+const locale = Astro.locals.locale || 'en';
+const i18n = await createServerI18n(locale);
+
+const resources = getAllResourcesForClient();
+const initialState = {
+  locale: i18n.language,
+  ssr: true,
+  resources,
+};
+
+const serializeState = (state) => JSON.stringify(state).replace(/</g, '\\u003c');
+const initialStateScript = `window.__INITIAL_STATE__=${serializeState(initialState)};`;
+---
+
+<BaseLayout lang={i18n.language} initialStateScript={initialStateScript}>
+  <SiteHeader i18n={i18n} />
+  <div id="root">
+    <main role="main">
+      <SectionHome i18n={i18n} />
+      <SectionExperience i18n={i18n} />
+      <SectionSkills i18n={i18n} />
+      <SectionProof i18n={i18n} />
+      <SectionProjects i18n={i18n} />
+      <SectionFooter i18n={i18n} />
+    </main>
+  </div>
+  <SiteGoToTop />
+</BaseLayout>

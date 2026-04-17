@@ -22,10 +22,18 @@ function pickFromAcceptLanguage(header) {
   return null;
 }
 
-export function resolveLocaleFromRequest(req) {
-  const cookies = parseCookie(req.headers?.cookie || '');
+function getHeader(headers, name) {
+  if (!headers) return '';
+  if (typeof headers.get === 'function') {
+    return headers.get(name) || '';
+  }
+  return headers[name] || headers[name.toLowerCase()] || '';
+}
+
+export function resolveLocaleFromHeaders(headers) {
+  const cookies = parseCookie(getHeader(headers, 'cookie'));
   if (cookies[COOKIE]) return normalizeLocale(cookies[COOKIE]);
-  const fromAccept = pickFromAcceptLanguage(req.headers?.['accept-language'] || '');
+  const fromAccept = pickFromAcceptLanguage(getHeader(headers, 'accept-language'));
   if (fromAccept) return normalizeLocale(fromAccept);
   return 'en';
 }

@@ -2,6 +2,7 @@
 
 /* Top navbar offset — scroll anchors land below the fixed top bar */
 html {
+  scroll-behavior: auto;
   scroll-padding-top: 72px;
 }
 
@@ -31,6 +32,11 @@ section h2.animate-fadeInUp {
 /* Prevent scroll when mobile sheet is open */
 body.mobile-menu-open {
   overflow: hidden !important;
+}
+
+:where(a, button, input, textarea, select):focus-visible {
+  outline: 2px solid var(--primary-color, #0a84ff);
+  outline-offset: 2px;
 }
 
 :root {

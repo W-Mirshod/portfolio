@@ -1,8 +1,11 @@
+---
+const { lang, initialStateScript } = Astro.props;
+---
+
 <!doctype html>
-<html lang="en">
+<html lang={lang}>
   <head>
     <meta charset="UTF-8" />
-    <!-- Site logo icon -->
     <link rel="icon" type="image/png" href="/Mirshod-optimized.png" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Mirshod Qayimov (W-Mirshod)</title>
@@ -18,45 +21,36 @@
     <meta name="twitter:description" content="Mirshod Qayimov (W-Mirshod) – Senior Software Engineer specializing in Python/Django microservices, AI/ML integration, and cloud infrastructure. 20+ production systems, 99.7% uptime, IoT platforms & real-time applications." />
     <meta name="twitter:image" content="https://w-mirshod.com/Mirshod-optimized.png" />
 
-    <!-- Performance optimizations -->
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-    
-    <!-- Critical resource preconnects -->
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link rel="dns-prefetch" href="https://cdnjs.cloudflare.com" />
     <link rel="dns-prefetch" href="https://cdn.jsdelivr.net" />
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" crossorigin="anonymous" referrerpolicy="no-referrer" />
-    
-    <!-- Preload modern Inter variable font with font-display swap -->
+
     <link rel="preload" href="https://fonts.googleapis.com/css2?family=Inter:wght@100..900&display=swap" as="style" onload="this.onload=null;this.rel='stylesheet'" />
     <noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@100..900&display=swap" /></noscript>
 
-    <!-- Display font for headings / nav logo -->
     <link rel="preload" href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&display=swap" as="style" onload="this.onload=null;this.rel='stylesheet'" />
     <noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&display=swap" /></noscript>
 
-    <!-- Mono font (was previously loaded via CSS @import, now non-blocking) -->
     <link rel="preload" href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;600;700&display=swap" as="style" onload="this.onload=null;this.rel='stylesheet'" />
     <noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;600;700&display=swap" /></noscript>
 
-    <!-- Preload critical resources -->
     <link rel="preload" href="/Mirshod-optimized.png" as="image" type="image/png" />
-    <link rel="modulepreload" href="/src/main.js" />
 
-    <!-- Theme color -->
     <meta name="theme-color" content="#0f172a" />
     <meta name="msapplication-TileColor" content="#0f172a" />
-
-    <!-- PWA manifest -->
     <link rel="manifest" href="/manifest.json" />
     <meta name="apple-mobile-web-app-capable" content="yes" />
     <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
     <link rel="apple-touch-icon" href="/Mirshod-optimized.png" />
   </head>
   <body>
-    <div id="root"></div>
-    <!--ssr-outlet-->
-    <script type="module" src="/src/main.js"></script>
+    <script is:inline set:html={initialStateScript}></script>
+    <slot />
+    <script>
+      import '../main.js';
+    </script>
   </body>
 </html>
