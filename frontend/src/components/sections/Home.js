@@ -4,11 +4,11 @@ import { initializeAudio } from '../../utils/audio.js';
 import createParallaxBackground from '../ui/ParallaxBackground.js';
 import createMagneticButton from '../ui/MagneticButton.js';
 import '../styles/w3d-icon.css';
+import { scrollToTarget } from '../../utils/smoothScroll.js';
 
 export function hydrateHomeSection(section) {
   const handleNavigation = (href) => {
-    const el = document.querySelector(href);
-    if (el) el.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    scrollToTarget(href, { offset: -72, duration: 1.15 });
   };
 
   const t = (k) => i18n.t(k);
@@ -61,8 +61,7 @@ export default function createHome() {
   section.className = 'liquid-section section-accent-glow relative flex flex-col items-center justify-center min-h-screen w-full overflow-hidden pt-16 sm:pt-20 md:pt-24 lg:pt-10 px-3 sm:px-4 md:px-6 lg:px-8 xl:px-20';
 
   const handleNavigation = (href) => {
-    const el = document.querySelector(href);
-    if (el) el.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    scrollToTarget(href, { offset: -72, duration: 1.15 });
   };
 
   // Build content
@@ -72,8 +71,8 @@ export default function createHome() {
     return `
       <div class="relative flex flex-col justify-center items-center w-full h-full max-w-7xl mx-auto z-10 py-4 sm:py-6 md:py-8 lg:py-12">
         <div class="absolute inset-0 overflow-hidden pointer-events-none">
-          <div class="absolute top-1/4 left-1/4 w-64 h-64 sm:w-96 sm:h-96 bg-neo/10 rounded-full blur-2xl"></div>
-          <div class="absolute bottom-1/4 right-1/4 w-56 h-56 sm:w-80 sm:h-80 bg-neo/8 rounded-full blur-2xl"></div>
+          <div class="scroll-parallax absolute top-1/4 left-1/4 w-64 h-64 sm:w-96 sm:h-96 bg-neo/10 rounded-full blur-2xl" data-scroll-parallax="0.18"></div>
+          <div class="scroll-parallax absolute bottom-1/4 right-1/4 w-56 h-56 sm:w-80 sm:h-80 bg-neo/8 rounded-full blur-2xl" data-scroll-parallax="0.1"></div>
         </div>
         <div class="flex flex-col items-center justify-center text-center w-full max-w-7xl mx-auto relative space-y-8 sm:space-y-10 md:space-y-12">
           <div class="flex flex-col items-center justify-center text-center w-full space-y-4 sm:space-y-5 md:space-y-6 px-4 sm:px-6 md:px-8 lg:px-12 xl:px-16 lg:items-start lg:text-left">

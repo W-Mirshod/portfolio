@@ -2,32 +2,47 @@
  * Sets up multi-layer parallax on the given element refs (layer1, layer2, layer3).
  * Returns a cleanup function.
  */
+function getScrollY() {
+  return window.lenis?.scroll ?? window.scrollY ?? 0;
+}
+
 export function setupMultiLayerParallax(layer1, layer2, layer3) {
   const isMobile = window.matchMedia('(max-width: 768px)').matches;
   if (isMobile) return () => {};
 
   let rafId = null;
 
+  const applyParallax = () => {
+    if (!layer1 || !layer2 || !layer3) return;
+    const scrolled = getScrollY();
+    layer1.style.transform = `translate3d(0, ${scrolled * -0.3}px, 0)`;
+    layer2.style.transform = `translate3d(0, ${scrolled * -0.15}px, 0)`;
+    layer3.style.transform = `translate3d(0, ${scrolled * -0.05}px, 0)`;
+  };
+
   const handleScroll = () => {
     if (rafId) return;
     rafId = requestAnimationFrame(() => {
       rafId = null;
-      if (layer1 && layer2 && layer3) {
-        const scrolled = window.pageYOffset;
-        layer1.style.transform = `translate3d(0, ${scrolled * -0.3}px, 0)`;
-        layer2.style.transform = `translate3d(0, ${scrolled * -0.15}px, 0)`;
-        layer3.style.transform = `translate3d(0, ${scrolled * -0.05}px, 0)`;
-      }
+      applyParallax();
     });
   };
 
-  window.addEventListener('scroll', handleScroll, { passive: true });
+  if (window.lenis) {
+    window.lenis.on('scroll', handleScroll);
+  } else {
+    window.addEventListener('scroll', handleScroll, { passive: true });
+  }
   window.addEventListener('resize', handleScroll, { passive: true });
   handleScroll();
 
   return () => {
     if (rafId) cancelAnimationFrame(rafId);
-    window.removeEventListener('scroll', handleScroll);
+    if (window.lenis) {
+      window.lenis.off?.('scroll', handleScroll);
+    } else {
+      window.removeEventListener('scroll', handleScroll);
+    }
     window.removeEventListener('resize', handleScroll);
   };
 }

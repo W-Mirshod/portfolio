@@ -1,3 +1,5 @@
+document.documentElement.classList.add('js');
+
 import './index.css';
 import './App.css';
 import './components/styles/SectionsCommon.css';

@@ -1,5 +1,5 @@
-import Lenis from 'lenis';
-import 'lenis/dist/lenis.css';
+import { startSmoothScroll } from './utils/smoothScroll.js';
+import { initScrollMotion } from './utils/scrollMotion.js';
 
 import createHeader, { hydrateHeader } from './components/sections/Header.js';
 import createHome, { hydrateHomeSection } from './components/sections/Home.js';
@@ -10,26 +10,6 @@ import createProjects, { mountProjectsSection } from './components/sections/Proj
 import createFooter, { mountFooterSection } from './components/sections/Footer.js';
 import createGoToTop from './components/ui/GoToTop.js';
 
-function startLenis() {
-  const lenis = new Lenis({
-    duration: 0.85,
-    easing: (t) => Math.min(1, 1.001 - Math.pow(2, -10 * t)),
-    orientation: 'vertical',
-    gestureOrientation: 'vertical',
-    smoothWheel: true,
-    touchMultiplier: 2,
-  });
-
-  window.lenis = lenis;
-
-  function raf(time) {
-    lenis.raf(time);
-    requestAnimationFrame(raf);
-  }
-  requestAnimationFrame(raf);
-  return lenis;
-}
-
 export function initApp() {
   let root = document.getElementById('root');
   if (!root) {
@@ -38,7 +18,7 @@ export function initApp() {
     document.body.appendChild(root);
   }
 
-  startLenis();
+  startSmoothScroll();
 
   root.innerHTML = '';
 
@@ -59,6 +39,10 @@ export function initApp() {
 
   const goToTop = createGoToTop();
   document.body.appendChild(goToTop);
+
+  requestAnimationFrame(() => {
+    initScrollMotion();
+  });
 }
 
 export function hydrateApp() {
@@ -69,7 +53,7 @@ export function hydrateApp() {
     document.body.appendChild(root);
   }
 
-  startLenis();
+  startSmoothScroll();
 
   const existingHeader = document.getElementById('top-nav');
   if (existingHeader) {
@@ -93,4 +77,8 @@ export function hydrateApp() {
 
   localStorage.removeItem('theme');
   document.documentElement.setAttribute('data-theme', 'dark');
+
+  requestAnimationFrame(() => {
+    initScrollMotion();
+  });
 }
