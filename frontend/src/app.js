@@ -9,6 +9,9 @@ import createProof, { mountProofSection } from './components/sections/Proof.js';
 import createProjects, { mountProjectsSection } from './components/sections/Projects.js';
 import createFooter, { mountFooterSection } from './components/sections/Footer.js';
 import createGoToTop from './components/ui/GoToTop.js';
+import { initAppleAnimations } from './utils/appleAnimations.js';
+
+let teardownAppleAnimations = null;
 
 function startLenis() {
   const lenis = new Lenis({
@@ -30,6 +33,11 @@ function startLenis() {
   return lenis;
 }
 
+function bootAppleAnimations(lenis) {
+  teardownAppleAnimations?.();
+  teardownAppleAnimations = initAppleAnimations(lenis);
+}
+
 export function initApp() {
   let root = document.getElementById('root');
   if (!root) {
@@ -38,7 +46,7 @@ export function initApp() {
     document.body.appendChild(root);
   }
 
-  startLenis();
+  const lenis = startLenis();
 
   root.innerHTML = '';
 
@@ -59,6 +67,8 @@ export function initApp() {
 
   const goToTop = createGoToTop();
   document.body.appendChild(goToTop);
+
+  bootAppleAnimations(lenis);
 }
 
 export function hydrateApp() {
@@ -69,7 +79,7 @@ export function hydrateApp() {
     document.body.appendChild(root);
   }
 
-  startLenis();
+  const lenis = startLenis();
 
   const existingHeader = document.getElementById('top-nav');
   if (existingHeader) {
@@ -93,4 +103,6 @@ export function hydrateApp() {
 
   localStorage.removeItem('theme');
   document.documentElement.setAttribute('data-theme', 'dark');
+
+  bootAppleAnimations(lenis);
 }
