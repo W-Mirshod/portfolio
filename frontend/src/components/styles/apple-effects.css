@@ -1,0 +1,156 @@
+:root {
+  --apple-ease-out: cubic-bezier(0.16, 1, 0.3, 1);
+  --apple-ease-spring: cubic-bezier(0.32, 0.72, 0, 1);
+  --apple-blur-reveal: 14px;
+}
+
+html.apple-page-loading body {
+  overflow: hidden;
+}
+
+.apple-page-curtain {
+  position: fixed;
+  inset: 0;
+  z-index: 9998;
+  pointer-events: none;
+  background: radial-gradient(ellipse 80% 60% at 50% 40%, #0a0f0a 0%, #050506 55%, #000 100%);
+  transform-origin: center top;
+  will-change: transform, opacity;
+}
+
+.apple-ambient {
+  position: fixed;
+  inset: 0;
+  z-index: -1;
+  pointer-events: none;
+  overflow: hidden;
+}
+
+.apple-ambient__orb {
+  position: absolute;
+  border-radius: 50%;
+  filter: blur(80px);
+  opacity: 0.35;
+  will-change: transform;
+}
+
+.apple-ambient__orb--a {
+  width: min(52vw, 520px);
+  height: min(52vw, 520px);
+  top: 8%;
+  left: -8%;
+  background: radial-gradient(circle, rgba(57, 255, 20, 0.22) 0%, transparent 70%);
+}
+
+.apple-ambient__orb--b {
+  width: min(44vw, 440px);
+  height: min(44vw, 440px);
+  bottom: 12%;
+  right: -6%;
+  background: radial-gradient(circle, rgba(26, 170, 10, 0.18) 0%, transparent 72%);
+}
+
+.apple-ambient__orb--c {
+  width: min(36vw, 360px);
+  height: min(36vw, 360px);
+  top: 42%;
+  left: 38%;
+  background: radial-gradient(circle, rgba(255, 255, 255, 0.06) 0%, transparent 68%);
+}
+
+.liquid-title.apple-shimmer-title {
+  position: relative;
+  display: inline-block;
+  background-size: 200% auto;
+  -webkit-background-clip: text;
+  background-clip: text;
+}
+
+.liquid-title.apple-shimmer-title::after {
+  content: '';
+  position: absolute;
+  inset: -20% -8%;
+  background: linear-gradient(
+    105deg,
+    transparent 38%,
+    rgba(255, 255, 255, 0.14) 50%,
+    transparent 62%
+  );
+  transform: translateX(-120%) skewX(-12deg);
+  pointer-events: none;
+  mix-blend-mode: overlay;
+}
+
+.liquid-title.apple-shimmer-title.is-shimmer-active::after {
+  animation: apple-title-shimmer 1.1s var(--apple-ease-out) forwards;
+}
+
+@keyframes apple-title-shimmer {
+  to {
+    transform: translateX(120%) skewX(-12deg);
+  }
+}
+
+.apple-tilt {
+  transform-style: preserve-3d;
+  perspective: 1200px;
+  will-change: transform;
+}
+
+.apple-tilt > * {
+  transform: translateZ(0);
+}
+
+.apple-tilt-glow {
+  position: absolute;
+  inset: 0;
+  border-radius: inherit;
+  opacity: 0;
+  pointer-events: none;
+  background: radial-gradient(
+    520px circle at var(--apple-tilt-x, 50%) var(--apple-tilt-y, 50%),
+    rgba(57, 255, 20, 0.14),
+    transparent 42%
+  );
+  transition: opacity 0.35s var(--apple-ease-out);
+}
+
+.apple-tilt:hover .apple-tilt-glow,
+.apple-tilt:focus-within .apple-tilt-glow {
+  opacity: 1;
+}
+
+#home .apple-hero-float {
+  will-change: transform;
+}
+
+#home .apple-stat-card {
+  will-change: transform, opacity;
+}
+
+.apple-scroll-line {
+  transform-origin: center;
+  will-change: transform;
+}
+
+main section[id] header.apple-header-reveal {
+  will-change: transform, opacity, filter;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .apple-page-curtain,
+  .apple-ambient,
+  .apple-ambient__orb {
+    display: none !important;
+  }
+
+  .liquid-title.apple-shimmer-title::after {
+    animation: none !important;
+    display: none;
+  }
+
+  .apple-tilt,
+  .apple-tilt-glow {
+    transform: none !important;
+  }
+}

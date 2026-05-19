@@ -41,7 +41,12 @@ export default function createMagneticButton(text, { strength = 0.4, className =
 
     button.addEventListener('mouseleave', () => {
       if (rafId) { cancelAnimationFrame(rafId); rafId = null; }
+      button.style.transition = 'transform 0.55s cubic-bezier(0.32, 0.72, 0, 1)';
       button.style.transform = 'translate(0, 0) scale(1)';
+    }, { passive: true });
+
+    button.addEventListener('mouseenter', () => {
+      button.style.transition = 'transform 0.35s cubic-bezier(0.32, 0.72, 0, 1)';
     }, { passive: true });
   }
 

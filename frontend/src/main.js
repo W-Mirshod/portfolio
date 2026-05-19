@@ -2,6 +2,7 @@ import './index.css';
 import './App.css';
 import './components/styles/SectionsCommon.css';
 import './components/styles/liquid-glass.css';
+import './components/styles/apple-effects.css';
 
 import { initI18n } from './utils/i18n.js';
 
