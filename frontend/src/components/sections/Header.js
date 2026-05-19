@@ -8,6 +8,7 @@ import {
   iconEnvelope,
 } from '../ui/Icons.js';
 import '../styles/menu-futuristic.css';
+import { scrollToTarget } from '../../utils/smoothScroll.js';
 
 const LANGUAGES = [
   { code: 'en', name: 'English' },
@@ -105,14 +106,7 @@ function buildHeaderMarkup(activeKey, currentLang) {
 }
 
 function scrollToSection(href) {
-  const el = document.querySelector(href);
-  if (!el) return;
-  if (window.lenis) {
-    window.lenis.scrollTo(href, { duration: 1.1, offset: -72 });
-  } else {
-    const top = el.getBoundingClientRect().top + window.pageYOffset - 72;
-    window.scrollTo({ top, behavior: 'smooth' });
-  }
+  scrollToTarget(href, { offset: -72, duration: 1.15 });
 }
 
 function initController(headerEl, sheetEl) {

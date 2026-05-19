@@ -6,6 +6,36 @@ html {
   scroll-padding-top: calc(72px + env(safe-area-inset-top, 0px));
 }
 
+html.lenis,
+html.lenis body {
+  height: auto;
+}
+
+html.lenis.lenis-smooth {
+  scroll-behavior: auto !important;
+}
+
+html.js:not(.scroll-motion-ready) main section:not(#home) .scroll-reveal-item,
+html.js:not(.scroll-motion-ready) main section:not(#home) .scroll-reveal-header h2,
+html.js:not(.scroll-motion-ready) main section:not(#home) .scroll-reveal-header .liquid-divider {
+  opacity: 0;
+}
+
+html.js:not(.scroll-motion-ready) main section:not(#home) .scroll-reveal-item {
+  transform: translate3d(0, 28px, 0);
+}
+
+html.js.scroll-motion-ready .scroll-reveal-item,
+html.js.scroll-motion-ready .scroll-reveal-header h2,
+html.js.scroll-motion-ready .scroll-reveal-header .liquid-divider {
+  will-change: transform, opacity;
+}
+
+.scroll-parallax {
+  will-change: transform;
+  backface-visibility: hidden;
+}
+
 @media (min-width: 768px) {
   html {
     scroll-padding-top: calc(84px + env(safe-area-inset-top, 0px));
@@ -1129,10 +1159,14 @@ body.mobile-menu-open {
 /* ── Reduced-motion: full fallback ── */
 @media (prefers-reduced-motion: reduce) {
 
-  .reveal-stagger > * {
+  .reveal-stagger > *,
+  .scroll-reveal-item,
+  .scroll-reveal-header h2,
+  .scroll-reveal-header .liquid-divider {
     opacity: 1 !important;
     transform: none !important;
     transition: none !important;
+    filter: none !important;
   }
 
   .liquid-btn-primary.neo-pulse {

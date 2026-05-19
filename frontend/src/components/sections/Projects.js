@@ -1,5 +1,4 @@
 import i18n from '../../utils/i18n.js';
-import { setupStaggerReveal } from '../../utils/parallax.js';
 import projectsData from '../../data/projects.json';
 import createSpotlightCard, { attachSpotlightBehavior } from '../ui/SpotlightCard.js';
 
@@ -57,7 +56,6 @@ export function mountProjectsSection(section) {
       });
 
       container.appendChild(grid);
-      setupStaggerReveal(grid);
     }
 
     section.appendChild(container);
@@ -66,7 +64,6 @@ export function mountProjectsSection(section) {
   function hydrateFromSsr() {
     const grid = section.querySelector('.grid.reveal-stagger');
     if (grid) {
-      setupStaggerReveal(grid);
       grid.querySelectorAll('.spotlight-card').forEach((card) => attachSpotlightBehavior(card));
     }
   }
